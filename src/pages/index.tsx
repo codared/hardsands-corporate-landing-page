@@ -95,7 +95,7 @@ const Home: NextPage = () => {
               top={"-20%"}
               left={0}
               zIndex={-1}
-              color={useColorModeValue("red.50", "red.400")}
+              color={useColorModeValue("sandTone1RGB05", "sandTone1RGB01")}
             />
             <Box
               position={"relative"}
