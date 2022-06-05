@@ -1,6 +1,6 @@
 import Head from "next/head";
 import React from "react";
-import { BRAND_DESCRIPTION, BRAND_TITLE } from "utils/contants";
+import { BRAND_DESCRIPTION, BRAND_TITLE } from "utils/constants";
 
 const WithLayout = ({
   children,
