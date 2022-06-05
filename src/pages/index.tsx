@@ -55,7 +55,7 @@ const Home: NextPage = () => {
                 Coming Sooon!
               </Text>
             </Heading>
-            <Text color={"black"} mt={[8]} fontFamily="Campton">
+            <Text color={"black"} mt={[8]}>
               {BRAND_DESCRIPTION}
             </Text>
             {/* <Stack spacing={[4, 6, 8]} direction={["column", "row"]}>
