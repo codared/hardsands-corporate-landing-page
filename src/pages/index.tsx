@@ -55,7 +55,7 @@ const Home: NextPage = () => {
                 Coming Sooon!
               </Text>
             </Heading>
-            <Text color={"black"} mt={[8]}>
+            <Text color={"black"} mt={[8]} fontFamily="Campton">
               {BRAND_DESCRIPTION}
             </Text>
             {/* <Stack spacing={[4, 6, 8]} direction={["column", "row"]}>
@@ -95,7 +95,7 @@ const Home: NextPage = () => {
               top={"-20%"}
               left={0}
               zIndex={-1}
-              color={useColorModeValue("red.50", "red.400")}
+              color={useColorModeValue("sandTone1RGB05", "sandTone1RGB01")}
             />
             <Box
               position={"relative"}

@@ -124,11 +124,17 @@ const colors = {
 
   // hardsands
   sandTone3: "#DF9F71",
-  sandTone3RGB: "rgb(223,159,113)",
+  sandTone3RGB05: "rgba(223,159,113, 0.5)",
+  sandTone3RGB03: "rgba(223,159,113, 0.3)",
+  sandTone3RGB01: "rgba(223,159,113, 0.1)",
   sandTone2: "#F5D7BB",
-  sandTone2RGB: "rgb(245,215,187)",
+  sandTone2RGB05: "rgba(245,215,187, 0.5)",
+  sandTone2RGB03: "rgba(245,215,187, 0.3)",
+  sandTone2RGB01: "rgba(245,215,187, 0.1)",
   sandTone1: "#F8ECDE",
-  sandTone1RGB: "rgb(248,236,222)",
+  sandTone1RGB05: "rgba(248,236,222, 0.5)",
+  sandTone1RGB03: "rgba(248,236,222, 0.3)",
+  sandTone1RGB01: "rgba(248,236,222, 0.1)",
 
   brand: {
     100: "#F8ECDE",
