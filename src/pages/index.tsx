@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import WithLayout from "components/WithLayout";
 import type { NextPage } from "next";
-import { BRAND_DESCRIPTION } from "utils/contants";
+import { BRAND_DESCRIPTION } from "utils/constants";
 
 const Home: NextPage = () => {
   return (

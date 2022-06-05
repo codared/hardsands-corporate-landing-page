@@ -303,6 +303,8 @@ const customTheme = extendTheme({
   fontSizes,
   transitions,
   config: {
+    useSystemColorMode: false,
+    initialColorMode: "light",
     cssVarPrefix: "hardsands",
   },
 });
