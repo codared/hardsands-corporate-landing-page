@@ -25,7 +25,7 @@ export const useTypedSelector: TypedUseSelectorHook<AppState> = useSelector
 
 export const useTypedDispatch: () => ThunkDispatch<
   AppState,
-  void,
+  {},
   AppActionTypes
 > = () => {
   const dispatch: ThunkDispatch<AppState, {}, AppActionTypes> = useDispatch()
