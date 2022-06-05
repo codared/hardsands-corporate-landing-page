@@ -58,8 +58,9 @@ const typography = {
   fonts: {
     serif: `VeronaSerial, sans-serif`,
     serifLight: `VeronaSerial Light, sans-serif`,
-    heading: `Outer Sans, sans-serif`,
-    subheading: `Outer Sans Medium, sans-serif`,
+    heading: `Made Outer Sans Bold, sans-serif`,
+    outlineHeading: `Made Outer Sans Outline Bold, sans-serif`,
+    subheading: `Made Outer Sans Light, sans-serif`,
     medium: `Campton Bold, sans-serif`,
     light: `Campton Light, sans-serif`,
     body: `Campton, sans-serif`,
