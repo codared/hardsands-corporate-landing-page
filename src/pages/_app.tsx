@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { createWrapper, MakeStore, Context } from "next-redux-wrapper";
 import type { AppProps } from "next/app";
 import theme from "styles/theme";
@@ -43,6 +43,7 @@ function HardsandsApp({
   return (
     <ChakraProvider theme={theme}>
       <Fonts />
+      <ColorModeScript initialColorMode={'light'} />
       <Component {...pageProps} />
     </ChakraProvider>
   );

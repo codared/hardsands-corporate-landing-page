@@ -143,6 +143,7 @@ const colors = {
     900: "#000",
   },
 
+  danger: '#EB6C6C',
   sandstone: "#EDEBDF",
   stone: "#DAE1E2", // replaced
   aboutBorder: "#CFD1C8",
@@ -195,7 +196,7 @@ const shadows = {
   none: "none",
 };
 
-const breakpoints = ["768px", "992px", "1200px"];
+const breakpoints = ["425px", "768px", "1200px"];
 
 const zIndices = {
   hide: -1,
@@ -275,6 +276,7 @@ const globalStyles = {
     cursor: "pointer",
   },
   "a:focus, button:focus": {
+    outline: 'none',
     outlineColor: colors.sandTone1,
   },
   "button:hover": {

@@ -21,6 +21,7 @@
     "test:integration": "jest"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.2",
     "@chakra-ui/react": "^2.1.2",
     "@crowdin/ota-client": "^0.7.0",
     "@emotion/react": "^11",

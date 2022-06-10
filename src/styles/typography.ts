@@ -61,7 +61,7 @@ const typography = {
     heading: `Made Outer Sans Bold, sans-serif`,
     outlineHeading: `Made Outer Sans Outline Bold, sans-serif`,
     subheading: `Made Outer Sans Light, sans-serif`,
-    medium: `Campton, sans-serif`,
+    medium: `Campton Bold, sans-serif`,
     light: `Campton Light, sans-serif`,
     body: `Campton Light, sans-serif`,
     mono: `VeronaSerial,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace`,
