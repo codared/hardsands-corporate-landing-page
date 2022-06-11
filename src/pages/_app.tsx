@@ -17,6 +17,8 @@ import cookies from "next-cookies";
 import { CURRENCY_COOKIE } from "utils/constants";
 import { isSupportedCurrency } from "utils/functions";
 import { useRef } from "react";
+import ManualScriptTag from "modules/analytics/components/ManualScriptTag";
+import { CopyrightYearProvider } from "modules/hardsands/components/CopyrightYearContext";
 
 interface HardsandsAppProps extends AppProps {
   lang: string;
@@ -31,28 +33,32 @@ function HardsandsApp({
   Component,
   pageProps,
 }: HardsandsAppProps) {
-
   // load translations the first render
-  const i18nLoaded = useRef<boolean>(false)
+  const i18nLoaded = useRef<boolean>(false);
   if (!i18nLoaded.current && translations) {
-    initializeLanguage(lang, translations)
-    i18nLoaded.current = true
+    initializeLanguage(lang, translations);
+    i18nLoaded.current = true;
   }
-  const copyRightYear: number = new Date().getFullYear()
-  
+  const copyRightYear: number = new Date().getFullYear();
+
   return (
-    <ChakraProvider theme={theme}>
-      <Fonts />
-      <ColorModeScript initialColorMode={'light'} />
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <>
+      <ChakraProvider theme={theme}>
+        <CopyrightYearProvider value={copyRightYear}>
+          <ManualScriptTag />
+          <Fonts />
+          <ColorModeScript initialColorMode={"light"} />
+          <Component {...pageProps} />
+        </CopyrightYearProvider>
+      </ChakraProvider>
+    </>
   );
 }
 
 HardsandsApp.getInitialProps = async ({ ctx }: any) => {
   // no props need to be sent back down for SPA navigates
   // only initial page render
-  if (!isServerRequest(ctx) || typeof window !== 'undefined') {
+  if (!isServerRequest(ctx) || typeof window !== "undefined") {
     return {};
   }
   const lang = detectLanguage(ctx);

@@ -27,6 +27,8 @@ export const CONFIG = {
   CROWDIN_DOMAIN: (process.env.NEXT_PUBLIC_CROWDIN_DOMAIN as string) || false,
   CROWDIN_IN_CONTEXT_ENABLED:
     (process.env.NEXT_PUBLIC_CROWDIN_IN_CONTEXT_ENABLED as string) || false,
+  TAG_MANAGER_ID:
+    (process.env.NEXT_PUBLIC_TAG_MANAGER_ID as string) || false,
 } as const;
 
 export type SETTINGS = typeof CONFIG;

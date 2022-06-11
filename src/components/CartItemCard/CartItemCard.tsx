@@ -9,14 +9,19 @@ const CartItemCard = () => {
   const [quantity, setQuantity] = useState<number>(0);
   return (
     <>
-      <Flex w="100%" justifyContent="space-between" p={[5, 10]} py={5}>
+      <Flex w="100%" justifyContent="space-between" py={5}>
         <Flex justifyContent="space-between" mr={6}>
           <Box>
-            <Image boxSize={20} objectFit="cover" src={Placeholder.src} alt="product image" />
+            <Image
+              boxSize={20}
+              objectFit="cover"
+              src={Placeholder.src}
+              alt="product image"
+            />
           </Box>
-          <Flex direction="column" justifyContent="space-between" ml={8}>
+          <Flex direction="column" justifyContent="space-between" ml={5}>
             <Text>Hardsands Metal Card</Text>
-            <Text>₦78,800.00</Text>
+            <Text fontWeight={600}>₦78,800.00</Text>
           </Flex>
         </Flex>
         <Flex direction="column" justifyContent="space-between">
@@ -28,10 +33,11 @@ const CartItemCard = () => {
               opacity: ".5",
             }}
             alignSelf="end"
-						scale="10%"
+            scale="10%"
+            fontSize="smaller"
           >
             <Image
-              boxSize={5}
+              boxSize={4}
               src={DeleteIcon.src}
               alt="delete image"
               mr="10px"

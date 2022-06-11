@@ -8,18 +8,18 @@ export interface NavItem {
 export const NAV_ITEMS: Array<NavItem> = [
   {
     label: "Home",
-    href: "#",
+    href: "/",
   },
   {
     label: "Shop",
-    href: "#",
+    href: "/shop",
   },
   {
     label: "Reviews",
-    href: "#",
+    href: "/reviews",
   },
   {
     label: "About",
-    href: "#",
+    href: "/about-us",
   },
 ];

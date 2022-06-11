@@ -1,4 +1,4 @@
-import { Flex, Image, Text } from "@chakra-ui/react";
+import { Button, Flex, Image, Text } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import MinusIcon from "design/svg/minus_bg.svg";
 import PlusIcon from "design/svg/plus_bg.svg";
@@ -23,16 +23,18 @@ const QuantityModifier = ({
   };
   return (
     <Flex>
-      <HardsandLink
+      <Button
         onClick={(e: SyntheticEvent) => {
           e.preventDefault();
           handleChange("minus");
         }}
-        href={"#"}
-        _hover={{ opacity: ".5" }}
+        _hover={{ opacity: ".5", bg: "transparent" }}
+        bg="transparent"
+        _focus={{ bg: "transparent" }}
+        px={0}
       >
         <Image boxSize={10} src={MinusIcon.src} alt="minus image" />
-      </HardsandLink>
+      </Button>
       <Text
         display="flex"
         justifyContent="center"
@@ -42,16 +44,18 @@ const QuantityModifier = ({
       >
         {quantity}
       </Text>
-      <HardsandLink
+      <Button
         onClick={(e: SyntheticEvent) => {
           e.preventDefault();
           handleChange("plus");
         }}
-        href={"#"}
-        _hover={{ opacity: ".5" }}
+        _hover={{ opacity: ".5", bg: "transparent" }}
+        bg="transparent"
+        _focus={{ bg: "transparent" }}
+        px={0}
       >
         <Image boxSize={10} src={PlusIcon.src} alt="plus image" />
-      </HardsandLink>
+      </Button>
     </Flex>
   );
 };
