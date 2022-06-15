@@ -137,6 +137,7 @@ const colors = {
   sandTone1RGB01: "rgba(248,236,222, 0.1)",
 
   brand: {
+    50: "#F9EBDD",
     100: "#F8ECDE",
     200: "#F5D7BB",
     300: "#DF9F71",

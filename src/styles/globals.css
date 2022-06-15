@@ -18,3 +18,8 @@ a {
 *:focus {
   outline: none !important;
 }
+
+.header {
+  padding: 3rem 3rem 0;
+  background: #F9EBDD;
+}

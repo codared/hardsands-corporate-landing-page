@@ -31,7 +31,7 @@ export default function Navigation() {
   const cartBtnRef = React.useRef(null);
 
   return (
-    <Box w="100%" position="sticky" zIndex={1} bg="white" top={0}>
+    <Box as="nav" w="100%" position="sticky" zIndex={1} bg="white" top={0} background="brand.50">
       <Cart
         isOpen={isCartOpen}
         onClose={() => setCartOpen(!isCartOpen)}
