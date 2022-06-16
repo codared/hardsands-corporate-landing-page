@@ -1,8 +1,8 @@
 import Head from "next/head";
 import React from "react";
 import { BRAND_DESCRIPTION, BRAND_TITLE } from "utils/constants";
-import Footer from "./Footer";
-import Navigation from "./Navigation";
+import Footer from "./layout/Footer";
+import Navigation from "./layout/Navigation";
 
 const WithLayout = ({
   children,
