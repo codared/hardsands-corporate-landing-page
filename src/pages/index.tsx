@@ -20,7 +20,6 @@ import ProductCard from "components/ProductCard";
 import { products } from "dummy_data/products";
 
 const Home: NextPage = () => {
-  console.log(products);
   return (
     <WithLayout pageTitle="Hardsands - One time Business Card">
       <Flex
@@ -63,7 +62,7 @@ const Home: NextPage = () => {
         </Box>
         <Image src={headerImg.src} alt="placeholder" />
       </Flex>
-      <Flex as="section" px="3rem" justify="space-between">
+      <Grid as="section" px="3rem" gap={16} templateColumns={["", "repeat(2, 1fr)"]}>
         <Box mt="80px">
           <Text fontSize="4xl" fontWeight="black" mb="40px">
             Share your business <br /> information with <br />{" "}
@@ -84,7 +83,7 @@ const Home: NextPage = () => {
           </Link>
         </Box>
         <Image border="8px" borderColor="brand.300" src={womanImg.src} />
-      </Flex>
+      </Grid>
       <Box as="section" p="3rem">
         <Text
           fontSize="3xl"
@@ -146,7 +145,7 @@ const Home: NextPage = () => {
         <Text fontSize="4xl" fontWeight="black" my="60px" textAlign="center">
           Hand picked for you
         </Text>
-        <Grid templateColumns="repeat(3, 1fr)" gap={6}>
+        <Grid templateColumns={["", "repeat(3, 1fr)"]} gap={16}>
           {products.map(({ name, price }) => (
             <ProductCard name={name} price={price} />
           ))}
