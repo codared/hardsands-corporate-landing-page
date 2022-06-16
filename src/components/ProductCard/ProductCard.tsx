@@ -19,7 +19,11 @@ const data = {
   numReviews: 34,
 };
 
-export const ProductCard = () => {
+interface ProductCardProps {
+  name: string,
+  price: any
+}
+export const ProductCard = ({name, price}: ProductCardProps) => {
   return (
     <HardsandLink
       href="#"
@@ -52,8 +56,8 @@ export const ProductCard = () => {
         />
 
         <Box p={["3", "6"]}>
-          <Heading fontWeight="bolder" fontSize={["14px", "20px", "18px"]}>
-            Hardsands Metal Card
+          <Heading fontWeight="bolder" fontSize={["14px", "20px", "18px"]} textTransform="capitalize">
+           {name}
           </Heading>
 
           <Flex mt={[0, 3, 3]}>
@@ -64,10 +68,10 @@ export const ProductCard = () => {
               fontSize={[10, 12, 14]}
               textDecoration="line-through"
             >
-              ₦78,800.00
+              ₦{price}
             </Text>
             <Text fontWeight="bolder" fontSize={[12,14, 16]} color="brand.300">
-              ₦78,800.00
+              ₦{price}
             </Text>
           </Flex>
         </Box>
