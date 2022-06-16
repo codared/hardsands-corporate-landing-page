@@ -7,9 +7,13 @@ import smallHeadshotImg from "./images/small-headshot.png";
 import largeHeadshotImg from "./images/large-headshot.png";
 import itemPlaceholderImg from "./images/item-placeholder.png";
 import aboutHeaderImg from "./images/about-header.png";
+import customerImg from "./images/customer.png"
 
 // SVGs
-import customerImg from "./images/customer.png"
+import liveChatIcon from "./svgs/live-chat.svg";
+import faqIcon from "./svgs/FAQ.svg";
+import contactIcon from "./svgs/contact.svg";
+
 export {
     aboutHeaderImg,
     headerImg,
@@ -17,5 +21,8 @@ export {
     largeHeadshotImg,
     itemPlaceholderImg,
     womanImg,
-    customerImg
+    customerImg,
+    liveChatIcon,
+    faqIcon,
+    contactIcon
 }

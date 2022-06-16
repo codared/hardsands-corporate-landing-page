@@ -1,17 +1,8 @@
 import WithLayout from "components/WithLayout";
 import type { NextPage } from "next";
-import {
-  Box,
-  Image,
-  Grid,
-  Link,
-  Flex,
-  Stack,
-  Text,
-  Button,
-  Heading,
-} from "@chakra-ui/react";
+import { Box, Image, Grid, Heading } from "@chakra-ui/react";
 import { HelpCard } from "components/HelpCard";
+import { liveChatIcon, faqIcon, contactIcon } from "assets";
 
 const Reviews: NextPage = () => {
   const reviewText =
@@ -21,11 +12,23 @@ const Reviews: NextPage = () => {
       <Box as="header" bgColor="brand.100" p="3rem 3rem 4rem">
         <Heading textAlign="center">Help Center</Heading>
       </Box>
-      <Box as="section" p={["1rem 3rem", "2rem 6rem", "4rem 12rem"]}>
-        <Grid templateColumns={["", "repeat(3, 1fr)"]} gap="2.5rem">
-          <HelpCard icon="John Doe" review={reviewText} />
-          <HelpCard icon="John Doe" review={reviewText} />
-          <HelpCard icon="John Doe" review={reviewText} />
+      <Box as="section" p={["3rem", "4rem 2rem", "4rem 12rem"]}>
+        <Grid templateColumns={["", "repeat(3, 1fr)"]} gap="1.5rem" maxW="1000px" mx="auto">
+          <HelpCard
+            title="FAQ"
+            icon={faqIcon}
+            text="Find answers to questions you may have about Hardsands and our products."
+          />
+          <HelpCard
+            title="Live Chat"
+            icon={liveChatIcon}
+            text="Chat with a live representative, get quick help and support from our team of professionals."
+          />
+          <HelpCard
+            title="Contact Us"
+            icon={contactIcon}
+            text="Use any of our contact channels to get in touch with our support team."
+          />
         </Grid>
       </Box>
     </WithLayout>
