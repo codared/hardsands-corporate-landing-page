@@ -11,12 +11,12 @@ import {
   Button,
   Grid,
 } from "@chakra-ui/react";
-import { aboutHeaderImg, womanImg } from "assets";
+import { aboutHeaderImg, customerImg, womanImg } from "assets";
 import { ReviewCard } from "components/ReviewCard";
 
 const About: NextPage = () => {
   return (
-    <WithLayout pageTitle="Hardsands - One time Business Card">
+    <WithLayout pageTitle="Hardsands - About">
       <Flex
         as="header"
         px={["2rem", "8rem"]}
