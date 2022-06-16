@@ -10,7 +10,7 @@ export const HelpCard = ({ icon, title, text }: HelpCardProps) => {
     <Box
       p="30px"
       border="1px"
-      borderColor="sandTone2"
+      borderColor="sandTone1"
       borderRadius="12px"
       mx="auto"
       textAlign="center"

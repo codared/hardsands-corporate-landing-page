@@ -2,16 +2,11 @@ import WithLayout from "components/WithLayout";
 import type { NextPage } from "next";
 import {
   Box,
-  Image,
   Grid,
-  Link,
   Flex,
-  Stack,
-  Text,
   Button,
   Heading,
 } from "@chakra-ui/react";
-import { largeHeadshotImg } from "assets";
 import { FullReviewCard } from "components/ReviewCard";
 
 const Reviews: NextPage = () => {
