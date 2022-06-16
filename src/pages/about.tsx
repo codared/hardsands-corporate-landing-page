@@ -3,20 +3,16 @@ import type { NextPage } from "next";
 import {
   Box,
   Image,
-  Grid,
+  Heading,
   Link,
   Flex,
   Stack,
   Text,
   Button,
+  Grid,
 } from "@chakra-ui/react";
-import {
-  aboutHeaderImg,
-  headerImg,
-  womanImg,
-  largeHeadshotImg,
-  itemPlaceholderImg,
-} from "assets";
+import { aboutHeaderImg, womanImg } from "assets";
+import { ReviewCard } from "components/ReviewCard";
 
 const About: NextPage = () => {
   return (
@@ -30,9 +26,9 @@ const About: NextPage = () => {
         justify="center"
       >
         <Box>
-          <Text fontSize="5xl" fontWeight="bolder" mb="1.5rem">
+          <Heading fontSize="5xl" fontWeight="bolder" mb="1.5rem">
             About Hardsands
-          </Text>
+          </Heading>
           <Text fontSize="4xl" mb="1.5rem">
             Share your business <br />
             information with{" "}
@@ -86,7 +82,7 @@ const About: NextPage = () => {
           alt="placeholder"
         />
         <Box>
-          <Text
+          <Heading
             fontSize="5xl"
             fontWeight="bolder"
             mb="1.5rem"
@@ -94,7 +90,7 @@ const About: NextPage = () => {
             textTransform="capitalize"
           >
             Take full control
-          </Text>
+          </Heading>
           <Text mb="40px" maxW="480px">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -122,9 +118,23 @@ const About: NextPage = () => {
         bgColor="black"
         color="white"
       >
-        <Text fontSize="5xl" fontWeight="bolder">
+        <Heading fontSize="5xl" fontWeight="bolder" textAlign="center">
           What Customers are saying
-        </Text>
+        </Heading>
+        <Flex overflow="auto" gap={12} py="60px">
+          <ReviewCard
+            name="John Doe"
+            review="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "
+          />
+          <ReviewCard
+            name="John Doe"
+            review="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "
+          />
+          <ReviewCard
+            name="John Doe"
+            review="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "
+          />
+        </Flex>
       </Box>
     </WithLayout>
   );
