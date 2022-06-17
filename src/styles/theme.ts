@@ -180,6 +180,9 @@ const colors = {
   fireFly: "#0E1E26",
   vermilion: "#F44C13",
   flame: "#F14D25",
+
+  blueBtn: "#4267B2",
+  redBtn: "#D4462F"
 };
 
 const shadows = {
