@@ -11,7 +11,6 @@ import {
   Button,
   Grid,
 } from "@chakra-ui/react";
-import { aboutHeaderImg, customerImg, womanImg } from "assets";
 import { ReviewCard } from "components/ReviewCard";
 
 const About: NextPage = () => {
@@ -63,7 +62,7 @@ const About: NextPage = () => {
           borderRadius={["300px", "200px"]}
           maxH={["full", "600px"]}
           objectFit="cover"
-          src={aboutHeaderImg.src}
+          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428800/hardsands/about-header_n9m1qb.png"
           alt="placeholder"
         />
       </Flex>
@@ -78,7 +77,7 @@ const About: NextPage = () => {
           borderRadius={["300px", "200px"]}
           maxH={["full", "600px"]}
           objectFit="cover"
-          src={womanImg.src}
+          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428491/hardsands/woman_rjf3sl.jpg"
           alt="placeholder"
         />
         <Box>

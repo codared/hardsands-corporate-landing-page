@@ -10,12 +10,6 @@ import {
   Text,
   Button,
 } from "@chakra-ui/react";
-import {
-  headerImg,
-  womanImg,
-  largeHeadshotImg,
-  itemPlaceholderImg,
-} from "assets";
 import ProductCard from "components/ProductCard";
 import { products } from "dummy_data/products";
 
@@ -60,9 +54,17 @@ const Home: NextPage = () => {
             </Link>
           </Flex>
         </Box>
-        <Image src={headerImg.src} alt="placeholder" />
+        <Image
+          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428676/hardsands/header-img_viwcqv.jpg"
+          alt="placeholder"
+        />
       </Flex>
-      <Grid as="section" px="3rem" gap={16} templateColumns={["", "repeat(2, 1fr)"]}>
+      <Grid
+        as="section"
+        px="3rem"
+        gap={16}
+        templateColumns={["", "repeat(2, 1fr)"]}
+      >
         <Box mt="80px">
           <Text fontSize="4xl" fontWeight="black" mb="40px">
             Share your business <br /> information with <br />{" "}
@@ -82,7 +84,11 @@ const Home: NextPage = () => {
             </Button>
           </Link>
         </Box>
-        <Image border="8px" borderColor="brand.300" src={womanImg.src} />
+        <Image
+          border="8px"
+          borderColor="brand.300"
+          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428491/hardsands/woman_rjf3sl.jpg"
+        />
       </Grid>
       <Box as="section" p="3rem">
         <Text
@@ -116,7 +122,7 @@ const Home: NextPage = () => {
         py="3rem"
         justify="space-between"
       >
-        <Image src={largeHeadshotImg.src} alt="video" />
+        <Image src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428744/hardsands/large-headshot_a57k5x.png" alt="video" />
         <Box mt="2rem" ml="2rem">
           <Text fontSize="4xl" fontWeight="black" mb="40px">
             Full & Autonomous <br /> Control Over Your <br />{" "}
@@ -151,7 +157,7 @@ const Home: NextPage = () => {
           ))}
         </Grid>
         <Flex justify="center" mt="2rem">
-          <Button px="30px" py="15px" bg="black" color="white" >
+          <Button px="30px" py="15px" bg="black" color="white">
             See more cards
           </Button>
         </Flex>
