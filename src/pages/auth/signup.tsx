@@ -14,7 +14,6 @@ import {
   Textarea,
   Link,
 } from "@chakra-ui/react";
-import { locationIcon, mailIcon, phoneIcon } from "design";
 
 const Login: NextPage = () => {
   return (
@@ -54,7 +53,7 @@ const Login: NextPage = () => {
             <Input
               id="password"
               type="password"
-              placeholder="Your Email Address"
+              placeholder="Your Password"
             />
           </Box>
           <Text textAlign="center" mb={5}>

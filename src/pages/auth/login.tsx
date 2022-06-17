@@ -39,7 +39,7 @@ const Login: NextPage = () => {
             <Input
               id="password"
               type="password"
-              placeholder="Your Email Address"
+              placeholder="Your Password"
             />
           </Box>
           <Text textAlign="center" mb={5}>
