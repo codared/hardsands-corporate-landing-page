@@ -192,7 +192,7 @@ const Home: NextPage = () => {
         </Text>
         <Grid templateColumns={["", "repeat(3, 1fr)"]} gap={16}>
           {products.map(({ name, price }) => (
-            <ProductCard name={name} price={price} />
+            <ProductCard key={name} name={name} price={price} />
           ))}
         </Grid>
         <Flex justify="center" mt="2rem">
