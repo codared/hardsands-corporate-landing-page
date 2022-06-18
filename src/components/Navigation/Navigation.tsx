@@ -36,7 +36,7 @@ export default function Navigation() {
     <Box
       w="100%"
       position="sticky"
-      zIndex={1}
+      zIndex={5}
       bg={offset > 80 ? "white" : "transparent"}
       transition="all 200ms ease-in"
       top={0}
