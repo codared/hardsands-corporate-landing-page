@@ -11,46 +11,46 @@ import {
   Button,
 } from "@chakra-ui/react";
 import ProductCard from "components/ProductCard";
+import HardsandLink from "components/HardsandsLink";
 
 const products = [
   {
     id: 0,
     name: "hardsands metal card",
     description: "Our most exclusive product premium, innovative, bespoke.",
-    price: "78,000"
+    price: "78,000",
   },
   {
     id: 1,
     name: "hardsands metal card",
     description: "Our most exclusive product premium, innovative, bespoke.",
-    price: "78,000"
+    price: "78,000",
   },
   {
     id: 2,
     name: "hardsands metal card",
     description: "Our most exclusive product premium, innovative, bespoke.",
-    price: "78,000"
+    price: "78,000",
   },
   {
     id: 3,
     name: "hardsands metal card",
     description: "Our most exclusive product premium, innovative, bespoke.",
-    price: "78,000"
+    price: "78,000",
   },
   {
     id: 4,
     name: "hardsands metal card",
     description: "Our most exclusive product premium, innovative, bespoke.",
-    price: "78,000"
+    price: "78,000",
   },
   {
     id: 5,
     name: "hardsands metal card",
     description: "Our most exclusive product premium, innovative, bespoke.",
-    price: "78,000"
+    price: "78,000",
   },
 ];
-
 
 const Home: NextPage = () => {
   return (
@@ -75,22 +75,40 @@ const Home: NextPage = () => {
               Technology
             </Text>
           </Stack>
-          <Flex textTransform="capitalize" mb="40px">
-            <Link href="/" colorScheme="green">
-              <Button bgColor="brand.300" px="30px" py="15px">
-                Design your card
-              </Button>
-              <Button
-                px="30px"
-                py="15px"
-                ml="10"
-                variant="outline"
-                border="2px"
-                borderColor="gray.800"
-              >
-                Learn More
-              </Button>
-            </Link>
+          <Flex textTransform="capitalize" my="40px" gap={8}>
+            <HardsandLink
+              fontSize={"sm"}
+              fontWeight={500}
+              color={"black"}
+              bg={"brand.300"}
+              href={"/shop"}
+              p={["none", "12px 16px", "12px 46px"]}
+              border="1.5px solid #DF9F71"
+              borderRadius="8px"
+              transition="all 200ms ease-in"
+              _hover={{
+                bg: "black",
+                color: "brand.300",
+              }}
+            >
+              Design Your Card
+            </HardsandLink>
+            <HardsandLink
+              fontSize={"sm"}
+              fontWeight={500}
+              color={"black"}
+              href={"/shop"}
+              p={["none", "12px 16px", "12px 46px"]}
+              border="1px solid black"
+              borderRadius="8px"
+              transition="all 200ms ease-in"
+              _hover={{
+                bg: "black",
+                color: "white",
+              }}
+            >
+              Learn More
+            </HardsandLink>
           </Flex>
         </Box>
         <Image
@@ -117,16 +135,30 @@ const Home: NextPage = () => {
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </Text>
-          <Link href="/">
-            <Button bgColor="black" textTransform="capitalize" color="white">
-              Buy your card
-            </Button>
-          </Link>
+          <HardsandLink
+            fontSize={"sm"}
+            fontWeight={500}
+            color={"white"}
+            bg={"black"}
+            href={"/shop"}
+            w="fit-content"
+            p={["none", "12px 16px", "12px 46px"]}
+            border="1px solid black"
+            borderRadius="8px"
+            transition="all 200ms ease-in"
+            _hover={{
+              bg: "white",
+              color: "black",
+            }}
+          >
+            Buy Your Card
+          </HardsandLink>
         </Box>
         <Image
           border="8px"
           borderColor="brand.300"
           src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428491/hardsands/woman_rjf3sl.jpg"
+          alt="woman with curly hair"
         />
       </Grid>
       <Box as="section" p="3rem">
@@ -140,18 +172,39 @@ const Home: NextPage = () => {
           3 Simple Steps
         </Text>
         <Flex justify="center" gap="25px">
-          <Button bgColor="brand.300" textTransform="capitalize">
-            Design your card
-          </Button>
-          <Button
-            px="30px"
-            py="15px"
-            variant="outline"
-            border="2px"
-            borderColor="gray.800"
+          <HardsandLink
+            fontSize={"sm"}
+            fontWeight={500}
+            color={"black"}
+            bg={"brand.300"}
+            href={"/shop"}
+            p={["none", "12px 16px", "12px 46px"]}
+            border="1.5px solid #DF9F71"
+            borderRadius="8px"
+            transition="all 200ms ease-in"
+            _hover={{
+              bg: "black",
+              color: "brand.300",
+            }}
+          >
+            Design Your Card
+          </HardsandLink>
+          <HardsandLink
+            fontSize={"sm"}
+            fontWeight={500}
+            color={"black"}
+            href={"/shop"}
+            p={["none", "12px 16px", "12px 46px"]}
+            border="1px solid black"
+            borderRadius="8px"
+            transition="all 200ms ease-in"
+            _hover={{
+              bg: "black",
+              color: "white",
+            }}
           >
             Learn More
-          </Button>
+          </HardsandLink>
         </Flex>
       </Box>
       <Flex
@@ -161,7 +214,10 @@ const Home: NextPage = () => {
         py="3rem"
         justify="space-between"
       >
-        <Image src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428744/hardsands/large-headshot_a57k5x.png" alt="video" />
+        <Image
+          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428744/hardsands/large-headshot_a57k5x.png"
+          alt="video"
+        />
         <Box mt="2rem" ml="2rem">
           <Text fontSize="4xl" fontWeight="black" mb="40px">
             Full & Autonomous <br /> Control Over Your <br />{" "}
@@ -175,15 +231,22 @@ const Home: NextPage = () => {
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </Text>
-          <Button
-            px="30px"
-            py="15px"
-            variant="outline"
-            border="2px"
-            borderColor="gray.800"
-          >
-            Design Your Card
-          </Button>
+          <HardsandLink
+              fontSize={"sm"}
+              fontWeight={500}
+              color={"black"}
+              href={"/shop"}
+              p={["none", "12px 16px", "12px 46px"]}
+              border="1px solid black"
+              borderRadius="8px"
+              transition="all 200ms ease-in"
+              _hover={{
+                bg: "black",
+                color: "white",
+              }}
+            >
+              Design Your Card
+            </HardsandLink>
         </Box>
       </Flex>
       <Box as="section" px="8rem" py="6rem">
@@ -191,14 +254,27 @@ const Home: NextPage = () => {
           Hand picked for you
         </Text>
         <Grid templateColumns={["", "repeat(3, 1fr)"]} gap={16}>
-          {products.map(({ name, price }) => (
-            <ProductCard key={name} name={name} price={price} />
+          {products.map(({ id, name, price }) => (
+            <ProductCard key={id} name={name} price={price} />
           ))}
         </Grid>
         <Flex justify="center" mt="2rem">
-          <Button px="30px" py="15px" bg="black" color="white">
-            See more cards
-          </Button>
+        <HardsandLink
+            fontSize={"sm"}
+            fontWeight={500}
+            color={"white"}
+            bg={"black"}
+            href={"/shop"}
+            p={["none", "12px 16px", "12px 46px"]}
+            borderRadius="8px"
+            transition="all 200ms ease-in"
+            _hover={{
+              bg: "black",
+              color: "brand.300",
+            }}
+          >
+            See More Cards
+          </HardsandLink>
         </Flex>
       </Box>
     </WithLayout>

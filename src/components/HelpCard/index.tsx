@@ -16,7 +16,7 @@ export const HelpCard = ({ icon, title, text }: HelpCardProps) => {
       textAlign="center"
     >
       <Flex justify="center">
-        <Image src={icon.src} borderRadius="full" />
+        <Image src={icon.src} borderRadius="full" alt="icon"/>
       </Flex>
       <Heading fontSize="xl" mt={10} mb={6}>{title}</Heading>
       <Text mb="20px" maxW="340px">{text}</Text>

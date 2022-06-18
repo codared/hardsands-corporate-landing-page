@@ -12,6 +12,7 @@ import {
   Grid,
 } from "@chakra-ui/react";
 import { ReviewCard } from "components/ReviewCard";
+import HardsandLink from "components/HardsandsLink";
 
 const About: NextPage = () => {
   return (
@@ -46,17 +47,24 @@ const About: NextPage = () => {
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </Text>
-          <Link href="/" colorScheme="green">
-            <Button
-              px="30px"
-              py="15px"
-              bg="black"
-              color="white"
-              textTransform="capitalize"
-            >
-              Buy your card
-            </Button>
-          </Link>
+          <HardsandLink
+            fontSize={"sm"}
+            fontWeight={500}
+            color={"white"}
+            bg={"black"}
+            href={"/shop"}
+            w="fit-content"
+            p={["none", "12px 16px", "12px 46px"]}
+            border="1px solid black"
+            borderRadius="8px"
+            transition="all 200ms ease-in"
+            _hover={{
+              bg: "white",
+              color: "black",
+            }}
+          >
+            Buy Your Card
+          </HardsandLink>
         </Box>
         <Image
           borderRadius={["300px", "200px"]}
@@ -96,18 +104,22 @@ const About: NextPage = () => {
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </Text>
-          <Link href="/" colorScheme="green">
-            <Button
-              px="30px"
-              py="15px"
-              variant="outline"
-              border="1px"
-              borderColor="gray.800"
-              textTransform="capitalize"
-            >
-              Design your card
-            </Button>
-          </Link>
+          <HardsandLink
+            fontSize={"sm"}
+            fontWeight={500}
+            color={"black"}
+            href={"/shop"}
+            p={["none", "12px 16px", "12px 46px"]}
+            border="1px solid black"
+            borderRadius="8px"
+            transition="all 200ms ease-in"
+            _hover={{
+              bg: "black",
+              color: "white",
+            }}
+          >
+            Learn More
+          </HardsandLink>
         </Box>
       </Flex>
       <Box

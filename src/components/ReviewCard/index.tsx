@@ -14,6 +14,7 @@ export const ReviewCard = ({ name, review }: ReviewCardProps) => {
         mx="auto"
         h="111px"
         borderRadius="full"
+        alt="customer avatar"
       />
       <Text fontSize="2xl" textAlign="center" mb="20px">
         {name}
@@ -31,6 +32,7 @@ export const FullReviewCard = ({ name, review }: ReviewCardProps) => {
           src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428669/hardsands/customer_zvaux7.png"
           h="70px"
           borderRadius="full"
+          alt="customer avatar"
         />
         <Text display="inline" fontSize="2xl" ml={4}>
           {name}
@@ -43,6 +45,7 @@ export const FullReviewCard = ({ name, review }: ReviewCardProps) => {
           w="70px"
           h="70px"
           objectFit="cover"
+          alt="product"
         />
         <Box pt="20px">
           <Text textTransform="capitalize">Hardsands metal card</Text>

@@ -35,15 +35,15 @@ const Contact: NextPage = () => {
         <Box flex={1}>
           <Heading mb="60px">Get In Touch</Heading>
           <Flex alignItems="center" gap={5} mb={5}>
-            <Image h="54px" src={phoneIcon.src} />
+            <Image h="54px" src={phoneIcon.src} alt="call us"/>
             <Text>+2348975869676</Text>
           </Flex>
           <Flex alignItems="center" gap={5} mb={5}>
-            <Image h="54px" src={mailIcon.src} />
+            <Image h="54px" src={mailIcon.src} alt="mail us"/>
             <Text>hello@hardsand.com</Text>
           </Flex>
           <Flex alignItems="center" gap={5} mb={5}>
-            <Image h="54px" src={locationIcon.src} />
+            <Image h="54px" src={locationIcon.src}  alt="address"/>
             <Text>No. 5, Street Address, State, Country</Text>
           </Flex>
         </Box>
