@@ -38,8 +38,8 @@ const TakeControlSection = () => {
             {SIMPLE_STEPS.map((item) => (
               <Box
                 key={item.title}
-                w={[400, 300, 400]}
-                height={[400, 300, 400]}
+                w={[350, 300, 400]}
+                height={[350, 300, 400]}
                 backgroundImage={Vectorbg.src}
                 backgroundSize={"contain"}
                 backgroundPosition={"center center"}

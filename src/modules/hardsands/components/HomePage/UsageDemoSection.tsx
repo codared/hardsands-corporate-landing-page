@@ -23,6 +23,7 @@ const UsageDemoSection = () => {
       flexDirection={["column-reverse", "row", "row"]}
       justify="space-between"
       alignItems="center"
+      overflow="hidden"
     >
       <Image
         ml={[0, 0, 50]}
