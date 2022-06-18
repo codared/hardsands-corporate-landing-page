@@ -1,3 +1,12 @@
+import { Box } from "@chakra-ui/react";
+
+import { ParallaxProvider } from "react-scroll-parallax";
+import HeroSection from "./HeroSection";
+import ShareYourBusinessSection from "./ShareYourBusinessSection";
+import TakeControlSection from "./TakeControlSection";
+import UsageDemoSection from "./UsageDemoSection";
+import ProductShowcaseSection from "./ProductShowcaseSection";
+
 const HomePage = () => {
   return (
     <Box>

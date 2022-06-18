@@ -20,6 +20,7 @@ import LoginIcon from "design/svg/Login.svg";
 import CloseIcon from "design/svg/fi_x.svg";
 import React, { useState } from "react";
 import Cart from "modules/Cart";
+import { useOffsetScroll } from "components/Navigation/hooks";
 
 const minifyNotificationCount = (count: string) => {
   return count.length > 1 ? "9+" : count;
@@ -28,10 +29,18 @@ const minifyNotificationCount = (count: string) => {
 export default function Navigation() {
   const { isOpen, onToggle } = useDisclosure();
   const [isCartOpen, setCartOpen] = useState(false);
+  const { offset } = useOffsetScroll();
   const cartBtnRef = React.useRef(null);
 
   return (
-    <Box w="100%" position="sticky" zIndex={1} bg="white" top={0}>
+    <Box
+      w="100%"
+      position="sticky"
+      zIndex={5}
+      bg={offset > 80 ? "white" : "transparent"}
+      transition="all 200ms ease-in"
+      top={0}
+    >
       <Cart
         isOpen={isCartOpen}
         onClose={() => setCartOpen(!isCartOpen)}
@@ -44,7 +53,7 @@ export default function Navigation() {
         align={"center"}
         justifyContent={"space-between"}
       >
-        <Flex justify={["start"]} mr={["unset", "unset", 10]}>
+        <Flex justify={["start"]} ml={["unset", "unset", 20]}>
           <HardsandLink href="/">
             <Image
               w="176px"
