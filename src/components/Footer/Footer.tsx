@@ -19,6 +19,7 @@ import MailIcon from "design/svg/fi_mail.svg";
 import HardsandLink from "components/HardsandsLink";
 import FiMail from "design/svg/fi_mail";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
+import CopyrightYearContext from "modules/hardsands/components/CopyrightYearContext";
 //   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 //   import { BiMailSend } from 'react-icons/bi';
 
@@ -89,7 +90,6 @@ const ListHeader = ({
 };
 
 const FootersFoot = () => {
-  const copyRightYear: number = new Date().getFullYear();
   return (
     <Box
       bg={useColorModeValue("black", "black")}
@@ -107,9 +107,13 @@ const FootersFoot = () => {
         justify={["center", "space-between"]}
         align={["center"]}
       >
-        <Text fontSize={[14, "normal"]}>
-          © {copyRightYear} Hardsands Technology. All rights reserved
-        </Text>
+        <CopyrightYearContext.Consumer>
+          {(year: number) => (
+            <Text fontSize={[14, "normal"]}>
+              © {year} Hardsands Technology. All rights reserved
+            </Text>
+          )}
+        </CopyrightYearContext.Consumer>
       </Container>
     </Box>
   );
@@ -121,7 +125,7 @@ export default function Footer() {
       bg={useColorModeValue("black", "black")}
       color={useColorModeValue("white", "white")}
     >
-      <Container as={Stack} maxW={"6xl"} py={24}>
+      <Container as={Stack} maxW={"7xl"} py={24}>
         <SimpleGrid templateColumns={["1fr", "2fr 1fr 1fr 2fr"]} spacing={8}>
           <Stack spacing={6}>
             <Box>
