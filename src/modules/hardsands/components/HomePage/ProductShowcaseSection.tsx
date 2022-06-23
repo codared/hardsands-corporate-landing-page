@@ -9,7 +9,7 @@ const ProductShowcaseSection = () => {
         <Heading mb={[18, 20, 28]} textAlign="center">
           Hand Picked for You
         </Heading>
-        <SimpleGrid columns={[2, 3, 4]} spacing={[2, 3, 5]}>
+        {/* <SimpleGrid columns={[2, 3, 4]} spacing={[2, 3, 5]}>
           <ProductCard />
           <ProductCard />
           <ProductCard />
@@ -18,7 +18,7 @@ const ProductShowcaseSection = () => {
           <ProductCard />
           <ProductCard />
           <ProductCard />
-        </SimpleGrid>
+        </SimpleGrid> */}
 
         <Flex justify="center" my={10}>
           <HardsandLink
