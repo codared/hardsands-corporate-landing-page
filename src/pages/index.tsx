@@ -9,9 +9,11 @@ import {
   Stack,
   Text,
   Button,
+  Heading,
 } from "@chakra-ui/react";
 import ProductCard from "components/ProductCard";
 import HardsandLink from "components/HardsandsLink";
+import { androidSlashIcon, editIcon, globeIcon } from "design";
 
 const products = [
   {
@@ -57,34 +59,25 @@ const Home: NextPage = () => {
     <WithLayout pageTitle="Hardsands - One time Business Card">
       <Flex
         as="header"
-        bgColor="brand.100"
         justify="space-between"
-        px="3rem"
-        pt="3rem"
+        p={["1rem", "3rem 9rem"]}
+        flexDir={["column-reverse", "row"]}
       >
         <Box>
-          <Stack fontSize="6xl" fontWeight="bolder" pb="20px">
-            <Text>All in One Business</Text>
-            <Text color="brand.300" as="span">
-              Cards{" "}
-              <Text as="span" color="gray.800">
-                Powered By
-              </Text>
-            </Text>
-            <Text display="inline" as="span">
-              Technology
-            </Text>
-          </Stack>
+          <Text color="brand.300" fontWeight="bold">
+            Share your info with just a tap!
+          </Text>
+          <Heading fontSize="6xl" w="12ch">
+            THE LAST BUSINESS CARD YOU’LL EVER BUY
+          </Heading>
           <Flex textTransform="capitalize" my="40px" gap={8}>
             <HardsandLink
               fontSize={"sm"}
               fontWeight={500}
               color={"black"}
-              bg={"brand.300"}
+              bg={"brand.200"}
               href={"/shop"}
               p={["none", "12px 16px", "12px 46px"]}
-              border="1.5px solid #DF9F71"
-              borderRadius="8px"
               transition="all 200ms ease-in"
               _hover={{
                 bg: "black",
@@ -93,120 +86,27 @@ const Home: NextPage = () => {
             >
               Design Your Card
             </HardsandLink>
-            <HardsandLink
-              fontSize={"sm"}
-              fontWeight={500}
-              color={"black"}
-              href={"/shop"}
-              p={["none", "12px 16px", "12px 46px"]}
-              border="1px solid black"
-              borderRadius="8px"
-              transition="all 200ms ease-in"
-              _hover={{
-                bg: "black",
-                color: "white",
-              }}
-            >
-              Learn More
-            </HardsandLink>
           </Flex>
         </Box>
         <Image
-          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428676/hardsands/header-img_viwcqv.jpg"
+          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655984088/hardsands/Hero_Images_keeoue.png"
           alt="placeholder"
         />
       </Flex>
-      <Grid
-        as="section"
-        px="3rem"
-        gap={16}
-        templateColumns={["", "repeat(2, 1fr)"]}
-      >
-        <Box mt="80px">
-          <Text fontSize="4xl" fontWeight="black" mb="40px">
-            Share your business <br /> information with <br />{" "}
-            <Text as="span" color="brand.300">
-              SWAG
-            </Text>
-          </Text>
-          <Text mb="40px" w="42ch">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </Text>
-          <HardsandLink
-            fontSize={"sm"}
-            fontWeight={500}
-            color={"white"}
-            bg={"black"}
-            href={"/shop"}
-            w="fit-content"
-            p={["none", "12px 16px", "12px 46px"]}
-            border="1px solid black"
-            borderRadius="8px"
-            transition="all 200ms ease-in"
-            _hover={{
-              bg: "white",
-              color: "black",
-            }}
-          >
-            Buy Your Card
-          </HardsandLink>
-        </Box>
-        <Image
-          border="8px"
-          borderColor="brand.300"
-          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428491/hardsands/woman_rjf3sl.jpg"
-          alt="woman with curly hair"
-        />
-      </Grid>
-      <Box as="section" p="3rem">
-        <Text
-          fontSize="3xl"
-          fontWeight="black"
-          textTransform="capitalize"
-          color="brand.300"
-          textAlign="center"
-        >
-          3 Simple Steps
-        </Text>
-        <Flex justify="center" gap="25px">
-          <HardsandLink
-            fontSize={"sm"}
-            fontWeight={500}
-            color={"black"}
-            bg={"brand.300"}
-            href={"/shop"}
-            p={["none", "12px 16px", "12px 46px"]}
-            border="1.5px solid #DF9F71"
-            borderRadius="8px"
-            transition="all 200ms ease-in"
-            _hover={{
-              bg: "black",
-              color: "brand.300",
-            }}
-          >
-            Design Your Card
-          </HardsandLink>
-          <HardsandLink
-            fontSize={"sm"}
-            fontWeight={500}
-            color={"black"}
-            href={"/shop"}
-            p={["none", "12px 16px", "12px 46px"]}
-            border="1px solid black"
-            borderRadius="8px"
-            transition="all 200ms ease-in"
-            _hover={{
-              bg: "black",
-              color: "white",
-            }}
-          >
-            Learn More
-          </HardsandLink>
+      <Flex textTransform="uppercase" fontWeight="bold" justify="space-around" px={["3rem", "9rem"]}>
+        <Flex>
+          <Image src={globeIcon.src} alt="globe icon" display="inline"/>
+          <Text ml={["1rem", "1.5rem", "2.5rem"]}>We ship globally</Text>
         </Flex>
-      </Box>
+        <Flex>
+          <Image src={androidSlashIcon.src} alt="globe icon" display="inline"/>
+          <Text ml={["1rem", "1.5rem", "2.5rem"]}>No app required</Text>
+        </Flex>
+        <Flex>
+          <Image src={editIcon.src} alt="globe icon" display="inline"/>
+          <Text ml={["1rem", "1.5rem", "2.5rem"]}>100% Customizable </Text>
+        </Flex>
+      </Flex>
       <Flex
         as="section"
         bgColor="brand.50"
@@ -232,21 +132,21 @@ const Home: NextPage = () => {
             aliquip ex ea commodo consequat.
           </Text>
           <HardsandLink
-              fontSize={"sm"}
-              fontWeight={500}
-              color={"black"}
-              href={"/shop"}
-              p={["none", "12px 16px", "12px 46px"]}
-              border="1px solid black"
-              borderRadius="8px"
-              transition="all 200ms ease-in"
-              _hover={{
-                bg: "black",
-                color: "white",
-              }}
-            >
-              Design Your Card
-            </HardsandLink>
+            fontSize={"sm"}
+            fontWeight={500}
+            color={"black"}
+            href={"/shop"}
+            p={["none", "12px 16px", "12px 46px"]}
+            border="1px solid black"
+            borderRadius="8px"
+            transition="all 200ms ease-in"
+            _hover={{
+              bg: "black",
+              color: "white",
+            }}
+          >
+            Design Your Card
+          </HardsandLink>
         </Box>
       </Flex>
       <Box as="section" px="8rem" py="6rem">
@@ -259,7 +159,7 @@ const Home: NextPage = () => {
           ))}
         </Grid>
         <Flex justify="center" mt="2rem">
-        <HardsandLink
+          <HardsandLink
             fontSize={"sm"}
             fontWeight={500}
             color={"white"}
