@@ -105,7 +105,7 @@ export default function Navigation() {
               <Text alignSelf="flex-end">{minifyNotificationCount("10")}</Text>
             </Box>
           </Button>
-          <Button
+          {/* <Button
             display="flex"
             bg="transparent"
             _focus={{ bg: "transparent" }}
@@ -126,8 +126,7 @@ export default function Navigation() {
               src={LoginIcon.src}
               alt="hardsands login icon"
             />
-          </Button>
-        </Stack>
+          </Button> */}
 
         <Flex ml={[-2]} display={["flex", "none", "none"]} justifyContent="end">
           <HardsandLink
@@ -143,6 +142,7 @@ export default function Navigation() {
             )}
           </HardsandLink>
         </Flex>
+        </Stack>
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>

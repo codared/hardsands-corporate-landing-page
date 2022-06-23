@@ -9,11 +9,15 @@ import {
   globeIcon,
   hardsandsIconLogo,
   hardsandsTextLogo,
+  rightArrow,
 } from "design";
 import { HomeProductCard } from "components/ProductCard";
 import { ReviewCard } from "components/ReviewCard";
+import { useTranslation } from "react-i18next";
 
 const Home: NextPage = () => {
+  const { t } = useTranslation();
+
   const products = [
     {
       id: 0,
@@ -75,11 +79,11 @@ const Home: NextPage = () => {
         flexDir={["column-reverse", "row"]}
       >
         <Box>
-          <Text color="brand.300" fontWeight="bold">
-            Share your info with just a tap!
+          <Text color="brand.300" fontWeight="bold" fontSize={["xl", "2xl"]}>
+            {t("heading:subheading", "Share your info with just a tap!")}
           </Text>
-          <Heading fontSize={["2xl", "4xl", "6xl"]} maxW={["10ch", "12ch"]}>
-            THE LAST BUSINESS CARD YOU’LL EVER BUY
+          <Heading fontSize={["5xl", "4xl", "7xl"]} maxW={["10ch", "12ch"]}>
+            {t("heading", "THE LAST BUSINESS CARD YOU’LL EVER BUY")}
           </Heading>
           <Flex textTransform="capitalize" my="40px" gap={8}>
             <HardsandLink
@@ -88,7 +92,7 @@ const Home: NextPage = () => {
               color={"black"}
               bg={"brand.200"}
               href={"/shop"}
-              p={["12px 16px", "12px 46px"]}
+              p={["20px 46px", "20px 46px"]}
               w={["full"]}
               maxW="360px"
               transition="all 200ms ease-in"
@@ -96,8 +100,15 @@ const Home: NextPage = () => {
                 bg: "black",
                 color: "brand.300",
               }}
+              fontFamily="Made Outer Sans Regular"
             >
               Design Your Card
+              <Image
+                ml={74}
+                src={rightArrow.src}
+                alt="right arrow"
+                display="inline"
+              />
             </HardsandLink>
           </Flex>
         </Box>
@@ -105,6 +116,7 @@ const Home: NextPage = () => {
           src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655984088/hardsands/Hero_Images_keeoue.png"
           alt="placeholder"
           maxW={["250", "300", "500"]}
+          m={["0 auto", "0 auto", "none"]}
         />
       </Flex>
       <Flex
@@ -114,6 +126,7 @@ const Home: NextPage = () => {
         px={["1rem", "6rem", "9rem"]}
         flexDir={["column", "row"]}
         alignItems="center"
+        fontFamily="Made Outer Sans Regular"
       >
         <Flex mb={[4, 0]}>
           <Image src={globeIcon.src} alt="globe icon" display="inline" />
@@ -158,7 +171,7 @@ const Home: NextPage = () => {
             <Heading
               textTransform="uppercase"
               maxW={["full", "11ch"]}
-              fontSize={["xl", "2xl", "4xl"]}
+              fontSize={["xl", "2xl", "5xl"]}
               mb={4}
             >
               DISCOVER{" "}
@@ -180,20 +193,25 @@ const Home: NextPage = () => {
               fontSize={"sm"}
               fontWeight="bold"
               color={"black"}
-              display="block"
               bg={"brand.200"}
               href={"/shop"}
-              mt={6}
-              p={["12px 16px", "12px 46px"]}
-              w={["fit-content"]}
+              p={["20px 46px", "20px 46px"]}
+              w={["full"]}
               maxW="360px"
               transition="all 200ms ease-in"
               _hover={{
                 bg: "black",
                 color: "brand.300",
               }}
+              fontFamily="Made Outer Sans Regular"
             >
               Design Your Card
+              <Image
+                src={rightArrow.src}
+                alt="right arrow"
+                display="inline"
+                ml={74}
+              />
             </HardsandLink>
           </Box>
         </Grid>
@@ -253,6 +271,9 @@ const Home: NextPage = () => {
             </Box>
           ))}
         </Flex>
+        <Text textAlign="center" fontWeight="bold" mt={6}>
+          Share Payment info like Paypal, Cash App, Zelle, or Bank Details
+        </Text>
       </Box>
       <Flex
         as="section"
@@ -316,7 +337,7 @@ const Home: NextPage = () => {
             experienced modern networking with <br />
             Hardsands.
           </Text>
-        </Flex >
+        </Flex>
         <Box>
           <ReviewCard
             name="John Doe"
@@ -332,6 +353,7 @@ const Home: NextPage = () => {
           />
         </Box>
       </Flex>
+      <Flex as="section" p={["1rem", "2rem 6rem", "4rem 9rem"]}></Flex>
     </WithLayout>
   );
 };

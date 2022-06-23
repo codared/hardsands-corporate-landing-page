@@ -104,7 +104,7 @@ export const HomeProductCard = ({
   >
     <Box
       bg={useColorModeValue("white", "gray.800")}
-      maxW="250px"
+      maxW="300px"
       position="relative"
       mb={[0]}
     >
