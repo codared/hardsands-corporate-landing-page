@@ -1,7 +1,7 @@
 import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import QuantityModifier from "components/QuantityModifier";
-import Placeholder from "design/placeholder.png";
+import Placeholder from "design/svg/mastercard.png";
 import DeleteIcon from "design/svg/delete_icon.svg";
 import { useState } from "react";
 

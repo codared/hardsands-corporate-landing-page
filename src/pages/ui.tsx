@@ -5,8 +5,8 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import CartItemCard from "components/CartItemCard";
-import Footer from "components/Footer";
-import Navigation from "components/Navigation";
+import Footer from "components/layout/Footer";
+import Navigation from "components/layout/Navigation";
 import UserProductCard from "components/UserProductCard";
 import ProductCard from "components/ProductCard";
 import { HomePage } from "modules/hardsands";
@@ -19,14 +19,14 @@ const UIPage = () => {
       <Navigation />
       <Container maxW="container.lg">
         <SimpleGrid columns={[2, 3, 4]} spacing={[2, 3, 5]}>
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductCard name="Hardsands metal card" price="78,000" />
+          <ProductCard name="Hardsands metal card" price="78,000"/>
+          <ProductCard name="Hardsands metal card" price="78,000"/>
+          <ProductCard name="Hardsands metal card" price="78,000"/>
+          <ProductCard name="Hardsands metal card" price="78,000"/>
+          <ProductCard name="Hardsands metal card" price="78,000"/>
+          <ProductCard name="Hardsands metal card" price="78,000"/>
+          <ProductCard name="Hardsands metal card" price="78,000"/>
         </SimpleGrid>
       </Container>
       <Parallax speed={-10}>
