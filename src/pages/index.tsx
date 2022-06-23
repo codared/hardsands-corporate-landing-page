@@ -226,7 +226,7 @@ const Home: NextPage = () => {
           </Box>
         </Grid>
       </Box>
-      <Box as="section" bg="#F9F6F3" p={["1rem", "2rem 6rem", "3rem 9rem"]}>
+      <Box as="section" bg="#F9F6F3" p={["3rem 1rem", "2rem 6rem", "3rem 9rem"]}>
         <Heading textAlign="center" mb={4}>
           CHOOSE YOUR MATERIAL
         </Heading>
@@ -250,7 +250,7 @@ const Home: NextPage = () => {
           ))}
         </Flex>
       </Box>
-      <Box as="section" p={["1rem", "2rem 6rem", "3rem 9rem"]}>
+      <Box as="section" p={["3rem 1rem", "2rem 6rem", "3rem 9rem"]}>
         <Heading textAlign="center" mb={6}>
           WHAT YOU WOULD USE YOUR CARD FOR
         </Heading>
@@ -288,7 +288,7 @@ const Home: NextPage = () => {
       <Flex
         as="section"
         bg="#F9F6F3"
-        p={["1rem", "2rem 6rem", "4rem 9rem"]}
+        p={["3rem 1rem", "2rem 6rem", "4rem 9rem"]}
         flexDir={["column", "row"]}
         justify="space-between"
       >
@@ -333,7 +333,7 @@ const Home: NextPage = () => {
         as="section"
         bg="black"
         color="white"
-        p={["1rem", "2rem 6rem", "4rem 9rem"]}
+        p={["3rem 1rem", "2rem 6rem", "4rem 9rem"]}
         flexDir={["column", "row"]}
         justify="space-between"
       >
@@ -363,7 +363,7 @@ const Home: NextPage = () => {
           />
         </Box>
       </Flex>
-      <Flex as="section" p={["1rem", "2rem 6rem", "4rem 9rem"]}></Flex>
+      <Flex as="section" p={["3rem 1rem", "2rem 6rem", "4rem 9rem"]}></Flex>
     </WithLayout>
   );
 };
