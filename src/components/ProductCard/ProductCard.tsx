@@ -109,7 +109,7 @@ export const HomeProductCard = ({
       position="relative"
       mb={[0]}
     >
-      <Image src={img} alt={`Picture of ${data.name}`} borderRadius={20} />
+      <Image w="100%" src={img} alt={`Picture of ${data.name}`} />
 
       <Box p={["3", "6"]}>
         <Flex
