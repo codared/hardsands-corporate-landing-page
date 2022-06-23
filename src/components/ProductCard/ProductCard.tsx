@@ -95,7 +95,7 @@ export const HomeProductCard = ({
   price,
 }: ProductCardProps) => (
   <HardsandLink
-    href="/shop"
+    href={`/shop?collection=${name}`}
     outline="none"
     _hover={{ color: "unset" }}
     _focus={{
