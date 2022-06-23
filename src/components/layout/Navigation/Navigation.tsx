@@ -125,24 +125,6 @@ export default function Navigation() {
               alt="hardsands login icon"
             />
           </Button>
-          <HardsandLink
-            fontSize={"sm"}
-            fontWeight={500}
-            color={"white"}
-            bg={"black"}
-            href={"#"}
-            p={["none", "12px 16px", "12px 46px"]}
-            border="1px solid black"
-            borderRadius="8px"
-            transition="all 200ms ease-in"
-            _hover={{
-              bg: "white",
-              color: "black",
-            }}
-            display={["none", "flex"]}
-          >
-            Buy Your Card
-          </HardsandLink>
         </Stack>
 
         <Flex ml={[-2]} display={["flex", "none", "none"]} justifyContent="end">

@@ -1,26 +1,23 @@
 import { Flex, Box, Image, Text } from "@chakra-ui/react";
 interface ReviewCardProps {
-  name: string;
+  name?: string;
   review: string;
   product?: any;
 }
 
-export const ReviewCard = ({ name, review }: ReviewCardProps) => {
+export const ReviewCard = ({ review }: ReviewCardProps) => {
   return (
-    <Box bgColor="whiteAlpha.200" p="40px" borderRadius="20px" maxW="465px">
+    <Flex p="20px" gap="20px" maxW="500px" mb={4}>
       <Image
         src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428669/hardsands/customer_zvaux7.png"
         mb="20px"
         mx="auto"
-        h="111px"
+        h="74px"
         borderRadius="full"
         alt="customer avatar"
       />
-      <Text fontSize="2xl" textAlign="center" mb="20px">
-        {name}
-      </Text>
       <Text>{review}</Text>
-    </Box>
+    </Flex>
   );
 };
 
