@@ -1,4 +1,5 @@
 import WithLayout from "components/WithLayout";
+import { HomePage } from "modules/hardsands";
 import type { NextPage } from "next";
 import { Box, Image, Flex, Text, Heading, Grid } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";

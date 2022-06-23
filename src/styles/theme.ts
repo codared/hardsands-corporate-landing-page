@@ -200,7 +200,7 @@ const shadows = {
   none: "none",
 };
 
-const breakpoints = ["425px", "768px", "1200px"];
+export const breakpoints = ["425px", "768px", "1200px"];
 
 const zIndices = {
   hide: -1,
