@@ -33,18 +33,7 @@ export default function Navigation() {
   const cartBtnRef = React.useRef(null);
 
   return (
-<<<<<<< HEAD:src/components/layout/Navigation/Navigation.tsx
     <Box as="nav" w="100%" position="sticky" zIndex="sticky" bg="white" top={0}>
-=======
-    <Box
-      w="100%"
-      position="sticky"
-      zIndex={5}
-      bg={offset > 80 ? "white" : "transparent"}
-      transition="all 200ms ease-in"
-      top={0}
-    >
->>>>>>> 5f85f272d03e127d6f8213f305d8a699f7139488:src/components/Navigation/Navigation.tsx
       <Cart
         isOpen={isCartOpen}
         onClose={() => setCartOpen(!isCartOpen)}
