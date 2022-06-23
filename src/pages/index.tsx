@@ -77,7 +77,17 @@ const Home: NextPage = () => {
         justify="space-between"
         p={["1rem", "2rem 6rem", "6rem 9rem 3rem"]}
         flexDir={["column-reverse", "row"]}
+        position="relative"
       >
+        <Image
+          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1656008101/hardsands/header_bg_sqrsy6.png"
+          alt="header background"
+          m={["0 auto", "0 auto", "unset"]}
+          zIndex={-1}
+          position="absolute"
+          top={0}
+          right={0}
+        />
         <Box>
           <Text color="brand.300" fontWeight="bold" fontSize={["xl", "2xl"]}>
             {t("heading:subheading", "Share your info with just a tap!")}
@@ -104,7 +114,7 @@ const Home: NextPage = () => {
             >
               Design Your Card
               <Image
-                ml={74}
+                ml={[74]}
                 src={rightArrow.src}
                 alt="right arrow"
                 display="inline"
@@ -210,7 +220,7 @@ const Home: NextPage = () => {
                 src={rightArrow.src}
                 alt="right arrow"
                 display="inline"
-                ml={74}
+                ml={[54, 74, 74]}
               />
             </HardsandLink>
           </Box>
@@ -249,7 +259,7 @@ const Home: NextPage = () => {
         </Text>
         <Flex flexWrap="wrap" justify="space-around">
           {cardUses.map(({ id, name, img, description }) => (
-            <Box key={id} maxW="250px">
+            <Box key={id} maxW="250px" mb={10}>
               <Image
                 src={img}
                 alt={`${name}`}

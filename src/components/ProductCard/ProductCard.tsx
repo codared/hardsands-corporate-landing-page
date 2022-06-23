@@ -101,6 +101,7 @@ export const HomeProductCard = ({
     _focus={{
       outline: "none !important",
     }}
+    alignSelf="center"
   >
     <Box
       bg={useColorModeValue("white", "gray.800")}
