@@ -5,15 +5,10 @@ import { Box, Image, Flex, Text, Heading, Grid } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import {
   androidSlashIcon,
-  divider,
   editIcon,
-  emiratesLogo,
-  forbesLogo,
   globeIcon,
-  googleLogo,
   hardsandsIconLogo,
   hardsandsTextLogo,
-  jumeirahLogo,
   rightArrow,
 } from "design";
 import { HomeProductCard } from "components/ProductCard";
@@ -236,10 +231,10 @@ const Home: NextPage = () => {
           ]}
           gap={["20px", "40px", "60px"]}
         >
-          <Image src={googleLogo.src} alt="Google" m="auto" />
+          {/* <Image src={googleLogo.src} alt="Google" m="auto" />
           <Image src={emiratesLogo.src} alt="Emirates" m="auto" />
           <Image src={jumeirahLogo.src} alt="Jumeirah" m="auto" />
-          <Image src={forbesLogo.src} alt="Forbes" m="auto" />
+          <Image src={forbesLogo.src} alt="Forbes" m="auto" /> */}
         </Grid>
       </Flex>
       <Box as="section" bg="#F9F6F3" p={["1rem", "2rem", "3rem"]}>
@@ -255,7 +250,7 @@ const Home: NextPage = () => {
           flexWrap="wrap"
           gap={["20px", "40px", "60px"]}
         >
-          {products.map(({ id, name, img, description, price }) => (
+          {/* {products.map(({ id, name, img, description, price }) => (
             <Flex key={id}>
               <HomeProductCard
                 name={name}
@@ -273,7 +268,7 @@ const Home: NextPage = () => {
                 />
               )}
             </Flex>
-          ))}
+          ))} */}
         </Flex>
       </Box>
       <Box as="section" p={["1rem", "2rem 6rem", "3rem 9rem"]}>
