@@ -13,6 +13,7 @@ import {
   Flex,
   Image,
 } from "@chakra-ui/react";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
 import { ReactNode } from "react";
 import HardsandTechLogo from "design/svg/hardsands_tech_logo.svg";
 import MailIcon from "design/svg/fi_mail.svg";
@@ -20,6 +21,7 @@ import HardsandLink from "components/HardsandsLink";
 import FiMail from "design/svg/fi_mail";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import CopyrightYearContext from "modules/hardsands/components/CopyrightYearContext";
+import { TFunction, useTranslation } from "react-i18next";
 //   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 //   import { BiMailSend } from 'react-icons/bi';
 
@@ -83,13 +85,19 @@ const ListHeader = ({
   color?: string;
 }) => {
   return (
-    <Text fontWeight={"500"} fontSize={"lg"} mb={2} color={color}>
+    <Text
+      fontWeight={"600"}
+      fontFamily="Made Outer sans"
+      fontSize={"lg"}
+      mb={2}
+      color={color}
+    >
       {children}
     </Text>
   );
 };
 
-const FootersFoot = () => {
+const FootersFoot = ({ t }: { t: TFunction }) => {
   return (
     <Box
       bg={useColorModeValue("black", "black")}
@@ -110,7 +118,11 @@ const FootersFoot = () => {
         <CopyrightYearContext.Consumer>
           {(year: number) => (
             <Text fontSize={[14, "normal"]}>
-              © {year} Hardsands Technology. All rights reserved
+              {t(
+                "footer:copyright",
+                "© {{year}} Hardsands Technology. All rights reserved",
+                { year }
+              )}
             </Text>
           )}
         </CopyrightYearContext.Consumer>
@@ -120,12 +132,19 @@ const FootersFoot = () => {
 };
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <Box
       bg={useColorModeValue("black", "black")}
       color={useColorModeValue("white", "white")}
+      backgroundImage={
+        "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657261446/hardsands/background_vector_dq6aud.svg"
+      }
+      // backgroundAttachment="fixed"
+      backgroundSize={"contain"}
     >
-      <Container as={Stack} maxW={"7xl"} py={24}>
+      <Container as={Stack} maxW={["100%", "3xl", "6xl"]} py={24}>
         <SimpleGrid templateColumns={["1fr", "2fr 1fr 1fr 2fr"]} spacing={8}>
           <Stack spacing={6}>
             <Box>
@@ -136,11 +155,27 @@ export default function Footer() {
                 alt="hardsands technology logo"
               />
             </Box>
-            <Text fontSize={"sm"}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud
-            </Text>
+            <Box>
+              <Text fontSize={"sm"}>
+                {t(
+                  "footer:description",
+                  `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud`
+                )}
+              </Text>
+              <Flex mt={10}>
+                <HardsandLink mr={10} href={"#"}>
+                  <FaFacebookF size={20} />
+                </HardsandLink>
+                <HardsandLink mr={10} href={"#"}>
+                  <FaInstagram size={20} />
+                </HardsandLink>
+                <HardsandLink mr={10} href={"#"}>
+                  <FaTwitter size={20} />
+                </HardsandLink>
+              </Flex>
+            </Box>
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Company</ListHeader>
@@ -152,11 +187,10 @@ export default function Footer() {
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Support</ListHeader>
+            <Link href={"#"}>FAQ</Link>
             <Link href={"#"}>Help Center</Link>
             <Link href={"#"}>Terms of Service</Link>
-            <Link href={"#"}>Legal</Link>
             <Link href={"#"}>Privacy Policy</Link>
-            <Link href={"#"}>Satus</Link>
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader color="gray.500">
@@ -189,7 +223,7 @@ export default function Footer() {
           </Stack>
         </SimpleGrid>
       </Container>
-      <FootersFoot />
+      <FootersFoot t={t} />
     </Box>
   );
 }

@@ -8,13 +8,12 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
+import { BsHandbag } from 'react-icons/bs';
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import HardsandLink from "components/HardsandsLink";
 import HardsandLogo from "design/svg/hardsands_word_logo.svg";
 import HardsandIconLogo from "design/svg/hardsands_icon_logo.svg";
-import CartBag from "design/svg/Bag.svg";
-import Heart from "design/svg/Heart.svg";
 import Hamburger from "design/svg/hamburger.svg";
 import LoginIcon from "design/svg/Login.svg";
 import CloseIcon from "design/svg/fi_x.svg";
@@ -33,7 +32,7 @@ export default function Navigation() {
   const cartBtnRef = React.useRef(null);
 
   return (
-    <Box as="nav" w="100%" position="sticky" zIndex="sticky" bg="white" top={0}>
+    <Box as="nav" w="100%" position="sticky" zIndex="sticky" bg="black" top={0}>
       <Cart
         isOpen={isCartOpen}
         onClose={() => setCartOpen(!isCartOpen)}
@@ -42,11 +41,11 @@ export default function Navigation() {
       <Flex
         minH={"70px"}
         py={[2]}
-        px={[4]}
+        px={[4, 36]}
         align={"center"}
         justifyContent={"space-between"}
       >
-        <Flex justify={["start"]} ml={["unset", "unset", 20]}>
+        <Flex justify={["start"]}>
           <HardsandLink href="/">
             <Image
               w="176px"
@@ -65,7 +64,7 @@ export default function Navigation() {
           </HardsandLink>
         </Flex>
 
-        <Flex display={["none", "flex"]}>
+        <Flex display={["none", "flex"]} color="white">
           <DesktopNav />
         </Flex>
 
@@ -92,7 +91,7 @@ export default function Navigation() {
             // @ts-ignore
             ref={cartBtnRef}
           >
-            <Image boxSize="26px" src={CartBag.src} alt="hardsands cart icon" />
+            <BsHandbag color="white" size={24} />
             <Box
               display="flex"
               borderRadius="100%"
@@ -104,15 +103,6 @@ export default function Navigation() {
             >
               <Text alignSelf="flex-end">{minifyNotificationCount("10")}</Text>
             </Box>
-          </Button>
-          {/* <Button
-            display="flex"
-            bg="transparent"
-            _focus={{ bg: "transparent" }}
-            _hover={{ bg: "transparent" }}
-            px={0}
-          >
-            <Image boxSize="26px" src={Heart.src} alt="hardsands heart icon" />
           </Button>
 
           <Button
@@ -126,7 +116,7 @@ export default function Navigation() {
               src={LoginIcon.src}
               alt="hardsands login icon"
             />
-          </Button> */}
+          </Button>
 
         <Flex ml={[-2]} display={["flex", "none", "none"]} justifyContent="end">
           <HardsandLink
