@@ -16,7 +16,7 @@ const GetStartedSection = () => {
       width={["100%"]}
       px={20}
       mt={10}
-			py={[20, 10]}
+			py={[20, 0]}
     >
       <Container maxWidth={"7xl"}>
         <Flex justifyContent={"center"}>
