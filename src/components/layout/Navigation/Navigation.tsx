@@ -9,14 +9,14 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { BsHandbag } from 'react-icons/bs';
+import { HiMenuAlt3 } from 'react-icons/hi';
+import { MdClose } from 'react-icons/md';
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import HardsandLink from "components/HardsandsLink";
 import HardsandLogo from "design/svg/hardsands_word_logo.svg";
 import HardsandIconLogo from "design/svg/hardsands_icon_logo.svg";
-import Hamburger from "design/svg/hamburger.svg";
 import LoginIcon from "design/svg/Login.svg";
-import CloseIcon from "design/svg/fi_x.svg";
 import React, { useState } from "react";
 import Cart from "modules/Cart";
 import { useOffsetScroll } from "components/Navigation/hooks";
@@ -126,9 +126,9 @@ export default function Navigation() {
             href={"#"}
           >
             {!isOpen ? (
-              <Image src={Hamburger.src} alt="hamburger icon" />
+              <HiMenuAlt3 color="white" size={30} />
             ) : (
-              <Image src={CloseIcon.src} alt="close icon" />
+              <MdClose color="white" size={30} />
             )}
           </HardsandLink>
         </Flex>

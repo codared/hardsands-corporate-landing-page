@@ -10,12 +10,13 @@ const GetStartedSection = () => {
       backgroundImage={
         "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657221490/hardsands/Rectangle_215_jiq6vr.svg"
       }
-      backgroundAttachment="fixed"
+      // backgroundAttachment="fixed"
       backgroundRepeat="no-repeat"
       backgroundSize="cover"
       width={["100%"]}
       px={20}
       mt={10}
+			py={[20, 10]}
     >
       <Container maxWidth={"7xl"}>
         <Flex justifyContent={"center"}>

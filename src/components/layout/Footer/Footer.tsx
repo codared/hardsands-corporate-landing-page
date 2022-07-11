@@ -142,7 +142,8 @@ export default function Footer() {
         "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657261446/hardsands/background_vector_dq6aud.svg"
       }
       // backgroundAttachment="fixed"
-      backgroundSize={"contain"}
+      backgroundRepeat={["no-repeat", "repeat"]}
+      backgroundSize={["cover"]}
     >
       <Container as={Stack} maxW={["100%", "3xl", "6xl"]} py={24}>
         <SimpleGrid templateColumns={["1fr", "2fr 1fr 1fr 2fr"]} spacing={8}>

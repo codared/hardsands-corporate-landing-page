@@ -55,6 +55,7 @@ const PreviousDesignedCardSection = () => {
                   </Button>
                 </Flex>
                 <Image
+                  maxW={["70%", "100%"]}
                   src={
                     "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657205110/hardsands/Rectangle_213_epjh2x.svg"
                   }
@@ -70,7 +71,7 @@ const PreviousDesignedCardSection = () => {
                   </Button>
                 </Flex>
               </Flex>
-              <Flex justify={"space-between"} direction="row" w="75%">
+              <Flex justify={"space-between"} direction="row" w={["100%", "75%"]}>
                 <HardsandsButton
                   // @ts-ignore
                   border="none"

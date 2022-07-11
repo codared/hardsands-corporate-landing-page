@@ -1,7 +1,15 @@
-import { Text, Image, Box } from "@chakra-ui/react";
+import { Text, Image, Box, LinkProps } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import { rightArrow } from "design";
 import { IconType } from "react-icons";
+
+export type HardsandButtonProps = Omit<LinkProps, any> & {
+  text?: string;
+  href?: string;
+  iconMargin?: string;
+  Icon?: IconType | null;
+  children?: string;
+};
 
 const HardsandsButton = ({
   text = "Design Your Card",
@@ -10,13 +18,7 @@ const HardsandsButton = ({
   iconMargin = "2rem",
   Icon,
   ...rest
-}: {
-  text?: string;
-  href?: string;
-  iconMargin?: string;
-  Icon?: IconType | null;
-  children?: string;
-}) => (
+}: HardsandButtonProps) => (
   <HardsandLink
     fontSize={"sm"}
     fontWeight="bold"

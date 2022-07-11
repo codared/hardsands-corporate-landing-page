@@ -18,7 +18,7 @@ const ReviewSection = () => {
 
   return (
     <Container maxWidth={"7xl"}>
-      <Flex flexDirection={"column"} py={[10]}>
+      <Flex flexDirection={"column"} py={[10]} overflowX="hidden">
         <Box textAlign={"center"}>
           <Heading
             mb={[2]}
@@ -55,7 +55,7 @@ const ReviewSection = () => {
               backgroundImage={
                 "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657221490/hardsands/Rectangle_215_jiq6vr.svg"
               }
-              backgroundAttachment="fixed"
+              // backgroundAttachment="fixed"
               backgroundRepeat="no-repeat"
               backgroundSize="cover"
               width={["100%", "70%"]}

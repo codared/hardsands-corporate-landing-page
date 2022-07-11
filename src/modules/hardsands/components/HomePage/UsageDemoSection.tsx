@@ -44,9 +44,10 @@ const UsageDemoSection = () => {
             )}
           </Text>
         </Box>
-        <Flex>
+        <Flex flexDirection={["column", "row"]}>
           <Image
             width={[300, 300, "auto"]}
+            alignSelf={["center", "unset"]}
             height="fit-content"
             src={
               "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657211480/hardsands/Rectangle_214_j9mzoe.svg"
@@ -68,8 +69,8 @@ const UsageDemoSection = () => {
                 <Text fontSize={16}>{instruction}</Text>
               </Box>
             ))}
-
-            <HardsandsButton>
+            {/* @ts-ignore */}
+            <HardsandsButton alignSelf={["center", "unset"]}>
               {t("common:get-started", "Get Started")}
             </HardsandsButton>
           </VStack>

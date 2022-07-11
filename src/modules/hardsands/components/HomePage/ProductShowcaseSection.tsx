@@ -29,7 +29,7 @@ const ProductShowcaseSection = () => {
             "Check out our catalogue of cards materials of your choice."
           )}
         </Text>
-        <SimpleGrid mt={[14]} columns={[2, 3, 3]} spacing={[2, 3, 5]}>
+        <SimpleGrid mt={[14]} columns={[1, 2, 3]} spacing={[2, 3, 5]}>
           <HomeProductCard
             img="https://res.cloudinary.com/dtumqh3dd/image/upload/v1657205110/hardsands/Rectangle_213_epjh2x.svg"
             name={t("product:pvc", "PVC")}
