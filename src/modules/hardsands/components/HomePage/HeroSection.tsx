@@ -11,7 +11,7 @@ const HeroSection = () => {
       h={["fit-content", "fit-content"]}
       // p={[0, 20]}
       px={[0, 20, 40]}
-      py={[10, 20, 0]}
+      py={[10, 20, 20]}
       position="relative"
       justify={"center"}
       bgColor="black"
