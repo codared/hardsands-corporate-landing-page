@@ -100,7 +100,7 @@ const ReviewSection = () => {
               backgroundImage={
                 "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657221490/hardsands/Rectangle_215_jiq6vr.svg"
               }
-              backgroundAttachment="fixed"
+              // backgroundAttachment="fixed"
               width={["100%", "20%"]}
               height={380}
               p={10}
