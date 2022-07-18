@@ -46,3 +46,18 @@ export type Product = {
 export interface ProductDetails {
   otherImageUrls: string[];
 }
+
+export type AccountNavItemsType = {
+  id: number;
+  title: string;
+  href: string;
+  icon: IconType;
+  children?: Array<AccountNavItemsType>;
+};
+
+export type ActionsType = {
+  id: number;
+  title: string;
+  icon: IconType;
+  isDefault?: boolean;
+};
