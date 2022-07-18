@@ -16,10 +16,6 @@ const NavItem = (props: any) => {
         color: "gray.400",
       }}
       _hover={{
-        // bg: "gray.100",
-        // _dark: {
-        //   bg: "gray.900",
-        // },
         color: "brand.300",
       }}
       role="group"

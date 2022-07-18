@@ -8,7 +8,6 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
-import { BsHandbag } from 'react-icons/bs';
 import { HiMenuAlt3 } from 'react-icons/hi';
 import { MdClose } from 'react-icons/md';
 import DesktopNav from "./DesktopNav";
@@ -19,6 +18,7 @@ import React, { useState } from "react";
 import Cart from "modules/Cart";
 import { useOffsetScroll } from "components/Navigation/hooks";
 import HardsandsAppLogo from "components/Logo";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const minifyNotificationCount = (count: string) => {
   return count.length > 1 ? "9+" : count;
@@ -73,7 +73,7 @@ export default function Navigation() {
             // @ts-ignore
             ref={cartBtnRef}
           >
-            <BsHandbag color="white" size={24} />
+            <AiOutlineShoppingCart color="white" size={24} />
             <Box
               display="flex"
               borderRadius="100%"

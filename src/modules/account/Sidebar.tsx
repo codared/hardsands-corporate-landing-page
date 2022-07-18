@@ -1,10 +1,7 @@
 import { Box, Flex, Icon, Collapse, useDisclosure } from "@chakra-ui/react";
 import HardsandsAppLogo from "components/Logo";
-import { AiFillGift } from "react-icons/ai";
-import { BsGearFill } from "react-icons/bs";
-import { FaRss, FaClipboardCheck } from "react-icons/fa";
-import { HiCollection, HiCode } from "react-icons/hi";
-import { MdHome, MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { ACCOUNT_NAV_ITEMS } from "./constants";
 import NavItem from "./Navitems";
 
 const SidebarContent = (props: any) => {
@@ -41,32 +38,33 @@ const SidebarContent = (props: any) => {
         color="gray.600"
         aria-label="Main Navigation"
       >
-        <NavItem icon={MdHome}>Home</NavItem>
-        <NavItem icon={FaRss}>Articles</NavItem>
-        <NavItem icon={HiCollection}>Collections</NavItem>
-        <NavItem icon={FaClipboardCheck}>Checklists</NavItem>
-        <NavItem icon={HiCode} onClick={integrations.onToggle}>
-          Integrations
-          <Icon
-            as={MdKeyboardArrowRight}
-            ml="auto"
-            // @ts-ignore
-            transform={integrations.isOpen && "rotate(90deg)"}
-          />
-        </NavItem>
-        <Collapse in={integrations.isOpen}>
-          <NavItem pl="12" py="2">
-            Shopify
-          </NavItem>
-          <NavItem pl="12" py="2">
-            Slack
-          </NavItem>
-          <NavItem pl="12" py="2">
-            Zapier
-          </NavItem>
-        </Collapse>
-        <NavItem icon={AiFillGift}>Changelog</NavItem>
-        <NavItem icon={BsGearFill}>Settings</NavItem>
+        {ACCOUNT_NAV_ITEMS.map((item) => {
+          return (
+            <Box key={item.title}>
+              <NavItem icon={item.icon}>{item.title}</NavItem>
+              {item.children?.length && (
+                <>
+                  <NavItem icon={item.icon} onClick={integrations.onToggle}>
+                    {item.title}
+                    <Icon
+                      as={MdKeyboardArrowRight}
+                      ml="auto"
+                      // @ts-ignore
+                      transform={integrations.isOpen && "rotate(90deg)"}
+                    />
+                  </NavItem>
+                  <Collapse in={integrations.isOpen}>
+                    {item.children.map((childItem) => (
+                      <NavItem key={childItem.title} pl="12" py="2">
+                        {childItem.title}
+                      </NavItem>
+                    ))}
+                  </Collapse>
+                </>
+              )}
+            </Box>
+          );
+        })}
       </Flex>
     </Box>
   );

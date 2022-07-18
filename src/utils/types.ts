@@ -1,8 +1,10 @@
-export type AnyDict = { [k: string]: any }
-export type StringDict = { [k: string]: string }
+import { IconType } from "react-icons";
+
+export type AnyDict = { [k: string]: any };
+export type StringDict = { [k: string]: string };
 
 export function isPromise<T extends any>(v: any | Promise<T>): v is Promise<T> {
-  return typeof (v as Promise<T>).then === 'function'
+  return typeof (v as Promise<T>).then === "function";
 }
 
 /**
@@ -10,7 +12,7 @@ export function isPromise<T extends any>(v: any | Promise<T>): v is Promise<T> {
  * handling of enums.
  */
 export function assertNever(x: never): never {
-  throw new Error(`Unexpected value ${x}`)
+  throw new Error(`Unexpected value ${x}`);
 }
 
 /**
@@ -21,22 +23,29 @@ export function assertNever(x: never): never {
  */
 export function softAssertNever(_x: never): void {}
 
-export const identityFunction = <T = undefined>(item?: T)  => {
+export const identityFunction = <T = undefined>(item?: T) => {
   return item;
-}
+};
 
 export type Promotion = {
   type: string;
-}
+};
 
 export type PromotionCache = {
-  [k: string]: Promotion
-}
+  [k: string]: Promotion;
+};
 
 export interface PromotionWithExtraData extends Promotion {
-  isActive?: boolean
+  isActive?: boolean;
 }
 
 export type Product = {
   [key: string]: string;
-}
+};
+
+export type AccountNavItemsType = {
+  title: string;
+  href: string;
+  icon: IconType;
+  children?: Array<AccountNavItemsType>;
+};
