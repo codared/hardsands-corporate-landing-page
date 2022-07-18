@@ -26,7 +26,7 @@ const NavItem = (props: any) => {
       {icon && (
         <Icon
           mx="2"
-          boxSize="4"
+          boxSize={5}
           _groupHover={{
             color: color,
           }}

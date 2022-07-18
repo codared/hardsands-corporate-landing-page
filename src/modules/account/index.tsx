@@ -12,8 +12,15 @@ import {
 import { FiMenu } from "react-icons/fi";
 import { FaBell } from "react-icons/fa";
 import SidebarContent from "./Sidebar";
+import { ReactElement } from "react";
 
-const HardsandsAccountsApp = () => {
+const HardsandsAccountsApp = ({
+  children,
+  active,
+}: {
+  active: number;
+  children: ReactElement;
+}) => {
   const sidebar = useDisclosure();
 
   return (
@@ -25,7 +32,7 @@ const HardsandsAccountsApp = () => {
       }}
       minH="100vh"
     >
-      <SidebarContent display={["none", "unset", "block"]} />
+      <SidebarContent display={["none", "unset", "block"]} active={active} />
       <Drawer
         isOpen={sidebar.isOpen}
         onClose={sidebar.onClose}
@@ -33,7 +40,7 @@ const HardsandsAccountsApp = () => {
       >
         <DrawerOverlay />
         <DrawerContent>
-          <SidebarContent w="full" borderRight="none" />
+          <SidebarContent w="full" borderRight="none" active={active} />
         </DrawerContent>
       </Drawer>
       <Box ml={[0, 60]} transition=".3s ease">
@@ -60,15 +67,6 @@ const HardsandsAccountsApp = () => {
             size="sm"
           />
           <Box w={10} />
-          {/* <InputGroup
-            w="96"
-            display={["none", "flex"]}
-          >
-            <InputLeftElement color="gray.500">
-              <FiSearch />
-            </InputLeftElement>
-            <Input placeholder="Search for articles..." />
-          </InputGroup> */}
 
           <Flex align="center">
             <Icon color="gray.500" as={FaBell} cursor="pointer" />
@@ -83,7 +81,7 @@ const HardsandsAccountsApp = () => {
         </Flex>
 
         <Box as="main" p="4">
-          <Box borderWidth="4px" borderStyle="dashed" rounded="md" h="96" />
+          {children}
         </Box>
       </Box>
     </Box>
