@@ -43,14 +43,14 @@ const MainAccountContent = () => {
               _hover={{ textColor: "white" }}
               borderRadius="0"
               py={5}
-              px={16}
+              px={[10, 16]}
             >
               Deactivate
             </Button>
             {/* <Box w={50} /> */}
             <Flex
               py={1.5}
-              px={16}
+              px={[10, 16]}
               color="brand.300"
               fontWeight={"bolder"}
               alignSelf={"center"}
@@ -147,7 +147,7 @@ const MainAccountContent = () => {
               </TabList>
               <TabPanels>
                 <TabPanel>
-                  <SimpleGrid columns={[2, 2, 4]} spacing={[2, 2, 5]}>
+                  <SimpleGrid columns={[1, 2, 4]} spacing={[2, 2, 5]}>
                     {ACTIONS.map((action: ActionsType) => (
                       <ActionCard
                         key={action.id}
