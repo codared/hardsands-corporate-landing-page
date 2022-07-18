@@ -19,8 +19,8 @@ const ManualScriptTag = () => {
 
   return (
     <Head key="analytics_tagmanager_script">
-      <script> window.dataLayer = window.dataLayer || [] </script>
-      <script
+      <Script id="init-data-layer-script"> window.dataLayer = window.dataLayer || [] </Script>
+      <Script
         id="gtag-base"
         dangerouslySetInnerHTML={{
           __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

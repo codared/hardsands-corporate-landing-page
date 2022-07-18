@@ -1,39 +1,43 @@
 import { Box } from "@chakra-ui/react";
 
-import { ParallaxProvider } from "react-scroll-parallax";
 import HeroSection from "./HeroSection";
-import ShareYourBusinessSection from "./ShareYourBusinessSection";
-import TakeControlSection from "./TakeControlSection";
 import UsageDemoSection from "./UsageDemoSection";
 import ProductShowcaseSection from "./ProductShowcaseSection";
+import OurClientsSection from "./OurClientsSection";
+import PreviousDesignedCardSection from "./PreviousDesignedCardSection";
+import ReviewSection from "./ReviewSection";
+import GetStartedSection from "./GetStartedSection";
 
 const HomePage = () => {
   return (
     <Box>
-      <ParallaxProvider>
-        {/* Hero Section */}
-        <HeroSection />
-        {/* End Hero Section */}
+      {/* Hero Section */}
+      <HeroSection />
+      {/* End Hero Section */}
 
-        {/* Share your business Section */}
-        <ShareYourBusinessSection />
-        {/* End Share your business Section */}
+      {/* Product Showcase Section */}
+      <ProductShowcaseSection />
+      {/* End Product Showcase Section */}
 
-        {/* Take Control Section */}
-        <TakeControlSection />
-        {/* End Take Control Section */}
+      {/* Our Clients Section */}
+      <OurClientsSection />
+      {/* End Our Clients Section */}
 
-        {/* Usage Demo Section */}
-        <UsageDemoSection />
-        {/* End Usage Demo Section */}
+      {/* Usage Demo Section */}
+      <UsageDemoSection />
+      {/* End Usage Demo Section */}
 
-        {/* Product Showcase Section */}
-        <ProductShowcaseSection />
-        {/* End Product Showcase Section */}
+      {/* Previous Designed Card Section */}
+      <PreviousDesignedCardSection />
+      {/* End Previous Designed Card Section */}
 
-        {/* What Customers are saying Section */}
-        {/* End What Customers are saying Section */}
-      </ParallaxProvider>
+      {/* Review Section */}
+      <ReviewSection />
+      {/* End Review Section */}
+
+      {/* Get Started Section */}
+      <GetStartedSection />
+      {/* End Get Started Section */}
     </Box>
   );
 };

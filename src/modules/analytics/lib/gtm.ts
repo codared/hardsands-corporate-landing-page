@@ -5,8 +5,10 @@ declare global {
 }
 
 export const pageview = (url: string) => {
-  window.dataLayer.push({
-    event: "pageview",
-    page: url,
-  });
+  window &&
+    typeof window !== "undefined" &&
+    window?.dataLayer.push({
+      event: "pageview",
+      page: url,
+    });
 };

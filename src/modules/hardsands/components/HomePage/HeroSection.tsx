@@ -1,8 +1,6 @@
 import { Flex, Heading, HStack, Image, Text } from "@chakra-ui/react";
-import HardsandLink from "components/HardsandsLink";
-import { Parallax } from "react-scroll-parallax";
-import HeroImage from "design/svg/vector_backdrop_noise_bg.png";
 import { useTranslation } from "react-i18next";
+import HardsandsButton from "components/HardsandsButton";
 
 const HeroSection = () => {
   const { t } = useTranslation();
@@ -10,77 +8,54 @@ const HeroSection = () => {
   return (
     <Flex
       w="full"
-      h={["fit-content", "fit-content", "92vh"]}
-      p={[0, 20]}
+      h={["fit-content", "fit-content"]}
+      // p={[0, 20]}
+      px={[0, 20, 40]}
+      py={[10, 20, 20]}
       position="relative"
+      justify={"center"}
+      bgColor="black"
+      color="white"
+      backgroundImage={
+        "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657261446/hardsands/background_vector_dq6aud.svg"
+      }
+      backgroundRepeat="no-repeat"
+      backgroundSize={["cover"]}
+      flexDirection={["column-reverse", "row"]}
     >
-      <Flex direction="column">
-        <Image
-          position="absolute"
-          top={-20}
-          left={0}
-          zIndex="-5"
-          src={HeroImage.src}
-          alt="hero image hardsands"
-        />
-        <Image
-          position="absolute"
-          bottom={[-32, 0]}
-          right={[0, 0, -20]}
-          w={["100%", 950]}
-          zIndex="-5"
-          src="https://res.cloudinary.com/dcbqn1c10/image/upload/v1654987898/4_xfmdkj.png"
-          alt="hero image hardsands"
-        />
-        <Parallax speed={-10} style={{ padding: "20px" }}>
-          <Heading fontSize={["5xl", "6xl"]} my={["40px", "90px"]}>
-            {t("home:hero:all-in-one-business", "All in One Business")}
-            <br />
-            <Text fontSize={["3rem", "4rem"]} color={["white"]}>
-              {t("home:hero:cards", "Cards")}
-            </Text>
-            {t("home:hero:powered-by-technology", "Powered By Technology")}
-          </Heading>
-        </Parallax>
-        <HStack p={5} mt={["50px", 0]}>
-          <HardsandLink
-            fontSize={"lg"}
-            fontWeight={500}
-            color={"white"}
-            bg={"black"}
-            href={"#"}
-            p={["12px 16px", "12px 46px"]}
-            border="1px solid black"
-            borderRadius="8px"
-            textAlign="center"
-            transition="all 200ms ease-in"
-            _hover={{
-              bg: "white",
-              color: "black",
-            }}
-            w={["100%", "fit-content"]}
-          >
-            Design Your Card
-          </HardsandLink>
-          <HardsandLink
-            fontSize={"lg"}
-            fontWeight={500}
-            color={"black"}
-            bg={"white"}
-            href={"#"}
-            p={["12px 16px", "12px 46px"]}
-            border="1px solid black"
-            borderRadius="8px"
-            textAlign="center"
-            transition="all 200ms ease-in"
-            _hover={{
-              color: "black",
-            }}
-            w={["100%", "fit-content"]}
-          >
-            Learn More
-          </HardsandLink>
+      <Flex direction="column" justifyContent={"start"} px={[18]}>
+        <Heading maxW={600} fontSize={["5xl", "7xl"]} my={["40px", "20px"]}>
+          {t(
+            "home:hero:all-in-one-business",
+            "All in One Business Card Powered By Technology"
+          )}
+        </Heading>
+        <Text fontSize={24} maxW={500}>
+          {t(
+            "home:hero:go-cardless-with-hardsands",
+            "Go cardless with hardsands NFC cards! Share your contact without limit"
+          )}
+        </Text>
+        <HStack justifyContent={["center", "unset"]} py={5} mt={["50px", 0]}>
+          <HardsandsButton>Get Started</HardsandsButton>
         </HStack>
+
+        <Image
+          mt={[10, 20]}
+          opacity={0.8}
+          objectFit={"cover"}
+          w={["20%"]}
+          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1657201644/hardsands/Group_1-svg_vxsefu.svg"
+          alt="hero badge hardsands"
+        />
+      </Flex>
+      <Flex boxSize={[350, 450, 650]}>
+        <Image
+          objectFit={"cover"}
+          w={["100%"]}
+          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1657202063/hardsands/4_tqi6h3.png"
+          alt="hero image hardsands"
+        />
       </Flex>
     </Flex>
   );

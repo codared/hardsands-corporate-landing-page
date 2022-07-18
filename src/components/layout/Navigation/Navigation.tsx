@@ -8,19 +8,17 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
+import { HiMenuAlt3 } from 'react-icons/hi';
+import { MdClose } from 'react-icons/md';
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import HardsandLink from "components/HardsandsLink";
-import HardsandLogo from "design/svg/hardsands_word_logo.svg";
-import HardsandIconLogo from "design/svg/hardsands_icon_logo.svg";
-import CartBag from "design/svg/Bag.svg";
-import Heart from "design/svg/Heart.svg";
-import Hamburger from "design/svg/hamburger.svg";
 import LoginIcon from "design/svg/Login.svg";
-import CloseIcon from "design/svg/fi_x.svg";
 import React, { useState } from "react";
 import Cart from "modules/Cart";
 import { useOffsetScroll } from "components/Navigation/hooks";
+import HardsandsAppLogo from "components/Logo";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 const minifyNotificationCount = (count: string) => {
   return count.length > 1 ? "9+" : count;
@@ -33,7 +31,7 @@ export default function Navigation() {
   const cartBtnRef = React.useRef(null);
 
   return (
-    <Box as="nav" w="100%" position="sticky" zIndex="sticky" bg="white" top={0}>
+    <Box as="nav" w="100%" position="sticky" zIndex="sticky" bg="black" top={0}>
       <Cart
         isOpen={isCartOpen}
         onClose={() => setCartOpen(!isCartOpen)}
@@ -42,30 +40,13 @@ export default function Navigation() {
       <Flex
         minH={"70px"}
         py={[2]}
-        px={[4]}
+        px={[4, 36]}
         align={"center"}
         justifyContent={"space-between"}
       >
-        <Flex justify={["start"]} ml={["unset", "unset", 20]}>
-          <HardsandLink href="/">
-            <Image
-              w="176px"
-              objectFit="cover"
-              src={HardsandLogo.src}
-              alt="hardsands logo"
-              display={["none", "none", "flex"]}
-            />
-            <Image
-              w="55px"
-              objectFit="cover"
-              src={HardsandIconLogo.src}
-              alt="hardsands Icon logo"
-              display={["flex", "flex", "none"]}
-            />
-          </HardsandLink>
-        </Flex>
+        <HardsandsAppLogo />
 
-        <Flex display={["none", "flex"]}>
+        <Flex display={["none", "flex"]} color="white">
           <DesktopNav />
         </Flex>
 
@@ -92,7 +73,7 @@ export default function Navigation() {
             // @ts-ignore
             ref={cartBtnRef}
           >
-            <Image boxSize="26px" src={CartBag.src} alt="hardsands cart icon" />
+            <AiOutlineShoppingCart color="white" size={24} />
             <Box
               display="flex"
               borderRadius="100%"
@@ -104,15 +85,6 @@ export default function Navigation() {
             >
               <Text alignSelf="flex-end">{minifyNotificationCount("10")}</Text>
             </Box>
-          </Button>
-          {/* <Button
-            display="flex"
-            bg="transparent"
-            _focus={{ bg: "transparent" }}
-            _hover={{ bg: "transparent" }}
-            px={0}
-          >
-            <Image boxSize="26px" src={Heart.src} alt="hardsands heart icon" />
           </Button>
 
           <Button
@@ -126,7 +98,7 @@ export default function Navigation() {
               src={LoginIcon.src}
               alt="hardsands login icon"
             />
-          </Button> */}
+          </Button>
 
         <Flex ml={[-2]} display={["flex", "none", "none"]} justifyContent="end">
           <HardsandLink
@@ -136,9 +108,9 @@ export default function Navigation() {
             href={"#"}
           >
             {!isOpen ? (
-              <Image src={Hamburger.src} alt="hamburger icon" />
+              <HiMenuAlt3 color="white" size={30} />
             ) : (
-              <Image src={CloseIcon.src} alt="close icon" />
+              <MdClose color="white" size={30} />
             )}
           </HardsandLink>
         </Flex>
