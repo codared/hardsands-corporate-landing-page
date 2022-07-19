@@ -53,7 +53,12 @@ export const ProductCard = ({
           />
         )} */}
 
-        <Image src={img} alt={`Picture of ${data.name}`} objectFit="cover" w="100%" />
+        <Image
+          src={img}
+          alt={`Picture of ${data.name}`}
+          objectFit="cover"
+          w="100%"
+        />
 
         <Box p={["4"]}>
           <Heading
@@ -65,10 +70,14 @@ export const ProductCard = ({
           >
             {name}
           </Heading>
-          <Text mb={[3, 6]} fontSize="small">
+          <Text mb={[3, 6]} fontSize={[14, 16]}>
             {description}
           </Text>
-          <Flex mt={[0, 3, 3]} justify="space-between">
+          <Flex
+            mt={[0, 3, 3]}
+            justify="space-between"
+            flexDir={["row", "column", "row"]}
+          >
             <Box m="auto 0">
               {/* <Text
                 fontSize={[10, 12, 14]}
@@ -81,7 +90,11 @@ export const ProductCard = ({
                 ₦{price}
               </Text>
             </Box>
-            <HardsandsButton text={"Shop Now".toUpperCase()} href={`/shop/${slugify(name)}`} />
+            <HardsandsButton
+              text={"Shop Now".toUpperCase()}
+              href={`/shop/${slugify(name)}`}
+              iconMargin={[10, 5, "2rem"]}
+            />
           </Flex>
         </Box>
       </Box>

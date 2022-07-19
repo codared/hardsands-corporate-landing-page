@@ -2,7 +2,7 @@ import { Grid, Flex, Image, Text } from "@chakra-ui/react";
 import ProductCard from "components/ProductCard";
 import UsageDemoSection from "modules/hardsands/components/HomePage/UsageDemoSection";
 import { useTranslation } from "react-i18next";
-import MiniSteps from "../hardsands/components/miniStepsBanner";
+import MiniSteps from "../../components/miniStepsBanner";
 
 const ShopPLP = () => {
   const { t } = useTranslation();
@@ -22,10 +22,12 @@ const ShopPLP = () => {
           {idArray.map((id) => (
             <ProductCard
               key={id}
-              name="Hardsands metal card"
-              description="Our most exclusive product - premium, innovative, bespoke."
-              price="78,000"
-              t={t}
+              name={t("product:title", "Hardsands metal card")}
+              description={t(
+                "product:description",
+                "Our most exclusive product - premium, innovative, bespoke."
+              )}
+              price={t("product:price", "78,000")}
             />
           ))}
         </Grid>

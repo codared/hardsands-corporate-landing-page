@@ -5,5 +5,5 @@ export interface ProductCardProps {
   description?: string;
   price: any;
   img?: string;
-  t: TFunction;
+  t?: TFunction;
 }

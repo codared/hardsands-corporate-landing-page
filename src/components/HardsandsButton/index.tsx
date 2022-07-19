@@ -6,7 +6,7 @@ import { IconType } from "react-icons";
 export type HardsandButtonProps = Omit<LinkProps, any> & {
   text?: string;
   href?: string;
-  iconMargin?: string;
+  iconMargin?: string | number | Array<string | number>;
   Icon?: IconType | null;
   children?: string;
 };
