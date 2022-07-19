@@ -7,3 +7,11 @@ export interface ProductCardProps {
   img?: string;
   t?: TFunction;
 }
+
+export interface HomeProductCardProps {
+  name: string;
+  description?: string;
+  price: any;
+  img?: string;
+  t: TFunction;
+}

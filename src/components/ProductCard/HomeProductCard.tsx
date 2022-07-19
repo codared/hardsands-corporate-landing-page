@@ -9,15 +9,15 @@ import {
 import { BsHandbag } from "react-icons/bs";
 import HardsandsButton from "components/HardsandsButton";
 import HardsandLink from "components/HardsandsLink";
-import { ProductCardProps } from "./type";
+import { HomeProductCardProps } from "./type";
 
 const HomeProductCard = ({
   name,
   img = "",
   description,
   price,
-  t
-}: ProductCardProps) => (
+  t,
+}: HomeProductCardProps) => (
   <HardsandLink
     href="/shop"
     outline="none"
