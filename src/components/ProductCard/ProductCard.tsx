@@ -1,24 +1,21 @@
 import {
   Flex,
-  Button,
   Box,
   useColorModeValue,
   Circle,
   Image,
   Text,
   Heading,
-  Link,
 } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
 import HardsandLink from "components/HardsandsLink";
-import { rightArrow } from "design";
 import { slugify } from "utils/string";
 import { ProductCardProps } from "./type";
 
 const data = {
   isNew: true,
   imageURL:
-    "https://res.cloudinary.com/dtumqh3dd/image/upload/v1656008822/hardsands/Rectangle_4_od8jnr.png",
+    "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657205110/hardsands/Rectangle_213_epjh2x.svg",
   name: "Wayfarer Classic",
   price: 4.5,
   rating: 4.2,
@@ -44,8 +41,9 @@ export const ProductCard = ({
         bg={useColorModeValue("white", "gray.800")}
         position="relative"
         mb={[0]}
+        border="1px solid #F4E9E1"
       >
-        {data.isNew && (
+        {/* {data.isNew && (
           <Circle
             size="10px"
             position="absolute"
@@ -53,11 +51,11 @@ export const ProductCard = ({
             right={2}
             bg="red.200"
           />
-        )}
+        )} */}
 
-        <Image src={img} alt={`Picture of ${data.name}`} objectFit="cover" />
+        <Image src={img} alt={`Picture of ${data.name}`} objectFit="cover" w="100%" />
 
-        <Box p={["4"]} border="1px solid #F4E9E1" borderTop="none">
+        <Box p={["4"]}>
           <Heading
             textTransform="capitalize"
             fontWeight="normal"

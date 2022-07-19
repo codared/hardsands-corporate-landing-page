@@ -1,8 +1,11 @@
 import { Grid, Flex, Image, Text } from "@chakra-ui/react";
 import ProductCard from "components/ProductCard";
-import MiniSteps from "modules/hardsands/components/miniStepsBanner";
+import UsageDemoSection from "modules/hardsands/components/HomePage/UsageDemoSection";
+import { useTranslation } from "react-i18next";
+import MiniSteps from "../hardsands/components/miniStepsBanner";
 
 const ShopPLP = () => {
+  const { t } = useTranslation();
   const idArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   return (
     <>
@@ -22,10 +25,12 @@ const ShopPLP = () => {
               name="Hardsands metal card"
               description="Our most exclusive product - premium, innovative, bespoke."
               price="78,000"
+              t={t}
             />
           ))}
         </Grid>
       </Flex>
+      <UsageDemoSection />
     </>
   );
 };
