@@ -1,5 +1,6 @@
 import {
   Flex,
+  Button,
   Box,
   useColorModeValue,
   Circle,
@@ -8,33 +9,31 @@ import {
   Heading,
   Link,
 } from "@chakra-ui/react";
+import HardsandsButton from "components/HardsandsButton";
 import HardsandLink from "components/HardsandsLink";
 import { rightArrow } from "design";
+import { slugify } from "utils/string";
+import { ProductCardProps } from "./type";
 
 const data = {
   isNew: true,
   imageURL:
-    "https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=4600&q=80",
+    "https://res.cloudinary.com/dtumqh3dd/image/upload/v1656008822/hardsands/Rectangle_4_od8jnr.png",
   name: "Wayfarer Classic",
   price: 4.5,
   rating: 4.2,
   numReviews: 34,
 };
 
-interface ProductCardProps {
-  name: string;
-  description?: string;
-  price: any;
-  img?: string;
-}
 export const ProductCard = ({
   name,
   price,
   img = data.imageURL,
+  description,
 }: ProductCardProps) => {
   return (
     <HardsandLink
-      href="/shop"
+      href={`/shop/${slugify(name)}`}
       outline="none"
       _hover={{ color: "unset" }}
       _focus={{
@@ -43,7 +42,6 @@ export const ProductCard = ({
     >
       <Box
         bg={useColorModeValue("white", "gray.800")}
-        maxW={["100%", "100%", 300]}
         position="relative"
         mb={[0]}
       >
@@ -57,94 +55,40 @@ export const ProductCard = ({
           />
         )}
 
-        <Image src={img} alt={`Picture of ${data.name}`} borderRadius={20} />
+        <Image src={img} alt={`Picture of ${data.name}`} objectFit="cover" />
 
-        <Box p={["3", "6"]}>
+        <Box p={["4"]} border="1px solid #F4E9E1" borderTop="none">
           <Heading
-            fontWeight="bolder"
-            fontSize={["14px", "20px", "18px"]}
             textTransform="capitalize"
+            fontWeight="normal"
+            fontSize="1.5rem"
+            mb={3}
+            maxW={["full", "396px"]}
           >
             {name}
           </Heading>
-
-          <Flex mt={[0, 3, 3]}>
-            <Text
-              fontWeight="bolder"
-              mr={2}
-              alignSelf="end"
-              fontSize={[10, 12, 14]}
-              textDecoration="line-through"
-            >
-              ₦{price}
-            </Text>
-            <Text fontWeight="bolder" fontSize={[12, 14, 16]} color="brand.300">
-              ₦{price}
-            </Text>
+          <Text mb={[3, 6]} fontSize="small">
+            {description}
+          </Text>
+          <Flex mt={[0, 3, 3]} justify="space-between">
+            <Box m="auto 0">
+              {/* <Text
+                fontSize={[10, 12, 14]}
+                textDecoration="line-through"
+                color="danger"
+              >
+                ₦{price}
+              </Text> */}
+              <Text fontWeight="bolder" fontSize="xl">
+                ₦{price}
+              </Text>
+            </Box>
+            <HardsandsButton text={"Shop Now".toUpperCase()} href={`/shop/${slugify(name)}`} />
           </Flex>
         </Box>
       </Box>
     </HardsandLink>
   );
 };
-
-export const HomeProductCard = ({
-  name,
-  img = data.imageURL,
-  description,
-  price,
-}: ProductCardProps) => (
-  <HardsandLink
-    href={`/shop?collection=${name}`}
-    outline="none"
-    _hover={{ color: "unset" }}
-    _focus={{
-      outline: "none !important",
-    }}
-    alignSelf="center"
-  >
-    <Box
-      bg={useColorModeValue("white", "gray.800")}
-      maxW="300px"
-      position="relative"
-      mb={[0]}
-    >
-      <Image w="100%" src={img} alt={`Picture of ${data.name}`} />
-
-      <Box p={["3", "6"]}>
-        <Flex
-          color="brand.300"
-          justify="space-between"
-          alignItems="flex-end"
-          mb={4}
-        >
-          <Heading fontWeight="bolder" textTransform="uppercase" fontSize="xl">
-            {name}
-          </Heading>
-          <Text fontWeight="bolder" fontSize="small">
-            from ₦{price}
-          </Text>
-        </Flex>
-
-        <Text mb={8}>{description}</Text>
-        <Link
-          href="/shop"
-          textTransform="uppercase"
-          color="gray.600"
-          display="flex"
-          alignItems="center"
-        >
-          <span>See more details</span>
-          <Image
-            src={rightArrow.src}
-            alt="right arrow"
-            display="inline"
-            ml="3"
-          />
-        </Link>
-      </Box>
-    </Box>
-  </HardsandLink>
-);
 
 export default ProductCard;
