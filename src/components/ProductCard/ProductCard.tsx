@@ -86,14 +86,17 @@ export const ProductCard = ({
               >
                 ₦{price}
               </Text> */}
-              <Text fontWeight="bolder" fontSize="xl">
+              <Text fontWeight="bolder" fontSize={["xl"]} mr={[10, 5]}>
                 ₦{price}
               </Text>
             </Box>
             <HardsandsButton
               text={"Shop Now".toUpperCase()}
               href={`/shop/${slugify(name)}`}
-              iconMargin={[10, 5, "2rem"]}
+              // @ts-ignore
+              w={"full"}
+              p={["12px 16px", "10px 25px"]}
+              iconMargin={[10, 4, 4]}
             />
           </Flex>
         </Box>
