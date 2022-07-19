@@ -1,5 +1,5 @@
 import { Grid, Flex, Image, Text } from "@chakra-ui/react";
-import { ProductCard } from "components/ProductCard";
+import ProductCard from "components/ProductCard";
 import MiniSteps from "modules/hardsands/components/miniStepsBanner";
 
 const ShopPLP = () => {
