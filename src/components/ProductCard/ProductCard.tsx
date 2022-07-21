@@ -24,7 +24,7 @@ const data = {
   numReviews: 34,
 };
 
-export const ProductCard = ({
+export const NewProductCard = ({
   name,
   price,
   img = data.imageURL,
@@ -107,7 +107,7 @@ export const ProductCard = ({
   );
 };
 
-export const NewProductCard = ({
+export const ProductCard = ({
   name,
   price,
   img = data.imageURL,

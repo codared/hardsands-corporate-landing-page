@@ -1,5 +1,5 @@
 import { Grid, Flex, Image, Text, Container } from "@chakra-ui/react";
-import { NewProductCard } from "components/ProductCard";
+import ProductCard from "components/ProductCard";
 import UsageDemoSection from "modules/hardsands/components/HomePage/UsageDemoSection";
 import { useTranslation } from "react-i18next";
 import MiniSteps from "../../components/miniStepsBanner";
@@ -21,7 +21,7 @@ const ShopPLP = () => {
             gap="2rem"
           >
             {idArray.map((id) => (
-              <NewProductCard
+              <ProductCard
                 key={id}
                 name={t("product:title", "Hardsands metal card")}
                 description={t(
