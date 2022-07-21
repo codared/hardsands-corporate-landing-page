@@ -34,7 +34,7 @@ const ShopPLP = () => {
           </Grid>
         </Flex>
       </Container>
-      <UsageDemoSection />
+      <UsageDemoSection horizontal />
     </>
   );
 };

@@ -126,7 +126,7 @@ export const ProductCard = ({
         bg={useColorModeValue("white", "gray.800")}
         position="relative"
         mb={[0]}
-        border="1px solid #F4E9E1"
+        // border="1px solid #F4E9E1"
       >
         <Image
           src={img}
@@ -169,7 +169,7 @@ export const ProductCard = ({
                 >
                   ₦{price}
                 </Text> */}
-                <Text fontWeight="bolder" fontSize={["xl"]} ml={[10, 5]}>
+                <Text fontWeight="bolder" fontSize={["1.2rem"]} ml={[10, 5]}>
                   ₦{price}
                 </Text>
               </Box>
