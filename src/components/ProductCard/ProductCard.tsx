@@ -145,7 +145,7 @@ export const NewProductCard = ({
           >
             {name}
           </Heading>
-          <Text mb={[3, 6]} fontSize={[12, 14]}>
+          <Text mb={[3, 6]} fontSize={[12, 14]} noOfLines={[3, 3, 4]}>
             {description}
           </Text>
           <Flex mt={[0, 3, 3]} justify="space-between" flexDir={["column"]}>
@@ -162,7 +162,7 @@ export const NewProductCard = ({
               </Box>
               <Box m="auto 0">
                 {/* <Text
-                  fontSize={[10, 12, 14]}
+                  fontSize={[12, 12, 14]}
                   textDecoration="line-through"
                   color="danger"
                   textAlign={"end"}
