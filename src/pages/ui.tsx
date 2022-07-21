@@ -1,5 +1,5 @@
 import { Box, Container, Switch, SimpleGrid } from "@chakra-ui/react";
-import CartItemCard from "components/CartItemCard";
+import CartItemCard from "modules/cart/components/CartItemCard";
 import Footer from "components/layout/Footer";
 import Navigation from "components/layout/Navigation";
 import UserProductCard from "components/UserProductCard";

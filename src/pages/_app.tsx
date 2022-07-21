@@ -18,7 +18,7 @@ import { CURRENCY_COOKIE } from "utils/constants";
 import { isSupportedCurrency } from "utils/functions";
 import { useRef } from "react";
 import ManualScriptTag from "modules/analytics/components/ManualScriptTag";
-import { CopyrightYearProvider } from "modules/hardsands/components/CopyrightYearContext";
+import { CopyrightYearProvider } from "modules/hardsands/contexts/CopyrightYearContext";
 
 interface HardsandsAppProps extends AppProps {
   lang: string;

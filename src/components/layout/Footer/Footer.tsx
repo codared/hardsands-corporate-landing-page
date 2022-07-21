@@ -19,7 +19,7 @@ import HardsandTechLogo from "design/svg/hardsands_tech_logo.svg";
 import MailIcon from "design/svg/fi_mail.svg";
 import HardsandLink from "components/HardsandsLink";
 import FiMail from "design/svg/fi_mail";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { ArrowForwardIcon } from "modules/hardsands/contexts/CopyrightYearContextt
 import CopyrightYearContext from "modules/hardsands/components/CopyrightYearContext";
 import { TFunction, useTranslation } from "react-i18next";
 //   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';

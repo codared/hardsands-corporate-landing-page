@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 import { FaBell } from "react-icons/fa";
-import SidebarContent from "./Sidebar";
+import SidebarContent from "./components/Sidebar";
 
 const HardsandsAccountsApp = () => {
   const sidebar = useDisclosure();

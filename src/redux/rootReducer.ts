@@ -1,5 +1,5 @@
-import { ProductsActionTypes } from 'modules/products/actionTypes'
-import { productsReducer, ProductsReducerState } from 'modules/products/reducer'
+import { ProductsActionTypes } from 'redux/products/actionTypes'
+import { productsReducer, ProductsReducerState } from 'redux/products/reducer'
 import { combineReducers, ActionCreator } from 'redux'
 import { ThunkAction } from 'redux-thunk'
 

@@ -1,8 +1,9 @@
 import { Box, Flex, Icon, Collapse, useDisclosure } from "@chakra-ui/react";
 import HardsandsAppLogo from "components/Logo";
 import { MdKeyboardArrowRight } from "react-icons/md";
-import { ACCOUNT_NAV_ITEMS } from "./constants";
+import { ACCOUNT_NAV_ITEMS } from "../constants";
 import NavItem from "./Navitems";
+import { AccountNavItemsType } from "../types";
 
 const SidebarContent = (props: any) => {
   const integrations = useDisclosure();
@@ -38,7 +39,7 @@ const SidebarContent = (props: any) => {
         color="gray.600"
         aria-label="Main Navigation"
       >
-        {ACCOUNT_NAV_ITEMS.map((item) => {
+        {ACCOUNT_NAV_ITEMS.map((item: AccountNavItemsType) => {
           return (
             <Box key={item.title}>
               <NavItem icon={item.icon}>{item.title}</NavItem>
@@ -54,7 +55,7 @@ const SidebarContent = (props: any) => {
                     />
                   </NavItem>
                   <Collapse in={integrations.isOpen}>
-                    {item.children.map((childItem) => (
+                    {item.children.map((childItem: AccountNavItemsType) => (
                       <NavItem key={childItem.title} pl="12" py="2">
                         {childItem.title}
                       </NavItem>

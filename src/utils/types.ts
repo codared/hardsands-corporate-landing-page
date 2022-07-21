@@ -42,10 +42,3 @@ export interface PromotionWithExtraData extends Promotion {
 export type Product = {
   [key: string]: string;
 };
-
-export type AccountNavItemsType = {
-  title: string;
-  href: string;
-  icon: IconType;
-  children?: Array<AccountNavItemsType>;
-};
