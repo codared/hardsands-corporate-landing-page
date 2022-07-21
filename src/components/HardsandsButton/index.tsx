@@ -9,6 +9,7 @@ export type HardsandButtonProps = Omit<LinkProps, any> & {
   iconMargin?: string | number | Array<string | number>;
   Icon?: IconType | null;
   children?: string;
+  iconSize?: string | number;
 };
 
 const HardsandsButton = ({
@@ -17,6 +18,7 @@ const HardsandsButton = ({
   children,
   iconMargin = "2rem",
   Icon,
+  iconSize = 24,
   ...rest
 }: HardsandButtonProps) => (
   <HardsandLink
@@ -29,6 +31,7 @@ const HardsandsButton = ({
     w="fit-content"
     display="flex"
     alignItems="center"
+    justifyContent={'center'}
     transition="all 200ms ease-in"
     border="1px solid #F5D7BB"
     _hover={{
@@ -42,7 +45,7 @@ const HardsandsButton = ({
     <Text as="span">{children || text}</Text>
     {Icon ? (
       <Box ml={iconMargin}>
-        <Icon />
+        <Icon size={iconSize} />
       </Box>
     ) : Icon === null ? null : (
       <Image src={rightArrow.src} alt={text} ml={iconMargin} />

@@ -8,15 +8,15 @@ import {
   Button,
   Text,
 } from "@chakra-ui/react";
-import { HiMenuAlt3 } from 'react-icons/hi';
-import { MdClose } from 'react-icons/md';
+import { HiMenuAlt3 } from "react-icons/hi";
+import { MdClose } from "react-icons/md";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import HardsandLink from "components/HardsandsLink";
 import LoginIcon from "design/svg/Login.svg";
 import React, { useState } from "react";
 import Cart from "modules/Cart";
-import { useOffsetScroll } from "components/Navigation/hooks";
+import { useOffsetScroll } from "./hooks";
 import HardsandsAppLogo from "components/Logo";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
@@ -100,20 +100,24 @@ export default function Navigation() {
             />
           </Button>
 
-        <Flex ml={[-2]} display={["flex", "none", "none"]} justifyContent="end">
-          <HardsandLink
-            onClick={onToggle}
-            variant={"ghost"}
-            aria-label={"Toggle Navigation"}
-            href={"#"}
+          <Flex
+            ml={[-2]}
+            display={["flex", "none", "none"]}
+            justifyContent="end"
           >
-            {!isOpen ? (
-              <HiMenuAlt3 color="white" size={30} />
-            ) : (
-              <MdClose color="white" size={30} />
-            )}
-          </HardsandLink>
-        </Flex>
+            <HardsandLink
+              onClick={onToggle}
+              variant={"ghost"}
+              aria-label={"Toggle Navigation"}
+              href={"#"}
+            >
+              {!isOpen ? (
+                <HiMenuAlt3 color="white" size={30} />
+              ) : (
+                <MdClose color="white" size={30} />
+              )}
+            </HardsandLink>
+          </Flex>
         </Stack>
       </Flex>
 

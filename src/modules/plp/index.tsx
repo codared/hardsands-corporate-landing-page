@@ -1,5 +1,5 @@
 import { Grid, Flex, Image, Text, Container } from "@chakra-ui/react";
-import ProductCard from "components/ProductCard";
+import { NewProductCard } from "components/ProductCard";
 import UsageDemoSection from "modules/hardsands/components/HomePage/UsageDemoSection";
 import { useTranslation } from "react-i18next";
 import MiniSteps from "../../components/miniStepsBanner";
@@ -21,12 +21,12 @@ const ShopPLP = () => {
             gap="2rem"
           >
             {idArray.map((id) => (
-              <ProductCard
+              <NewProductCard
                 key={id}
                 name={t("product:title", "Hardsands metal card")}
                 description={t(
                   "product:description",
-                  "Our most exclusive product - premium, innovative, bespoke."
+                  "PVC is a customizable card for your business or blablabla. I’m lost of words to use so here is a placeholder that doesn’t make sense."
                 )}
                 price={t("product:price", "78,000")}
               />
