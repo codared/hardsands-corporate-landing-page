@@ -212,6 +212,7 @@ class BaseCarousel extends React.Component<
             align="stretch"
             justify="stretch"
             position="relative"
+            userSelect={'none'}
           >
             {showArrows && (
               <PrevButton
