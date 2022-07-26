@@ -42,3 +42,7 @@ export interface PromotionWithExtraData extends Promotion {
 export type Product = {
   [key: string]: string;
 };
+
+export interface ProductDetails {
+  otherImageUrls: string[];
+}

@@ -14,6 +14,7 @@ import {
 import { HomeProductCard } from "components/ProductCard";
 import { ReviewCard } from "components/ReviewCard";
 import { useTranslation } from "react-i18next";
+import productRoutes from "modules/products/routes";
 
 const Home: NextPage = () => {
   const { t } = useTranslation();
@@ -91,7 +92,7 @@ const Home: NextPage = () => {
               fontWeight="bold"
               color={"black"}
               bg={"brand.200"}
-              href={"/shop"}
+              href={productRoutes.products()}
               p={["12px 16px", "12px 46px"]}
               w="fit-content"
               display="flex"
@@ -190,7 +191,7 @@ const Home: NextPage = () => {
               color={"black"}
               display="flex"
               bg={"brand.200"}
-              href={"/shop"}
+              href={productRoutes.products()}
               mt={6}
               p={["12px 16px", "12px 46px"]}
               w="fit-content"

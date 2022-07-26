@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
 import HardsandLink from "components/HardsandsLink";
+import productRoutes from "modules/products/routes";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { slugify } from "utils/string";
 import { ProductCardProps } from "./type";
@@ -32,7 +33,7 @@ export const NewProductCard = ({
 }: ProductCardProps) => {
   return (
     <HardsandLink
-      href={`/shop/${slugify(name)}`}
+      href={`${productRoutes.products()}/${slugify(name)}`}
       outline="none"
       _hover={{ color: "unset" }}
       _focus={{
@@ -94,7 +95,7 @@ export const NewProductCard = ({
             </Box>
             <HardsandsButton
               text={"Shop Now".toUpperCase()}
-              href={`/shop/${slugify(name)}`}
+              href={`${productRoutes.products()}/${slugify(name)}`}
               // @ts-ignore
               w={"full"}
               p={["12px 16px", "10px 25px"]}
@@ -115,7 +116,7 @@ export const ProductCard = ({
 }: ProductCardProps) => {
   return (
     <HardsandLink
-      href={`/shop/${slugify(name)}`}
+      href={`${productRoutes.products()}/${slugify(name)}`}
       outline="none"
       _hover={{ color: "unset" }}
       _focus={{
@@ -176,7 +177,7 @@ export const ProductCard = ({
             </Flex>
             <HardsandsButton
               text={"Shop Now".toUpperCase()}
-              href={`/shop/${slugify(name)}`}
+              href={`${productRoutes.products()}/${slugify(name)}`}
               // @ts-ignore
               w={"full"}
               p={["12px 16px", "10px 25px"]}

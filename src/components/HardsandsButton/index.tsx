@@ -1,6 +1,7 @@
 import { Text, Image, Box, LinkProps } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import { rightArrow } from "design";
+import productRoutes from "modules/products/routes";
 import { IconType } from "react-icons";
 
 export type HardsandButtonProps = Omit<LinkProps, any> & {
@@ -14,7 +15,7 @@ export type HardsandButtonProps = Omit<LinkProps, any> & {
 
 const HardsandsButton = ({
   text = "Design Your Card",
-  href = "/shop",
+  href = productRoutes.products(),
   children,
   iconMargin = "2rem",
   Icon,

@@ -2,7 +2,7 @@ import { Grid, Flex, Image, Text, Container } from "@chakra-ui/react";
 import ProductCard from "components/ProductCard";
 import UsageDemoSection from "modules/hardsands/components/HomePage/UsageDemoSection";
 import { useTranslation } from "react-i18next";
-import MiniSteps from "../../components/miniStepsBanner";
+import MiniSteps from "../../../components/miniStepsBanner";
 
 const ShopPLP = () => {
   const { t } = useTranslation();

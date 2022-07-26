@@ -1,6 +1,7 @@
 import { Box, Heading, Text, Flex } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import WithLayout from "components/WithLayout";
+import productRoutes from "modules/products/routes";
 import Head from "next/head";
 
 export default function NotFound() {
@@ -30,7 +31,7 @@ export default function NotFound() {
             fontSize={"sm"}
             fontWeight={500}
             color={"black"}
-            href={"/shop"}
+            href={productRoutes.products()}
             w="fit-content"
             p={["none", "12px 16px", "12px 46px"]}
             border="1px solid black"
