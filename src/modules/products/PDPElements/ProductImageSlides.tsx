@@ -27,7 +27,7 @@ const ProductImageSlide = ({
   return (
     <Box
       width={["100%", null, '50%']}
-      position={["sticky", "unset"]}
+      position={["unset"]}
       top="10px"
     >
       <Flex align="center" justify="center" position="relative">

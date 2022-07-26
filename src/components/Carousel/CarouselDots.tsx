@@ -86,7 +86,7 @@ const CarouselDots: React.FC<CarouselDotsProps> = ({
             dotPosition === 'right'
               ? '5px' : 0
           }
-          borderColor={i === currentIndex ? 'black' : 'transparent'}
+          borderColor={i === currentIndex ? 'brand.300' : 'transparent'}
           bg="offwhite3"
           onClick={() => onDotClick(i)}
         >

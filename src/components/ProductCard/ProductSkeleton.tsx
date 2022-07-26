@@ -28,6 +28,45 @@ export const PLPSkeleton = () => {
     </Container>
   );
 };
+export const PDPSkeleton = () => {
+  return (
+    <Container maxWidth={["lg", "7xl"]}>
+      <Flex as="section" p={["4rem 1rem", "4rem 6rem"]} justify="center">
+        <ProductDetailsSkeleton />
+      </Flex>
+    </Container>
+  );
+};
+
+const ProductDetailsSkeleton = () => {
+  return (
+    <Flex position="relative" mb={[0]}>
+      <Skeleton w={300} height={200} />
+
+      <Box p={["4"]} textAlign="center">
+        <Skeleton w={"full"} height={4} />
+        <Box h={5} />
+        <Flex mt={[0, 3, 3]} justify="space-between" flexDir={["row"]}>
+          <Skeleton w={100} height={5} />
+          <Box w={5} />
+          <Skeleton w={100} height={5} />
+        </Flex>
+        <Box h={2} />
+        <Box>
+          <SkeletonCircle w={"full"} height={4} size="5" mr={2} />
+          <Box h={2} />
+          <SkeletonCircle w={"full"} height={4} size="5" mr={2} />
+          <Box h={2} />
+        </Box>
+        <Flex mt={[0, 3, 3]} flexDir={["row"]}>
+          <Skeleton w={100} height={5} />
+          <Box w={5} />
+          <Skeleton w={100} height={5} />
+        </Flex>
+      </Box>
+    </Flex>
+  );
+};
 
 const ProductCardSkeleton = () => {
   return (
