@@ -69,7 +69,7 @@ const CustomizationConfig = () => {
       </Heading>
       <Box h={8} />
       <Box>
-        <Text fontFamily="MADE Outer sans">Card Text</Text>
+        <Text fontFamily="MADE Outer sans">Name on Card</Text>
         <Box h={2} />
         <Input
           borderRadius={0}
