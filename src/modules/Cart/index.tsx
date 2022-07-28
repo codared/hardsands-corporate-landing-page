@@ -10,7 +10,7 @@ import {
   Text,
   DrawerOverlay,
 } from "@chakra-ui/react";
-import CartItemCard from "modules/cart/components/CartItemCard";
+import CartItemCard from "./components/CartItemCard";
 import HardsandLink from "components/HardsandsLink";
 import React from "react";
 
