@@ -1,15 +1,9 @@
-import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
   Flex,
   Heading,
   HStack,
   Input,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
   Tag,
   Text,
 } from "@chakra-ui/react";
@@ -19,7 +13,7 @@ import { BsImageFill } from "react-icons/bs";
 import { FaFileUpload } from "react-icons/fa";
 import { MdCloudUpload } from "react-icons/md";
 
-const CustomizationConfig = () => {
+const CustomizationConfig = ({ onComplete }: { onComplete: () => void }) => {
   const fontStyleOption = [
     { title: "Download" },
     { title: "Create a Copy" },
@@ -60,7 +54,9 @@ const CustomizationConfig = () => {
     borderColor: "brand.300",
   };
 
-  const handleSaveCustomization = () => {};
+  const handleSaveCustomization = () => {
+		onComplete();
+	};
 
   return (
     <Box w={["100%", "100%", "50%"]}>

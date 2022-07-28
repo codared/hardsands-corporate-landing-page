@@ -47,9 +47,9 @@ const CustomMenu = ({
       </MenuButton>
       <MenuList>
         {options &&
-          options.map((option) => (
+          options.map((option, index) => (
             <MenuItem
-              key={option.title}
+              key={index}
               _hover={{ color: "brand.300", bg: "brand.10" }}
             >
               {isColorOptions && (
