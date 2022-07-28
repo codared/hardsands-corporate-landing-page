@@ -15,7 +15,7 @@ import MobileNav from "./MobileNav";
 import HardsandLink from "components/HardsandsLink";
 import LoginIcon from "design/svg/Login.svg";
 import React, { useState } from "react";
-import Cart from "modules/cart";
+// import Cart from "modules/cart";
 import { useOffsetScroll } from "./hooks";
 import HardsandsAppLogo from "components/Logo";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -32,11 +32,11 @@ export default function Navigation() {
 
   return (
     <Box as="nav" w="100%" position="sticky" zIndex="sticky" bg="black" top={0}>
-      <Cart
+      {/* <Cart
         isOpen={isCartOpen}
         onClose={() => setCartOpen(!isCartOpen)}
         ref={cartBtnRef}
-      />
+      /> */}
       <Flex
         minH={"70px"}
         py={[2]}
