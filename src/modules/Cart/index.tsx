@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import React from "react";
-import CartItemCard from "./components/CartItemCard";
+import CartItemCard from "modules/cart/components/CartItemCard";
 
 const Cart = React.forwardRef(
   (
