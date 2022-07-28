@@ -10,9 +10,9 @@ import {
   Text,
   DrawerOverlay,
 } from "@chakra-ui/react";
-import CartItemCard from "./components/CartItemCard";
 import HardsandLink from "components/HardsandsLink";
 import React from "react";
+import CartItemCard from "./components/CartItemCard";
 
 const Cart = React.forwardRef(
   (
