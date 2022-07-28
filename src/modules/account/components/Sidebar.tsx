@@ -3,9 +3,10 @@ import HardsandLink from "components/HardsandsLink";
 import HardsandsAppLogo from "components/Logo";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
-import { ACCOUNT_NAV_ITEMS } from "./constants";
+import { ACCOUNT_NAV_ITEMS } from "../constants";
 import NavItem from "./Navitems";
 import { Key, useState } from "react";
+import { AccountNavItemsType } from "utils/types";
 
 const SidebarContent = (props: any) => {
   const integrations = useDisclosure();
@@ -45,7 +46,7 @@ const SidebarContent = (props: any) => {
         h="95%"
       >
         <Box>
-          {ACCOUNT_NAV_ITEMS.map((item: { title: Key | null | undefined; href: string; id: any; icon: any; children: any[]; }) => {
+          {ACCOUNT_NAV_ITEMS.map((item: AccountNavItemsType) => {
             return (
               <HardsandLink
                 key={item.title}
@@ -70,7 +71,7 @@ const SidebarContent = (props: any) => {
                       />
                     </NavItem>
                     <Collapse in={integrations.isOpen}>
-                      {item.children.map((childItem: { title: any; }) => (
+                      {item.children.map((childItem: { title: any }) => (
                         <NavItem key={childItem.title} pl="12" py="2">
                           {childItem.title}
                         </NavItem>
