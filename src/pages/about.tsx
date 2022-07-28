@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { ReviewCard } from "components/ReviewCard";
 import HardsandLink from "components/HardsandsLink";
+import productRoutes from "modules/products/routes";
 
 const About: NextPage = () => {
   return (
@@ -52,7 +53,7 @@ const About: NextPage = () => {
             fontWeight={500}
             color={"white"}
             bg={"black"}
-            href={"/shop"}
+            href={productRoutes.products()}
             w="fit-content"
             p={["none", "12px 16px", "12px 46px"]}
             border="1px solid black"
@@ -108,7 +109,7 @@ const About: NextPage = () => {
             fontSize={"sm"}
             fontWeight={500}
             color={"black"}
-            href={"/shop"}
+            href={productRoutes.products()}
             p={["none", "12px 16px", "12px 46px"]}
             border="1px solid black"
             borderRadius="8px"

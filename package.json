@@ -46,7 +46,7 @@
     "next-redux-wrapper": "^6.0.2",
     "react": "18.v1",
     "react-dom": "18.v1",
-    "react-easy-swipe": "^0.0.18",
+    "react-easy-swipe": "^0.0.22",
     "react-hook-form": "6.3.3",
     "react-i18next": "^11.7.0",
     "react-icons": "^4.4.0",

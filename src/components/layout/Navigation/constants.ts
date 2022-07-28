@@ -1,3 +1,5 @@
+import productRoutes from "modules/products/routes";
+
 export interface NavItem {
   label: string;
   subLabel?: string;
@@ -11,8 +13,8 @@ export const NAV_ITEMS: Array<NavItem> = [
     href: "/",
   },
   {
-    label: "Shop",
-    href: "/shop",
+    label: "Products",
+    href: productRoutes.products(),
   },
   {
     label: "Reviews",

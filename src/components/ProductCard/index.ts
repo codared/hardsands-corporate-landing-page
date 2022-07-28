@@ -1,5 +1,5 @@
-import ProductCard, { NewProductCard } from './ProductCard';
+import ProductCard, { PreviewProductCard } from './ProductCard';
 import HomeProductCard from './HomeProductCard';
 
 export default ProductCard;
-export { HomeProductCard, NewProductCard }
+export { HomeProductCard, PreviewProductCard }

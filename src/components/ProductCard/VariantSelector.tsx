@@ -5,7 +5,7 @@ const VariantSelector = ({
   selectorType,
   variants,
 }: {
-  selectorType: "color" | "style";
+  selectorType?: "color" | "style";
   variants: Array<string>;
 }) => {
   const [active, setActive] = useState(variants[0]);
@@ -51,6 +51,22 @@ const VariantSelector = ({
               <TagLabel>{variant}</TagLabel>
             </Tag>
           ))}
+        </Flex>
+      );
+    default:
+      return (
+        <Flex mb={2}>
+          <Tag
+            size={"md"}
+            bg="gray.100"
+            borderRadius="full"
+            borderWidth={1}
+            borderColor={"gray.100"}
+            onClick={(e) => {}}
+            mr={2}
+          >
+            {/* <TagLabel>{variant}</TagLabel> */}
+          </Tag>
         </Flex>
       );
   }

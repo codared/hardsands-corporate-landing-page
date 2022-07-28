@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
 import HardsandLink from "components/HardsandsLink";
+import productRoutes from "modules/products/routes";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { slugify } from "utils/string";
 import { ProductCardProps } from "./type";
@@ -24,7 +25,7 @@ const data = {
   numReviews: 34,
 };
 
-export const NewProductCard = ({
+export const PreviewProductCard = ({
   name,
   price,
   img = data.imageURL,
@@ -32,7 +33,7 @@ export const NewProductCard = ({
 }: ProductCardProps) => {
   return (
     <HardsandLink
-      href={`/shop/${slugify(name)}`}
+      href={`${productRoutes.products()}/${slugify(name)}`}
       outline="none"
       _hover={{ color: "unset" }}
       _focus={{
@@ -43,18 +44,8 @@ export const NewProductCard = ({
         bg={useColorModeValue("white", "gray.800")}
         position="relative"
         mb={[0]}
-        border="1px solid #F4E9E1"
+        // border="1px solid #F4E9E1"
       >
-        {/* {data.isNew && (
-          <Circle
-            size="10px"
-            position="absolute"
-            top={2}
-            right={2}
-            bg="red.200"
-          />
-        )} */}
-
         <Image
           src={img}
           alt={`Picture of ${data.name}`}
@@ -62,45 +53,27 @@ export const NewProductCard = ({
           w="100%"
         />
 
-        <Box p={["4"]}>
+        <Box p={["4"]} textAlign={"center"}>
           <Heading
             textTransform="capitalize"
             fontWeight="normal"
-            fontSize="1.5rem"
+            fontSize={20}
             mb={3}
             maxW={["full", "396px"]}
           >
             {name}
           </Heading>
-          <Text mb={[3, 6]} fontSize={[14, 16]}>
-            {description}
-          </Text>
-          <Flex
-            mt={[0, 3, 3]}
-            justify="space-between"
-            flexDir={["row", "column", "row"]}
+
+          <Text
+            textAlign={"center"}
+            fontWeight="bolder"
+            fontSize={["xl"]}
+            mr={[10, 5]}
+            mt={2}
+            color="brand.300"
           >
-            <Box m="auto 0">
-              {/* <Text
-                fontSize={[10, 12, 14]}
-                textDecoration="line-through"
-                color="danger"
-              >
-                ₦{price}
-              </Text> */}
-              <Text fontWeight="bolder" fontSize={["xl"]} mr={[10, 5]}>
-                ₦{price}
-              </Text>
-            </Box>
-            <HardsandsButton
-              text={"Shop Now".toUpperCase()}
-              href={`/shop/${slugify(name)}`}
-              // @ts-ignore
-              w={"full"}
-              p={["12px 16px", "10px 25px"]}
-              iconMargin={[10, 4, 4]}
-            />
-          </Flex>
+            ₦{price}
+          </Text>
         </Box>
       </Box>
     </HardsandLink>
@@ -115,7 +88,7 @@ export const ProductCard = ({
 }: ProductCardProps) => {
   return (
     <HardsandLink
-      href={`/shop/${slugify(name)}`}
+      href={`${productRoutes.products()}/${slugify(name)}`}
       outline="none"
       _hover={{ color: "unset" }}
       _focus={{
@@ -176,7 +149,7 @@ export const ProductCard = ({
             </Flex>
             <HardsandsButton
               text={"Shop Now".toUpperCase()}
-              href={`/shop/${slugify(name)}`}
+              href={`${productRoutes.products()}/${slugify(name)}`}
               // @ts-ignore
               w={"full"}
               p={["12px 16px", "10px 25px"]}

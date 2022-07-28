@@ -10,6 +10,7 @@ import { BsHandbag } from "react-icons/bs";
 import HardsandsButton from "components/HardsandsButton";
 import HardsandLink from "components/HardsandsLink";
 import { HomeProductCardProps } from "./type";
+import productRoutes from "modules/products/routes";
 
 const HomeProductCard = ({
   name,
@@ -19,7 +20,7 @@ const HomeProductCard = ({
   t,
 }: HomeProductCardProps) => (
   <HardsandLink
-    href="/shop"
+    href={productRoutes.products()}
     outline="none"
     _hover={{ color: "unset" }}
     _focus={{
