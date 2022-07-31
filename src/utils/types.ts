@@ -60,4 +60,10 @@ export type ActionsType = {
   title: string;
   icon: IconType;
   isDefault?: boolean;
+  fields?: ActionsFormType[];
+  requiresCountryCode?: string;
+};
+
+export type ActionsFormType = {
+  [key: string]: string | number | any[];
 };

@@ -1,0 +1,162 @@
+import { Box, Flex, Grid, HStack, Text, Image, Tag } from "@chakra-ui/react";
+import CustomModal from "components/CustomModal";
+import { useState } from "react";
+import { ActionsFormType, ActionsType } from "utils/types";
+import { SOCIAL_LINKS } from "../constants";
+import ActionFormBuilder from "./ActionFormBuilder";
+import ProfileCardPreview from "./ProfileCardPreview";
+
+const ActionFormModal = ({
+  isOpen,
+  onClose,
+  selectedAction,
+  handleActionSubmit,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  selectedAction: ActionsType;
+  handleActionSubmit: (action: ActionsType) => void;
+}) => {
+  const [showAddSocials, setAddSocials] = useState<boolean>(false);
+  const [selectedSocials, setSelectedSocials] = useState<any[]>([]);
+  const [formState, setFormState] = useState<any>({});
+  const isProfile = selectedAction.title === "Profile";
+
+  const handleAction = () => {
+    handleActionSubmit(selectedAction);
+  };
+
+  const handleAddSocials = () => {
+    setAddSocials(true);
+  };
+
+  const handleChange = (e: any) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+  };
+
+  const handleSocialSelect = (selectedSocial: any) => {
+    const prefix =
+      selectedSocial.label.includes("WhatsApp") ||
+      selectedSocial.label.includes("Telegram")
+        ? "Number"
+        : "Username";
+    selectedAction.fields = [
+      // @ts-ignore
+      ...selectedAction.fields,
+      { name: `${selectedSocial.label} ${prefix}`, type: "text" },
+    ];
+    setSelectedSocials([...selectedSocials, { ...selectedSocial }]);
+    setAddSocials(false);
+  };
+  // console.log("formState >>> ", formState);
+
+  return (
+    <CustomModal
+      size={isProfile ? "4xl" : "lg"}
+      title={"Edit Action"}
+      isOpen={isOpen}
+      onClose={onClose}
+      scrollBehavior={"inside"}
+      footer={
+        <HStack
+          px={[2]}
+          py={[2]}
+          mr={[4]}
+          cursor="pointer"
+          w={"100%"}
+          justify={"center"}
+          transition={"all ease-in-out 200ms"}
+          bg="brand.200"
+          color={"black"}
+          _hover={{
+            bg: "black",
+            color: "brand.200",
+          }}
+          fontFamily={"MADE Outer sans"}
+          onClick={handleAction}
+          userSelect="none"
+        >
+          <Text>Save</Text>
+        </HStack>
+      }
+    >
+      <Box mb={8}>
+        <Flex direction={["column", "column", "row"]}>
+          {isProfile && (
+            <>
+              <ProfileCardPreview
+                addSocials={handleAddSocials}
+                selectedSocials={selectedSocials}
+              />
+              <Box w={8} />
+            </>
+          )}
+          {showAddSocials && (
+            <Box w={"full"}>
+              {Object.keys(SOCIAL_LINKS).map((socialLink, index) => (
+                <Box key={index} mb={10}>
+                  <Text fontFamily={"MADE Outer sans"} mb={5}>
+                    {socialLink}
+                  </Text>
+                  <Grid
+                    templateColumns={[
+                      "repeat(2, 1fr)",
+                      "repeat(2, 1fr)",
+                      "repeat(4, 1fr)",
+                    ]}
+                    gap={["1rem", "2rem"]}
+                    overflow="hidden"
+                  >
+                    {(SOCIAL_LINKS[socialLink] as any[]).map(
+                      (social: any, index) => (
+                        <Box
+                          key={index}
+                          boxSize={100}
+                          borderRadius={"25px"}
+                          overflow="hidden"
+                          cursor={"pointer"}
+                          onClick={
+                            social.pro
+                              ? () => {}
+                              : () => handleSocialSelect(social)
+                          }
+                          position="relative"
+                        >
+                          {social.pro && (
+                            <Tag
+                              position={"absolute"}
+                              fontFamily={"MADE Outer sans"}
+                            >
+                              PRO
+                            </Tag>
+                          )}
+                          <Image
+                            objectFit={"contain"}
+                            src={social.image.src}
+                            alt="social image"
+                          />
+                        </Box>
+                      )
+                    )}
+                  </Grid>
+                </Box>
+              ))}
+            </Box>
+          )}
+          {!showAddSocials && (
+            <Box w={"full"}>
+              <ActionFormBuilder
+                onChange={handleChange}
+                fields={selectedAction.fields as ActionsFormType[]}
+              />
+            </Box>
+          )}
+        </Flex>
+      </Box>
+    </CustomModal>
+  );
+};
+
+export default ActionFormModal;

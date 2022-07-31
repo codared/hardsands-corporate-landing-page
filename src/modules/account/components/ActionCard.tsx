@@ -35,7 +35,7 @@ const ActionCard = ({
       fontWeight="bold"
       borderStyle="solid"
       borderWidth={1}
-      flexDir={["column", "column"]}
+      flexDir={["column"]}
       justifyContent={"center"}
     >
       <Box position={"absolute"} top="10px" right="10px">

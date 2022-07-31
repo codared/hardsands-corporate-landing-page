@@ -16,25 +16,31 @@ interface CustomModalProps extends ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactElement;
+  title?: string;
+  footer?: ReactElement;
 }
 
 const CustomModal = ({
   isOpen,
   onClose,
   children,
+  title,
+  footer,
   ...rest
 }: CustomModalProps) => {
   return (
     <>
       <Modal {...rest} onClose={onClose} isOpen={isOpen} isCentered>
-        <ModalOverlay />
+        <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
         <ModalContent>
-          {/* <ModalHeader>Modal Title</ModalHeader> */}
+          {title && <ModalHeader>{title}</ModalHeader>}
           <ModalCloseButton />
           <ModalBody>{children}</ModalBody>
-          {/* <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
-          </ModalFooter> */}
+          {!!footer && (
+            <ModalFooter>
+              {footer}
+            </ModalFooter>
+          )}
         </ModalContent>
       </Modal>
     </>
