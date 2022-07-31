@@ -9,7 +9,9 @@ import {
   Flex,
   Text,
   DrawerOverlay,
+  Heading,
 } from "@chakra-ui/react";
+import CurrencySelector from "components/CurrenctSelector";
 import HardsandLink from "components/HardsandsLink";
 import React from "react";
 import CartItemCard from "./components/CartItemCard";
@@ -46,7 +48,15 @@ const Cart = React.forwardRef(
         <DrawerOverlay id="cart__drawer_overlay" />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Shopping Cart</DrawerHeader>
+          <DrawerHeader display={"flex"} justifyContent={"space-between"}>
+            <Heading size={"sm"}>Shopping Cart</Heading>{" "}
+            <CurrencySelector
+              mr={10}
+              onChange={(val: string) => {
+                console.log(val);
+              }}
+            />
+          </DrawerHeader>
 
           <DrawerBody>
             <Box>
@@ -68,6 +78,24 @@ const Cart = React.forwardRef(
               display="flex"
               justifyContent="space-between"
             >
+              <Text>SubTotal:</Text>
+              <Text>₦78,800.00</Text>
+            </Flex>
+            <Flex
+              mb={[6]}
+              w="100%"
+              display="flex"
+              justifyContent="space-between"
+            >
+              <Text>Shipping:</Text>
+              <Text>₦8,800.00</Text>
+            </Flex>
+            <Flex
+              mb={[6]}
+              w="100%"
+              display="flex"
+              justifyContent="space-between"
+            >
               <Text fontWeight="bolder">Total:</Text>
               <Text fontWeight="bolder">₦78,800.00</Text>
             </Flex>
@@ -80,18 +108,22 @@ const Cart = React.forwardRef(
               <HardsandLink
                 fontSize={"sm"}
                 fontWeight={500}
-                color={"white"}
-                bg={"black"}
+                color={"black"}
+                bg={"brand.100"}
+                fontFamily="MADE Outer sans"
                 href={"#"}
                 p={["12px 16px", "12px 46px"]}
-                border="1px solid black"
-                borderRadius="8px"
+                borderWidth="2px"
+                borderColor={"brand.100"}
+                borderRadius="0"
                 transition="all 200ms ease-in"
                 w="100%"
                 textAlign="center"
                 _hover={{
-                  bg: "white",
+                  bg: "transparent",
                   color: "black",
+                  borderWidth: "2px",
+                  borderColor: "brand.100",
                 }}
                 mb={[6, 0]}
               >

@@ -3,6 +3,7 @@ import HardsandLink from "components/HardsandsLink";
 import MinusIcon from "design/svg/minus_bg.svg";
 import PlusIcon from "design/svg/plus_bg.svg";
 import { SyntheticEvent } from "react";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 const QuantityModifier = ({
   quantity,
@@ -22,18 +23,18 @@ const QuantityModifier = ({
     onChange(quantity);
   };
   return (
-    <Flex>
+    <Flex border={"1px solid black"}>
       <Button
         onClick={(e: SyntheticEvent) => {
           e.preventDefault();
           handleChange("minus");
         }}
-        _hover={{ opacity: ".5", bg: "transparent" }}
+        _hover={{ bg: "transparent", color: "black" }}
         bg="transparent"
         _focus={{ bg: "transparent" }}
         px={0}
       >
-        <Image boxSize={10} src={MinusIcon.src} alt="minus image" />
+        <AiOutlineMinus />
       </Button>
       <Text
         display="flex"
@@ -49,12 +50,12 @@ const QuantityModifier = ({
           e.preventDefault();
           handleChange("plus");
         }}
-        _hover={{ opacity: ".5", bg: "transparent" }}
+        _hover={{ bg: "transparent", color: "black" }}
         bg="transparent"
         _focus={{ bg: "transparent" }}
-        px={0}
+        p={0}
       >
-        <Image boxSize={10} src={PlusIcon.src} alt="plus image" />
+        <AiOutlinePlus />
       </Button>
     </Flex>
   );

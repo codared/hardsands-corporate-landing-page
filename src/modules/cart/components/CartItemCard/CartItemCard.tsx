@@ -1,7 +1,6 @@
 import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import QuantityModifier from "components/QuantityModifier";
-import Placeholder from "design/svg/mastercard.png";
 import DeleteIcon from "design/svg/delete_icon.svg";
 import { useState } from "react";
 
@@ -10,40 +9,41 @@ const CartItemCard = () => {
   return (
     <>
       <Flex w="100%" justifyContent="space-between" py={5}>
-        <Flex justifyContent="space-between" mr={6}>
+        <Flex justifyContent="space-between" mr={2}>
           <Box>
             <Image
               boxSize={20}
-              objectFit="cover"
-              src={Placeholder.src}
-              alt="product image"
+              objectFit="contain"
+              src={
+                "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657205110/hardsands/Rectangle_213_epjh2x.svg"
+              }
+              alt="cart product image"
             />
           </Box>
-          <Flex direction="column" justifyContent="space-between" ml={5}>
-            <Text>Hardsands Metal Card</Text>
-            <Text fontWeight={600}>₦78,800.00</Text>
+          <Flex direction="column" justifyContent="space-between" ml={2}>
+            <Box>
+              <Text fontWeight={'bold'}>Hardsands Metal Card</Text>
+              <Text fontSize={"small"}>Customized</Text>
+            </Box>
+            <HardsandLink
+              href={"#"}
+              color="black"
+              display="flex"
+              _hover={{
+                opacity: ".5",
+              }}
+              scale="10%"
+              fontSize="smaller"
+              textDecoration={'underline'}
+            >
+              Remove
+            </HardsandLink>
           </Flex>
         </Flex>
         <Flex direction="column" justifyContent="space-between">
-          <HardsandLink
-            href={"#"}
-            color="danger"
-            display="flex"
-            _hover={{
-              opacity: ".5",
-            }}
-            alignSelf="end"
-            scale="10%"
-            fontSize="smaller"
-          >
-            <Image
-              boxSize={4}
-              src={DeleteIcon.src}
-              alt="delete image"
-              mr="10px"
-            />
-            Remove
-          </HardsandLink>
+          <Text alignSelf={"end"} color="brand.300" fontWeight={600}>
+            ₦78,800.00
+          </Text>
           <QuantityModifier quantity={quantity} onChange={setQuantity} />
         </Flex>
       </Flex>
