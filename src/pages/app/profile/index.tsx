@@ -1,12 +1,12 @@
 import HardsandsAccountsApp from "modules/account";
 import MainAccountContent from "modules/account/MainAccountContent";
 
-const AccountApp = () => {
+const ProfilePage = () => {
   return (
-    <HardsandsAccountsApp active={1}>
+    <HardsandsAccountsApp active={3}>
       <MainAccountContent />
     </HardsandsAccountsApp>
   );
 };
 
-export default AccountApp;
+export default ProfilePage;

@@ -15,12 +15,14 @@ interface CustomMenuProps extends ButtonProps {
   menuTitle?: string | ReactElement;
   options: any[];
   isColorOptions?: boolean;
+  onChangeOption?: (color: string) => void;
 }
 
 const CustomMenu = ({
   options,
   menuTitle,
   isColorOptions,
+  onChangeOption,
   ...rest
 }: CustomMenuProps) => {
   return (
@@ -50,6 +52,9 @@ const CustomMenu = ({
           options.map((option, index) => (
             <MenuItem
               key={index}
+              onClick={() =>
+                onChangeOption && onChangeOption(option.color as string)
+              }
               _hover={{ color: "brand.300", bg: "brand.10" }}
             >
               {isColorOptions && (
