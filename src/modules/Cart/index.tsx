@@ -58,7 +58,7 @@ const Cart = React.forwardRef(
             />
           </DrawerHeader>
 
-          <DrawerBody>
+          <DrawerBody overflowY={"scroll"}>
             <Box>
               <CartItemCard />
               <CartItemCard />
