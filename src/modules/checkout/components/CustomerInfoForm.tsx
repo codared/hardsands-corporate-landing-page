@@ -16,12 +16,12 @@ const CustomerInfoForm = () => {
           email: "",
           lastName: "",
           address: "",
-          homeAddress: "",
           city: "",
           state: "",
           country: "",
           zipCode: "",
           phoneNumber: "",
+          agreedToReceiveEmail: false,
         }}
         onSubmit={async (values: any) => {
           await new Promise((resolve) => setTimeout(resolve, 500));
@@ -39,26 +39,26 @@ const CustomerInfoForm = () => {
           <Box h={2} />
           <CustomInput placeholder="Address" name={"address"} />
           <Box h={2} />
-          <CustomInput
-            placeholder="Apartment, Suite, etc"
-            name={"homeAddress"}
-          />
-          <Box h={2} />
-          <Flex>
-            <CustomInput placeholder="City" name={"city"} />
-            <Box w={4} />
-            <CustomInput placeholder="Phone Number" name={"phoneNumber"} />
-          </Flex>
-          <Box h={2} />
           <Flex>
             <CustomInput type="select" placeholder="Country" name={"country"} />
-            <Box w={6} />
+            <Box w={4} />
             <CustomInput type="select" placeholder="State" name={"state"} />
-            <Box w={6} />
+          </Flex>
+          <Box h={2} />
+          <Flex>
+            <CustomInput type="select" placeholder="City" name={"city"} />
+            <Box w={4} />
             <CustomInput placeholder="Zip Code" name={"zipCode"} />
           </Flex>
+          <Box h={2} />
+          <CustomInput placeholder="Phone Number" name={"phoneNumber"} />
           <Box h={8} />
-          <Checkbox colorScheme={"orange"} value="true" fontSize={"smaller"}>
+          <Checkbox
+            name="agreedToReceiveEmail"
+            colorScheme={"orange"}
+            value="true"
+            fontSize={"smaller"}
+          >
             {t(
               "checkout:button:by-clicking-the-checkbox",
               "By Clicking the checkbox, I agree to recieving marketing messages from Hardsands with the email address provided. View our terms & conditions here."

@@ -1,20 +1,24 @@
-import { Input } from "@chakra-ui/react";
+import { Input, InputProps } from "@chakra-ui/react";
+
+interface CustomInputProps extends InputProps {
+  placeholder?: string;
+  onChange?: () => void;
+  value?: string;
+  name: any;
+  type?: string;
+}
 
 const CustomInput = ({
   placeholder = "Input",
   onChange,
   value,
   name,
-  type
-}: {
-  placeholder?: string;
-  onChange?: () => void;
-  value?: string;
-  name: any;
-  type?: string;
-}) => {
+  type,
+  ...rest
+}: CustomInputProps) => {
   return (
     <Input
+      {...rest}
       name={name}
       placeholder={placeholder}
       value={value}
