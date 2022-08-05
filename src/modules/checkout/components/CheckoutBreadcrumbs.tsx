@@ -26,7 +26,7 @@ const CheckoutBreakcrumbs = ({
           color={activeStep === 1 ? "brand.300" : "black"}
           onClick={() => setActiveStep(1)}
         >
-          <BreadcrumbLink href="#">Shipping info</BreadcrumbLink>
+          <BreadcrumbLink href="#">Shipping Info</BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem
