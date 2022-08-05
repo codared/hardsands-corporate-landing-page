@@ -1,5 +1,6 @@
-import { Box, Button, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import CheckAccordion from "components/CheckAccordion";
+import { MasterCardIcon, VisaCardIcon } from "design";
 
 const PaymentInfo = () => {
   return (
@@ -11,6 +12,23 @@ const PaymentInfo = () => {
           options={[
             {
               title: "Credit Card",
+              subTitle: (
+                <Flex>
+                  <Image
+                    objectFit={"contain"}
+                    boxSize={8}
+                    src={MasterCardIcon.src}
+                    alt={"mastercards"}
+                  />
+                  <Box w={2} />
+                  <Image
+                    objectFit={"contain"}
+                    w={12}
+                    src={VisaCardIcon.src}
+                    alt={"visa cards"}
+                  />
+                </Flex>
+              ),
               content: (
                 <Box>
                   <Text>2464 Royal Ln. Mesa, New Jersey 45463</Text>
