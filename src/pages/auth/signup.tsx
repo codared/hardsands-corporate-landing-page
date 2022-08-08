@@ -81,9 +81,9 @@ const Login: NextPage = () => {
             />
           </Box>
           <Text textAlign="center" mb={5}>
-            Don&apos;t have an account?{" "}
-            <Link href="/auth/signup" color="brand.300">
-              Sign up
+            Already have an account?{" "}
+            <Link href="/auth/login" color="brand.300">
+              Log in
             </Link>
           </Text>
           <Button
