@@ -31,10 +31,12 @@
     "@sentry/browser": "^6.13.3",
     "@sentry/node": "^6.13.3",
     "@sentry/webpack-plugin": "^1.17.3",
+    "@types/file-saver": "^2.0.5",
     "@types/redux-logger": "^3.0.9",
     "@unly/universal-language-detector": "^2.0.3",
     "dompurify": "^2.2.6",
     "emotion-theming": "10.0.27",
+    "file-saver": "^2.0.5",
     "formik": "^2.2.9",
     "framer-motion": "^4",
     "html-react-parser": "^1.2.4",
@@ -57,7 +59,8 @@
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "vcards-js": "^2.10.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^9.4.4",

@@ -2,7 +2,7 @@ import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import CheckAccordion from "components/CheckAccordion";
 import { MasterCardIcon, VisaCardIcon } from "design";
 
-const PaymentInfo = () => {
+const PaymentMethods = () => {
   return (
     <>
       <Box mb={10}>
@@ -71,4 +71,4 @@ const PaymentInfo = () => {
   );
 };
 
-export default PaymentInfo;
+export default PaymentMethods;

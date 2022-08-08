@@ -14,7 +14,7 @@ import OrderItemCard from "./components/OrderItemCard";
 import CustomerInfoForm from "./components/CustomerInfoForm";
 import CheckoutBreakcrumbs from "./components/CheckoutBreadcrumbs";
 import ShippingInfo from "./components/ShippingInfo";
-import PaymentInfo from "./components/PaymentInfo";
+import PaymentInfo from "./components/PaymentMethods";
 
 const CheckoutPage = () => {
   const [activeStep, setActiveStep] = useState(0);
