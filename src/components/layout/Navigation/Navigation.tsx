@@ -28,7 +28,7 @@ const minifyNotificationCount = (count: string) => {
 export default function Navigation() {
   const { isOpen, onToggle } = useDisclosure();
   const [isCartOpen, setCartOpen] = useState(false);
-  const { offset } = useOffsetScroll();
+  // const { offset } = useOffsetScroll();
   const cartBtnRef = React.useRef(null);
 
   usePreloadProducts(3000);
