@@ -1,4 +1,4 @@
-import { CartResponseItem } from "modules/cart/types";
+import { CartResponseItem } from "modules/CART/types";
 
 export function computeItemsQuantity(items: CartResponseItem[]): number {
   return items.reduce((carry, item) => {
