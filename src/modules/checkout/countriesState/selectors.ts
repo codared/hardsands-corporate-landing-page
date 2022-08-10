@@ -1,4 +1,4 @@
-import { AppState } from '../../../redux/context'
+import { AppState } from 'redux/rootReducer'
 import { CountryResponse } from '../types'
 
 export const selectCountries = (state: AppState): CountryResponse[] => {

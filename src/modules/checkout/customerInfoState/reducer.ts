@@ -1,5 +1,5 @@
-import { CustomerInfoState } from '../../..'
-import { AppActionTypes } from '../../../redux/context'
+import { AppActionTypes } from 'redux/context'
+import { CustomerInfoState } from '../types'
 import { CUSTOMER_INFO_FORM_UPDATED } from './actionTypes'
 
 const initialState: CustomerInfoState = {}

@@ -1,8 +1,9 @@
-import { ThunkActionCreator, ActionCreator } from '../../../redux/context'
+import { ThunkActionCreator } from 'redux/rootReducer'
+import { AppActionCreator } from 'redux/store'
 import { CustomerInfoFormState } from './../types'
 import { CUSTOMER_INFO_FORM_UPDATED } from './actionTypes'
 
-const customerInfoFormUpdatedAction: ActionCreator = (
+const customerInfoFormUpdatedAction: AppActionCreator = (
   customerInfoFormState: CustomerInfoFormState
 ) => {
   return {

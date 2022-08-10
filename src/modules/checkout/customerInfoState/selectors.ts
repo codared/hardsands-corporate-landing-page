@@ -1,4 +1,4 @@
-import { AppState } from '../../../redux/context'
+import { AppState } from 'redux/rootReducer'
 import { CustomerInfoFormState } from '../types'
 
 export const selectCustomerInfoFormState = (
