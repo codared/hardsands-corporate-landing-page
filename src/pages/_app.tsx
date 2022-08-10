@@ -19,6 +19,7 @@ import { isSupportedCurrency } from "utils/functions";
 import { useRef } from "react";
 import ManualScriptTag from "modules/analytics/components/ManualScriptTag";
 import { CopyrightYearProvider } from "modules/hardsands/contexts/CopyrightYearContext";
+import { CheckoutProvider } from "redux/context";
 
 interface HardsandsAppProps extends AppProps {
   lang: string;
@@ -45,10 +46,12 @@ function HardsandsApp({
     <>
       <ChakraProvider theme={theme}>
         <CopyrightYearProvider value={copyRightYear}>
-          <ManualScriptTag />
-          <Fonts />
-          <ColorModeScript initialColorMode={"light"} />
-          <Component {...pageProps} />
+          <>
+            <ManualScriptTag />
+            <Fonts />
+            <ColorModeScript initialColorMode={"light"} />
+            <Component {...pageProps} />
+          </>
         </CopyrightYearProvider>
       </ChakraProvider>
     </>

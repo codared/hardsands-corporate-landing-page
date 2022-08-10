@@ -1,5 +1,5 @@
-import { Product } from 'utils/types'
-import { ProductsActionTypes } from './actionTypes'
+import { Product } from 'modules/products/types'
+import { AppActionTypes } from 'redux/context'
 
 export type ProductsReducerState = {
   all: {
@@ -10,14 +10,14 @@ export type ProductsReducerState = {
   }
 }
 
-const initialState: ProductsReducerState = {
+export const productsInitialState: ProductsReducerState = {
   all: {},
   single: {},
 }
 
 export function productsReducer(
-  state = initialState,
-  action: ProductsActionTypes
+  state = productsInitialState,
+  action: AppActionTypes
 ): ProductsReducerState {
   switch (action.type) {
     case 'PRODUCTS_LOAD_ALL':

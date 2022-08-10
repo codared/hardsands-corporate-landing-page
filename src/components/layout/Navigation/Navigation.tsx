@@ -19,6 +19,7 @@ import Cart from "modules/cart";
 import { useOffsetScroll } from "./hooks";
 import HardsandsAppLogo from "components/Logo";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { usePreloadProducts } from "modules/products/hooks";
 
 const minifyNotificationCount = (count: string) => {
   return count.length > 1 ? "9+" : count;
@@ -29,6 +30,8 @@ export default function Navigation() {
   const [isCartOpen, setCartOpen] = useState(false);
   const { offset } = useOffsetScroll();
   const cartBtnRef = React.useRef(null);
+
+  usePreloadProducts(3000);
 
   return (
     <Box as="nav" w="100%" position="sticky" zIndex="sticky" bg="black" top={0}>

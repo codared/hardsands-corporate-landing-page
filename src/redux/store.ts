@@ -9,7 +9,8 @@ import {
 } from 'redux'
 import thunk, { ThunkDispatch, ThunkAction } from 'redux-thunk'
 
-import { rootReducer, AppState, AppActionTypes } from './rootReducer'
+import { rootReducer, AppState } from './rootReducer'
+import { AppActionTypes } from './context'
 
 export function createStore() {
   return configureStore({
@@ -25,10 +26,10 @@ export const useTypedSelector: TypedUseSelectorHook<AppState> = useSelector
 
 export const useTypedDispatch: () => ThunkDispatch<
   AppState,
-  {},
+  void,
   AppActionTypes
 > = () => {
-  const dispatch: ThunkDispatch<AppState, {}, AppActionTypes> = useDispatch()
+  const dispatch: ThunkDispatch<AppState, void, AppActionTypes> = useDispatch()
   return dispatch
 }
 
