@@ -12,3 +12,5 @@ Just tap it!`;
 
 export const BRAND_TITLE = `Hardsands - One time Business Card`;
 export const BRAND_KEYWORDS = `hardsands, one time business card, business card for your team, electronic business card, card, nfc, contact card, share, tap`;
+
+export const ngn = '₦';

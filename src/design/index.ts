@@ -7,6 +7,9 @@ import locationIcon from "./svg/location_bg.svg";
 import mailIcon from "./svg/mail_bg.svg";
 import phoneIcon from "./svg/phone_us_icon.svg";
 import rightArrow from "./svg/right_arrow.svg";
+import MasterCardIcon from "./svg/mastercard.png";
+import VisaCardIcon from "./svg/visa.svg";
+
 
 export {
     androidSlashIcon,
@@ -17,5 +20,7 @@ export {
     locationIcon,
     mailIcon,
     phoneIcon,
-    rightArrow
+    rightArrow,
+    MasterCardIcon,
+    VisaCardIcon,
 }

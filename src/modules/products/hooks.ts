@@ -1,12 +1,32 @@
+import { useCurrency } from "modules/cart/hooks";
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useTypedDispatch } from "redux/store";
 import { Product, ProductDetails } from "utils/types";
+import { fetchAllProductsCached } from "./actions";
 
 type UseProductData = {
   product: Product | null;
   productDetails: ProductDetails | null;
 };
+
+
+/**
+ * This hook will load all products for the selected currency
+ * after a certain amount of time
+ */
+ export function usePreloadProducts(timeout = 0) {
+  const dispatch = useTypedDispatch()
+  const currency = useCurrency()
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('PRELOADING PRODUCTS')
+      dispatch(fetchAllProductsCached(currency) as any)
+    }, timeout)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+}
+
 
 /**
  * This hook is a little complicated, it's meant to:

@@ -2,6 +2,7 @@ export const CONFIG = {
   // put config
   SHOPIFY_APP_BASEURL: process.env.NEXT_PUBLIC_SHOPIFY_APP_BASEURL as string || '',
   APP_URL: process.env.NEXT_PUBLIC_APP_URL as string || '',
+  ALLOW_PARTIAL_CONFIG: process.env.NEXT_PUBLIC_ALLOW_PARTIAL_CONFIG as string || '',
   COOKIE_DOMAIN: process.env.NEXT_PUBLIC_COOKIE_DOMAIN as string || '',
   BRAND_NAME: process.env.NEXT_PUBLIC_BRAND_NAME as string || '',
   BRAND_CONTACT_EMAIL: process.env.NEXT_PUBLIC_BRAND_CONTACT_EMAIL as string || '',

@@ -86,6 +86,16 @@ const UsageDemoSection = ({ horizontal }: { horizontal?: boolean }) => {
                 // @ts-ignore
                 alignSelf={["center", "unset"]}
                 display={horizontal ? "none" : "flex"}
+                border="1px solid brand.100"
+                bg={"brand.100"}
+                color="black"
+                _hover={{
+                  bg: "transparent",
+                  color: "black",
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "brand.200",
+                }}
               >
                 {t("common:get-started", "Get Started")}
               </HardsandsButton>
@@ -95,6 +105,18 @@ const UsageDemoSection = ({ horizontal }: { horizontal?: boolean }) => {
             // @ts-ignore
             alignSelf={["center"]}
             display={horizontal ? "flex" : "none"}
+            borderWidth="1px"
+            borderStyle="solid"
+            borderColor="brand.100"
+            bg={"brand.100"}
+            color="black"
+            _hover={{
+              bg: "transparent",
+              color: "black",
+              borderWidth: "1px",
+              borderStyle: "solid",
+              borderColor: "brand.200",
+            }}
           >
             {t("common:get-started", "Get Started")}
           </HardsandsButton>

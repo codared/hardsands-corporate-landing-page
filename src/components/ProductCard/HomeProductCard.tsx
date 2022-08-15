@@ -50,16 +50,21 @@ const HomeProductCard = ({
         <Flex justify={"space-between"} direction="row">
           <HardsandsButton
             // @ts-ignore
-            border="none"
+            borderWidth="1px"
+            borderStyle="solid"
+            borderColor="brand.100"
             fontSize={"xs"}
-            bg={"black"}
-            color="brand.300"
+            bg={"brand.100"}
+            color="black"
             w="100%"
             p={["12px 16px"]}
             textAlign="center"
             _hover={{
-              bg: "black",
-              color: "brand.300",
+              bg: "transparent",
+              color: "black",
+              borderWidth: "1px",
+              borderStyle: "solid",
+              borderColor: "brand.200",
             }}
             iconMargin="20px"
             Icon={BsHandbag}
@@ -67,12 +72,12 @@ const HomeProductCard = ({
             {t("common:shop-now", "Shop Now")}
           </HardsandsButton>
           <Box height={3} width={3} />
-          <HardsandsButton
+          {/* <HardsandsButton
             // @ts-ignore
             border="1px solid black"
             fontSize={"xs"}
             bg={"transparent"}
-            color="brand.300"
+            color="black"
             w="100%"
             p={["12px 16px"]}
             textAlign="center"
@@ -83,7 +88,7 @@ const HomeProductCard = ({
             iconMargin="20px"
           >
             {t("common:customize", "Customize")}
-          </HardsandsButton>
+          </HardsandsButton> */}
         </Flex>
       </Box>
     </Box>
