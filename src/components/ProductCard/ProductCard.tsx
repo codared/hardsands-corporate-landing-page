@@ -9,8 +9,12 @@ import {
 } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
 import HardsandLink from "components/HardsandsLink";
+import { useCurrency } from "modules/cart/hooks";
 import productRoutes from "modules/products/routes";
+import { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { formatCurrencyInteger } from "utils/currency";
+import { getProductOptions } from "utils/functions";
 import { slugify } from "utils/string";
 import { ProductCardProps } from "./type";
 import VariantSelector from "./VariantSelector";
@@ -82,10 +86,18 @@ export const PreviewProductCard = ({
 
 export const ProductCard = ({
   name,
-  price,
+  productDetails,
   img = data.imageURL,
   description,
 }: ProductCardProps) => {
+  const selectedCurrency = useCurrency();
+  const productVariants = getProductOptions(productDetails.options);
+  const [variant, setVariant] = useState(productVariants[0]);
+  const price = formatCurrencyInteger(
+    productDetails.variants[variant].price,
+    selectedCurrency
+  );
+
   return (
     <HardsandLink
       href={`${productRoutes.products()}/${slugify(name)}`}
@@ -94,11 +106,13 @@ export const ProductCard = ({
       _focus={{
         outline: "none !important",
       }}
+      height="100%"
     >
       <Box
         bg={useColorModeValue("white", "gray.800")}
         position="relative"
         mb={[0]}
+        height="100%"
         // border="1px solid #F4E9E1"
       >
         <Image
@@ -108,42 +122,48 @@ export const ProductCard = ({
           w="100%"
         />
 
-        <Box p={["4"]} textAlign="center">
-          <Heading
-            textTransform="capitalize"
-            fontWeight="normal"
-            fontSize="1.2rem"
-            mb={3}
-            maxW={["full", "396px"]}
-          >
-            {name}
-          </Heading>
-          <Text mb={[3, 6]} fontSize={[12, 14]} noOfLines={[3, 3, 4]}>
-            {description}
-          </Text>
+        <Flex
+          direction={"column"}
+          justifyContent={"space-between"}
+          p={["4"]}
+          textAlign="center"
+          height={"55%"}
+        >
+          <Box>
+            <Heading
+              textTransform="capitalize"
+              fontWeight="normal"
+              fontSize="1.2rem"
+              mb={3}
+              maxW={["full", "396px"]}
+            >
+              {name}
+            </Heading>
+            <Text mb={[3, 6]} fontSize={[12, 14]} noOfLines={[3, 3, 4]}>
+              {description}
+            </Text>
+          </Box>
           <Flex mt={[0, 3, 3]} justify="space-between" flexDir={["column"]}>
             <Flex mb={2} justifyContent={"space-between"} alignItems={"center"}>
               <Box>
                 <VariantSelector
-                  selectorType="color"
-                  variants={["black", "brand.200"]}
+                  onChange={(val: string) => setVariant(val)}
+                  selectorType={productDetails.options.title}
+                  variants={productVariants}
                 />
-                {/* <VariantSelector
-                  selectorType="style"
-                  variants={["Plain", "Customized"]}
-                /> */}
               </Box>
               <Box m="auto 0">
-                {/* <Text
+                <Text
                   fontSize={[12, 12, 14]}
                   textDecoration="line-through"
                   color="danger"
                   textAlign={"end"}
+                  display="none"
                 >
-                  ₦{price}
-                </Text> */}
+                  {price}
+                </Text>
                 <Text fontWeight="bolder" fontSize={["1.2rem"]} ml={[10, 5]}>
-                  ₦{price}
+                  {price}
                 </Text>
               </Box>
             </Flex>
@@ -169,7 +189,7 @@ export const ProductCard = ({
               }}
             />
           </Flex>
-        </Box>
+        </Flex>
       </Box>
     </HardsandLink>
   );
