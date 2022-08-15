@@ -155,7 +155,9 @@ export const ProductCard = ({
               p={["12px 16px", "10px 25px"]}
               Icon={AiOutlineShoppingCart}
               iconSize={20}
-              border="1px solid brand.100"
+              borderWidth="1px"
+              borderStyle="solid"
+              borderColor="brand.100"
               bg={"brand.100"}
               color="black"
               _hover={{
@@ -163,7 +165,7 @@ export const ProductCard = ({
                 color: "black",
                 borderWidth: "1px",
                 borderStyle: "solid",
-                borderColor: "brand.100",
+                borderColor: "brand.200",
               }}
             />
           </Flex>
