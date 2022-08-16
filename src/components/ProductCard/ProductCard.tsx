@@ -31,10 +31,18 @@ const data = {
 
 export const PreviewProductCard = ({
   name,
-  price,
+  productDetails,
   img = data.imageURL,
   description,
 }: ProductCardProps) => {
+  const selectedCurrency = useCurrency();
+  const productVariants = getProductOptions(productDetails.options);
+  const [variant, setVariant] = useState(productVariants[0]);
+  const price = formatCurrencyInteger(
+    productDetails.variants[variant].price,
+    selectedCurrency
+  );
+
   return (
     <HardsandLink
       href={`${productRoutes.products()}/${slugify(name)}`}
@@ -76,7 +84,7 @@ export const PreviewProductCard = ({
             mt={2}
             color="brand.300"
           >
-            ₦{price}
+            {price}
           </Text>
         </Box>
       </Box>

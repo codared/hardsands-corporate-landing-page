@@ -39,10 +39,6 @@ export interface PromotionWithExtraData extends Promotion {
   isActive?: boolean;
 }
 
-export type Product = {
-  [key: string]: string;
-};
-
 export interface ProductDetails {
   otherImageUrls: string[];
 }

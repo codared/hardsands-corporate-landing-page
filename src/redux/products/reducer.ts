@@ -1,49 +1,51 @@
-import { Product } from 'modules/products/types'
-import { AppActionTypes } from 'redux/context'
+import { Product } from "modules/products/types";
+import { AppActionTypes } from "redux/context";
 
 export type ProductsReducerState = {
   all: {
-    [currency: string]: Product[]
-  }
+    [currency: string]: Product[];
+  };
   single: {
-    [currency: string]: Product[]
-  }
-}
+    [currency: string]: Product;
+  };
+};
 
 export const productsInitialState: ProductsReducerState = {
   all: {},
   single: {},
-}
+};
 
 export function productsReducer(
   state = productsInitialState,
   action: AppActionTypes
 ): ProductsReducerState {
   switch (action.type) {
-    case 'PRODUCTS_LOAD_ALL':
+    case "PRODUCTS_LOAD_ALL":
       return {
         ...state,
         all: {
           ...state.all,
           [action.payload.currency]: action.payload.products,
         },
-      }
-    case 'PRODUCTS_LOAD_MULTIPLE':
+      };
+    case "PRODUCTS_LOAD_MULTIPLE":
       return loadMultipleProducts(
         state,
         action.payload.currency,
         action.payload.products
-      )
+      );
 
-    case 'PRODUCTS_LOAD_SINGLE':
-      return loadSingleProduct(
-        state,
-        action.payload.currency,
-        action.payload.product
-      )
+    case "PRODUCTS_LOAD_SINGLE":
+      return {
+        ...state,
+        single: {
+          ...state.single,
+          [action.payload.currency]: action.payload.product,
+        },
+      };
 
     default:
-      return state
+      return state;
   }
 }
 
@@ -52,19 +54,22 @@ function loadSingleProduct(
   currency: string,
   product: Product
 ): ProductsReducerState {
-  const { single } = state
-  single[currency] = single[currency] || []
-  const ind = single[currency].findIndex((a) => a.id === product.id)
+  const { all, single } = state;
+  all[currency] = all[currency] || [];
+  const ind = all[currency].findIndex((a) => a.id === product.id);
   if (ind > -1) {
-    single[currency][ind] = product
-  } else {
-    single[currency].push(product)
+    return {
+      ...state,
+      single: {
+        [currency]: product,
+      },
+    };
   }
 
   return {
     ...state,
     single,
-  }
+  };
 }
 
 function loadMultipleProducts(
@@ -73,6 +78,6 @@ function loadMultipleProducts(
   products: Product[]
 ): ProductsReducerState {
   return products.reduce<ProductsReducerState>((carry, item) => {
-    return loadSingleProduct(carry, currency, item)
-  }, state)
+    return loadSingleProduct(carry, currency, item);
+  }, state);
 }

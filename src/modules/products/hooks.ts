@@ -2,31 +2,30 @@ import { useCurrency } from "modules/cart/hooks";
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useTypedDispatch } from "redux/store";
-import { Product, ProductDetails } from "utils/types";
-import { fetchAllProductsCached } from "./actions";
+import { ProductDetails } from "utils/types";
+import { fetchAllProductsCached, fetchProductCached } from "./actions";
+import { Product } from "./types";
 
 type UseProductData = {
   product: Product | null;
   productDetails: ProductDetails | null;
 };
 
-
 /**
  * This hook will load all products for the selected currency
  * after a certain amount of time
  */
- export function usePreloadProducts(timeout = 0) {
-  const dispatch = useTypedDispatch()
-  const currency = useCurrency()
+export function usePreloadProducts(timeout = 0) {
+  const dispatch = useTypedDispatch();
+  const currency = useCurrency();
   useEffect(() => {
     setTimeout(() => {
-      console.log('PRELOADING PRODUCTS')
-      dispatch(fetchAllProductsCached(currency) as any)
-    }, timeout)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+      console.log("PRELOADING PRODUCTS");
+      dispatch(fetchAllProductsCached(currency) as any);
+    }, timeout);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 }
-
 
 /**
  * This hook is a little complicated, it's meant to:
@@ -38,7 +37,7 @@ export const useProduct = (
   slug: string
 ): UseProductData => {
   const { t } = useTranslation();
-  const currency = "USD"; // useCurrency()
+  const currency = useCurrency();
   const dispatch = useTypedDispatch();
   // sync get product details for initial product
   // useRef() prevents this from being run after first render
@@ -53,13 +52,14 @@ export const useProduct = (
   });
 
   useEffect(() => {
-    // dispatch(fetchProductCached(slug, currency)).then((product) => {
-    //   const productDetails = product ? getProductDetails(t, product.id) : null;
-    //   setState({
-    //     product,
-    //     productDetails,
-    //   });
-    // });
+    dispatch(fetchProductCached(slug, currency)).then((product) => {
+      // const productDetails = product ? getProductDetails(t, product.id) : null;
+      setState({
+        product,
+        productDetails: null,
+      });
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency, slug]);
 
   return state;

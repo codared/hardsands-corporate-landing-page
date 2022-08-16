@@ -2,14 +2,30 @@ import { Box, Divider, Flex, Heading, HStack, Text } from "@chakra-ui/react";
 import HardsandsAccordion from "components/HardsandsAccordion";
 import ChangeColorButton from "components/HardsandsButton/ChangeColorButton";
 import QuantitySelector from "components/HardsandsButton/QuantitySelector";
+import { useCurrency } from "modules/cart/hooks";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+import { formatCurrencyInteger } from "utils/currency";
+import { getProductOptions } from "utils/functions";
+import { Product } from "../types";
 
-const ProductDescriptionSection = () => {
+const ProductDescriptionSection = ({
+  productDetails,
+}: {
+  productDetails: Product;
+}) => {
   const { t } = useTranslation();
-  const [activeColor, setActiveColor] = useState<string | number>("");
+  const productVariant = getProductOptions(productDetails.options);
+  const currency = useCurrency();
 
+  const [activeVariant, setActiveVariant] = useState<string | number>(
+    productVariant[0]
+  );
+  const price = formatCurrencyInteger(
+    productDetails.variants[activeVariant].price,
+    currency
+  );
   const handleAddtoCart = () => {
     console.log("adding to cart...");
   };
@@ -29,11 +45,13 @@ const ProductDescriptionSection = () => {
 
   return (
     <Box w={["100%", "100%", "50%"]}>
-      <Heading fontSize={28}>{t("product:title", "Wooden Card")}</Heading>
+      <Heading fontSize={28}>
+        {t("product:title", `${productDetails.title}`)}
+      </Heading>
       <Box h={8} />
       <Flex justifyContent={"space-between"}>
         <Heading fontSize={20} color={"brand.300"}>
-          {t("product:product-price", "N30,500")}
+          {t("product:product-price", `${price}`)}
         </Heading>
         <Flex alignItems={"center"}>
           <Flex justify={"center"} alignItems={"center"}>
@@ -48,27 +66,22 @@ const ProductDescriptionSection = () => {
         </Flex>
       </Flex>
       <Box h={8} />
-      <Text>
-        {t(
-          "product:description",
-          `Typing one nonsense to make it make sense which will eventually be replaced when the copywriter is ready. Typing one nonsense to make it make sense which will eventually be replaced when the copywriter is ready. Typing one nonsense to make it make sense which will eventually be replaced when the copywriter is ready.`
-        )}
-      </Text>
+      <Text>{t("product:description", `${productDetails.description}`)}</Text>
       <Box h={8} />
       <Flex w="full">
         <ChangeColorButton
           color="orange.900"
           name="Dark Brown"
           id={1}
-          activeColor={activeColor}
-          onClick={setActiveColor}
+          activeColor={activeVariant}
+          onClick={setActiveVariant}
         />
         <ChangeColorButton
           color="brand.300"
           name="Dark Brown"
           id={2}
-          activeColor={activeColor}
-          onClick={setActiveColor}
+          activeColor={activeVariant}
+          onClick={setActiveVariant}
         />
       </Flex>
       <Box h={8} />
@@ -96,9 +109,9 @@ const ProductDescriptionSection = () => {
           onClick={handleAddtoCart}
           userSelect="none"
         >
-          <Text>Add to cart</Text>
+          <Text>{t("product:add-to-cart", "Add to cart")}</Text>
           <Box as={"span"}>{" - "}</Box>
-          <Text>{"N40,000"}</Text>
+          <Text>{t("product:product-price", `${price}`)}</Text>
         </HStack>
       </Flex>
       <Box h={8} />
