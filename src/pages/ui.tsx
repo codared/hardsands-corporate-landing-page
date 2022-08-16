@@ -17,14 +17,14 @@ const UIPage = () => {
       <Navigation />
       <Container maxW="container.lg">
         <SimpleGrid columns={[2, 3, 4]} spacing={[2, 3, 5]}>
+          {/* <ProductCard name={t("product:title", "Hardsands metal card")} price={t("product:price", "78,000")} />
           <ProductCard name={t("product:title", "Hardsands metal card")} price={t("product:price", "78,000")} />
           <ProductCard name={t("product:title", "Hardsands metal card")} price={t("product:price", "78,000")} />
           <ProductCard name={t("product:title", "Hardsands metal card")} price={t("product:price", "78,000")} />
           <ProductCard name={t("product:title", "Hardsands metal card")} price={t("product:price", "78,000")} />
           <ProductCard name={t("product:title", "Hardsands metal card")} price={t("product:price", "78,000")} />
           <ProductCard name={t("product:title", "Hardsands metal card")} price={t("product:price", "78,000")} />
-          <ProductCard name={t("product:title", "Hardsands metal card")} price={t("product:price", "78,000")} />
-          <ProductCard name={t("product:title", "Hardsands metal card")} price={t("product:price", "78,000")} />
+          <ProductCard name={t("product:title", "Hardsands metal card")} price={t("product:price", "78,000")} /> */}
         </SimpleGrid>
       </Container>
       <Parallax speed={-10}>
