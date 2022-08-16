@@ -17,3 +17,16 @@ export const isSupportedCurrency = (currency: string): boolean => {
 export const getProductOptions = (options: ProductOptions) => {
   return Object.values(options.options).map((opt) => opt.text);
 };
+
+
+// export function getProductVariant(
+//   sizes: SizeOption[],
+//   isSubscriptionOption?: boolean
+// ) {
+//   if (isSubscriptionOption) {
+//     return sizes.find((opts) => opts.text === SUBSCRIPTION_PURCHASE_SUBFLAG)
+//   } else {
+//     return sizes.find((opts) => opts.text === ONE_TIME_PURCHASE_SUBFLAG)
+//   }
+// }
+

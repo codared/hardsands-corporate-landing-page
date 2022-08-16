@@ -1,7 +1,13 @@
 import { CURRENCY_CODES } from "modules/products/types";
 import { ReactElement } from "react";
 import { ExchangeRateMap } from "utils/forex";
-import { AnyDict } from "utils/types";
+import {
+  AnyDict,
+  EcommerceCartAction,
+  EcommerceProduct,
+  EcommercePurchase,
+  GenericEvent,
+} from "utils/types";
 
 type EmptyArray = [];
 
@@ -252,4 +258,43 @@ export interface CustomerInfoState {
   billingAddressSameAsShipping?: boolean;
   billingAddress?: AddressInfo;
   cardInfo?: CardInfo;
+}
+
+export type TokenizationMethod = "apple_pay" | "google_pay" | "unknown";
+
+export interface Card3DSData {
+  type: string;
+  payment_provider: string;
+  card_brand: string;
+  country: string;
+}
+
+export enum PromotionSource {
+  MANUAL_CHECKOUT = "manual_checkout",
+  MANUAL_CART = "manual_cart",
+  OVERRIDE_COUPON = "override_coupon",
+  DISCOUNT_URL = "discount_url",
+}
+
+export interface CheckoutTrackingFunctions {
+  layerPush: (data: { [k: string]: any }) => Promise<void>;
+  trackProductClick: (product: EcommerceProduct) => Promise<void>;
+  trackCartAdd: (product: EcommerceCartAction) => Promise<void>;
+  trackProductDetail: (product: EcommerceProduct) => Promise<void>;
+  trackBeginCheckout: (
+    cart: EcommerceCartAction[],
+    data?: string
+  ) => Promise<void>;
+  trackCheckoutStep: (step: number, data?: string) => Promise<void>;
+  trackCheckoutData: (step: number, data: string) => Promise<void>;
+  trackPurchase: (
+    data: EcommercePurchase,
+    products: EcommerceCartAction[]
+  ) => Promise<void>;
+  trackImpactConversion: (
+    data: EcommercePurchase,
+    products: EcommerceCartAction[]
+  ) => Promise<void>;
+  trackEvent: (event: GenericEvent) => Promise<void>;
+  trackLifecycleShippingAddressUpdated?: (att: BrandServicesAddress) => void;
 }

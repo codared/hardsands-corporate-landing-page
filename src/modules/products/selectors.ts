@@ -36,14 +36,15 @@ export const selectSingleProduct =
       }
     }
 
-    const singleArr = state.products.single[opts.currency];
-    if (singleArr) {
-      if ("slug" in opts) {
-        return singleArr.find((a) => a.slug === opts.slug) ?? undefined;
-      }
-      if ("id" in opts) {
-        return singleArr.find((a) => a.id === opts.id) ?? undefined;
-      }
+    const singleProd = state.products.single[opts.currency];
+    if (singleProd) {
+      // if ("slug" in opts) {
+      //   return singleArr.find((a) => a.slug === opts.slug) ?? undefined;
+      // }
+      // if ("id" in opts) {
+        // return singleArr.find((a) => a.id === opts.id) ?? undefined;
+        return singleProd ?? undefined;
+      // }
     }
 
     return undefined;
@@ -63,5 +64,7 @@ export const selectMultipleProducts =
 
 export const selectAllProductsOutOfStock =
   (currency: string) => (state: AppState) => {
-    return selectAllProducts(currency)(state)?.filter((p) => p.outOfStock);
+    return selectAllProducts(currency)(state)?.filter(
+      (p) => !p.variants["Plain"].instock || !p.variants["Customized"].instock
+    );
   };

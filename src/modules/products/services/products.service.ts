@@ -87,7 +87,7 @@ class ProductsApi {
       }`
   
       const resp = await storefrontApiJsonFetch<Product>(
-        `/api/products/${slugOrId}?${params}`
+        `/api/product/${slugOrId}?${params}`
       )
   
       if (resp.isError) {

@@ -39,10 +39,6 @@ export interface PromotionWithExtraData extends Promotion {
   isActive?: boolean;
 }
 
-export type Product = {
-  [key: string]: string;
-};
-
 export interface ProductDetails {
   otherImageUrls: string[];
 }
@@ -67,3 +63,43 @@ export type ActionsType = {
 export type ActionsFormType = {
   [key: string]: string | number | any[];
 };
+
+export interface EcommerceProduct {
+  id: string | number;
+  name?: string;
+  brand?: string;
+  category?: string;
+  variant?: string;
+  // In the client's selected currency
+  price?: number;
+}
+
+export interface EcommerceCartAction extends EcommerceProduct {
+  // The number of products that were added or removed from the cart.
+  // **not the total**
+  quantity: number;
+  currency?: string;
+}
+
+export interface EcommercePurchase {
+  // The order ID.
+  id: string;
+  // The store or affiliation from which this transaction occurred (e.g. Google
+  // Store).
+  affiliation?: string;
+  // Specifies the total revenue or grand total associated with the transaction
+  // (e.g. 11.99). This value may include shipping, tax costs, or other
+  // adjustments to total revenue that you want to include as part of your
+  // revenue calculations.
+  revenue?: number;
+  tax?: number;
+  shipping?: number;
+  coupon?: string;
+}
+
+export interface GenericEvent {
+  category: string;
+  action: string;
+  label?: string;
+  value?: number;
+}

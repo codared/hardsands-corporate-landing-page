@@ -1,5 +1,4 @@
-import { CURRENCY_CODES } from "modules/products/types";
-import { Product } from "utils/types";
+import { CURRENCY_CODES, Product } from "modules/products/types";
 
 export declare const CART_ITEM_TYPE: {
   FREE_TRIAL: "FREE_TRIAL";
@@ -14,6 +13,25 @@ export declare type CART_ITEM_TYPE =
   typeof CART_ITEM_TYPE[keyof typeof CART_ITEM_TYPE];
 
 export type CartResponseSizeOption = Pick<any, "id" | "text">;
+
+export class AddCartItemBody {
+  productId: number | undefined;
+  quantity?: number;
+  productVariant?: string;
+  type?: "WARRANTY" | "NORMAL";
+}
+
+export class UpdateCartItemBody {
+  quantity: number | undefined;
+}
+
+export class UpdateCartBody {
+  currency: string | undefined;
+}
+
+export class ApplyOfferBody {
+  productCustomizationOptionIds?: number[];
+}
 
 /**
  * Enough to describe the product - title, image, description

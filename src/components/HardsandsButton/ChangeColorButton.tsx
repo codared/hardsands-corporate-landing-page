@@ -7,7 +7,7 @@ const ChangeColorButton = ({
   activeColor = 1,
   onClick = (val: string | number) => {},
 }: {
-  name: string;
+  name?: string;
   id: string | number;
   color: string;
   activeColor: string | number;

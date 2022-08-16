@@ -1,17 +1,55 @@
-import { Box, Divider, Flex, Heading, HStack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, HStack, Text } from "@chakra-ui/react";
 import HardsandsAccordion from "components/HardsandsAccordion";
-import ChangeColorButton from "components/HardsandsButton/ChangeColorButton";
 import QuantitySelector from "components/HardsandsButton/QuantitySelector";
-import { useState } from "react";
+import VariantSelector from "components/ProductCard/VariantSelector";
+import Cart from "modules/cart";
+import { addItemToCart } from "modules/cart/actions";
+import { useCurrency } from "modules/cart/hooks";
+import { useContext, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+import { CheckoutContext } from "redux/context";
+import { formatCurrencyInteger } from "utils/currency";
+import { getProductOptions } from "utils/functions";
+import { Product } from "../types";
 
-const ProductDescriptionSection = () => {
+const ProductDescriptionSection = ({
+  productDetails,
+}: {
+  productDetails: Product;
+}) => {
   const { t } = useTranslation();
-  const [activeColor, setActiveColor] = useState<string | number>("");
+  const { dispatch } = useContext(CheckoutContext);
+  const [quantity, setQuantity] = useState(1);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const productVariants = getProductOptions(productDetails.options);
+  const currency = useCurrency();
+  const cartBtnRef = useRef(null);
+  const [activeVariant, setActiveVariant] = useState<string | number>(
+    productVariants[0]
+  );
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleAddtoCart = () => {
-    console.log("adding to cart...");
+  const price = formatCurrencyInteger(
+    productDetails.variants[activeVariant].price,
+    currency
+  );
+  const handleAddtoCart = async () => {
+    setIsLoading(true);
+
+    const customizedCartItem = {
+      productId: productDetails.id,
+      productVariant: activeVariant,
+      quantity,
+    };
+
+    try {
+      await dispatch(addItemToCart(customizedCartItem));
+      setIsLoading(false);
+      setIsCartOpen(true);
+    } catch (err) {
+      setIsLoading(false);
+    }
   };
 
   const accordionItems = [
@@ -29,11 +67,13 @@ const ProductDescriptionSection = () => {
 
   return (
     <Box w={["100%", "100%", "50%"]}>
-      <Heading fontSize={28}>{t("product:title", "Wooden Card")}</Heading>
+      <Heading fontSize={28}>
+        {t("product:title", `${productDetails.title}`)}
+      </Heading>
       <Box h={8} />
       <Flex justifyContent={"space-between"}>
         <Heading fontSize={20} color={"brand.300"}>
-          {t("product:product-price", "N30,500")}
+          {t("product:product-price", `${price}`)}
         </Heading>
         <Flex alignItems={"center"}>
           <Flex justify={"center"} alignItems={"center"}>
@@ -48,43 +88,27 @@ const ProductDescriptionSection = () => {
         </Flex>
       </Flex>
       <Box h={8} />
-      <Text>
-        {t(
-          "product:description",
-          `Typing one nonsense to make it make sense which will eventually be replaced when the copywriter is ready. Typing one nonsense to make it make sense which will eventually be replaced when the copywriter is ready. Typing one nonsense to make it make sense which will eventually be replaced when the copywriter is ready.`
-        )}
-      </Text>
+      <Text>{t("product:description", `${productDetails.description}`)}</Text>
       <Box h={8} />
       <Flex w="full">
-        <ChangeColorButton
-          color="orange.900"
-          name="Dark Brown"
-          id={1}
-          activeColor={activeColor}
-          onClick={setActiveColor}
-        />
-        <ChangeColorButton
-          color="brand.300"
-          name="Dark Brown"
-          id={2}
-          activeColor={activeColor}
-          onClick={setActiveColor}
+        <VariantSelector
+          selectorType={`${productDetails.options.title}_`}
+          variants={productVariants}
+          onChange={setActiveVariant}
         />
       </Flex>
       <Box h={8} />
       <Flex position={"relative"} direction={["column", "row"]}>
-        <QuantitySelector
-          quantity={1}
-          onChange={(val: number) => console.log("quantity >>> ", val)}
-        />
+        <QuantitySelector quantity={quantity} onChange={setQuantity} />
         <Box h={4} />
-        <HStack
-          px={[2]}
-          py={[2]}
+        <Button
+          px={[4]}
+          py={[8]}
           mr={[4]}
           cursor="pointer"
           w={"100%"}
-          justify={"center"}
+          borderRadius={"none"}
+          justifyContent={"center"}
           transition={"all ease-in-out 200ms"}
           bg="brand.200"
           color={"black"}
@@ -95,16 +119,24 @@ const ProductDescriptionSection = () => {
           fontFamily={"MADE Outer sans"}
           onClick={handleAddtoCart}
           userSelect="none"
+          ref={cartBtnRef}
+          isLoading={isLoading}
+          loadingText="Adding to cart..."
         >
-          <Text>Add to cart</Text>
-          <Box as={"span"}>{" - "}</Box>
-          <Text>{"N40,000"}</Text>
-        </HStack>
+          <Text>{t("product:add-to-cart", "Add to cart")}</Text>
+          <Box as={"span"}>{"  -  "}</Box>
+          <Text>{t("product:product-price", `${price}`)}</Text>
+        </Button>
       </Flex>
       <Box h={8} />
       {/* <Divider my={8} /> */}
       <HardsandsAccordion accordionItems={accordionItems} />
       {/* <Divider my={8} /> */}
+      <Cart
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(!isCartOpen)}
+        ref={cartBtnRef}
+      />
     </Box>
   );
 };

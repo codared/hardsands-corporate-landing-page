@@ -1,15 +1,20 @@
 import { Box, Container, Flex, Grid, Heading } from "@chakra-ui/react";
 import { PreviewProductCard } from "components/ProductCard/ProductCard";
-import { PDPSkeleton } from "components/ProductCard/ProductSkeleton";
+import { useCurrency } from "modules/cart/hooks";
 import UsageDemoSection from "modules/hardsands/components/HomePage/UsageDemoSection";
 import { ProductColors } from "modules/shared/constants";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Product, ProductDetails } from "utils/types";
+import { useTypedSelector } from "redux/store";
+import { formatCurrencyInteger } from "utils/currency";
+import { getProductOptions } from "utils/functions";
+import { ProductDetails } from "utils/types";
+import { Product } from "../types";
 import ProductDescriptionSection from "./ProductDescriptionSection";
 import ProductImageSlide from "./ProductImageSlides";
 
 interface ProductDetailSectionProps {
-  product: Product | null;
+  product: Product;
   productDetails: ProductDetails | null;
   productColor?: ProductColors;
 }
@@ -26,8 +31,11 @@ const ProductDetailSection = ({
   productColor,
 }: ProductDetailSectionProps) => {
   const { t } = useTranslation();
-  const idArray = [0, 1, 2];
-  // return productDetails && product ? (
+  const currency = useCurrency();
+  const allProducts = useTypedSelector(
+    (state) => state?.products?.all[currency]
+  );
+  console.log("allProducts >>>> ", allProducts);
   return (
     <>
       <Container maxWidth={["lg", "7xl"]}>
@@ -56,7 +64,7 @@ const ProductDetailSection = ({
             <Box w={20} />
 
             {/* Product Description Section */}
-            <ProductDescriptionSection />
+            <ProductDescriptionSection productDetails={product as Product} />
             {/* End Product Description Section */}
           </Flex>
 
@@ -77,17 +85,22 @@ const ProductDetailSection = ({
                 ]}
                 gap="2rem"
               >
-                {idArray.map((id) => (
-                  <PreviewProductCard
-                    key={id}
-                    name={t("product:title", "Hardsands metal card")}
-                    description={t(
-                      "product:description",
-                      "PVC is a customizable card for your business or blablabla. I’m lost of words to use so here is a placeholder that doesn’t make sense."
-                    )}
-                    price={t("product:price", "78,000")}
-                  />
-                ))}
+                {!!allProducts &&
+                  allProducts.length &&
+                  allProducts
+                    .filter((allProd) => allProd.id !== product.id)
+                    .slice(0, 3)
+                    .map((prod) => (
+                      <PreviewProductCard
+                        key={prod.id}
+                        name={t("product:title", `${prod.title}`)}
+                        description={t(
+                          "product:description",
+                          `${prod.description}`
+                        )}
+                        productDetails={prod}
+                      />
+                    ))}
               </Grid>
             </Flex>
           </Box>
