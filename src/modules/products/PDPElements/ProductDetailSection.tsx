@@ -89,6 +89,7 @@ const ProductDetailSection = ({
                   allProducts.length &&
                   allProducts
                     .filter((allProd) => allProd.id !== product.id)
+                    .slice(0, 3)
                     .map((prod) => (
                       <PreviewProductCard
                         key={prod.id}

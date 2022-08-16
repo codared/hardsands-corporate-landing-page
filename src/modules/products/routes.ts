@@ -1,6 +1,6 @@
 import buildRoutes from '../shared/buildRoutes'
 
-const productRoutes = buildRoutes('products', {
+const productRoutes = buildRoutes('collections', {
   products: ({ filter }: { filter?: string } = {}) => {
     if (!filter) {
       return ''
