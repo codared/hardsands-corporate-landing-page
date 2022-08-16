@@ -20,13 +20,15 @@ import { useOffsetScroll } from "./hooks";
 import HardsandsAppLogo from "components/Logo";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { usePreloadProducts } from "modules/products/hooks";
+import { useCartItemCount } from "modules/cart/hooks";
 
-const minifyNotificationCount = (count: string) => {
-  return count.length > 1 ? "9+" : count;
+const minifyNotificationCount = (count: string | number) => {
+  return count.toString().length > 1 ? "9+" : count;
 };
 
 export default function Navigation() {
   const { isOpen, onToggle } = useDisclosure();
+  const cartItemCount = useCartItemCount();
   const [isCartOpen, setCartOpen] = useState(false);
   const { offset } = useOffsetScroll();
   const cartBtnRef = React.useRef(null);
@@ -77,17 +79,21 @@ export default function Navigation() {
             ref={cartBtnRef}
           >
             <AiOutlineShoppingCart color="white" size={24} />
-            <Box
-              display="flex"
-              borderRadius="100%"
-              bg="black"
-              color="white"
-              w="23px"
-              h="23px"
-              alignSelf="flex-start"
-            >
-              <Text alignSelf="flex-end">{minifyNotificationCount("10")}</Text>
-            </Box>
+            {cartItemCount !== 0 && (
+              <Box
+                display="flex"
+                borderRadius="100%"
+                bg="black"
+                color="white"
+                w="23px"
+                h="23px"
+                alignSelf="flex-start"
+              >
+                <Text alignSelf="flex-end">
+                  {minifyNotificationCount(cartItemCount)}
+                </Text>
+              </Box>
+            )}
           </Button>
 
           <Button

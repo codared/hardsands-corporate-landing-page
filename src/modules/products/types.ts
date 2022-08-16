@@ -4,17 +4,6 @@ type CurrencyPrices = {
   [s in CURRENCY_CODES]: number;
 };
 
-// export interface Product {
-//   id: number;
-//   slug: string;
-//   title: string;
-//   description?: string;
-//   thumbnailUrl: string;
-//   shopifyId?: string;
-//   currency: CURRENCY_CODES;
-//   outOfStock: boolean;
-// }
-
 export interface ProductOptions {
   title: string;
   options: {
@@ -36,6 +25,7 @@ export interface ProductVariants {
 
 export interface Product {
   id: string | number;
+  image?: string;
   title: string;
   description: string;
   tags: Array<string>;

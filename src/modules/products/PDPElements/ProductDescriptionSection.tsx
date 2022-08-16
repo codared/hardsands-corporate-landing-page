@@ -124,8 +124,8 @@ const ProductDescriptionSection = ({
           loadingText="Adding to cart..."
         >
           <Text>{t("product:add-to-cart", "Add to cart")}</Text>
-          <Box as={"span"}>{"  -  "}</Box>
-          <Text>{t("product:product-price", `${price}`)}</Text>
+          {/* <Box as={"span"}>{"  -  "}</Box>
+          <Text>{t("product:product-price", `${price}`)}</Text> */}
         </Button>
       </Flex>
       <Box h={8} />
