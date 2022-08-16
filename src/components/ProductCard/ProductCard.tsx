@@ -115,6 +115,7 @@ export const ProductCard = ({
         outline: "none !important",
       }}
       height="100%"
+      mb={20}
     >
       <Box
         bg={useColorModeValue("white", "gray.800")}

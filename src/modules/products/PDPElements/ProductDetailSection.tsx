@@ -3,6 +3,7 @@ import { PreviewProductCard } from "components/ProductCard/ProductCard";
 import { useCurrency } from "modules/cart/hooks";
 import UsageDemoSection from "modules/hardsands/components/HomePage/UsageDemoSection";
 import { ProductColors } from "modules/shared/constants";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useTypedSelector } from "redux/store";
 import { formatCurrencyInteger } from "utils/currency";
@@ -30,18 +31,10 @@ const ProductDetailSection = ({
   productColor,
 }: ProductDetailSectionProps) => {
   const { t } = useTranslation();
-  const idArray = [0, 1, 2];
   const currency = useCurrency();
   const allProducts = useTypedSelector(
     (state) => state?.products?.all[currency]
   );
-  const productOption = getProductOptions(product.options);
-  const price = formatCurrencyInteger(
-    product.variants[productOption[0]].price,
-    currency
-  );
-  // return productDetails && product ? (
-
   console.log("allProducts >>>> ", allProducts);
   return (
     <>
@@ -94,21 +87,19 @@ const ProductDetailSection = ({
               >
                 {!!allProducts &&
                   allProducts.length &&
-                  allProducts.map((prod) => (
-                    <PreviewProductCard
-                      key={prod.id}
-                      name={t("product:title", `${prod.title}`)}
-                      description={t(
-                        "product:description",
-                        `${prod.description}`
-                      )}
-                      productDetails={prod}
-                      // price={t(
-                      //   "product:price",
-                      //   `${prod.variants[productOption[0]].price}`
-                      // )}
-                    />
-                  ))}
+                  allProducts
+                    .filter((allProd) => allProd.id !== product.id)
+                    .map((prod) => (
+                      <PreviewProductCard
+                        key={prod.id}
+                        name={t("product:title", `${prod.title}`)}
+                        description={t(
+                          "product:description",
+                          `${prod.description}`
+                        )}
+                        productDetails={prod}
+                      />
+                    ))}
               </Grid>
             </Flex>
           </Box>

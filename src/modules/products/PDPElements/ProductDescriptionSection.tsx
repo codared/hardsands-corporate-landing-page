@@ -1,7 +1,7 @@
-import { Box, Divider, Flex, Heading, HStack, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, HStack, Text } from "@chakra-ui/react";
 import HardsandsAccordion from "components/HardsandsAccordion";
-import ChangeColorButton from "components/HardsandsButton/ChangeColorButton";
 import QuantitySelector from "components/HardsandsButton/QuantitySelector";
+import VariantSelector from "components/ProductCard/VariantSelector";
 import { useCurrency } from "modules/cart/hooks";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -16,11 +16,10 @@ const ProductDescriptionSection = ({
   productDetails: Product;
 }) => {
   const { t } = useTranslation();
-  const productVariant = getProductOptions(productDetails.options);
+  const productVariants = getProductOptions(productDetails.options);
   const currency = useCurrency();
-
   const [activeVariant, setActiveVariant] = useState<string | number>(
-    productVariant[0]
+    productVariants[0]
   );
   const price = formatCurrencyInteger(
     productDetails.variants[activeVariant].price,
@@ -69,19 +68,10 @@ const ProductDescriptionSection = ({
       <Text>{t("product:description", `${productDetails.description}`)}</Text>
       <Box h={8} />
       <Flex w="full">
-        <ChangeColorButton
-          color="orange.900"
-          name="Dark Brown"
-          id={1}
-          activeColor={activeVariant}
-          onClick={setActiveVariant}
-        />
-        <ChangeColorButton
-          color="brand.300"
-          name="Dark Brown"
-          id={2}
-          activeColor={activeVariant}
-          onClick={setActiveVariant}
+        <VariantSelector
+          selectorType={`${productDetails.options.title}_`}
+          variants={productVariants}
+          onChange={(val: string) => console.log(val)}
         />
       </Flex>
       <Box h={8} />

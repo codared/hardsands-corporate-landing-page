@@ -1,4 +1,12 @@
-import { Box, Circle, Flex, Tag, TagLabel } from "@chakra-ui/react";
+import {
+  Box,
+  Circle,
+  Flex,
+  HStack,
+  Tag,
+  TagLabel,
+  Text,
+} from "@chakra-ui/react";
 import { SyntheticEvent, useState } from "react";
 
 const VariantSelector = ({
@@ -29,6 +37,7 @@ const VariantSelector = ({
           {variants.map((variant: string) => {
             return (
               <Box
+                cursor="pointer"
                 key={variant}
                 borderWidth={1}
                 borderColor={active === variant ? "brand.300" : "brand.100"}
@@ -45,7 +54,7 @@ const VariantSelector = ({
       );
     case "Style":
       return (
-        <Flex mb={2}>
+        <Flex mb={2} cursor="pointer">
           {variants.map((variant) => (
             <Tag
               size={"md"}
@@ -56,6 +65,7 @@ const VariantSelector = ({
               borderColor={active === variant ? "brand.300" : "brand.100"}
               onClick={(e) => handleClick(e, variant)}
               mr={2}
+              cursor="pointer"
             >
               <TagLabel>{variant}</TagLabel>
             </Tag>
@@ -65,17 +75,33 @@ const VariantSelector = ({
     default:
       return (
         <Flex mb={2}>
-          <Tag
-            size={"md"}
-            bg="gray.100"
-            borderRadius="full"
-            borderWidth={1}
-            borderColor={"gray.100"}
-            onClick={(e) => {}}
-            mr={2}
-          >
-            {/* <TagLabel>{variant}</TagLabel> */}
-          </Tag>
+          {variants.map((variant) => {
+            return (
+              <HStack
+                key={variant}
+                borderWidth="1px"
+                borderColor={active === variant ? "brand.300" : "brand.200"}
+                px={[5, 5, 10]}
+                py={[2]}
+                mr={[4]}
+                onClick={(e) => handleClick(e, variant)}
+                cursor="pointer"
+                transition={"all ease-in-out 200ms"}
+              >
+                {!!colorMap[variant] && (
+                  <Tag
+                    size={"sm"}
+                    borderRadius="full"
+                    variant="solid"
+                    bg={colorMap[variant]}
+                  />
+                )}
+                <Text color="gray.600" userSelect="none">
+                  {variant}
+                </Text>
+              </HStack>
+            );
+          })}
         </Flex>
       );
   }
