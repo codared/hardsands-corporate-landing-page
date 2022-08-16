@@ -33,8 +33,8 @@ import {
   CartCurrencyType,
 } from "./types";
 
-const CART_ID_LOCAL_STORAGE_KEY = "cart_id";
-const CURRENCY_COOKIE = "selected_currency";
+const CART_ID_LOCAL_STORAGE_KEY = "hardsands_cart_id";
+const CURRENCY_COOKIE = "hardsands_selected_currency";
 
 export const loadCart = (cart: CartResponse, discountApplied = false) => ({
   type: CART_LOAD as typeof CART_LOAD,
@@ -160,13 +160,13 @@ const trackAddingItemToCart = (
 
 export const addItemToCart: ThunkActionCreator<Promise<CartResponse>> =
   (toAdd: AddCartItemBody) => async (dispatch, getState) => {
-    const cartId = selectCartId(getState());
+    let cartId = selectCartId(getState());
     if (!cartId) {
-      throw new Error("Cart ID not initialized");
+      let createdCart = await dispatch(loadOrCreateCart());
+      cartId = createdCart.id;
     }
     const resp = await apiAddItemToCart(cartId, toAdd);
     dispatch(loadCart(resp));
-
     trackAddingItemToCart(resp, toAdd);
 
     return resp;

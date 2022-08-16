@@ -46,12 +46,14 @@ function HardsandsApp({
     <>
       <ChakraProvider theme={theme}>
         <CopyrightYearProvider value={copyRightYear}>
-          <>
-            <ManualScriptTag />
-            <Fonts />
-            <ColorModeScript initialColorMode={"light"} />
-            <Component {...pageProps} />
-          </>
+          <CheckoutProvider currency={currency}>
+            <>
+              <ManualScriptTag />
+              <Fonts />
+              <ColorModeScript initialColorMode={"light"} />
+              <Component {...pageProps} />
+            </>
+          </CheckoutProvider>
         </CopyrightYearProvider>
       </ChakraProvider>
     </>

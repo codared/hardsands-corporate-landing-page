@@ -44,7 +44,7 @@ export async function apiAddItemToCart(
   body: AddCartItemBody
 ): Promise<CartResponse> {
   const resp = await storefrontApiJsonFetch<CartResponse>(
-    `/api/cart/${cartId}/items`,
+    `/api/cart/${cartId}/item`,
     {
       method: "POST",
       headers: {

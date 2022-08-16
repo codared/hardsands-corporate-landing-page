@@ -3,8 +3,6 @@ import CartItemCard from "modules/cart/components/CartItemCard";
 import Footer from "components/layout/Footer";
 import Navigation from "components/layout/Navigation";
 import UserProductCard from "components/UserProductCard";
-import ProductCard from "components/ProductCard";
-import { HomePage } from "modules/hardsands";
 import { Parallax, ParallaxProvider } from "react-scroll-parallax";
 import React from "react";
 import { useTranslation } from "react-i18next";

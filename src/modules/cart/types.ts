@@ -17,6 +17,7 @@ export type CartResponseSizeOption = Pick<any, "id" | "text">;
 export class AddCartItemBody {
   productId: number | undefined;
   quantity?: number;
+  productVariant?: string;
   type?: "WARRANTY" | "NORMAL";
 }
 

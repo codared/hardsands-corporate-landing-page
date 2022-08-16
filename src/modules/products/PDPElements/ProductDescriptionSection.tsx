@@ -1,11 +1,14 @@
-import { Box, Flex, Heading, HStack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, HStack, Text } from "@chakra-ui/react";
 import HardsandsAccordion from "components/HardsandsAccordion";
 import QuantitySelector from "components/HardsandsButton/QuantitySelector";
 import VariantSelector from "components/ProductCard/VariantSelector";
+import Cart from "modules/cart";
+import { addItemToCart } from "modules/cart/actions";
 import { useCurrency } from "modules/cart/hooks";
-import { useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
+import { CheckoutContext } from "redux/context";
 import { formatCurrencyInteger } from "utils/currency";
 import { getProductOptions } from "utils/functions";
 import { Product } from "../types";
@@ -16,17 +19,37 @@ const ProductDescriptionSection = ({
   productDetails: Product;
 }) => {
   const { t } = useTranslation();
+  const { dispatch } = useContext(CheckoutContext);
+  const [quantity, setQuantity] = useState(1);
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const productVariants = getProductOptions(productDetails.options);
   const currency = useCurrency();
+  const cartBtnRef = useRef(null);
   const [activeVariant, setActiveVariant] = useState<string | number>(
     productVariants[0]
   );
+  const [isLoading, setIsLoading] = useState(false);
+
   const price = formatCurrencyInteger(
     productDetails.variants[activeVariant].price,
     currency
   );
-  const handleAddtoCart = () => {
-    console.log("adding to cart...");
+  const handleAddtoCart = async () => {
+    setIsLoading(true);
+
+    const customizedCartItem = {
+      productId: productDetails.id,
+      productVariant: activeVariant,
+      quantity,
+    };
+
+    try {
+      await dispatch(addItemToCart(customizedCartItem));
+      setIsLoading(false);
+      setIsCartOpen(true);
+    } catch (err) {
+      setIsLoading(false);
+    }
   };
 
   const accordionItems = [
@@ -71,23 +94,21 @@ const ProductDescriptionSection = ({
         <VariantSelector
           selectorType={`${productDetails.options.title}_`}
           variants={productVariants}
-          onChange={(val: string) => console.log(val)}
+          onChange={setActiveVariant}
         />
       </Flex>
       <Box h={8} />
       <Flex position={"relative"} direction={["column", "row"]}>
-        <QuantitySelector
-          quantity={1}
-          onChange={(val: number) => console.log("quantity >>> ", val)}
-        />
+        <QuantitySelector quantity={quantity} onChange={setQuantity} />
         <Box h={4} />
-        <HStack
-          px={[2]}
-          py={[2]}
+        <Button
+          px={[4]}
+          py={[8]}
           mr={[4]}
           cursor="pointer"
           w={"100%"}
-          justify={"center"}
+          borderRadius={"none"}
+          justifyContent={"center"}
           transition={"all ease-in-out 200ms"}
           bg="brand.200"
           color={"black"}
@@ -98,16 +119,24 @@ const ProductDescriptionSection = ({
           fontFamily={"MADE Outer sans"}
           onClick={handleAddtoCart}
           userSelect="none"
+          ref={cartBtnRef}
+          isLoading={isLoading}
+          loadingText="Adding to cart..."
         >
           <Text>{t("product:add-to-cart", "Add to cart")}</Text>
-          <Box as={"span"}>{" - "}</Box>
+          <Box as={"span"}>{"  -  "}</Box>
           <Text>{t("product:product-price", `${price}`)}</Text>
-        </HStack>
+        </Button>
       </Flex>
       <Box h={8} />
       {/* <Divider my={8} /> */}
       <HardsandsAccordion accordionItems={accordionItems} />
       {/* <Divider my={8} /> */}
+      <Cart
+        isOpen={isCartOpen}
+        onClose={() => setIsCartOpen(!isCartOpen)}
+        ref={cartBtnRef}
+      />
     </Box>
   );
 };
