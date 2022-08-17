@@ -26,13 +26,18 @@ const ShopPLP = () => {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCurrency]);
-  
+
   return (
     <>
       <MiniSteps />
       <Container maxWidth={["lg", "7xl"]}>
         {!!products && products?.length !== 0 ? (
-          <Flex as="section" mb={20} p={["4rem 1rem", "4rem 6rem"]} justify="center">
+          <Flex
+            as="section"
+            mb={20}
+            p={["4rem 1rem", "4rem 6rem"]}
+            justify="center"
+          >
             <Grid
               templateColumns={[
                 "repeat(1, 1fr)",
@@ -45,10 +50,7 @@ const ShopPLP = () => {
                 <ProductCard
                   key={id}
                   name={t("product:title", `${prod.title}`)}
-                  description={t(
-                    "product:description",
-                    `${prod.description}`
-                  )}
+                  description={t("product:description", `${prod.description}`)}
                   productDetails={prod}
                 />
               ))}

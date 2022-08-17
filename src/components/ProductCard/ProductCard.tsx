@@ -2,11 +2,11 @@ import {
   Flex,
   Box,
   useColorModeValue,
-  Circle,
   Image,
   Text,
   Heading,
 } from "@chakra-ui/react";
+import queryString from "query-string";
 import HardsandsButton from "components/HardsandsButton";
 import HardsandLink from "components/HardsandsLink";
 import { useCurrency } from "modules/cart/hooks";
@@ -101,14 +101,23 @@ export const ProductCard = ({
   const selectedCurrency = useCurrency();
   const productVariants = getProductOptions(productDetails.options);
   const [variant, setVariant] = useState(productVariants[0]);
+  const [productDetailsURL, setProductDetailsURL] = useState(
+    `${productRoutes.products()}/${productDetails.slug}`
+  );
   const price = formatCurrencyInteger(
     productDetails.variants[variant].price,
     selectedCurrency
   );
 
+  const handleVariantChange = (variant: string) => {
+    const query = queryString.stringify({ variant });
+    setProductDetailsURL(`${productDetailsURL}?${query}`);
+    setVariant(variant);
+  };
+
   return (
     <HardsandLink
-      href={`${productRoutes.products()}/${productDetails.slug}`}
+      href={productDetailsURL}
       outline="none"
       _hover={{ color: "unset" }}
       _focus={{
@@ -156,7 +165,7 @@ export const ProductCard = ({
             <Flex mb={2} justifyContent={"space-between"} alignItems={"center"}>
               <Box>
                 <VariantSelector
-                  onChange={(val: string) => setVariant(val)}
+                  onChange={handleVariantChange}
                   selectorType={productDetails.options.title}
                   variants={productVariants}
                 />
@@ -178,7 +187,7 @@ export const ProductCard = ({
             </Flex>
             <HardsandsButton
               text={"Shop Now".toUpperCase()}
-              href={`${productRoutes.products()}/${slugify(name)}`}
+              href={productDetailsURL}
               // @ts-ignore
               w={"full"}
               p={["12px 16px", "10px 25px"]}
