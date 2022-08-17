@@ -47,6 +47,7 @@
     "next-cookies": "^2.0.3",
     "next-images": "^1.4.0",
     "next-redux-wrapper": "^6.0.2",
+    "query-string": "^7.1.1",
     "react": "18.v1",
     "react-dom": "18.v1",
     "react-easy-swipe": "^0.0.22",

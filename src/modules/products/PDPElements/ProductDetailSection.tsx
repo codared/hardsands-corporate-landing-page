@@ -17,6 +17,7 @@ interface ProductDetailSectionProps {
   product: Product;
   productDetails: ProductDetails | null;
   productColor?: ProductColors;
+  selectedVariant?: string;
 }
 
 const PRODUCTS_IMAGES = [
@@ -29,6 +30,7 @@ const ProductDetailSection = ({
   product,
   productDetails,
   productColor,
+  selectedVariant,
 }: ProductDetailSectionProps) => {
   const { t } = useTranslation();
   const currency = useCurrency();
@@ -64,7 +66,10 @@ const ProductDetailSection = ({
             <Box w={20} />
 
             {/* Product Description Section */}
-            <ProductDescriptionSection productDetails={product as Product} />
+            <ProductDescriptionSection
+              selectedVariant={selectedVariant}
+              productDetails={product as Product}
+            />
             {/* End Product Description Section */}
           </Flex>
 

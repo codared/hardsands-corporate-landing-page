@@ -13,12 +13,14 @@ const VariantSelector = ({
   selectorType,
   variants,
   onChange,
+  activeVariant,
 }: {
   selectorType?: string;
+  activeVariant?: string | number;
   variants: Array<string>;
   onChange: (val: string) => void;
 }) => {
-  const [active, setActive] = useState(variants[0]);
+  const [active, setActive] = useState(activeVariant);
   const colorMap = {
     Black: "black",
     Sandtone: "brand.200",
