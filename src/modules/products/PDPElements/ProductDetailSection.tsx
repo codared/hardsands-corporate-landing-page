@@ -37,7 +37,7 @@ const ProductDetailSection = ({
   const allProducts = useTypedSelector(
     (state) => state?.products?.all[currency]
   );
-  console.log("allProducts >>>> ", allProducts);
+
   return (
     <>
       <Container maxWidth={["lg", "7xl"]}>
@@ -114,9 +114,6 @@ const ProductDetailSection = ({
       <UsageDemoSection horizontal />
     </>
   );
-  // ) : (
-  //   <PDPSkeleton />
-  // );
 };
 
 export default ProductDetailSection;

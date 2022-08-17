@@ -44,6 +44,8 @@ export type CartResponseItem = {
   // product information
   product: Product;
   parent_id?: number;
+  productVariantKey?: string;
+  image?: string;
 
   currency: string;
 

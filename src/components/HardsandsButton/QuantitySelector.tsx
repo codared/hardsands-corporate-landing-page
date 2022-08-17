@@ -9,10 +9,10 @@ const QuantitySelector = ({
   quantity: number;
   onChange: (val: number) => void;
 }) => {
-  const [quantityState, setQuantityState] = useState<number>(quantity || 0);
+  const [quantityState, setQuantityState] = useState<number>(quantity || 1);
 
   const handleDecrease = () => {
-    setQuantityState(quantityState === 0 ? quantityState : quantityState - 1);
+    setQuantityState(quantityState === 1 ? quantityState : quantityState - 1);
     onChange(quantityState);
   };
   const handleIncrease = () => {

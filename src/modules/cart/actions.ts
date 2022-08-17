@@ -91,8 +91,6 @@ export const loadOrCreateCart: ThunkActionCreator<Promise<CartResponse>> =
       dispatch(updateCurrency(currency));
     }
 
-    // dispatch(setGift(getAvailablePromotions()));
-
     if (cartId) {
       // fetch the cart and update it with the input currency
       try {
