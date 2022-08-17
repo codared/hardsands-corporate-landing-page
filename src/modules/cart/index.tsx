@@ -10,6 +10,7 @@ import {
   Text,
   DrawerOverlay,
   Heading,
+  Button,
 } from "@chakra-ui/react";
 import CurrencySelector from "components/CurrenctSelector";
 import HardsandLink from "components/HardsandsLink";
@@ -24,6 +25,7 @@ import { loadOrCreateCart, removeCartItem } from "./actions";
 import { CheckoutContext } from "redux/context";
 import { useCurrency } from "./hooks";
 import { CartResponseItem } from "./types";
+import { useRouter } from "next/router";
 
 const Cart = React.forwardRef(
   (
@@ -37,6 +39,7 @@ const Cart = React.forwardRef(
     ref
   ) => {
     const { t } = useTranslation();
+    const router = useRouter();
     const currency = useCurrency();
     const { dispatch, state } = useContext(CheckoutContext);
     const cart = selectCart(state);
@@ -51,6 +54,10 @@ const Cart = React.forwardRef(
 
     const onRemoveItem = async (item: CartResponseItem) => {
       return await dispatch(removeCartItem(item));
+    };
+
+    const handleProcessToCheckout = () => {
+      router.push(`/checkout/${cart?.id}`);
     };
 
     return (
@@ -77,6 +84,7 @@ const Cart = React.forwardRef(
           <DrawerHeader display={"flex"} justifyContent={"space-between"}>
             <Heading size={"sm"}>Shopping Cart</Heading>{" "}
             <CurrencySelector
+              display={["block", "none"]}
               mr={10}
               onChange={(val: string) => {
                 console.log(val);
@@ -89,7 +97,11 @@ const Cart = React.forwardRef(
               <DrawerBody overflowY={"scroll"}>
                 <Box>
                   {cart.items.map((item) => (
-                    <CartItemCard key={item.id} cartProduct={item} onRemoveItem={onRemoveItem} />
+                    <CartItemCard
+                      key={item.id}
+                      cartProduct={item}
+                      onRemoveItem={onRemoveItem}
+                    />
                   ))}
                 </Box>
               </DrawerBody>
@@ -142,14 +154,17 @@ const Cart = React.forwardRef(
                   justifyContent="space-between"
                   w="100%"
                 >
-                  <HardsandLink
+                  <Button
                     fontSize={"sm"}
                     fontWeight={500}
                     color={"black"}
                     bg={"brand.100"}
                     fontFamily="MADE Outer sans"
-                    href={`/checkout/${cart.id}`}
-                    p={["12px 16px", "12px 46px"]}
+                    // href={`/checkout/${cart.id}`}
+                    // p={["12px 18px", "16px 46px"]}
+                    py={["1.6rem"]}
+                    onClick={handleProcessToCheckout}
+                    // px={[22]}
                     borderWidth="2px"
                     borderColor={"brand.100"}
                     borderRadius="0"
@@ -163,12 +178,11 @@ const Cart = React.forwardRef(
                       borderColor: "brand.100",
                     }}
                     mb={[6, 0]}
-                    // @ts-ignore
-                    isDisabled={!numberOfItems || numberOfItems === 0}
+                    disabled={!numberOfItems || numberOfItems === 0}
                   >
                     {t("common:proceed-to-checkout", "Proceed to checkout")}
-                  </HardsandLink>
-                  <HardsandLink
+                  </Button>
+                  {/* <HardsandLink
                     fontSize={"sm"}
                     fontWeight={500}
                     color={"black"}
@@ -186,7 +200,7 @@ const Cart = React.forwardRef(
                     }}
                   >
                     {t("common:continue-shopping", "Continue shopping")}
-                  </HardsandLink>
+                  </HardsandLink> */}
                 </Flex>
               </DrawerFooter>
             </>
