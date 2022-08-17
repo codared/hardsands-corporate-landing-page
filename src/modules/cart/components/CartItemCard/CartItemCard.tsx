@@ -2,16 +2,17 @@ import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import QuantityModifier from "components/QuantityModifier";
 import { updateCartItem } from "modules/cart/actions";
-import { CartResponseItem } from "modules/cart/types";
+import { CartResponse, CartResponseItem } from "modules/cart/types";
 import { useContext, useState } from "react";
 import { CheckoutContext } from "redux/context";
 import { formatCurrencyInteger } from "utils/currency";
 
 interface CartItemCardProd {
   cartProduct: CartResponseItem;
+  onRemoveItem: (item: CartResponseItem) => Promise<CartResponse>;
 }
 
-const CartItemCard = ({ cartProduct }: CartItemCardProd) => {
+const CartItemCard = ({ cartProduct, onRemoveItem }: CartItemCardProd) => {
   const { dispatch } = useContext(CheckoutContext);
   const [isUpdating, setIsUpdating] = useState(false);
   const [quantity, setQuantity] = useState<number>(cartProduct.quantity);
@@ -26,6 +27,11 @@ const CartItemCard = ({ cartProduct }: CartItemCardProd) => {
     );
     setIsUpdating(false);
     return;
+  };
+
+  const handleRemoveCartItem = () => {
+    setIsUpdating(true);
+    onRemoveItem(cartProduct);
   };
 
   return (
@@ -43,7 +49,7 @@ const CartItemCard = ({ cartProduct }: CartItemCardProd) => {
             left={0}
             right={0}
             bottom={0}
-            bg={"rgba(0, 0, 0, .5)"}
+            bg={"rgba(255, 255, 255, .5)"}
             zIndex={1}
           />
         )}
@@ -74,6 +80,7 @@ const CartItemCard = ({ cartProduct }: CartItemCardProd) => {
               scale="10%"
               fontSize="smaller"
               textDecoration={"underline"}
+              onClick={handleRemoveCartItem}
             >
               Remove
             </HardsandLink>

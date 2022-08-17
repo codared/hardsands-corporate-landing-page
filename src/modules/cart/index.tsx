@@ -20,9 +20,10 @@ import { formatCurrencyInteger } from "utils/currency";
 import { useTranslation } from "react-i18next";
 import { computeItemsQuantity } from "./functions";
 import productRoutes from "modules/products/routes";
-import { loadOrCreateCart } from "./actions";
+import { loadOrCreateCart, removeCartItem } from "./actions";
 import { CheckoutContext } from "redux/context";
 import { useCurrency } from "./hooks";
+import { CartResponseItem } from "./types";
 
 const Cart = React.forwardRef(
   (
@@ -47,6 +48,10 @@ const Cart = React.forwardRef(
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cart]);
+
+    const onRemoveItem = async (item: CartResponseItem) => {
+      return await dispatch(removeCartItem(item));
+    };
 
     return (
       <Drawer
@@ -84,7 +89,7 @@ const Cart = React.forwardRef(
               <DrawerBody overflowY={"scroll"}>
                 <Box>
                   {cart.items.map((item) => (
-                    <CartItemCard key={item.id} cartProduct={item} />
+                    <CartItemCard key={item.id} cartProduct={item} onRemoveItem={onRemoveItem} />
                   ))}
                 </Box>
               </DrawerBody>

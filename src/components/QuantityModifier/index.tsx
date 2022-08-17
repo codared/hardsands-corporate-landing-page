@@ -19,7 +19,7 @@ const QuantityModifier = ({
     if (which === "minus") {
       quantity = quantity - 1;
     }
-    quantity = quantity <= 0 ? 0 : quantity;
+    quantity = quantity === 1 ? 1 : quantity;
     onChange(quantity);
   };
   return (
@@ -33,6 +33,7 @@ const QuantityModifier = ({
         bg="transparent"
         _focus={{ bg: "transparent" }}
         px={0}
+        disabled={quantity === 1}
       >
         <AiOutlineMinus />
       </Button>

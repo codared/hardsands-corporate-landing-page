@@ -66,7 +66,7 @@ export async function apiRemoveCartItem(
   itemId: number
 ): Promise<CartResponse> {
   const resp = await storefrontApiJsonFetch<CartResponse>(
-    `/api/cart/${cartId}/items/${itemId}`,
+    `/api/cart/${cartId}/item/${itemId}`,
     {
       method: "DELETE",
     }
@@ -85,7 +85,7 @@ export async function apiUpdateCartItem(
   body: UpdateCartItemBody
 ): Promise<CartResponse> {
   const resp = await storefrontApiJsonFetch<CartResponse>(
-    `/api/cart/${cartId}`,
+    `/api/cart/${cartId}/item/${itemId}`,
     {
       method: "PUT",
       headers: {
