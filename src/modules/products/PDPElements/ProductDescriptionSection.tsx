@@ -15,8 +15,10 @@ import { Product } from "../types";
 
 const ProductDescriptionSection = ({
   productDetails,
+  selectedVariant,
 }: {
   productDetails: Product;
+  selectedVariant?: string;
 }) => {
   const { t } = useTranslation();
   const { dispatch } = useContext(CheckoutContext);
@@ -26,7 +28,7 @@ const ProductDescriptionSection = ({
   const currency = useCurrency();
   const cartBtnRef = useRef(null);
   const [activeVariant, setActiveVariant] = useState<string | number>(
-    productVariants[0]
+    selectedVariant || productVariants[0]
   );
   const [isLoading, setIsLoading] = useState(false);
 
@@ -94,6 +96,7 @@ const ProductDescriptionSection = ({
         <VariantSelector
           selectorType={`${productDetails.options.title}_`}
           variants={productVariants}
+          activeVariant={activeVariant}
           onChange={setActiveVariant}
         />
       </Flex>

@@ -16,7 +16,7 @@ import { isServerRequest } from "utils/nextjs";
 const ProductPage = ({ product: initialProduct }: { product?: Product }) => {
   const router = useRouter();
   const {
-    query: { slug, color },
+    query: { slug, color, variant },
   } = router;
 
   const { product, productDetails } = useProduct(
@@ -43,6 +43,7 @@ const ProductPage = ({ product: initialProduct }: { product?: Product }) => {
       product={product}
       productDetails={productDetails}
       productColor={color as ProductColors}
+      selectedVariant={variant as string}
     />
   );
 };
