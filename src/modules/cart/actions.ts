@@ -3,6 +3,7 @@ import track from "modules/checkout/analytics";
 import { Product } from "modules/products/types";
 import { ThunkDispatch } from "redux/context";
 import { ThunkActionCreator } from "redux/rootReducer";
+import { CURRENCY_COOKIE, CART_ID_LOCAL_STORAGE_KEY } from "utils/constants";
 
 import { setCookie, getCookie } from "../../utils/cookie";
 import { CURRENCY_CODES } from "../../utils/currency";
@@ -32,9 +33,6 @@ import {
   DiscountReducer,
   CartCurrencyType,
 } from "./types";
-
-const CART_ID_LOCAL_STORAGE_KEY = "hardsands_cart_id";
-const CURRENCY_COOKIE = "hardsands_selected_currency";
 
 export const loadCart = (cart: CartResponse, discountApplied = false) => ({
   type: CART_LOAD as typeof CART_LOAD,

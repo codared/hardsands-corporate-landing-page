@@ -1,5 +1,5 @@
 /**
- * As `pangaea-checkout` is a package, it should not define its own routes.
+ * As `hardsands-checkout` is a package, it should not define its own routes.
  * Instead, this file defines what routes the package needs in order to
  * correctly function.
  */

@@ -15,7 +15,6 @@ const ShopPLP = () => {
   const reduxDispatch = useTypedDispatch();
   const { t } = useTranslation();
   const [products, setProducts] = useState<Product[] | null>(null);
-
   const selectedCurrency = state.cart.selectedCurrency;
 
   useEffect(() => {

@@ -1,3 +1,4 @@
+import { Order } from "modules/checkout/types";
 import { storefrontApiJsonFetch } from "../api";
 import {
   CartResponse,
@@ -5,6 +6,7 @@ import {
   ApplyOfferBody,
   UpdateCartItemBody,
   UpdateCartBody,
+  CreateCheckoutFromCartBody,
 } from "./types";
 
 export async function fetchCart(cartId: string): Promise<CartResponse | null> {
@@ -192,3 +194,16 @@ export async function apiRemoveCartOffer(
 
   return resp.result;
 }
+
+export const createCartOrder = async (
+  data: CreateCheckoutFromCartBody
+): Promise<Order> => {
+  const res = await storefrontApiJsonFetch<Order>(`/api/checkout`, {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+  if (res.isError) {
+    throw new Error(res.message);
+  }
+  return res.result;
+};

@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import CurrencySelector from "components/CurrenctSelector";
 import HardsandLink from "components/HardsandsLink";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CartItemCard from "modules/cart/components/CartItemCard";
 import { selectCart } from "./selectors";
 import { formatCurrencyInteger } from "utils/currency";
@@ -24,8 +24,11 @@ import productRoutes from "modules/products/routes";
 import { loadOrCreateCart, removeCartItem } from "./actions";
 import { CheckoutContext } from "redux/context";
 import { useCurrency } from "./hooks";
-import { CartResponseItem } from "./types";
+import { CartResponseItem, CreateCheckoutFromCartBody } from "./types";
 import { useRouter } from "next/router";
+import { useIsMountedRef } from "utils/hooks";
+import { getCheckoutRoutes } from "modules/checkout/routes";
+import { createCartOrder } from "./cartApi";
 
 const Cart = React.forwardRef(
   (
@@ -44,6 +47,8 @@ const Cart = React.forwardRef(
     const { dispatch, state } = useContext(CheckoutContext);
     const cart = selectCart(state);
     const numberOfItems = cart && computeItemsQuantity(cart.items);
+    const [isLoading, setIsLoading] = useState(false);
+    const isMounted = useIsMountedRef();
 
     useEffect(() => {
       if (!cart) {
@@ -56,8 +61,40 @@ const Cart = React.forwardRef(
       return await dispatch(removeCartItem(item));
     };
 
-    const handleProcessToCheckout = () => {
-      router.push(`/checkout/${cart?.id}`);
+    const onOrderCreated = () => {
+      onClose();
+    };
+
+    const handleProcessToCheckout = async () => {
+      setIsLoading(true);
+
+      const body: CreateCheckoutFromCartBody = {
+        cartId: cart?.id as string,
+        // additionalOffers: promotions.map(
+        //   ({ slug: id, productOptions: product_option_value_ids = [] }) => ({
+        //     id,
+        //     product_option_value_ids,
+        //   })
+        // ),
+      };
+
+      const order = await createCartOrder(body);
+      const routes = getCheckoutRoutes();
+
+      // const couponQuery = overrideCoupon
+      //   ? `?override_coupon=${overrideCoupon}`
+      //   : "";
+
+      if (order) {
+        router.push(
+          routes?.checkout({ hash: order.cartHash }) ??
+            `/checkout/${order.checkoutToken}`
+        );
+        onOrderCreated();
+        if (isMounted.current) {
+          setIsLoading(false);
+        }
+      }
     };
 
     return (
@@ -179,6 +216,8 @@ const Cart = React.forwardRef(
                     }}
                     mb={[6, 0]}
                     disabled={!numberOfItems || numberOfItems === 0}
+                    isLoading={isLoading}
+                    loadingText={"Proceeding to checkout..."}
                   >
                     {t("common:proceed-to-checkout", "Proceed to checkout")}
                   </Button>
