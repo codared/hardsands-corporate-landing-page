@@ -88,7 +88,7 @@ const Cart = React.forwardRef(
       if (order) {
         router.push(
           routes?.checkout({ hash: order.cartHash }) ??
-            `/checkout/${order.cartHash}`
+            `/checkout/${order.checkoutToken}`
         );
         onOrderCreated();
         if (isMounted.current) {

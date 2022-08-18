@@ -110,7 +110,12 @@ export default function Navigation() {
           alignItems="center"
           ml={["50px", "unset"]}
         >
-          <CurrencySelector mr={10} color="white" onChange={onCurrencyChange} />
+          <CurrencySelector
+            selectedCurrency={selectedCurrency}
+            mr={10}
+            color="white"
+            onChange={onCurrencyChange}
+          />
           <Button
             bg="transparent"
             _focus={{ bg: "transparent" }}
