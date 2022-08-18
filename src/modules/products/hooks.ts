@@ -1,4 +1,4 @@
-import { useCurrency } from "modules/CartV1/hooks";
+import { useCurrency } from "modules/cart/hooks";
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useTypedDispatch } from "redux/store";

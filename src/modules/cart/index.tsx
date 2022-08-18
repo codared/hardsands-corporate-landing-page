@@ -15,7 +15,7 @@ import {
 import CurrencySelector from "components/CurrenctSelector";
 import HardsandLink from "components/HardsandsLink";
 import React, { useContext, useEffect, useState } from "react";
-import CartItemCard from "modules/CartV1/components/CartItemCard";
+import CartItemCard from "modules/cart/components/CartItemCard";
 import { selectCart } from "./selectors";
 import { formatCurrencyInteger } from "utils/currency";
 import { useTranslation } from "react-i18next";

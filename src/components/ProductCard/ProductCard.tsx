@@ -9,7 +9,7 @@ import {
 import queryString from "query-string";
 import HardsandsButton from "components/HardsandsButton";
 import HardsandLink from "components/HardsandsLink";
-import { useCurrency } from "modules/CartV1/hooks";
+import { useCurrency } from "modules/cart/hooks";
 import productRoutes from "modules/products/routes";
 import { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";

@@ -1,7 +1,7 @@
 import config, { updateConfig } from "core/config";
 import { SETTINGS } from "core/config/config";
-import { CartActionTypes } from "modules/CartV1/actionTypes";
-import { cartReducer } from "modules/CartV1/reducer";
+import { CartActionTypes } from "modules/cart/actionTypes";
+import { cartReducer } from "modules/cart/reducer";
 import { CheckoutActionTypes } from "modules/checkout/actionTypes";
 import { CountriesActionTypes } from "modules/checkout/countriesState/actionTypes";
 import { countryReducer } from "modules/checkout/countriesState/reducer";
