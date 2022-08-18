@@ -68,6 +68,11 @@ export interface CartResponse {
   total: number;
 }
 
+export interface CreateCartBody {
+  currency: string;
+  country: string | null;
+}
+
 export interface CartCurrencyType {
   [key: string]: string;
 }
