@@ -1,6 +1,6 @@
 import { Box, Container, Flex, Grid, Heading } from "@chakra-ui/react";
 import { PreviewProductCard } from "components/ProductCard/ProductCard";
-import { useCurrency } from "modules/cart/hooks";
+import { useCurrency } from "modules/CartV1/hooks";
 import UsageDemoSection from "modules/hardsands/components/HomePage/UsageDemoSection";
 import { ProductColors } from "modules/shared/constants";
 import { useState } from "react";

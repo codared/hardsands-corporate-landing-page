@@ -1,8 +1,8 @@
 import { Box, Divider, Flex, Image, Text } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import QuantityModifier from "components/QuantityModifier";
-import { updateCartItem } from "modules/cart/actions";
-import { CartResponse, CartResponseItem } from "modules/cart/types";
+import { updateCartItem } from "modules/CartV1/actions";
+import { CartResponse, CartResponseItem } from "modules/CartV1/types";
 import { useContext, useState } from "react";
 import { CheckoutContext } from "redux/context";
 import { formatCurrencyInteger } from "utils/currency";

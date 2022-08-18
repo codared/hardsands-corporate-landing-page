@@ -15,21 +15,21 @@ import MobileNav from "./MobileNav";
 import HardsandLink from "components/HardsandsLink";
 import LoginIcon from "design/svg/Login.svg";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import Cart from "modules/cart";
+import Cart from "modules/CartV1";
 import { useOffsetScroll } from "./hooks";
 import HardsandsAppLogo from "components/Logo";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { usePreloadProducts } from "modules/products/hooks";
-import { useCartItemCount } from "modules/cart/hooks";
+import { useCartItemCount } from "modules/CartV1/hooks";
 import CurrencySelector from "components/CurrenctSelector";
 import {
   loadOrCreateCart,
   updateCart,
   updateCurrency,
-} from "modules/cart/actions";
+} from "modules/CartV1/actions";
 import { CheckoutContext } from "redux/context";
 import { getGeoIpCountryCode } from "utils/geoIp";
-import { CreateCartBody } from "modules/cart/types";
+import { CreateCartBody } from "modules/CartV1/types";
 
 const minifyNotificationCount = (count: string | number) => {
   return count.toString().length > 1 ? "9+" : count;

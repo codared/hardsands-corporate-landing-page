@@ -1,4 +1,4 @@
-import { updateCurrency } from "modules/cart/actions";
+import { updateCurrency } from "modules/CartV1/actions";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import { CheckoutContext } from "redux/context";

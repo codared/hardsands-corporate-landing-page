@@ -1,4 +1,4 @@
-import { CartResponseItem } from "modules/cart/types";
+import { CartResponseItem } from "modules/CartV1/types";
 import { EcommerceCartAction } from "utils/types";
 
 export const getAddToCartEventData = (
