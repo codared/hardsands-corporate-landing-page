@@ -24,13 +24,10 @@ const CurrencySelector = ({
       w={"90px"}
       size="xs"
       {...rest}
+      defaultValue={selectedCurrency}
     >
       {Object.keys(TOP_CURRENCIES).map((currency) => (
-        <option
-          key={currency}
-          value={currency}
-          defaultValue={selectedCurrency}
-        >
+        <option key={currency} value={currency}>
           {currency}
         </option>
       ))}
