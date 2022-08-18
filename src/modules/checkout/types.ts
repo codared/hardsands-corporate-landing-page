@@ -142,6 +142,7 @@ export interface Order extends OrderTotal {
   applied_credit_balance: Amount;
   available_user_credit: Amount;
   cart_hash: string;
+  cartHash: string;
   billing_address: { data: BrandServicesAddress | EmptyArray };
   billing_same_as_shipping_address: boolean;
   checkout_token: string;

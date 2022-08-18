@@ -96,3 +96,11 @@ export interface DiscountReducer {
   coupon: Coupon | null;
   discountApplied: boolean;
 }
+
+export type CreateCheckoutFromCartBody = {
+  cartId: string
+  additionalOffers?: {
+    id: string
+    product_option_value_ids?: number[]
+  }[]
+}
