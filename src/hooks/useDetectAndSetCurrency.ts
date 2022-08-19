@@ -1,9 +1,9 @@
 import { updateCurrency } from "modules/cart/actions";
+import { getCookie } from "modules/shared/cookie";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 import { CheckoutContext } from "redux/context";
 import { CURRENCY_COOKIE } from "utils/constants";
-import { getCookie } from "utils/cookie";
 import { CURRENCIES } from "utils/currencies";
 import { isSupportedCurrency, getGeoIpCountryCode } from "utils/geoIp";
 import { removeQueryParam } from "utils/removeQueryParam";

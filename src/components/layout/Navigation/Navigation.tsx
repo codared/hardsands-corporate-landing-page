@@ -49,6 +49,8 @@ export default function Navigation() {
 
   usePreloadProducts(3000);
 
+  console.log("selectedCurrency >>>> ", selectedCurrency);
+
   useEffect(() => {
     const initCart = async () => {
       const country = await getGeoIpCountryCode();
@@ -57,7 +59,7 @@ export default function Navigation() {
         country: ignoreCountryDiscount ? null : country,
       };
 
-      await dispatch(loadOrCreateCart(cartBody));
+      await dispatch(loadOrCreateCart(selectedCurrency));
       cartInitialized.current = true;
     };
 
