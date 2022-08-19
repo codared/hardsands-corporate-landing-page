@@ -40,7 +40,6 @@ export default function Navigation() {
   const { isOpen, onToggle } = useDisclosure();
   const cartItemCount = useCartItemCount();
   const [isCartOpen, setCartOpen] = useState(false);
-  const { offset } = useOffsetScroll();
   const cartBtnRef = useRef(null);
   const cartInitialized = useRef(false);
   const selectedCurrency = state.cart.selectedCurrency;
@@ -57,7 +56,7 @@ export default function Navigation() {
         country: ignoreCountryDiscount ? null : country,
       };
 
-      await dispatch(loadOrCreateCart(cartBody));
+      await dispatch(loadOrCreateCart(selectedCurrency));
       cartInitialized.current = true;
     };
 

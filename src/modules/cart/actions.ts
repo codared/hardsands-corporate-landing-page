@@ -1,11 +1,11 @@
 import * as Sentry from "@sentry/browser";
 import track from "modules/checkout/analytics";
 import { Product } from "modules/products/types";
+import { getCookie, setCookie } from "modules/shared/cookie";
 import { ThunkDispatch } from "redux/context";
 import { ThunkActionCreator } from "redux/rootReducer";
 import { CURRENCY_COOKIE, CART_ID_LOCAL_STORAGE_KEY } from "utils/constants";
 
-import { setCookie, getCookie } from "../../utils/cookie";
 import { CURRENCY_CODES } from "../../utils/currency";
 import {
   CartCustomizeItem,
