@@ -40,7 +40,6 @@ export default function Navigation() {
   const { isOpen, onToggle } = useDisclosure();
   const cartItemCount = useCartItemCount();
   const [isCartOpen, setCartOpen] = useState(false);
-  const { offset } = useOffsetScroll();
   const cartBtnRef = useRef(null);
   const cartInitialized = useRef(false);
   const selectedCurrency = state.cart.selectedCurrency;
@@ -48,8 +47,6 @@ export default function Navigation() {
   const ignoreCountryDiscount = false; // featureFlag('IGNORE_COUNTRY_DISCOUNT', true)
 
   usePreloadProducts(3000);
-
-  console.log("selectedCurrency >>>> ", selectedCurrency);
 
   useEffect(() => {
     const initCart = async () => {
