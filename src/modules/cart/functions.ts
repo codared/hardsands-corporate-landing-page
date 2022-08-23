@@ -1,5 +1,5 @@
+import { EcommerceCartAction } from "modules/analytics/types";
 import { CartResponseItem } from "modules/cart/types";
-import { EcommerceCartAction } from "utils/types";
 
 export const getAddToCartEventData = (
   cartItem: CartResponseItem

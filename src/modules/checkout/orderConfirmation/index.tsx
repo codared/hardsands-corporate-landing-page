@@ -37,10 +37,10 @@ const OrderConfirmation = () => {
         </Text>
         <Divider my={10} />
         <Box>
-          <OrderItemCard />
+          {/* <OrderItemCard /> */}
         </Box>
         <Box h={8} />
-        <PriceSummary />
+        {/* <PriceSummary /> */}
         <Box h={8} />
         <Button
           fontSize={"sm"}

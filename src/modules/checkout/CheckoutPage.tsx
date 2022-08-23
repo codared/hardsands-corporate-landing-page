@@ -1,23 +1,62 @@
-import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  Container,
-  Divider,
-  Flex,
-  Heading,
-} from "@chakra-ui/react";
-import PriceSummary from "components/PriceSummary";
+import { Box, Container, Flex, Spinner, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import OrderItemCard from "./components/OrderItemCard";
-import CustomerInfoForm from "./components/CustomerInfoForm";
+import _ from "lodash";
+import CustomerInfoForm, { Values } from "./components/CustomerInfoForm";
 import CheckoutBreakcrumbs from "./components/CheckoutBreadcrumbs";
 import ShippingInfo from "./components/ShippingInfo";
 import PaymentInfo from "./components/PaymentMethods";
+import OrderSummary from "./components/OrderSummary";
+import { CHECKOUT_STEPS } from "./constants";
+import { Order } from "./types";
+import { useOrder } from "./hooks/useOrder";
+import { FormikErrors } from "formik";
+import { useTranslation } from "react-i18next";
+import { useCurrency } from "modules/cart/hooks";
 
-const CheckoutPage = () => {
-  const [activeStep, setActiveStep] = useState(0);
+interface CheckoutPageProp {
+  checkoutId: string;
+  language: string;
+}
+
+const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
+  const { t } = useTranslation();
+  const order = useOrder(checkoutId);
+  const currency = useCurrency();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [activeStep, setActiveStep] = useState(
+    CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM
+  );
+
+  const handleSubmitCustomerInfoForm = async (
+    values: Values,
+    errors: FormikErrors<Values>
+  ) => {
+    setIsLoading(true);
+    if (_.isEmpty(errors)) {
+      try {
+      } catch (error) {}
+      console.log(errors);
+    }
+    setIsLoading(false);
+  };
+
+  if (!order) {
+    return (
+      <Flex
+        p={[20, 40]}
+        flex={1}
+        justifyContent={"center"}
+        direction={"column"}
+        alignItems={"center"}
+        bg="rgba(255, 255, 255, .7)"
+      >
+        <Spinner size="xl" />
+        <Box h={8} />
+        <Text>{t("checkout:getting-your-order", "Getting Your Order...")}</Text>
+      </Flex>
+    );
+  }
 
   return (
     <Container maxW={"4xl"} py={20}>
@@ -26,26 +65,41 @@ const CheckoutPage = () => {
         setActiveStep={setActiveStep}
       />
       <Box h={8} />
-      <Flex direction={["column", "column", "row"]}>
-        <Box w="100%">
-					{activeStep === 0 && <CustomerInfoForm />}
-					{activeStep === 1 && <ShippingInfo />}
-					{activeStep === 2 && <PaymentInfo />}
-				</Box>
-        <Box w={14} />
-        <Box w="100%">
-          <Flex direction={"column"} bg={"brand.10"} p={5}>
-            <Heading fontSize={20}>Order Summary</Heading>
-            <Divider my={5} />
-            <OrderItemCard
-              p={["0px 5px"]}
-              titleFontSize={[14, 16]}
-              subTitleFontSize={[12, 14]}
+      <Flex direction={["column-reverse", "column", "row"]}>
+        <Box w="100%" position={"relative"} mt={[10]}>
+          {activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM && (
+            <CustomerInfoForm
+              setIsLoading={setIsLoading}
+              onFormSubmit={handleSubmitCustomerInfoForm}
             />
-            <Divider my={5} />
-            <PriceSummary fontSize={18} />
-          </Flex>
+          )}
+          {activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION && (
+            <ShippingInfo />
+          )}
+          {activeStep === CHECKOUT_STEPS.STEP_PAYMENT_INFO && <PaymentInfo />}
+          {isLoading && (
+            <Flex
+              position={"absolute"}
+              left={0}
+              right={0}
+              top={0}
+              bottom={0}
+              flex={1}
+              justifyContent={"center"}
+              alignItems={"center"}
+              bg="rgba(255, 255, 255, .7)"
+            >
+              <Spinner size="xl" />
+            </Flex>
+          )}
         </Box>
+        <Box w={14} />
+        <OrderSummary
+          activeStep={activeStep}
+          currency={currency}
+          t={t}
+          order={order as Order}
+        />
       </Flex>
     </Container>
   );
