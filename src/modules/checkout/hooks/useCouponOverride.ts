@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 
 import { CheckoutContext } from '../../../redux/context'
-import { applyCouponToOrder } from '../actions'
 import track from '../analytics'
 import { PromotionSource, Order } from '../types'
 
@@ -42,7 +41,7 @@ export function useCouponOverride(
       console.log('auto applying override_coupon', coupon)
 
       setApplied(true)
-      dispatch(applyCouponToOrder(coupon))
+      // dispatch(applyCouponToOrder(coupon))
     }
   }, [order, applied, coupon])
 }

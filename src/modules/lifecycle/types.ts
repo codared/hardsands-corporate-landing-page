@@ -1,5 +1,4 @@
-import { BrandServicesAddress, Order } from '@pangaea-holdings/pangaea-checkout'
-
+import { BrandServicesAddress, Order } from 'modules/checkout/types'
 import { PageView } from '../analytics/types'
 
 export const LIFECYCLE_EVENTS = [

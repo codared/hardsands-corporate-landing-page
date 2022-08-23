@@ -65,8 +65,8 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
         setActiveStep={setActiveStep}
       />
       <Box h={8} />
-      <Flex direction={["column", "column", "row"]}>
-        <Box w="100%" position={"relative"}>
+      <Flex direction={["column-reverse", "column", "row"]}>
+        <Box w="100%" position={"relative"} mt={[10]}>
           {activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM && (
             <CustomerInfoForm
               setIsLoading={setIsLoading}

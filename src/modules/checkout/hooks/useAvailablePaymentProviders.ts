@@ -1,25 +1,25 @@
 import { useEffect, useState } from 'react'
 
-import { getAvailablePaymentProviders } from '../../api'
-import { AvailablePaymentProviders } from '../../api/apiTypes'
-import { Order } from '../types'
+// import { getAvailablePaymentProviders } from '../../api'
+// import { AvailablePaymentProviders } from '../../api/apiTypes'
+// import { Order } from '../types'
 
-export function useAvailablePaymentProviders(order: Order) {
-  const [
-    availablePaymentProviders,
-    setAvailablePaymentProviders
-  ] = useState<AvailablePaymentProviders | undefined>(undefined)
+// export function useAvailablePaymentProviders(order: Order) {
+//   const [
+//     availablePaymentProviders,
+//     setAvailablePaymentProviders
+//   ] = useState<AvailablePaymentProviders | undefined>(undefined)
 
-  useEffect(() => {
-      if (!order) {
-          return
-      }
+//   useEffect(() => {
+//       if (!order) {
+//           return
+//       }
 
-      getAvailablePaymentProviders(order).then(paymentProviders => {
-          setAvailablePaymentProviders(paymentProviders)
-      })
+//       getAvailablePaymentProviders(order).then(paymentProviders => {
+//           setAvailablePaymentProviders(paymentProviders)
+//       })
 
-  }, [order])
+//   }, [order])
 
-  return availablePaymentProviders
-}
+//   return availablePaymentProviders
+// }

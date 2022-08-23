@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { CheckoutContext } from 'redux/context'
+import { slugify } from 'utils/string'
 
-import { CheckoutContext } from '../../..'
-import { slugify } from '../../../utils/string'
 import {
   loadCountries,
   getCountryPlusProvinces,

@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react'
+import { createContext, ReactElement, useReducer } from 'react'
 
 import { assertNever } from '../../../utils/types'
 import { EventHandler } from '../eventHandler'
@@ -63,7 +63,7 @@ function reducer(
   }
 }
 
-const AnalyticsProvider: React.FC<{}> = ({ children }) => {
+const AnalyticsProvider = ({ children }: { children: ReactElement }) => {
   const [state, dispatch] = useReducer(reducer, initialAnalyticsState)
 
   return (
