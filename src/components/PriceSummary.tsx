@@ -9,21 +9,35 @@ const PriceSummary = ({
   totalDue,
   currency,
   activeStep,
+  shippingDetails,
   t,
 }: {
   fontSize?: number;
   total: number;
   currency: string;
   totalDue: number;
+  shippingDetails: any;
   activeStep: CHECKOUT_STEPS;
   t: TFunction;
 }) => {
-  const getTaxText = (): string | null => {
+  const getTaxPrice = (): string | null => {
     switch (activeStep) {
       case CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM:
-        return "To be calculated next step";
+        return t("checkout:to-be-calculated", "To be calculated at next step");
       case CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION:
-        return formatCurrencyInteger(totalDue, currency);
+        return formatCurrencyInteger(total, currency);
+      default:
+        return null;
+    }
+  };
+  const getShippingPrice = (): string | null => {
+    switch (activeStep) {
+      case CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM:
+        return t("checkout:to-be-calculated", "To be calculated at next step");
+      case CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION:
+        return !!shippingDetails
+          ? formatCurrencyInteger(total, currency)
+          : formatCurrencyInteger(0, currency);
       default:
         return null;
     }
@@ -36,7 +50,7 @@ const PriceSummary = ({
           {t("checkout:subtotal", "Subtotal:")}
         </Text>
         <Text fontSize={[fontSize - 4, fontSize - 2]}>
-          {formatCurrencyInteger(totalDue, currency)}
+          {formatCurrencyInteger(total, currency)}
         </Text>
       </Flex>
       {
@@ -45,13 +59,13 @@ const PriceSummary = ({
             {t("checkout:shipping", "Shipping:")}
           </Text>
           <Text fontSize={[fontSize - 4, fontSize - 2]}>
-            {formatCurrencyInteger(totalDue, currency)}
+            {getShippingPrice()}
           </Text>
         </Flex>
       }
       <Flex mb={[6]} w="100%" display="flex" justifyContent="space-between">
         <Text fontSize={[fontSize - 4, fontSize - 2]}>Tax:</Text>
-        <Text fontSize={[fontSize - 4, fontSize - 2]}>{getTaxText()}</Text>
+        <Text fontSize={[fontSize - 4, fontSize - 2]}>{getTaxPrice()}</Text>
       </Flex>
       <Divider my={5} />
       <Flex mb={[6]} w="100%" display="flex" justifyContent="space-between">

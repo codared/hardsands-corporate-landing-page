@@ -41,6 +41,7 @@ const OrderSummary = ({
           total={order.total as unknown as number}
           totalDue={order.totalDue}
           fontSize={18}
+          shippingDetails={order.shippingDetails}
         />
       </Flex>
     </Box>

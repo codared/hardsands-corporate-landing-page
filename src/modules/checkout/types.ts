@@ -203,6 +203,7 @@ export interface Order extends OrderTotal {
   cart_hash: string;
   cartHash: string;
   checkoutToken: string;
+  shippingDetails: any;
   billing_address: { data: BrandServicesAddress | EmptyArray };
   billing_same_as_shipping_address: boolean;
   checkout_token: string;
