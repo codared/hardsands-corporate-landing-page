@@ -1,10 +1,14 @@
 import { Flex, Box, Text, Image } from "@chakra-ui/react";
+import { formatCurrencyInteger } from "utils/currency";
+import { OrderItem } from "../types";
 
 const OrderItemCard = ({
   p = [2, 5],
   titleFontSize = [14, 20],
   subTitleFontSize = [12, 18],
+  item,
 }: {
+  item: OrderItem;
   p?: string | number | Array<string | number>;
   titleFontSize?: string | number | Array<string | number>;
   subTitleFontSize?: string | number | Array<string | number>;
@@ -16,9 +20,10 @@ const OrderItemCard = ({
           boxSize={20}
           objectFit="contain"
           src={
+            item.thumbnail_url ||
             "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657205110/hardsands/Rectangle_213_epjh2x.svg"
           }
-          alt="cart product image"
+          alt={`${item.product.title} cart item product image`}
         />
         <Box w={5} />
         <Flex
@@ -27,9 +32,9 @@ const OrderItemCard = ({
           justifyContent={"center"}
         >
           <Text fontWeight={"bolder"} fontSize={titleFontSize}>
-            2x Personal virtual Card
+            {`${item.quantity}x`} {item.product.title}
           </Text>
-          <Text fontSize={subTitleFontSize}>Customized</Text>
+          <Text fontSize={subTitleFontSize}>{item.productVariantKey}</Text>
         </Flex>
       </Flex>
       <Text
@@ -39,10 +44,26 @@ const OrderItemCard = ({
         fontSize={titleFontSize}
         ml={2}
       >
-        N30,000
+        {formatCurrencyInteger(item.total, item.currency)}
       </Text>
     </Flex>
   );
 };
+
+// country: null
+// currency: "EUR"
+// id: 12
+// parent_id: null
+// price: 5864
+// product:
+// description: "This is  Bamboo Wood"
+// id: 1
+// slug: "bamboo-wood"
+// title: "Bamboo Wood"
+// productVariantKey: "Customized"
+// quantity: 1
+// retailPrice: 5864
+// total: 5864
+// type: "NORMAL"
 
 export default OrderItemCard;

@@ -1,5 +1,9 @@
 import { softAssertNever } from "utils/types";
-import { CheckoutActionTypes, CHECKOUT_LOAD_ORDER, CHECKOUT_RESET } from "./actionTypes";
+import {
+  CheckoutActionTypes,
+  CHECKOUT_LOAD_ORDER,
+  CHECKOUT_RESET,
+} from "./actionTypes";
 import { CheckoutError, Order, PaymentMethod, UserStateMinimal } from "./types";
 
 export type CheckoutReducerState = {

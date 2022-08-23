@@ -98,9 +98,9 @@ export interface DiscountReducer {
 }
 
 export type CreateCheckoutFromCartBody = {
-  cartId: string
+  cartId: string;
   additionalOffers?: {
-    id: string
-    product_option_value_ids?: number[]
-  }[]
-}
+    id: string;
+    product_option_value_ids?: number[];
+  }[];
+};

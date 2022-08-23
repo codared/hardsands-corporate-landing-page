@@ -1,13 +1,12 @@
-import { CURRENCY_CODES } from "modules/products/types";
-import { ReactElement } from "react";
-import { ExchangeRateMap } from "utils/forex";
 import {
-  AnyDict,
   EcommerceCartAction,
   EcommerceProduct,
   EcommercePurchase,
-  GenericEvent,
-} from "utils/types";
+} from "modules/analytics/types";
+import { CURRENCY_CODES, Product } from "modules/products/types";
+import { ReactElement } from "react";
+import { ExchangeRateMap } from "utils/forex";
+import { AnyDict, GenericEvent } from "utils/types";
 
 type EmptyArray = [];
 
@@ -46,6 +45,19 @@ export interface OrderTotal {
   total: Amount;
 }
 
+export interface BrandServicesCustomerInfoSubmitRequest {
+  firstName: string;
+  email: string;
+  lastName: string;
+  address1: string;
+  city: string;
+  countryId: string;
+  zip: string;
+  provinceId: string;
+  phoneCode: string;
+  phone: string;
+  agreedToReceiveEmail: boolean;
+}
 export interface BrandServicesAddress {
   first_name: string;
   last_name: string;
@@ -130,11 +142,58 @@ export interface ShippingRate {
   selected: boolean;
 }
 
+export interface ShippingLine {
+  title: string;
+  amount: Amount;
+}
+
 export interface TaxLine {
   amount: Amount;
   rate: number;
   title: string;
   is_vat: boolean;
+}
+
+export const OFFER_TYPES = {
+  AMOUNT_OFF: "AMOUNT_OFF" as const,
+  AMOUNT_OVERRIDE: "AMOUNT_OVERRIDE" as const,
+  FREE_GIFT: "FREE_GIFT" as const,
+  FREE_TRIAL: "FREE_TRIAL" as const,
+  PERCENT_OFF: "PERCENT_OFF" as const,
+  PERCENT_OFF_PRODUCT: "PERCENT_OFF_PRODUCT" as const,
+  PRODUCT_PRICE_OVERRIDE: "PRODUCT_PRICE_OVERRIDE" as const,
+};
+
+export type OFFER_TYPES = typeof OFFER_TYPES[keyof typeof OFFER_TYPES];
+
+export interface OrderBaseOffer {
+  id: number;
+  type: OFFER_TYPES;
+  prevent_cancellation?: boolean;
+}
+
+export interface OrderItem {
+  price: number;
+  quantity: number;
+  thumbnail_url: string;
+  currency: string;
+  title: string;
+  total: number;
+  productVariantKey: string;
+  product_id: number;
+  product_slug: string;
+  shopify_id: number;
+  type: string;
+  retail_price: number;
+  product: Product;
+  option_values: {
+    [key: string]: any;
+  };
+  offer_id?: number;
+  offer: any;
+  id?: number; // subscription_item_id
+  sku?: string;
+  discount_rule_percent?: number;
 }
 
 export interface Order extends OrderTotal {
@@ -151,6 +210,7 @@ export interface Order extends OrderTotal {
   upsell: string;
   discounts: Discount[];
   is_draft: boolean;
+  items: OrderItem[];
   order_items: { data: any[] };
   payment_method: OrderPaymentMethod | null;
   shipping_address: { data: BrandServicesAddress | EmptyArray };
@@ -164,6 +224,7 @@ export interface Order extends OrderTotal {
   tax_lines: {
     data: TaxLine[];
   };
+  totalDue: number;
   total_due: Amount;
   usd_revenue?: Amount;
   updated_at: string;
@@ -299,4 +360,33 @@ export interface CheckoutTrackingFunctions {
   ) => Promise<void>;
   trackEvent: (event: GenericEvent) => Promise<void>;
   trackLifecycleShippingAddressUpdated?: (att: BrandServicesAddress) => void;
+}
+
+export type CHECKOUT_REDIRECT_FLOWS = "adyen-redirect";
+
+export interface CheckoutRedirectFlow {
+  flow: CHECKOUT_REDIRECT_FLOWS;
+  data?: {
+    [key: string]: any;
+  };
+}
+
+export interface ShippingRatesPayload {
+  shipping_rates: ShippingRate[];
+  shipping_lines: ShippingLine[];
+  shipping_amount: Amount;
+  tax_amount: Amount;
+  tax_lines: TaxLine[];
+  subtotal: Amount;
+  total: Amount;
+}
+
+export interface CreditInfo {
+  applied_credit_balance: Amount;
+  available_user_credit: Amount;
+  total_due: Amount;
+}
+
+export interface CheckoutMeta {
+  apply_credit?: boolean;
 }

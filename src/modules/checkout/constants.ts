@@ -1,0 +1,10 @@
+export enum ADDRESSES {
+  ORIGINAL = 'original',
+  SUGGESTED = 'suggested',
+}
+
+export enum CHECKOUT_STEPS {
+  STEP_SHIPPING_INFO_FORM = 0,
+  STEP_SHIPPING_INFO_CONFIRMATION = 1,
+  STEP_PAYMENT_INFO = 2,
+}

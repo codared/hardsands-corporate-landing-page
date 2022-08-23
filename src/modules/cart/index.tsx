@@ -29,6 +29,7 @@ import { useRouter } from "next/router";
 import { useIsMountedRef } from "utils/hooks";
 import { getCheckoutRoutes } from "modules/checkout/routes";
 import { createCartOrder } from "./cartApi";
+import { loadOrder } from "modules/checkout/actions";
 
 const Cart = React.forwardRef(
   (
@@ -80,6 +81,9 @@ const Cart = React.forwardRef(
 
       const order = await createCartOrder(body);
       const routes = getCheckoutRoutes();
+
+      console.log('order >>>>> ', order);
+      dispatch(loadOrder(order));
 
       // const couponQuery = overrideCoupon
       //   ? `?override_coupon=${overrideCoupon}`

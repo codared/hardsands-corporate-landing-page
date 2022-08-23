@@ -4,6 +4,7 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
 } from "@chakra-ui/react";
+import { CHECKOUT_STEPS } from "../constants";
 
 const CheckoutBreakcrumbs = ({
   activeStep,
@@ -16,21 +17,33 @@ const CheckoutBreakcrumbs = ({
     <Box fontWeight={"bold"}>
       <Breadcrumb separator="&#7036;">
         <BreadcrumbItem
-          color={activeStep === 0 ? "brand.300" : "black"}
+          color={
+            activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM
+              ? "brand.300"
+              : "black"
+          }
           onClick={() => setActiveStep(0)}
         >
           <BreadcrumbLink href="#">Customer Info</BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem
-          color={activeStep === 1 ? "brand.300" : "black"}
+          color={
+            activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION
+              ? "brand.300"
+              : "black"
+          }
           onClick={() => setActiveStep(1)}
         >
           <BreadcrumbLink href="#">Shipping Info</BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem
-          color={activeStep === 2 ? "brand.300" : "black"}
+          color={
+            activeStep === CHECKOUT_STEPS.STEP_PAYMENT_INFO
+              ? "brand.300"
+              : "black"
+          }
           onClick={() => setActiveStep(2)}
         >
           <BreadcrumbLink href="#">Payment</BreadcrumbLink>

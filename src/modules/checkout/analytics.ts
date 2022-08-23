@@ -1,4 +1,4 @@
-import { MultiPaymentMethod } from './actionTypes'
+import { MultiPaymentMethod } from "./actionTypes";
 import {
   CheckoutTrackingFunctions,
   UserData,
@@ -7,51 +7,53 @@ import {
   TokenizationMethod,
   Card3DSData,
   PromotionSource,
-} from './types'
+} from "./types";
 
 const checkoutEvents = {
   trackIdentifyUser: (userData: UserData) => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       // @ts-ignore
-      window.hardsandsAnalyticsDebugger = window.hardsandsAnalyticsDebugger || []
+      window.hardsandsAnalyticsDebugger =
+        // @ts-ignore
+        window.hardsandsAnalyticsDebugger || [];
       // @ts-ignore
       window.hardsandsAnalyticsDebugger.push({
-        type: 'identify',
+        type: "identify",
         user_id: userData.email,
-      })
+      });
     }
     track.layerPush({
-      event: 'identifyUser',
+      event: "identifyUser",
       // For consistency with mailingListEvent
       email: userData.email,
       userData,
-    })
+    });
   },
 
   trackShippingAddressUpdated: (shippingAddressData: BrandServicesAddress) => {
     track.layerPush({
-      event: 'shippingAddressUpdated',
+      event: "shippingAddressUpdated",
       shippingAddressData,
-    })
+    });
   },
 
   trackShippingIsPoBox: () => {
     track.layerPush({
-      event: 'shippingIsPoBox',
-    })
+      event: "shippingIsPoBox",
+    });
   },
 
   trackExpressShippingDisabled: () => {
     track.layerPush({
-      event: 'expressShippingDisabled',
-    })
+      event: "expressShippingDisabled",
+    });
   },
 
   trackPaymentAttempted: (paymentData: { method: string }) => {
     track.layerPush({
-      event: 'paymentAttempted',
+      event: "paymentAttempted",
       paymentData,
-    })
+    });
   },
 
   trackSubscribeToMailinglist: (
@@ -59,18 +61,18 @@ const checkoutEvents = {
     subscribeToMailingList: boolean
   ) => {
     track.layerPush({
-      event: 'subscribeToMailinglist',
+      event: "subscribeToMailinglist",
       acceptsEmailMarketing: subscribeToMailingList,
       acceptsSMSMarketing: subscribeToMailingList,
       email,
-    })
+    });
   },
 
   trackExperimentActivated: (experimentName: string) => {
     track.layerPush({
-      event: 'experiment_activated',
+      event: "experiment_activated",
       experiment_api_name: experimentName,
-    })
+    });
   },
 
   // Apple pay, Google Pay, Web pay etc...
@@ -78,16 +80,16 @@ const checkoutEvents = {
     tokenizationMethod: TokenizationMethod
   ) => {
     track.layerPush({
-      event: 'paymentRequestClicked',
+      event: "paymentRequestClicked",
       tokenization_method: tokenizationMethod,
-    })
+    });
   },
 
   track3DSInitiated: (card3DSData: Card3DSData) => {
     track.layerPush({
-      event: '3ds_initiated',
+      event: "3ds_initiated",
       card_3ds_data: card3DSData,
-    })
+    });
   },
 
   /**
@@ -103,7 +105,7 @@ const checkoutEvents = {
     await track.trackPurchase(
       {
         id: `${order.id}`,
-        affiliation: 'Luminskin', // TODO (jparra 2/11/20): Make brand aware
+        affiliation: "hardsands", // TODO (jparra 2/11/20): Make brand aware
         tax: order.tax_amount.amount_usd_float,
         revenue: order.usd_revenue?.amount_usd_float,
         shipping: order.shipping_amount.amount_usd_float,
@@ -115,13 +117,13 @@ const checkoutEvents = {
         name: item.title,
         category: item.variant_title,
         variant: item.variant_title,
-        brand: 'Luminskin',
+        brand: "hardsands",
         price: item.price.amount_usd_float,
       }))
-    )
+    );
 
     if (!order.is_draft) {
-      checkoutEvents.trackImpact(order)
+      checkoutEvents.trackImpact(order);
     }
   },
 
@@ -130,7 +132,7 @@ const checkoutEvents = {
     await track.trackImpactConversion(
       {
         id: `${order.id}`,
-        affiliation: 'Luminskin', // TODO (jparra 2/11/20): Make brand aware
+        affiliation: "hardsands", // TODO (jparra 2/11/20): Make brand aware
         tax: order.tax_amount.amount_usd_float,
         revenue: order.usd_revenue?.amount_usd_float,
         shipping: order.shipping_amount.amount_usd_float,
@@ -141,10 +143,10 @@ const checkoutEvents = {
         name: item.title,
         category: item.variant_title,
         variant: item.variant_title,
-        brand: 'Luminskin',
+        brand: "hardsands",
         price: item.price.amount_usd_float,
       }))
-    )
+    );
 
     // This is the last event of checkout. Clear any checkout related data from
     // the data-layer.
@@ -155,65 +157,65 @@ const checkoutEvents = {
       freeTrialProduct: undefined,
       // userData is not cleared so we can track individual user's activity
       // through the site.
-    })
+    });
   },
 
   // This is not an event per-se but having the order available in the
   // data-layer lets triggers use that information when responding to events.
   setOrder: (order: Order) => {
-    track.layerPush({ order })
+    track.layerPush({ order });
   },
 
   trackPromotionApplied: (promotionSource: PromotionSource) => {
     track.layerPush({
-      event: 'promotionApplied',
+      event: "promotionApplied",
       promotion_source: promotionSource,
-    })
+    });
   },
 
   trackGreenlitNotificationRequest: (email: string, country: string) => {
     track.layerPush({
-      event: 'greenlitNotificationRequest',
+      event: "greenlitNotificationRequest",
       greenlitNotificationRequestData: { email, country },
-    })
+    });
   },
 
   trackPaymentMethodChange: (method: MultiPaymentMethod) => {
     track.layerPush({
-      event: 'paymentMethodChanged',
+      event: "paymentMethodChanged",
       payment_method_change: method,
-    })
+    });
   },
 
   trackPaymentMethodsShown: (methods: string[]) => {
     track.layerPush({
-      event: 'paymentMethodsShown',
+      event: "paymentMethodsShown",
       payment_methods_shown: methods,
-    })
+    });
   },
 
   trackPaymentError: (method: MultiPaymentMethod) => {
     track.layerPush({
-      event: 'paymentError',
+      event: "paymentError",
       payment_error_source: method,
-    })
+    });
   },
-}
+};
 
-const track = ({} as unknown) as CheckoutTrackingFunctions &
-  typeof checkoutEvents
+const track = {} as unknown as CheckoutTrackingFunctions &
+  typeof checkoutEvents;
 
 export function setTrackingFunctions(funcs: CheckoutTrackingFunctions) {
   if (Object.keys(track).length > 0) {
-    console.warn('Checkout tracking functions already set')
-    return
+    console.warn("Checkout tracking functions already set");
+    return;
   }
 
-  ;[...Object.entries(funcs), ...Object.entries(checkoutEvents)].forEach(
+  [...Object.entries(funcs), ...Object.entries(checkoutEvents)].forEach(
     ([key, fn]) => {
-      track[key] = fn
+      track[key] = fn;
     }
-  )
+  );
 }
 
-export default track
+export default track;
