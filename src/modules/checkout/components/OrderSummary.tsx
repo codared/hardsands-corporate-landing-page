@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Divider } from "@chakra-ui/react";
-import PriceSummary from "components/PriceSummary";
+import PriceSummary from "./PriceSummary";
 import React from "react";
 import { TFunction } from "react-i18next";
 import { CHECKOUT_STEPS } from "../constants";

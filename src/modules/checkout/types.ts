@@ -203,6 +203,11 @@ export interface Order extends OrderTotal {
   cart_hash: string;
   cartHash: string;
   checkoutToken: string;
+  userDetails: {
+    email: string;
+    firstName: string;
+    lastName: string;
+  };
   shippingDetails: ShippingDetails;
   shippingMethods: ShippingMethods[];
   shippingSelected: ShippingMethods;

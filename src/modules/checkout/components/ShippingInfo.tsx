@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Order } from "../types";
 
 const ShippingInfo = ({
-  order: { shippingDetails, shippingMethods },
+  order: { shippingDetails, shippingMethods, userDetails },
   handleSubmitShippingMethod,
   t,
 }: {
@@ -30,7 +30,7 @@ const ShippingInfo = ({
         <Text fontWeight={"bold"}>{t("checkout:ship-to", "Ship to")}</Text>
         <Box h={2} />
         <CheckAccordion
-          // onChange={(val: string | number) => setShippingAddress(val)}
+          defaultIndex={[0]}
           options={[
             {
               title: shippingDetails.address1,
@@ -39,7 +39,7 @@ const ShippingInfo = ({
                 <Box>
                   <Text>{shippingDetails.address1}</Text>
                   <Text>{`${shippingDetails.phoneCode} ${shippingDetails.phone}`}</Text>
-                  {/* <Text>nathan.roberts@example.com</Text> */}
+                  <Text>{userDetails.email}</Text>
                 </Box>
               ),
             },
@@ -55,8 +55,16 @@ const ShippingInfo = ({
           onChange={(val: string | number) => setShippingMethod(val as number)}
           options={buildShippingMethodsArray()}
         />
-        <Box h={4} />
       </Box>
+      {!shippingMethod && (
+        <Text fontSize={12} color={"gray.500"}>
+          {t(
+            "checkout:please-select-a-shipping-method",
+            "Please select a Shipping Method"
+          )}
+        </Text>
+      )}
+      <Box h={4} />
       <Button
         fontSize={14}
         fontWeight={500}

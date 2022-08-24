@@ -60,10 +60,11 @@ const PriceSummary = ({
           </Text>
         </Flex>
       }
-      <Flex mb={[6]} w="100%" display="flex" justifyContent="space-between">
+      {/* TODO: Undo this comment when tax is added to payment */}
+      {/* <Flex mb={[6]} w="100%" display="flex" justifyContent="space-between">
         <Text fontSize={[fontSize - 4, fontSize - 2]}>Tax:</Text>
         <Text fontSize={[fontSize - 4, fontSize - 2]}>{getTaxPrice()}</Text>
-      </Flex>
+      </Flex> */}
       <Divider my={5} />
       <Flex mb={[6]} w="100%" display="flex" justifyContent="space-between">
         <Text fontSize={[fontSize - 4, fontSize]} fontWeight="bolder">

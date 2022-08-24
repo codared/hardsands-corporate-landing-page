@@ -6,21 +6,23 @@ import {
   Circle,
   AccordionPanel,
   Text,
+  ExpandedIndex,
 } from "@chakra-ui/react";
 import { ShippingMethodType } from "modules/checkout/types";
-import { ReactElement } from "react";
 
 const CheckAccordion = ({
   allowMultiple = false,
   options,
   onChange,
+  defaultIndex,
 }: {
   allowMultiple?: boolean;
+  defaultIndex?: ExpandedIndex | undefined;
   options: any[];
   onChange?: (val: string | number) => void;
 }) => {
   return (
-    <Accordion allowMultiple={allowMultiple}>
+    <Accordion allowMultiple={allowMultiple} defaultIndex={defaultIndex}>
       {options.length &&
         options.map(
           ({
