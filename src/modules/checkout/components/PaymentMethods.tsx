@@ -1,12 +1,16 @@
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import CheckAccordion from "components/CheckAccordion";
 import { MasterCardIcon, VisaCardIcon } from "design";
+import { TFunction } from "react-i18next";
+import { Order } from "../types";
 
-const PaymentMethods = () => {
+const PaymentMethods = ({ order, t }: { t: TFunction; order: Order }) => {
   return (
     <>
       <Box mb={10}>
-        <Text fontWeight={"bold"}>Payment Method</Text>
+        <Text fontWeight={"bold"}>
+          {t("checkout:payment method", "Payment Method")}
+        </Text>
         <Box h={2} />
         <CheckAccordion
           options={[
@@ -65,7 +69,7 @@ const PaymentMethods = () => {
         }}
         mb={[6, 0]}
       >
-        Complete Checkout
+        {t("checkout:complete -checkout", "Complete Checkout")}
       </Button>
     </>
   );

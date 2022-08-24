@@ -1,5 +1,5 @@
 import { Box, Container, Flex, Spinner, Text } from "@chakra-ui/react";
-import { SyntheticEvent, useContext, useState } from "react";
+import { SyntheticEvent, useContext, useEffect, useState } from "react";
 import _ from "lodash";
 import CustomerInfoForm, { Values } from "./components/CustomerInfoForm";
 import CheckoutBreakcrumbs from "./components/CheckoutBreadcrumbs";
@@ -23,13 +23,25 @@ interface CheckoutPageProp {
 const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
   const { t } = useTranslation();
   const { dispatch } = useContext(CheckoutContext);
-  const order = useOrder(checkoutId);
+  const order = useOrder(checkoutId) as Order;
   const currency = useCurrency();
   const [isLoading, setIsLoading] = useState(false);
 
   const [activeStep, setActiveStep] = useState(
     CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM
   );
+
+  useEffect(() => {
+    if (!!order?.shippingDetails) {
+      setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION);
+    }
+    if (order?.shippingMethods.length) {
+      setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
+    }
+    if (!!order?.shippingSelected) {
+      setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
+    }
+  }, [order]);
 
   const handleSubmitCustomerInfoForm = async (
     values: Values,
@@ -60,10 +72,9 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
         setIsLoading(false);
       }
     }
-
   };
 
-  console.log("order >>>> ", order);
+  // console.log("order >>>> ", order);
 
   if (!order) {
     return (
@@ -93,6 +104,7 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
         <Box w="100%" position={"relative"} mt={[10]}>
           {activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM && (
             <CustomerInfoForm
+              order={order}
               setIsLoading={setIsLoading}
               onFormSubmit={handleSubmitCustomerInfoForm}
             />
@@ -104,7 +116,9 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
               handleSubmitShippingMethod={handleSubmitShippingMethod}
             />
           )}
-          {activeStep === CHECKOUT_STEPS.STEP_PAYMENT_INFO && <PaymentInfo />}
+          {activeStep === CHECKOUT_STEPS.STEP_PAYMENT_INFO && (
+            <PaymentInfo t={t} order={order} />
+          )}
           {isLoading && (
             <Flex
               position={"absolute"}

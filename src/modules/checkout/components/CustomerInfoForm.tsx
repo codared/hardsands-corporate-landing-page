@@ -1,16 +1,16 @@
 import { Box, Flex, Checkbox, Button, Text } from "@chakra-ui/react";
-import { FormikErrors, FormikHelpers, useFormik } from "formik";
+import { FormikErrors, useFormik } from "formik";
 import CustomInput from "components/CustomInput";
 import { useTranslation } from "react-i18next";
 import _ from "lodash";
 import CustomSelect from "components/CustomSelect";
 import { CustomerInfoSchema } from "../formScheme";
-import { useState, useEffect } from "react";
 import {
   getCountriesList,
   getCountryPhoneCode,
   getStatesList,
 } from "utils/getCountries";
+import { Order } from "../types";
 
 const initialValues = {
   firstName: "",
@@ -31,7 +31,9 @@ export type Values = typeof initialValues;
 const CustomerInfoForm = ({
   setIsLoading,
   onFormSubmit,
+  order: { shippingDetails, userDetails },
 }: {
+  order: Order;
   setIsLoading: (loading: boolean) => void;
   onFormSubmit: (val: Values, errors: FormikErrors<Values>) => void;
 }) => {
@@ -42,7 +44,19 @@ const CustomerInfoForm = ({
   };
 
   const { handleSubmit, handleChange, values, errors } = useFormik({
-    initialValues: initialValues,
+    initialValues: {
+      firstName: userDetails.firstName || "",
+      email: userDetails.email || "",
+      lastName: userDetails.lastName || "",
+      address1: shippingDetails.address1 || "",
+      city: shippingDetails.city || "",
+      countryId: shippingDetails.countryId || "",
+      zip: shippingDetails.zip || "",
+      provinceId: shippingDetails.provinceId || "",
+      phoneCode: shippingDetails.phoneCode || "",
+      phone: shippingDetails.phone || "",
+      agreedToReceiveEmail: shippingDetails.agreedToReceiveEmail || false,
+    },
     validationSchema: CustomerInfoSchema,
     onSubmit: handleSubmitCustomerInfoForm,
   });

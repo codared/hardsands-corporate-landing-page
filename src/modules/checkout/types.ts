@@ -257,6 +257,7 @@ export interface ShippingDetails {
   updatedAt: string;
   userId: number;
   zip: string;
+  agreedToReceiveEmail?: boolean;
 }
 export interface ShippingMethods {
   minDuration: number;
