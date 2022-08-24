@@ -55,11 +55,20 @@ const CustomSelect = ({
         isDisabled={isDisabled}
         {...rest}
       >
-        {options.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
-          </option>
-        ))}
+        {options.map((opt) => {
+          if (typeof opt === "object") {
+            return (
+              <option key={opt.title} value={opt.value}>
+                {opt.title}
+              </option>
+            );
+          }
+          return (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          );
+        })}
       </Select>
 
       {!isError ? (

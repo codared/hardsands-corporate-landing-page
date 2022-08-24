@@ -10,8 +10,10 @@ import {
   expressCheckout,
   getOrderFromCart,
   setOrderBillingAddress,
+  setOrderCustomerdetails,
   setOrderEmail,
   setOrderShippingAddress,
+  setOrderShippingMethod,
   setShippingRate,
   submitOrder,
 } from "./checkoutApi";
@@ -28,6 +30,9 @@ import {
   ShippingRatesPayload,
   CreditInfo,
   CheckoutMeta,
+  BrandServicesCustomerInfoSubmitRequest,
+  ShippingDetails,
+  ShippingMethods,
 } from "./types";
 
 export const ORDER_LOAD_ERROR = "order_load_error";
@@ -55,9 +60,24 @@ export const loadUserData = (payload: WithErrors<UserData>) => {
   };
 };
 
-export const loadShippingAddress = (payload: BrandServicesAddress) => {
+export const loadShippingAddress = (
+  payload: BrandServicesCustomerInfoSubmitRequest | BrandServicesAddress
+) => {
   return {
     type: "CHECKOUT_LOAD_SHIPPING_ADDRESS" as const,
+    payload,
+  };
+};
+
+export const loadShippingDetails = (payload: ShippingDetails) => {
+  return {
+    type: "CHECKOUT_LOAD_SHIPPING_DETAILS" as const,
+    payload,
+  };
+};
+export const loadShippingMethods = (payload: ShippingMethods[]) => {
+  return {
+    type: "CHECKOUT_LOAD_SHIPPING_METHODS" as const,
     payload,
   };
 };
@@ -219,6 +239,42 @@ export const identifyUser: ThunkActionCreator<Promise<Order | void>> = (
       );
       return;
     }
+  });
+
+export const saveCustomerInfo: ThunkActionCreator<Promise<Order | void>> = (
+  address: BrandServicesCustomerInfoSubmitRequest
+) =>
+  apiThunkWrapper(async (dispatch, getState) => {
+    const order = selectCheckoutCurrentOrder(getState());
+
+    if (!order) {
+      throw new Error("no order in state");
+    }
+
+    const res = await setOrderCustomerdetails(order, address);
+
+    // shipping address must exist here
+    dispatch(loadOrder(res));
+
+    return res;
+  });
+
+export const saveShippingMethod: ThunkActionCreator<Promise<Order | void>> = (
+  shippingMethodId: number
+) =>
+  apiThunkWrapper(async (dispatch, getState) => {
+    const order = selectCheckoutCurrentOrder(getState());
+
+    if (!order) {
+      throw new Error("no order in state");
+    }
+
+    const res = await setOrderShippingMethod(order, shippingMethodId);
+
+    // shipping address must exist here
+    dispatch(loadOrder(res));
+
+    return res;
   });
 
 export const saveShippingAddress: ThunkActionCreator<Promise<Order | void>> = (

@@ -1,5 +1,5 @@
 import { Box, Container, Flex, Spinner, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import { SyntheticEvent, useContext, useState } from "react";
 import _ from "lodash";
 import CustomerInfoForm, { Values } from "./components/CustomerInfoForm";
 import CheckoutBreakcrumbs from "./components/CheckoutBreadcrumbs";
@@ -12,6 +12,8 @@ import { useOrder } from "./hooks/useOrder";
 import { FormikErrors } from "formik";
 import { useTranslation } from "react-i18next";
 import { useCurrency } from "modules/cart/hooks";
+import { CheckoutContext } from "redux/context";
+import { saveCustomerInfo, saveShippingMethod } from "./actions";
 
 interface CheckoutPageProp {
   checkoutId: string;
@@ -20,6 +22,7 @@ interface CheckoutPageProp {
 
 const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
   const { t } = useTranslation();
+  const { dispatch } = useContext(CheckoutContext);
   const order = useOrder(checkoutId);
   const currency = useCurrency();
   const [isLoading, setIsLoading] = useState(false);
@@ -35,11 +38,32 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
     setIsLoading(true);
     if (_.isEmpty(errors)) {
       try {
-      } catch (error) {}
-      console.log(errors);
+        const res = await dispatch(saveCustomerInfo(values));
+        setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION);
+        setIsLoading(false);
+      } catch (error) {
+        // Sentry.exception();
+        setIsLoading(false);
+      }
     }
-    setIsLoading(false);
   };
+
+  const handleSubmitShippingMethod = async (shippingMethodId: number) => {
+    setIsLoading(true);
+    if (!!shippingMethodId) {
+      try {
+        const res = await dispatch(saveShippingMethod(shippingMethodId));
+        setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
+        setIsLoading(false);
+      } catch (error) {
+        // Sentry.exception();
+        setIsLoading(false);
+      }
+    }
+
+  };
+
+  console.log("order >>>> ", order);
 
   if (!order) {
     return (
@@ -74,7 +98,11 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
             />
           )}
           {activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION && (
-            <ShippingInfo />
+            <ShippingInfo
+              t={t}
+              order={order}
+              handleSubmitShippingMethod={handleSubmitShippingMethod}
+            />
           )}
           {activeStep === CHECKOUT_STEPS.STEP_PAYMENT_INFO && <PaymentInfo />}
           {isLoading && (

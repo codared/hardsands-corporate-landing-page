@@ -106,7 +106,10 @@ const CustomerInfoForm = ({
           <>
             <CustomSelect
               placeholder="Country"
-              options={["Nigeria", "United States"]}
+              options={[
+                { title: "Nigeria", value: "NG" },
+                { title: "United State", value: "US" },
+              ]}
               name={"countryId"}
               value={values.countryId}
               onChange={handleChange}
@@ -119,7 +122,10 @@ const CustomerInfoForm = ({
             <CustomSelect
               placeholder="State"
               isDisabled={!values.countryId}
-              options={["Nigeria", "United States"]}
+              options={[
+                { title: "Lagos", value: "NG:LA" },
+                { title: "Florida", value: "US:FL" },
+              ]}
               name={"provinceId"}
               value={values.provinceId}
               onChange={handleChange}

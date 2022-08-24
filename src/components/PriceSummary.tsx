@@ -1,5 +1,6 @@
 import { Box, Flex, Divider, Text } from "@chakra-ui/react";
 import { CHECKOUT_STEPS } from "modules/checkout/constants";
+import { ShippingMethods } from "modules/checkout/types";
 import { TFunction } from "react-i18next";
 import { formatCurrencyInteger } from "utils/currency";
 
@@ -9,37 +10,33 @@ const PriceSummary = ({
   totalDue,
   currency,
   activeStep,
-  shippingDetails,
+  shippingSelected,
   t,
 }: {
   fontSize?: number;
   total: number;
   currency: string;
   totalDue: number;
-  shippingDetails: any;
+  shippingSelected: ShippingMethods;
   activeStep: CHECKOUT_STEPS;
   t: TFunction;
 }) => {
   const getTaxPrice = (): string | null => {
     switch (activeStep) {
-      case CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM:
-        return t("checkout:to-be-calculated", "To be calculated at next step");
-      case CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION:
+      case CHECKOUT_STEPS.STEP_PAYMENT_INFO:
         return formatCurrencyInteger(total, currency);
       default:
-        return null;
+        return t("checkout:to-be-calculated", "To be calculated at next step");
     }
   };
   const getShippingPrice = (): string | null => {
     switch (activeStep) {
-      case CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM:
-        return t("checkout:to-be-calculated", "To be calculated at next step");
-      case CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION:
-        return !!shippingDetails
-          ? formatCurrencyInteger(total, currency)
+      case CHECKOUT_STEPS.STEP_PAYMENT_INFO:
+        return !!shippingSelected
+          ? formatCurrencyInteger(shippingSelected.price, currency)
           : formatCurrencyInteger(0, currency);
       default:
-        return null;
+        return t("checkout:to-be-calculated", "To be calculated at next step");
     }
   };
 

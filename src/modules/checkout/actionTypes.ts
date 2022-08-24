@@ -6,6 +6,8 @@ import {
   CheckoutError,
   PaymentMethod,
   UserStateMinimal,
+  ShippingDetails,
+  ShippingMethods,
 } from "./types";
 
 export const CHECKOUT_LOAD_ORDER = "CHECKOUT_LOAD_ORDER";
@@ -24,6 +26,16 @@ export interface CheckoutLoadUserDataAction {
 export interface CheckoutLoadShippingAddressAction {
   type: "CHECKOUT_LOAD_SHIPPING_ADDRESS";
   payload: BrandServicesAddress;
+}
+
+export interface CheckoutLoadShippingDetailsAction {
+  type: "CHECKOUT_LOAD_SHIPPING_DETAILS";
+  payload: ShippingDetails;
+}
+
+export interface CheckoutLoadShippingMethodsAction {
+  type: "CHECKOUT_LOAD_SHIPPING_METHODS";
+  payload: ShippingMethods[];
 }
 
 export interface CheckoutLoadBillingAddressAction {
@@ -69,6 +81,8 @@ export type CheckoutActionTypes =
   | CheckoutLoadOrderAction
   | CheckoutLoadUserDataAction
   | CheckoutLoadShippingAddressAction
+  | CheckoutLoadShippingDetailsAction
+  | CheckoutLoadShippingMethodsAction
   | CheckoutLoadBillingAddressAction
   | CheckoutLoadShippingRatesAction
   | CheckoutLoadPaymentMethodAction

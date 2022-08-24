@@ -203,7 +203,9 @@ export interface Order extends OrderTotal {
   cart_hash: string;
   cartHash: string;
   checkoutToken: string;
-  shippingDetails: any;
+  shippingDetails: ShippingDetails;
+  shippingMethods: ShippingMethods[];
+  shippingSelected: ShippingMethods;
   billing_address: { data: BrandServicesAddress | EmptyArray };
   billing_same_as_shipping_address: boolean;
   checkout_token: string;
@@ -234,6 +236,29 @@ export interface Order extends OrderTotal {
   };
   tracking_code?: string;
   tracking_url?: string;
+}
+
+export interface ShippingDetails {
+  address1: string;
+  address2: string;
+  city: string;
+  countryId: string;
+  createdAT: string;
+  id: number;
+  orderId: number;
+  phone: string;
+  phoneCode: string;
+  provinceId: string;
+  updatedAt: string;
+  userId: number;
+  zip: string;
+}
+export interface ShippingMethods {
+  minDuration: number;
+  maxDuration: number;
+  price: number;
+  title: string;
+  id?: number;
 }
 
 export interface UserData {
