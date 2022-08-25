@@ -38,7 +38,7 @@ import {
 export const ORDER_LOAD_ERROR = "order_load_error";
 
 export const loadOrder = (payload: Order) => {
-  track.setOrder(payload);
+  // track.setOrder(payload);
 
   return {
     type: "CHECKOUT_LOAD_ORDER" as const,
