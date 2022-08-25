@@ -71,7 +71,7 @@ const PriceSummary = ({
           {t("checkout:total", "Total:")}
         </Text>
         <Text fontSize={[fontSize - 4, fontSize]} fontWeight="bolder">
-          {formatCurrencyInteger(total, currency)}
+          {formatCurrencyInteger(total + shippingSelected.price, currency)}
         </Text>
       </Flex>
     </Box>
