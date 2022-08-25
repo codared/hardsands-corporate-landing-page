@@ -22,7 +22,9 @@ interface CustomSelectProps extends SelectProps {
   isInvalid?: boolean;
   isDisabled?: boolean;
   inputType?: string;
-  options?: Array<any>;
+  options: Array<any>;
+  _key?: string;
+  _value?: string;
 }
 
 const CustomSelect = ({
@@ -40,6 +42,8 @@ const CustomSelect = ({
   isDisabled = false,
   inputType = "text",
   options = [],
+  _key,
+  _value,
   ...rest
 }: CustomSelectProps) => {
   return (
@@ -55,11 +59,23 @@ const CustomSelect = ({
         isDisabled={isDisabled}
         {...rest}
       >
-        {options.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
-          </option>
-        ))}
+        {options.map((opt, index) => {
+          if (typeof opt === "object") {
+            return (
+              <option
+                key={`${opt[_key || "title"]}${index}`}
+                value={opt[_key || "title"]}
+              >
+                {opt[_value || "title"]}
+              </option>
+            );
+          }
+          return (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          );
+        })}
       </Select>
 
       {!isError ? (

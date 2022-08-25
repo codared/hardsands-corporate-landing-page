@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, Divider } from "@chakra-ui/react";
-import PriceSummary from "components/PriceSummary";
+import PriceSummary from "./PriceSummary";
 import React from "react";
 import { TFunction } from "react-i18next";
 import { CHECKOUT_STEPS } from "../constants";
@@ -41,7 +41,7 @@ const OrderSummary = ({
           total={order.total as unknown as number}
           totalDue={order.totalDue}
           fontSize={18}
-          shippingDetails={order.shippingDetails}
+          shippingSelected={order.shippingSelected}
         />
       </Flex>
     </Box>

@@ -1,3 +1,4 @@
+import CheckoutHeader from "modules/checkout/components/CheckoutHeader";
 import Head from "next/head";
 import React from "react";
 import {
@@ -12,10 +13,12 @@ const WithLayout = ({
   children,
   pageTitle = BRAND_TITLE,
   pageDescription = BRAND_DESCRIPTION,
+  isCheckout,
 }: {
   children: React.ReactNode;
   pageTitle?: string;
   pageDescription?: string;
+  isCheckout?: boolean;
 }) => {
   return (
     <>
@@ -36,13 +39,10 @@ const WithLayout = ({
         <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="611" />
         <meta property="og:image:height" content="498" />
-        <meta
-          property="og:image:alt"
-          content={pageDescription}
-        />
+        <meta property="og:image:alt" content={pageDescription} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navigation />
+      {!isCheckout ? <Navigation /> : <CheckoutHeader />}
       {children}
       <Footer />
     </>

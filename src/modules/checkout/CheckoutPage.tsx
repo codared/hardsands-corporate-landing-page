@@ -1,5 +1,11 @@
-import { Box, Container, Flex, Spinner, Text } from "@chakra-ui/react";
-import { useState } from "react";
+import {
+  Box,
+  Container,
+  Flex,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
+import { useContext, useEffect, useState } from "react";
 import _ from "lodash";
 import CustomerInfoForm, { Values } from "./components/CustomerInfoForm";
 import CheckoutBreakcrumbs from "./components/CheckoutBreadcrumbs";
@@ -12,6 +18,9 @@ import { useOrder } from "./hooks/useOrder";
 import { FormikErrors } from "formik";
 import { useTranslation } from "react-i18next";
 import { useCurrency } from "modules/cart/hooks";
+import { CheckoutContext } from "redux/context";
+import { saveCustomerInfo, saveShippingMethod } from "./actions";
+import AlertErrorMessage from "./components/AlertErrorMessage";
 
 interface CheckoutPageProp {
   checkoutId: string;
@@ -20,13 +29,29 @@ interface CheckoutPageProp {
 
 const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
   const { t } = useTranslation();
-  const order = useOrder(checkoutId);
+  const { dispatch } = useContext(CheckoutContext);
+  const order = useOrder(checkoutId) as Order;
   const currency = useCurrency();
   const [isLoading, setIsLoading] = useState(false);
+  const [showCancelMessageError, setShowCancelMessageError] = useState<
+    string | null
+  >(null);
 
   const [activeStep, setActiveStep] = useState(
     CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM
   );
+
+  useEffect(() => {
+    if (!!order?.shippingDetails) {
+      setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION);
+    }
+    if (order?.shippingMethods.length) {
+      setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
+    }
+    if (!!order?.shippingSelected) {
+      setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
+    }
+  }, [order]);
 
   const handleSubmitCustomerInfoForm = async (
     values: Values,
@@ -35,11 +60,39 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
     setIsLoading(true);
     if (_.isEmpty(errors)) {
       try {
-      } catch (error) {}
-      console.log(errors);
+        const res = await dispatch(saveCustomerInfo(values));
+        setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION);
+        setIsLoading(false);
+      } catch (error) {
+        // Sentry.exception();
+        setIsLoading(false);
+      }
     }
-    setIsLoading(false);
   };
+
+  const handleSubmitShippingMethod = async (shippingMethodId: number) => {
+    setIsLoading(true);
+    if (!!shippingMethodId) {
+      try {
+        const res = await dispatch(saveShippingMethod(shippingMethodId));
+        setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
+        setIsLoading(false);
+      } catch (error) {
+        // Sentry.exception();
+        setIsLoading(false);
+      }
+    }
+  };
+
+  const handleChangeAddress = () => {
+    setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM);
+  };
+
+  const handleCancel = (message: string) => {
+    setShowCancelMessageError(message);
+  };
+
+  // console.log("order >>>> ", order);
 
   if (!order) {
     return (
@@ -65,18 +118,34 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
         setActiveStep={setActiveStep}
       />
       <Box h={8} />
+      {!!showCancelMessageError && (
+        <AlertErrorMessage
+          t={t}
+          showCancelMessageError={showCancelMessageError}
+          setShowCancelMessageError={setShowCancelMessageError}
+        />
+      )}
       <Flex direction={["column-reverse", "column", "row"]}>
         <Box w="100%" position={"relative"} mt={[10]}>
           {activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM && (
             <CustomerInfoForm
+              order={order}
               setIsLoading={setIsLoading}
               onFormSubmit={handleSubmitCustomerInfoForm}
             />
           )}
           {activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION && (
-            <ShippingInfo />
+            <ShippingInfo
+              t={t}
+              order={order}
+              currency={currency}
+              handleSubmitShippingMethod={handleSubmitShippingMethod}
+              handleChangeAddress={handleChangeAddress}
+            />
           )}
-          {activeStep === CHECKOUT_STEPS.STEP_PAYMENT_INFO && <PaymentInfo />}
+          {activeStep === CHECKOUT_STEPS.STEP_PAYMENT_INFO && (
+            <PaymentInfo t={t} order={order} handleCancel={handleCancel} />
+          )}
           {isLoading && (
             <Flex
               position={"absolute"}

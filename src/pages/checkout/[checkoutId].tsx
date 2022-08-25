@@ -27,10 +27,13 @@ const Checkout: NextPage = () => {
   useEffect(() => {
     setTrackingFunctions(track);
     setLifecycleInstance(lifecycle);
-  }, [])
+  }, []);
 
   return (
-    <WithLayout pageTitle="Checkout - Hardsands - One time Business Card">
+    <WithLayout
+      isCheckout
+      pageTitle="Checkout | Hardsands - One time Business Card"
+    >
       {checkoutId && (
         <CheckoutPage
           checkoutId={Array.isArray(checkoutId) ? checkoutId[0] : checkoutId}

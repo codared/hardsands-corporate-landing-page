@@ -41,6 +41,32 @@ export function checkoutReducer(
         },
       };
 
+    case "CHECKOUT_LOAD_SHIPPING_DETAILS":
+      if (!state.currentOrder) {
+        throw new Error("Loading address without order");
+      }
+
+      return {
+        ...state,
+        currentOrder: {
+          ...state.currentOrder,
+          shippingDetails: action.payload,
+        },
+      };
+
+    case "CHECKOUT_LOAD_SHIPPING_METHODS":
+      if (!state.currentOrder) {
+        throw new Error("Loading address without order");
+      }
+
+      return {
+        ...state,
+        currentOrder: {
+          ...state.currentOrder,
+          shippingMethods: action.payload,
+        },
+      };
+
     case "CHECKOUT_LOAD_SHIPPING_ADDRESS":
       if (!state.currentOrder) {
         throw new Error("Loading address without order");

@@ -16,7 +16,6 @@ import HardsandLink from "components/HardsandsLink";
 import LoginIcon from "design/svg/Login.svg";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Cart from "modules/cart";
-import { useOffsetScroll } from "./hooks";
 import HardsandsAppLogo from "components/Logo";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { usePreloadProducts } from "modules/products/hooks";

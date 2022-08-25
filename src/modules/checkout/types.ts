@@ -196,14 +196,38 @@ export interface OrderItem {
   discount_rule_percent?: number;
 }
 
-export interface Order extends OrderTotal {
+export interface Order {
   id: number;
   applied_credit_balance: Amount;
   available_user_credit: Amount;
   cart_hash: string;
   cartHash: string;
   checkoutToken: string;
-  shippingDetails: any;
+  userDetails: {
+    email: string;
+    firstName: string;
+    lastName: string;
+  };
+  total: number;
+  shippingDetails: ShippingDetails;
+  shippingMethods: ShippingMethods[];
+  shippingSelected: ShippingMethods;
+  paymentMethod: {
+    checkoutHash: string;
+    custom_fields: Array<{
+      display_name: string;
+      value: string;
+      variable_name: string;
+    }>;
+    reference: string;
+  };
+  currency: CURRENCY_CODES;
+  discount_amount: Amount;
+  type: string;
+  shipping_amount: Amount;
+  subtotal: Amount;
+  items_total: Amount;
+  tax_amount: Amount;
   billing_address: { data: BrandServicesAddress | EmptyArray };
   billing_same_as_shipping_address: boolean;
   checkout_token: string;
@@ -234,6 +258,30 @@ export interface Order extends OrderTotal {
   };
   tracking_code?: string;
   tracking_url?: string;
+}
+
+export interface ShippingDetails {
+  address1: string;
+  address2: string;
+  city: string;
+  countryId: string;
+  createdAT: string;
+  id: number;
+  orderId: number;
+  phone: string;
+  phoneCode: string;
+  provinceId: string;
+  updatedAt: string;
+  userId: number;
+  zip: string;
+  agreedToReceiveEmail?: boolean;
+}
+export interface ShippingMethods {
+  minDuration: number;
+  maxDuration: number;
+  price: number;
+  title: string;
+  id?: number;
 }
 
 export interface UserData {
@@ -379,7 +427,7 @@ export interface ShippingRatesPayload {
   tax_amount: Amount;
   tax_lines: TaxLine[];
   subtotal: Amount;
-  total: Amount;
+  total: number;
 }
 
 export interface CreditInfo {

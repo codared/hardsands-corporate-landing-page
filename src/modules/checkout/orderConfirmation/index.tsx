@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { CheckIcon } from "assets";
 import HardsandLink from "components/HardsandsLink";
-import PriceSummary from "components/PriceSummary";
+import PriceSummary from "modules/checkout/components/PriceSummary";
 import { useTranslation } from "react-i18next";
 import OrderItemCard from "../components/OrderItemCard";
 

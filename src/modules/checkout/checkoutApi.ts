@@ -152,10 +152,30 @@ export const setOrderCustomerdetails = async (
       headers: { "content-type": "application/json" },
       body: JSON.stringify(req),
     }
-  )) as unknown as { data: [Order] };
+  )) as unknown as { isError: boolean; result: Order };
 
-  return res.data[0];
+  return res.result;
 };
+
+/**
+ * Sets the shipping address for the order.
+ */
+export const setOrderShippingMethod = async (
+  order: Order,
+  shippingMethodId: number
+): Promise<Order> => {
+  const res = (await storefrontApiJsonFetch(
+    `/api/checkout/shipping-details/${order.checkoutToken}`,
+    {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ shippingId: shippingMethodId }),
+    }
+  )) as unknown as { isError: boolean; result: Order };
+
+  return res.result;
+};
+
 /**
  * Sets the shipping address for the order.
  */
