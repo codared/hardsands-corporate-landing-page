@@ -50,9 +50,9 @@ const CheckAccordion = ({
                       </Box>
 
                       {!!subTitle && (
-                        <Text mr={2} textTransform={"uppercase"}>
+                        <Box mr={2} textTransform={"uppercase"}>
                           {subTitle}
-                        </Text>
+                        </Box>
                       )}
                       <Box
                         borderWidth={1}

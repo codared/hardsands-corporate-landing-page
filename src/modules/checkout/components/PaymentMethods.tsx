@@ -1,10 +1,22 @@
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import CheckAccordion from "components/CheckAccordion";
 import { MasterCardIcon, VisaCardIcon } from "design";
+import { useState } from "react";
 import { TFunction } from "react-i18next";
+import PaystackButtonComponent from "../paymentMethods/Paystack";
 import { Order } from "../types";
 
-const PaymentMethods = ({ order, t }: { t: TFunction; order: Order }) => {
+const PaymentMethods = ({
+  order,
+  t,
+  handleCancel,
+}: {
+  t: TFunction;
+  order: Order;
+  handleCancel: (message: string) => void;
+}) => {
+  const [payment, setPayment] = useState<number | null>(null);
+
   return (
     <>
       <Box mb={10}>
@@ -13,36 +25,18 @@ const PaymentMethods = ({ order, t }: { t: TFunction; order: Order }) => {
         </Text>
         <Box h={2} />
         <CheckAccordion
+          defaultIndex={[0]}
+          onChange={(val: string | number) => setPayment(val as number)}
           options={[
             {
-              title: "Credit Card",
-              subTitle: (
-                <Flex>
-                  <Image
-                    objectFit={"contain"}
-                    boxSize={8}
-                    src={MasterCardIcon.src}
-                    alt={"mastercards"}
-                  />
-                  <Box w={2} />
-                  <Image
-                    objectFit={"contain"}
-                    w={12}
-                    src={VisaCardIcon.src}
-                    alt={"visa cards"}
-                  />
-                </Flex>
-              ),
+              value: 1,
+              title: "Paystack",
               content: (
-                <Box>
-                  <Text>2464 Royal Ln. Mesa, New Jersey 45463</Text>
-                  <Text>(505) 555-0125</Text>
-                  <Text>nathan.roberts@example.com</Text>
-                </Box>
+                <PaystackButtonComponent
+                  order={order}
+                  handleCancel={handleCancel}
+                />
               ),
-            },
-            {
-              title: "PayPal",
             },
           ]}
         />
@@ -68,6 +62,7 @@ const PaymentMethods = ({ order, t }: { t: TFunction; order: Order }) => {
           borderColor: "brand.100",
         }}
         mb={[6, 0]}
+        isDisabled={!payment}
       >
         {t("checkout:complete -checkout", "Complete Checkout")}
       </Button>

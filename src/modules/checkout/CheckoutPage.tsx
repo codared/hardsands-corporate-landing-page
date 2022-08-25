@@ -1,5 +1,11 @@
-import { Box, Container, Flex, Spinner, Text } from "@chakra-ui/react";
-import { SyntheticEvent, useContext, useEffect, useState } from "react";
+import {
+  Box,
+  Container,
+  Flex,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
+import { useContext, useEffect, useState } from "react";
 import _ from "lodash";
 import CustomerInfoForm, { Values } from "./components/CustomerInfoForm";
 import CheckoutBreakcrumbs from "./components/CheckoutBreadcrumbs";
@@ -14,6 +20,7 @@ import { useTranslation } from "react-i18next";
 import { useCurrency } from "modules/cart/hooks";
 import { CheckoutContext } from "redux/context";
 import { saveCustomerInfo, saveShippingMethod } from "./actions";
+import AlertErrorMessage from "./components/AlertErrorMessage";
 
 interface CheckoutPageProp {
   checkoutId: string;
@@ -26,6 +33,9 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
   const order = useOrder(checkoutId) as Order;
   const currency = useCurrency();
   const [isLoading, setIsLoading] = useState(false);
+  const [showCancelMessageError, setShowCancelMessageError] = useState<
+    string | null
+  >(null);
 
   const [activeStep, setActiveStep] = useState(
     CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM
@@ -74,6 +84,14 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
     }
   };
 
+  const handleChangeAddress = () => {
+    setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM);
+  };
+
+  const handleCancel = (message: string) => {
+    setShowCancelMessageError(message);
+  };
+
   // console.log("order >>>> ", order);
 
   if (!order) {
@@ -100,6 +118,13 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
         setActiveStep={setActiveStep}
       />
       <Box h={8} />
+      {!!showCancelMessageError && (
+        <AlertErrorMessage
+          t={t}
+          showCancelMessageError={showCancelMessageError}
+          setShowCancelMessageError={setShowCancelMessageError}
+        />
+      )}
       <Flex direction={["column-reverse", "column", "row"]}>
         <Box w="100%" position={"relative"} mt={[10]}>
           {activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM && (
@@ -113,11 +138,13 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
             <ShippingInfo
               t={t}
               order={order}
+              currency={currency}
               handleSubmitShippingMethod={handleSubmitShippingMethod}
+              handleChangeAddress={handleChangeAddress}
             />
           )}
           {activeStep === CHECKOUT_STEPS.STEP_PAYMENT_INFO && (
-            <PaymentInfo t={t} order={order} />
+            <PaymentInfo t={t} order={order} handleCancel={handleCancel} />
           )}
           {isLoading && (
             <Flex
