@@ -1,10 +1,4 @@
-import {
-  Box,
-  Container,
-  Flex,
-  Spinner,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Container, Flex, Spinner, Text } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import _ from "lodash";
 import CustomerInfoForm, { Values } from "./components/CustomerInfoForm";
@@ -42,15 +36,17 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
   );
 
   useEffect(() => {
-    if (!!order?.shippingDetails) {
-      setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION);
-    }
-    if (order?.shippingMethods.length) {
-      setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
+    if (!order?.shippingDetails) {
+      setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM);
     }
     if (!!order?.shippingSelected) {
       setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
+    } else {
+      setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION);
     }
+    // if (order?.shippingMethods.length) {
+    //   setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
+    // }
   }, [order]);
 
   const handleSubmitCustomerInfoForm = async (
