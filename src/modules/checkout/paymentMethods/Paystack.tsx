@@ -16,7 +16,7 @@ const PaystackButtonComponent = ({
   order: Order;
   handleCancel: (message: string) => void;
 }) => {
-  const currency = "NGN" as PaystackCurrencyTypes;
+  const currency = useCurrency() as PaystackCurrencyTypes;
   const router = useRouter();
 
   const {
