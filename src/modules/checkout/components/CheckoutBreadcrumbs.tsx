@@ -33,7 +33,11 @@ const CheckoutBreakcrumbs = ({
               ? "brand.300"
               : "black"
           }
-          onClick={() => setActiveStep(1)}
+          onClick={() =>
+            activeStep < CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION
+              ? null
+              : setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION)
+          }
         >
           <BreadcrumbLink href="#">Shipping Info</BreadcrumbLink>
         </BreadcrumbItem>
@@ -44,7 +48,11 @@ const CheckoutBreakcrumbs = ({
               ? "brand.300"
               : "black"
           }
-          onClick={() => setActiveStep(2)}
+          onClick={() =>
+            activeStep < CHECKOUT_STEPS.STEP_PAYMENT_INFO
+              ? null
+              : setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO)
+          }
         >
           <BreadcrumbLink href="#">Payment</BreadcrumbLink>
         </BreadcrumbItem>

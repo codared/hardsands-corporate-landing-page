@@ -21,7 +21,7 @@ const ShippingInfo = ({
   const [shippingMethod, setShippingMethod] = useState(0);
 
   const buildShippingMethodsArray = () => {
-    return shippingMethods.map((method) => ({
+    return shippingMethods?.map((method) => ({
       title: `${method.title} (${method.minDuration} - ${method.maxDuration} days)`,
       subTitle: method.title.includes("Free")
         ? "free"
@@ -50,13 +50,13 @@ const ShippingInfo = ({
           defaultIndex={[0]}
           options={[
             {
-              title: shippingDetails.address1,
+              title: shippingDetails?.address1,
               isChecked: true,
               content: (
                 <Box>
-                  <Text>{shippingDetails.address1}</Text>
-                  <Text>{`${shippingDetails.phoneCode} ${shippingDetails.phone}`}</Text>
-                  <Text>{userDetails.email}</Text>
+                  <Text>{shippingDetails?.address1}</Text>
+                  <Text>{`${shippingDetails?.phoneCode} ${shippingDetails?.phone}`}</Text>
+                  <Text>{userDetails?.email}</Text>
                 </Box>
               ),
             },

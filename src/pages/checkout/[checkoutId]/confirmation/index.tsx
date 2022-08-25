@@ -25,11 +25,14 @@ const OrderConfirmation: NextPage = () => {
 
   useEffect(() => {
     dispatch(resetCart());
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <WithLayout pageTitle="Order Confirmation - Hardsands - One time Business Card">
+    <WithLayout
+      isCheckout
+      pageTitle="Order Confirmation - Hardsands - One time Business Card"
+    >
       {checkoutId && (
         <OrderConfirmationPage
           checkoutId={Array.isArray(checkoutId) ? checkoutId[0] : checkoutId}

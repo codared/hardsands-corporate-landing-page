@@ -36,17 +36,13 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
   );
 
   useEffect(() => {
-    if (!order?.shippingDetails) {
-      setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM);
-    }
-    if (!!order?.shippingSelected) {
-      setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
-    } else {
+    if (!!order?.shippingDetails) {
       setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION);
     }
-    // if (order?.shippingMethods.length) {
-    //   setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
-    // }
+    if (order?.shippingMethods.length && !!order?.shippingSelected) {
+      setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [order]);
 
   const handleSubmitCustomerInfoForm = async (
@@ -121,8 +117,8 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
           setShowCancelMessageError={setShowCancelMessageError}
         />
       )}
-      <Flex direction={["column-reverse", "column", "row"]}>
-        <Box w="100%" position={"relative"} mt={[10]}>
+      <Flex mt={[10]} direction={["column-reverse", "column", "row"]}>
+        <Box w="100%" position={"relative"}>
           {activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM && (
             <CustomerInfoForm
               order={order}
