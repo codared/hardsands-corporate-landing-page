@@ -3,19 +3,27 @@ import {
   Button,
   Container,
   Divider,
-  Flex,
   Heading,
   Image,
   Text,
 } from "@chakra-ui/react";
 import { CheckIcon } from "assets";
-import HardsandLink from "components/HardsandsLink";
+import { useCurrency } from "modules/cart/hooks";
 import PriceSummary from "modules/checkout/components/PriceSummary";
 import { useTranslation } from "react-i18next";
 import OrderItemCard from "../components/OrderItemCard";
+import { useOrder } from "../hooks/useOrder";
+import { Order, OrderItem } from "../types";
 
-const OrderConfirmation = () => {
+interface OrderConfirmationProp {
+  checkoutId: string;
+  language: string;
+}
+
+const OrderConfirmation = ({ checkoutId, language }: OrderConfirmationProp) => {
   const { t } = useTranslation();
+  const currency = useCurrency();
+  const order = useOrder(checkoutId) as Order;
 
   return (
     <Container p={10} py={20}>
@@ -37,10 +45,26 @@ const OrderConfirmation = () => {
         </Text>
         <Divider my={10} />
         <Box>
-          {/* <OrderItemCard /> */}
+          {order.items.map((item: OrderItem) => (
+            <OrderItemCard
+              key={item.id}
+              item={item}
+              // p={["0px 5px"]}
+              // titleFontSize={[14, 16]}
+              // subTitleFontSize={[12, 14]}
+            />
+          ))}
         </Box>
         <Box h={8} />
-        {/* <PriceSummary /> */}
+        <PriceSummary
+          t={t}
+          activeStep={2}
+          currency={currency}
+          total={order.total}
+          totalDue={order.totalDue}
+          // fontSize={18}
+          shippingSelected={order.shippingSelected}
+        />
         <Box h={8} />
         <Button
           fontSize={"sm"}
@@ -64,7 +88,7 @@ const OrderConfirmation = () => {
           }}
           mb={[6, 0]}
         >
-          Return Home
+          {t("checkout:return-home", "Return Home")}
         </Button>
         <Box h={8} />
       </Box>

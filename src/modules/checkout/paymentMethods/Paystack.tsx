@@ -23,11 +23,12 @@ const PaystackButtonComponent = ({
     paymentMethod: { checkoutHash, custom_fields, reference },
     userDetails: { email },
     total,
+    totalDue,
   } = order;
 
   const componentProps = {
     email,
-    amount: total * 100,
+    amount: totalDue / 100,
     metadata: {
       custom_fields,
     },
