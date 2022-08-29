@@ -42,7 +42,7 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
     if (order?.shippingMethods.length && !!order?.shippingSelected) {
       setActiveStep(CHECKOUT_STEPS.STEP_PAYMENT_INFO);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [order]);
 
   const handleSubmitCustomerInfoForm = async (
@@ -136,7 +136,11 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
             />
           )}
           {activeStep === CHECKOUT_STEPS.STEP_PAYMENT_INFO && (
-            <PaymentInfo t={t} order={order} handleCancel={handleCancel} />
+            <PaymentInfo
+              t={t}
+              order={order}
+              handleCancel={handleCancel}
+            />
           )}
           {isLoading && (
             <Flex

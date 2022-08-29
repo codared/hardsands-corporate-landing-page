@@ -54,7 +54,7 @@ const ShippingInfo = ({
               isChecked: true,
               content: (
                 <Box>
-                  <Text>{shippingDetails?.address1}</Text>
+                  <Text fontWeight={"bold"}>{shippingDetails?.address1}</Text>
                   <Text>{`${shippingDetails?.phoneCode} ${shippingDetails?.phone}`}</Text>
                   <Text>{userDetails?.email}</Text>
                 </Box>

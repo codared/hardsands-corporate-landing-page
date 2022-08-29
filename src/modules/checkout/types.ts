@@ -208,18 +208,21 @@ export interface Order {
     firstName: string;
     lastName: string;
   };
+  draftOrder: boolean;
   total: number;
   shippingDetails: ShippingDetails;
   shippingMethods: ShippingMethods[];
   shippingSelected: ShippingMethods;
   paymentMethod: {
-    checkoutHash: string;
-    custom_fields: Array<{
-      display_name: string;
-      value: string;
-      variable_name: string;
-    }>;
-    reference: string;
+    [key: string]: {
+      checkoutHash: string;
+      custom_fields: Array<{
+        display_name: string;
+        value: string;
+        variable_name: string;
+      }>;
+      reference: string;
+    };
   };
   currency: CURRENCY_CODES;
   discount_amount: Amount;

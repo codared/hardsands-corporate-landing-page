@@ -17,18 +17,14 @@ const PaymentMethods = ({
 }) => {
   const [payment, setPayment] = useState<number | null>(null);
 
-  return (
-    <>
-      <Box mb={10}>
-        <Text fontWeight={"bold"}>
-          {t("checkout:payment method", "Payment Method")}
-        </Text>
-        <Box h={2} />
-        <CheckAccordion
-          defaultIndex={[0]}
-          onChange={(val: string | number) => setPayment(val as number)}
-          options={[
-            {
+  const buildPaymentMethods = () => {
+    const keys = Object.keys(order.paymentMethod);
+
+    return keys
+      .map((paymentMethod: string) => {
+        switch (paymentMethod) {
+          case "paystack":
+            return {
               value: 1,
               title: "Paystack",
               content: (
@@ -37,9 +33,30 @@ const PaymentMethods = ({
                   handleCancel={handleCancel}
                 />
               ),
-            },
-          ]}
-        />
+            };
+          // case 'paypal':
+          // case 'stripe':
+          default:
+            return;
+        }
+      })
+      .filter((data) => !!data);
+  };
+
+  return (
+    <>
+      <Box mb={10}>
+        <>
+          <Text fontWeight={"bold"}>
+            {t("checkout:payment method", "Payment Method")}
+          </Text>
+          <Box h={2} />
+          <CheckAccordion
+            defaultIndex={[0]}
+            onChange={(val: string | number) => setPayment(val as number)}
+            options={buildPaymentMethods()}
+          />
+        </>
       </Box>
       <Button
         fontSize={14}

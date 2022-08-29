@@ -6,6 +6,7 @@ import { useCurrency } from "modules/cart/hooks";
 import { Box } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { PaystackCurrencyTypes } from "./types";
+import { completeOrderCheck } from "../checkoutApi";
 
 const publicKey = config("PAYSTACK_PUBLIC_KEY");
 
@@ -20,11 +21,31 @@ const PaystackButtonComponent = ({
   const router = useRouter();
 
   const {
-    paymentMethod: { checkoutHash, custom_fields, reference },
+    paymentMethod: {
+      paystack: { checkoutHash, custom_fields, reference },
+    },
     userDetails: { email },
     total,
     totalDue,
   } = order;
+
+  const handleOrderPaymentCheck = async () => {
+    // Call the check order endpoint
+    // if response and draftorder is true then payment is complete
+    const res = await completeOrderCheck({
+      paymentToken: reference,
+      checkoutToken: checkoutHash,
+    });
+
+    if (res.isError || res.result.draftOrder) {
+      return handleCancel(res.message as string);
+    }
+
+    if (!res.result.draftOrder) {
+      return router.push(`/checkout/${checkoutHash}/confirmation`);
+    }
+    return; // not complete;
+  };
 
   const componentProps = {
     email,
@@ -36,7 +57,8 @@ const PaystackButtonComponent = ({
     reference,
     currency,
     text: "Pay with Paystack",
-    onSuccess: () => router.push(`/checkout/${checkoutHash}/confirmation`),
+    onSuccess: handleOrderPaymentCheck,
+    // onSuccess: () => router.push(`/checkout/${checkoutHash}/confirmation`),
     onClose: () => handleCancel("You haven't made the payment complete!!!!"),
   };
 

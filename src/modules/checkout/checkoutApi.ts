@@ -177,6 +177,21 @@ export const setOrderShippingMethod = async (
 };
 
 /**
+ * Comfirm payment on Completion.
+ */
+export const completeOrderCheck = async (orderTokendata: {
+  paymentToken: string;
+  checkoutToken: string;
+}) => {
+  const res = (await storefrontApiJsonFetch(`/api/checkout/complete-order`, {
+    method: "POST",
+    body: JSON.stringify(orderTokendata),
+  })) as { isError: boolean; result?: any; message?: string };
+
+  return res;
+};
+
+/**
  * Sets the shipping address for the order.
  */
 export const setOrderShippingAddress = async (

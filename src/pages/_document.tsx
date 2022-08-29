@@ -1,11 +1,27 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import config from 'core/config';
+import Document, {
+  Html,
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from "next/document";
+import config from "core/config";
+import { detectLanguage } from "modules/i18n/actions";
 
-export default class HardsandsDocument extends Document {
+export default class HardsandsDocument extends Document<{ lang: string }> {
+  static async getInitialProps(ctx: DocumentContext) {
+    const initialProps = await Document.getInitialProps(ctx);
+
+    return {
+      ...initialProps,
+      lang: detectLanguage(ctx),
+    };
+  }
+
   render() {
-    const GTM_ID = config('TAG_MANAGER_ID');
+    const GTM_ID = config("TAG_MANAGER_ID");
     return (
-      <Html>
+      <Html lang={this.props.lang} style={{ scrollBehavior: "smooth" }}>
         <Head />
         <body>
           <noscript>
@@ -13,13 +29,13 @@ export default class HardsandsDocument extends Document {
               src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
               height="0"
               width="0"
-              style={{ display: 'none', visibility: 'hidden' }}
+              style={{ display: "none", visibility: "hidden" }}
             />
           </noscript>
           <Main />
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
