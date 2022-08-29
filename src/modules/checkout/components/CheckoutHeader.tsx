@@ -21,13 +21,14 @@ export default function CheckoutHeader() {
       cartInitialized.current = true;
     };
 
-    const updateCartWithCurrency = () => {
+    const updateCartWithCurrency = async () => {
       if (cartId) {
         dispatch(
           updateCart({
             currency: selectedCurrency,
           })
         );
+        window.location.reload();
       }
     };
 
