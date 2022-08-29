@@ -9,7 +9,7 @@ const AccountCardPreview = () => {
         alt="your card"
       />
 
-      <Flex justifyContent={"center"}>
+      <Flex justifyContent={"center"} w={"full"}>
         <Button
           bg="red.300"
           color={"white"}
@@ -20,15 +20,15 @@ const AccountCardPreview = () => {
         >
           Deactivate
         </Button>
-        {/* <Box w={50} /> */}
+        <Box w={50} />
         <Flex
-          py={1.5}
-          px={[10, 16]}
+          // py={1.5}
+          // px={[10, 16]}
           color="brand.300"
           fontWeight={"bolder"}
           alignSelf={"center"}
-          borderWidth="1px"
-          borderStyle="solid"
+          // borderWidth="1px"
+          // borderStyle="solid"
         >
           12 Taps
           <Box ml={3} alignSelf={"center"}>
