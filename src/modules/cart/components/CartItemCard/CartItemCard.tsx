@@ -3,6 +3,7 @@ import HardsandLink from "components/HardsandsLink";
 import QuantityModifier from "components/QuantityModifier";
 import { updateCartItem } from "modules/cart/actions";
 import { CartResponse, CartResponseItem } from "modules/cart/types";
+import { getProductImageFromSlug } from "modules/products/functions";
 import { useContext, useState } from "react";
 import { CheckoutContext } from "redux/context";
 import { formatCurrencyInteger } from "utils/currency";
@@ -59,8 +60,9 @@ const CartItemCard = ({ cartProduct, onRemoveItem }: CartItemCardProd) => {
               boxSize={20}
               objectFit="contain"
               src={
-                cartProduct?.image ||
-                "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657205110/hardsands/Rectangle_213_epjh2x.svg"
+                getProductImageFromSlug(cartProduct.product.slug)[
+                  cartProduct.productVariantKey
+                ][0]
               }
               alt={`${cartProduct.product.title} cart product image`}
             />

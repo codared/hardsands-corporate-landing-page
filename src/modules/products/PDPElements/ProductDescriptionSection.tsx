@@ -10,26 +10,27 @@ import { useTranslation } from "react-i18next";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import { CheckoutContext } from "redux/context";
 import { formatCurrencyInteger } from "utils/currency";
-import { getProductOptions } from "utils/functions";
 import { Product } from "../types";
 
 const ProductDescriptionSection = ({
   productDetails,
   selectedVariant,
+  productVariants,
+  activeVariant,
+  setActiveVariant,
 }: {
   productDetails: Product;
   selectedVariant?: string;
+  productVariants: string[];
+  activeVariant: string | number;
+  setActiveVariant: (val: string | number) => void;
 }) => {
   const { t } = useTranslation();
   const { dispatch } = useContext(CheckoutContext);
-  const [quantity, setQuantity] = useState(1);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const productVariants = getProductOptions(productDetails.options);
   const currency = useCurrency();
   const cartBtnRef = useRef(null);
-  const [activeVariant, setActiveVariant] = useState<string | number>(
-    selectedVariant || productVariants[0]
-  );
+  const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
 
   const price = formatCurrencyInteger(

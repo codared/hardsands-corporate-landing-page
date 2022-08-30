@@ -24,12 +24,9 @@ const ProductImageSlide = ({
   const [carouselImages, setCarouselImages] = useState<string[]>(
     productDetails.otherImageUrls
   );
+  
   return (
-    <Box
-      width={["100%", null, '50%']}
-      position={["unset"]}
-      top="10px"
-    >
+    <Box width={["100%", null, "50%"]} position={["unset"]} top="10px">
       <Flex align="center" justify="center" position="relative">
         <Carousel
           showArrows={carouselImages.length > 1}

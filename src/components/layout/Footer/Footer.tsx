@@ -13,7 +13,12 @@ import {
   Flex,
   Image,
 } from "@chakra-ui/react";
-import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+} from "react-icons/fa";
 import { ReactNode } from "react";
 import HardsandTechLogo from "design/svg/hardsands_tech_logo.svg";
 import MailIcon from "design/svg/fi_mail.svg";
@@ -22,6 +27,7 @@ import FiMail from "design/svg/fi_mail";
 import CopyrightYearContext from "modules/hardsands/contexts/CopyrightYearContext";
 import { TFunction, useTranslation } from "react-i18next";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { SOCIAL_LINKS } from "utils/constants";
 //   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 //   import { BiMailSend } from 'react-icons/bi';
 
@@ -166,14 +172,17 @@ export default function Footer() {
                 )}
               </Text>
               <Flex mt={10}>
-                <HardsandLink mr={10} href={"#"}>
+                <HardsandLink mr={10} href={SOCIAL_LINKS.FACEBOOK}>
                   <FaFacebookF size={20} />
                 </HardsandLink>
-                <HardsandLink mr={10} href={"#"}>
+                <HardsandLink mr={10} href={SOCIAL_LINKS.INSTAGRAM}>
                   <FaInstagram size={20} />
                 </HardsandLink>
-                <HardsandLink mr={10} href={"#"}>
+                <HardsandLink mr={10} href={SOCIAL_LINKS.TWITTER}>
                   <FaTwitter size={20} />
+                </HardsandLink>
+                <HardsandLink mr={10} href={SOCIAL_LINKS.LINKEDIN}>
+                  <FaLinkedin size={20} />
                 </HardsandLink>
               </Flex>
             </Box>

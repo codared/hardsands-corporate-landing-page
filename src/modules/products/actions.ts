@@ -3,7 +3,7 @@ import { productsApi } from "./services/products.service";
 import { Product } from "./types";
 import { getGeoIpCountryCode } from "utils/geoIp";
 import { selectAllProducts, selectSingleProduct } from "./selectors";
-import { AppActionCreator } from "redux/store";
+import { mergeProductImages, mergeProductsImages } from "./functions";
 
 export const fetchAllProductsCached: ThunkActionCreator<Promise<Product[]>> =
   (currency: string) => async (dispatch, getState) => {
@@ -18,12 +18,14 @@ export const fetchAllProductsCached: ThunkActionCreator<Promise<Product[]>> =
     const countryCode = await getGeoIpCountryCode();
     // const ignoreCountryDiscount = featureFlag("IGNORE_COUNTRY_DISCOUNT", true);
 
-    const fetchedProducts = await productsApi.getAllProducts(
+    let fetchedProducts = await productsApi.getAllProducts(
       currency,
       undefined,
       countryCode || undefined,
       undefined // subscriptionDiscountKeys
     );
+
+    fetchedProducts = mergeProductsImages(fetchedProducts);
 
     dispatch({
       type: "PRODUCTS_LOAD_ALL" as const,
@@ -55,14 +57,17 @@ export const fetchProductCached: ThunkActionCreator<Promise<Product | null>> =
     const countryCode = await getGeoIpCountryCode();
     // const ignoreCountryDiscount = featureFlag("IGNORE_COUNTRY_DISCOUNT", true);
 
-    const fetchedProduct = await productsApi.getSingleProduct(
+    let fetchedProduct = await productsApi.getSingleProduct(
       slugOrId,
       currency,
       countryCode || undefined,
-      undefined, // subscriptionDiscountKeys
+      undefined // subscriptionDiscountKeys
     );
+
+    fetchedProduct = mergeProductImages(fetchedProduct);
+
     dispatch({
-      type: 'PRODUCTS_LOAD_SINGLE' as const,
+      type: "PRODUCTS_LOAD_SINGLE" as const,
       payload: {
         product: fetchedProduct,
         currency

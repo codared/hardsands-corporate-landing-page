@@ -21,6 +21,7 @@ export interface ProductVariants {
   sku: string;
   compareAtPrice: number;
   instock: boolean;
+  images: Array<string>;
 }
 
 export interface Product {

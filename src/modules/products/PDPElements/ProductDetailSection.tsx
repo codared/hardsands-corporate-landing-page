@@ -20,12 +20,6 @@ interface ProductDetailSectionProps {
   selectedVariant?: string;
 }
 
-const PRODUCTS_IMAGES = [
-  "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657205110/hardsands/Rectangle_213_epjh2x.svg",
-  "https://res.cloudinary.com/dtumqh3dd/image/upload/v1655984088/hardsands/Hero_Images_keeoue.png",
-  "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657261446/hardsands/background_vector_dq6aud.svg",
-];
-
 const ProductDetailSection = ({
   product,
   productDetails,
@@ -34,9 +28,17 @@ const ProductDetailSection = ({
 }: ProductDetailSectionProps) => {
   const { t } = useTranslation();
   const currency = useCurrency();
+  const productVariants = getProductOptions(product.options);
+  const [activeVariant, setActiveVariant] = useState<string | number>(
+    selectedVariant || productVariants[0]
+  );
   const allProducts = useTypedSelector(
     (state) => state?.products?.all[currency]
   );
+
+  const getProductImages = () => {
+    return product.variants[activeVariant].images;
+  };
 
   return (
     <>
@@ -58,7 +60,7 @@ const ProductDetailSection = ({
           >
             {/* Image slides */}
             <ProductImageSlide
-              productDetails={{ otherImageUrls: PRODUCTS_IMAGES }}
+              productDetails={{ otherImageUrls: getProductImages() }}
               imgAlt={"product hardsands wooded card"}
             />
             {/* EndImage slides */}
@@ -67,8 +69,11 @@ const ProductDetailSection = ({
 
             {/* Product Description Section */}
             <ProductDescriptionSection
+              productVariants={productVariants}
               selectedVariant={selectedVariant}
               productDetails={product as Product}
+              activeVariant={activeVariant}
+              setActiveVariant={setActiveVariant}
             />
             {/* End Product Description Section */}
           </Flex>

@@ -53,13 +53,12 @@ export const useProduct = (
 
   useEffect(() => {
     dispatch(fetchProductCached(slug, currency)).then((product) => {
-      // const productDetails = product ? getProductDetails(t, product.id) : null;
       setState({
         product,
         productDetails: null,
       });
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currency, slug]);
 
   return state;
