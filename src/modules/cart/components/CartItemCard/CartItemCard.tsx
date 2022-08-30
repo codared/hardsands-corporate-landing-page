@@ -59,11 +59,10 @@ const CartItemCard = ({ cartProduct, onRemoveItem }: CartItemCardProd) => {
             <Image
               boxSize={20}
               objectFit="contain"
-              src={
-                getProductImageFromSlug(cartProduct.product.slug)[
-                  cartProduct.productVariantKey
-                ][0]
-              }
+              src={getProductImageFromSlug(
+                cartProduct.product.slug,
+                cartProduct.productVariantKey
+              )}
               alt={`${cartProduct.product.title} cart product image`}
             />
           </Box>

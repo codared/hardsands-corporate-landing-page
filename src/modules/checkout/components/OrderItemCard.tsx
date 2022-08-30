@@ -1,4 +1,5 @@
 import { Flex, Box, Text, Image } from "@chakra-ui/react";
+import { getProductImageFromSlug } from "modules/products/functions";
 import { formatCurrencyInteger } from "utils/currency";
 import { OrderItem } from "../types";
 
@@ -13,16 +14,17 @@ const OrderItemCard = ({
   titleFontSize?: string | number | Array<string | number>;
   subTitleFontSize?: string | number | Array<string | number>;
 }) => {
+
   return (
     <Flex p={p} justify={"space-between"} bg={"brand.10"}>
       <Flex direction={"row"} justifyContent={"start"}>
         <Image
           boxSize={20}
           objectFit="contain"
-          src={
-            item.thumbnail_url ||
-            "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657205110/hardsands/Rectangle_213_epjh2x.svg"
-          }
+          src={getProductImageFromSlug(
+            item.product.slug,
+            item.productVariantKey
+          )}
           alt={`${item.product.title} cart item product image`}
         />
         <Box w={5} />
