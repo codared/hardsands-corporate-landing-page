@@ -12,11 +12,11 @@ interface CustomInputProps extends InputProps {
   placeholder?: string;
   onChange?: (e: ChangeEvent<any>) => void;
   value?: string;
-  name: any;
+  name: string;
+  label?: string;
   type?: string;
   helperText?: string;
   errorMessage?: string;
-  showLabel?: boolean;
   isError?: boolean;
   isRequired?: boolean;
   isInvalid?: boolean;
@@ -30,10 +30,10 @@ const CustomInput = forwardRef(
       onChange,
       value,
       name,
+      label,
       type,
       helperText,
       errorMessage,
-      showLabel = false,
       isError = false,
       isRequired = false,
       isInvalid = false,
@@ -44,7 +44,7 @@ const CustomInput = forwardRef(
   ) => {
     return (
       <FormControl isRequired={isRequired} isInvalid={isError}>
-        {showLabel && <FormLabel>{name}</FormLabel>}
+        {label && <FormLabel>{label}</FormLabel>}
         <Input
           {...rest}
           name={name}

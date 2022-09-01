@@ -7,6 +7,8 @@ import OurClientsSection from "./OurClientsSection";
 import PreviousDesignedCardSection from "./PreviousDesignedCardSection";
 import ReviewSection from "./ReviewSection";
 import GetStartedSection from "./GetStartedSection";
+import ComunitySection from "./ComunitySection";
+import { CommunityImages } from "modules/shared/constants";
 
 const HomePage = () => {
   return (
@@ -38,6 +40,15 @@ const HomePage = () => {
       {/* Get Started Section */}
       <GetStartedSection />
       {/* End Get Started Section */}
+
+      {/* Instagram Commmunity Section */}
+      {/* <ComunitySection
+        images={CommunityImages}
+        pt={20}
+        bgColor="moss"
+        color="sandstone"
+      /> */}
+      {/* End Instagram Commmunity Section */}
     </Box>
   );
 };

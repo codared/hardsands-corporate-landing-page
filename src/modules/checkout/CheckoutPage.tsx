@@ -14,7 +14,7 @@ import { useTranslation } from "react-i18next";
 import { useCurrency } from "modules/cart/hooks";
 import { CheckoutContext } from "redux/context";
 import { saveCustomerInfo, saveShippingMethod } from "./actions";
-import AlertErrorMessage from "./components/AlertErrorMessage";
+import AlertMessage from "components/AlertMessage";
 
 interface CheckoutPageProp {
   checkoutId: string;
@@ -111,10 +111,11 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
       />
       <Box h={8} />
       {!!showCancelMessageError && (
-        <AlertErrorMessage
+        <AlertMessage
           t={t}
-          showCancelMessageError={showCancelMessageError}
-          setShowCancelMessageError={setShowCancelMessageError}
+          status={"error"}
+          showCancelMessage={showCancelMessageError}
+          setShowCancelMessage={setShowCancelMessageError}
         />
       )}
       <Flex mt={[10]} direction={["column-reverse", "column", "row"]}>
