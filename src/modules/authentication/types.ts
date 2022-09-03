@@ -6,3 +6,8 @@ export type SignUpUserType = {
   password: string;
   sendMarketingEmails: boolean;
 };
+
+export type VerifyEmailType = {
+  verifyText: string;
+  identifier: number;
+};

@@ -2,22 +2,19 @@ import WithLayout from "components/WithLayout";
 import type { NextPage } from "next";
 import {
   Box,
-  Input,
-  Grid,
   FormControl,
   FormLabel,
   Heading,
   Flex,
-  Image,
   Text,
   Button,
-  Textarea,
   Link,
 } from "@chakra-ui/react";
 import CustomInput from "components/CustomInput";
 // @ts-ignore
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
+import { AUTH_ROUTES } from "modules/authentication/constants";
 
 const Login: NextPage = () => {
   return (
@@ -56,7 +53,7 @@ const Login: NextPage = () => {
           </Box>
           <Text textAlign="center" mb={5}>
             Don&apos;t have an account?
-            <Link href="/auth/signup" color="brand.300">
+            <Link href={AUTH_ROUTES.signup} color="brand.300">
               Sign up
             </Link>
           </Text>

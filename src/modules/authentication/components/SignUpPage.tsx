@@ -22,6 +22,7 @@ import { registerUser } from "../services";
 import AlertMessage, { AlertStatus } from "components/AlertMessage";
 import { getGeoIpCountryCode } from "utils/geoIp";
 import { useRouter } from "next/router";
+import { AUTH_ROUTES } from "../constants";
 
 export default function SignUpPage() {
   const { t } = useTranslation();
@@ -66,7 +67,7 @@ export default function SignUpPage() {
             message: res.message as string,
           });
         } else {
-          router.push("/auth/signup/success");
+          router.push(AUTH_ROUTES.signupSuccess);
         }
 
         setIsLoading(false);
@@ -215,7 +216,7 @@ export default function SignUpPage() {
           </Button>
           <Text textAlign="center" my={5}>
             Already have an account?{" "}
-            <Link href="/auth/login" color="brand.300">
+            <Link href={AUTH_ROUTES.login} color="brand.300">
               Log in
             </Link>
           </Text>
