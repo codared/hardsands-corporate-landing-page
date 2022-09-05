@@ -20,6 +20,7 @@ export const getProductOptions = (options: ProductOptions) => {
 };
 
 export const isTokenExpired = (token: string) => {
+  if (!token) return true;
   const decoded: any = jwt_decode(token);
   return decoded.exp * 1000 < new Date().getTime();
   // return decoded.exp < new Date().getDate() - decoded.iat;

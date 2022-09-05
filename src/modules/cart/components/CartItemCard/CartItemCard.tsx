@@ -61,7 +61,7 @@ const CartItemCard = ({ cartProduct, onRemoveItem }: CartItemCardProd) => {
               objectFit="contain"
               src={getProductImageFromSlug(
                 cartProduct.product.slug,
-                cartProduct.productVariantKey
+                cartProduct.productVariantKey as string
               )}
               alt={`${cartProduct.product.title} cart product image`}
             />

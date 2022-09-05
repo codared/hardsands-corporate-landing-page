@@ -4,6 +4,7 @@ import LoginPage from "modules/authentication/components/LoginPage";
 import { isServerRequest } from "utils/nextjs";
 import nextCookies from "next-cookies";
 import { isTokenExpired } from "utils/functions";
+import { APP_ROUTE } from "modules/authentication/constants";
 
 const Login: NextPage = () => {
   return (
@@ -31,7 +32,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
   const { hardsands_user_token } = nextCookies(ctx);
   const _isTokenExpired = isTokenExpired(hardsands_user_token as string);
   if (!_isTokenExpired) {
-    redirectTo("/app");
+    redirectTo(APP_ROUTE.home);
   }
   return { props: {} };
 }

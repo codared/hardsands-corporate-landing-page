@@ -29,7 +29,9 @@ import {
 import { CheckoutContext } from "redux/context";
 import { getGeoIpCountryCode } from "utils/geoIp";
 import { CreateCartBody } from "modules/cart/types";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
+import { useTypedDispatch } from "redux/store";
+import { fetchAllProductsCached } from "modules/products/actions";
 
 const minifyNotificationCount = (count: string | number) => {
   return count.toString().length > 1 ? "9+" : count;
@@ -38,6 +40,7 @@ const minifyNotificationCount = (count: string | number) => {
 export default function Navigation() {
   const { state, dispatch } = useContext(CheckoutContext);
   const { isOpen, onToggle } = useDisclosure();
+  const reduxDispatch = useTypedDispatch();
   const cartItemCount = useCartItemCount();
   const [isCartOpen, setCartOpen] = useState(false);
   const cartBtnRef = useRef(null);
@@ -76,6 +79,8 @@ export default function Navigation() {
     } else {
       initCart();
     }
+
+    reduxDispatch(fetchAllProductsCached(selectedCurrency));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCurrency]);
 
@@ -155,7 +160,7 @@ export default function Navigation() {
             _focus={{ bg: "transparent" }}
             _hover={{ bg: "transparent" }}
             px={0}
-            onClick={() => router.push('/login')}
+            onClick={() => router.push("/login")}
           >
             <Image
               boxSize="26px"

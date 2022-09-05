@@ -5,12 +5,23 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
 import { ACCOUNT_NAV_ITEMS } from "../constants";
 import NavItem from "./Navitems";
-import { Key, useState } from "react";
+import { useState } from "react";
 import { AccountNavItemsType } from "utils/types";
+import { removeCookie } from "modules/shared/cookie";
+import {
+  AUTH_ROUTES,
+  HARDSANDS_LOGIN_COOKIE,
+} from "modules/authentication/constants";
+import Router from "next/router";
 
 const SidebarContent = (props: any) => {
   const integrations = useDisclosure();
   const [active, setActive] = useState(props.active);
+
+  const handleLogout = () => {
+    removeCookie(HARDSANDS_LOGIN_COOKIE);
+    Router.push(AUTH_ROUTES.login);
+  };
 
   return (
     <Box
@@ -84,7 +95,11 @@ const SidebarContent = (props: any) => {
           })}
         </Box>
         <Box>
-          <NavItem color="red.300" icon={IoLogOutOutline}>
+          <NavItem
+            onClick={handleLogout}
+            color="red.300"
+            icon={IoLogOutOutline}
+          >
             Logout
           </NavItem>
         </Box>

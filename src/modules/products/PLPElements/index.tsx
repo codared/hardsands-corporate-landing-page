@@ -2,29 +2,19 @@ import { Grid, Flex, Container } from "@chakra-ui/react";
 import ProductCard from "components/ProductCard";
 import PLPSkeleton from "components/ProductCard/ProductSkeleton";
 import UsageDemoSection from "modules/hardsands/components/HomePage/UsageDemoSection";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { CheckoutContext } from "redux/context";
-import { useTypedDispatch } from "redux/store";
+import { useTypedSelector } from "redux/store";
 import MiniSteps from "../../../components/miniStepsBanner";
-import { fetchAllProductsCached } from "../actions";
 import { Product } from "../types";
 
 const ShopPLP = () => {
   const { state } = useContext(CheckoutContext);
-  const reduxDispatch = useTypedDispatch();
   const { t } = useTranslation();
-  const [products, setProducts] = useState<Product[] | null>(null);
   const selectedCurrency = state.cart.selectedCurrency;
+  const products = useTypedSelector((state) => state?.products?.all[selectedCurrency]);
 
-  useEffect(() => {
-    reduxDispatch(fetchAllProductsCached(selectedCurrency)).then((prods) => {
-      setTimeout(() => {
-        setProducts(prods);
-      }, 2000);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCurrency]);
 
   return (
     <>

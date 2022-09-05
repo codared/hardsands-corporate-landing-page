@@ -56,6 +56,6 @@ export const mergeProductImages = (product: Product) => {
   return product;
 };
 
-export const getProductImageFromSlug = (slug: string, variantKey?: string) => {
+export const getProductImageFromSlug = (slug: string, variantKey: string) => {
   return PRODUCT_IMAGES[slug][variantKey][0];
 };

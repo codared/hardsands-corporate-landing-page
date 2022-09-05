@@ -40,10 +40,10 @@ const HomeProductCard = ({
 
       <Box px={[2, 6]} pb={[2, 6]}>
         <Flex justify="space-between" alignItems="flex-end" mb={4}>
-          <Heading fontWeight="bolder" textTransform="uppercase" fontSize="xl">
+          <Heading fontWeight="bolder" textTransform="uppercase" fontSize="lg">
             {name}
           </Heading>
-          <Text fontWeight="bolder">₦{price}</Text>
+          <Text fontWeight="bolder">{price}</Text>
         </Flex>
 
         <Text mb={8}>{description}</Text>
