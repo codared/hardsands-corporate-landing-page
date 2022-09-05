@@ -41,7 +41,6 @@ function ResetPasswordFormPage({
     setIsLoading(true);
     if (_.isEmpty(errors)) {
       try {
-        console.log('values >>>> ', values);
         const res = await resetPassword(values);
 
         if (res.isError) {

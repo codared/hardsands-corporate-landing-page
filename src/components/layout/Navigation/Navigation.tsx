@@ -29,6 +29,7 @@ import {
 import { CheckoutContext } from "redux/context";
 import { getGeoIpCountryCode } from "utils/geoIp";
 import { CreateCartBody } from "modules/cart/types";
+import { Router, useRouter } from "next/router";
 
 const minifyNotificationCount = (count: string | number) => {
   return count.toString().length > 1 ? "9+" : count;
@@ -44,6 +45,7 @@ export default function Navigation() {
   const selectedCurrency = state.cart.selectedCurrency;
   const cartId = state.cart.cart?.id;
   const ignoreCountryDiscount = false; // featureFlag('IGNORE_COUNTRY_DISCOUNT', true)
+  const router = useRouter();
 
   usePreloadProducts(3000);
 
@@ -153,6 +155,7 @@ export default function Navigation() {
             _focus={{ bg: "transparent" }}
             _hover={{ bg: "transparent" }}
             px={0}
+            onClick={() => router.push('/login')}
           >
             <Image
               boxSize="26px"

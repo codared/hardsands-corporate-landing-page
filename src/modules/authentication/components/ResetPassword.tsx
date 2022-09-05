@@ -42,11 +42,9 @@ function ResetPassword() {
         } else {
           setAlertMessage({
             status: "success",
-            name: "Redirecting",
+            name: "Email Sent",
             message: res.result.message as string,
           });
-          // setCookie(HARDSANDS_LOGIN_COOKIE, res.result.token, 365);
-          // router.push(APP_ROUTE.home);
         }
 
         setIsLoading(false);
@@ -86,60 +84,62 @@ function ResetPassword() {
             }
           />
         )}
-        <Heading mb={5}>Reset your Password</Heading>
 
         {alertMessage.status === "success" ? (
           <></>
         ) : (
-          <form onSubmit={handleSubmitForm}>
-            <Box mb={5}>
-              <CustomInput
-                p={["24px 16px", "24px 16px"]}
-                placeholder="Your Email Address"
-                name={"email"}
-                label="Email"
-                value={values.email}
-                isInvalid={!!errors.email}
-                isError={!!errors.email}
-                isRequired
-                errorMessage={errors.email}
-                onChange={handleChange}
-              />
-            </Box>
+          <>
+            <Heading mb={5}>Reset your Password</Heading>
+            <form onSubmit={handleSubmitForm}>
+              <Box mb={5}>
+                <CustomInput
+                  p={["24px 16px", "24px 16px"]}
+                  placeholder="Your Email Address"
+                  name={"email"}
+                  label="Email"
+                  value={values.email}
+                  isInvalid={!!errors.email}
+                  isError={!!errors.email}
+                  isRequired
+                  errorMessage={errors.email}
+                  onChange={handleChange}
+                />
+              </Box>
 
-            <Button
-              fontSize={14}
-              fontWeight={500}
-              color={"black"}
-              bg={"brand.100"}
-              fontFamily="MADE Outer sans"
-              onClick={() => {}}
-              p={["24px 16px", "24px 46px"]}
-              borderWidth="2px"
-              borderColor={"brand.100"}
-              borderRadius="0"
-              transition="all 200ms ease-in"
-              w="100%"
-              textAlign="center"
-              _hover={{
-                bg: "transparent",
-                color: "black",
-                borderWidth: "2px",
-                borderColor: "brand.100",
-              }}
-              mb={[6, 0]}
-              type={"submit"}
-              isLoading={isLoading}
-              loadingText={"Reseting in..."}
-            >
-              Reset Password
-            </Button>
-            <Text textAlign="center" my={5}>
-              <Link href={AUTH_ROUTES.login} color="brand.300">
-                Login
-              </Link>
-            </Text>
-          </form>
+              <Button
+                fontSize={14}
+                fontWeight={500}
+                color={"black"}
+                bg={"brand.100"}
+                fontFamily="MADE Outer sans"
+                onClick={() => {}}
+                p={["24px 16px", "24px 46px"]}
+                borderWidth="2px"
+                borderColor={"brand.100"}
+                borderRadius="0"
+                transition="all 200ms ease-in"
+                w="100%"
+                textAlign="center"
+                _hover={{
+                  bg: "transparent",
+                  color: "black",
+                  borderWidth: "2px",
+                  borderColor: "brand.100",
+                }}
+                mb={[6, 0]}
+                type={"submit"}
+                isLoading={isLoading}
+                loadingText={"Reseting in..."}
+              >
+                Reset Password
+              </Button>
+              <Text textAlign="center" my={5}>
+                <Link href={AUTH_ROUTES.login} color="brand.300">
+                  Login
+                </Link>
+              </Text>
+            </form>
+          </>
         )}
       </Box>
     </Flex>
