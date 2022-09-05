@@ -15,3 +15,20 @@ export const SignupSchema = Yup.object().shape({
   country: Yup.string(),
   sendMarketingEmails: Yup.boolean(),
 });
+
+export const LoginSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email")
+    .required("Email Address is required"),
+  password: Yup.string().required(),
+});
+
+export const ResetSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email")
+    .required("Email Address is required"),
+});
+
+export const ResetPasswordFormSchema = Yup.object().shape({
+  password: Yup.string().min(6, "Too Short!").required(),
+});

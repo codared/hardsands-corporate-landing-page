@@ -20,6 +20,8 @@ import { useRef } from "react";
 import ManualScriptTag from "modules/analytics/components/ManualScriptTag";
 import { CopyrightYearProvider } from "modules/hardsands/contexts/CopyrightYearContext";
 import { CheckoutProvider } from "redux/context";
+import ErrorBoundary from "components/ErrorBoundary";
+import ErrorFallback from "components/ErrorBoundary/ErrorFallback";
 
 interface HardsandsAppProps extends AppProps {
   lang: string;
@@ -45,16 +47,18 @@ function HardsandsApp({
   return (
     <>
       <ChakraProvider theme={theme}>
-        <CopyrightYearProvider value={copyRightYear}>
-          <CheckoutProvider currency={currency}>
-            <>
-              <ManualScriptTag />
-              <Fonts />
-              <ColorModeScript initialColorMode={"light"} />
-              <Component {...pageProps} />
-            </>
-          </CheckoutProvider>
-        </CopyrightYearProvider>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <CopyrightYearProvider value={copyRightYear}>
+            <CheckoutProvider currency={currency}>
+              <>
+                <ManualScriptTag />
+                <Fonts />
+                <ColorModeScript initialColorMode={"light"} />
+                <Component {...pageProps} />
+              </>
+            </CheckoutProvider>
+          </CopyrightYearProvider>
+        </ErrorBoundary>
       </ChakraProvider>
     </>
   );

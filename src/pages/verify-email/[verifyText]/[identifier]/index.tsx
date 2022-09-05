@@ -1,9 +1,8 @@
 import { Box, Container, Flex, Heading, Image, Text } from "@chakra-ui/react";
-// import { CheckIcon as CheckIconBox } from "@chakra-ui/icon";
 import { CheckIcon } from "assets";
 import { IoIosCloseCircle } from "react-icons/io";
 import HardsandLink from "components/HardsandsLink";
-import { AUTH_ROUTES } from "modules/authentication/constants";
+import { AUTH_ROUTES, HARDSANDS_LOGIN_COOKIE } from "modules/authentication/constants";
 import { verifyEmail } from "modules/authentication/services";
 import { setCookie } from "modules/shared/cookie";
 import { NextPage, NextPageContext } from "next";
@@ -18,12 +17,10 @@ const VerifyEmail: NextPage<{
   name?: string;
 }> = ({ isError, result, message }) => {
   const { t } = useTranslation();
-  //   console.log("result >>>> ", result);
-  //   console.log("isError >>>> ", isError);
 
   useEffect(() => {
-    if (!isError) {
-      setCookie("hardsands_user_token", result.token);
+    if (!isError && result.token) {
+      setCookie(HARDSANDS_LOGIN_COOKIE, result.token, 365);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -88,7 +85,6 @@ const VerifyEmail: NextPage<{
           borderColor={"brand.100"}
           borderRadius="0"
           transition="all 200ms ease-in"
-          // w="100%"
           textAlign="center"
           _hover={{
             bg: "transparent",
