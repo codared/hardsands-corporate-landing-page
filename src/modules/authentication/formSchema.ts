@@ -16,6 +16,21 @@ export const SignupSchema = Yup.object().shape({
   sendMarketingEmails: Yup.boolean(),
 });
 
+export const CardActivationSchema = Yup.object().shape({
+  productId: Yup.string()
+    .min(6, "Too Short!")
+    .max(6, "Too Long!")
+    .required("Product ID is required"),
+  activationCode: Yup.string()
+    .min(6, "Too Short!")
+    .max(6, "Too Long!")
+    .required("Activation Code is required"),
+  email: Yup.string()
+    .email("Invalid email")
+    .required("Email Address is required"),
+  password: Yup.string(),
+});
+
 export const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email")

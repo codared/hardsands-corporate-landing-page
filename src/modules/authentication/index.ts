@@ -1,1 +1,1 @@
-export * as default from './components/SignUpPage';
+export * as default from "./components/SignUpPage";

@@ -7,6 +7,16 @@ export type SignUpUserType = {
   sendMarketingEmails: boolean;
 };
 
+export type CardActivationType = {
+  cardSerial: string;
+  productId: string;
+  activationCode: number;
+  email: string;
+  password?: string;
+};
+
+export type SignupCardActivationType = CardActivationType & SignUpUserType;
+
 export type LoginUserType = {
   email: string;
   password: string;
