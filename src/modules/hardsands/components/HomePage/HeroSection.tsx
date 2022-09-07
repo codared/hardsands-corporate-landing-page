@@ -26,18 +26,18 @@ const HeroSection = () => {
       <Flex direction="column" justifyContent={"start"} px={[18]}>
         <Heading maxW={600} fontSize={["5xl", "7xl"]} my={["40px", "20px"]}>
           {t(
-            "home:hero:all-in-one-business",
-            "All in One Business Card Powered By Technology"
+            "home:hero:share-your-info-with-a-single-tap",
+            "Share your Info with a single tap"
           )}
         </Heading>
         <Text fontSize={24} maxW={500}>
           {t(
-            "home:hero:go-cardless-with-hardsands",
-            "Go cardless with hardsands NFC cards! Share your contact without limit"
+            "home:hero:the-only-business-card-youll-need-to-improve-your-networking",
+            "The only business card you'll need to improve your networking"
           )}
         </Text>
         <HStack justifyContent={["center", "unset"]} py={5} mt={["50px", 0]}>
-          <HardsandsButton>Get Started</HardsandsButton>
+          <HardsandsButton>Buy Now</HardsandsButton>
         </HStack>
 
         <Image

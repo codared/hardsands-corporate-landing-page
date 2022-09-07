@@ -26,12 +26,15 @@ const ReviewSection = () => {
             textTransform={"uppercase"}
             fontSize={32}
           >
-            {t("common:what-people-say-about-us", "what people say about us")}
+            {t(
+              "common:what-people-are-saying-about-us",
+              "what people are saying about us"
+            )}
           </Heading>
           <Text>
             {t(
-              "common:these-are-reviews-from-some-of-our-clients",
-              "These are reviews from some of our clients"
+              "common:join-the-growing-number-of-people-using-hardsands",
+              "Join the growing number of people using Hardsands to experience modern networking."
             )}
           </Text>
         </Box>

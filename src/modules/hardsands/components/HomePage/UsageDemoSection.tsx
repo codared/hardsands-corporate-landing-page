@@ -97,7 +97,7 @@ const UsageDemoSection = ({ horizontal }: { horizontal?: boolean }) => {
                   borderColor: "brand.200",
                 }}
               >
-                {t("common:get-started", "Get Started")}
+                {t("common:buy-now", "Buy Now")}
               </HardsandsButton>
             </Flex>
           </Flex>
@@ -118,7 +118,7 @@ const UsageDemoSection = ({ horizontal }: { horizontal?: boolean }) => {
               borderColor: "brand.200",
             }}
           >
-            {t("common:get-started", "Get Started")}
+            {t("common:buy-now", "Buy Now")}
           </HardsandsButton>
         </Flex>
       </Container>

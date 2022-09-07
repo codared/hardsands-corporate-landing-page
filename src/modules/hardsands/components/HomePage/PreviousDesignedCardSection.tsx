@@ -33,13 +33,13 @@ const PreviousDesignedCardSection = () => {
             >
               {t(
                 "common:check-some-of-our-clients-design",
-                "Check some of our Client’s Design"
+                "Check out some of our Client’s Designs"
               )}
             </Heading>
             <Text>
               {t(
-                "common:examples-of-previously-designed-cards",
-                "Here are examples of previously designed cards on our platform."
+                "common:hardsands-is-beloved-by-both-individuals-and-businesses",
+                "Hardsands is beloved by both individuals and businesses of all sizes. Here are some examples of cards that have been made using our platform in the past."
               )}
             </Text>
           </Box>
@@ -71,7 +71,11 @@ const PreviousDesignedCardSection = () => {
                   </Button>
                 </Flex>
               </Flex>
-              <Flex justify={"space-between"} direction="row" w={["100%", "75%"]}>
+              <Flex
+                justify={"space-between"}
+                direction="row"
+                w={["100%", "75%"]}
+              >
                 <HardsandsButton
                   // @ts-ignore
                   border="none"
@@ -106,7 +110,7 @@ const PreviousDesignedCardSection = () => {
                   }}
                   iconMargin="20px"
                 >
-                  {t("common:customize-yours", "Customize yours")}
+                  {t("common:design-you-card", "Design Your Card")}
                 </HardsandsButton>
               </Flex>
             </VStack>

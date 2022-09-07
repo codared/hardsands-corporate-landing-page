@@ -16,26 +16,27 @@ const GetStartedSection = () => {
       width={["100%"]}
       px={20}
       mt={10}
-			py={[20, 0]}
+      py={[20, 0]}
     >
       <Container maxWidth={"7xl"}>
         <Flex justifyContent={"center"}>
           <Flex justifyContent="center" flexDirection={"column"}>
             <Heading color="brand.300" mb={10}>
               {t(
-                "call-to-action:ready-to-get-started",
-                "Ready to get started?"
+                "common:call-to-action:improve-your-networking",
+                "Improve your networking"
               )}
               <br />
               {t(
-                "call-to-action:click-here-to-get-your-card",
-                "Click here to get your card"
+                "common:call-to-action:with-hardsands.",
+                "With Hardsands."
               )}
             </Heading>
             <Text width={350} fontSize={20} mb={10}>
               {t(
-                "call-to-action:design-your-card-the-way-you-want",
-                "Design your card the way you want. Tap, share and connect."
+                "common:call-to-action:traditional-printed-business-cards-have-served-networking",
+                `Traditional printed business cards have served networking over the years, but now it's time for digital to take over.
+                Start with one of our NFC business cards to instantly improve your networking and stand out from the crowd.`
               )}
             </Text>
             <HardsandsButton>

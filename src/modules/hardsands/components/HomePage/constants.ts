@@ -17,8 +17,7 @@ export const getSteps = (t: TFunction) => {
       instruction: t(
         "common:step-1:instruction",
         `
-      Typing one nonsense to make it make sense which will eventually
-      be replaced when the copywriter is ready
+        Choose a hardsand product that suits your needs; it might be a pre-designed hardsand card or a custom card that you can design to your specifications.
     `
       ),
     },
@@ -28,8 +27,7 @@ export const getSteps = (t: TFunction) => {
       instruction: t(
         "common:step-2:instruction",
         `
-      Typing one nonsense to make it make sense which will eventually
-      be replaced when the copywriter is ready
+        Activate your card when it arrives. No worries, activation is a seamless process and would take only a few seconds.
     `
       ),
     },
@@ -39,8 +37,7 @@ export const getSteps = (t: TFunction) => {
       instruction: t(
         "common:step-3:instruction",
         `
-      Typing one nonsense to make it make sense which will eventually
-      be replaced when the copywriter is ready
+        Add, edit, and enable what you want to share with your network.
     `
       ),
     },
@@ -50,8 +47,7 @@ export const getSteps = (t: TFunction) => {
       instruction: t(
         "common:step-4:instruction",
         `
-      Typing one nonsense to make it make sense which will eventually
-      be replaced when the copywriter is ready
+        Start sharing your identity and what you do with a single tap on any smartphone.  
     `
       ),
     },
