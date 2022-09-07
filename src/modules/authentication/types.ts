@@ -10,7 +10,7 @@ export type SignUpUserType = {
 export type CardActivationType = {
   cardSerial: string;
   productId: string;
-  activationCode: number;
+  activationCode: number | null;
   email: string;
   password?: string;
 };

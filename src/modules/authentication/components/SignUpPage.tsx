@@ -3,7 +3,6 @@ import {
   Heading,
   Grid,
   Box,
-  Link,
   Button,
   Text,
   Checkbox,
@@ -11,6 +10,7 @@ import {
 import _ from "lodash";
 import CustomInput from "components/CustomInput";
 import { useFormik } from "formik";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaFacebookF } from "react-icons/fa";
@@ -216,7 +216,10 @@ export default function SignUpPage() {
           </Button>
           <Text textAlign="center" my={5}>
             Already have an account?{" "}
-            <Link href={AUTH_ROUTES.login} color="brand.300">
+            <Link
+              href={AUTH_ROUTES.login}
+              style={{ textDecoration: "underline", color: "#DF9F71" }}
+            >
               Log in
             </Link>
           </Text>

@@ -55,7 +55,8 @@ export async function getServerSideProps(ctx: NextPageContext) {
     }
 
     if (!!response && !response.isError) {
-      redirectTo(APP_ROUTE.home);
+      // redirect to card default action;
+      // redirectTo(APP_ROUTE.home);
     }
 
     if (

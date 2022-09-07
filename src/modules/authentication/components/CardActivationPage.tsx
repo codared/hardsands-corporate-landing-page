@@ -19,7 +19,6 @@ import { APP_ROUTE, AUTH_ROUTES, HARDSANDS_LOGIN_COOKIE } from "../constants";
 import { CardActivationSchema } from "../formSchema";
 import {
   activateCard,
-  getCard,
   loginActivateCard,
   signupActivateCard,
 } from "../services";
@@ -27,6 +26,8 @@ import { CardActivationType, SignupCardActivationType } from "../types";
 import { setCookie } from "modules/shared/cookie";
 import { getGeoIpCountryCode } from "utils/geoIp";
 import { ResponseType } from "../services";
+import Router from "next/router";
+import Link from "next/link";
 
 function CardActivationPage({
   isError,
@@ -73,13 +74,13 @@ function CardActivationPage({
       try {
         let res: ResponseType;
         if (showSignupForm && !showLoginForm) {
-          // _.omit(values, ['password', 'username']);
-          console.log("submiting sign up .....", values);
+          values.country = country as string;
+
           res = await signupActivateCard(values);
         } else if (showLoginForm && !showSignupForm) {
           const { firstName, lastName, country, sendMarketingEmails, ...rest } =
             values;
-          //   console.log("submiting login .....", rest);
+
           res = await loginActivateCard(rest);
         } else {
           const {
@@ -90,7 +91,6 @@ function CardActivationPage({
             password,
             ...rest
           } = values;
-          console.log("submiting activation initializer .....", rest);
           res = await activateCard(rest);
         }
 
@@ -101,21 +101,25 @@ function CardActivationPage({
             message: res.message as string,
           });
         } else {
-          //   console.log("res.result.nextStep >>> ", res.result.nextStep);
           if (res.result.nextStep === "LOGIN") {
             // show login form
             setShowLoginForm(true);
           } else if (res.result.nextStep === "SIGNUP") {
             // Show sign up form
             setShowSignupForm(true);
+          } else {
+            setAlertMessage({
+              status: "success",
+              name: "Redirecting",
+              message: res.result.message as string,
+            });
+            if (res.result.token) {
+              setCookie(HARDSANDS_LOGIN_COOKIE, res.result.token, 365);
+              Router.push(APP_ROUTE.home);
+            } else {
+              Router.push(AUTH_ROUTES.signupSuccess);
+            }
           }
-          //   setAlertMessage({
-          //     status: "success",
-          //     name: "Redirecting",
-          //     message: res.result.message as string,
-          //   });
-          //   setCookie(HARDSANDS_LOGIN_COOKIE, res.result.token, 365);
-          //   router.push(APP_ROUTE.home);
         }
 
         setIsLoading(false);
@@ -130,7 +134,7 @@ function CardActivationPage({
   const initialValues: CardActivationType | SignupCardActivationType = {
     cardSerial: (result?.serial as string) || "",
     productId: result?.productId || "",
-    activationCode: 0,
+    activationCode: null,
     email: "",
     password: "",
     country: (country as string) || "",
@@ -144,8 +148,6 @@ function CardActivationPage({
     validationSchema: CardActivationSchema,
     onSubmit: handleSubmitForm,
   });
-
-  //   console.log("result?.productId >>> ", result?.productId);
 
   return (
     <Flex
@@ -166,9 +168,8 @@ function CardActivationPage({
           />
         )}
         <Heading mb={5}>Activate Card</Heading>
-        {/* <Text mb={5}>Welcome back, Login 😎</Text> */}
         <form onSubmit={handleSubmitForm}>
-          {!showLoginForm && (
+          {!showLoginForm && !showSignupForm && (
             <>
               <Grid templateColumns={["", "repeat(2, 1fr)"]} gap={6} mb={5}>
                 <Box>
@@ -193,7 +194,7 @@ function CardActivationPage({
                     label="Activation Code"
                     type="number"
                     onChange={handleChange}
-                    value={values.activationCode.toString()}
+                    value={values.activationCode?.toString()}
                     isRequired
                     isInvalid={!!errors.activationCode}
                     isError={!!errors.activationCode}
@@ -219,38 +220,6 @@ function CardActivationPage({
           )}
           {showLoginForm && (
             <>
-              {showSignupForm && (
-                <Grid templateColumns={["", "repeat(2, 1fr)"]} gap={6} mb={5}>
-                  <Box>
-                    <CustomInput
-                      p={["24px 16px", "24px 16px"]}
-                      placeholder="Your First Name"
-                      name={"firstName"}
-                      label="First Name"
-                      value={values.firstName}
-                      onChange={handleChange}
-                      isRequired
-                      isInvalid={!!errors.firstName}
-                      isError={!!errors.firstName}
-                      errorMessage={errors.firstName}
-                    />
-                  </Box>
-                  <Box>
-                    <CustomInput
-                      p={["24px 16px", "24px 16px"]}
-                      placeholder="Your Last Name"
-                      name={"lastName"}
-                      label="Last Name"
-                      value={values.lastName}
-                      onChange={handleChange}
-                      isRequired
-                      isInvalid={!!errors.lastName}
-                      isError={!!errors.lastName}
-                      errorMessage={errors.lastName}
-                    />
-                  </Box>
-                </Grid>
-              )}
               <Box mb={5}>
                 <CustomInput
                   p={["24px 16px", "24px 16px"]}
@@ -266,29 +235,79 @@ function CardActivationPage({
                   errorMessage={errors.password}
                 />
               </Box>
-              {showSignupForm && (
-                <Checkbox
-                  name="sendMarketingEmails"
-                  colorScheme={"orange"}
-                  checked={values.sendMarketingEmails}
-                  fontSize={"smaller"}
-                  onChange={handleChange}
-                  mb={6}
+              <Text textAlign="center" mb={5}>
+                <Link
+                  href={AUTH_ROUTES.reset}
+                  style={{ textDecoration: "underline", color: "#DF9F71" }}
                 >
-                  {t(
-                    "signup:by-clicking-this",
-                    "By Clicking this, I agree to recieving marketing messages from Hardsands with the email address provided. View our Privacy Policy for more."
-                  )}
-                </Checkbox>
-              )}
+                  Forgot your password?
+                </Link>
+              </Text>
+            </>
+          )}
+          {showSignupForm && (
+            <>
+              <Grid templateColumns={["", "repeat(2, 1fr)"]} gap={6} mb={5}>
+                <Box>
+                  <CustomInput
+                    p={["24px 16px", "24px 16px"]}
+                    placeholder="Your First Name"
+                    name={"firstName"}
+                    label="First Name"
+                    value={values.firstName}
+                    onChange={handleChange}
+                    isRequired
+                    isInvalid={!!errors.firstName}
+                    isError={!!errors.firstName}
+                    errorMessage={errors.firstName}
+                  />
+                </Box>
+                <Box>
+                  <CustomInput
+                    p={["24px 16px", "24px 16px"]}
+                    placeholder="Your Last Name"
+                    name={"lastName"}
+                    label="Last Name"
+                    value={values.lastName}
+                    onChange={handleChange}
+                    isRequired
+                    isInvalid={!!errors.lastName}
+                    isError={!!errors.lastName}
+                    errorMessage={errors.lastName}
+                  />
+                </Box>
+              </Grid>
+              <Box mb={5}>
+                <CustomInput
+                  p={["24px 16px", "24px 16px"]}
+                  placeholder="Your Password"
+                  name={"password"}
+                  label="Enter password to login"
+                  type="password"
+                  onChange={handleChange}
+                  value={values.password}
+                  isRequired
+                  isInvalid={!!errors.password}
+                  isError={!!errors.password}
+                  errorMessage={errors.password}
+                />
+              </Box>
+              <Checkbox
+                name="sendMarketingEmails"
+                colorScheme={"orange"}
+                checked={values.sendMarketingEmails}
+                fontSize={"smaller"}
+                onChange={handleChange}
+                mb={6}
+              >
+                {t(
+                  "signup:by-clicking-this",
+                  "By Clicking this, I agree to recieving marketing messages from Hardsands with the email address provided. View our Privacy Policy for more."
+                )}
+              </Checkbox>
             </>
           )}
 
-          {/* <Text textAlign="center" mb={5}>
-              <Link href={AUTH_ROUTES.reset} color="brand.300">
-                Forgot your password?
-              </Link>
-            </Text> */}
           <Button
             fontSize={14}
             fontWeight={500}
@@ -316,12 +335,6 @@ function CardActivationPage({
           >
             {showLoginForm ? "Login" : "Activate Card"}
           </Button>
-          {/* <Text textAlign="center" my={5}>
-              Don&apos;t have an account?
-              <Link href={AUTH_ROUTES.signup} color="brand.300">
-                Sign up
-              </Link>
-            </Text> */}
           <Flex color="white" justify="stretch" gap={5} mt={10}>
             <Button
               fontSize={14}
