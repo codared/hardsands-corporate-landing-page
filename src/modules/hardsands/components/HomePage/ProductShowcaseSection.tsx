@@ -22,20 +22,22 @@ const ProductShowcaseSection = () => {
   return (
     <Container maxWidth={"7xl"}>
       <Box py={[10, 10, 16]}>
-        <Heading
-          color="brand.300"
-          mb={[2]}
-          textTransform={"uppercase"}
-          fontSize={32}
-        >
-          {t("common:our-product-materials", "Our Products")}
-        </Heading>
-        <Text>
-          {t(
-            "common:check-out-our-catalogue",
-            "Check out our catalogue of cards of your choice."
-          )}
-        </Text>
+        <Box textAlign={"center"}>
+          <Heading
+            color="brand.300"
+            mb={[2]}
+            textTransform={"uppercase"}
+            fontSize={32}
+          >
+            {t("common:our-product-materials", "Our Products")}
+          </Heading>
+          <Text>
+            {t(
+              "common:check-out-our-catalogue",
+              "Check out our catalogue of cards of your choice."
+            )}
+          </Text>
+        </Box>
         <SimpleGrid mt={[14]} columns={[1, 2, 3]} spacing={[2, 3, 5]}>
           {products &&
             products.length &&
