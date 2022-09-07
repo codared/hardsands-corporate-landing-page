@@ -14,13 +14,14 @@ import productRoutes from "modules/products/routes";
 
 const HomeProductCard = ({
   name,
+  slug,
   img = "",
   description,
   price,
   t,
 }: HomeProductCardProps) => (
   <HardsandLink
-    href={productRoutes.products()}
+    href={productRoutes.detail({ slug })}
     outline="none"
     _hover={{ color: "unset" }}
     _focus={{
@@ -51,6 +52,7 @@ const HomeProductCard = ({
           <HardsandsButton
             // @ts-ignore
             borderWidth="1px"
+            href={productRoutes.detail({ slug })}
             borderStyle="solid"
             borderColor="brand.100"
             fontSize={"xs"}

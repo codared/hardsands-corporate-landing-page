@@ -15,7 +15,7 @@ const productRoutes = buildRoutes('collections', {
     if (!color) {
       return base
     }
-    return `${base}?color=${color}`
+    return `${base}?variant=${color}`
   },
   gift: () => '/gift-card',
 })

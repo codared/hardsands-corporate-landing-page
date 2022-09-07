@@ -46,6 +46,7 @@ const ProductShowcaseSection = () => {
               return (
                 <HomeProductCard
                   key={prod.id}
+                  slug={prod.slug}
                   img={getProductImageFromSlug(prod.slug, options[0])}
                   name={t("product:title", "{{title}}", {
                     title: prod.title,

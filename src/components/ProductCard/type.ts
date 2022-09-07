@@ -12,6 +12,7 @@ export interface ProductCardProps {
 
 export interface HomeProductCardProps {
   name: string;
+  slug?: string;
   description?: string;
   price: any;
   img?: string;
