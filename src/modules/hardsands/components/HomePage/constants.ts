@@ -23,7 +23,7 @@ export const getSteps = (t: TFunction) => {
     },
     {
       step: t("common:step-2", "Step 2:"),
-      title: t("common:step-2-title", "Design your Card"),
+      title: t("common:step-2-title", "Card Activation"),
       instruction: t(
         "common:step-2:instruction",
         `
@@ -33,7 +33,7 @@ export const getSteps = (t: TFunction) => {
     },
     {
       step: t("common:step-3", "Step 3:"),
-      title: t("common:step-3-title", "Review"),
+      title: t("common:step-3-title", "Setup Your Profile"),
       instruction: t(
         "common:step-3:instruction",
         `
@@ -43,7 +43,7 @@ export const getSteps = (t: TFunction) => {
     },
     {
       step: t("common:step-4", "Step 4:"),
-      title: t("common:step-4-title", "Tap & Share"),
+      title: t("common:step-4-title", "Tap to Share"),
       instruction: t(
         "common:step-4:instruction",
         `
