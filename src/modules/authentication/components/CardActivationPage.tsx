@@ -25,9 +25,9 @@ import {
 import { CardActivationType, SignupCardActivationType } from "../types";
 import { setCookie } from "modules/shared/cookie";
 import { getGeoIpCountryCode } from "utils/geoIp";
-import { ResponseType } from "../services";
 import Router from "next/router";
 import Link from "next/link";
+import { BackendResponseType } from "utils/types";
 
 function CardActivationPage({
   isError,
@@ -72,7 +72,7 @@ function CardActivationPage({
     setIsLoading(true);
     if (_.isEmpty(errors)) {
       try {
-        let res: ResponseType;
+        let res: BackendResponseType;
         if (showSignupForm && !showLoginForm) {
           values.country = country as string;
 

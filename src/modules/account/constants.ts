@@ -73,11 +73,49 @@ export const ACCOUNT_NAV_ITEMS: AccountNavItemsType[] = [
   },
 ];
 
+export const AppIcons = {
+  AbegIcon,
+  AppleMusicIcon,
+  ApplePodcastIcon,
+  AudioMackIcon,
+  BankIcon,
+  BoomPlayIcon,
+  CalendlyIcon,
+  CallIcon,
+  CashAppIcon,
+  ContactCardIcon,
+  DeezerIcon,
+  EmailIcon,
+  FacebookIcon,
+  InstagramIcon,
+  LeadsFormIcon,
+  LinkedInIcon,
+  PatreonIcon,
+  PaypalIcon,
+  PinterestIcon,
+  SmsIcon,
+  SnapchatIcon,
+  SoundcloudIcon,
+  SpotifyIcon,
+  TelegramIcon,
+  TiktokIcon,
+  TripAdvicerIcon,
+  TwitchIcon,
+  TwitterIcon,
+  VenmoIcon,
+  VimeoIcon,
+  WebsiteIcon,
+  WhatsappIcon,
+  YelpIcon,
+  YoutubeIcon,
+  ZelleIcon,
+};
+
 export const ACTIONS: ActionsType[] = [
   {
     id: 1,
     title: "Profile",
-    icon: RiContactsLine,
+    icon: 'RiContactsLine',
     isDefault: true,
     fields: [
       {
@@ -105,7 +143,7 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 2,
     title: "WhatsApp",
-    icon: FaWhatsapp,
+    icon: 'FaWhatsapp',
     isDefault: false,
     fields: [
       {
@@ -121,7 +159,7 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 3,
     title: "Url",
-    icon: AiOutlineLink,
+    icon: 'AiOutlineLink',
     isDefault: false,
     fields: [
       {
@@ -133,7 +171,7 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 4,
     title: "Event",
-    icon: MdOutlineEventNote,
+    icon: 'MdOutlineEventNote',
     isDefault: false,
     fields: [
       {
@@ -182,7 +220,7 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 5,
     title: "Contact Card",
-    icon: MdOutlineContactMail,
+    icon: 'MdOutlineContactMail',
     isDefault: false,
     fields: [
       {
@@ -304,7 +342,7 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 6,
     title: "Sms",
-    icon: FaSms,
+    icon: 'FaSms',
     isDefault: false,
     requiresCountryCode:
       'Notice: Please put your country code before your number. For example: "+1".',
@@ -322,7 +360,7 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 7,
     title: "Call",
-    icon: FiPhoneCall,
+    icon: 'FiPhoneCall',
     isDefault: false,
     fields: [
       {
@@ -334,7 +372,7 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 8,
     title: "Email",
-    icon: AiOutlineMail,
+    icon: 'AiOutlineMail',
     isDefault: false,
     fields: [
       {
@@ -354,7 +392,7 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 9,
     title: "Bank",
-    icon: AiFillBank,
+    icon: 'AiFillBank',
     isDefault: false,
     fields: [
       {

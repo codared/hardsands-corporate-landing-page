@@ -13,9 +13,9 @@ import { FiLink2, FiTrendingUp } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
 import { ActionsType } from "utils/types";
 import ActionCard from "../components/ActionCard";
-import { ACTIONS } from "../constants";
+import { ACTIONS, AppIcons } from "../constants";
 
-const AccountTabView = () => {
+const AccountTabView = ({ cardActions }: { cardActions: ActionsType[] }) => {
   return (
     <Flex w={["full", "100%"]} ml={[0, 5]}>
       <Tabs w="100%" variant="unstyled">
@@ -67,11 +67,11 @@ const AccountTabView = () => {
               gap={["1rem", "2rem"]}
               overflow="hidden"
             >
-              {ACTIONS.map((action: ActionsType) => (
+              {cardActions.map((action: ActionsType) => (
                 <ActionCard
                   key={action.id}
                   title={action.title}
-                  Icon={action.icon}
+                  Icon={AppIcons[action.icon]}
                   isDefault={action.isDefault}
                 />
               ))}
