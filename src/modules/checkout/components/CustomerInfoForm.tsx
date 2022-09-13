@@ -161,8 +161,9 @@ const CustomerInfoForm = ({
               name={"zip"}
               value={values.zip}
               onChange={handleChange}
-              // isRequired
-              // errorMessage="Zip code is required"
+              isInvalid={!!errors.zip}
+              isError={!!errors.zip}
+              errorMessage={errors.zip}
             />
           </>
           <Box h={2} />
@@ -202,7 +203,7 @@ const CustomerInfoForm = ({
           >
             {t(
               "checkout:button:by-clicking-the-checkbox",
-              "By Clicking the checkbox, I agree to recieving marketing messages from Hardsands with the email address provided. View our terms & conditions here."
+              "By Clicking the checkbox, You agree to receiving marketing messages from Hardsands with the email address provided. View our terms & conditions here."
             )}
           </Checkbox>
           <Box h={8} />

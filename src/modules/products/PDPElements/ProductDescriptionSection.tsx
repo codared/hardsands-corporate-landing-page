@@ -37,6 +37,7 @@ const ProductDescriptionSection = ({
     productDetails.variants[activeVariant].price,
     currency
   );
+
   const handleAddtoCart = async () => {
     setIsLoading(true);
 
