@@ -5,6 +5,7 @@ import { TFunction } from "react-i18next";
 import { CHECKOUT_STEPS } from "../constants";
 import { Order, OrderItem } from "../types";
 import OrderItemCard from "./OrderItemCard";
+import AcceptedPaymentMethods from "./AcceptedPaymentMethods";
 
 const OrderSummary = ({
   order,
@@ -44,6 +45,7 @@ const OrderSummary = ({
           shippingSelected={order.shippingSelected}
         />
       </Flex>
+      <AcceptedPaymentMethods t={t} />
     </Box>
   );
 };

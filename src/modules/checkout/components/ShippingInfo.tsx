@@ -18,7 +18,7 @@ const ShippingInfo = ({
   handleSubmitShippingMethod: (shippingMethodId: number) => void;
   handleChangeAddress: (e: SyntheticEvent) => void;
 }) => {
-  const [shippingMethod, setShippingMethod] = useState(0);
+  const [shippingMethod, setShippingMethod] = useState(shippingMethods[0].id as number);
 
   const buildShippingMethodsArray = () => {
     return shippingMethods?.map((method) => ({
@@ -69,6 +69,7 @@ const ShippingInfo = ({
         </Text>
         <Box h={2} />
         <CheckAccordion
+          defaultIndex={[0]}
           onChange={(val: string | number) => setShippingMethod(val as number)}
           options={buildShippingMethodsArray()}
         />

@@ -9,15 +9,13 @@ const QuantitySelector = ({
   quantity: number;
   onChange: (val: number) => void;
 }) => {
-  const [quantityState, setQuantityState] = useState<number>(quantity || 1);
-
   const handleDecrease = () => {
-    setQuantityState(quantityState === 1 ? quantityState : quantityState - 1);
-    onChange(quantityState);
+    const newQuantity = quantity === 1 ? quantity : quantity - 1;
+    onChange(newQuantity);
   };
   const handleIncrease = () => {
-    setQuantityState(quantityState + 1);
-    onChange(quantityState);
+    const newQuantity = quantity + 1;
+    onChange(newQuantity);
   };
 
   return (
@@ -44,7 +42,7 @@ const QuantitySelector = ({
         <AiOutlineMinus />
       </Tag>
       <Box as={"span"} color="gray.600" userSelect="none">
-        {quantityState}
+        {quantity}
       </Box>
       <Tag
         size={"md"}

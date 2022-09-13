@@ -74,6 +74,15 @@ export const ACCOUNT_NAV_ITEMS: AccountNavItemsType[] = [
 ];
 
 export const AppIcons = {
+  Profile: RiContactsLine,
+  WhatsApp: FaWhatsapp,
+  Url: AiOutlineLink,
+  Event: MdOutlineEventNote,
+  "Contact Card": MdOutlineContactMail,
+  Sms: FaSms,
+  Call: FiPhoneCall,
+  Email: AiOutlineMail,
+  Bank: AiFillBank,
   AbegIcon,
   AppleMusicIcon,
   ApplePodcastIcon,
@@ -115,7 +124,6 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 1,
     title: "Profile",
-    icon: 'RiContactsLine',
     isDefault: true,
     fields: [
       {
@@ -143,7 +151,6 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 2,
     title: "WhatsApp",
-    icon: 'FaWhatsapp',
     isDefault: false,
     fields: [
       {
@@ -159,7 +166,6 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 3,
     title: "Url",
-    icon: 'AiOutlineLink',
     isDefault: false,
     fields: [
       {
@@ -171,7 +177,6 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 4,
     title: "Event",
-    icon: 'MdOutlineEventNote',
     isDefault: false,
     fields: [
       {
@@ -220,7 +225,6 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 5,
     title: "Contact Card",
-    icon: 'MdOutlineContactMail',
     isDefault: false,
     fields: [
       {
@@ -342,7 +346,6 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 6,
     title: "Sms",
-    icon: 'FaSms',
     isDefault: false,
     requiresCountryCode:
       'Notice: Please put your country code before your number. For example: "+1".',
@@ -360,7 +363,6 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 7,
     title: "Call",
-    icon: 'FiPhoneCall',
     isDefault: false,
     fields: [
       {
@@ -372,7 +374,6 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 8,
     title: "Email",
-    icon: 'AiOutlineMail',
     isDefault: false,
     fields: [
       {
@@ -392,7 +393,6 @@ export const ACTIONS: ActionsType[] = [
   {
     id: 9,
     title: "Bank",
-    icon: 'AiFillBank',
     isDefault: false,
     fields: [
       {

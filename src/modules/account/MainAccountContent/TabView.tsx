@@ -8,6 +8,7 @@ import {
   TabPanel,
   SimpleGrid,
   Grid,
+  Text,
 } from "@chakra-ui/react";
 import { FiLink2, FiTrendingUp } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -71,17 +72,17 @@ const AccountTabView = ({ cardActions }: { cardActions: ActionsType[] }) => {
                 <ActionCard
                   key={action.id}
                   title={action.title}
-                  Icon={AppIcons[action.icon]}
+                  Icon={AppIcons[action.title]}
                   isDefault={action.isDefault}
                 />
               ))}
             </Grid>
           </TabPanel>
           <TabPanel>
-            <p>two!</p>
+            <Text>Coming soon...!</Text>
           </TabPanel>
           <TabPanel>
-            <p>Three!</p>
+            <Text>Coming soon...!</Text>
           </TabPanel>
         </TabPanels>
       </Tabs>
