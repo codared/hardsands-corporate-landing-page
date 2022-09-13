@@ -4,7 +4,7 @@ import { AppState } from "../../redux/rootReducer";
 import { Product } from "./types";
 
 export const selectAllProducts = (currency: string) => (state: AppState) => {
-  return state.products.all[currency] as unknown as Product[] | undefined;
+  return state?.products?.all[currency] as unknown as Product[] | undefined;
 };
 
 type FindSingleArgs =

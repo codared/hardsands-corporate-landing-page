@@ -1,6 +1,14 @@
 import jwt_decode from "jwt-decode";
+import { HARDSANDS_LOGIN_COOKIE } from "modules/authentication/constants";
 import { ProductOptions } from "modules/products/types";
+import { getCookie } from "modules/shared/cookie";
 import { SUPPORTED_CURRENCIES } from "./supportedCurrencies";
+
+export const requestAuthHeaders = () => {
+  return new Headers({
+    Authorization: `Bearer ${getToken()}`,
+  });
+};
 
 export const calculateDiscountPercentage = (
   originalValue: number,
@@ -24,6 +32,10 @@ export const isTokenExpired = (token: string) => {
   const decoded: any = jwt_decode(token);
   return decoded.exp * 1000 < new Date().getTime();
   // return decoded.exp < new Date().getDate() - decoded.iat;
+};
+
+export const getToken = () => {
+  return getCookie(HARDSANDS_LOGIN_COOKIE);
 };
 
 // export function getProductVariant(

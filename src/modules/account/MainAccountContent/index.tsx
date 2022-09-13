@@ -1,16 +1,24 @@
-import { Box, Flex, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex, useDisclosure, useToast } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
+import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { ActionsType } from "utils/types";
+import { getUserCardActionsActions } from "../actions";
 import AccountCardPreview from "../components/AccountCardPreview";
 import ActionFormModal from "../components/ActionFormModal";
 import ActionListModal from "../components/ActionListModal";
+import Loader from "../components/Loader";
 import QRCodeShareSection from "../components/QRCodeShareSection";
 import AccountTabView from "./TabView";
 
 const MainAccountContent = () => {
+  const reduxDispatch = useTypedDispatch();
+  const appError = useTypedSelector((state) => state.app?.error);
+  const loading = useTypedSelector((state) => state.app?.loading);
+  const cardActions = useTypedSelector((state) => state.app?.cardActions);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast = useToast();
   const {
     isOpen: isActionFormModalOpen,
     onOpen: onActionFormModalOpen,
@@ -37,6 +45,27 @@ const MainAccountContent = () => {
     onActionFormModalClose();
   };
 
+  useEffect(() => {
+    reduxDispatch(getUserCardActionsActions("oFg2sT8"));
+  }, []);
+
+  useEffect(() => {
+    if (appError.isError) {
+      toast({
+        position: "top-right",
+        title: appError.name,
+        description: appError.message,
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <Box rounded="md">
       <Flex
@@ -54,7 +83,8 @@ const MainAccountContent = () => {
         <Box w={100} />
 
         <Flex flexDir={"column"}>
-          <AccountTabView />
+          <AccountTabView cardActions={cardActions as ActionsType[]} />
+
           <HardsandsButton
             // @ts-ignore
             mt={10}

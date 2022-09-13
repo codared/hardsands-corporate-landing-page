@@ -89,7 +89,10 @@ const CartItemCard = ({ cartProduct, onRemoveItem }: CartItemCardProd) => {
         </Flex>
         <Flex direction="column" justifyContent="space-between">
           <Text alignSelf={"end"} color="brand.300" fontWeight={600}>
-            {formatCurrencyInteger(cartProduct.price, cartProduct.currency)}
+            {formatCurrencyInteger(
+              cartProduct.price * quantity,
+              cartProduct.currency
+            )}
           </Text>
           <QuantityModifier quantity={quantity} onChange={onQuantityUpdate} />
         </Flex>

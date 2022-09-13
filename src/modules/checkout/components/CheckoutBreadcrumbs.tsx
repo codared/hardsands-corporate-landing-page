@@ -15,7 +15,7 @@ const CheckoutBreakcrumbs = ({
 }) => {
   return (
     <Box fontWeight={"bold"}>
-      <Breadcrumb separator="&#7036;">
+      <Breadcrumb separator=">">
         <BreadcrumbItem
           color={
             activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM

@@ -1,5 +1,6 @@
 import config, { updateConfig } from "core/config";
 import { SETTINGS } from "core/config/config";
+import { UserAppActionTypes } from "modules/account/actionTypes";
 import { CartActionTypes } from "modules/cart/actionTypes";
 import { cartReducer } from "modules/cart/reducer";
 import { CheckoutActionTypes } from "modules/checkout/actionTypes";
@@ -20,7 +21,8 @@ export type AppActionTypes =
   | CartActionTypes
   | CheckoutActionTypes
   | CountriesActionTypes
-  | CustomerInfoActionTypes;
+  | CustomerInfoActionTypes
+  | UserAppActionTypes;
 
 type InitializerArgs = {
   currency: string;
