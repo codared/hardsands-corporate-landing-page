@@ -25,7 +25,7 @@ export const CustomerInfoSchema = Yup.object().shape({
     .required("Please select a country Code"),
   phone: Yup.string()
     .min(4, "Too Short!")
-    .max(16, "Too Long!")
+    .max(11, "Too Long!")
     .matches(phoneRegExp, "Phone number is not valid or required"),
   agreedToReceiveEmail: Yup.boolean(),
 });
