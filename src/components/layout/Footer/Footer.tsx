@@ -126,7 +126,7 @@ const FootersFoot = ({ t }: { t: TFunction }) => {
             <Text fontSize={[14, "normal"]}>
               {t(
                 "footer:copyright",
-                "© {{year}} Hardsands Technology. All rights reserved",
+                "© {{year}} Hardsands Technology Limited. All rights reserved",
                 { year }
               )}
             </Text>
@@ -163,14 +163,14 @@ export default function Footer() {
               />
             </Box>
             <Box>
-              <Text fontSize={"sm"}>
+              {/* <Text fontSize={"sm"}>
                 {t(
                   "footer:description",
                   `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud`
                 )}
-              </Text>
+              </Text> */}
               <Flex mt={10}>
                 <HardsandLink mr={10} href={SOCIAL_LINKS.FACEBOOK}>
                   <FaFacebookF size={20} />
