@@ -19,7 +19,7 @@ const OrderSummary = ({
   activeStep: CHECKOUT_STEPS;
 }) => {
   return (
-    <Box w="100%">
+    <Box w="100%" mb={[12, 0]}>
       <Flex direction={"column"} bg={"brand.10"} p={5}>
         <Heading fontSize={20}>
           {t("checkout:order-summary", "Order Summary")}
