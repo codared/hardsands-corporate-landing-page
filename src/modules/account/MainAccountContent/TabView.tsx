@@ -16,7 +16,15 @@ import { ActionsType } from "utils/types";
 import ActionCard from "../components/ActionCard";
 import { ACTIONS, AppIcons } from "../constants";
 
-const AccountTabView = ({ cardActions }: { cardActions: ActionsType[] }) => {
+const AccountTabView = ({
+  cardActions,
+  handleSetDefault,
+  handleEdit,
+}: {
+  handleSetDefault: (id: number) => void;
+  handleEdit: (id: number) => void;
+  cardActions: ActionsType[];
+}) => {
   return (
     <Flex w={["full", "100%"]} ml={[0, 5]}>
       <Tabs w="100%" variant="unstyled">
@@ -68,14 +76,20 @@ const AccountTabView = ({ cardActions }: { cardActions: ActionsType[] }) => {
               gap={["1rem", "2rem"]}
               overflow="hidden"
             >
-              {cardActions.map((action: ActionsType) => (
-                <ActionCard
-                  key={action.id}
-                  title={action.title}
-                  Icon={AppIcons[action.title]}
-                  isDefault={action.isDefault}
-                />
-              ))}
+              {cardActions
+                .map((action: ActionsType) => (
+                  <ActionCard
+                    key={action.id}
+                    handleSetDefault={() =>
+                      handleSetDefault(action.id as number)
+                    }
+                    handleEdit={() => handleEdit(action.id as number)}
+                    title={action.title}
+                    Icon={AppIcons[action.title]}
+                    isDefault={action.isDefault}
+                  />
+                ))
+                .reverse()}
             </Grid>
           </TabPanel>
           <TabPanel>

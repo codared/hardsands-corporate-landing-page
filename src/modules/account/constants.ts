@@ -52,6 +52,11 @@ import getCountries, { getState } from "utils/getCountries";
 
 export const ACCOUNT_ROOT = "/app";
 
+export const enum ACTION_FORM_STATUS {
+  ADD = "ADD",
+  EDIT = "EDIT",
+}
+
 export const ACCOUNT_NAV_ITEMS: AccountNavItemsType[] = [
   {
     id: 1,

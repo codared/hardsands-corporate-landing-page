@@ -55,6 +55,7 @@ export type ActionsType = {
   id?: number;
   title: string;
   fields?: ActionsFormType[];
+  isDefault?: boolean;
   requiresCountryCode?: string;
 };
 
@@ -79,4 +80,3 @@ export type BackendResponseType = {
     data: any;
   };
 };
-

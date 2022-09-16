@@ -21,10 +21,14 @@ const ActionCard = ({
   title,
   Icon,
   isDefault,
+  handleSetDefault,
+  handleEdit,
 }: {
   title: string;
   Icon: IconType;
   isDefault?: boolean;
+  handleSetDefault: () => void;
+  handleEdit: () => void;
 }) => {
   return (
     <Flex
@@ -47,25 +51,29 @@ const ActionCard = ({
             variant="ghost"
           />
           <MenuList>
-            <MenuItem
-              _hover={{ bg: "unset", color: "brand.300" }}
-              icon={<AiOutlineStar size={24} />}
-            >
-              Set as default
-            </MenuItem>
+            {!isDefault && (
+              <MenuItem
+                _hover={{ bg: "unset", color: "brand.300" }}
+                icon={<AiOutlineStar size={24} />}
+                onClick={handleSetDefault}
+              >
+                Set as default
+              </MenuItem>
+            )}
             <MenuItem
               _hover={{ bg: "unset", color: "brand.300" }}
               icon={<AiOutlineEdit size={24} />}
+              onClick={handleEdit}
             >
               Edit
             </MenuItem>
-            <MenuItem
+            {/* <MenuItem
               _hover={{ bg: "unset", color: "brand.300" }}
               color="red.300"
               icon={<AiOutlineDelete size={24} />}
             >
               Delete
-            </MenuItem>
+            </MenuItem> */}
           </MenuList>
         </Menu>
       </Box>

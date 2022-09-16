@@ -30,7 +30,22 @@ export const getUserCards = async () => {
   return res;
 };
 
-export const addUserCardAction = async (data: any) => {  
+export const setUserCardsActionDefault = async (
+  cardSerial: string,
+  actionId: string
+) => {
+  const res = (await storefrontApiJsonFetch(
+    `/api/card-action/default/${cardSerial}/${actionId}`,
+    {
+      method: "POST",
+      headers: requestAuthHeaders(),
+    }
+  )) as BackendResponseType;
+
+  return res;
+};
+
+export const addUserCardAction = async (data: any) => {
   const res = (await storefrontApiJsonFetch("/api/card-action/create", {
     method: "POST",
     headers: requestAuthHeaders(),
@@ -40,7 +55,7 @@ export const addUserCardAction = async (data: any) => {
   return res;
 };
 
-export const updateUserCardAction = async (id: number, data: any) => {  
+export const updateUserCardAction = async (id: number, data: any) => {
   const res = (await storefrontApiJsonFetch(`/api/card-action/update/${id}`, {
     method: "POST",
     headers: requestAuthHeaders(),

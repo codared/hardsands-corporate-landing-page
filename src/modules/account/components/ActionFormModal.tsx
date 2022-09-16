@@ -43,7 +43,6 @@ const ActionFormModal = ({
 
   const handleChange = (e: any) => {
     e.preventDefault();
-    console.log(e.target.value);
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 

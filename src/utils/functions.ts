@@ -1,4 +1,5 @@
 import jwt_decode from "jwt-decode";
+import { ACTIONS } from "modules/account/constants";
 import { HARDSANDS_LOGIN_COOKIE } from "modules/authentication/constants";
 import { ProductOptions } from "modules/products/types";
 import { getCookie } from "modules/shared/cookie";
@@ -8,7 +9,7 @@ import { ActionsType } from "./types";
 export const requestAuthHeaders = () => {
   return new Headers({
     Authorization: `Bearer ${getToken()}`,
-    "Content-Type": "application/json"
+    "Content-Type": "application/json",
   });
 };
 
@@ -50,6 +51,30 @@ export const mergeActions = (dbActions: any, localActions: ActionsType[]) => {
       ...neededActionsFromDB,
     };
   });
+};
+
+export const getActionById = (id: number, cardActions: ActionsType[]) => {
+  return cardActions?.find((action) => action.id === id) as ActionsType;
+};
+
+export const mergeActionFields = (cardActions: ActionsType[], id: number) => {
+  const action = cardActions?.find((action) => action.id === id) as ActionsType;
+
+  const localAction = ACTIONS?.find(
+    (act) => act.title === action.title
+  ) as ActionsType;
+
+  localAction.fields = localAction?.fields?.map((_action) => {
+    const name = (_action.name as string).toLowerCase();
+    let fields = action?.fields as any;
+
+    return {
+      ..._action,
+      value: fields[name],
+    };
+  });
+
+  return { ...localAction, id };
 };
 
 // export function getProductVariant(

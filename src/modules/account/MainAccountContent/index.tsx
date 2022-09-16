@@ -5,18 +5,22 @@ import productRoutes from "modules/products/routes";
 import { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
+import { getActionById, mergeActionFields } from "utils/functions";
 import { ActionsType } from "utils/types";
 import {
   addUserCardsAction,
   getAllActionsActions,
   getUserCardActionsActions,
   getUserCardsAction,
+  setUserCardsActionDefaultAction,
+  updateUserCardsAction,
 } from "../actions";
 import AccountCardPreview from "../components/AccountCardPreview";
 import ActionFormModal from "../components/ActionFormModal";
 import ActionListModal from "../components/ActionListModal";
 import Loader from "../components/Loader";
 import QRCodeShareSection from "../components/QRCodeShareSection";
+import { ACTIONS, ACTION_FORM_STATUS } from "../constants";
 import { UserCardType } from "../types";
 import AccountTabView from "./TabView";
 
@@ -38,8 +42,10 @@ const MainAccountContent = () => {
     null
   );
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [formStatus, setFormStatus] = useState<string>(ACTION_FORM_STATUS.ADD);
 
   const handleOpenActionModal = () => {
+    setFormStatus(ACTION_FORM_STATUS.ADD);
     onOpen();
   };
 
@@ -66,11 +72,38 @@ const MainAccountContent = () => {
       requiresCountryCode,
       ...rest
     } = formData;
-    reduxDispatch(addUserCardsAction(rest)).then((res) => {
-      setIsSubmitting(false);
-      onClose();
-      onActionFormModalClose();
-    });
+
+    if (formStatus === ACTION_FORM_STATUS.ADD) {
+      reduxDispatch(addUserCardsAction(rest)).then((res) => {
+        setIsSubmitting(false);
+        onClose();
+        onActionFormModalClose();
+      });
+    }
+    if (formStatus === ACTION_FORM_STATUS.EDIT) {
+      reduxDispatch(updateUserCardsAction(rest)).then((res) => {
+        setIsSubmitting(false);
+        onClose();
+        onActionFormModalClose();
+      });
+    }
+  };
+
+  const handleSetDefault = (id: number) => {
+    // console.log("data >>> ", cardActions, id);
+    // const action = getActionById(id, cardActions as ActionsType[]);
+    // console.log('action ??? ', action);
+
+    // console.log("defaultData ??? ", defaultData);
+    reduxDispatch(setUserCardsActionDefaultAction(cards[0].cardSerial, id));
+  };
+
+  const handleEdit = (id: number) => {
+    setFormStatus(ACTION_FORM_STATUS.EDIT);
+    // The cardActions fields dont have the required properties to
+    // render the form so we have use the ACTIONS constants
+    const mergedActions = mergeActionFields(cardActions as ActionsType[], id);
+    handleActionSelect(mergedActions);
   };
 
   useEffect(() => {
@@ -152,7 +185,11 @@ const MainAccountContent = () => {
           <Box w={100} />
 
           <Flex flexDir={"column"}>
-            <AccountTabView cardActions={cardActions as ActionsType[]} />
+            <AccountTabView
+              handleSetDefault={handleSetDefault}
+              handleEdit={handleEdit}
+              cardActions={cardActions as ActionsType[]}
+            />
 
             <HardsandsButton
               // @ts-ignore

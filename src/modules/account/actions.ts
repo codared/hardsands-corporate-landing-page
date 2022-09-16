@@ -7,6 +7,8 @@ import {
   getAllActions,
   getUserCardActions,
   getUserCards,
+  setUserCardsActionDefault,
+  updateUserCardAction,
 } from "./services";
 import { CardActionUpdate, UserCardActionsType, UserCardType } from "./types";
 
@@ -79,6 +81,25 @@ export const getUserCardsAction: ThunkActionCreator<Promise<UserCardType[]>> =
     return res.result;
   };
 
+export const setUserCardsActionDefaultAction: ThunkActionCreator<
+  Promise<UserCardType[]>
+> = (cardSerial: string, actionId: string) => async (dispatch, getState) => {
+  const res = await setUserCardsActionDefault(cardSerial, actionId);
+
+  if (res.isError) {
+    return dispatch({
+      type: "APP_ERROR",
+      payload: res as any,
+    });
+  }
+  dispatch({
+    type: "GET_USER_CARD_ACTIONS",
+    payload: res.result,
+  });
+
+  return res.result;
+};
+
 export const addUserCardsAction: ThunkActionCreator<Promise<ActionsType[]>> =
   (data: CardActionUpdate) => async (dispatch, getState) => {
     const res = await addUserCardAction(data);
@@ -96,3 +117,24 @@ export const addUserCardsAction: ThunkActionCreator<Promise<ActionsType[]>> =
 
     return res.result;
   };
+
+export const updateUserCardsAction: ThunkActionCreator<
+  Promise<ActionsType[]>
+> = (data: CardActionUpdate) => async (dispatch, getState) => {
+  const { actionId, ...rest } = data;
+  // return;
+  const res = await updateUserCardAction(actionId, rest);
+
+  if (res.isError) {
+    return dispatch({
+      type: "APP_ERROR",
+      payload: res as any,
+    });
+  }
+  dispatch({
+    type: "ADD_CARD_ACTION",
+    payload: res.result,
+  });
+
+  return res.result;
+};

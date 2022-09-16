@@ -46,7 +46,7 @@ const ActionFormBuilder = ({
 
   return (
     <Box>
-      {fields.map(({ name, type, options, formKey }, index) => {
+      {fields.map(({ name, type, options, formKey, value }, index) => {
         switch (type) {
           case "file":
             return (
@@ -62,6 +62,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>
@@ -80,6 +81,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                   {(name as string).includes("Phone") && (
                     <FormHelperText>
@@ -103,6 +105,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>
@@ -121,6 +124,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>
@@ -139,6 +143,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>
@@ -156,6 +161,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   >
                     {options &&
                       // @ts-ignore
@@ -181,6 +187,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   >
                     {stateOptions.length ? (
                       // @ts-ignore
@@ -236,6 +243,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>
@@ -253,6 +261,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>
