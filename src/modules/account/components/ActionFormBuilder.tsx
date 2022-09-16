@@ -38,7 +38,6 @@ const ActionFormBuilder = ({
   };
 
   const handleColorChange = (color: string) => {
-    console.log("selectedColor >>> ", selectedColor);
     setSelectedColor(color);
   };
 
@@ -47,7 +46,7 @@ const ActionFormBuilder = ({
 
   return (
     <Box>
-      {fields.map(({ name, type, options }, index) => {
+      {fields.map(({ name, type, options, formKey, value }, index) => {
         switch (type) {
           case "file":
             return (
@@ -56,13 +55,14 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={"file"}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>
@@ -74,13 +74,14 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={type}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                   {(name as string).includes("Phone") && (
                     <FormHelperText>
@@ -97,13 +98,14 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={"email"}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>
@@ -115,13 +117,14 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={"date"}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>
@@ -133,13 +136,14 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={"time"}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>
@@ -150,13 +154,14 @@ const ActionFormBuilder = ({
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
                   <Select
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleCountrySelectChange}
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   >
                     {options &&
                       // @ts-ignore
@@ -175,13 +180,14 @@ const ActionFormBuilder = ({
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
                   <Select
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleStateSelectChange}
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   >
                     {stateOptions.length ? (
                       // @ts-ignore
@@ -230,13 +236,14 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={"url"}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>
@@ -247,13 +254,14 @@ const ActionFormBuilder = ({
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
                   <Textarea
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
+                    defaultValue={value || ''}
                   />
                 </Box>
               </FormControl>

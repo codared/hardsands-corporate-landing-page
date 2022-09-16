@@ -52,6 +52,11 @@ import getCountries, { getState } from "utils/getCountries";
 
 export const ACCOUNT_ROOT = "/app";
 
+export const enum ACTION_FORM_STATUS {
+  ADD = "ADD",
+  EDIT = "EDIT",
+}
+
 export const ACCOUNT_NAV_ITEMS: AccountNavItemsType[] = [
   {
     id: 1,
@@ -59,30 +64,30 @@ export const ACCOUNT_NAV_ITEMS: AccountNavItemsType[] = [
     href: `${ACCOUNT_ROOT}`,
     icon: AiOutlineIdcard,
   },
-  {
-    id: 2,
-    title: "Orders",
-    href: `${ACCOUNT_ROOT}/orders`,
-    icon: AiOutlineShoppingCart,
-  },
-  {
-    id: 3,
-    title: "Profile",
-    href: `${ACCOUNT_ROOT}/profile`,
-    icon: CgProfile,
-  },
+  // {
+  //   id: 2,
+  //   title: "Orders",
+  //   href: `${ACCOUNT_ROOT}/orders`,
+  //   icon: AiOutlineShoppingCart,
+  // },
+  // {
+  //   id: 3,
+  //   title: "Profile",
+  //   href: `${ACCOUNT_ROOT}/profile`,
+  //   icon: CgProfile,
+  // },
 ];
 
 export const AppIcons = {
   Profile: RiContactsLine,
   WhatsApp: FaWhatsapp,
-  Url: AiOutlineLink,
+  URL: AiOutlineLink,
   Event: MdOutlineEventNote,
   "Contact Card": MdOutlineContactMail,
-  Sms: FaSms,
+  SMS: FaSms,
   Call: FiPhoneCall,
   Email: AiOutlineMail,
-  Bank: AiFillBank,
+  "Bank Account": AiFillBank,
   AbegIcon,
   AppleMusicIcon,
   ApplePodcastIcon,
@@ -120,292 +125,348 @@ export const AppIcons = {
   ZelleIcon,
 };
 
+/*
+{id: 3, action: 'Instagram', type: 'LINK'}
+{id: 5, action: 'Facebook', type: 'LINK'}
+{id: 6, action: 'LinkedIn', type: 'LINK'}
+{id: 7, action: 'Twitter', type: 'LINK'}
+
+{id: 4, action: 'Bank Account', type: 'BANK_ACCOUNT'}
+{id: 8, action: 'Profile', type: 'LINK'}
+{id: 1, action: 'Profile', type: 'LINK'}
+{id: 9, action: 'WhatsApp', type: 'LINK'}
+{id: 10, action: 'URL', type: 'LINK'}
+{id: 11, action: 'Event', type: 'LINK'}
+{id: 12, action: 'Contact Card', type: 'LINK'}
+{id: 13, action: 'SMS', type: 'LINK'}
+{id: 2, action: 'Call', type: 'PHONE'}
+{id: 14, action: 'Email', type: 'EMAIL'}
+*/
+
 export const ACTIONS: ActionsType[] = [
   {
-    id: 1,
     title: "Profile",
-    isDefault: true,
     fields: [
       {
         name: "Profile Image",
         type: "file",
+        formKey: "profileImage",
       },
       {
         name: "Name",
         type: "text",
+        formKey: "name",
       },
       {
         name: "Title",
         type: "text",
+        formKey: "title",
       },
       {
         name: "Location",
         type: "text",
+        formKey: "location",
       },
       {
         name: "About",
         type: "long-text",
+        formKey: "about",
       },
     ],
   },
   {
-    id: 2,
     title: "WhatsApp",
-    isDefault: false,
     fields: [
       {
-        name: "Phone Number",
+        name: "Phone",
         type: "text",
+        formKey: "phone",
       },
       {
         name: "Message",
         type: "long-text",
+        formKey: "whatsappMessage",
       },
     ],
   },
   {
-    id: 3,
-    title: "Url",
-    isDefault: false,
+    title: "URL",
     fields: [
       {
         name: "URL",
         type: "url",
+        formKey: "url",
       },
     ],
   },
   {
-    id: 4,
     title: "Event",
-    isDefault: false,
     fields: [
       {
         name: "Title",
         type: "text",
+        formKey: "url",
       },
       {
         name: "Start Date",
         type: "date",
+        formKey: "startDate",
       },
       {
         name: "End Date",
         type: "date",
+        formKey: "endDate",
       },
       {
         name: "Time",
         type: "time",
+        formKey: "time",
       },
       {
         name: "Address",
         type: "location",
+        formKey: "location",
       },
       {
         name: "Postal Code",
         type: "text",
+        formKey: "postalCode",
       },
       {
-        name: "City",
-        type: "text",
+        name: "Country",
+        type: "country-select",
+        options: getCountries(),
+        formKey: "countryId",
       },
       {
         name: "State",
         type: "state-select",
         options: getState("Nigeria"),
+        formKey: "provinceId",
+      },
+      {
+        name: "City",
+        type: "text",
+        formKey: "city",
       },
       {
         name: "Url",
         type: "url",
+        formKey: "url",
       },
       {
         name: "Description",
         type: "long-text",
+        formKey: "about",
       },
     ],
   },
   {
-    id: 5,
     title: "Contact Card",
-    isDefault: false,
     fields: [
       {
         name: "Profile Image",
         type: "file",
+        formKey: "profileImage",
       },
       {
         name: "Title",
         type: "text",
+        formKey: "title",
       },
       {
-        name: "First name",
+        name: "Name",
         type: "text",
-      },
-      {
-        name: "Last name",
-        type: "text",
+        formKey: "name",
       },
       {
         name: "Company",
         type: "text",
+        formKey: "company",
       },
       {
         name: "Position",
         type: "text",
+        formKey: "position",
       },
       {
         name: "Birthday",
         type: "date",
+        formKey: "birthday",
       },
       {
         name: "Home Phone",
         type: "text",
+        formKey: "homePhone",
       },
       {
         name: "Office Phone",
         type: "text",
+        formKey: "officePhone",
       },
       {
         name: "Personal Phone",
         type: "text",
+        formKey: "personalPhone",
       },
       {
         name: "Office Fax",
         type: "text",
+        formKey: "officeFax",
       },
       {
         name: "Alternative Phone",
         type: "text",
+        formKey: "altPhone",
       },
       {
         name: "Work Email",
         type: "email",
+        formKey: "workEmail",
       },
       {
         name: "Personal Email",
         type: "email",
+        formKey: "personalEmail",
       },
       {
         name: "Website 1",
         type: "url",
+        formKey: "website1",
       },
       {
         name: "Website 2",
         type: "url",
+        formKey: "website2",
       },
       {
         name: "Payment Link",
         type: "url",
+        formKey: "paymentLink",
       },
       {
         name: "Home address",
         type: "text",
+        formKey: "homeAddress",
       },
       {
         name: "Office address",
         type: "text",
+        formKey: "officeAddress",
       },
       {
         name: "Home Postal Code",
         type: "text",
+        formKey: "homePostalCode",
       },
       {
         name: "Office Postal Code",
         type: "text",
+        formKey: "officePostalCode",
       },
       {
         name: "Home Country",
         type: "country-select",
         options: getCountries(),
+        formKey: "homeCountryId",
       },
       {
         name: "Home State",
         type: "state-select",
+        formKey: "homeStateId",
       },
       {
         name: "Home City",
         type: "text",
+        formKey: "homeCity",
       },
       {
         name: "Office Country",
         type: "country-select",
         options: getCountries(),
+        formKey: "officeCountryId",
       },
       {
         name: "Office State",
         type: "state-select",
+        formKey: "officeStateId",
       },
       {
         name: "Office City",
         type: "text",
+        formKey: "officeCity",
       },
       {
         name: "Theme",
         type: "color",
+        formKey: "theme",
       },
     ],
   },
   {
-    id: 6,
-    title: "Sms",
-    isDefault: false,
+    title: "SMS",
     requiresCountryCode:
       'Notice: Please put your country code before your number. For example: "+1".',
     fields: [
       {
         name: "Phone Number",
         type: "text",
+        formKey: "phone",
       },
       {
         name: "Text",
         type: "long-text",
+        formKey: "text",
       },
     ],
   },
   {
-    id: 7,
     title: "Call",
-    isDefault: false,
     fields: [
       {
         name: "Phone number",
         type: "text",
+        formKey: "phone",
       },
     ],
   },
   {
-    id: 8,
     title: "Email",
-    isDefault: false,
     fields: [
       {
         name: "Email",
         type: "email",
+        formKey: "email",
       },
       {
         name: "Subject",
         type: "text",
+        formKey: "subject",
       },
       {
         name: "Content",
         type: "long-text",
+        formKey: "content",
       },
     ],
   },
   {
-    id: 9,
-    title: "Bank",
-    isDefault: false,
+    title: "Bank Account",
     fields: [
       {
         name: "Name",
         type: "text",
+        formKey: "bankAccountName",
       },
       {
         name: "Account Number",
         type: "text",
+        formKey: "bankAccountNumber",
       },
       {
         name: "Bank Name",
         type: "text",
+        formKey: "bankName",
       },
     ],
   },

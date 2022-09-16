@@ -74,7 +74,7 @@ const HardsandsAccountsApp = ({
               ml="4"
               size="sm"
               name="anubra266"
-              src="https://avatars.githubusercontent.com/u/30869823?v=4"
+              src=""
               cursor="pointer"
             />
           </Flex>

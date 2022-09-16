@@ -185,6 +185,11 @@ export default function Footer() {
                   <FaLinkedin size={20} />
                 </HardsandLink>
               </Flex>
+              <Flex mt={10}>
+                <HardsandLink mr={10} href={SOCIAL_LINKS.EMAIL}>
+                  {"info@hardsands.com"}
+                </HardsandLink>
+              </Flex>
             </Box>
           </Stack>
           <Stack align={"flex-start"}>

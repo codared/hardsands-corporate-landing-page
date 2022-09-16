@@ -15,3 +15,16 @@ export type UserCardActionsType = {
   actionValue?: string;
   whatsappMessage?: string | null;
 };
+
+export type UserCardType = {
+  activatedAt: string;
+  cardSerial: string;
+  productId: string;
+  url: string;
+};
+
+export type CardActionUpdate = {
+  cardSerialId: string;
+  actionId: number;
+  [key: string]: string | number;
+};
