@@ -5,7 +5,7 @@ import productRoutes from "modules/products/routes";
 import { useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
-import { getActionById, mergeActionFields } from "utils/functions";
+import { mergeActionFields } from "utils/functions";
 import { ActionsType } from "utils/types";
 import {
   addUserCardsAction,
@@ -90,11 +90,6 @@ const MainAccountContent = () => {
   };
 
   const handleSetDefault = (id: number) => {
-    // console.log("data >>> ", cardActions, id);
-    // const action = getActionById(id, cardActions as ActionsType[]);
-    // console.log('action ??? ', action);
-
-    // console.log("defaultData ??? ", defaultData);
     reduxDispatch(setUserCardsActionDefaultAction(cards[0].cardSerial, id));
   };
 

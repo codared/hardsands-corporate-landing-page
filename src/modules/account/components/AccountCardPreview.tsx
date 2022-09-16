@@ -17,6 +17,7 @@ const AccountCardPreview = () => {
           borderRadius="0"
           py={5}
           px={[10, 16]}
+          disabled
         >
           Deactivate
         </Button>
@@ -30,7 +31,7 @@ const AccountCardPreview = () => {
           // borderWidth="1px"
           // borderStyle="solid"
         >
-          12 Taps
+          0 Taps
           <Box ml={3} alignSelf={"center"}>
             <AiOutlineEye size={20} />
           </Box>
