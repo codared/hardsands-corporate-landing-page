@@ -1,7 +1,8 @@
 import { Flex, Button, Box, Image } from "@chakra-ui/react";
 import { AiOutlineEye } from "react-icons/ai";
+import { UserCardType } from "../types";
 
-const AccountCardPreview = () => {
+const AccountCardPreview = ({ card }: { card: UserCardType; }) => {
   return (
     <>
       <Image

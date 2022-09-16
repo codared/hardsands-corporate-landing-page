@@ -170,10 +170,10 @@ const MainAccountContent = () => {
           flexDir={["column-reverse", "column", "row"]}
         >
           <Flex flexDir={["column-reverse", "column"]}>
-            <AccountCardPreview />
+            <AccountCardPreview card={cards[0]} />
 
             {/* QR code share section */}
-            <QRCodeShareSection />
+            <QRCodeShareSection card={cards[0]} />
             {/* End QR code share section */}
           </Flex>
 
