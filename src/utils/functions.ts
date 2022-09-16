@@ -3,10 +3,12 @@ import { HARDSANDS_LOGIN_COOKIE } from "modules/authentication/constants";
 import { ProductOptions } from "modules/products/types";
 import { getCookie } from "modules/shared/cookie";
 import { SUPPORTED_CURRENCIES } from "./supportedCurrencies";
+import { ActionsType } from "./types";
 
 export const requestAuthHeaders = () => {
   return new Headers({
     Authorization: `Bearer ${getToken()}`,
+    "Content-Type": "application/json"
   });
 };
 
@@ -36,6 +38,18 @@ export const isTokenExpired = (token: string) => {
 
 export const getToken = () => {
   return getCookie(HARDSANDS_LOGIN_COOKIE);
+};
+
+export const mergeActions = (dbActions: any, localActions: ActionsType[]) => {
+  return localActions.map((localAction: any) => {
+    const neededActionsFromDB = dbActions.find(
+      ({ action }: any) => action === localAction.title
+    );
+    return {
+      ...localAction,
+      ...neededActionsFromDB,
+    };
+  });
 };
 
 // export function getProductVariant(

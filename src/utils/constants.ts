@@ -21,5 +21,6 @@ export enum SOCIAL_LINKS {
   TWITTER = "https://twitter.com/hardsands?s=21&t=9OYQOXg7JFUYuYEcm2vCVA",
   FACEBOOK = "https://m.facebook.com/profile.php?id=100083028413736",
   LINKEDIN = 'https://instagram.com/hardsands_?igshid=YmMyMTA2M2Y=',
+  EMAIL = 'mailto:info@hardsands.com'
   // TIKTOK = 'https://instagram.com/hardsands_?igshid=YmMyMTA2M2Y=',
 }

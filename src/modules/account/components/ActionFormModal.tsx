@@ -1,4 +1,13 @@
-import { Box, Flex, Grid, HStack, Text, Image, Tag } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Grid,
+  HStack,
+  Text,
+  Image,
+  Tag,
+  Button,
+} from "@chakra-ui/react";
 import CustomModal from "components/CustomModal";
 import { useState } from "react";
 import { ActionsFormType, ActionsType } from "utils/types";
@@ -11,8 +20,10 @@ const ActionFormModal = ({
   onClose,
   selectedAction,
   handleActionSubmit,
+  isSubmitting,
 }: {
   isOpen: boolean;
+  isSubmitting: boolean;
   onClose: () => void;
   selectedAction: ActionsType;
   handleActionSubmit: (action: ActionsType) => void;
@@ -23,7 +34,7 @@ const ActionFormModal = ({
   const isProfile = selectedAction.title === "Profile";
 
   const handleAction = () => {
-    handleActionSubmit(selectedAction);
+    handleActionSubmit({ ...formState, ...selectedAction });
   };
 
   const handleAddSocials = () => {
@@ -60,26 +71,32 @@ const ActionFormModal = ({
       onClose={onClose}
       scrollBehavior={"inside"}
       footer={
-        <HStack
+        <Button
           px={[2]}
           py={[2]}
-          mr={[4]}
           cursor="pointer"
-          w={"100%"}
-          justify={"center"}
+          w={"full"}
+          justifyContent={"center"}
           transition={"all ease-in-out 200ms"}
           bg="brand.200"
           color={"black"}
+          borderWidth="2px"
+          borderColor={"brand.100"}
+          borderRadius="0"
           _hover={{
-            bg: "black",
-            color: "brand.200",
+            bg: "transparent",
+            color: "black",
+            borderWidth: "2px",
+            borderColor: "brand.100",
           }}
           fontFamily={"MADE Outer sans"}
           onClick={handleAction}
           userSelect="none"
+          isLoading={isSubmitting}
+          loadingText={"Adding Action"}
         >
           <Text>Save</Text>
-        </HStack>
+        </Button>
       }
     >
       <Box mb={8}>

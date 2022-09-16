@@ -52,9 +52,8 @@ export type AccountNavItemsType = {
 };
 
 export type ActionsType = {
-  id: number;
+  id?: number;
   title: string;
-  isDefault?: boolean;
   fields?: ActionsFormType[];
   requiresCountryCode?: string;
 };

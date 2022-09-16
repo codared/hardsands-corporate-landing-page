@@ -38,7 +38,6 @@ const ActionFormBuilder = ({
   };
 
   const handleColorChange = (color: string) => {
-    console.log("selectedColor >>> ", selectedColor);
     setSelectedColor(color);
   };
 
@@ -47,7 +46,7 @@ const ActionFormBuilder = ({
 
   return (
     <Box>
-      {fields.map(({ name, type, options }, index) => {
+      {fields.map(({ name, type, options, formKey }, index) => {
         switch (type) {
           case "file":
             return (
@@ -56,7 +55,7 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={"file"}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
@@ -74,7 +73,7 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={type}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
@@ -97,7 +96,7 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={"email"}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
@@ -115,7 +114,7 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={"date"}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
@@ -133,7 +132,7 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={"time"}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
@@ -150,7 +149,7 @@ const ActionFormBuilder = ({
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
                   <Select
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleCountrySelectChange}
@@ -175,7 +174,7 @@ const ActionFormBuilder = ({
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
                   <Select
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleStateSelectChange}
@@ -230,7 +229,7 @@ const ActionFormBuilder = ({
                   <FormLabel>{name}</FormLabel>
                   <Input
                     type={"url"}
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
@@ -247,7 +246,7 @@ const ActionFormBuilder = ({
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
                   <Textarea
-                    name={(name as string).toLowerCase().replace(" ", "_")}
+                    name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleChange}
