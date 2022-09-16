@@ -10,6 +10,7 @@ import { ActionsType } from "utils/types";
 import {
   addUserCardsAction,
   getAllActionsActions,
+  getCardStatisticsAction,
   getUserCardActionsActions,
   getUserCardsAction,
   setUserCardsActionDefaultAction,
@@ -30,6 +31,7 @@ const MainAccountContent = () => {
   const loading = useTypedSelector((state) => state.app?.loading);
   const cardActions = useTypedSelector((state) => state.app?.cardActions);
   const actions = useTypedSelector((state) => state.app?.allActions);
+  const cardStatistics = useTypedSelector((state) => state.app?.cardStatistics);
   const cards = useTypedSelector((state) => state.app?.cards as UserCardType[]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
@@ -106,6 +108,7 @@ const MainAccountContent = () => {
     reduxDispatch(getUserCardsAction()).then((cards) => {
       if (cards && cards.length) {
         reduxDispatch(getUserCardActionsActions(cards[0].cardSerial));
+        reduxDispatch(getCardStatisticsAction(cards[0].cardSerial));
       }
     });
   }, []);
@@ -181,6 +184,7 @@ const MainAccountContent = () => {
 
           <Flex flexDir={"column"}>
             <AccountTabView
+              cardStatistics={cardStatistics}
               handleSetDefault={handleSetDefault}
               handleEdit={handleEdit}
               cardActions={cardActions as ActionsType[]}

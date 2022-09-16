@@ -30,6 +30,11 @@ export const getUserCards = async () => {
   return res;
 };
 
+export const getUserStatistics = async (cardSerial: string) => {
+  const res = await makeTheAuthenticatedRequest(`/api/cards/statistics/${cardSerial}`);
+  return res;
+};
+
 export const setUserCardsActionDefault = async (
   cardSerial: string,
   actionId: string

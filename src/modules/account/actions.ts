@@ -7,6 +7,7 @@ import {
   getAllActions,
   getUserCardActions,
   getUserCards,
+  getUserStatistics,
   setUserCardsActionDefault,
   updateUserCardAction,
 } from "./services";
@@ -75,6 +76,24 @@ export const getUserCardsAction: ThunkActionCreator<Promise<UserCardType[]>> =
     }
     dispatch({
       type: "GET_USER_CARDS",
+      payload: res.result,
+    });
+
+    return res.result;
+  };
+
+export const getCardStatisticsAction: ThunkActionCreator<Promise<UserCardType[]>> =
+  (cardSerial: string) => async (dispatch, getState) => {
+    const res = await getUserStatistics(cardSerial);
+
+    if (res.isError) {
+      return dispatch({
+        type: "APP_ERROR",
+        payload: res as any,
+      });
+    }
+    dispatch({
+      type: "GET_STATISTICS",
       payload: res.result,
     });
 

@@ -7,6 +7,7 @@ import { UserCardType } from "./types";
 export type UserAppReducerState = {
   cardActions: Array<ActionsType>;
   cards: UserCardType[] | null;
+  cardStatistics: any;
   error: any;
   loading: boolean;
   allActions: ActionsType[];
@@ -18,6 +19,7 @@ const initialState: UserAppReducerState = {
   cards: null,
   loading: true,
   allActions: ACTIONS,
+  cardStatistics: {},
 };
 
 const appReducer = (
@@ -35,6 +37,8 @@ const appReducer = (
       return { ...state, cardActions: action.payload };
     case "GET_USER_CARDS":
       return { ...state, cards: action.payload };
+    case "GET_STATISTICS":
+      return { ...state, cardStatistics: action.payload };
     case "APP_ERROR":
       return { ...state, error: action.payload };
     default:

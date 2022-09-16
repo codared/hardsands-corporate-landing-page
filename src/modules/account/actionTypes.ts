@@ -5,13 +5,20 @@ export interface GetUserCardActions {
   type: "GET_USER_CARD_ACTIONS";
   payload: ActionsType[];
 }
+
 export interface GetAllActions {
   type: "GET_ALL_ACTIONS";
   payload: ActionsType[];
 }
+
 export interface GetUserCards {
   type: "GET_USER_CARDS";
   payload: UserCardType[] | null;
+}
+
+export interface GetCardStatistics {
+  type: "GET_STATISTICS";
+  payload: any[] | null;
 }
 
 export interface AddUserCardAction {
@@ -35,4 +42,5 @@ export type UserAppActionTypes =
   | GetUserCards
   | GetAllActions
   | AddUserCardAction
+  | GetCardStatistics
   | UserAppLoading;
