@@ -161,6 +161,7 @@ export async function apiApplyCartOffer(
     `/api/cart/${cartId}/offers/${offerSlug}/apply`,
     {
       method: "POST",
+      headers: requestJsonHeaders(),
       body: JSON.stringify(body),
     }
   );
@@ -193,6 +194,7 @@ export const createCartOrder = async (
 ): Promise<Order> => {
   const res = await storefrontApiJsonFetch<Order>(`/api/checkout`, {
     method: "POST",
+    headers: requestJsonHeaders(),
     body: JSON.stringify(data),
   });
   if (res.isError) {
