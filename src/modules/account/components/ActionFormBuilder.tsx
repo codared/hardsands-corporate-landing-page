@@ -1,5 +1,6 @@
 import {
   Box,
+  Flex,
   FormControl,
   FormHelperText,
   FormLabel,
@@ -9,8 +10,9 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import CustomMenu from "components/CustomMenu";
+import CustomSelect from "components/CustomSelect";
 import React, { FormEventHandler, useState } from "react";
-import { getState } from "utils/getCountries";
+import { getCountryPhoneCode, getState } from "utils/getCountries";
 import { ActionsFormType } from "utils/types";
 import { themeColorOptions } from "../constants";
 
@@ -62,7 +64,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ''}
+                    defaultValue={value || ""}
                   />
                 </Box>
               </FormControl>
@@ -72,20 +74,34 @@ const ActionFormBuilder = ({
               <FormControl key={index}>
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
-                  <Input
-                    type={type}
-                    name={formKey as string}
-                    borderRadius={0}
-                    borderColor={"black"}
-                    onChange={handleChange}
-                    placeholder={`Enter ${name}`}
-                    _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
-                    size="lg"
-                    defaultValue={value || ''}
-                  />
-                  {(name as string).includes("Phone") && (
+                  <Flex>
+                    {formKey === "phone" && (
+                      <CustomSelect
+                        _key={"value"}
+                        _value={"title"}
+                        size="lg"
+                        placeholder="Phone Code"
+                        options={getCountryPhoneCode()}
+                        name={"phoneCode"}
+                        onChange={handleChange}
+                        isRequired
+                      />
+                    )}
+                    <Input
+                      type={type}
+                      name={formKey as string}
+                      borderRadius={0}
+                      borderColor={"black"}
+                      onChange={handleChange}
+                      placeholder={`Enter ${name}`}
+                      _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
+                      size="lg"
+                      defaultValue={value || ""}
+                    />
+                  </Flex>
+                  {(formKey as string) === "phone" && (
                     <FormHelperText>
-                      Please add country code before number. E.g +1
+                      Please select phone code before number. E.g +1
                     </FormHelperText>
                   )}
                 </Box>
@@ -105,7 +121,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ''}
+                    defaultValue={value || ""}
                   />
                 </Box>
               </FormControl>
@@ -124,7 +140,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ''}
+                    defaultValue={value || ""}
                   />
                 </Box>
               </FormControl>
@@ -143,7 +159,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ''}
+                    defaultValue={value || ""}
                   />
                 </Box>
               </FormControl>
@@ -161,7 +177,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ''}
+                    defaultValue={value || ""}
                   >
                     {options &&
                       // @ts-ignore
@@ -187,7 +203,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ''}
+                    defaultValue={value || ""}
                   >
                     {stateOptions.length ? (
                       // @ts-ignore
@@ -243,7 +259,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ''}
+                    defaultValue={value || ""}
                   />
                 </Box>
               </FormControl>
@@ -261,7 +277,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ''}
+                    defaultValue={value || ""}
                   />
                 </Box>
               </FormControl>
