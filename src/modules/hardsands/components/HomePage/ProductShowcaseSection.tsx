@@ -52,7 +52,7 @@ const ProductShowcaseSection = () => {
                 price: prod.variants[options[0]].price
               }
 
-              useTrackProductImpression(eCommerceProd, currency)
+              // useTrackProductImpression(eCommerceProd, currency)
 
               return (
                 <HomeProductCard
