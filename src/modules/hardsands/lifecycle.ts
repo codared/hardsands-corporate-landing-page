@@ -1,7 +1,8 @@
-import { hasCookie, deleteCookie } from '@pangaea-holdings/pangaea-checkout'
+ 
 
-import lifecycle from '../../lifecycle/Lifecycle'
-import { optimizelyPush } from '../../optimizely'
+import lifecycle from 'modules/lifecycle/Lifecycle'
+import { deleteCookie, hasCookie } from 'modules/shared/cookie'
+  
 import { userState } from './userState'
 
 /**
@@ -28,10 +29,7 @@ lifecycle.registerListeners({
   pageView: (atts) => {
     const { isFirst } = atts
 
-    if (!isFirst) {
-      optimizelyPush({ type: 'activate' })
-    }
-
+ 
     userState.handle('pageView', atts)
   },
 

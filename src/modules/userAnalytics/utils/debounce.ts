@@ -1,3 +1,4 @@
+// @ts-nocheck
 export function debounce<K extends any[]>(
   func: (...args: K) => void,
   wait: number,

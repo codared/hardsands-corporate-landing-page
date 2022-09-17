@@ -112,13 +112,13 @@ const checkoutEvents = {
       },
       order.order_items.data.map((item) => ({
         id: item.shopify_id,
-        pangaea_product_id: item.product_id,
         quantity: item.quantity,
         name: item.title,
         category: item.variant_title,
         variant: item.variant_title,
         brand: "hardsands",
         price: item.price.amount_usd_float,
+        currency: 'USD'
       }))
     );
 
@@ -145,6 +145,7 @@ const checkoutEvents = {
         variant: item.variant_title,
         brand: "hardsands",
         price: item.price.amount_usd_float,
+        currency: 'USD'
       }))
     );
 

@@ -80,6 +80,9 @@ export interface EcommerceCartAction extends EcommerceProduct {
   // The number of products that were added or removed from the cart.
   // **not the total**
   quantity: number
+  currency: string
+  price: number
+  
 }
 
 export interface EcommercePurchase {
