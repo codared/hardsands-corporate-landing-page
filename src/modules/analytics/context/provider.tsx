@@ -4,16 +4,8 @@ import { assertNever } from '../../../utils/types'
 import { EventHandler } from '../eventHandler'
 import { ANALYTICS_PAGE_TYPES, EventhandlerEvents } from '../types'
 
-export interface FreeTrialAttributes {
-  // Comma separated list of bundles offered on the free trial page
-  productList: string
-  // Comma separated list of all prices offered
-  freeTrialPrice: string
-}
-
 export interface AnalyticsState {
   pageType?: ANALYTICS_PAGE_TYPES
-  freeTrialAttributes?: FreeTrialAttributes
   eventHandler: EventHandler<EventhandlerEvents>
 }
 
@@ -22,18 +14,15 @@ export interface AnalyticsSetPageTypeAction {
   payload?: ANALYTICS_PAGE_TYPES
 }
 
-export interface AnalyticsSetFreeTrialAttributesAction {
-  type: 'ANALYTICS_SET_FREE_TRIAL_ATTRIBUTES'
-  payload?: FreeTrialAttributes
-}
-
-export type AnalyticsActions =
-  | AnalyticsSetPageTypeAction
-  | AnalyticsSetFreeTrialAttributesAction
+export type AnalyticsActions = AnalyticsSetPageTypeAction
 
 interface AnalyticsContextValue {
   state: AnalyticsState
   dispatch: React.Dispatch<AnalyticsActions>
+}
+
+type AnalyticsProps = {
+  children: ReactElement
 }
 
 const initialAnalyticsState: AnalyticsState = {
@@ -47,23 +36,17 @@ export const AnalyticsContext = createContext<AnalyticsContextValue>({
   },
 })
 
-function reducer(
-  state: AnalyticsState,
-  action: AnalyticsActions
-): AnalyticsState {
+function reducer(state: AnalyticsState, action: AnalyticsActions): AnalyticsState {
   switch (action.type) {
     case 'ANALYTICS_SET_PAGE_TYPE':
       return { ...state, pageType: action.payload }
 
-    case 'ANALYTICS_SET_FREE_TRIAL_ATTRIBUTES':
-      return { ...state, freeTrialAttributes: action.payload }
-
     default:
-      throw new Error('Unsupported action type')
+      assertNever(action.type)
   }
 }
 
-const AnalyticsProvider = ({ children }: { children: ReactElement }) => {
+const AnalyticsProvider = ({ children }: AnalyticsProps) => {
   const [state, dispatch] = useReducer(reducer, initialAnalyticsState)
 
   return (

@@ -7,6 +7,7 @@ export const CONFIG = {
   BRAND_NAME: process.env.NEXT_PUBLIC_BRAND_NAME as string || '',
   BRAND_CONTACT_EMAIL: process.env.NEXT_PUBLIC_BRAND_CONTACT_EMAIL as string || '',
   PAYSTACK_PUBLIC_KEY: process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY as string || '',
+  SEGMENT_ID: process.env.NEXT_PUBLIC_SEGMENT_ID as string || '',
   // To use this variable, make sure that "Automatically expose System
   // Environment Variables" is checked in your Vercel Project Settings.
   ENVIRONMENT: (process.env.NEXT_PUBLIC_VERCEL_ENV || "development") as string || '',

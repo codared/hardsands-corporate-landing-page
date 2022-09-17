@@ -1,5 +1,3 @@
-import { FreeTrialAttributes } from "./context/provider"
-
 export type DataLayerWindow = Window & { dataLayer?: { [k: string]: any }[] }
 
 /**
@@ -23,8 +21,8 @@ export type ANALYTICS_PAGE_TYPES =
   | 'order_confirmation'
   | 'cx'
   | 'all_or_multiple_products'
-  | 'fathers_day_gift_page'
-  | 'blog'
+  | 'blogs_page'
+  | 'gift_card'
 
 export interface PageView {
   path: string
@@ -33,7 +31,6 @@ export interface PageView {
   type?: ANALYTICS_PAGE_TYPES
   utmParams?: Record<string, string>
   queryParams?: Record<string, string>
-  freeTrialAttributes?: FreeTrialAttributes
 }
 
 export interface VoyageSubscription {
@@ -42,12 +39,34 @@ export interface VoyageSubscription {
 
 export interface EcommerceProduct {
   id: string | number
-  name: string
+  name?: string
   brand?: string
   category?: string
   variant?: string
   // In the client's selected currency
   price?: number
+}
+
+export interface Warranty {
+  description?: string
+  duration?: number
+  duration_unit?: string
+  id: number
+  image_url?: string
+  price?: number
+  start_after_duration?: number
+  start_after_duration_unit?: string
+  title?: string
+}
+
+export type VideoPlaybackEvent = 'error' | 'playing'
+export type VideoPlaybackData = number
+
+export interface WarrantyInfo {
+  productId: string | number
+  warranty?: Warranty
+  warranties?: Warranty[]
+  addedFrom?: 'cart' | 'checkout' | 'pdp'
 }
 
 export interface EcommerceImpression extends EcommerceProduct {
@@ -61,7 +80,6 @@ export interface EcommerceCartAction extends EcommerceProduct {
   // The number of products that were added or removed from the cart.
   // **not the total**
   quantity: number
-  currency?: string
 }
 
 export interface EcommercePurchase {
@@ -92,7 +110,16 @@ export enum GTM_EVENTS {
   EC_CHECKOUT_STEP = 'ecommerceCheckoutStep',
   EC_CHECKOUT_DATA = 'ecommerceCheckoutDataToStep',
   EC_PURCHASE = 'ecommercePurchase',
+  POST_PURCHASE_REDEEMED = 'postPurchaseRedeemed',
+  POST_PURCHASE_SHOWN = 'postPurchaseShown',
+  POST_PURCHASE_REJECTED = 'postPurchaseRejected',
+  WARRANTY_ADDED = 'warrantyAdded',
+  WARRANTY_VIEWED = 'warrantyViewed',
   EC_IMPACT_CONVERSION = 'ecommerceImpactConversion',
+  ORDER_CONFIRMATION_SHOWN = 'orderConfirmationShown',
+  VIDEO_PLAYBACK_EVENT="videoPlaybackEvent",
+  STORE_SWITCHER_SHOWN="storeSwitcherShown",
+  STORE_SWITCHED="storeSwitched"
 }
 
 export type EcommerceImpressionList = EcommerceImpression[]

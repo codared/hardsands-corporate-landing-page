@@ -1,3 +1,4 @@
+
 export type InitializedWindow = typeof window & {
   pangaeaAnalyticsDebugger: {
     push(cmd: Record<string, any>): void

@@ -1,13 +1,17 @@
+ 
+ 
 import {
   DataLayerWindow,
-  PageView,
+  EcommerceCartAction,
   EcommerceImpression,
   EcommerceProduct,
-  EcommerceCartAction,
+  WarrantyInfo,
   EcommercePurchase,
   GenericEvent,
   GTM_EVENTS,
+  PageView, 
   VoyageSubscription,
+  VideoPlaybackData, VideoPlaybackEvent
 } from '../types'
 import { debugPageView, debugTrackPurchase } from './debug'
 
@@ -80,6 +84,19 @@ export const trackProductDetail = (product: EcommerceProduct) => {
   })
 }
 
+export const trackStoreSwitcherShown = (countryCode: string) => {
+  return layerPush({
+    event: GTM_EVENTS.STORE_SWITCHER_SHOWN,
+    storeSwitcherCountry: countryCode
+  })
+}
+
+export const trackStoreSwitcherRedirected = async () => {
+  return await layerPush({
+    event: GTM_EVENTS.STORE_SWITCHED,
+  })
+}
+
 export const trackCartAdd = (product: EcommerceCartAction) => {
   return layerPush({
     event: GTM_EVENTS.EC_CART_ADD,
@@ -89,12 +106,72 @@ export const trackCartAdd = (product: EcommerceCartAction) => {
   })
 }
 
+export const trackVideoPlayback = (eventType: VideoPlaybackEvent, data?: {[key: string]: VideoPlaybackData}) => {
+  layerPush({
+   event: GTM_EVENTS.VIDEO_PLAYBACK_EVENT,
+   videoPlaybackData: {
+     eventType,
+     ...data,
+   },
+ })
+}
+
+export const trackWarrantyAdded = (data: WarrantyInfo) => {
+  return layerPush({
+    event: GTM_EVENTS.WARRANTY_ADDED,
+    addedWarrantyInfo: data,
+  })
+}
+
+export const trackWarrantyViewed = (data: WarrantyInfo) => {
+  return layerPush({
+    event: GTM_EVENTS.WARRANTY_VIEWED,
+    viewedWarrantyInfo: data,
+  })
+}
+
 export const trackCartRemove = (product: EcommerceCartAction) => {
   return layerPush({
     event: GTM_EVENTS.EC_CART_REMOVE,
     ecommerce: {
       remove: { products: [product] },
     },
+  })
+}
+
+export const trackPostPurchaseRedeemed = async (order: any) => {
+  await layerPush({
+    event: GTM_EVENTS.POST_PURCHASE_REDEEMED,
+    postPurchaseOrder: order,
+  })
+
+  // Clean up immediately to prevent the post-purchase order being wrongly
+  // available on future checkouts under the same session.
+  layerPush({ postPurchaseOrder: undefined })
+}
+
+export const trackPostPurchaseShown = async (offerType: any) => {
+  await layerPush({
+    event: GTM_EVENTS.POST_PURCHASE_SHOWN,
+    postPurchaseOfferType: { offerType },
+  })
+}
+
+export const trackPostPurchaseRejected = async (offerType: any, offerSlug?: string) => {
+  await layerPush({
+    event: GTM_EVENTS.POST_PURCHASE_REJECTED,
+    postPurchaseRejectedData: {
+      offerType,
+      offerSlug ,
+    },
+  })
+}
+
+
+// Only when the customer gets to the congrats section and not post purcahse phase.
+export const trackOrderConfirmationShown = () => {
+  layerPush({
+    event: GTM_EVENTS.ORDER_CONFIRMATION_SHOWN,
   })
 }
 
@@ -155,6 +232,7 @@ export const trackCheckoutData = (step: number, data: string) => {
     },
   })
 }
+
 
 /**
  * Tracks a successful purchase.

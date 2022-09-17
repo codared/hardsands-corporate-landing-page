@@ -7,6 +7,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { HomeProductCard } from "components/ProductCard";
+import useTrackProductImpression from "modules/analytics/hooks/useTrackProductImpression";
+import { EcommerceProduct } from "modules/analytics/types";
 import { useCurrency } from "modules/cart/hooks";
 import { getProductImageFromSlug } from "modules/products/functions";
 import { useTranslation } from "react-i18next";
@@ -43,6 +45,15 @@ const ProductShowcaseSection = () => {
             products.length &&
             products.slice(0, 3).map((prod) => {
               const options = getProductOptions(prod.options);
+
+              const eCommerceProd: EcommerceProduct = {
+                id: prod.id,
+                name: prod.title,
+                price: prod.variants[options[0]].price
+              }
+
+              useTrackProductImpression(eCommerceProd, currency)
+
               return (
                 <HomeProductCard
                   key={prod.id}
