@@ -33,6 +33,7 @@
     "@sentry/webpack-plugin": "^1.17.3",
     "@types/file-saver": "^2.0.5",
     "@types/redux-logger": "^3.0.9",
+    "@types/ua-parser-js": "^0.7.36",
     "@unly/universal-language-detector": "^2.0.3",
     "dompurify": "^2.2.6",
     "emotion-theming": "10.0.27",
@@ -64,6 +65,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
+    "ua-parser-js": "^1.0.2",
     "vcards-js": "^2.10.0",
     "yup": "^0.32.11"
   },

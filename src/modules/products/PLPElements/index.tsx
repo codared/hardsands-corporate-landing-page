@@ -37,6 +37,7 @@ const ShopPLP = () => {
             >
               {products.map((prod: Product, id) => (
                 <ProductCard
+                  id={prod.id}
                   key={id}
                   name={t("product:title", `${prod.title}`)}
                   description={t("product:description", `${prod.description}`)}

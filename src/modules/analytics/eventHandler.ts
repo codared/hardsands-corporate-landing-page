@@ -1,17 +1,17 @@
 interface Listener<T> {
-  event: keyof T;
-  handler: (...args: any[]) => void;
+  event: keyof T
+  handler: (...args: any[]) => void
 }
 
 type EventsDefinition<T> = {
-  [key in keyof T]: any[];
-};
+  [key in keyof T]: any[]
+}
 
 export class EventHandler<T extends EventsDefinition<T>> {
-  protected listeners: Map<keyof T, Listener<T>[]>;
+  protected listeners: Map<keyof T, Listener<T>[]>
 
   public constructor() {
-    this.listeners = new Map<keyof T, Listener<T>[]>();
+    this.listeners = new Map<keyof T, Listener<T>[]>()
   }
 
   /**
@@ -23,16 +23,16 @@ export class EventHandler<T extends EventsDefinition<T>> {
     event: E,
     handler: (...args: T[E]) => void
   ): () => void {
-    const listener = { event, handler };
-    const listeners = this.listeners.get(event) || [];
+    const listener = { event, handler }
+    const listeners = this.listeners.get(event) || []
     //@ts-ignore
-    listeners.push(listener);
-    this.listeners.set(event, listeners);
+    listeners.push(listener)
+    this.listeners.set(event, listeners)
 
     return () => {
       //@ts-ignore
-      return this.removeListener(listener);
-    };
+      return this.removeListener(listener)
+    }
   }
 
   /**
@@ -44,42 +44,42 @@ export class EventHandler<T extends EventsDefinition<T>> {
     event: E,
     handler: (...args: T[E]) => void
   ): () => void {
-    const listeners = this.listeners.get(event) || [];
+    const listeners = this.listeners.get(event) || []
     const listener = {
       event,
       handler: (...args: T[E]) => {
         //@ts-ignore
-        this.removeListener(listener);
-        handler(...args);
+        this.removeListener(listener)
+        handler(...args)
       },
-    };
+    }
 
-    //@ts-ignore
-    listeners.push(listener);
-    this.listeners.set(event, listeners);
+  //@ts-ignore
+    listeners.push(listener)
+    this.listeners.set(event, listeners)
 
     return () => {
       //@ts-ignore
-      return this.removeListener(listener);
-    };
+      return this.removeListener(listener)
+    }
   }
 
   /**
    * Emits an event.
    */
   public emit<E extends keyof T>(event: E, args: T[E]) {
-    const listeners = this.listeners.get(event) || [];
-    listeners.forEach(({ handler }) => handler(...args));
+    const listeners = this.listeners.get(event) || []
+    listeners.forEach(({ handler }) => handler(...args))
   }
 
   protected removeListener(listener: Listener<T>) {
-    let listeners = this.listeners.get(listener.event);
+    let listeners = this.listeners.get(listener.event)
 
     if (!listeners) {
-      return;
+      return
     }
 
-    listeners = listeners.filter((cur) => cur !== listener);
-    this.listeners.set(listener.event, listeners);
+    listeners = listeners.filter((cur) => cur !== listener)
+    this.listeners.set(listener.event, listeners)
   }
 }

@@ -102,6 +102,7 @@ const ProductDetailSection = ({
                     .slice(0, 3)
                     .map((prod) => (
                       <PreviewProductCard
+                        id={prod.id}
                         key={prod.id}
                         name={t("product:title", `${prod.title}`)}
                         description={t(

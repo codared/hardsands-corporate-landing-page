@@ -1,5 +1,6 @@
+
 export type InitializedWindow = typeof window & {
-  pangaeaAnalyticsDebugger: {
+  analyticsDebugger: {
     push(cmd: Record<string, any>): void
   }
 }
@@ -7,13 +8,13 @@ export type InitializedWindow = typeof window & {
 let win: any = {}
 if (process.browser) {
   win = window as InitializedWindow
-  win.pangaeaAnalyticsDebugger = win.pangaeaAnalyticsDebugger || []
+  win.analyticsDebugger = win.analyticsDebugger || []
 }
 
 type PushCommand = { type: string } & Record<string, any>
 
 const debugPush = (cmd: PushCommand) => {
-  win.pangaeaAnalyticsDebugger.push(cmd)
+  win.analyticsDebugger.push(cmd)
 }
 
 export const debugPageView = (eventData: Record<string, any> = {}) => {

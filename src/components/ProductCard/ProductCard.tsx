@@ -18,6 +18,8 @@ import { getProductOptions } from "utils/functions";
 import { slugify } from "utils/string";
 import { ProductCardProps } from "./type";
 import VariantSelector from "./VariantSelector";
+import { EcommerceProduct } from "modules/analytics/types";
+import useTrackProductImpression from "modules/analytics/hooks/useTrackProductImpression";
 
 const data = {
   isNew: true,
@@ -34,6 +36,8 @@ export const PreviewProductCard = ({
   productDetails,
   img = data.imageURL,
   description,
+  id,
+  pushImpression,
 }: ProductCardProps) => {
   const selectedCurrency = useCurrency();
   const productVariants = getProductOptions(productDetails.options);
@@ -42,6 +46,14 @@ export const PreviewProductCard = ({
     productDetails.variants[variant].price,
     selectedCurrency
   );
+  const eCommerceProd: EcommerceProduct = {
+    id,
+    name,
+    price: productDetails.variants[variant].price
+  }
+
+  useTrackProductImpression(eCommerceProd, selectedCurrency, pushImpression)
+
 
   return (
     <HardsandLink
@@ -97,6 +109,8 @@ export const ProductCard = ({
   productDetails,
   img = data.imageURL,
   description,
+  id,
+  pushImpression,
 }: ProductCardProps) => {
   const selectedCurrency = useCurrency();
   const productVariants = getProductOptions(productDetails.options);
@@ -114,6 +128,14 @@ export const ProductCard = ({
     setProductDetailsURL(`${productDetailsURL}?${query}`);
     setVariant(variant);
   };
+
+  const eCommerceProd: EcommerceProduct = {
+    id,
+    name,
+    price: productDetails.variants[variant].price
+  }
+
+  useTrackProductImpression(eCommerceProd, selectedCurrency, pushImpression)
 
   return (
     <HardsandLink

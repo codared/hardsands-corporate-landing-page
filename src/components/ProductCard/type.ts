@@ -1,3 +1,4 @@
+import { EcommerceImpressionPush } from "modules/analytics/types";
 import { Product } from "modules/products/types";
 import { TFunction } from "react-i18next";
 
@@ -8,6 +9,8 @@ export interface ProductCardProps {
   t?: TFunction;
   productDetails: Product;
   price?: string;
+  id: number;
+  pushImpression?: EcommerceImpressionPush
 }
 
 export interface HomeProductCardProps {

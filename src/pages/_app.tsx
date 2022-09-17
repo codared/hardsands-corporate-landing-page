@@ -17,7 +17,9 @@ import cookies from "next-cookies";
 import { CURRENCY_COOKIE } from "utils/constants";
 import { isSupportedCurrency } from "utils/functions";
 import { useRef } from "react";
-import ManualScriptTag from "modules/analytics/components/ManualScriptTag";
+import AnalyticsScriptTag from '../modules/analytics/components/AnalyticsScriptTag'
+import ManualAnalyticsTags from '../modules/analytics/components/ManualAnalyticsTags'
+import AnalyticsProvider from '../modules/analytics/context/provider'
 import { CopyrightYearProvider } from "modules/hardsands/contexts/CopyrightYearContext";
 import { CheckoutProvider } from "redux/context";
 import ErrorBoundary from "components/ErrorBoundary";
@@ -49,14 +51,19 @@ function HardsandsApp({
       <ChakraProvider theme={theme}>
         <ErrorBoundary FallbackComponent={ErrorFallback}>
           <CopyrightYearProvider value={copyRightYear}>
-            <CheckoutProvider currency={currency}>
+            <AnalyticsProvider>
               <>
-                <ManualScriptTag />
-                <Fonts />
-                <ColorModeScript initialColorMode={"light"} />
-                <Component {...pageProps} />
+                <CheckoutProvider currency={currency}>
+                  <>
+                    <ManualAnalyticsTags />
+                    {typeof window && <AnalyticsScriptTag />}
+                    <Fonts />
+                    <ColorModeScript initialColorMode={"light"} />
+                    <Component {...pageProps} />
+                  </>
+                </CheckoutProvider>
               </>
-            </CheckoutProvider>
+            </AnalyticsProvider>
           </CopyrightYearProvider>
         </ErrorBoundary>
       </ChakraProvider>
