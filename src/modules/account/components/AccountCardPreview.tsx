@@ -2,7 +2,13 @@ import { Flex, Button, Box, Image } from "@chakra-ui/react";
 import { AiOutlineEye } from "react-icons/ai";
 import { UserCardType } from "../types";
 
-const AccountCardPreview = ({ card }: { card: UserCardType; }) => {
+const AccountCardPreview = ({
+  card,
+  cardStatistics,
+}: {
+  card: UserCardType;
+  cardStatistics: any;
+}) => {
   return (
     <>
       <Image
@@ -32,7 +38,7 @@ const AccountCardPreview = ({ card }: { card: UserCardType; }) => {
           // borderWidth="1px"
           // borderStyle="solid"
         >
-          0 Taps
+          {cardStatistics['Card']} Taps
           <Box ml={3} alignSelf={"center"}>
             <AiOutlineEye size={20} />
           </Box>
