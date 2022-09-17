@@ -25,10 +25,12 @@ export class EventHandler<T extends EventsDefinition<T>> {
   ): () => void {
     const listener = { event, handler }
     const listeners = this.listeners.get(event) || []
+    //@ts-ignore
     listeners.push(listener)
     this.listeners.set(event, listeners)
 
     return () => {
+      //@ts-ignore
       return this.removeListener(listener)
     }
   }
@@ -46,15 +48,18 @@ export class EventHandler<T extends EventsDefinition<T>> {
     const listener = {
       event,
       handler: (...args: T[E]) => {
+        //@ts-ignore
         this.removeListener(listener)
         handler(...args)
       },
     }
 
+  //@ts-ignore
     listeners.push(listener)
     this.listeners.set(event, listeners)
 
     return () => {
+      //@ts-ignore
       return this.removeListener(listener)
     }
   }

@@ -1,1 +1,0 @@
-export const KUSTOMER_WIDGET_LINK = "https://cdn.kustomerapp.com/chat-web/widget.js"
