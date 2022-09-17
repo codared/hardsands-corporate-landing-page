@@ -75,29 +75,31 @@ const ActionFormBuilder = ({
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
                   <Flex>
-                    {formKey === "phone" && (
+                    {formKey === "phoneCode" ? (
                       <CustomSelect
                         _key={"value"}
                         _value={"title"}
                         size="lg"
                         placeholder="Phone Code"
                         options={getCountryPhoneCode()}
-                        name={"phoneCode"}
+                        name={formKey}
                         onChange={handleChange}
                         isRequired
+                        defaultValue={value || ""}
+                      />
+                    ) : (
+                      <Input
+                        type={type}
+                        name={formKey as string}
+                        borderRadius={0}
+                        borderColor={"black"}
+                        onChange={handleChange}
+                        placeholder={`Enter ${name}`}
+                        _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
+                        size="lg"
+                        defaultValue={value || ""}
                       />
                     )}
-                    <Input
-                      type={type}
-                      name={formKey as string}
-                      borderRadius={0}
-                      borderColor={"black"}
-                      onChange={handleChange}
-                      placeholder={`Enter ${name}`}
-                      _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
-                      size="lg"
-                      defaultValue={value || ""}
-                    />
                   </Flex>
                   {(formKey as string) === "phone" && (
                     <FormHelperText>

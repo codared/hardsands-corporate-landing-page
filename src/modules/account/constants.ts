@@ -178,6 +178,11 @@ export const ACTIONS: ActionsType[] = [
     title: "WhatsApp",
     fields: [
       {
+        name: "Phone Code",
+        type: "text",
+        formKey: "phoneCode",
+      },
+      {
         name: "Phone",
         type: "text",
         formKey: "phone",
@@ -409,6 +414,11 @@ export const ACTIONS: ActionsType[] = [
       'Notice: Please put your country code before your number. For example: "+1".',
     fields: [
       {
+        name: "Phone Code",
+        type: "text",
+        formKey: "phoneCode",
+      },
+      {
         name: "Phone Number",
         type: "text",
         formKey: "phone",
@@ -423,6 +433,11 @@ export const ACTIONS: ActionsType[] = [
   {
     title: "Call",
     fields: [
+      {
+        name: "Phone Code",
+        type: "text",
+        formKey: "phoneCode",
+      },
       {
         name: "Phone number",
         type: "text",

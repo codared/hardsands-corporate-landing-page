@@ -1,9 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import WithLayout from "components/WithLayout";
-import { APP_ROUTE } from "modules/authentication/constants";
 import { getCard } from "modules/authentication/services";
 import { NextPage, NextPageContext } from "next";
-import { getActionsName } from "utils/functions";
 import { isServerRequest } from "utils/nextjs";
 
 const CheckCardActivation: NextPage = () => {
@@ -25,8 +23,6 @@ export async function getServerSideProps(ctx: NextPageContext) {
     res,
   } = ctx;
 
-  console.log("serial >>> ", serial);
-
   const redirectTo = (url: string) => {
     if (res) {
       res.setHeader("location", url);
@@ -35,15 +31,8 @@ export async function getServerSideProps(ctx: NextPageContext) {
     }
   };
 
-  //   const { hardsands_user_token } = nextCookies(ctx);
-  //   const _isTokenExpired = isTokenExpired(hardsands_user_token as string);
-  //   if (!_isTokenExpired) {
-  //     redirectTo(APP_ROUTE.home);
-  //   }
-
   try {
     const response = await getCard(serial as string);
-    // console.log("response >>> ", response);
 
     const activationUrl = `/activate-card?serial=${response?.data?.data.cardSerial}&productId=${response?.data?.data.productId}`;
 
@@ -58,31 +47,44 @@ export async function getServerSideProps(ctx: NextPageContext) {
     if (!!response && !response.isError) {
       // redirect to card default action;
       const _default = response.result.default;
+      _default.title = "Email";
 
       switch (_default.title) {
         case "WhatsApp":
           const whatsappLink = `https://wa.me/${_default.fields.phone}?text=${_default.fields.message}`;
           redirectTo(whatsappLink);
-          return;
+          return { props: {} };
         case "URL":
-          return;
+          redirectTo(_default.fields.url);
+          return { props: {} };
         case "Event":
+          // Show event details
           return;
         case "Contact Card":
+          // download contact card in vcf
           return;
         case "SMS":
-          return;
+          redirectTo(
+            `sms:${_default.fields.phone}?body=${_default.fields.text}`
+          );
+          return { props: {} };
         case "Call":
-          return;
+          redirectTo(`tel:${_default.fields.phone}`);
+          return { props: {} };
         case "Email":
-          return;
+          redirectTo(
+            `mailto:${_default.fields.email}?subject=${_default.fields.subject}&body=${_default.fields.content}`
+          );
+          return { props: {} };
         case "Bank Account":
-          return;
+          // Show Bank Account details
+          return { props: {} };
         case "Profile":
-          return;
+          // Show user profile
+          return { props: {} };
 
         default:
-          break;
+          return { props: {} };
       }
     }
 

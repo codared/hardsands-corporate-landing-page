@@ -70,13 +70,14 @@ export const mergeActionFields = (cardActions: ActionsType[], id: number) => {
     (act) => act.title === action.title
   ) as ActionsType;
 
+
   localAction.fields = localAction?.fields?.map((_action) => {
-    const name = (_action.name as string).toLowerCase();
+    const formKey = (_action.formKey as string);
     let fields = action?.fields as any;
 
     return {
       ..._action,
-      value: fields[name],
+      value: fields[formKey],
     };
   });
 

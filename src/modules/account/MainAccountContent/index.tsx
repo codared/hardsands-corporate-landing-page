@@ -59,35 +59,29 @@ const MainAccountContent = () => {
 
   const handleActionSubmit = (formData: any) => {
     setIsSubmitting(true);
-    if (formData.phone) {
-      if (!formData.phoneCode) {
-        setIsSubmitting(false);
-        reduxDispatch({
-          type: "APP_ERROR",
-          payload: {
-            isError: true,
-            name: "Phone Code",
-            message: "Phone code is required",
-          } as any,
-        });
-        return;
-      }
-      if (
-        isNaN(formData.phone) ||
-        !(formData.phone.match(/\d/g).length <= 11)
-      ) {
-        setIsSubmitting(false);
-        reduxDispatch({
-          type: "APP_ERROR",
-          payload: {
-            isError: true,
-            name: "Phone",
-            message: "Phone Number must be a valid phone number",
-          } as any,
-        });
-        return;
-      }
-      formData.phone = `${formData.phoneCode}${formData.phone}`;
+    if (formData.phone && !formData.phoneCode) {
+      setIsSubmitting(false);
+      reduxDispatch({
+        type: "APP_ERROR",
+        payload: {
+          isError: true,
+          name: "Phone Code",
+          message: "Phone code is required",
+        } as any,
+      });
+      return;
+    }
+    if (isNaN(formData.phone) || !(formData.phone.match(/\d/g).length <= 11)) {
+      setIsSubmitting(false);
+      reduxDispatch({
+        type: "APP_ERROR",
+        payload: {
+          isError: true,
+          name: "Phone",
+          message: "Phone Number must be a valid phone number",
+        } as any,
+      });
+      return;
     }
     formData = {
       ...formData,
@@ -102,7 +96,6 @@ const MainAccountContent = () => {
       action,
       type,
       requiresCountryCode,
-      phoneCode,
       ...rest
     } = formData;
 
