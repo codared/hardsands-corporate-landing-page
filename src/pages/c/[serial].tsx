@@ -3,6 +3,7 @@ import WithLayout from "components/WithLayout";
 import { APP_ROUTE } from "modules/authentication/constants";
 import { getCard } from "modules/authentication/services";
 import { NextPage, NextPageContext } from "next";
+import { getActionsName } from "utils/functions";
 import { isServerRequest } from "utils/nextjs";
 
 const CheckCardActivation: NextPage = () => {
@@ -42,7 +43,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
 
   try {
     const response = await getCard(serial as string);
-    console.log("response >>> ", response);
+    // console.log("response >>> ", response);
 
     const activationUrl = `/activate-card?serial=${response?.data?.data.cardSerial}&productId=${response?.data?.data.productId}`;
 
@@ -56,7 +57,33 @@ export async function getServerSideProps(ctx: NextPageContext) {
 
     if (!!response && !response.isError) {
       // redirect to card default action;
-      // redirectTo(APP_ROUTE.home);
+      const _default = response.result.default;
+
+      switch (_default.title) {
+        case "WhatsApp":
+          const whatsappLink = `https://wa.me/${_default.fields.phone}?text=${_default.fields.message}`;
+          redirectTo(whatsappLink);
+          return;
+        case "URL":
+          return;
+        case "Event":
+          return;
+        case "Contact Card":
+          return;
+        case "SMS":
+          return;
+        case "Call":
+          return;
+        case "Email":
+          return;
+        case "Bank Account":
+          return;
+        case "Profile":
+          return;
+
+        default:
+          break;
+      }
     }
 
     if (
