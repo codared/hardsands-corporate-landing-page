@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Script from 'next/script'
 
-import React, { useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import config from '../../../core/config'
 import { layerPush } from '../functions/track'
@@ -12,8 +12,8 @@ const AnalyticsScriptTag = () => {
   const GTM_ID = config('TAG_MANAGER_ID')
   const disableAnalytics = useDisableAnalytics()
 
-  if (typeof window !== "undefined"){
-    useLayoutEffect(() => {
+
+    useEffect(() => {
       if (!GTM_ID) {
         return
       }
@@ -22,7 +22,7 @@ const AnalyticsScriptTag = () => {
         event: 'gtm.js',
       })
     }, [GTM_ID])
-  } 
+
 
 
   useTrackLocation()
