@@ -13,6 +13,12 @@ export const requestAuthHeaders = () => {
   });
 };
 
+export const requestJsonHeaders = () => {
+  return new Headers({
+    "Content-Type": "application/json",
+  });
+};
+
 export const calculateDiscountPercentage = (
   originalValue: number,
   newValue: number
@@ -75,6 +81,10 @@ export const mergeActionFields = (cardActions: ActionsType[], id: number) => {
   });
 
   return { ...localAction, id };
+};
+
+export const getActionsName = () => {
+  return ACTIONS.map(({ title }) => title);
 };
 
 // export function getProductVariant(

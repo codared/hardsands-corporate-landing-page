@@ -1,3 +1,4 @@
+import { requestJsonHeaders } from "utils/functions";
 import { storefrontApiJsonFetch } from "../api";
 import {
   BrandServicesAddress,
@@ -149,7 +150,7 @@ export const setOrderCustomerdetails = async (
     `/api/checkout/customer-info/${order.checkoutToken}`,
     {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: requestJsonHeaders(),
       body: JSON.stringify(req),
     }
   )) as unknown as { isError: boolean; result: Order };
@@ -168,7 +169,7 @@ export const setOrderShippingMethod = async (
     `/api/checkout/shipping-details/${order.checkoutToken}`,
     {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: requestJsonHeaders(),
       body: JSON.stringify({ shippingId: shippingMethodId }),
     }
   )) as unknown as { isError: boolean; result: Order };

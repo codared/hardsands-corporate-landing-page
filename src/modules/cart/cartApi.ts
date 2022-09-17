@@ -1,4 +1,5 @@
 import { Order } from "modules/checkout/types";
+import { requestJsonHeaders } from "utils/functions";
 import { storefrontApiJsonFetch } from "../api";
 import {
   CartResponse,
@@ -30,9 +31,7 @@ export async function apiCreateCart(
 ): Promise<CartResponse> {
   const resp = await storefrontApiJsonFetch<CartResponse>(`/api/cart`, {
     method: "POST",
-    headers: {
-      "content-type": "application/json",
-    },
+    headers: requestJsonHeaders(),
     body: JSON.stringify(body),
   });
   if (resp.isError) {
@@ -49,9 +48,7 @@ export async function apiAddItemToCart(
     `/api/cart/${cartId}/item`,
     {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
+      headers: requestJsonHeaders(),
       body: JSON.stringify(body),
     }
   );
@@ -90,9 +87,7 @@ export async function apiUpdateCartItem(
     `/api/cart/${cartId}/item/${itemId}`,
     {
       method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
+      headers: requestJsonHeaders(),
       body: JSON.stringify(body),
     }
   );
@@ -113,9 +108,7 @@ export async function apiUpdateCart(
     `/api/cart/${cartId}`,
     {
       method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
+      headers: requestJsonHeaders(),
       body: JSON.stringify(body),
     }
   );
