@@ -50,7 +50,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
 
       switch (_default.title) {
         case "WhatsApp":
-          const whatsappLink = `https://wa.me/${_default.fields.phone}?text=${_default.fields.message}`;
+          const whatsappLink = `https://wa.me/${_default.fields.phoneCode}${_default.fields.phone}?text=${_default.fields.message}`;
           redirectTo(whatsappLink);
           return { props: {} };
         case "URL":
@@ -63,9 +63,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
           // download contact card in vcf
           return;
         case "SMS":
-          redirectTo(
-            `sms:${_default.fields.phone}`
-          );
+          redirectTo(`sms:${_default.fields.phone}`);
           return { props: {} };
         case "Call":
           redirectTo(`tel:${_default.fields.phone}`);
