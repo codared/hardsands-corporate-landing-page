@@ -1,13 +1,13 @@
-import { Box } from "@chakra-ui/react";
 import WithLayout from "components/WithLayout";
+import CardTapDisplay from "modules/account/components/CardTapDisplay";
 import { getCard } from "modules/authentication/services";
 import { NextPage, NextPageContext } from "next";
 import { isServerRequest } from "utils/nextjs";
 
-const CheckCardActivation: NextPage = () => {
+const CheckCardActivation: NextPage<{ result: any }> = ({ result }) => {
   return (
-    <WithLayout pageTitle="Card Activation Check | Hardsands">
-      <Box />
+    <WithLayout pageTitle="Card Tap | Hardsands">
+      <CardTapDisplay result={result} />
     </WithLayout>
   );
 };
@@ -47,7 +47,6 @@ export async function getServerSideProps(ctx: NextPageContext) {
     if (!!response && !response.isError) {
       // redirect to card default action;
       const _default = response.result.default;
-      // _default.title = "Email";
 
       switch (_default.title) {
         case "WhatsApp":
@@ -78,7 +77,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
           return { props: {} };
         case "Bank Account":
           // Show Bank Account details
-          return { props: {} };
+          return { props: { result: _default } };
         case "Profile":
           // Show user profile
           return { props: {} };
@@ -98,8 +97,6 @@ export async function getServerSideProps(ctx: NextPageContext) {
 
     return { props: response };
   } catch (error) {
-    console.log("error >>> ", error);
-    // redirectTo("/500");
     return { props: {} };
   }
 }

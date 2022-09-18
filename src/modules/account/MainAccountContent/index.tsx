@@ -71,7 +71,10 @@ const MainAccountContent = () => {
       });
       return;
     }
-    if (isNaN(formData.phone) || !(formData.phone.match(/\d/g).length <= 11)) {
+    if (
+      (formData.phone && isNaN(formData.phone)) ||
+      (formData.phone && !(formData.phone.match(/\d/g).length <= 11))
+    ) {
       setIsSubmitting(false);
       reduxDispatch({
         type: "APP_ERROR",
@@ -197,7 +200,10 @@ const MainAccountContent = () => {
           flexDir={["column-reverse", "column", "row"]}
         >
           <Flex flexDir={["column-reverse", "column"]}>
-            <AccountCardPreview cardStatistics={cardStatistics} card={cards[0]} />
+            <AccountCardPreview
+              cardStatistics={cardStatistics}
+              card={cards[0]}
+            />
 
             {/* QR code share section */}
             <QRCodeShareSection card={cards[0]} />
