@@ -64,7 +64,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
           return;
         case "SMS":
           redirectTo(
-            `sms:${_default.fields.phone}?body=${_default.fields.text}`
+            `sms:${_default.fields.phone}`
           );
           return { props: {} };
         case "Call":
