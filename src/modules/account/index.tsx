@@ -69,7 +69,7 @@ const HardsandsAccountsApp = ({
           <Box w={10} />
 
           <Flex align="center">
-            <Icon color="gray.500" as={FaBell} cursor="pointer" />
+            {/* <Icon color="gray.500" as={FaBell} cursor="pointer" /> */}
             <Avatar
               ml="4"
               size="sm"

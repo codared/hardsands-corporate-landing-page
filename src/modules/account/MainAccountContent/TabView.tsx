@@ -31,7 +31,7 @@ const AccountTabView = ({
   return (
     <Flex w={["full", "100%"]} ml={[0, 5]}>
       <Tabs w="100%" variant="unstyled">
-        <TabList w="100%" bg={"brand.100"}>
+        <TabList w="100%" bg={"transparent"} borderBottom={'1px'} borderBottomColor={"black"}>
           <Tab
             w={["33.33333%", "100%"]}
             py={[2, 5]}

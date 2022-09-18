@@ -64,7 +64,7 @@ const ActionFormModal = ({
 
   return (
     <CustomModal
-      size={isProfile ? "4xl" : "lg"}
+      size={isProfile ? "full" : ["full", "lg"]}
       title={"Edit Action"}
       isOpen={isOpen}
       onClose={onClose}

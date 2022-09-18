@@ -47,7 +47,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
     if (!!response && !response.isError) {
       // redirect to card default action;
       const _default = response.result.default;
-      _default.title = "Email";
+      // _default.title = "Email";
 
       switch (_default.title) {
         case "WhatsApp":

@@ -78,12 +78,12 @@ const ActionCard = ({
         </Menu>
       </Box>
       {/* @ts-ignore */}
-      <Box mb={8} textAlign={"-webkit-center"}>
+      <Box mb={8} color="brand.300" textAlign={"-webkit-center"}>
         <Icon size={50} />
       </Box>
       {title}
       {isDefault && (
-        <Flex justifyContent={"center"}>
+        <Flex justifyContent={"center"} color="brand.300">
           <AiFillStar />
           <Text fontSize={14}>Default</Text>
         </Flex>

@@ -16,7 +16,12 @@ const ActionListModal = ({
   handleActionSelect: (action: ActionsType) => void;
 }) => {
   return (
-    <CustomModal title={"Add Action"} isOpen={isOpen} onClose={onClose}>
+    <CustomModal
+      size={["full", "md"]}
+      title={"Add Action"}
+      isOpen={isOpen}
+      onClose={onClose}
+    >
       <Box mb={8}>
         {actions.map((action: ActionsType) => {
           const Icon = AppIcons[action.title];
@@ -28,6 +33,7 @@ const ActionListModal = ({
                 borderColor: "brand.300",
               }}
               mb={2}
+              bg="brand.10"
               borderWidth="1px"
               borderColor={"transparent"}
               px={[6]}
@@ -37,7 +43,9 @@ const ActionListModal = ({
               onClick={() => handleActionSelect(action)}
             >
               <HStack>
-                <Icon size={24} />
+                <Box color="brand.300">
+                  <Icon size={24} />
+                </Box>
                 <Text>{action.title}</Text>
               </HStack>
               <Box p={[5]}>

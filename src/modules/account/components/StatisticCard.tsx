@@ -12,7 +12,7 @@ const StatisticCard = ({ title, value }: { title: string; value: string }) => {
       justifyContent={"center"}
     >
       <Text>{title} hits</Text>
-      <Text fontSize={[15, 60]} fontWeight="light">
+      <Text fontSize={[60]} fontWeight="light">
         {value}
       </Text>
     </Flex>
