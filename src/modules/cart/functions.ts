@@ -2,9 +2,11 @@ import { EcommerceCartAction } from "modules/analytics/types";
 import { CartResponseItem } from "modules/cart/types";
 
 export const getAddToCartEventData = (
-  cartItem: CartResponseItem
+  cartItem: CartResponseItem,
+  cartId: string
 ): EcommerceCartAction => {
   return {
+    cartId,
     id: cartItem.product.id,
     currency: cartItem.currency,
     price: cartItem.price / 100,

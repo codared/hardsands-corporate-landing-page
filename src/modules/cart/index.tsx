@@ -58,6 +58,12 @@ const Cart = React.forwardRef(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cart]);
 
+    useEffect(() => {
+      if(isOpen){
+        
+      }
+    },[isOpen])
+
     const onRemoveItem = async (item: CartResponseItem) => {
       return await dispatch(removeCartItem(item));
     };

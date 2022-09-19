@@ -141,12 +141,12 @@ const trackAddingItemToCart = (
 
     const quantity = itemAdded.quantity || 1;
     if (itemsAdded.length === 1) {
-      trackCartAdd(getAddToCartEventData({ ...itemsAdded[0], quantity }));
+      trackCartAdd(getAddToCartEventData({ ...itemsAdded[0], quantity }, response.id));
     } else if (itemsAdded.length > 1) {
       const generatedKey = `p=${productId}`;
       const addedItem = itemsAdded.find((item) => generatedKey === item.key);
       if (addedItem) {
-        trackCartAdd(getAddToCartEventData({ ...addedItem, quantity }));
+        trackCartAdd(getAddToCartEventData({ ...addedItem, quantity }, response.id));
       }
     }
   } catch (e) {
@@ -190,7 +190,7 @@ export const removeCartItem: ThunkActionCreator<Promise<CartResponse>> =
     // } else {
     const resp = await apiRemoveCartItem(cartId, item.id);
     dispatch(loadCart(resp));
-    trackCartRemove(getAddToCartEventData(item))
+    trackCartRemove(getAddToCartEventData(item, cartId))
     return resp;
     // }
   };

@@ -118,7 +118,8 @@ const checkoutEvents = {
         variant: item.variant_title,
         brand: "hardsands",
         price: item.price.amount_usd_float,
-        currency: 'USD'
+        currency: 'USD',
+        cartId: order.cartHash
       }))
     );
 
@@ -145,7 +146,8 @@ const checkoutEvents = {
         variant: item.variant_title,
         brand: "hardsands",
         price: item.price.amount_usd_float,
-        currency: 'USD'
+        currency: 'USD',
+        cartId: order.cartHash
       }))
     );
 
