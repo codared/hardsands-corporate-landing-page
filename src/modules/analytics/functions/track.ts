@@ -11,7 +11,7 @@ import {
   GTM_EVENTS,
   PageView, 
   VoyageSubscription,
-  VideoPlaybackData, VideoPlaybackEvent, EcommerceProductWithCurrency
+  VideoPlaybackData, VideoPlaybackEvent, EcommerceProductWithCurrency, EcommerceCart
 } from '../types'
 import { debugPageView, debugTrackPurchase } from './debug'
 
@@ -135,6 +135,15 @@ export const trackCartRemove = (product: EcommerceCartAction) => {
     event: GTM_EVENTS.EC_CART_REMOVE,
     ecommerce: {
       remove: { products: [product] },
+    },
+  })
+}
+
+export const trackCartViewed = (cart: EcommerceCart) => {
+  return layerPush({
+    event: GTM_EVENTS.EC_CART_VIEW,
+    ecommerce: {
+      cart,
     },
   })
 }

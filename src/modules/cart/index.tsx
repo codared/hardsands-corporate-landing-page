@@ -30,6 +30,7 @@ import { useIsMountedRef } from "utils/hooks";
 import { getCheckoutRoutes } from "modules/checkout/routes";
 import { createCartOrder } from "./cartApi";
 import { loadOrder } from "modules/checkout/actions";
+import { trackCartViewed } from "modules/analytics/functions/track";
 
 const Cart = React.forwardRef(
   (
@@ -59,10 +60,19 @@ const Cart = React.forwardRef(
     }, [cart]);
 
     useEffect(() => {
-      if(isOpen){
-        
+      if (isOpen) {
+        if (cart?.id) {
+          trackCartViewed({
+            cartId: cart?.id,
+            total: cart?.total / 100,
+            currency,
+            isEmpty: cart?.items.length ? false : true,
+            quantity: cart.items.length
+          })
+
+        }
       }
-    },[isOpen])
+    }, [isOpen])
 
     const onRemoveItem = async (item: CartResponseItem) => {
       return await dispatch(removeCartItem(item));
@@ -98,7 +108,7 @@ const Cart = React.forwardRef(
       if (order) {
         router.push(
           routes?.checkout({ hash: order.cartHash }) ??
-            `/checkout/${order.checkoutToken}`
+          `/checkout/${order.checkoutToken}`
         );
         onOrderCreated();
         if (isMounted.current) {

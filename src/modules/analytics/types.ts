@@ -79,7 +79,13 @@ export interface EcommerceImpression extends EcommerceProduct {
   // The position of this product in the list
   position?: number
 }
-
+export interface EcommerceCart {
+  cartId: string,
+  total: number,
+  currency: string,
+  isEmpty: boolean,
+  quantity: number
+}
 export interface EcommerceCartAction extends EcommerceProduct {
   // The number of products that were added or removed from the cart.
   // **not the total**
@@ -114,6 +120,7 @@ export enum GTM_EVENTS {
   EC_DETAIL = 'ecommerceDetailPage',
   EC_CART_ADD = 'ecommerceCartAdd',
   EC_CART_REMOVE = 'ecommerceCartRemove',
+  EC_CART_VIEW = 'ecommerceCartViewed',
   EC_CHECKOUT_BEGIN = 'ecommerceCheckoutStep1',
   EC_CHECKOUT_STEP = 'ecommerceCheckoutStep',
   EC_CHECKOUT_DATA = 'ecommerceCheckoutDataToStep',
