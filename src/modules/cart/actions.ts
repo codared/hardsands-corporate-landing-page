@@ -1,5 +1,5 @@
 import * as Sentry from "@sentry/browser";
-import { trackCartAdd } from "modules/analytics/functions/track";
+import { trackCartAdd, trackCartRemove } from "modules/analytics/functions/track";
 import { Product } from "modules/products/types";
 import { getCookie, setCookie } from "modules/shared/cookie";
 import { ThunkDispatch } from "redux/context";
@@ -190,6 +190,7 @@ export const removeCartItem: ThunkActionCreator<Promise<CartResponse>> =
     // } else {
     const resp = await apiRemoveCartItem(cartId, item.id);
     dispatch(loadCart(resp));
+    trackCartRemove(getAddToCartEventData(item))
     return resp;
     // }
   };
