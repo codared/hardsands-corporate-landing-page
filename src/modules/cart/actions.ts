@@ -1,5 +1,5 @@
 import * as Sentry from "@sentry/browser";
-import track from "modules/checkout/analytics";
+import { trackCartAdd } from "modules/analytics/functions/track";
 import { Product } from "modules/products/types";
 import { getCookie, setCookie } from "modules/shared/cookie";
 import { ThunkDispatch } from "redux/context";
@@ -133,20 +133,20 @@ const trackAddingItemToCart = (
   itemAdded: AddCartItemBody
 ) => {
   try {
-    const { productId } = itemAdded;
+    const { productId, productVariant } = itemAdded;
     const itemsAdded =
       response.items.filter((item) => {
-        return item.product.id === productId;
+        return item.product.id === productId && productVariant === item.productVariantKey;
       }) ?? [];
 
     const quantity = itemAdded.quantity || 1;
     if (itemsAdded.length === 1) {
-      track.trackCartAdd(getAddToCartEventData({ ...itemsAdded[0], quantity }));
+      trackCartAdd(getAddToCartEventData({ ...itemsAdded[0], quantity }));
     } else if (itemsAdded.length > 1) {
       const generatedKey = `p=${productId}`;
       const addedItem = itemsAdded.find((item) => generatedKey === item.key);
       if (addedItem) {
-        track.trackCartAdd(getAddToCartEventData({ ...addedItem, quantity }));
+        trackCartAdd(getAddToCartEventData({ ...addedItem, quantity }));
       }
     }
   } catch (e) {

@@ -37,7 +37,6 @@ const ProductDetailSection = ({
 
   useEffect(() => {
     if (activeVariant && product.variants[activeVariant].currency === currency) {
-      console.log("currency", currency, product.variants[activeVariant])
       trackProductDetail({
         id: product.id,
         name: product.title,

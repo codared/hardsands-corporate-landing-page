@@ -10,6 +10,8 @@ export const getAddToCartEventData = (
     price: cartItem.price / 100,
     name: cartItem.product.title,
     quantity: cartItem.quantity,
+    variant: cartItem.productVariantKey,
+    category: cartItem.productVariantKey?.toLowerCase() === "plain" || cartItem.productVariantKey?.toLowerCase() === "customized" ? "CARD" : "EPOXY"
   }
 }
 
