@@ -11,7 +11,7 @@ import {
   GTM_EVENTS,
   PageView, 
   VoyageSubscription,
-  VideoPlaybackData, VideoPlaybackEvent
+  VideoPlaybackData, VideoPlaybackEvent, EcommerceProductWithCurrency
 } from '../types'
 import { debugPageView, debugTrackPurchase } from './debug'
 
@@ -75,11 +75,11 @@ export const trackProductClick = (product: EcommerceProduct) => {
   })
 }
 
-export const trackProductDetail = (product: EcommerceProduct) => {
+export const trackProductDetail = (product: EcommerceProductWithCurrency) => {
   return layerPush({
     event: GTM_EVENTS.EC_DETAIL,
     ecommerce: {
-      detail: { products: [product] },
+      detail: product,
     },
   })
 }

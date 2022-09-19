@@ -1,9 +1,10 @@
 import { Box, Container, Flex, Grid, Heading } from "@chakra-ui/react";
 import { PreviewProductCard } from "components/ProductCard/ProductCard";
+import { trackProductDetail } from "modules/analytics/functions/track";
 import { useCurrency } from "modules/cart/hooks";
 import UsageDemoSection from "modules/hardsands/components/HomePage/UsageDemoSection";
 import { ProductColors } from "modules/shared/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useTypedSelector } from "redux/store";
 import { formatCurrencyInteger } from "utils/currency";
@@ -32,6 +33,24 @@ const ProductDetailSection = ({
   const [activeVariant, setActiveVariant] = useState<string | number>(
     selectedVariant || productVariants[0]
   );
+  const [variantViewed, setVariantViewed] = useState<Boolean>(false)
+
+  useEffect(() => {
+    if (activeVariant && product.variants[activeVariant].currency === currency) {
+      console.log("currency", currency, product.variants[activeVariant])
+      trackProductDetail({
+        id: product.id,
+        name: product.title,
+        category: 'CARD',
+        variant: activeVariant,
+        price: product.variants[activeVariant].price,
+        currency
+      })
+
+    }
+  }, [activeVariant, product.variants])
+
+
   const allProducts = useTypedSelector(
     (state) => state?.products?.all[currency]
   );

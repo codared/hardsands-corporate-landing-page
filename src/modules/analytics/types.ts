@@ -42,9 +42,13 @@ export interface EcommerceProduct {
   name?: string
   brand?: string
   category?: string
-  variant?: string
+  variant?: string | number
   // In the client's selected currency
   price?: number
+}
+
+export interface EcommerceProductWithCurrency extends EcommerceProduct{
+  currency: string
 }
 
 export interface Warranty {
