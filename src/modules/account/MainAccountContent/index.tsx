@@ -186,70 +186,72 @@ function MainIndex() {
         <NoCardMessage />
       ) : (
         <Box as={"main"} transition={"all 200ms ease-in-out"}>
-          {currentScreenState === APP_SCREEN.HOME && (
-            <>
-              <ScreenSelectorTabs
-                currentScreenState={currentScreenState}
-                handleSelectedTab={handleSelectedTab}
-              />
-
-              {/* QR code share section */}
-              <QRCodeShareSection card={cards[0]} />
-              {/* End QR code share section */}
-            </>
-          )}
-
-          {currentScreenState === APP_SCREEN.ACTIONS && (
-            <ActionCards
-              handleSelectedTab={handleSelectedTab}
-              setSelectedAction={setSelectedAction}
-              cardActions={cardActions as ActionsType[]}
-              onOpen={onActionCardDrawerOpen}
-            />
-          )}
-          {currentScreenState === APP_SCREEN.STATS && (
-            <StatisticsScreen cardStatistics={cardStatistics} />
-          )}
-          {!!selectedAction && currentScreenState === APP_SCREEN.EDIT && (
-            <EditFormScreen
-              isSubmitting={isSubmitting}
-              selectedAction={selectedAction}
-              handleActionSubmit={handleActionSubmit}
-            />
-          )}
-
-          {console.log(selectedAction, isActionCardDrawerOpen)}
-          {!!selectedAction && isActionCardDrawerOpen && (
-            <CustomDrawer
-              onClose={onActionCardDrawerClose}
-              isOpen={isActionCardDrawerOpen}
-            >
+          <>
+            {currentScreenState === APP_SCREEN.HOME && (
               <>
-                <ActionItem
-                  Icon={AppIcons[selectedAction?.title]}
-                  title={selectedAction?.title}
-                  withIcon={false}
+                <ScreenSelectorTabs
+                  currentScreenState={currentScreenState}
+                  handleSelectedTab={handleSelectedTab}
                 />
-                {!selectedAction.isDefault && (
+
+                {/* QR code share section */}
+                <QRCodeShareSection card={cards[0]} />
+                {/* End QR code share section */}
+              </>
+            )}
+
+            {currentScreenState === APP_SCREEN.ACTIONS && (
+              <ActionCards
+                handleSelectedTab={handleSelectedTab}
+                setSelectedAction={setSelectedAction}
+                cardActions={cardActions as ActionsType[]}
+                onOpen={onActionCardDrawerOpen}
+              />
+            )}
+            {currentScreenState === APP_SCREEN.STATS && (
+              <StatisticsScreen cardStatistics={cardStatistics} />
+            )}
+            {!!selectedAction && currentScreenState === APP_SCREEN.EDIT && (
+              <EditFormScreen
+                isSubmitting={isSubmitting}
+                selectedAction={selectedAction}
+                handleActionSubmit={handleActionSubmit}
+              />
+            )}
+
+            {console.log(selectedAction, isActionCardDrawerOpen)}
+            {!!selectedAction && isActionCardDrawerOpen && (
+              <CustomDrawer
+                onClose={onActionCardDrawerClose}
+                isOpen={isActionCardDrawerOpen}
+              >
+                <>
+                  <ActionItem
+                    Icon={AppIcons[selectedAction?.title]}
+                    title={selectedAction?.title}
+                    withIcon={false}
+                  />
+                  {!selectedAction.isDefault && (
+                    <MenuItem
+                      title="Set as default"
+                      Icon={AiOutlineStar}
+                      onClick={() => {
+                        handleSetDefault(selectedAction?.id as number);
+                      }}
+                    />
+                  )}
                   <MenuItem
-                    title="Set as default"
-                    Icon={AiOutlineStar}
+                    title="Edit"
+                    Icon={AiOutlineEdit}
                     onClick={() => {
-                      handleSetDefault(selectedAction?.id as number);
+                      console.log(selectedAction);
+                      handleEdit(selectedAction?.id as number);
                     }}
                   />
-                )}
-                <MenuItem
-                  title="Edit"
-                  Icon={AiOutlineEdit}
-                  onClick={() => {
-                    console.log(selectedAction);
-                    handleEdit(selectedAction?.id as number);
-                  }}
-                />
-              </>
-            </CustomDrawer>
-          )}
+                </>
+              </CustomDrawer>
+            )}
+          </>
         </Box>
       )}
     </Box>
