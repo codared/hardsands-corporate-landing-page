@@ -71,7 +71,7 @@ export interface BrandServicesAddress {
   zip: string | null;
   province: string | null;
   country: string;
-  verified: boolean;
+  verified?: boolean | null;
   federal_tax_id?: string;
 }
 export interface Discount {
@@ -200,6 +200,7 @@ export interface Order {
   id: number;
   applied_credit_balance: Amount;
   available_user_credit: Amount;
+  cartId: string;
   cart_hash: string;
   cartHash: string;
   checkoutToken: string;
@@ -289,6 +290,8 @@ export interface ShippingMethods {
 
 export interface UserData {
   email: string;
+  firstName: string;
+  lastName: string;
   order_count?: number;
 }
 

@@ -4,6 +4,7 @@ import { ApiError } from "next/dist/server/api-utils";
 import logger from "redux-logger";
 import { ThunkAction } from "redux-thunk";
 import { ThunkActionCreator } from "redux/rootReducer";
+import { getCountryById, getStateById } from "utils/getCountries";
 import { lifecycle } from "utils/lifecyle";
 import track from "./analytics";
 import {
@@ -231,6 +232,8 @@ export const identifyUser: ThunkActionCreator<Promise<Order | void>> = (
       dispatch(
         loadUserData({
           email: data.email,
+          firstName: data.firstName,
+          lastName: data.lastName,
           errors: {
             // @ts-ignore
             email: { key: e.id, message: e.data.message, path: e.data.path },
@@ -252,7 +255,7 @@ export const saveCustomerInfo: ThunkActionCreator<Promise<Order | void>> = (
     }
 
     const res = await setOrderCustomerdetails(order, address);
-
+    track.trackIdentifyUser(res.userDetails)
     // shipping address must exist here
     dispatch(loadOrder(res));
 
@@ -273,7 +276,22 @@ export const saveShippingMethod: ThunkActionCreator<Promise<Order | void>> = (
 
     // shipping address must exist here
     dispatch(loadOrder(res));
-
+    const provinceName = getStateById(res.shippingDetails.provinceId)
+    const country = getCountryById(res.shippingDetails.countryId)
+    track.trackShippingAddressUpdated({
+      first_name: res.userDetails.firstName,
+      last_name: res.userDetails.lastName,
+      street_1: res.shippingDetails.address1,
+      street_2: res.shippingDetails.address2,
+      company: res.shippingSelected.title,
+      city: res.shippingDetails.city,
+      state: provinceName,
+      phone_number: res.shippingDetails.phone,
+      phone_country_code: res.shippingDetails.phoneCode,
+      zip: res.shippingDetails.zip,
+      province: provinceName,
+      country
+    })
     return res;
   });
 
