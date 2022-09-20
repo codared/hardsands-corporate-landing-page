@@ -1,3 +1,4 @@
+import { ApiError } from "modules/api";
 import { MultiPaymentMethod } from "./actionTypes";
 import {
   CheckoutTrackingFunctions,
@@ -90,6 +91,9 @@ const checkoutEvents = {
       event: "3ds_initiated",
       card_3ds_data: card3DSData,
     });
+  },
+  trackGenericCheckoutError: (error: ApiError | Error) => {
+    track.layerPush({ event: 'genericCheckoutError', errorData: error })
   },
 
   /**

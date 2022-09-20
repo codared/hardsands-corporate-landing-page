@@ -213,7 +213,7 @@ export const trackBeginCheckout = (
  * @param data string - Any additional information about the checkout step at
  * the time it's measured.
  */
-export const trackCheckoutStep = (step: number, data?: string) => {
+export const trackCheckoutStep = (step: number, data?: any) => {
   return layerPush({
     event: GTM_EVENTS.EC_CHECKOUT_STEP,
     ecommerce: {

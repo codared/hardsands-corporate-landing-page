@@ -151,6 +151,8 @@ function apiThunkWrapper<T extends ThunkAction<any, any, any, any>>(
     try {
       return await thunk(dispatch, getState, {});
     } catch (e) {
+      // @ts-ignore
+      track.trackGenericCheckoutError(e)
       if (!(e instanceof ApiError)) {
         throw e;
       }
