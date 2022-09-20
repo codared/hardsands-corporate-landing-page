@@ -1,11 +1,4 @@
-import {
-  Flex,
-  Heading,
-  Box,
-  Link,
-  Button,
-  Text,
-} from "@chakra-ui/react";
+import { Flex, Heading, Box, Link, Button, Text } from "@chakra-ui/react";
 import _ from "lodash";
 import AlertMessage, { AlertStatus } from "components/AlertMessage";
 import CustomInput from "components/CustomInput";
@@ -82,10 +75,10 @@ function LoginPage() {
   return (
     <Flex
       as="section"
-      p={["3rem 1rem", "4rem 2rem", "4rem 12rem"]}
+      p={["2rem .5rem", "4rem 2rem", "4rem 12rem"]}
       justify="center"
     >
-      <Box padding={10} maxW="565">
+      <Box p={[6, 10]} maxW={["100%", "565"]}>
         {!!alertMessage.status && (
           <AlertMessage
             t={t}

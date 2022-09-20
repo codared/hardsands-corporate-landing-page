@@ -67,13 +67,6 @@ const ActionCard = ({
             >
               Edit
             </MenuItem>
-            {/* <MenuItem
-              _hover={{ bg: "unset", color: "brand.300" }}
-              color="red.300"
-              icon={<AiOutlineDelete size={24} />}
-            >
-              Delete
-            </MenuItem> */}
           </MenuList>
         </Menu>
       </Box>

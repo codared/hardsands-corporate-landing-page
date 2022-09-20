@@ -16,7 +16,7 @@ const QRCodeShareSection = ({ card }: { card: UserCardType }) => {
   const toast = useToast();
 
   return (
-    <Box p={8} my={8} borderWidth={1} borderStyle="solid">
+    <Box p={4} my={8} borderWidth={1} borderStyle="solid">
       <Flex justify={"space-between"}>
         <Heading fontSize={14} alignSelf={"center"}>
           Share
@@ -33,9 +33,8 @@ const QRCodeShareSection = ({ card }: { card: UserCardType }) => {
       </Box>
       <Flex
         justify={"space-between"}
-        p={5}
+        py={2}
         bg="brand.10"
-        // TODO: copy Link
         onClick={() => {
           navigator.clipboard.writeText(card.url);
           toast({
@@ -50,8 +49,7 @@ const QRCodeShareSection = ({ card }: { card: UserCardType }) => {
         <Box ml={3} alignSelf={"center"}>
           <FiLink2 />
         </Box>
-        <Text>{card.url}</Text>
-        {/* <Text>http://hrdsnd.co/c/UbhjAxJ</Text> */}
+        <Text fontSize={14}>{card.url}</Text>
         <Box ml={3} alignSelf={"center"}>
           <FaRegCopy />
         </Box>

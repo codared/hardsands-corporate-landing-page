@@ -28,3 +28,17 @@ export type CardActionUpdate = {
   actionId: number;
   [key: string]: string | number;
 };
+
+export const enum APP_TAB {
+  ACTIONS ='ACTIONS',
+  STATS ='STATS',
+  SETTINGS ='SETTINGS',
+}
+
+export const enum APP_SCREEN {
+  HOME ='HOME',
+  STATS = 'STATS',
+  ACTIONS ='ACTIONS',
+  EDIT ='EDIT',
+  SETTINGS ='SETTINGS',
+}
