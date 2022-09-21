@@ -179,6 +179,7 @@ export interface OrderItem {
   currency: string;
   title: string;
   total: number;
+  priceUsd: number;
   productVariantKey: string;
   product_id: number;
   product_slug: string;
@@ -254,6 +255,7 @@ export interface Order {
     data: TaxLine[];
   };
   totalDue: number;
+  totalUsd: number;
   total_due: Amount;
   usd_revenue?: Amount;
   updated_at: string;
@@ -284,6 +286,7 @@ export interface ShippingMethods {
   minDuration: number;
   maxDuration: number;
   price: number;
+  priceUsd: number;
   title: string;
   id?: number;
 }

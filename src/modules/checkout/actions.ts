@@ -258,6 +258,7 @@ export const saveCustomerInfo: ThunkActionCreator<Promise<Order | void>> = (
 
     const res = await setOrderCustomerdetails(order, address);
     track.trackIdentifyUser(res.userDetails)
+    track.setOrder(res);
     // shipping address must exist here
     dispatch(loadOrder(res));
 

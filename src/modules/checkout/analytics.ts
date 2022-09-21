@@ -8,6 +8,7 @@ import {
   TokenizationMethod,
   Card3DSData,
   PromotionSource,
+  OrderItem,
 } from "./types";
 
 const checkoutEvents = {
@@ -109,26 +110,32 @@ const checkoutEvents = {
     await track.trackPurchase(
       {
         id: `${order.id}`,
-        affiliation: "hardsands", // TODO (jparra 2/11/20): Make brand aware
-        tax: order.tax_amount.amount_usd_float,
-        revenue: order.usd_revenue?.amount_usd_float,
-        shipping: order.shipping_amount.amount_usd_float,
+        tax: 0,
+        revenue: order.totalUsd,
+        shipping: order.shippingSelected.priceUsd,
       },
-      order.order_items.data.map((item) => ({
-        id: item.shopify_id,
+      order.order_items.data.map((item: OrderItem) => ({
+        id: item.product.id,
         quantity: item.quantity,
         name: item.title,
-        category: item.variant_title,
-        variant: item.variant_title,
-        brand: "hardsands",
-        price: item.price.amount_usd_float,
+        variant: item.productVariantKey,
+        category: item.productVariantKey?.toLowerCase() === "plain" || item.productVariantKey?.toLowerCase() === "customized" ? "CARD" : "EPOXY",
+        price: item.priceUsd,
         currency: 'USD',
-        cartId: order.cartHash
+        cartId: order.cartId
       }))
     );
 
     if (!order.is_draft) {
-      checkoutEvents.trackImpact(order);
+      // the data-layer.
+      track.layerPush({
+        shippingAddressData: undefined,
+        paymentData: undefined,
+        order: undefined,
+        freeTrialProduct: undefined,
+        // userData is not cleared so we can track individual user's activity
+        // through the site.
+      });
     }
   },
 

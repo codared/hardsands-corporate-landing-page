@@ -39,10 +39,12 @@ const PaystackButtonComponent = ({
     });
 
     if (res.isError || res.result.draftOrder) {
+      track.trackPaymentError("paystack")
       return handleCancel(res.message as string);
     }
 
     if (!res.result.draftOrder) {
+      track.trackOrderPurchase(res.result)
       return router.push(`/checkout/${checkoutHash}/confirmation`);
     }
     return; // not complete;
