@@ -186,6 +186,7 @@ export const completeOrderCheck = async (orderTokendata: {
 }) => {
   const res = (await storefrontApiJsonFetch(`/api/checkout/complete-order`, {
     method: "POST",
+    headers: requestJsonHeaders(),
     body: JSON.stringify(orderTokendata),
   })) as { isError: boolean; result?: any; message?: string };
 
