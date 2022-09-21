@@ -9,6 +9,7 @@ import ReviewSection from "./ReviewSection";
 import GetStartedSection from "./GetStartedSection";
 import ComunitySection from "./ComunitySection";
 import { CommunityImages } from "modules/shared/constants";
+import MoreThanABusinessCardSection from "./MoreThanABusinessCardSection";
 
 const HomePage = () => {
   return (
@@ -40,6 +41,10 @@ const HomePage = () => {
       {/* Get Started Section */}
       <GetStartedSection />
       {/* End Get Started Section */}
+
+      {/* More Than Just a Business Card section */}
+      <MoreThanABusinessCardSection />
+      {/* End More Than Just a Business Card section */}
 
       {/* Instagram Commmunity Section */}
       {/* <ComunitySection
