@@ -9,9 +9,11 @@ import {
 } from "@chakra-ui/react";
 import { CheckIcon } from "assets";
 import HardsandLink from "components/HardsandsLink";
+import { trackOrderConfirmationShown } from "modules/analytics/functions/track";
 import { useCurrency } from "modules/cart/hooks";
 import PriceSummary from "modules/checkout/components/PriceSummary";
 import productRoutes from "modules/products/routes";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import OrderItemCard from "../components/OrderItemCard";
 import { useOrder } from "../hooks/useOrder";
@@ -26,6 +28,10 @@ const OrderConfirmation = ({ checkoutId, language }: OrderConfirmationProp) => {
   const { t } = useTranslation();
   const currency = useCurrency();
   const order = useOrder(checkoutId) as Order;
+
+  useEffect(()=> {
+    trackOrderConfirmationShown()
+  }, [])
 
   return (
     <Container p={10} py={20}>

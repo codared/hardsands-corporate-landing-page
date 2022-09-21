@@ -114,7 +114,7 @@ const checkoutEvents = {
         revenue: order.totalUsd,
         shipping: order.shippingSelected.priceUsd,
       },
-      order.order_items.data.map((item: OrderItem) => ({
+      order.items.map((item) => ({
         id: item.product.id,
         quantity: item.quantity,
         name: item.title,
