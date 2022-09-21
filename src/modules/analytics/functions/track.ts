@@ -11,7 +11,7 @@ import {
   GTM_EVENTS,
   PageView, 
   VoyageSubscription,
-  VideoPlaybackData, VideoPlaybackEvent
+  VideoPlaybackData, VideoPlaybackEvent, EcommerceProductWithCurrency, EcommerceCart
 } from '../types'
 import { debugPageView, debugTrackPurchase } from './debug'
 
@@ -75,11 +75,11 @@ export const trackProductClick = (product: EcommerceProduct) => {
   })
 }
 
-export const trackProductDetail = (product: EcommerceProduct) => {
+export const trackProductDetail = (product: EcommerceProductWithCurrency) => {
   return layerPush({
     event: GTM_EVENTS.EC_DETAIL,
     ecommerce: {
-      detail: { products: [product] },
+      detail: product,
     },
   })
 }
@@ -135,6 +135,15 @@ export const trackCartRemove = (product: EcommerceCartAction) => {
     event: GTM_EVENTS.EC_CART_REMOVE,
     ecommerce: {
       remove: { products: [product] },
+    },
+  })
+}
+
+export const trackCartViewed = (cart: EcommerceCart) => {
+  return layerPush({
+    event: GTM_EVENTS.EC_CART_VIEW,
+    ecommerce: {
+      cart,
     },
   })
 }
@@ -204,7 +213,7 @@ export const trackBeginCheckout = (
  * @param data string - Any additional information about the checkout step at
  * the time it's measured.
  */
-export const trackCheckoutStep = (step: number, data?: string) => {
+export const trackCheckoutStep = (step: number, data?: any) => {
   return layerPush({
     event: GTM_EVENTS.EC_CHECKOUT_STEP,
     ecommerce: {

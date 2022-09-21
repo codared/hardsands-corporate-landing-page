@@ -7,6 +7,7 @@ import { Box } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { PaystackCurrencyTypes } from "./types";
 import { completeOrderCheck } from "../checkoutApi";
+import track from "../analytics";
 
 const publicKey = config("PAYSTACK_PUBLIC_KEY");
 
@@ -38,10 +39,12 @@ const PaystackButtonComponent = ({
     });
 
     if (res.isError || res.result.draftOrder) {
+      track.trackPaymentError("paystack")
       return handleCancel(res.message as string);
     }
 
     if (!res.result.draftOrder) {
+      track.trackOrderPurchase(res.result)
       return router.push(`/checkout/${checkoutHash}/confirmation`);
     }
     return; // not complete;
@@ -58,12 +61,18 @@ const PaystackButtonComponent = ({
     currency,
     text: "Pay with Paystack",
     onSuccess: handleOrderPaymentCheck,
+
     // onSuccess: () => router.push(`/checkout/${checkoutHash}/confirmation`),
     onClose: () => handleCancel("You haven't made the payment complete!!!!"),
   };
 
+  const trackPaystack = () => {
+    track.trackPaymentAttempted({ method: 'paystack' })
+  }
+
   return (
     <Box
+      onClick={trackPaystack}
       css={css`
         & > button {
           cursor: pointer;

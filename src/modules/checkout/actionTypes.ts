@@ -93,7 +93,7 @@ export type CheckoutActionTypes =
   | CheckoutLoadSubscriptionInfoAction;
 
 export type MultiPaymentMethod =
-  | "card"
+  | "paystack"
   | "paypal"
   | "amazon"
   | "adyen"

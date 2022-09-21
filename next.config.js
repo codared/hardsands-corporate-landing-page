@@ -8,7 +8,7 @@ const nextConfig = {
   //   STRIPE_PUBLIC_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY,
   //   SENDGRID_API_KEY: process.env.NEXT_PUBLIC_SENDGRID_API_KEY,
   // },
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
     domains: ['res.cloudinary.com', 'ucarecdn.com'],
   },

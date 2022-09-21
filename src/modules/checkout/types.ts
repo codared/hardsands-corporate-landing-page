@@ -1,6 +1,7 @@
 import {
   EcommerceCartAction,
   EcommerceProduct,
+  EcommerceProductWithCurrency,
   EcommercePurchase,
 } from "modules/analytics/types";
 import { CURRENCY_CODES, Product } from "modules/products/types";
@@ -71,7 +72,7 @@ export interface BrandServicesAddress {
   zip: string | null;
   province: string | null;
   country: string;
-  verified: boolean;
+  verified?: boolean | null;
   federal_tax_id?: string;
 }
 export interface Discount {
@@ -179,6 +180,7 @@ export interface OrderItem {
   currency: string;
   title: string;
   total: number;
+  priceUsd: number;
   productVariantKey: string;
   product_id: number;
   product_slug: string;
@@ -200,6 +202,7 @@ export interface Order {
   id: number;
   applied_credit_balance: Amount;
   available_user_credit: Amount;
+  cartId: string;
   cart_hash: string;
   cartHash: string;
   checkoutToken: string;
@@ -253,6 +256,7 @@ export interface Order {
     data: TaxLine[];
   };
   totalDue: number;
+  totalUsd: number;
   total_due: Amount;
   usd_revenue?: Amount;
   updated_at: string;
@@ -283,12 +287,15 @@ export interface ShippingMethods {
   minDuration: number;
   maxDuration: number;
   price: number;
+  priceUsd: number;
   title: string;
   id?: number;
 }
 
 export interface UserData {
   email: string;
+  firstName: string;
+  lastName: string;
   order_count?: number;
 }
 
@@ -395,7 +402,7 @@ export interface CheckoutTrackingFunctions {
   layerPush: (data: { [k: string]: any }) => Promise<void>;
   trackProductClick: (product: EcommerceProduct) => Promise<void>;
   trackCartAdd: (product: EcommerceCartAction) => Promise<void>;
-  trackProductDetail: (product: EcommerceProduct) => Promise<void>;
+  trackProductDetail: (product: EcommerceProductWithCurrency) => Promise<void>;
   trackBeginCheckout: (
     cart: EcommerceCartAction[],
     data?: string

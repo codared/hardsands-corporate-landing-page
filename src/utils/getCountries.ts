@@ -28,4 +28,16 @@ export const getCountryPhoneCode = () => {
   }));
 };
 
+export const getStateById = (stateId: string) => {
+  const state =  statesList.find((state) => state.id === stateId)
+  if (!state) return stateId
+  return state.name
+}
+
+
+export const getCountryById = (countryId: string) => {
+  const country =  countriesList.find((country) => country.id === countryId)
+  if (!country) return countryId
+  return country.name
+}
 export default getCountries;

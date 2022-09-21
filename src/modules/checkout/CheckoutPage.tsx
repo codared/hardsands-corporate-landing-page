@@ -1,5 +1,5 @@
 import { Box, Container, Flex, Spinner, Text } from "@chakra-ui/react";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import _ from "lodash";
 import CustomerInfoForm, { Values } from "./components/CustomerInfoForm";
 import CheckoutBreakcrumbs from "./components/CheckoutBreadcrumbs";
@@ -15,6 +15,9 @@ import { useCurrency } from "modules/cart/hooks";
 import { CheckoutContext } from "redux/context";
 import { saveCustomerInfo, saveShippingMethod } from "./actions";
 import AlertMessage from "components/AlertMessage";
+import { EcommerceCartAction } from "modules/analytics/types";
+import { trackBeginCheckout, trackCheckoutStep } from "modules/analytics/functions/track";
+import track from "./analytics";
 
 interface CheckoutPageProp {
   checkoutId: string;
@@ -22,6 +25,7 @@ interface CheckoutPageProp {
 }
 
 const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
+  const beginCheckoutTracked = useRef(false)
   const { t } = useTranslation();
   const { dispatch } = useContext(CheckoutContext);
   const order = useOrder(checkoutId) as Order;
@@ -45,6 +49,36 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [order]);
 
+  useEffect(() => {
+    if (!order || beginCheckoutTracked.current) {
+      return
+    }
+
+    const products: EcommerceCartAction[]  = order.items.map(item => ({
+      id: item.product.id,
+      quantity: item.quantity,
+      name: item.title,
+      variant: item.productVariantKey,
+      price: item.price/100,
+      currency: item.currency,
+      cartId: order.cartId,
+      category: item.productVariantKey?.toLowerCase() === "plain" || item.productVariantKey?.toLowerCase() === "customized" ? "CARD" : "EPOXY"
+    })) 
+
+    trackBeginCheckout(products)
+    beginCheckoutTracked.current = true
+  }, [order])
+
+  useEffect(() => {
+    if (!activeStep) {
+      return
+    } 
+    
+    trackCheckoutStep(activeStep, {
+      cartId: order.cartId
+    })
+  }, [activeStep])
+
   const handleSubmitCustomerInfoForm = async (
     values: Values,
     errors: FormikErrors<Values>
@@ -52,7 +86,9 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
     setIsLoading(true);
     if (_.isEmpty(errors)) {
       try {
-        const res = await dispatch(saveCustomerInfo(values));
+        const res = await dispatch(saveCustomerInfo(values)) as Order;
+        track.trackIdentifyUser(res.userDetails)
+
         setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION);
         setIsLoading(false);
       } catch (error) {
