@@ -14,37 +14,31 @@ const GetStartedSection = () => {
       backgroundRepeat="no-repeat"
       backgroundSize="cover"
       width={["100%"]}
-      px={20}
+      px={[4, 20, 20]}
       mt={10}
-      py={[20, 0]}
+      py={[20, 20, 0]}
     >
       <Container maxWidth={"7xl"}>
         <Flex justifyContent={"center"}>
           <Flex justifyContent="center" flexDirection={"column"}>
             <Heading color="brand.300" mb={10}>
-              {t(
-                "common:call-to-action:improve-your-networking",
-                "Improve your networking"
-              )}
+              {t("common:call-to-action:a-single-card", "A Single Card")}
               <br />
-              {t(
-                "common:call-to-action:with-hardsands.",
-                "With Hardsands."
-              )}
+              {t("common:call-to-action:for-life", "For Life")}
             </Heading>
-            <Text width={350} fontSize={20} mb={10}>
+            <Text width={['full', 550]} fontSize={20} mb={10}>
               {t(
-                "common:call-to-action:traditional-printed-business-cards-have-served-networking",
-                `Traditional printed business cards have served networking over the years, but now it's time for digital to take over.
-                Start with one of our NFC business cards to instantly improve your networking and stand out from the crowd.`
+                "common:call-to-action:got-a-promotion-relocated-offices",
+                `Got a promotion, relocated offices, or changed your phone number? Printing new business cards is typically required. Not anymore.
+                With hardsands, you can update all your details yourself, and the next time you tap your NFC business card on any smartphone, your new info will appear.`
               )}
             </Text>
             <HardsandsButton>
-              {t("common:design-your-card", "Design Your Card")}
+              {t("common:buy-now", "Buy Now")}
             </HardsandsButton>
           </Flex>
           <Box width={20} />
-          <Box width={350} position="relative">
+          <Box width={350} position="relative" display={['none', 'none', 'block']}>
             <Image
               src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1657229753/samples/people/close-up-portrait-attractive-young-woman-isolated_1_n1hwgo.svg"
               alt="images"
