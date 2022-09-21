@@ -1,6 +1,7 @@
 import {
   EcommerceCartAction,
   EcommerceProduct,
+  EcommerceProductWithCurrency,
   EcommercePurchase,
 } from "modules/analytics/types";
 import { CURRENCY_CODES, Product } from "modules/products/types";
@@ -401,7 +402,7 @@ export interface CheckoutTrackingFunctions {
   layerPush: (data: { [k: string]: any }) => Promise<void>;
   trackProductClick: (product: EcommerceProduct) => Promise<void>;
   trackCartAdd: (product: EcommerceCartAction) => Promise<void>;
-  trackProductDetail: (product: EcommerceProduct) => Promise<void>;
+  trackProductDetail: (product: EcommerceProductWithCurrency) => Promise<void>;
   trackBeginCheckout: (
     cart: EcommerceCartAction[],
     data?: string
