@@ -1,4 +1,5 @@
 import WithLayout from "components/WithLayout";
+import * as Sentry from "@sentry/react";
 import CardTapDisplay from "modules/account/components/CardTapDisplay";
 import { getCard } from "modules/authentication/services";
 import { NextPage, NextPageContext } from "next";
@@ -95,6 +96,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
 
     return { props: response };
   } catch (error) {
+    Sentry.captureException(error);
     return { props: {} };
   }
 }

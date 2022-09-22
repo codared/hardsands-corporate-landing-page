@@ -1,5 +1,7 @@
 import "../styles/globals.css";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
 import { createWrapper, MakeStore, Context } from "next-redux-wrapper";
 import type { AppProps } from "next/app";
 import theme from "styles/theme";
@@ -17,13 +19,27 @@ import cookies from "next-cookies";
 import { CURRENCY_COOKIE } from "utils/constants";
 import { isSupportedCurrency } from "utils/functions";
 import { useRef } from "react";
-import AnalyticsScriptTag from '../modules/analytics/components/AnalyticsScriptTag'
-import ManualAnalyticsTags from '../modules/analytics/components/ManualAnalyticsTags'
-import AnalyticsProvider from '../modules/analytics/context/provider'
+import AnalyticsScriptTag from "../modules/analytics/components/AnalyticsScriptTag";
+import ManualAnalyticsTags from "../modules/analytics/components/ManualAnalyticsTags";
+import AnalyticsProvider from "../modules/analytics/context/provider";
 import { CopyrightYearProvider } from "modules/hardsands/contexts/CopyrightYearContext";
 import { CheckoutProvider } from "redux/context";
 import ErrorBoundary from "components/ErrorBoundary";
 import ErrorFallback from "components/ErrorBoundary/ErrorFallback";
+import config from "core/config";
+
+Sentry.init({
+  release: process.env.COMMIT_SHA,
+  enabled: true,
+  environment: config("ENVIRONMENT"),
+  dsn: config("SENTRY_DSN"),
+  integrations: [new BrowserTracing()],
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+});
 
 interface HardsandsAppProps extends AppProps {
   lang: string;

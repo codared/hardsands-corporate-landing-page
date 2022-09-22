@@ -1,14 +1,14 @@
-import { CONFIG } from './config'
+import { CONFIG } from "./config";
 
-export type ConfigValue = string | number | boolean
+export type ConfigValue = string | number | boolean;
 
 class Config<T extends { [key: string]: ConfigValue }> {
-  configValues: T
+  configValues: T;
 
   constructor(configValues: T) {
-    this.configValues = configValues
+    this.configValues = configValues;
     if (configValues.ALLOW_PARTIAL_CONFIG !== true) {
-      this.validate()
+      this.validate();
     }
   }
 
@@ -17,30 +17,30 @@ class Config<T extends { [key: string]: ConfigValue }> {
       if (this.configValues[key] === undefined) {
         throw new Error(
           `Undefined config value "${key}", ensure it exists in src/config/config.ts`
-        )
+        );
       }
-    })
+    });
   }
 
   get<K extends keyof T>(key: K): T[K] {
-    return this.configValues[key]
+    return this.configValues[key];
   }
 
   updateValues(values: Partial<T>) {
     Object.entries(values).forEach(([key, value]) => {
-      if (typeof value === 'undefined') {
-        return
+      if (typeof value === "undefined") {
+        return;
       }
 
-      this.configValues[key as keyof T] = value
-    })
+      this.configValues[key as keyof T] = value;
+    });
 
-    this.validate()
+    this.validate();
   }
 }
 
-const configObj = new Config(CONFIG)
-const config = configObj.get.bind(configObj)
-export const updateConfig = configObj.updateValues.bind(configObj)
+const configObj = new Config(CONFIG);
+const config = configObj.get.bind(configObj);
+export const updateConfig = configObj.updateValues.bind(configObj);
 
-export default config
+export default config;

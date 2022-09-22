@@ -1,7 +1,10 @@
+import * as Sentry from "@sentry/react";
 import { storefrontApiJsonFetch } from "../../api";
 import { BackendResponseType } from "utils/types";
 import { requestAuthHeaders } from "utils/functions";
 import { CardActionUpdate } from "../types";
+
+// Sentry.captureException(error);
 
 const makeTheAuthenticatedRequest = async (
   url: string,
@@ -31,7 +34,9 @@ export const getUserCards = async () => {
 };
 
 export const getUserStatistics = async (cardSerial: string) => {
-  const res = await makeTheAuthenticatedRequest(`/api/cards/statistics/${cardSerial}`);
+  const res = await makeTheAuthenticatedRequest(
+    `/api/cards/statistics/${cardSerial}`
+  );
   return res;
 };
 
