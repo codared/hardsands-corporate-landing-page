@@ -113,6 +113,7 @@ const checkoutEvents = {
         tax: 0,
         revenue: order.totalUsd,
         shipping: order.shippingSelected.priceUsd,
+        cartId: order.cartId
       },
       order.items.map((item) => ({
         id: item.product.id,
@@ -121,12 +122,11 @@ const checkoutEvents = {
         variant: item.productVariantKey,
         category: item.productVariantKey?.toLowerCase() === "plain" || item.productVariantKey?.toLowerCase() === "customized" ? "CARD" : "EPOXY",
         price: item.priceUsd,
-        currency: 'USD',
-        cartId: order.cartId
+        currency: 'USD', 
       }))
     );
 
-    if (!order.is_draft) {
+    if (!order.draftOrder) {
       // the data-layer.
       track.layerPush({
         shippingAddressData: undefined,
