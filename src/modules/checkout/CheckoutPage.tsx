@@ -87,6 +87,7 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
     if (_.isEmpty(errors)) {
       try {
         const res = await dispatch(saveCustomerInfo(values)) as Order;
+        console.log('userDAta', res.userDetails)
         track.trackIdentifyUser(res.userDetails)
 
         setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION);

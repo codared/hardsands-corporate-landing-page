@@ -110,6 +110,7 @@ export interface EcommercePurchase {
   tax?: number
   shipping?: number
   coupon?: string
+  cartId?: string
 }
 
 export enum GTM_EVENTS {

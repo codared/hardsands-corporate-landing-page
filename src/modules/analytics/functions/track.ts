@@ -258,6 +258,7 @@ export const trackPurchase = (
     console.error(e)
   }
 
+  console.log('track purchase')
   return layerPush({
     event: GTM_EVENTS.EC_PURCHASE,
     ecommerce: {
