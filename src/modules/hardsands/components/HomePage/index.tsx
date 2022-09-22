@@ -30,6 +30,10 @@ const HomePage = () => {
       <UsageDemoSection />
       {/* End Usage Demo Section */}
 
+      {/* More Than Just a Business Card section */}
+      <MoreThanABusinessCardSection />
+      {/* End More Than Just a Business Card section */}
+
       {/* Previous Designed Card Section */}
       <PreviousDesignedCardSection />
       {/* End Previous Designed Card Section */}
@@ -41,10 +45,6 @@ const HomePage = () => {
       {/* Get Started Section */}
       <GetStartedSection />
       {/* End Get Started Section */}
-
-      {/* More Than Just a Business Card section */}
-      <MoreThanABusinessCardSection />
-      {/* End More Than Just a Business Card section */}
 
       {/* Instagram Commmunity Section */}
       {/* <ComunitySection
