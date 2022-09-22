@@ -212,7 +212,7 @@ export const identifyUser: ThunkActionCreator<Promise<Order | void>> = (
       throw new Error("no order in state");
     }
 
-    track.trackIdentifyUser(data);
+    // track.trackIdentifyUser(data);
 
     try {
       const ret = await setOrderEmail(order, data.email);
@@ -257,7 +257,7 @@ export const saveCustomerInfo: ThunkActionCreator<Promise<Order | void>> = (
     }
 
     const res = await setOrderCustomerdetails(order, address);
-    track.trackIdentifyUser(res.userDetails)
+    // track.trackIdentifyUser(res.userDetails)
     track.setOrder(res);
     // shipping address must exist here
     dispatch(loadOrder(res));
