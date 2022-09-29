@@ -30,15 +30,19 @@ const appReducer = (
     case "APP_LOADING":
       return { ...state, loading: action.payload };
     case "GET_USER_CARD_ACTIONS":
-      return { ...state, cardActions: action.payload };
+      return { ...state, cardActions: action.payload, loading: false };
     case "GET_ALL_ACTIONS":
-      return { ...state, allActions: mergeActions(action.payload, ACTIONS) };
+      return {
+        ...state,
+        allActions: mergeActions(action.payload, ACTIONS),
+        loading: false,
+      };
     case "ADD_CARD_ACTION":
       return { ...state, cardActions: action.payload };
     case "GET_USER_CARDS":
-      return { ...state, cards: action.payload };
+      return { ...state, cards: action.payload, loading: false };
     case "GET_STATISTICS":
-      return { ...state, cardStatistics: action.payload };
+      return { ...state, cardStatistics: action.payload, loading: false };
     case "APP_ERROR":
       return { ...state, error: action.payload };
     default:

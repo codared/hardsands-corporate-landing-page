@@ -219,7 +219,6 @@ function MainIndex() {
               />
             )}
 
-            {console.log(selectedAction, isActionCardDrawerOpen)}
             {!!selectedAction && isActionCardDrawerOpen && (
               <CustomDrawer
                 onClose={onActionCardDrawerClose}
