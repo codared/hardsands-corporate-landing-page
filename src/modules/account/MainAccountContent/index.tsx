@@ -62,6 +62,7 @@ function MainIndex() {
         reduxDispatch(getCardStatisticsAction(cards[0].cardSerial));
       }
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleActionSubmit = (formData: any) => {

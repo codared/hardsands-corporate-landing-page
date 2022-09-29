@@ -266,148 +266,148 @@ export const ACTIONS: ActionsType[] = [
   //     },
   //   ],
   // },
-  // {
-  //   title: "Contact Card",
-  //   fields: [
-  //     {
-  //       name: "Profile Image",
-  //       type: "file",
-  //       formKey: "profileImage",
-  //     },
-  //     {
-  //       name: "Title",
-  //       type: "text",
-  //       formKey: "title",
-  //     },
-  //     {
-  //       name: "Name",
-  //       type: "text",
-  //       formKey: "name",
-  //     },
-  //     {
-  //       name: "Company",
-  //       type: "text",
-  //       formKey: "company",
-  //     },
-  //     {
-  //       name: "Position",
-  //       type: "text",
-  //       formKey: "position",
-  //     },
-  //     {
-  //       name: "Birthday",
-  //       type: "date",
-  //       formKey: "birthday",
-  //     },
-  //     {
-  //       name: "Home Phone",
-  //       type: "text",
-  //       formKey: "homePhone",
-  //     },
-  //     {
-  //       name: "Office Phone",
-  //       type: "text",
-  //       formKey: "officePhone",
-  //     },
-  //     {
-  //       name: "Personal Phone",
-  //       type: "text",
-  //       formKey: "personalPhone",
-  //     },
-  //     {
-  //       name: "Office Fax",
-  //       type: "text",
-  //       formKey: "officeFax",
-  //     },
-  //     {
-  //       name: "Alternative Phone",
-  //       type: "text",
-  //       formKey: "altPhone",
-  //     },
-  //     {
-  //       name: "Work Email",
-  //       type: "email",
-  //       formKey: "workEmail",
-  //     },
-  //     {
-  //       name: "Personal Email",
-  //       type: "email",
-  //       formKey: "personalEmail",
-  //     },
-  //     {
-  //       name: "Website 1",
-  //       type: "url",
-  //       formKey: "website1",
-  //     },
-  //     {
-  //       name: "Website 2",
-  //       type: "url",
-  //       formKey: "website2",
-  //     },
-  //     {
-  //       name: "Payment Link",
-  //       type: "url",
-  //       formKey: "paymentLink",
-  //     },
-  //     {
-  //       name: "Home address",
-  //       type: "text",
-  //       formKey: "homeAddress",
-  //     },
-  //     {
-  //       name: "Office address",
-  //       type: "text",
-  //       formKey: "officeAddress",
-  //     },
-  //     {
-  //       name: "Home Postal Code",
-  //       type: "text",
-  //       formKey: "homePostalCode",
-  //     },
-  //     {
-  //       name: "Office Postal Code",
-  //       type: "text",
-  //       formKey: "officePostalCode",
-  //     },
-  //     {
-  //       name: "Home Country",
-  //       type: "country-select",
-  //       options: getCountries(),
-  //       formKey: "homeCountryId",
-  //     },
-  //     {
-  //       name: "Home State",
-  //       type: "state-select",
-  //       formKey: "homeStateId",
-  //     },
-  //     {
-  //       name: "Home City",
-  //       type: "text",
-  //       formKey: "homeCity",
-  //     },
-  //     {
-  //       name: "Office Country",
-  //       type: "country-select",
-  //       options: getCountries(),
-  //       formKey: "officeCountryId",
-  //     },
-  //     {
-  //       name: "Office State",
-  //       type: "state-select",
-  //       formKey: "officeStateId",
-  //     },
-  //     {
-  //       name: "Office City",
-  //       type: "text",
-  //       formKey: "officeCity",
-  //     },
-  //     {
-  //       name: "Theme",
-  //       type: "color",
-  //       formKey: "theme",
-  //     },
-  //   ],
-  // },
+  {
+    title: "Contact Card",
+    fields: [
+      {
+        name: "Profile Image",
+        type: "file",
+        formKey: "profileImage",
+      },
+      {
+        name: "Title",
+        type: "text",
+        formKey: "title",
+      },
+      {
+        name: "Name",
+        type: "text",
+        formKey: "name",
+      },
+      {
+        name: "Company",
+        type: "text",
+        formKey: "company",
+      },
+      {
+        name: "Position",
+        type: "text",
+        formKey: "position",
+      },
+      {
+        name: "Birthday",
+        type: "date",
+        formKey: "birthday",
+      },
+      {
+        name: "Home Phone",
+        type: "text",
+        formKey: "homePhone",
+      },
+      {
+        name: "Office Phone",
+        type: "text",
+        formKey: "officePhone",
+      },
+      {
+        name: "Personal Phone",
+        type: "text",
+        formKey: "personalPhone",
+      },
+      {
+        name: "Office Fax",
+        type: "text",
+        formKey: "officeFax",
+      },
+      {
+        name: "Alternative Phone",
+        type: "text",
+        formKey: "altPhone",
+      },
+      {
+        name: "Work Email",
+        type: "email",
+        formKey: "workEmail",
+      },
+      {
+        name: "Personal Email",
+        type: "email",
+        formKey: "personalEmail",
+      },
+      {
+        name: "Website 1",
+        type: "url",
+        formKey: "website1",
+      },
+      {
+        name: "Website 2",
+        type: "url",
+        formKey: "website2",
+      },
+      {
+        name: "Payment Link",
+        type: "url",
+        formKey: "paymentLink",
+      },
+      {
+        name: "Home address",
+        type: "text",
+        formKey: "homeAddress",
+      },
+      {
+        name: "Office address",
+        type: "text",
+        formKey: "officeAddress",
+      },
+      {
+        name: "Home Postal Code",
+        type: "text",
+        formKey: "homePostalCode",
+      },
+      {
+        name: "Office Postal Code",
+        type: "text",
+        formKey: "officePostalCode",
+      },
+      {
+        name: "Home Country",
+        type: "country-select",
+        options: getCountries(),
+        formKey: "homeCountryId",
+      },
+      {
+        name: "Home State",
+        type: "state-select",
+        formKey: "homeStateId",
+      },
+      {
+        name: "Home City",
+        type: "text",
+        formKey: "homeCity",
+      },
+      {
+        name: "Office Country",
+        type: "country-select",
+        options: getCountries(),
+        formKey: "officeCountryId",
+      },
+      {
+        name: "Office State",
+        type: "state-select",
+        formKey: "officeStateId",
+      },
+      {
+        name: "Office City",
+        type: "text",
+        formKey: "officeCity",
+      },
+      {
+        name: "Theme",
+        type: "color",
+        formKey: "theme",
+      },
+    ],
+  },
   {
     title: "SMS",
     requiresCountryCode:
