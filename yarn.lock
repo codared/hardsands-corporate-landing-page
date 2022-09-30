@@ -1318,6 +1318,11 @@
   resolved "https://registry.yarnpkg.com/@types/ua-parser-js/-/ua-parser-js-0.7.36.tgz#9bd0b47f26b5a3151be21ba4ce9f5fa457c5f190"
   integrity sha512-N1rW+njavs70y2cApeIw1vLMYXRwfBy+7trgavGuuTfOd7j1Yh7QTRc/yqsPl6ncokt72ZXuxEU0PiCp9bSwNQ==
 
+"@types/vcards-js@^2.10.2":
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/@types/vcards-js/-/vcards-js-2.10.2.tgz#d5cda40d708132edf0d9f150a0897c92ca2e49d4"
+  integrity sha512-GWWAsAwQhWlZP0meGEbB0RHpyCn8ckwDohsznxhpRlb5jWL9atirM8Vknn8oJfOcQzE7x3oq5GtgFKdSvvWl1g==
+
 "@types/webpack-env@^1.16.2":
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.17.0.tgz#f99ce359f1bfd87da90cc4a57cab0a18f34a48d0"
@@ -2870,6 +2875,11 @@ fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
+
+fs@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.yarnpkg.com/fs/-/fs-0.0.1-security.tgz#8a7bd37186b6dddf3813f23858b57ecaaf5e41d4"
+  integrity sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==
 
 fsevents@~2.3.2:
   version "2.3.2"
@@ -5171,6 +5181,11 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
+
+vcard-creator@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/vcard-creator/-/vcard-creator-0.5.0.tgz#d6b7f5248e24deed93707952e42e2cf66792eaae"
+  integrity sha512-V9GfkI4HqTlAKwMDLmqcRk+xLrlryQ6937rZcCz39uf5oLlTXmRL9Oz7ivefG71BrtOI6QtDMXHtQCuwSvmtGQ==
 
 vcards-js@^2.10.0:
   version "2.10.0"

@@ -4,6 +4,7 @@ import CardTapDisplay from "modules/account/components/CardTapDisplay";
 import { getCard } from "modules/authentication/services";
 import { NextPage, NextPageContext } from "next";
 import { isServerRequest } from "utils/nextjs";
+import generateVCard from "./vCardGenerator";
 
 const CheckCardActivation: NextPage<{ result: any }> = ({ result }) => {
   return (
@@ -62,7 +63,8 @@ export async function getServerSideProps(ctx: NextPageContext) {
           return;
         case "Contact Card":
           // download contact card in vcf
-          return;
+          generateVCard(_default.fields, res);
+          return { props: { result: _default } };
         case "SMS":
           redirectTo(`sms:${_default.fields.phone}`);
           return { props: {} };

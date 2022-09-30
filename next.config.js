@@ -2,6 +2,12 @@
 // const dotenv = require('dotenv');
 
 const nextConfig = {
+  webpack5: true,
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false };
+
+    return config;
+  },
   // env: {
   //   BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL,
   //   UPLOAD_CARE_PUBLIC_KEY: process.env.NEXT_PUBLIC_UPLOAD_CARE_PUBLIC_KEY,
