@@ -2,7 +2,7 @@ import { AppActionTypes } from "redux/context";
 import { mergeActions } from "utils/functions";
 import { ActionsType } from "utils/types";
 import { ACTIONS } from "./constants";
-import { UserCardType } from "./types";
+import { UserCardType, UserDetails } from "./types";
 
 export type UserAppReducerState = {
   cardActions: Array<ActionsType>;
@@ -11,6 +11,7 @@ export type UserAppReducerState = {
   error: any;
   loading: boolean;
   allActions: ActionsType[];
+  user: UserDetails | null;
 };
 
 const initialState: UserAppReducerState = {
@@ -20,6 +21,7 @@ const initialState: UserAppReducerState = {
   loading: true,
   allActions: ACTIONS,
   cardStatistics: {},
+  user: null,
 };
 
 const appReducer = (
@@ -41,6 +43,8 @@ const appReducer = (
       return { ...state, cardActions: action.payload };
     case "GET_USER_CARDS":
       return { ...state, cards: action.payload, loading: false };
+    case "GET_USER_DETAILS":
+      return { ...state, user: action.payload, loading: false };
     case "GET_STATISTICS":
       return { ...state, cardStatistics: action.payload, loading: false };
     case "APP_ERROR":

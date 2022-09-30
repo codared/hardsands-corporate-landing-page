@@ -13,6 +13,7 @@ import {
   setUserCardsActionDefaultAction,
   addUserCardsAction,
   updateUserCardsAction,
+  getUserDetailsAction,
 } from "../actions";
 import Loader from "../components/Loader";
 import NoCardMessage from "../components/NoCardMessage";
@@ -54,7 +55,10 @@ function MainIndex() {
     setSelectedAction(action);
   };
 
+  // Make all the API calls on mount of the component and
+  // update the redux store with the data received from the API calls
   useEffect(() => {
+    reduxDispatch(getUserDetailsAction());
     reduxDispatch(getAllActionsActions());
     reduxDispatch(getUserCardsAction()).then((cards) => {
       if (cards && cards.length) {
@@ -62,6 +66,7 @@ function MainIndex() {
         reduxDispatch(getCardStatisticsAction(cards[0].cardSerial));
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleActionSubmit = (formData: any) => {

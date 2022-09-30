@@ -21,6 +21,11 @@ export const getAllActions = async () => {
   return res;
 };
 
+export const getUserDetails = async () => {
+  const res = await makeTheAuthenticatedRequest(`/api/auth/user`);
+  return res;
+};
+
 export const getUserCardActions = async (cardSerial: string) => {
   const res = await makeTheAuthenticatedRequest(
     `/api/card-action/user/${cardSerial}`

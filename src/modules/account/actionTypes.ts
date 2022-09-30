@@ -1,5 +1,5 @@
 import { ActionsType } from "utils/types";
-import { UserCardType } from "./types";
+import { UserCardType, UserDetails } from "./types";
 
 export interface GetUserCardActions {
   type: "GET_USER_CARD_ACTIONS";
@@ -14,6 +14,11 @@ export interface GetAllActions {
 export interface GetUserCards {
   type: "GET_USER_CARDS";
   payload: UserCardType[] | null;
+}
+
+export interface GetUserDetails {
+  type: "GET_USER_DETAILS";
+  payload: UserDetails | null;
 }
 
 export interface GetCardStatistics {
@@ -43,4 +48,5 @@ export type UserAppActionTypes =
   | GetAllActions
   | AddUserCardAction
   | GetCardStatistics
+  | GetUserDetails
   | UserAppLoading;

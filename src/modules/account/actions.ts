@@ -7,11 +7,17 @@ import {
   getAllActions,
   getUserCardActions,
   getUserCards,
+  getUserDetails,
   getUserStatistics,
   setUserCardsActionDefault,
   updateUserCardAction,
 } from "./services";
-import { CardActionUpdate, UserCardActionsType, UserCardType } from "./types";
+import {
+  CardActionUpdate,
+  UserCardActionsType,
+  UserCardType,
+  UserDetails,
+} from "./types";
 
 const dispatchApploading = (payload: boolean): any => {
   return {
@@ -82,9 +88,28 @@ export const getUserCardsAction: ThunkActionCreator<Promise<UserCardType[]>> =
     return res.result;
   };
 
-export const getCardStatisticsAction: ThunkActionCreator<Promise<UserCardType[]>> =
-  (cardSerial: string) => async (dispatch, getState) => {
-    const res = await getUserStatistics(cardSerial);
+export const getCardStatisticsAction: ThunkActionCreator<
+  Promise<UserCardType[]>
+> = (cardSerial: string) => async (dispatch, getState) => {
+  const res = await getUserStatistics(cardSerial);
+
+  if (res.isError) {
+    return dispatch({
+      type: "APP_ERROR",
+      payload: res as any,
+    });
+  }
+  dispatch({
+    type: "GET_STATISTICS",
+    payload: res.result,
+  });
+
+  return res.result;
+};
+
+export const getUserDetailsAction: ThunkActionCreator<Promise<UserDetails>> =
+  () => async (dispatch, getState) => {
+    const res = await getUserDetails();
 
     if (res.isError) {
       return dispatch({
@@ -93,7 +118,7 @@ export const getCardStatisticsAction: ThunkActionCreator<Promise<UserCardType[]>
       });
     }
     dispatch({
-      type: "GET_STATISTICS",
+      type: "GET_USER_DETAILS",
       payload: res.result,
     });
 

@@ -16,6 +16,14 @@ export type UserCardActionsType = {
   whatsappMessage?: string | null;
 };
 
+export type UserDetails = {
+  email: string;
+  firstName: string;
+  lastName: string;
+  country: string;
+  sendMarketingEmails: boolean;
+};
+
 export type UserCardType = {
   activatedAt: string;
   cardSerial: string;
@@ -30,15 +38,15 @@ export type CardActionUpdate = {
 };
 
 export const enum APP_TAB {
-  ACTIONS ='ACTIONS',
-  STATS ='STATS',
-  SETTINGS ='SETTINGS',
+  ACTIONS = "ACTIONS",
+  STATS = "STATS",
+  SETTINGS = "SETTINGS",
 }
 
 export const enum APP_SCREEN {
-  HOME ='HOME',
-  STATS = 'STATS',
-  ACTIONS ='ACTIONS',
-  EDIT ='EDIT',
-  SETTINGS ='SETTINGS',
+  HOME = "HOME",
+  STATS = "STATS",
+  ACTIONS = "ACTIONS",
+  EDIT = "EDIT",
+  SETTINGS = "SETTINGS",
 }

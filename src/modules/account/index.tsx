@@ -13,6 +13,7 @@ import { FiMenu } from "react-icons/fi";
 import { FaBell } from "react-icons/fa";
 import SidebarContent from "./components/Sidebar";
 import { ReactElement } from "react";
+import { useTypedDispatch, useTypedSelector } from "redux/store";
 
 const HardsandsAccountsApp = ({
   children,
@@ -22,6 +23,8 @@ const HardsandsAccountsApp = ({
   children: ReactElement;
 }) => {
   const sidebar = useDisclosure();
+  // const reduxDispatch = useTypedDispatch();
+  const user = useTypedSelector((state) => state.app?.user);
 
   return (
     <Box
@@ -73,7 +76,7 @@ const HardsandsAccountsApp = ({
             <Avatar
               ml="4"
               size="sm"
-              name="anubra266"
+              name={`${user?.firstName} ${user?.lastName}`}
               src=""
               cursor="pointer"
             />
