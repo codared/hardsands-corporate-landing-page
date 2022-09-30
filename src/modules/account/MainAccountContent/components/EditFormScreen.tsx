@@ -1,7 +1,7 @@
 import { Box, Flex, Grid, Tag, Text, Image, Button } from "@chakra-ui/react";
 import ActionFormBuilder from "modules/account/components/ActionFormBuilder";
 import ProfileCardPreview from "modules/account/components/ProfileCardPreview";
-import { ACTION_FORM_STATUS } from "modules/account/constants";
+import { ACTION_FORM_STATUS, NumberFields } from "modules/account/constants";
 import React, { useState } from "react";
 import { SOCIAL_LINKS } from "utils/constants";
 import { ActionsFormType, ActionsType } from "utils/types";
@@ -44,10 +44,24 @@ const EditFormScreen = ({
 
   const handleChange = (e: any) => {
     e.preventDefault();
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value,
-    });
+
+    if (NumberFields.includes(e.target.name) && isNaN(e.target.value)) {
+      return;
+    } else if (
+      (NumberFields.includes(e.target.name) &&
+        e.target.name.toLowerCase().includes("number") &&
+        e.target.value.length >= 11) ||
+      (NumberFields.includes(e.target.name) &&
+        e.target.name.toLowerCase().includes("phone") &&
+        e.target.value.length >= 12)
+    ) {
+      return;
+    } else {
+      setFormState({
+        ...formState,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
   const handleSocialSelect = (selectedSocial: any) => {
@@ -133,6 +147,7 @@ const EditFormScreen = ({
           <Box w={"full"}>
             <ActionFormBuilder
               onChange={handleChange}
+              formState={formState}
               fields={selectedAction.fields as ActionsFormType[]}
             />
             <Box p={[4]} position={"absolute"} bottom={0} left={0} right={0}>

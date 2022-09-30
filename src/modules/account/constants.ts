@@ -707,3 +707,13 @@ export const themeColorOptions = [
     color: "red.500",
   },
 ];
+
+export const NumberFields: string[] = [
+  "phone",
+  "altPhone",
+  "homePhone",
+  "workPhone",
+  "officePhone",
+  "personalPhone",
+  "bankAccountNumber",
+];

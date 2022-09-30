@@ -20,7 +20,10 @@ export enum SOCIAL_LINKS {
   INSTAGRAM = "https://instagram.com/hardsandscard?igshid=YmMyMTA2M2Y=",
   TWITTER = "https://twitter.com/hardsandscard?s=21&t=9OYQOXg7JFUYuYEcm2vCVA",
   FACEBOOK = "https://facebook.com/profile.php?id=100083028413736",
-  LINKEDIN = 'https://instagram.com/hardsandscard?igshid=YmMyMTA2M2Y=',
-  EMAIL = 'mailto:info@hardsands.com'
+  LINKEDIN = "https://instagram.com/hardsandscard?igshid=YmMyMTA2M2Y=",
+  EMAIL = "mailto:info@hardsands.com",
   // TIKTOK = 'https://instagram.com/hardsandscard?igshid=YmMyMTA2M2Y=',
 }
+
+export const EMAIL_REGEX =
+  /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
