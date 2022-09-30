@@ -3,6 +3,7 @@ import CustomDrawer from "components/CustomDrawer";
 import React, { useEffect, useState } from "react";
 import { AiOutlineEdit, AiOutlineStar } from "react-icons/ai";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
+import { EMAIL_REGEX } from "utils/constants";
 import { mergeActionFields } from "utils/functions";
 import { ActionsType } from "utils/types";
 import {
@@ -62,10 +63,12 @@ function MainIndex() {
         reduxDispatch(getCardStatisticsAction(cards[0].cardSerial));
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleActionSubmit = (formData: any) => {
     setIsSubmitting(true);
+
     if (formData.phone && !formData.phoneCode) {
       setIsSubmitting(false);
       reduxDispatch({
@@ -89,6 +92,21 @@ function MainIndex() {
           isError: true,
           name: "Phone",
           message: "Phone Number must be a valid phone number",
+        } as any,
+      });
+      return;
+    }
+
+    const emailField =
+      formData["workEmail"] ?? formData["personalEmail"] ?? formData["email"];
+    if (emailField && !EMAIL_REGEX.test(emailField)) {
+      setIsSubmitting(false);
+      reduxDispatch({
+        type: "APP_ERROR",
+        payload: {
+          isError: true,
+          name: "Email",
+          message: "Email must be valid",
         } as any,
       });
       return;
@@ -148,6 +166,7 @@ function MainIndex() {
     setFormStatus(ACTION_FORM_STATUS.EDIT);
     handleSelectedTab(APP_SCREEN.EDIT);
     onActionCardDrawerClose();
+
     // The cardActions fields dont have the required properties to
     // render the form so we have use the ACTIONS constants
     const mergedActions = mergeActionFields(cardActions as ActionsType[], id);
@@ -213,6 +232,7 @@ function MainIndex() {
             )}
             {!!selectedAction && currentScreenState === APP_SCREEN.EDIT && (
               <EditFormScreen
+                formStatus={formStatus}
                 isSubmitting={isSubmitting}
                 selectedAction={selectedAction}
                 handleActionSubmit={handleActionSubmit}
@@ -243,7 +263,6 @@ function MainIndex() {
                     title="Edit"
                     Icon={AiOutlineEdit}
                     onClick={() => {
-                      console.log(selectedAction);
                       handleEdit(selectedAction?.id as number);
                     }}
                   />

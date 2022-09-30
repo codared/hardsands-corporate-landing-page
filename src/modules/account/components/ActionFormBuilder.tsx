@@ -18,8 +18,10 @@ import { themeColorOptions } from "../constants";
 
 const ActionFormBuilder = ({
   fields,
+  formState,
   onChange,
 }: {
+  formState?: any;
   fields: ActionsFormType[];
   onChange: (e: any) => void;
 }) => {
@@ -35,7 +37,6 @@ const ActionFormBuilder = ({
   const handleCountrySelectChange = (e: any) => {
     e.preventDefault();
 
-    console.log("select option >>>> ", getState(e.target.value));
     setStateOptions(getState(e.target.value));
   };
 
@@ -43,12 +44,9 @@ const ActionFormBuilder = ({
     setSelectedColor(color);
   };
 
-  //   console.log("stateOptions >>> ", stateOptions);
-  //   console.log("formState >>> ", formState);
-
   return (
     <Box>
-      {fields.map(({ name, type, options, formKey, value }, index) => {
+      {fields.map(({ name, type, options, formKey }, index) => {
         switch (type) {
           case "file":
             return (
@@ -64,7 +62,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ""}
+                    defaultValue={formState[formKey as string]}
                   />
                 </Box>
               </FormControl>
@@ -85,7 +83,7 @@ const ActionFormBuilder = ({
                         name={formKey}
                         onChange={handleChange}
                         isRequired
-                        defaultValue={value || ""}
+                        defaultValue={formState[formKey as string]}
                       />
                     ) : (
                       <Input
@@ -97,7 +95,7 @@ const ActionFormBuilder = ({
                         placeholder={`Enter ${name}`}
                         _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                         size="lg"
-                        defaultValue={value || ""}
+                        value={formState[formKey as string] || ""}
                       />
                     )}
                   </Flex>
@@ -123,7 +121,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ""}
+                    defaultValue={formState[formKey as string]}
                   />
                 </Box>
               </FormControl>
@@ -142,7 +140,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ""}
+                    defaultValue={formState[formKey as string]}
                   />
                 </Box>
               </FormControl>
@@ -161,7 +159,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ""}
+                    defaultValue={formState[formKey as string]}
                   />
                 </Box>
               </FormControl>
@@ -179,7 +177,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ""}
+                    defaultValue={formState[formKey as string]}
                   >
                     {options &&
                       // @ts-ignore
@@ -205,7 +203,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ""}
+                    defaultValue={formState[formKey as string]}
                   >
                     {stateOptions.length ? (
                       // @ts-ignore
@@ -261,7 +259,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ""}
+                    defaultValue={formState[formKey as string]}
                   />
                 </Box>
               </FormControl>
@@ -279,7 +277,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={value || ""}
+                    defaultValue={formState[formKey as string]}
                   />
                 </Box>
               </FormControl>

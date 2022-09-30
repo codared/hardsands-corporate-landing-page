@@ -22,6 +22,7 @@ const Tab = ({
       textAlign={"center"}
       position="relative"
       py={[4]}
+      cursor="pointer"
       fontSize={[15, 20]}
       fontWeight="bold"
       borderStyle="solid"
