@@ -62,11 +62,12 @@ function MainIndex() {
         reduxDispatch(getCardStatisticsAction(cards[0].cardSerial));
       }
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleActionSubmit = (formData: any) => {
     setIsSubmitting(true);
+
     if (formData.phone && !formData.phoneCode) {
       setIsSubmitting(false);
       reduxDispatch({
@@ -149,6 +150,7 @@ function MainIndex() {
     setFormStatus(ACTION_FORM_STATUS.EDIT);
     handleSelectedTab(APP_SCREEN.EDIT);
     onActionCardDrawerClose();
+
     // The cardActions fields dont have the required properties to
     // render the form so we have use the ACTIONS constants
     const mergedActions = mergeActionFields(cardActions as ActionsType[], id);
@@ -214,6 +216,7 @@ function MainIndex() {
             )}
             {!!selectedAction && currentScreenState === APP_SCREEN.EDIT && (
               <EditFormScreen
+                formStatus={formStatus}
                 isSubmitting={isSubmitting}
                 selectedAction={selectedAction}
                 handleActionSubmit={handleActionSubmit}
@@ -244,7 +247,6 @@ function MainIndex() {
                     title="Edit"
                     Icon={AiOutlineEdit}
                     onClick={() => {
-                      console.log(selectedAction);
                       handleEdit(selectedAction?.id as number);
                     }}
                   />

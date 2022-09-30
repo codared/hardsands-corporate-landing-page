@@ -74,7 +74,7 @@ const ActionCards = ({
               {action.isDefault && (
                 <Flex justifyContent={"center"} color="brand.300">
                   <AiFillStar />
-                  <Text fontSize={14}>Default</Text>
+                  <Text fontSize={14}>Active Action</Text>
                 </Flex>
               )}
             </Box>

@@ -40,7 +40,6 @@ export const isTokenExpired = (token: string) => {
   if (!token) return true;
   const decoded: any = jwt_decode(token);
   return decoded.exp * 1000 < new Date().getTime();
-  // return decoded.exp < new Date().getDate() - decoded.iat;
 };
 
 export const getToken = () => {
@@ -70,14 +69,18 @@ export const mergeActionFields = (cardActions: ActionsType[], id: number) => {
     (act) => act.title === action.title
   ) as ActionsType;
 
-
   localAction.fields = localAction?.fields?.map((_action) => {
-    const formKey = (_action.formKey as string);
+    const formKey = _action.formKey as string;
     let fields = action?.fields as any;
+
+    // Only do this for whatsApp as the whatsappMessage come on from the DB as message,
+    // which causes an undefined value
+    const value =
+      formKey === "whatsappMessage" ? fields["message"] : fields[formKey];
 
     return {
       ..._action,
-      value: fields[formKey],
+      value,
     };
   });
 
@@ -87,14 +90,3 @@ export const mergeActionFields = (cardActions: ActionsType[], id: number) => {
 export const getActionsName = () => {
   return ACTIONS.map(({ title }) => title);
 };
-
-// export function getProductVariant(
-//   sizes: SizeOption[],
-//   isSubscriptionOption?: boolean
-// ) {
-//   if (isSubscriptionOption) {
-//     return sizes.find((opts) => opts.text === SUBSCRIPTION_PURCHASE_SUBFLAG)
-//   } else {
-//     return sizes.find((opts) => opts.text === ONE_TIME_PURCHASE_SUBFLAG)
-//   }
-// }

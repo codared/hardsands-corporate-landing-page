@@ -1,22 +1,37 @@
 import { Box, Flex, Grid, Tag, Text, Image, Button } from "@chakra-ui/react";
 import ActionFormBuilder from "modules/account/components/ActionFormBuilder";
 import ProfileCardPreview from "modules/account/components/ProfileCardPreview";
+import { ACTION_FORM_STATUS } from "modules/account/constants";
 import React, { useState } from "react";
 import { SOCIAL_LINKS } from "utils/constants";
 import { ActionsFormType, ActionsType } from "utils/types";
+
+const retrieveFormKeyValue = (action: ActionsType) => {
+  const fieldsPlaceHolder = {};
+  action?.fields?.forEach((field: ActionsFormType) => {
+    fieldsPlaceHolder[field?.formKey as string] = field.value;
+  });
+  return fieldsPlaceHolder;
+};
 
 const EditFormScreen = ({
   selectedAction,
   handleActionSubmit,
   isSubmitting,
+  formStatus,
 }: {
+  formStatus?: string;
   isSubmitting: boolean;
   selectedAction: ActionsType;
   handleActionSubmit: (action: ActionsType) => void;
 }) => {
   const [showAddSocials, setAddSocials] = useState<boolean>(false);
   const [selectedSocials, setSelectedSocials] = useState<any[]>([]);
-  const [formState, setFormState] = useState<any>({});
+  const [formState, setFormState] = useState<any>(
+    formStatus === ACTION_FORM_STATUS.ADD
+      ? {}
+      : retrieveFormKeyValue(selectedAction)
+  );
   const isProfile = selectedAction.title === "Profile";
 
   const handleAction = () => {
@@ -29,7 +44,10 @@ const EditFormScreen = ({
 
   const handleChange = (e: any) => {
     e.preventDefault();
-    setFormState({ ...formState, [e.target.name]: e.target.value });
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSocialSelect = (selectedSocial: any) => {

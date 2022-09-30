@@ -31,6 +31,7 @@ const NavigationBar = ({
           color="brand.300"
           fontWeight={"bolder"}
           alignSelf={"center"}
+          cursor="pointer"
           onClick={() =>
             handleScreenChange(screenState[screenState.length - 1])
           }
