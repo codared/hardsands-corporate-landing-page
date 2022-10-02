@@ -9,9 +9,16 @@ import {
   Text,
 } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
+import { useCallback, useEffect, useState } from "react";
 import { NAV_ITEMS, NavItem } from "./constants";
 
 const MobileNav = () => {
+  // const [Nav, setNav] = useState<NavItem[]>(NAV_ITEMS);
+  // useEffect(() => {
+  //   NAV_ITEMS.push({ label: "Account", href: "/login" });
+  //   setNav(NAV_ITEMS);
+  // }, [NAV_ITEMS]);
+
   return (
     <Stack
       bg={useColorModeValue("white", "gray.800")}

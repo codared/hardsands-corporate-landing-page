@@ -29,7 +29,7 @@ const HardsandsButton = ({
     bg={"brand.200"}
     href={href}
     p={["12px 16px", "12px 46px"]}
-    w="fit-content"
+    w={["100%", "50%"]}
     display="flex"
     alignItems="center"
     justifyContent={'center'}
@@ -44,13 +44,13 @@ const HardsandsButton = ({
     {...rest}
   >
     <Text as="span">{children || text}</Text>
-    {Icon ? (
+    {/* {Icon ? (
       <Box ml={iconMargin}>
         <Icon size={iconSize} />
       </Box>
     ) : Icon === null ? null : (
       <Image src={rightArrow.src} alt={text} ml={iconMargin} />
-    )}
+    )} */}
   </HardsandLink>
 );
 

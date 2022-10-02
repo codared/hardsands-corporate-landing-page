@@ -157,16 +157,14 @@ export default function Navigation() {
 
           <Button
             bg="transparent"
+            color="white"
+            display={["none", "flex"]}
             _focus={{ bg: "transparent" }}
             _hover={{ bg: "transparent" }}
             px={0}
             onClick={() => router.push("/login")}
           >
-            <Image
-              boxSize="26px"
-              src={LoginIcon.src}
-              alt="hardsands login icon"
-            />
+            <Text>Account</Text>
           </Button>
 
           <Flex

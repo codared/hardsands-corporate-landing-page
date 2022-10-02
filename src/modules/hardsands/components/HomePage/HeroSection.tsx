@@ -23,20 +23,30 @@ const HeroSection = () => {
       backgroundSize={["cover"]}
       flexDirection={["column-reverse", "row"]}
     >
-      <Flex direction="column" justifyContent={"start"} px={[18]}>
-        <Heading maxW={600} fontSize={["5xl", "7xl"]} my={["40px", "20px"]}>
+      <Flex
+        direction="column"
+        alignItems={["center", "unset"]}
+        justifyContent={["center", "start"]}
+        px={[18]}
+      >
+        <Heading
+          maxW={["100%", 600]}
+          fontSize={["6xl", "7xl"]}
+          my={["40px", "20px"]}
+          textAlign={["center", "unset"]}
+        >
           {t(
             "home:hero:share-your-info-with-a-single-tap",
             "Share your Info with a single tap"
           )}
         </Heading>
-        <Text fontSize={24} maxW={500}>
+        <Text fontSize={24} maxW={500} textAlign={["center", "unset"]}>
           {t(
             "home:hero:the-only-business-card-youll-need-to-improve-your-networking",
             "The only business card you'll need to improve your networking"
           )}
         </Text>
-        <HStack justifyContent={["center", "unset"]} py={5} mt={["50px", 0]}>
+        <HStack w={["100%"]} py={5} mt={["50px", 0]}>
           <HardsandsButton>Buy Now</HardsandsButton>
         </HStack>
 
@@ -49,7 +59,7 @@ const HeroSection = () => {
           alt="hero badge hardsands"
         />
       </Flex>
-      <Flex boxSize={[350, 450, 650]}>
+      <Flex margin={["0 auto", "unset"]} boxSize={[350, 450, 650]}>
         <Image
           objectFit={"cover"}
           w={["100%"]}
