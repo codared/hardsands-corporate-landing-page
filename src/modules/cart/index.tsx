@@ -21,7 +21,7 @@ import { formatCurrencyInteger } from "utils/currency";
 import { useTranslation } from "react-i18next";
 import { computeItemsQuantity } from "./functions";
 import productRoutes from "modules/products/routes";
-import { loadOrCreateCart, removeCartItem } from "./actions";
+import { loadOrCreateCart, removeCartItem, updateCurrency } from "./actions";
 import { CheckoutContext } from "redux/context";
 import { useCurrency } from "./hooks";
 import { CartResponseItem, CreateCheckoutFromCartBody } from "./types";
@@ -67,12 +67,11 @@ const Cart = React.forwardRef(
             total: cart?.total / 100,
             currency,
             isEmpty: cart?.items.length ? false : true,
-            quantity: cart.items.length
-          })
-
+            quantity: cart.items.length,
+          });
         }
       }
-    }, [isOpen])
+    }, [isOpen]);
 
     const onRemoveItem = async (item: CartResponseItem) => {
       return await dispatch(removeCartItem(item));
@@ -87,34 +86,27 @@ const Cart = React.forwardRef(
 
       const body: CreateCheckoutFromCartBody = {
         cartId: cart?.id as string,
-        // additionalOffers: promotions.map(
-        //   ({ slug: id, productOptions: product_option_value_ids = [] }) => ({
-        //     id,
-        //     product_option_value_ids,
-        //   })
-        // ),
       };
 
       const order = await createCartOrder(body);
       const routes = getCheckoutRoutes();
 
-      // console.log('order >>>>> ', order);
       dispatch(loadOrder(order));
-
-      // const couponQuery = overrideCoupon
-      //   ? `?override_coupon=${overrideCoupon}`
-      //   : "";
 
       if (order) {
         router.push(
           routes?.checkout({ hash: order.cartHash }) ??
-          `/checkout/${order.checkoutToken}`
+            `/checkout/${order.checkoutToken}`
         );
         onOrderCreated();
         if (isMounted.current) {
           setIsLoading(false);
         }
       }
+    };
+
+    const onCurrencyChange = (currency: string) => {
+      dispatch(updateCurrency(currency));
     };
 
     return (
@@ -143,9 +135,7 @@ const Cart = React.forwardRef(
             <CurrencySelector
               display={["block", "none"]}
               mr={10}
-              onChange={(val: string) => {
-                // console.log(val);
-              }}
+              onChange={onCurrencyChange}
             />
           </DrawerHeader>
 
