@@ -36,3 +36,7 @@ export type VerifyEmailType = {
   verifyText: string;
   identifier: number;
 };
+
+export type VerifyGoogleAuthType = {
+  token: string
+}

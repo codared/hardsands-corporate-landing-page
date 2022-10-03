@@ -20,7 +20,7 @@ export function usePreloadProducts(timeout = 0) {
   const currency = useCurrency();
   useEffect(() => {
     setTimeout(() => {
-      console.log("PRELOADING PRODUCTS");
+      // console.log("PRELOADING PRODUCTS");
       dispatch(fetchAllProductsCached(currency) as any);
     }, timeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps

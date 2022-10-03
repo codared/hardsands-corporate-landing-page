@@ -13,6 +13,7 @@ import { LoginSchema } from "../formSchema";
 import { loginUser } from "../services";
 import { LoginUserType } from "../types";
 import { setCookie } from "modules/shared/cookie";
+import GoogleLogin from "./GoogleLogin";
 
 function LoginPage() {
   const { t } = useTranslation();
@@ -161,7 +162,8 @@ function LoginPage() {
             </Link>
           </Text>
           <Flex color="white" justify="stretch" gap={5} mt={10}>
-            <Button
+            <GoogleLogin type="login" setIsLoading={setIsLoading} setAlertMessage={setAlertMessage}  />
+            {/* <Button
               fontSize={14}
               fontWeight={500}
               color={"white"}
@@ -216,7 +218,7 @@ function LoginPage() {
               <Box ml={2}>
                 <FcGoogle size={14} />
               </Box>
-            </Button>
+            </Button> */}
           </Flex>
         </form>
       </Box>

@@ -36,7 +36,7 @@ export const layerPush = (data: { [k: string]: any }): Promise<void> => {
       },
     })
 
-    console.log('Pushed', data)
+    // console.log('Pushed', data)
   })
 }
 
@@ -258,7 +258,7 @@ export const trackPurchase = (
     console.error(e)
   }
 
-  console.log('track purchase')
+  // console.log('track purchase')
   return layerPush({
     event: GTM_EVENTS.EC_PURCHASE,
     ecommerce: {

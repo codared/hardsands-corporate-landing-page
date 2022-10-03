@@ -107,7 +107,7 @@ HardsandsApp.getInitialProps = async ({ ctx }: any) => {
     // only fetch translations on the first request, subsequent requests
     // will have translations in memory
     translations = await fetchTranslations(lang);
-    console.log("fetching translations took: " + (Date.now() - now));
+    // console.log("fetching translations took: " + (Date.now() - now));
   } catch (e) {
     // swallow for now because pre-rendering doesnt like this
   }
