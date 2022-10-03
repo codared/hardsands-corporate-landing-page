@@ -1,34 +1,35 @@
-import { useState } from 'react'
-import Script from 'next/script'
-import { Box } from '@chakra-ui/react';
-import config from 'core/config';
-import { verifyGoogleAuth } from '../services';
-import { setCookie } from 'modules/shared/cookie';
-import { HARDSANDS_LOGIN_COOKIE, APP_ROUTE } from '../constants';
-import { useRouter } from 'next/router';
+import { useState } from "react";
+import Script from "next/script";
+import { Box } from "@chakra-ui/react";
+import config from "core/config";
+import { verifyGoogleAuth } from "../services";
+import { setCookie } from "modules/shared/cookie";
+import { HARDSANDS_LOGIN_COOKIE, APP_ROUTE } from "../constants";
+import { useRouter } from "next/router";
 
 declare global {
   interface Window {
-      google:any;
+    google: any;
   }
 }
 
-
-
-export default function GoogleLogin({type, setIsLoading, setAlertMessage}:{
-  type: 'signup' | 'login',
-  setIsLoading: (loading: any) => void,
-  setAlertMessage: (message: any) => void
+export default function GoogleLogin({
+  type,
+  setIsLoading,
+  setAlertMessage,
+}: {
+  type: "signup" | "login";
+  setIsLoading: (loading: any) => void;
+  setAlertMessage: (message: any) => void;
 }) {
-
-  const router = useRouter()
+  const router = useRouter();
 
   const handleCredentialResponse = async (response: any) => {
-    setIsLoading(true)
-    const credential = response.credential
+    setIsLoading(true);
+    const credential = response.credential;
     //TODO HANDLE ERROR WHERE CREDENTIAL IS NOT RETURNED
     try {
-      const res = await verifyGoogleAuth({token: credential})
+      const res = await verifyGoogleAuth({ token: credential });
       if (res.isError) {
         setAlertMessage({
           status: "error",
@@ -52,16 +53,16 @@ export default function GoogleLogin({type, setIsLoading, setAlertMessage}:{
       setAlertMessage({
         status: "error",
         name: "Error",
-        message: "An error occurred logging you in via Google. Please try again or contact support.",
+        message:
+          "An error occurred logging you in via Google. Please try again or contact support.",
       });
     }
+  };
 
-  }
+  const domain = config("APP_URL");
+  const clientId = config("CLIENT_ID");
 
-  const domain = config("APP_URL")
-  const clientId = config("CLIENT_ID")
-
-  console.log(domain, clientId)
+  console.log(domain, clientId);
   return (
     <>
       <Script
@@ -70,25 +71,30 @@ export default function GoogleLogin({type, setIsLoading, setAlertMessage}:{
           window.google.accounts.id.initialize({
             client_id: clientId,
             callback: handleCredentialResponse,
-            login_uri: type === 'login' ? `${domain}/login` : `${domain}/signup`,
+            login_uri:
+              type === "login" ? `${domain}/login` : `${domain}/signup`,
             ux_mode: "popup",
-
           });
           window.google.accounts.id.renderButton(
             document.getElementById("buttonDiv"),
-            { 
-              theme: "outline", 
-              size: "large", 
-              text: type === 'login' ? "login_with" : "signup_with",
-              type: "standard"
-            
-            }  
+            {
+              theme: "outline",
+              size: "large",
+              text: type === "login" ? "login_with" : "signup_with",
+              type: "standard",
+            }
           );
         }}
         strategy="afterInteractive"
       />
 
-      <Box width="full" id="buttonDiv" ></Box>
+      <Box
+        width="full"
+        id="buttonDiv"
+        display={"flex"}
+        justifyContent="center"
+        alignItems={"center"}
+      ></Box>
     </>
-  )
+  );
 }

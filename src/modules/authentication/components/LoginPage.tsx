@@ -79,7 +79,7 @@ function LoginPage() {
       p={["2rem .5rem", "4rem 2rem", "4rem 12rem"]}
       justify="center"
     >
-      <Box p={[6, 10]} maxW={["100%", "565"]}>
+      <Box p={["1rem", 10]} w={["100%", "565px"]}>
         {!!alertMessage.status && (
           <AlertMessage
             t={t}
@@ -162,63 +162,11 @@ function LoginPage() {
             </Link>
           </Text>
           <Flex color="white" justify="stretch" gap={5} mt={10}>
-            <GoogleLogin type="login" setIsLoading={setIsLoading} setAlertMessage={setAlertMessage}  />
-            {/* <Button
-              fontSize={14}
-              fontWeight={500}
-              color={"white"}
-              fontFamily="MADE Outer sans"
-              onClick={() => {}}
-              p={["24px 16px", "24px 46px"]}
-              borderWidth="2px"
-              borderColor={"blueBtn"}
-              borderRadius="0"
-              transition="all 200ms ease-in"
-              w="100%"
-              textAlign="center"
-              _hover={{
-                bg: "transparent",
-                color: "black",
-                borderWidth: "2px",
-                borderColor: "blueBtn",
-              }}
-              mb={[6, 0]}
-              flex={1}
-              bg="blueBtn"
-            >
-              Login with
-              <Box ml={2}>
-                <FaFacebookF size={14} />
-              </Box>
-            </Button>
-            <Button
-              fontSize={14}
-              fontWeight={500}
-              color={"white"}
-              fontFamily="MADE Outer sans"
-              onClick={() => {}}
-              p={["24px 16px", "24px 46px"]}
-              borderWidth="2px"
-              borderColor={"redBtn"}
-              borderRadius="0"
-              transition="all 200ms ease-in"
-              w="100%"
-              textAlign="center"
-              _hover={{
-                bg: "transparent",
-                color: "black",
-                borderWidth: "2px",
-                borderColor: "redBtn",
-              }}
-              mb={[6, 0]}
-              flex={1}
-              bg="redBtn"
-            >
-              Login with{" "}
-              <Box ml={2}>
-                <FcGoogle size={14} />
-              </Box>
-            </Button> */}
+            <GoogleLogin
+              type="login"
+              setIsLoading={setIsLoading}
+              setAlertMessage={setAlertMessage}
+            />
           </Flex>
         </form>
       </Box>
