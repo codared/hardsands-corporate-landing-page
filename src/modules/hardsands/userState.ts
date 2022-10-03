@@ -19,7 +19,7 @@ class MeridianUserState extends UserState {
 
   // notify other analytics tools about user traits changing
   onUserTraitsChange(traits: Record<string, TraitValue>) {
-    console.log('userState - tracking user traits', traits)
+    // console.log('userState - tracking user traits', traits)
     trackUserTraits(traits)
   }
 }

@@ -98,7 +98,7 @@ const Cart = React.forwardRef(
       const order = await createCartOrder(body);
       const routes = getCheckoutRoutes();
 
-      console.log('order >>>>> ', order);
+      // console.log('order >>>>> ', order);
       dispatch(loadOrder(order));
 
       // const couponQuery = overrideCoupon
@@ -144,7 +144,7 @@ const Cart = React.forwardRef(
               display={["block", "none"]}
               mr={10}
               onChange={(val: string) => {
-                console.log(val);
+                // console.log(val);
               }}
             />
           </DrawerHeader>

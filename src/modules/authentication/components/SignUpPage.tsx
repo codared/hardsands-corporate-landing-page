@@ -23,6 +23,7 @@ import AlertMessage, { AlertStatus } from "components/AlertMessage";
 import { getGeoIpCountryCode } from "utils/geoIp";
 import { useRouter } from "next/router";
 import { AUTH_ROUTES } from "../constants";
+import GoogleLogin from "./GoogleLogin";
 
 export default function SignUpPage() {
   const { t } = useTranslation();
@@ -101,7 +102,7 @@ export default function SignUpPage() {
       justify="center"
     >
       <form onSubmit={handleSubmitForm}>
-        <Box padding={10} maxW="565">
+        <Box padding={['1rem',10]} maxW="565">
           {!!alertMessage.status && (
             <AlertMessage
               t={t}
@@ -224,7 +225,8 @@ export default function SignUpPage() {
             </Link>
           </Text>
           <Flex color="white" justify="stretch" gap={5} mt={10}>
-            <Button
+            <GoogleLogin type="signup" setIsLoading={setIsLoading} setAlertMessage={setAlertMessage}  />
+            {/* <Button
               fontSize={14}
               fontWeight={500}
               color={"white"}
@@ -279,7 +281,7 @@ export default function SignUpPage() {
               <Box ml={2}>
                 <FcGoogle size={14} />
               </Box>
-            </Button>
+            </Button> */}
           </Flex>
         </Box>
       </form>

@@ -38,7 +38,7 @@ export function useCouponOverride(
 
   useEffect(() => {
     if (order && coupon && !applied) {
-      console.log('auto applying override_coupon', coupon)
+      // console.log('auto applying override_coupon', coupon)
 
       setApplied(true)
       // dispatch(applyCouponToOrder(coupon))

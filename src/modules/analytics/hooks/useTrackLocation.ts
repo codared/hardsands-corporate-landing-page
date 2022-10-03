@@ -65,7 +65,7 @@ const useTrackLocation = () => {
       userState.initialTraitsPromise.then(() => {
         // setTimeout to ensure that identify call happens before Pageview
         setTimeout(() => {
-          console.log('userState - sending pageview', pageViewAtts)
+          // console.log('userState - sending pageview', pageViewAtts)
           handleTrackPageView(pageViewAtts)
         }, 300)
       })

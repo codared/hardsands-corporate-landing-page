@@ -9,11 +9,11 @@ export const fetchAllProductsCached: ThunkActionCreator<Promise<Product[]>> =
   (currency: string) => async (dispatch, getState) => {
     const products = selectAllProducts(currency)(getState());
     if (products) {
-      console.log(`cache hit on all products ${currency}`);
+      // console.log(`cache hit on all products ${currency}`);
       return products;
     }
 
-    console.log(`cache miss on all products ${currency}`);
+    // console.log(`cache miss on all products ${currency}`);
 
     const countryCode = await getGeoIpCountryCode();
     // const ignoreCountryDiscount = featureFlag("IGNORE_COUNTRY_DISCOUNT", true);
@@ -48,11 +48,11 @@ export const fetchProductCached: ThunkActionCreator<Promise<Product | null>> =
     }
 
     if (product != null) {
-      console.log(`cache hit on single products ${slugOrId} ${currency}`);
+      // console.log(`cache hit on single products ${slugOrId} ${currency}`);
       return product;
     }
 
-    console.log(`cache miss on single products ${slugOrId} ${currency}`);
+    // console.log(`cache miss on single products ${slugOrId} ${currency}`);
 
     const countryCode = await getGeoIpCountryCode();
     // const ignoreCountryDiscount = featureFlag("IGNORE_COUNTRY_DISCOUNT", true);

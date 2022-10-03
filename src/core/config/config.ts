@@ -37,6 +37,7 @@ export const CONFIG = {
     (process.env.NEXT_PUBLIC_CROWDIN_IN_CONTEXT_ENABLED as string) || false,
   TAG_MANAGER_ID: (process.env.NEXT_PUBLIC_TAG_MANAGER_ID as string) || false,
   SENTRY_DSN: (process.env.NEXT_PUBLIC_SENTRY_DSN as string) || "",
+  CLIENT_ID: (process.env.NEXT_PUBLIC_CLIENT_ID as string) || ""
 } as const;
 
 export type SETTINGS = typeof CONFIG;
