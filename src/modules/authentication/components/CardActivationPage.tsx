@@ -336,12 +336,15 @@ function CardActivationPage({
           >
             {showLoginForm ? "Login" : "Activate Card"}
           </Button>
-          {showSignupForm || showLoginForm && (
+          {(showSignupForm || showLoginForm) && (
             <Flex color="white" justify="stretch" gap={5} mt={10}>
               <GoogleLogin
                 type={showLoginForm ? "login" : "signup"}
                 setIsLoading={setIsLoading}
                 setAlertMessage={setAlertMessage}
+                isActivation={true}
+                cardSerial={result.serial}
+                activationCode={values.activationCode}
               />
             </Flex>
           )}

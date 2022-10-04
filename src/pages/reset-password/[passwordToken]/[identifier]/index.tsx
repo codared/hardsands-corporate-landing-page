@@ -8,7 +8,6 @@ const ResetPasswordForm: NextPage<{
   passwordToken: string;
   identifier: number;
 }> = ({ passwordToken, identifier }) => {
-  console.log("props >>> ", { passwordToken, identifier });
 
   return (
     <WithLayout pageTitle="Reset Password | Hardsands">

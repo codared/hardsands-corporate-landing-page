@@ -57,7 +57,7 @@ function computeOnFirstLoad(
   try {
     thesisCookie = JSON.parse(getCookie(THESIS_PAGEVIEW_COOKIE) || 'null')
   } catch (e) {
-    console.error('error reading thesisCookie', e)
+    // console.error('error reading thesisCookie', e)
   }
 
   if (!thesisCookie) {

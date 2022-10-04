@@ -2,7 +2,7 @@ import { useState } from "react";
 import Script from "next/script";
 import { Box } from "@chakra-ui/react";
 import config from "core/config";
-import { verifyGoogleAuth } from "../services";
+import { verifyGoogleAuth, verifyGoogleAuthAndActivateCard } from "../services";
 import { setCookie } from "modules/shared/cookie";
 import { HARDSANDS_LOGIN_COOKIE, APP_ROUTE } from "../constants";
 import { useRouter } from "next/router";
@@ -17,10 +17,16 @@ export default function GoogleLogin({
   type,
   setIsLoading,
   setAlertMessage,
+  isActivation = false,
+  activationCode,
+  cardSerial
 }: {
   type: "signup" | "login";
   setIsLoading: (loading: any) => void;
   setAlertMessage: (message: any) => void;
+  isActivation?: boolean;
+  activationCode?: number | any;
+  cardSerial?: string
 }) {
   const router = useRouter();
 
@@ -59,10 +65,54 @@ export default function GoogleLogin({
     }
   };
 
+  const handleGoogleActivateResponse = async(response: any) => {
+    setIsLoading(true);
+
+    if (!activationCode || !cardSerial) {
+      setAlertMessage({
+        status: "error",
+        name: "Invalid details",
+        message: "Invalid activation code.",
+      });
+      setIsLoading(false);
+      return
+    }
+    const credential = response.credential;
+    //TODO HANDLE ERROR WHERE CREDENTIAL IS NOT RETURNED
+    try {
+      const res = await verifyGoogleAuthAndActivateCard({ token: credential, cardSerial, activationCode });
+      if (res.isError) {
+        setAlertMessage({
+          status: "error",
+          name: res.name,
+          message: res.message as string,
+        });
+      } else {
+        setAlertMessage({
+          status: "success",
+          name: "Redirecting",
+          message: res.result.message as string,
+        });
+        setCookie(HARDSANDS_LOGIN_COOKIE, res.result.token, 365);
+        router.push(APP_ROUTE.home);
+      }
+
+      setIsLoading(false);
+    } catch (error) {
+      // Sentry.exception();
+      setIsLoading(false);
+      setAlertMessage({
+        status: "error",
+        name: "Error",
+        message:
+          "An error occurred logging you in via Google. Please try again or contact support.",
+      });
+    }
+
+  }
   const domain = config("APP_URL");
   const clientId = config("CLIENT_ID");
 
-  console.log(domain, clientId);
   return (
     <>
       <Script
@@ -70,7 +120,7 @@ export default function GoogleLogin({
         onLoad={() => {
           window.google.accounts.id.initialize({
             client_id: clientId,
-            callback: handleCredentialResponse,
+            callback: (activationCode && cardSerial) ? handleGoogleActivateResponse : handleCredentialResponse,
             login_uri:
               type === "login" ? `${domain}/login` : `${domain}/signup`,
             ux_mode: "popup",
