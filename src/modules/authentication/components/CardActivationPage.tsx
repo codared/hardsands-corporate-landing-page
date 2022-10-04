@@ -341,7 +341,7 @@ function CardActivationPage({
               <GoogleLogin
                 type={showLoginForm ? "login" : "signup"}
                 setIsLoading={setIsLoading}
-                setAlertMessage={() => {}}
+                setAlertMessage={setAlertMessage}
               />
             </Flex>
           )}
