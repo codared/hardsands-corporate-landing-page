@@ -7,6 +7,7 @@ import {
   SignUpUserType,
   VerifyEmailType,
   VerifyGoogleAuthType,
+  VerifyGoogleAuthTypeAndCreateCard,
 } from "../types";
 import { storefrontApiJsonFetch } from "../../api";
 import { BackendResponseType } from "utils/types";
@@ -102,6 +103,16 @@ export const verifyEmail = async (data: VerifyEmailType) => {
 
 export const verifyGoogleAuth = async (data: VerifyGoogleAuthType) => {
   const res = (await storefrontApiJsonFetch(`/api/auth/google/login`, {
+    method: "POST",
+    headers: requestJsonHeaders(),
+    body: JSON.stringify(data),
+  })) as BackendResponseType;
+
+  return res;
+};
+
+export const verifyGoogleAuthAndActivateCard = async (data: VerifyGoogleAuthTypeAndCreateCard) => {
+  const res = (await storefrontApiJsonFetch(`/api/cards/google-activate`, {
     method: "POST",
     headers: requestJsonHeaders(),
     body: JSON.stringify(data),

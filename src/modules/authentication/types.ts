@@ -40,3 +40,9 @@ export type VerifyEmailType = {
 export type VerifyGoogleAuthType = {
   token: string
 }
+
+export type VerifyGoogleAuthTypeAndCreateCard = {
+  token: string;
+  activationCode: number;
+  cardSerial: string;
+}
