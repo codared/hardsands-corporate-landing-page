@@ -40,7 +40,9 @@ function MainIndex() {
   const actions = useTypedSelector((state) => state.app?.allActions);
   const cardStatistics = useTypedSelector((state) => state.app?.cardStatistics);
   const cards = useTypedSelector((state) => state.app?.cards as UserCardType[]);
-  const [selectedCard, setSelectedCard] = useState<UserCardType>(cards[0]);
+  const [selectedCard, setSelectedCard] = useState<UserCardType>(
+    {} as UserCardType
+  );
   const { screenState, currentScreenState, handleSelectedTab, handleGoBack } =
     useScreenNavigation();
   const [selectedAction, setSelectedAction] = useState<ActionsType | null>(
@@ -63,14 +65,16 @@ function MainIndex() {
   useEffect(() => {
     reduxDispatch(getUserDetailsAction());
     reduxDispatch(getAllActionsActions());
-    reduxDispatch(getUserCardsAction()).then((cards) => {
-      if (cards && cards.length) {
-        reduxDispatch(getUserCardActionsActions(selectedCard.cardSerial));
-        reduxDispatch(getCardStatisticsAction(selectedCard.cardSerial));
-      }
-    });
+    reduxDispatch(getUserCardsAction());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (selectedCard.cardSerial) {
+      reduxDispatch(getUserCardActionsActions(selectedCard.cardSerial));
+      reduxDispatch(getCardStatisticsAction(selectedCard.cardSerial));
+    }
+  }, [reduxDispatch, selectedCard]);
 
   const handleActionSubmit = (formData: any) => {
     setIsSubmitting(true);
