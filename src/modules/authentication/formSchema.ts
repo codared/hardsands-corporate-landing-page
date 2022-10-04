@@ -17,10 +17,10 @@ export const SignupSchema = Yup.object().shape({
 });
 
 export const CardActivationSchema = Yup.object().shape({
-  productId: Yup.string()
-    .min(6, "Too Short!")
-    .max(6, "Too Long!")
-    .required("Product ID is required"),
+  // productId: Yup.string()
+  //   .min(6, "Too Short!")
+  //   .max(6, "Too Long!")
+  //   .required("Product ID is required"),
   activationCode: Yup.string()
     .min(6, "Too Short!")
     .max(6, "Too Long!")

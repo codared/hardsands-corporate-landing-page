@@ -1,6 +1,7 @@
 import WithLayout from "components/WithLayout";
 import CardActivationPage from "modules/authentication/components/CardActivationPage";
 import type { NextPage, NextPageContext } from "next";
+import { useRouter } from "next/router";
 import { isServerRequest } from "utils/nextjs";
 
 const ActivateCard: NextPage<{ isError: boolean; result: any }> = ({

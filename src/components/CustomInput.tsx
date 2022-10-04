@@ -55,6 +55,7 @@ const CustomInput = forwardRef(
           borderRadius="none"
           isInvalid={isInvalid}
           type={type}
+          disabled={isDisabled}
         />
 
         {!isError ? (

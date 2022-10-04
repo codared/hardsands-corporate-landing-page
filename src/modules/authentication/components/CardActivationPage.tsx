@@ -180,10 +180,10 @@ function CardActivationPage({
                     name={"productId"}
                     label="Product ID"
                     value={result?.productId || values.productId}
-                    isInvalid={!!errors.productId}
-                    isError={!!errors.productId}
+                    // isInvalid={!!errors.productId}
+                    // isError={!!errors.productId}
                     isDisabled
-                    errorMessage={errors.productId}
+                    // errorMessage={errors.productId}
                     onChange={() => {}}
                   />
                 </Box>
