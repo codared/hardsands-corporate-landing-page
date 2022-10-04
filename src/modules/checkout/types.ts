@@ -210,6 +210,7 @@ export interface Order {
     email: string;
     firstName: string;
     lastName: string;
+    agreedToReceiveEmail: boolean;
   };
   draftOrder: boolean;
   total: number;

@@ -28,6 +28,7 @@ import { getGeoIpCountryCode } from "utils/geoIp";
 import Router from "next/router";
 import Link from "next/link";
 import { BackendResponseType } from "utils/types";
+import GoogleLogin from "./GoogleLogin";
 
 function CardActivationPage({
   isError,
@@ -335,7 +336,16 @@ function CardActivationPage({
           >
             {showLoginForm ? "Login" : "Activate Card"}
           </Button>
-          <Flex color="white" justify="stretch" gap={5} mt={10}>
+          {showSignupForm || showLoginForm && (
+            <Flex color="white" justify="stretch" gap={5} mt={10}>
+              <GoogleLogin
+                type={showLoginForm ? "login" : "signup"}
+                setIsLoading={setIsLoading}
+                setAlertMessage={() => {}}
+              />
+            </Flex>
+          )}
+          {/* <Flex color="white" justify="stretch" gap={5} mt={10}>
             <Button
               fontSize={14}
               fontWeight={500}
@@ -392,7 +402,7 @@ function CardActivationPage({
                 <FcGoogle size={14} />
               </Box>
             </Button>
-          </Flex>
+          </Flex> */}
         </form>
       </Box>
     </Flex>

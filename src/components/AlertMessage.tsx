@@ -37,7 +37,7 @@ export default function AlertMessage({
         <Flex>
           <AlertIcon />
           <Flex>
-            <AlertTitle>{t("alert:title", `{{title}}!`, { title })}</AlertTitle>
+            {/* <AlertTitle>{t("alert:title", `{{title}}!`, { title })}</AlertTitle> */}
             <AlertDescription>{showCancelMessage}</AlertDescription>
           </Flex>
         </Flex>

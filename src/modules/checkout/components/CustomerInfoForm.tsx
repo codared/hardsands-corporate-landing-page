@@ -55,7 +55,7 @@ const CustomerInfoForm = ({
       provinceId: shippingDetails?.provinceId || "",
       phoneCode: shippingDetails?.phoneCode || "",
       phone: shippingDetails?.phone || "",
-      agreedToReceiveEmail: shippingDetails?.agreedToReceiveEmail || false,
+      agreedToReceiveEmail: userDetails?.agreedToReceiveEmail || false,
     },
     validationSchema: CustomerInfoSchema,
     onSubmit: handleSubmitCustomerInfoForm,
