@@ -27,6 +27,7 @@ export type UserDetails = {
 export type UserCardType = {
   activatedAt: string;
   cardSerial: string;
+  cardTitle: string;
   productId: string;
   url: string;
 };
@@ -45,6 +46,7 @@ export const enum APP_TAB {
 
 export const enum APP_SCREEN {
   HOME = "HOME",
+  CARD = 'CARD',
   STATS = "STATS",
   ACTIONS = "ACTIONS",
   EDIT = "EDIT",

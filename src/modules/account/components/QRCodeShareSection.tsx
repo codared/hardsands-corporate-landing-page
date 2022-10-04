@@ -15,6 +15,16 @@ import { UserCardType } from "../types";
 const QRCodeShareSection = ({ card }: { card: UserCardType }) => {
   const toast = useToast();
 
+  const handleCopyToClipBoard = () => {
+    navigator.clipboard.writeText(card.url);
+    toast({
+      position: "bottom",
+      title: "Copied!",
+      status: "success",
+      duration: 1000,
+    })
+  };
+
   return (
     <Box p={4} my={8} borderWidth={1} borderStyle="solid">
       <Flex justify={"space-between"}>
@@ -26,6 +36,7 @@ const QRCodeShareSection = ({ card }: { card: UserCardType }) => {
           color="white"
           aria-label="share link"
           icon={<FiShare2 />}
+          onClick={handleCopyToClipBoard}
         />
       </Flex>
       <Box boxSize={250} my={4} mx="auto">
@@ -35,15 +46,7 @@ const QRCodeShareSection = ({ card }: { card: UserCardType }) => {
         justify={"space-between"}
         py={2}
         bg="brand.10"
-        onClick={() => {
-          navigator.clipboard.writeText(card.url);
-          toast({
-            position: "bottom",
-            title: "Copied!",
-            status: "success",
-            duration: 1000,
-          });
-        }}
+        onClick={handleCopyToClipBoard}
         cursor="pointer"
       >
         <Box ml={3} alignSelf={"center"}>

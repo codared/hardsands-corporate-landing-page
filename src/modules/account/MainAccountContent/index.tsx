@@ -24,6 +24,7 @@ import useScreenNavigation from "../hooks";
 import { APP_SCREEN, UserCardType } from "../types";
 import ActionCards from "./components/ActionCards";
 import ActionItem from "./components/ActionItem";
+import CardLists from "./components/CardLists";
 import EditFormScreen from "./components/EditFormScreen";
 import MenuItem from "./components/MenuItem";
 import NavigationBar from "./components/NavigatorBar";
@@ -39,6 +40,7 @@ function MainIndex() {
   const actions = useTypedSelector((state) => state.app?.allActions);
   const cardStatistics = useTypedSelector((state) => state.app?.cardStatistics);
   const cards = useTypedSelector((state) => state.app?.cards as UserCardType[]);
+  const [selectedCard, setSelectedCard] = useState<UserCardType>(cards[0]);
   const { screenState, currentScreenState, handleSelectedTab, handleGoBack } =
     useScreenNavigation();
   const [selectedAction, setSelectedAction] = useState<ActionsType | null>(
@@ -63,8 +65,8 @@ function MainIndex() {
     reduxDispatch(getAllActionsActions());
     reduxDispatch(getUserCardsAction()).then((cards) => {
       if (cards && cards.length) {
-        reduxDispatch(getUserCardActionsActions(cards[0].cardSerial));
-        reduxDispatch(getCardStatisticsAction(cards[0].cardSerial));
+        reduxDispatch(getUserCardActionsActions(selectedCard.cardSerial));
+        reduxDispatch(getCardStatisticsAction(selectedCard.cardSerial));
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -117,7 +119,7 @@ function MainIndex() {
     }
     formData = {
       ...formData,
-      cardSerialId: cards[0].cardSerial,
+      cardSerialId: selectedCard.cardSerial,
       actionId: formData.id,
     };
     let {
@@ -163,7 +165,7 @@ function MainIndex() {
 
   const handleSetDefault = (id: number) => {
     onActionCardDrawerClose();
-    reduxDispatch(setUserCardsActionDefaultAction(cards[0].cardSerial, id));
+    reduxDispatch(setUserCardsActionDefaultAction(selectedCard.cardSerial, id));
   };
 
   const handleEdit = (id: number) => {
@@ -210,7 +212,7 @@ function MainIndex() {
       ) : (
         <Box as={"main"} transition={"all 200ms ease-in-out"}>
           <>
-            {currentScreenState === APP_SCREEN.HOME && (
+            {currentScreenState === APP_SCREEN.CARD && (
               <>
                 <ScreenSelectorTabs
                   currentScreenState={currentScreenState}
@@ -218,8 +220,20 @@ function MainIndex() {
                 />
 
                 {/* QR code share section */}
-                <QRCodeShareSection card={cards[0]} />
+                <QRCodeShareSection card={selectedCard} />
                 {/* End QR code share section */}
+              </>
+            )}
+            {currentScreenState === APP_SCREEN.HOME && (
+              <>
+                {/* Cards list screen  */}
+                <CardLists
+                  cards={cards}
+                  handleCardSelect={(card: UserCardType) => {
+                    setSelectedCard(card);
+                    handleSelectedTab(APP_SCREEN.CARD);
+                  }}
+                />
               </>
             )}
 

@@ -74,23 +74,6 @@ const HomeProductCard = ({
             {t("common:shop-now", "Shop Now")}
           </HardsandsButton>
           <Box height={3} width={3} />
-          {/* <HardsandsButton
-            // @ts-ignore
-            border="1px solid black"
-            fontSize={"xs"}
-            bg={"transparent"}
-            color="black"
-            w="100%"
-            p={["12px 16px"]}
-            textAlign="center"
-            _hover={{
-              bg: "black",
-              color: "brand.300",
-            }}
-            iconMargin="20px"
-          >
-            {t("common:customize", "Customize")}
-          </HardsandsButton> */}
         </Flex>
       </Box>
     </Box>

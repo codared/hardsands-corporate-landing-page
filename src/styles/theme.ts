@@ -54,7 +54,7 @@ const fontSizes = {
   xs: [".6875rem", null, ".6875rem"],
 };
 
-const colors = {
+export const colors = {
   transparent: "transparent",
   current: "currentColor",
   black: "#000",
