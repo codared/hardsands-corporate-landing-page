@@ -5,15 +5,18 @@ import { useState } from "react";
 import { TFunction } from "react-i18next";
 import PaystackButtonComponent from "../paymentMethods/Paystack";
 import { Order } from "../types";
+import LoadingSpinner from "./LoadingSpinner";
 
 const PaymentMethods = ({
   order,
   t,
   handleCancel,
+  setProcessingPayment,
 }: {
   t: TFunction;
   order: Order;
   handleCancel: (message: string) => void;
+  setProcessingPayment: (loading: boolean) => void;
 }) => {
   const [payment, setPayment] = useState<number | null>(null);
 
@@ -31,6 +34,7 @@ const PaymentMethods = ({
                 <PaystackButtonComponent
                   order={order}
                   handleCancel={handleCancel}
+                  setLoading={setProcessingPayment}
                 />
               ),
             };

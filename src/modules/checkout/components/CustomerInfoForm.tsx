@@ -197,7 +197,9 @@ const CustomerInfoForm = ({
           <Checkbox
             name="agreedToReceiveEmail"
             colorScheme={"orange"}
-            checked={values.agreedToReceiveEmail}
+            defaultChecked={
+              values.agreedToReceiveEmail || userDetails.agreedToReceiveEmail
+            }
             fontSize={"smaller"}
             onChange={handleChange}
           >

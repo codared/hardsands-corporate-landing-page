@@ -2,7 +2,7 @@ import { Flex, Box } from "@chakra-ui/react";
 import { ACTION_FORM_STATUS } from "modules/account/constants";
 import { MdArrowBackIos } from "react-icons/md";
 import { ActionsType } from "utils/types";
-import { APP_SCREEN } from "../../types";
+import { APP_SCREEN, UserCardType } from "../../types";
 import AddAction from "./AddAction";
 
 const NavigationBar = ({
@@ -14,11 +14,13 @@ const NavigationBar = ({
   setSelectedAction,
   actions,
   setFormStatus,
+  card,
 }: {
   text?: string;
   actions: ActionsType[];
   currentScreenState: APP_SCREEN;
   screenState: Array<APP_SCREEN>;
+  card?: UserCardType;
   handleScreenChange: (screen: APP_SCREEN) => void;
   handleSelectedTab: (tab: APP_SCREEN) => void;
   setSelectedAction: (action: ActionsType) => void;
@@ -39,7 +41,7 @@ const NavigationBar = ({
           <Box ml={3} alignSelf={"center"}>
             <MdArrowBackIos size={20} />
           </Box>
-          {text}
+          {card?.cardTitle || text}
         </Flex>
       ) : (
         <Box>Home</Box>

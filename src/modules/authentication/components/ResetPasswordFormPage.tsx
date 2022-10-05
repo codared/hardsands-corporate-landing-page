@@ -31,6 +31,7 @@ function ResetPasswordFormPage({
     message: "",
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showErrorMessages, setShowErrorMessages] = useState<boolean>(false);
 
   const handleSubmitForm = async (e: any) => {
     e.preventDefault();
@@ -64,6 +65,8 @@ function ResetPasswordFormPage({
         // Sentry.exception();
         setIsLoading(false);
       }
+    } else {
+      setShowErrorMessages(true);
     }
     setIsLoading(false);
   };
@@ -111,8 +114,8 @@ function ResetPasswordFormPage({
               onChange={handleChange}
               value={values.password}
               isRequired
-              isInvalid={!!errors.password}
-              isError={!!errors.password}
+              // isInvalid={!!errors.password}
+              isError={showErrorMessages && !!errors.password}
               errorMessage={errors.password}
             />
           </Box>

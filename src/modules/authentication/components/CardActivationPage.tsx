@@ -6,6 +6,7 @@ import {
   Text,
   Grid,
   Checkbox,
+  Divider,
 } from "@chakra-ui/react";
 import _ from "lodash";
 import AlertMessage, { AlertStatus } from "components/AlertMessage";
@@ -51,6 +52,7 @@ function CardActivationPage({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showSignupForm, setShowSignupForm] = useState<boolean>(false);
   const [showLoginForm, setShowLoginForm] = useState<boolean>(false);
+  const [showErrorMessages, setShowErrorMessages] = useState<boolean>(false);
   const [country, setCountry] = useState<string | null>(null);
 
   const init = async () => {
@@ -128,6 +130,8 @@ function CardActivationPage({
         // Sentry.exception();
         setIsLoading(false);
       }
+    } else {
+      setShowErrorMessages(true);
     }
     setIsLoading(false);
   };
@@ -169,6 +173,19 @@ function CardActivationPage({
           />
         )}
         <Heading mb={5}>Activate Card</Heading>
+        {(showSignupForm || showLoginForm) && (
+          <Flex color="white" justify="stretch" gap={5} mt={10}>
+            <GoogleLogin
+              type={showLoginForm ? "login" : "signup"}
+              setIsLoading={setIsLoading}
+              setAlertMessage={setAlertMessage}
+              isActivation={true}
+              cardSerial={result.serial}
+              activationCode={values.activationCode}
+            />
+          </Flex>
+        )}
+        <Divider my={10} />
         <form onSubmit={handleSubmitForm}>
           {!showLoginForm && !showSignupForm && (
             <>
@@ -197,8 +214,8 @@ function CardActivationPage({
                     onChange={handleChange}
                     value={values.activationCode?.toString()}
                     isRequired
-                    isInvalid={!!errors.activationCode}
-                    isError={!!errors.activationCode}
+                    // isInvalid={!!errors.activationCode}
+                    isError={showErrorMessages && !!errors.activationCode}
                     errorMessage={errors.activationCode}
                   />
                 </Box>
@@ -210,8 +227,8 @@ function CardActivationPage({
                   name={"email"}
                   label="Email"
                   value={values.email}
-                  isInvalid={!!errors.email}
-                  isError={!!errors.email}
+                  // isInvalid={!!errors.email}
+                  isError={showErrorMessages && !!errors.email}
                   isRequired
                   errorMessage={errors.email}
                   onChange={handleChange}
@@ -231,8 +248,8 @@ function CardActivationPage({
                   onChange={handleChange}
                   value={values.password}
                   isRequired
-                  isInvalid={!!errors.password}
-                  isError={!!errors.password}
+                  // isInvalid={showErrorMessages && !!errors.password}
+                  isError={showErrorMessages && !!errors.password}
                   errorMessage={errors.password}
                 />
               </Box>
@@ -258,8 +275,8 @@ function CardActivationPage({
                     value={values.firstName}
                     onChange={handleChange}
                     isRequired
-                    isInvalid={!!errors.firstName}
-                    isError={!!errors.firstName}
+                    // isInvalid={!!errors.firstName}
+                    isError={showErrorMessages && !!errors.firstName}
                     errorMessage={errors.firstName}
                   />
                 </Box>
@@ -272,8 +289,8 @@ function CardActivationPage({
                     value={values.lastName}
                     onChange={handleChange}
                     isRequired
-                    isInvalid={!!errors.lastName}
-                    isError={!!errors.lastName}
+                    // isInvalid={!!errors.lastName}
+                    isError={showErrorMessages && !!errors.lastName}
                     errorMessage={errors.lastName}
                   />
                 </Box>
@@ -288,8 +305,8 @@ function CardActivationPage({
                   onChange={handleChange}
                   value={values.password}
                   isRequired
-                  isInvalid={!!errors.password}
-                  isError={!!errors.password}
+                  // isInvalid={!!errors.password}
+                  isError={showErrorMessages && !!errors.password}
                   errorMessage={errors.password}
                 />
               </Box>
@@ -336,18 +353,7 @@ function CardActivationPage({
           >
             {showLoginForm ? "Login" : "Activate Card"}
           </Button>
-          {(showSignupForm || showLoginForm) && (
-            <Flex color="white" justify="stretch" gap={5} mt={10}>
-              <GoogleLogin
-                type={showLoginForm ? "login" : "signup"}
-                setIsLoading={setIsLoading}
-                setAlertMessage={setAlertMessage}
-                isActivation={true}
-                cardSerial={result.serial}
-                activationCode={values.activationCode}
-              />
-            </Flex>
-          )}
+
           {/* <Flex color="white" justify="stretch" gap={5} mt={10}>
             <Button
               fontSize={14}

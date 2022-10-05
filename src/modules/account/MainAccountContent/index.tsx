@@ -210,6 +210,7 @@ function MainIndex() {
         actions={actions as ActionsType[]}
         setSelectedAction={setSelectedAction}
         setFormStatus={setFormStatus}
+        card={selectedCard}
       />
       {!cards || !cards.length ? (
         <NoCardMessage />

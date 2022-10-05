@@ -24,6 +24,7 @@ function ResetPassword() {
     message: "",
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showErrorMessages, setShowErrorMessages] = useState<boolean>(false);
 
   const handleSubmitForm = async (e: any) => {
     e.preventDefault();
@@ -52,6 +53,8 @@ function ResetPassword() {
         // Sentry.exception();
         setIsLoading(false);
       }
+    } else {
+      setShowErrorMessages(true);
     }
     setIsLoading(false);
   };
@@ -98,8 +101,8 @@ function ResetPassword() {
                   name={"email"}
                   label="Email"
                   value={values.email}
-                  isInvalid={!!errors.email}
-                  isError={!!errors.email}
+                  // isInvalid={!!errors.email}
+                  isError={showErrorMessages && !!errors.email}
                   isRequired
                   errorMessage={errors.email}
                   onChange={handleChange}

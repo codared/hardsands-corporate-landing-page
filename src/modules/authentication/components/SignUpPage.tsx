@@ -6,11 +6,12 @@ import {
   Button,
   Text,
   Checkbox,
+  Divider,
+  Link,
 } from "@chakra-ui/react";
 import _ from "lodash";
 import CustomInput from "components/CustomInput";
 import { useFormik } from "formik";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { FaFacebookF } from "react-icons/fa";
@@ -40,6 +41,7 @@ export default function SignUpPage() {
   const [country, setCountry] = useState<string | null>(null);
   const dispatch = useTypedDispatch();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showErrorMessages, setShowErrorMessages] = useState<boolean>(false);
 
   const init = async () => {
     const _country = await getGeoIpCountryCode();
@@ -76,6 +78,8 @@ export default function SignUpPage() {
         // Sentry.exception();
         setIsLoading(false);
       }
+    } else {
+      setShowErrorMessages(true);
     }
     setIsLoading(false);
   };
@@ -116,6 +120,14 @@ export default function SignUpPage() {
           )}
           <Heading mb={10}>Sign Up</Heading>
           {/* <Text mb={5}>Activate your Hardsands card to get started! 😎</Text> */}
+          <Flex color="white" justify="stretch" gap={5} mt={10}>
+            <GoogleLogin
+              type="signup"
+              setIsLoading={setIsLoading}
+              setAlertMessage={setAlertMessage}
+            />
+          </Flex>
+          <Divider my={10} />
           <Grid templateColumns={["", "repeat(2, 1fr)"]} gap={6} mb={5}>
             <Box>
               <CustomInput
@@ -123,11 +135,11 @@ export default function SignUpPage() {
                 placeholder="Your First Name"
                 name={"firstName"}
                 label="First Name"
-                value={values.firstName}
+                defaultValue={values.firstName}
                 onChange={handleChange}
                 isRequired
-                isInvalid={!!errors.firstName}
-                isError={!!errors.firstName}
+                // isInvalid={!!errors.firstName}
+                isError={showErrorMessages && !!errors.firstName}
                 errorMessage={errors.firstName}
               />
             </Box>
@@ -137,11 +149,11 @@ export default function SignUpPage() {
                 placeholder="Your Last Name"
                 name={"lastName"}
                 label="Last Name"
-                value={values.lastName}
+                defaultValue={values.lastName}
                 onChange={handleChange}
                 isRequired
-                isInvalid={!!errors.lastName}
-                isError={!!errors.lastName}
+                // isInvalid={!!errors.lastName}
+                isError={showErrorMessages && !!errors.lastName}
                 errorMessage={errors.lastName}
               />
             </Box>
@@ -153,9 +165,9 @@ export default function SignUpPage() {
               name={"email"}
               label="Email"
               value={values.email}
-              isInvalid={!!errors.email}
-              isError={!!errors.email}
-              isRequired
+              // isInvalid={!!errors.email}
+              isError={showErrorMessages && !!errors.email}
+              // isRequired
               errorMessage={errors.email}
               onChange={handleChange}
             />
@@ -169,9 +181,9 @@ export default function SignUpPage() {
               type="password"
               onChange={handleChange}
               value={values.password}
-              isRequired
-              isInvalid={!!errors.password}
-              isError={!!errors.password}
+              // isRequired
+              // isInvalid={!!errors.password}
+              isError={showErrorMessages && !!errors.password}
               errorMessage={errors.password}
             />
           </Box>
@@ -224,13 +236,6 @@ export default function SignUpPage() {
               Log in
             </Link>
           </Text>
-          <Flex color="white" justify="stretch" gap={5} mt={10}>
-            <GoogleLogin
-              type="signup"
-              setIsLoading={setIsLoading}
-              setAlertMessage={setAlertMessage}
-            />
-          </Flex>
         </Box>
       </form>
     </Flex>

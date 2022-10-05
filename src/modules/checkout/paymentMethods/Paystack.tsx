@@ -14,8 +14,10 @@ const publicKey = config("PAYSTACK_PUBLIC_KEY");
 const PaystackButtonComponent = ({
   order,
   handleCancel,
+  setLoading,
 }: {
   order: Order;
+  setLoading: (loading: boolean) => void;
   handleCancel: (message: string) => void;
 }) => {
   const currency = useCurrency() as PaystackCurrencyTypes;
@@ -31,6 +33,7 @@ const PaystackButtonComponent = ({
   } = order;
 
   const handleOrderPaymentCheck = async () => {
+    setLoading(true);
     // Call the check order endpoint
     // if response and draftorder is true then payment is complete
     const res = await completeOrderCheck({
@@ -39,15 +42,16 @@ const PaystackButtonComponent = ({
     });
 
     if (res.isError || res.result.draftOrder) {
-      track.trackPaymentError("paystack")
+      track.trackPaymentError("paystack");
       return handleCancel(res.message as string);
     }
 
     if (!res.result.draftOrder) {
-      track.trackOrderPurchase(res.result)
+      setLoading(false);
+      track.trackOrderPurchase(res.result);
       return router.push(`/checkout/${checkoutHash}/confirmation`);
     }
-    return; // not complete;
+    return setLoading(false); // not complete;
   };
 
   const componentProps = {
@@ -61,14 +65,14 @@ const PaystackButtonComponent = ({
     currency,
     text: "Pay with Paystack",
     onSuccess: handleOrderPaymentCheck,
-
     // onSuccess: () => router.push(`/checkout/${checkoutHash}/confirmation`),
-    onClose: () => handleCancel("You haven't made the payment complete!!!!"),
+    onClose: () => {},
+    // onClose: () => handleCancel("Your Payment wasn't Successful!!!"),
   };
 
   const trackPaystack = () => {
-    track.trackPaymentAttempted({ method: 'paystack' })
-  }
+    track.trackPaymentAttempted({ method: "paystack" });
+  };
 
   return (
     <Box

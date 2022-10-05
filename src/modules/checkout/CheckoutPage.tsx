@@ -16,8 +16,12 @@ import { CheckoutContext } from "redux/context";
 import { saveCustomerInfo, saveShippingMethod } from "./actions";
 import AlertMessage from "components/AlertMessage";
 import { EcommerceCartAction } from "modules/analytics/types";
-import { trackBeginCheckout, trackCheckoutStep } from "modules/analytics/functions/track";
+import {
+  trackBeginCheckout,
+  trackCheckoutStep,
+} from "modules/analytics/functions/track";
 import track from "./analytics";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 interface CheckoutPageProp {
   checkoutId: string;
@@ -25,7 +29,7 @@ interface CheckoutPageProp {
 }
 
 const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
-  const beginCheckoutTracked = useRef(false)
+  const beginCheckoutTracked = useRef(false);
   const { t } = useTranslation();
   const { dispatch } = useContext(CheckoutContext);
   const order = useOrder(checkoutId) as Order;
@@ -34,6 +38,7 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
   const [showCancelMessageError, setShowCancelMessageError] = useState<
     string | null
   >(null);
+  const [processingPayment, setProcessingPayment] = useState(false);
 
   const [activeStep, setActiveStep] = useState(
     CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM
@@ -51,33 +56,37 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
 
   useEffect(() => {
     if (!order || beginCheckoutTracked.current) {
-      return
+      return;
     }
 
-    const products: EcommerceCartAction[]  = order.items.map(item => ({
+    const products: EcommerceCartAction[] = order.items.map((item) => ({
       id: item.product.id,
       quantity: item.quantity,
       name: item.title,
       variant: item.productVariantKey,
-      price: item.price/100,
+      price: item.price / 100,
       currency: item.currency,
       cartId: order.cartId,
-      category: item.productVariantKey?.toLowerCase() === "plain" || item.productVariantKey?.toLowerCase() === "customized" ? "CARD" : "EPOXY"
-    })) 
+      category:
+        item.productVariantKey?.toLowerCase() === "plain" ||
+        item.productVariantKey?.toLowerCase() === "customized"
+          ? "CARD"
+          : "EPOXY",
+    }));
 
-    trackBeginCheckout(products)
-    beginCheckoutTracked.current = true
-  }, [order])
+    trackBeginCheckout(products);
+    beginCheckoutTracked.current = true;
+  }, [order]);
 
   useEffect(() => {
     if (!activeStep) {
-      return
-    } 
-    
+      return;
+    }
+
     trackCheckoutStep(activeStep, {
-      cartId: order.cartId
-    })
-  }, [activeStep])
+      cartId: order.cartId,
+    });
+  }, [activeStep]);
 
   const handleSubmitCustomerInfoForm = async (
     values: Values,
@@ -86,9 +95,8 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
     setIsLoading(true);
     if (_.isEmpty(errors)) {
       try {
-        const res = await dispatch(saveCustomerInfo(values)) as Order;
-        console.log('userDAta', res.userDetails)
-        track.trackIdentifyUser(res.userDetails)
+        const res = (await dispatch(saveCustomerInfo(values))) as Order;
+        track.trackIdentifyUser(res.userDetails);
 
         setActiveStep(CHECKOUT_STEPS.STEP_SHIPPING_INFO_CONFIRMATION);
         setIsLoading(false);
@@ -125,23 +133,29 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
 
   if (!order) {
     return (
-      <Flex
-        p={[20, 40]}
-        flex={1}
-        justifyContent={"center"}
-        direction={"column"}
-        alignItems={"center"}
-        bg="rgba(255, 255, 255, .7)"
-      >
-        <Spinner size="xl" />
-        <Box h={8} />
-        <Text>{t("checkout:getting-your-order", "Getting Your Order...")}</Text>
-      </Flex>
+      <LoadingSpinner
+        text={t("checkout:getting-your-order", "Getting Your Order...")}
+      />
     );
   }
 
   return (
-    <Container maxW={"4xl"} py={20}>
+    <Container maxW={"4xl"} py={20} position={"relative"}>
+      {processingPayment && (
+        <Box
+          position={"absolute"}
+          bg={"rgba(255, 255, 255, .5)"}
+          bottom={0}
+          top={0}
+          left={0}
+          right={0}
+          zIndex={1}
+        >
+          <LoadingSpinner
+            text={t("checkout:processing-payment", "Processing Payment...")}
+          />
+        </Box>
+      )}
       <CheckoutBreakcrumbs
         activeStep={activeStep}
         setActiveStep={setActiveStep}
@@ -178,6 +192,7 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
               t={t}
               order={order}
               handleCancel={handleCancel}
+              setProcessingPayment={setProcessingPayment}
             />
           )}
           {isLoading && (

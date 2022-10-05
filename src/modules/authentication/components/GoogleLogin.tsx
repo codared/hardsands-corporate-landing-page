@@ -142,7 +142,7 @@ export default function GoogleLogin({
         width="full"
         id="buttonDiv"
         display={"flex"}
-        justifyContent="center"
+        justifyContent="flex-start"
         alignItems={"center"}
       ></Box>
     </>

@@ -1,4 +1,4 @@
-import { Flex, Heading, Box, Link, Button, Text } from "@chakra-ui/react";
+import { Flex, Heading, Box, Link, Button, Text, Divider } from "@chakra-ui/react";
 import _ from "lodash";
 import AlertMessage, { AlertStatus } from "components/AlertMessage";
 import CustomInput from "components/CustomInput";
@@ -28,6 +28,7 @@ function LoginPage() {
     message: "",
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showErrorMessages, setShowErrorMessages] = useState<boolean>(false);
 
   const handleSubmitForm = async (e: any) => {
     e.preventDefault();
@@ -58,6 +59,8 @@ function LoginPage() {
         // Sentry.exception();
         setIsLoading(false);
       }
+    } else {
+      setShowErrorMessages(true);
     }
     setIsLoading(false);
   };
@@ -93,6 +96,14 @@ function LoginPage() {
         )}
         <Heading mb={5}>Login</Heading>
         <Text mb={5}>Welcome back, Login 😎</Text>
+        <Flex color="white" justify="stretch" gap={5} mt={10}>
+          <GoogleLogin
+            type="login"
+            setIsLoading={setIsLoading}
+            setAlertMessage={setAlertMessage}
+          />
+        </Flex>
+        <Divider my={10} />
         <form onSubmit={handleSubmitForm}>
           <Box mb={5}>
             <CustomInput
@@ -102,7 +113,7 @@ function LoginPage() {
               label="Email"
               value={values.email}
               isInvalid={!!errors.email}
-              isError={!!errors.email}
+              isError={showErrorMessages && !!errors.email}
               isRequired
               errorMessage={errors.email}
               onChange={handleChange}
@@ -118,8 +129,8 @@ function LoginPage() {
               onChange={handleChange}
               value={values.password}
               isRequired
-              isInvalid={!!errors.password}
-              isError={!!errors.password}
+              // isInvalid={!!errors.password}
+              isError={showErrorMessages && !!errors.password}
               errorMessage={errors.password}
             />
           </Box>
@@ -161,13 +172,6 @@ function LoginPage() {
               Sign up
             </Link>
           </Text>
-          <Flex color="white" justify="stretch" gap={5} mt={10}>
-            <GoogleLogin
-              type="login"
-              setIsLoading={setIsLoading}
-              setAlertMessage={setAlertMessage}
-            />
-          </Flex>
         </form>
       </Box>
     </Flex>
