@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
 import { UserCardType } from "modules/account/types";
-import { getProductImageFromSlug } from "modules/products/functions";
+import { getCardImageFromSlug } from "modules/products/functions";
 import productRoutes from "modules/products/routes";
 import React from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -48,12 +48,7 @@ const CardBox = ({
   card: UserCardType;
   handleCardSelect: () => void;
 }) => {
-  const cardTitle =
-    slugify(card.cardTitle) === "epoxy-tag-black"
-      ? "hardsands-epoxy-pvc"
-      : slugify(card.cardTitle);
-
-  const variantKey = cardTitle === "hardsands-epoxy-pvc" ? "Black" : "Plain";
+  const cardTitle = slugify(card.cardTitle);
 
   return (
     <Box>
@@ -69,7 +64,7 @@ const CardBox = ({
       >
         <Box>
           <Image
-            src={getProductImageFromSlug(cardTitle, variantKey)}
+            src={getCardImageFromSlug(cardTitle)}
             alt={card.cardTitle}
             objectFit="cover"
           />

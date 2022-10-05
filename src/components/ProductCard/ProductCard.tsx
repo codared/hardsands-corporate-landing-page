@@ -125,7 +125,7 @@ export const ProductCard = ({
 
   const handleVariantChange = (variant: string) => {
     const query = queryString.stringify({ variant });
-    setProductDetailsURL(`${productDetailsURL}?${query}`);
+    // setProductDetailsURL(`${productDetailsURL}?${query}`);
     setVariant(variant);
   };
 
@@ -139,20 +139,20 @@ export const ProductCard = ({
 
   return (
     <HardsandLink
-      href={productDetailsURL}
+      href={`${productDetailsURL}?variant=${variant}`}
       outline="none"
       _hover={{ color: "unset" }}
       _focus={{
         outline: "none !important",
       }}
       height="100%"
-      mb={20}
+      // mb={20}
     >
       <Box
         bg={useColorModeValue("white", "gray.800")}
         position="relative"
         mb={[0]}
-        height="100%"
+        // height="100%"
         // border="1px solid #F4E9E1"
       >
         <Image
@@ -209,7 +209,7 @@ export const ProductCard = ({
             </Flex>
             <HardsandsButton
               text={"Shop Now".toUpperCase()}
-              href={productDetailsURL}
+              href={`${productDetailsURL}?variant=${variant}`}
               // @ts-ignore
               w={"full"}
               p={["12px 16px", "10px 25px"]}

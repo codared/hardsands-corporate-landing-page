@@ -17,17 +17,24 @@ interface AccordionItemProps {
 interface HardsandsAccordionProps {
   accordionItems: AccordionItemProps[];
   isMultiple?: boolean;
+  pre?: boolean;
+  isExpanded?: boolean;
 }
 
 const HardsandsAccordion = ({
   accordionItems,
   isMultiple = true,
+  pre = false,
+  isExpanded = false,
 }: HardsandsAccordionProps) => {
   return (
-    <Accordion allowMultiple={isMultiple}>
+    <Accordion
+      defaultIndex={isExpanded ? [0] : 0}
+      allowMultiple={isMultiple}
+    >
       {accordionItems &&
         accordionItems.map(({ title, description }: AccordionItemProps) => (
-          <AccordionItem key={title}>
+          <AccordionItem defaultChecked key={title}>
             {({ isExpanded }) => (
               <>
                 <h2>
@@ -44,7 +51,18 @@ const HardsandsAccordion = ({
                     )}
                   </AccordionButton>
                 </h2>
-                <AccordionPanel pb={4}>{description}</AccordionPanel>
+                {pre ? (
+                  <AccordionPanel
+                    pb={4}
+                    as="pre"
+                    fontFamily={"Campton"}
+                    whiteSpace="pre-wrap"
+                  >
+                    {description}
+                  </AccordionPanel>
+                ) : (
+                  <AccordionPanel pb={4}>{description}</AccordionPanel>
+                )}
               </>
             )}
           </AccordionItem>

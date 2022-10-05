@@ -61,10 +61,7 @@ const ProductDescriptionSection = ({
       title: t("pdp:how-it-works", "How it works"),
       description: t(
         "pdp:how-it-works:description",
-        `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-			eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-			enim ad minim veniam, quis nostrud exercitation ullamco laboris
-			nisi ut aliquip ex ea commodo consequat.`
+        `${productDetails["how-it-works"]}`
       ),
     },
   ];
@@ -92,7 +89,9 @@ const ProductDescriptionSection = ({
         </Flex>
       </Flex>
       <Box h={8} />
-      <Text>{t("product:description", `${productDetails.description}`)}</Text>
+      <Text as="pre" fontFamily={"Campton"} whiteSpace="pre-wrap">
+        {t("product:description", `${productDetails.description}`)}
+      </Text>
       <Box h={8} />
       <Flex w="full">
         <VariantSelector
@@ -135,7 +134,7 @@ const ProductDescriptionSection = ({
       </Flex>
       <Box h={8} />
       {/* <Divider my={8} /> */}
-      <HardsandsAccordion accordionItems={accordionItems} />
+      <HardsandsAccordion accordionItems={accordionItems} pre />
       {/* <Divider my={8} /> */}
       <Cart
         isOpen={isCartOpen}

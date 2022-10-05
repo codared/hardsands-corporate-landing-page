@@ -47,6 +47,7 @@ const ProductDetailSection = ({
       })
 
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeVariant, product.variants])
 
 

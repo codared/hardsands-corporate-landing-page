@@ -29,6 +29,7 @@ export interface Product {
   image?: string;
   title: string;
   description: string;
+  "how-it-works": string;
   tags: Array<string>;
   slug: string;
   options: ProductOptions;

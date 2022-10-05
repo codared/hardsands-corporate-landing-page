@@ -1,44 +1,26 @@
-import { PRODUCT_IMAGES } from "./constants";
+import { CARD_IMAGES, PRODUCTS } from "./constants";
 import { Product } from "./types";
 
 export const mergeProductsImages = (products: Product[]) => {
   return products.map((prod) => {
-    const isEpoxy = prod.id === 2;
-    if (isEpoxy) {
-      prod.variants.Black = {
-        ...prod.variants.Black,
-        images: PRODUCT_IMAGES[prod.slug]["Black"],
-      };
-      prod.variants.Sandtone = {
-        ...prod.variants.Sandtone,
-        images: PRODUCT_IMAGES[prod.slug]["Sandtone"],
-      };
-
-      return prod;
-    }
-    prod.variants.Customized = {
-      ...prod.variants.Customized,
-      images: PRODUCT_IMAGES[prod.slug]["Customized"],
-    };
-    prod.variants.Plain = {
-      ...prod.variants.Plain,
-      images: PRODUCT_IMAGES[prod.slug]["Plain"],
-    };
-
-    return prod;
+    return mergeProductImages(prod);
   });
 };
 
 export const mergeProductImages = (product: Product) => {
   const isEpoxy = product.id === 2;
+  // add description and how it works texts
+  product.description = PRODUCTS[product.slug]["description"];
+  product["how-it-works"] = PRODUCTS[product.slug]["how-it-works"];
+
   if (isEpoxy) {
     product.variants.Black = {
       ...product.variants.Black,
-      images: PRODUCT_IMAGES[product.slug]["Black"],
+      images: PRODUCTS[product.slug]["Black"],
     };
     product.variants.Sandtone = {
       ...product.variants.Sandtone,
-      images: PRODUCT_IMAGES[product.slug]["Sandtone"],
+      images: PRODUCTS[product.slug]["Sandtone"],
     };
 
     return product;
@@ -46,16 +28,20 @@ export const mergeProductImages = (product: Product) => {
 
   product.variants.Customized = {
     ...product.variants.Customized,
-    images: PRODUCT_IMAGES[product.slug]["Customized"],
+    images: PRODUCTS[product.slug]["Customized"],
   };
   product.variants.Plain = {
     ...product.variants.Plain,
-    images: PRODUCT_IMAGES[product.slug]["Plain"],
+    images: PRODUCTS[product.slug]["Plain"],
   };
 
   return product;
 };
 
 export const getProductImageFromSlug = (slug: string, variantKey: string) => {
-  return PRODUCT_IMAGES[slug][variantKey][0];
+  return PRODUCTS[slug][variantKey][0];
+};
+
+export const getCardImageFromSlug = (slug: string) => {
+  return CARD_IMAGES[slug][0];
 };
