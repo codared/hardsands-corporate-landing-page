@@ -35,11 +35,11 @@ const HomePage = () => {
       {/* End More Than Just a Business Card section */}
 
       {/* Previous Designed Card Section */}
-      <PreviousDesignedCardSection />
+      {/* <PreviousDesignedCardSection /> */}
       {/* End Previous Designed Card Section */}
 
       {/* Review Section */}
-      <ReviewSection />
+      {/* <ReviewSection /> */}
       {/* End Review Section */}
 
       {/* Get Started Section */}

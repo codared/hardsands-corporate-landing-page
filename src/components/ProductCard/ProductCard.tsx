@@ -20,6 +20,7 @@ import { ProductCardProps } from "./type";
 import VariantSelector from "./VariantSelector";
 import { EcommerceProduct } from "modules/analytics/types";
 import useTrackProductImpression from "modules/analytics/hooks/useTrackProductImpression";
+import { getProductImageFromSlug } from "modules/products/functions";
 
 const data = {
   isNew: true,
@@ -49,11 +50,11 @@ export const PreviewProductCard = ({
   const eCommerceProd: EcommerceProduct = {
     id,
     name,
-    price: productDetails.variants[variant].price
-  }
+    price: productDetails.variants[variant].price,
+  };
 
-  useTrackProductImpression(eCommerceProd, selectedCurrency, pushImpression)
-
+  const productImage = getProductImageFromSlug(productDetails.slug, variant);
+  useTrackProductImpression(eCommerceProd, selectedCurrency, pushImpression);
 
   return (
     <HardsandLink
@@ -71,7 +72,7 @@ export const PreviewProductCard = ({
         // border="1px solid #F4E9E1"
       >
         <Image
-          src={img}
+          src={productImage || img}
           alt={`Picture of ${data.name}`}
           objectFit="cover"
           w="100%"
@@ -123,6 +124,8 @@ export const ProductCard = ({
     selectedCurrency
   );
 
+  const productImage = getProductImageFromSlug(productDetails.slug, variant);
+
   const handleVariantChange = (variant: string) => {
     const query = queryString.stringify({ variant });
     // setProductDetailsURL(`${productDetailsURL}?${query}`);
@@ -132,10 +135,10 @@ export const ProductCard = ({
   const eCommerceProd: EcommerceProduct = {
     id,
     name,
-    price: productDetails.variants[variant].price
-  }
+    price: productDetails.variants[variant].price,
+  };
 
-  useTrackProductImpression(eCommerceProd, selectedCurrency, pushImpression)
+  useTrackProductImpression(eCommerceProd, selectedCurrency, pushImpression);
 
   return (
     <HardsandLink
@@ -156,7 +159,7 @@ export const ProductCard = ({
         // border="1px solid #F4E9E1"
       >
         <Image
-          src={img}
+          src={productImage || img}
           alt={`Picture of ${data.name}`}
           objectFit="cover"
           w="100%"

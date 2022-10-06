@@ -13,8 +13,9 @@ const ShopPLP = () => {
   const { state } = useContext(CheckoutContext);
   const { t } = useTranslation();
   const selectedCurrency = state.cart.selectedCurrency;
-  const products = useTypedSelector((state) => state?.products?.all[selectedCurrency]);
-
+  const products = useTypedSelector(
+    (state) => state?.products?.all[selectedCurrency]
+  );
 
   return (
     <>

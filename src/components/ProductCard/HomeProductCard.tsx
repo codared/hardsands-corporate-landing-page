@@ -39,7 +39,7 @@ const HomeProductCard = ({
         <Image src={img} alt={`Picture of ${name}`} objectFit="cover" />
       </Box>
 
-      <Box px={[2, 6]} pb={[2, 6]}>
+      <Box px={[2, 6]} py={[2, 6]}>
         <Flex justify="space-between" alignItems="flex-end" mb={4}>
           <Heading fontWeight="bolder" textTransform="uppercase" fontSize="lg">
             {name}
@@ -47,7 +47,9 @@ const HomeProductCard = ({
           <Text fontWeight="bolder">{price}</Text>
         </Flex>
 
-        <Text mb={8}>{description}</Text>
+        <Text mb={8} fontSize={[12, 14]} noOfLines={[3, 3, 4]}>
+          {description}
+        </Text>
         <Flex justify={"space-between"} direction="row">
           <HardsandsButton
             // @ts-ignore
@@ -73,7 +75,6 @@ const HomeProductCard = ({
           >
             {t("common:shop-now", "Shop Now")}
           </HardsandsButton>
-          <Box height={3} width={3} />
         </Flex>
       </Box>
     </Box>
