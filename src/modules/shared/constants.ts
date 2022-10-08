@@ -30,7 +30,7 @@ export const CommunityImages: CommunityImage[] = [
   },
   {
     src: "https://instagram.flos3-1.fna.fbcdn.net/v/t51.2885-15/297221947_170410295548249_3191065344030653931_n.jpg?stp=dst-jpg_e35&_nc_ht=instagram.flos3-1.fna.fbcdn.net&_nc_cat=101&_nc_ohc=Qu1wJh4C6UoAX--T5z3&edm=ALQROFkBAAAA&ccb=7-5&ig_cache_key=Mjg5NjYwOTQxOTY1NjY1MzY2Ng%3D%3D.2-ccb7-5&oh=00_AT88OCHVICpvCiB8ZgQH4F5DrpzX2VEUzO8Ht8jR1bDBQQ&oe=631721A5&_nc_sid=30a2ef",
-    instagramLink: "https://www.instagram.com/meridiangrooming/",
+    instagramLink: "https://www.instagram.com/hardsandscard/",
     displayInMobile: true,
     imgAlt:
       "It could be frustrating to constantly hand out your business card every-time.",

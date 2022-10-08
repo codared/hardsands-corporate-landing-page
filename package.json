@@ -35,6 +35,7 @@
     "@sentry/tracing": "^7.13.0",
     "@sentry/webpack-plugin": "^1.17.3",
     "@types/file-saver": "^2.0.5",
+    "@types/mark.js": "^8.11.8",
     "@types/redux-logger": "^3.0.9",
     "@types/ua-parser-js": "^0.7.36",
     "@types/vcards-js": "^2.10.2",
@@ -73,6 +74,7 @@
     "ua-parser-js": "^1.0.2",
     "vcard-creator": "^0.5.0",
     "vcards-js": "^2.10.0",
+    "wreck": "^14.2.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

@@ -46,7 +46,7 @@ const HardsandLink: React.FC<HardsandLinkProps> = forwardRef(
     if (/^(https|http|mailto)/.test(pathToUrl)) {
       finalHref = pathToUrl;
     } else {
-      finalHref = `/${pathToUrl}`;
+      finalHref = `${pathToUrl}`;
     }
 
     return (
