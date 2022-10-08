@@ -2,7 +2,6 @@ import {
   Box,
   chakra,
   Container,
-  Link,
   SimpleGrid,
   Stack,
   Text,
@@ -28,6 +27,7 @@ import CopyrightYearContext from "modules/hardsands/contexts/CopyrightYearContex
 import { TFunction, useTranslation } from "react-i18next";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { SOCIAL_LINKS } from "utils/constants";
+import staticRoutes from "modules/static/routes";
 //   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 //   import { BiMailSend } from 'react-icons/bi';
 
@@ -194,18 +194,24 @@ export default function Footer() {
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Company</ListHeader>
-            <Link href={"#"}>About us</Link>
-            <Link href={"#"}>Blog</Link>
-            <Link href={"#"}>Contact us</Link>
-            <Link href={"#"}>Pricing</Link>
-            <Link href={"#"}>Testimonials</Link>
+            <HardsandLink href={staticRoutes.about()}>About us</HardsandLink>
+            <HardsandLink href={"mailto:info@hardsands.com"} isExternal={true}>
+              Contact us
+            </HardsandLink>
+            <HardsandLink href={"#"}>Testimonials</HardsandLink>
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Support</ListHeader>
-            <Link href={"#"}>FAQ</Link>
-            <Link href={"#"}>Help Center</Link>
-            <Link href={"#"}>Terms of Service</Link>
-            <Link href={"#"}>Privacy Policy</Link>
+            <HardsandLink href={staticRoutes.faq()}>FAQ</HardsandLink>
+            <HardsandLink href={staticRoutes.returnPolicy()}>
+              Return Policy
+            </HardsandLink>
+            <HardsandLink href={staticRoutes.termsOfService()}>
+              Terms of Service
+            </HardsandLink>
+            <HardsandLink href={staticRoutes.privacyPolicy()}>
+              Privacy Policy
+            </HardsandLink>
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader color="gray.500">

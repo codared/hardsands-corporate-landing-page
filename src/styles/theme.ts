@@ -316,6 +316,6 @@ const customTheme = extendTheme({
   },
 });
 
-export type HardSandsTheme = typeof customTheme;
+export type HardsandsTheme = typeof customTheme;
 
 export default customTheme;

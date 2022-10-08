@@ -11,4 +11,4 @@ if (config('CROWDIN_IN_CONTEXT_ENABLED')) {
 export const FALLBACK_LANGUAGE = 'en'
 export const DEFAULT_NS = 'default'
 export const I18N_PROJECT = 'web'
-export const I18N_BRAND = 'meridian'
+export const I18N_BRAND = 'hardsands'
