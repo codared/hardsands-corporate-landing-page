@@ -8,16 +8,21 @@ export const storefrontApiFetch = (
   path: string,
   opts?: RequestInit
 ): Promise<Response> => {
-  const baseUrl = storefrontApiUrl;
-  if (!baseUrl) {
-    throw new Error("Storefront API URL not set");
+  try {
+    const baseUrl = storefrontApiUrl;
+    if (!baseUrl) {
+      throw new Error("Storefront API URL not set");
+    }
+
+    opts = opts || {};
+    const headers = opts.headers || {};
+    opts.headers = headers;
+
+    return fetch(`${baseUrl}${path}`, opts);
+  } catch (error) {
+    console.log(error);
+    return error as any;
   }
-
-  opts = opts || {};
-  const headers = opts.headers || {};
-  opts.headers = headers;
-
-  return fetch(`${baseUrl}${path}`, opts);
 };
 
 export async function storefrontApiJsonFetch<K>(
@@ -28,22 +33,21 @@ export async function storefrontApiJsonFetch<K>(
   return await req.json();
 }
 
-
 export class ApiError {
-  readonly statusCode: number
-  readonly data: AnyDict
-  readonly id: string
-  readonly apiPath: string
+  readonly statusCode: number;
+  readonly data: AnyDict;
+  readonly id: string;
+  readonly apiPath: string;
 
   constructor(
     statusCode: number,
     data: AnyDict,
     apiPath: string,
-    id: string = 'api-error'
+    id: string = "api-error"
   ) {
-    this.statusCode = statusCode
-    this.apiPath = apiPath
-    this.data = data
-    this.id = id
+    this.statusCode = statusCode;
+    this.apiPath = apiPath;
+    this.data = data;
+    this.id = id;
   }
 }

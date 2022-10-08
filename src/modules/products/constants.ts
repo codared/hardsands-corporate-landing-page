@@ -18,13 +18,15 @@ export const PRODUCTS = {
     "how-it-works": `Hardsands Tag works with iPhone XR, iPhone XS, all iPhone 11s, all iPhone 12s, all iPhone 13s, all iPhone 14s, and the majority of Android devices. The receiver does not require an app or any hardsand device to receive your information!\n\nNFC must be enabled in the settings of Android receivers.`,
     Black: [
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/15b.jpg?v=1665057392",
-      "https://res.cloudinary.com/dtumqh3dd/image/upload/v1655984088/hardsands/Hero_Images_keeoue.png",
-      "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657261446/hardsands/background_vector_dq6aud.svg",
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0029.jpg?v=1665226303",
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0030.jpg?v=1665226740",
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0028.jpg?v=1665226603",
     ],
     Sandtone: [
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/15b.jpg?v=1665057392",
-      "https://res.cloudinary.com/dtumqh3dd/image/upload/v1655984088/hardsands/Hero_Images_keeoue.png",
-      "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657261446/hardsands/background_vector_dq6aud.svg",
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0029.jpg?v=1665226303",
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0026.jpg?v=1665226603",
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0028.jpg?v=1665226603",
     ],
   },
   "matte-black-card": {

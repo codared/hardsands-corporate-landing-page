@@ -75,7 +75,7 @@ const UsageDemoSection = ({ horizontal }: { horizontal?: boolean }) => {
                   key={title}
                   mx={2}
                   textAlign={horizontal ? "center" : "start"}
-                  maxW={horizontal ? 250 : "unset"}
+                  maxW={horizontal ? ['100%', 250] : "unset"}
                 >
                   <Text fontWeight={"bolder"} fontSize={20} mb={4}>
                     {step} {title}
