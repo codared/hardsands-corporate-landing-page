@@ -163,6 +163,91 @@ function TermsOfServicePage() {
             )}
           </Text>
         </Box>
+        <Box mb={10}>
+          <Heading as="h4" size="md" mb={4}>
+            {t("terms:extra-tools", `Extra Tools`)}
+          </Heading>
+          <Text mb={4}>
+            {t(
+              "terms:we-may-give-you-access-to-third-party",
+              `We may give you access to third-party tools over which we have no control or involvement.`
+            )}
+          </Text>
+          <Text mb={4}>
+            {t(
+              "terms:any-use-of-optional-tools-given",
+              `Any use of optional tools given through the site is solely at your own risk and discretion, and you should verify that you are acquainted with and approve of the conditions under which the tools are supplied by the relevant third-party supplier(s).`
+            )}
+          </Text>
+          <Text mb={4}>
+            {t(
+              "terms:you-understand-and-agree-that-we-provide",
+              `You understand and agree that we provide access to such tools "as is" and "as available," without any warranties, representations, or terms of any kind, and without any endorsement. We will have no liability resulting from or related to your use of optional third-party tools.`
+            )}
+          </Text>
+          <Text mb={4}>
+            {t(
+              "terms:we-may-potentially-add-additional-services",
+              `We may potentially add additional services and/or features to the website in the future (including, the release of new tools and resources). Such additional features and/or services will likewise be subject to these Terms of Service.`
+            )}
+          </Text>
+        </Box>
+        <Box mb={10}>
+          <Heading as="h4" size="md" mb={4}>
+            {t("terms:prohibited-usage", `Prohibited Usage`)}
+          </Heading>
+          <Text mb={4}>
+            {t(
+              "terms:you-are-not-permitted-to-use-the-site",
+              `You are not permitted to use the site or its content to (a) infringe upon or violate our intellectual property rights or the intellectual property rights of others; (b) to violate any international, federal, provincial, or state regulations, rules, laws, or local ordinances; (c) to solicit others to perform or participate in any unlawful acts; or (d) for any unlawful purpose e)spam, phishing, pharming, pretexting, spidering, crawling, or scraping;  (f) to collect or track the personal information of others; (g) to upload or transmit viruses or any other type of malicious code that will or may be used to affect the functionality or operation of the Service or any related website, other websites, or the Internet; or (h) for any obscene or immoral purpose. (i) providing inaccurate or misleading information,
+              If you violate any of the prohibited uses, we retain the right to discontinue your use of the Service on our site. 
+              `
+            )}
+          </Text>
+        </Box>
+        <Box mb={10}>
+          <Heading as="h4" size="md" mb={4}>
+            {t("terms:termination", `Termination`)}
+          </Heading>
+          <Text mb={4}>
+            {t(
+              "terms:for-all-purposes-the-parties-responsibilities-and-liabilities",
+              `For all purposes, the parties' responsibilities and liabilities accrued prior to the termination date shall survive the termination of this agreement.`
+            )}
+          </Text>
+          <Text mb={4}>
+            {t(
+              "terms:these-terms-of-Service-will-remain-in-effect-until-you-or-we-cancel-them",
+              `These Terms of Service will remain in effect until you or we cancel them. You may terminate these Terms of Service at any time by telling us that you no longer desire to utilize our Services or by ceasing usage of our website.`
+            )}
+          </Text>
+          <Text mb={4}>
+            {t(
+              "terms:if-you-fail-or-we-believe-you-have-failed-to-comply",
+              `If you fail, or we believe you have failed to comply with any term or condition of these Terms of Service, we may terminate this agreement at any time without notice, you will remain liable for all sums owed up to and including the date of termination.`
+            )}
+          </Text>
+        </Box>
+        <Box mb={10}>
+          <Heading as="h4" size="md" mb={4}>
+            {t(
+              "terms:terms-of-service-modifications",
+              `Terms of service modifications`
+            )}
+          </Heading>
+          <Text mb={4}>
+            {t(
+              "terms:you-can-review-the-most-recent-version-of-the-terms-of-service",
+              `You can review the most recent version of the Terms of Service at any time by visiting this page.`
+            )}
+          </Text>
+          <Text mb={4}>
+            {t(
+              "terms:we-retain-the-right-at-our-sole-discretion",
+              `We retain the right, at our sole discretion, to update, amend, or replace any section of these Terms of Service by publishing updates and modifications to our website. You must check our website for updates regularly. Your continued use of or access to our website or the Service following the publication of any modifications to these Terms of Service indicates acceptance of such changes.`
+            )}
+          </Text>
+        </Box>
       </Container>
     </main>
   );
