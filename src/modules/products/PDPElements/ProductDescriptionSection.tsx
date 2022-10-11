@@ -76,7 +76,7 @@ const ProductDescriptionSection = ({
         <Heading fontSize={20} color={"brand.300"}>
           {t("product:product-price", `${price}`)}
         </Heading>
-        <Flex alignItems={"center"}>
+        {/* <Flex alignItems={"center"}>
           <Flex justify={"center"} alignItems={"center"}>
             <BsStarFill />
             <BsStarFill />
@@ -86,7 +86,7 @@ const ProductDescriptionSection = ({
           </Flex>
           <Box w={4} />
           <Text>{t("product:review-title", "23 Reviews")}</Text>
-        </Flex>
+        </Flex> */}
       </Flex>
       <Box h={8} />
       <Text as="pre" fontFamily={"Campton"} whiteSpace="pre-wrap">
