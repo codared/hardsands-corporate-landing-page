@@ -45,7 +45,7 @@ const CheckAccordion = ({
                       onClick={onChange ? () => onChange(value) : () => {}}
                       _hover={{ bg: "transparent", color: "black" }}
                     >
-                      <Box flex="1" textAlign="left" color="black">
+                      <Box flex="1" textAlign="left" color="black" mr={8}>
                         {title}
                       </Box>
 

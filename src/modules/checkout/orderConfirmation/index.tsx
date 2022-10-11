@@ -13,25 +13,26 @@ import { trackOrderConfirmationShown } from "modules/analytics/functions/track";
 import { useCurrency } from "modules/cart/hooks";
 import PriceSummary from "modules/checkout/components/PriceSummary";
 import productRoutes from "modules/products/routes";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import OrderItemCard from "../components/OrderItemCard";
-import { useOrder } from "../hooks/useOrder";
 import { Order, OrderItem } from "../types";
 
 interface OrderConfirmationProp {
   checkoutId: string;
   language: string;
+  order: Order;
 }
 
-const OrderConfirmation = ({ checkoutId, language }: OrderConfirmationProp) => {
+const OrderConfirmation = ({ checkoutId, language, order }: OrderConfirmationProp) => {
   const { t } = useTranslation();
   const currency = useCurrency();
-  const order = useOrder(checkoutId) as Order;
 
-  useEffect(()=> {
-    trackOrderConfirmationShown()
-  }, [])
+  useEffect(() => {
+    trackOrderConfirmationShown();
+  }, []);
+
 
   return (
     <Container p={10} py={20}>
@@ -80,6 +81,7 @@ const OrderConfirmation = ({ checkoutId, language }: OrderConfirmationProp) => {
           borderRadius="0"
           transition="all 200ms ease-in"
           w="100%"
+          display={"block"}
           textAlign="center"
           _hover={{
             bg: "transparent",
@@ -91,7 +93,6 @@ const OrderConfirmation = ({ checkoutId, language }: OrderConfirmationProp) => {
         >
           {t("checkout:return-home", "Return Home")}
         </HardsandLink>
-        <Box h={8} />
       </Box>
     </Container>
   );

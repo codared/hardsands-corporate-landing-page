@@ -14,9 +14,8 @@ const OrderItemCard = ({
   titleFontSize?: string | number | Array<string | number>;
   subTitleFontSize?: string | number | Array<string | number>;
 }) => {
-
   return (
-    <Flex p={p} justify={"space-between"} bg={"brand.10"}>
+    <Flex p={p} bg={"brand.10"}>
       <Flex direction={"row"} justifyContent={"start"}>
         <Image
           boxSize={20}
@@ -27,7 +26,13 @@ const OrderItemCard = ({
           )}
           alt={`${item.product.title} cart item product image`}
         />
-        <Box w={5} />
+      </Flex>
+      <Box w={5} />
+      <Flex
+        w={"100%"}
+        direction={["column", "row"]}
+        justifyContent={["space-around", "space-between"]}
+      >
         <Flex
           textAlign={"start"}
           direction={"column"}
@@ -38,16 +43,16 @@ const OrderItemCard = ({
           </Text>
           <Text fontSize={subTitleFontSize}>{item.productVariantKey}</Text>
         </Flex>
+        <Text
+          alignSelf={["flex-start", "center"]}
+          color={"brand.300"}
+          fontWeight="bolder"
+          fontSize={titleFontSize}
+          ml={[0, 2]}
+        >
+          {formatCurrencyInteger(item.total, item.currency)}
+        </Text>
       </Flex>
-      <Text
-        alignSelf={"center"}
-        color={"brand.300"}
-        fontWeight="bolder"
-        fontSize={titleFontSize}
-        ml={2}
-      >
-        {formatCurrencyInteger(item.total, item.currency)}
-      </Text>
     </Flex>
   );
 };
