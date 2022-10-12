@@ -1,5 +1,7 @@
 import "../styles/globals.css";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
 import { createWrapper, MakeStore, Context } from "next-redux-wrapper";
 import type { AppProps } from "next/app";
 import theme from "styles/theme";
@@ -17,6 +19,27 @@ import cookies from "next-cookies";
 import { CURRENCY_COOKIE } from "utils/constants";
 import { isSupportedCurrency } from "utils/functions";
 import { useRef } from "react";
+import AnalyticsScriptTag from "../modules/analytics/components/AnalyticsScriptTag";
+import ManualAnalyticsTags from "../modules/analytics/components/ManualAnalyticsTags";
+import AnalyticsProvider from "../modules/analytics/context/provider";
+import { CopyrightYearProvider } from "modules/hardsands/contexts/CopyrightYearContext";
+import { CheckoutProvider } from "redux/context";
+import ErrorBoundary from "components/ErrorBoundary";
+import ErrorFallback from "components/ErrorBoundary/ErrorFallback";
+import config from "core/config";
+
+Sentry.init({
+  release: process.env.COMMIT_SHA,
+  enabled: true,
+  environment: config("ENVIRONMENT"),
+  dsn: config("SENTRY_DSN"),
+  integrations: [new BrowserTracing()],
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+});
 
 interface HardsandsAppProps extends AppProps {
   lang: string;
@@ -31,27 +54,43 @@ function HardsandsApp({
   Component,
   pageProps,
 }: HardsandsAppProps) {
-
   // load translations the first render
-  const i18nLoaded = useRef<boolean>(false)
+  const i18nLoaded = useRef<boolean>(false);
   if (!i18nLoaded.current && translations) {
-    initializeLanguage(lang, translations)
-    i18nLoaded.current = true
+    initializeLanguage(lang, translations);
+    i18nLoaded.current = true;
   }
-  const copyRightYear: number = new Date().getFullYear()
-  
+  const copyRightYear: number = new Date().getFullYear();
+
   return (
-    <ChakraProvider theme={theme}>
-      <Fonts />
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <>
+      <ChakraProvider theme={theme}>
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <CopyrightYearProvider value={copyRightYear}>
+            <AnalyticsProvider>
+              <>
+                <CheckoutProvider currency={currency}>
+                  <>
+                    <ManualAnalyticsTags />
+                    {typeof window && <AnalyticsScriptTag />}
+                    <Fonts />
+                    <ColorModeScript initialColorMode={"light"} />
+                    <Component {...pageProps} />
+                  </>
+                </CheckoutProvider>
+              </>
+            </AnalyticsProvider>
+          </CopyrightYearProvider>
+        </ErrorBoundary>
+      </ChakraProvider>
+    </>
   );
 }
 
 HardsandsApp.getInitialProps = async ({ ctx }: any) => {
   // no props need to be sent back down for SPA navigates
   // only initial page render
-  if (!isServerRequest(ctx) || typeof window !== 'undefined') {
+  if (!isServerRequest(ctx) || typeof window !== "undefined") {
     return {};
   }
   const lang = detectLanguage(ctx);
@@ -68,7 +107,7 @@ HardsandsApp.getInitialProps = async ({ ctx }: any) => {
     // only fetch translations on the first request, subsequent requests
     // will have translations in memory
     translations = await fetchTranslations(lang);
-    console.log("fetching translations took: " + (Date.now() - now));
+    // console.log("fetching translations took: " + (Date.now() - now));
   } catch (e) {
     // swallow for now because pre-rendering doesnt like this
   }

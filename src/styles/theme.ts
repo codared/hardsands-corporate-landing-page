@@ -54,7 +54,7 @@ const fontSizes = {
   xs: [".6875rem", null, ".6875rem"],
 };
 
-const colors = {
+export const colors = {
   transparent: "transparent",
   current: "currentColor",
   black: "#000",
@@ -137,12 +137,15 @@ const colors = {
   sandTone1RGB01: "rgba(248,236,222, 0.1)",
 
   brand: {
+    10: "#FDFAF6",
+    50: "#F9EBDD",
     100: "#F8ECDE",
     200: "#F5D7BB",
     300: "#DF9F71",
     900: "#000",
   },
 
+  danger: '#EB6C6C',
   sandstone: "#EDEBDF",
   stone: "#DAE1E2", // replaced
   aboutBorder: "#CFD1C8",
@@ -178,6 +181,9 @@ const colors = {
   fireFly: "#0E1E26",
   vermilion: "#F44C13",
   flame: "#F14D25",
+
+  blueBtn: "#4267B2",
+  redBtn: "#D4462F"
 };
 
 const shadows = {
@@ -195,7 +201,7 @@ const shadows = {
   none: "none",
 };
 
-const breakpoints = ["768px", "992px", "1200px"];
+export const breakpoints = ["425px", "768px", "1200px"];
 
 const zIndices = {
   hide: -1,
@@ -275,6 +281,7 @@ const globalStyles = {
     cursor: "pointer",
   },
   "a:focus, button:focus": {
+    outline: 'none',
     outlineColor: colors.sandTone1,
   },
   "button:hover": {
@@ -309,6 +316,6 @@ const customTheme = extendTheme({
   },
 });
 
-export type HardSandsTheme = typeof customTheme;
+export type HardsandsTheme = typeof customTheme;
 
 export default customTheme;

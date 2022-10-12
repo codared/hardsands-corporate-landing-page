@@ -1,0 +1,50 @@
+const Bag = ({
+  strokeWidth = "1.5",
+  color = "#130F26",
+}: {
+  strokeWidth?: string;
+  color?: string;
+}) => {
+  return (
+    <svg
+      width="27"
+      height="28"
+      viewBox="0 0 27 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M19.0183 26.6667H7.88785C3.79937 26.6667 0.662828 25.1899 1.55375 19.2464L2.59113 11.1914C3.14033 8.22577 5.03201 7.09076 6.69181 7.09076H20.2631C21.9473 7.09076 23.7292 8.3112 24.3638 11.1914L25.4012 19.2464C26.1579 24.5187 23.1068 26.6667 19.0183 26.6667Z"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M19.2013 6.79786C19.2013 3.61643 16.6223 1.03737 13.4408 1.03737V1.03737C11.9088 1.03088 10.4374 1.63492 9.35177 2.71593C8.26619 3.79693 7.65593 5.26585 7.65594 6.79786H7.65594"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M17.3951 12.8025H17.334"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M9.6209 12.8025H9.55987"
+        stroke={color}
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export default Bag;

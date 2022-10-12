@@ -2,13 +2,19 @@
 // const dotenv = require('dotenv');
 
 const nextConfig = {
+  webpack5: true,
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false };
+
+    return config;
+  },
   // env: {
   //   BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL,
   //   UPLOAD_CARE_PUBLIC_KEY: process.env.NEXT_PUBLIC_UPLOAD_CARE_PUBLIC_KEY,
   //   STRIPE_PUBLIC_KEY: process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY,
   //   SENDGRID_API_KEY: process.env.NEXT_PUBLIC_SENDGRID_API_KEY,
   // },
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
     domains: ['res.cloudinary.com', 'ucarecdn.com'],
   },

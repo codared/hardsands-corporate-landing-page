@@ -48,6 +48,13 @@ const Fonts = () => (
         font-weight: normal;
         src: url("/fonts/made_outer_sans_light-webfont.woff2") format('woff2'), url("/fonts/made_outer_sans_light-webfont.woff") format('woff');
       }
+      /* latin */
+      @font-face {
+        font-family: 'Made Outer Sans Regular';
+        font-style: normal;
+        font-weight: normal;
+        src: url("/fonts/made_outer_sans_regular-webfont.woff2") format('woff2'), url("/fonts/made_outer_sans_regular-webfont.woff") format('woff');
+      }
       `}
   />
 );

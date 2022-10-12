@@ -73,7 +73,7 @@ export default class MissingTranslationReporter {
       // there is nothing to report
       return
     }
-    console.log('reporting missing translations', body)
+    // console.log('reporting missing translations', body)
 
     try {
       await this.fetcher.sendReport(body[0].lang, body)

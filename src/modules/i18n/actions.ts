@@ -10,7 +10,7 @@ import MissingTranslationReporter from './MissingTranslationReporter'
 
 import i18n from './'
 import { crowdin } from '../crowdin/components/CrowdinOta'
-import { getCookie, setCookie } from 'utils/cookie'
+import { getCookie, setCookie } from 'modules/shared/cookie'
 
 export type LanguageResources = {
   [namespace: string]: {
