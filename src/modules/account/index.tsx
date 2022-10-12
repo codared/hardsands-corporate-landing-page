@@ -1,19 +1,17 @@
 import {
   useDisclosure,
   Flex,
-  Icon,
   Box,
   Drawer,
   DrawerOverlay,
   DrawerContent,
-  IconButton,
   Avatar,
 } from "@chakra-ui/react";
-import { FiMenu } from "react-icons/fi";
-import { FaBell } from "react-icons/fa";
 import SidebarContent from "./components/Sidebar";
 import { ReactElement } from "react";
-import { useTypedDispatch, useTypedSelector } from "redux/store";
+import { useTypedSelector } from "redux/store";
+import HardsandLink from "components/HardsandsLink";
+import { HiMenuAlt3 } from "react-icons/hi";
 
 const HardsandsAccountsApp = ({
   children,
@@ -23,13 +21,11 @@ const HardsandsAccountsApp = ({
   children: ReactElement;
 }) => {
   const sidebar = useDisclosure();
-  // const reduxDispatch = useTypedDispatch();
   const user = useTypedSelector((state) => state.app?.user);
 
   return (
     <Box
       as="section"
-      //   bg="gray.50"
       _dark={{
         bg: "gray.700",
       }}
@@ -61,18 +57,17 @@ const HardsandsAccountsApp = ({
           color="inherit"
           h="14"
         >
-          <IconButton
-            aria-label="Menu"
-            display={["inline-flex", "none"]}
-            pos="relative"
+          <HardsandLink
             onClick={sidebar.onOpen}
-            icon={<FiMenu />}
-            size="sm"
-          />
+            variant={"ghost"}
+            aria-label={"App Menu"}
+            href={"#"}
+          >
+            <HiMenuAlt3 color="black" size={30} />
+          </HardsandLink>
           <Box w={10} />
 
           <Flex align="center">
-            {/* <Icon color="gray.500" as={FaBell} cursor="pointer" /> */}
             <Avatar
               ml="4"
               size="sm"

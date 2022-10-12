@@ -39,10 +39,10 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
     string | null
   >(null);
   const [processingPayment, setProcessingPayment] = useState(false);
-
   const [activeStep, setActiveStep] = useState(
     CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM
   );
+  const [showErrorMessages, setShowErrorMessages] = useState<boolean>(false);
 
   useEffect(() => {
     if (!!order?.shippingDetails) {
@@ -104,6 +104,8 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
         // Sentry.exception();
         setIsLoading(false);
       }
+    } else {
+      setShowErrorMessages(true);
     }
   };
 
@@ -128,8 +130,6 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
   const handleCancel = (message: string) => {
     setShowCancelMessageError(message);
   };
-
-  // console.log("order >>>> ", order);
 
   if (!order) {
     return (
@@ -174,6 +174,7 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
           {activeStep === CHECKOUT_STEPS.STEP_SHIPPING_INFO_FORM && (
             <CustomerInfoForm
               order={order}
+              showErrorMessages={showErrorMessages}
               setIsLoading={setIsLoading}
               onFormSubmit={handleSubmitCustomerInfoForm}
             />

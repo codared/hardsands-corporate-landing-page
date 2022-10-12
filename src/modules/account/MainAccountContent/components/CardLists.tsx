@@ -70,12 +70,12 @@ const CardBox = ({
           />
         </Box>
 
-        <Box px={[2, 6]} pb={[0]}>
+        <Box px={[2, 6]} pb={[0]} pt={[2, 6]}>
           <Flex justify="space-between" alignItems="flex-end" mb={4}>
             <Heading
               fontWeight="bolder"
-              textTransform="uppercase"
-              fontSize={14}
+              textTransform="capitalize"
+              fontSize={12}
             >
               {card.cardTitle}
             </Heading>

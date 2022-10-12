@@ -1,4 +1,12 @@
-import { Flex, Heading, Box, Link, Button, Text, Divider } from "@chakra-ui/react";
+import {
+  Flex,
+  Heading,
+  Box,
+  Link,
+  Button,
+  Text,
+  Divider,
+} from "@chakra-ui/react";
 import _ from "lodash";
 import AlertMessage, { AlertStatus } from "components/AlertMessage";
 import CustomInput from "components/CustomInput";
@@ -103,7 +111,10 @@ function LoginPage() {
             setAlertMessage={setAlertMessage}
           />
         </Flex>
-        <Divider my={10} />
+        <Box position="relative" my={10}>
+          <Text bg="white" position={'absolute'} top="-11px" zIndex={1} px={2}>Or signin with Email</Text>
+          <Divider />
+        </Box>
         <form onSubmit={handleSubmitForm}>
           <Box mb={5}>
             <CustomInput

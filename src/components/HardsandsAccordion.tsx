@@ -28,10 +28,7 @@ const HardsandsAccordion = ({
   isExpanded = false,
 }: HardsandsAccordionProps) => {
   return (
-    <Accordion
-      defaultIndex={isExpanded ? [0] : 0}
-      allowMultiple={isMultiple}
-    >
+    <Accordion allowMultiple={isMultiple}>
       {accordionItems &&
         accordionItems.map(({ title, description }: AccordionItemProps) => (
           <AccordionItem defaultChecked key={title}>

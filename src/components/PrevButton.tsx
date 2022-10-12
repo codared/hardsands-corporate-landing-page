@@ -1,6 +1,6 @@
 import { Flex, FlexProps } from '@chakra-ui/react'
 import React from 'react'
-import { BsArrowLeft } from 'react-icons/bs'
+import { MdOutlineArrowBackIosNew } from 'react-icons/md'
 
 
 type PrevButtonProps = {
@@ -39,7 +39,7 @@ const PrevButton: React.FC<PrevButtonProps> = ({
       onClick={onClick}
       {...overrideContainerStyle}
     >
-      <BsArrowLeft size={34} />
+      <MdOutlineArrowBackIosNew size={34} />
     </Flex>
   )
 }

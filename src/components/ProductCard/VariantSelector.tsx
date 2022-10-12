@@ -8,6 +8,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { SyntheticEvent, useState } from "react";
+import { CUSTOMIZED } from "./type";
 
 const VariantSelector = ({
   selectorType,
@@ -20,7 +21,7 @@ const VariantSelector = ({
   variants: Array<string>;
   onChange: (val: string) => void;
 }) => {
-  const [active, setActive] = useState(activeVariant);
+  const [active, setActive] = useState(activeVariant || variants[0]);
   const colorMap = {
     Black: "black",
     Sandtone: "brand.200",
@@ -65,9 +66,12 @@ const VariantSelector = ({
               borderRadius="full"
               borderWidth={1}
               borderColor={active === variant ? "brand.300" : "brand.100"}
-              onClick={(e) => handleClick(e, variant)}
+              onClick={(e) =>
+                variant === CUSTOMIZED ? () => {} : handleClick(e, variant)
+              }
+              opacity={variant === CUSTOMIZED ? 0.5 : 1}
+              cursor={variant === CUSTOMIZED ? "not-allowed" : "pointer"}
               mr={2}
-              cursor="pointer"
             >
               <TagLabel>{variant}</TagLabel>
             </Tag>
@@ -86,8 +90,11 @@ const VariantSelector = ({
                 px={[5, 5, 10]}
                 py={[2]}
                 mr={[4]}
-                onClick={(e) => handleClick(e, variant)}
-                cursor="pointer"
+                onClick={(e) =>
+                  variant === CUSTOMIZED ? () => {} : handleClick(e, variant)
+                }
+                opacity={variant === CUSTOMIZED ? 0.5 : 1}
+                cursor={variant === CUSTOMIZED ? "not-allowed" : "pointer"}
                 transition={"all ease-in-out 200ms"}
               >
                 {!!colorMap[variant] && (

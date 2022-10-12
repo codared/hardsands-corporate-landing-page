@@ -1,6 +1,6 @@
 import { Flex , FlexProps} from '@chakra-ui/react'
 import React from 'react'
-import { BsArrowRight } from 'react-icons/bs'
+import { MdOutlineArrowForwardIos } from 'react-icons/md'
 
 type NextButtonProps = {
   showControlsAbove?: boolean
@@ -38,7 +38,7 @@ const NextButton: React.FC<NextButtonProps> = ({
       onClick={onClick}
       {...overrideContainerStyle}
     >
-      <BsArrowRight size={34} />
+      <MdOutlineArrowForwardIos size={34} />
     </Flex>
   )
 }

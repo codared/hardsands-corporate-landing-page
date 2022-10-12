@@ -10,7 +10,7 @@ export interface ProductCardProps {
   productDetails: Product;
   price?: string;
   id: number;
-  pushImpression?: EcommerceImpressionPush
+  pushImpression?: EcommerceImpressionPush;
 }
 
 export interface HomeProductCardProps {
@@ -21,3 +21,5 @@ export interface HomeProductCardProps {
   img?: string;
   t: TFunction;
 }
+
+export const CUSTOMIZED = "Customized";

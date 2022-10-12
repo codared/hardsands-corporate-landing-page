@@ -154,7 +154,8 @@ export const ProductCard = ({
       <Box
         bg={useColorModeValue("white", "gray.800")}
         position="relative"
-        mb={[0]}
+        mb={[10, 0]}
+        // px={[10, 0]}
         // height="100%"
         // border="1px solid #F4E9E1"
       >

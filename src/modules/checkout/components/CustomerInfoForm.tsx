@@ -31,9 +31,11 @@ export type Values = typeof initialValues;
 const CustomerInfoForm = ({
   setIsLoading,
   onFormSubmit,
+  showErrorMessages,
   order: { shippingDetails, userDetails },
 }: {
   order: Order;
+  showErrorMessages?: boolean;
   setIsLoading: (loading: boolean) => void;
   onFormSubmit: (val: Values, errors: FormikErrors<Values>) => void;
 }) => {
@@ -74,8 +76,8 @@ const CustomerInfoForm = ({
             name={"email"}
             value={values.email}
             onChange={handleChange}
-            isInvalid={!!errors.email}
-            isError={!!errors.email}
+            // isInvalid={!!errors.email}
+            isError={showErrorMessages && !!errors.email}
             isRequired
             errorMessage={errors.email}
           />
@@ -87,8 +89,8 @@ const CustomerInfoForm = ({
               value={values.firstName}
               onChange={handleChange}
               isRequired
-              isInvalid={!!errors.firstName}
-              isError={!!errors.firstName}
+              // isInvalid={!!errors.firstName}
+              isError={showErrorMessages && !!errors.firstName}
               errorMessage={errors.firstName}
             />
             <Box w={4} />
@@ -98,8 +100,8 @@ const CustomerInfoForm = ({
               value={values.lastName}
               onChange={handleChange}
               isRequired
-              isInvalid={!!errors.lastName}
-              isError={!!errors.lastName}
+              // isInvalid={!!errors.lastName}
+              isError={showErrorMessages && !!errors.lastName}
               errorMessage={errors.lastName}
             />
           </Flex>
@@ -110,8 +112,8 @@ const CustomerInfoForm = ({
             value={values.address1}
             onChange={handleChange}
             isRequired
-            isInvalid={!!errors.address1}
-            isError={!!errors.address1}
+            // isInvalid={!!errors.address1}
+            isError={showErrorMessages && !!errors.address1}
             errorMessage={errors.address1}
           />
           <Box h={2} />
@@ -131,8 +133,8 @@ const CustomerInfoForm = ({
                 value={values.countryId}
                 onChange={handleChange}
                 isRequired
-                isInvalid={!!errors.countryId}
-                isError={!!errors.countryId}
+                // isInvalid={!!errors.countryId}
+                isError={showErrorMessages && !!errors.countryId}
                 errorMessage={errors.countryId}
                 _key={"id"}
                 _value={"name"}
@@ -148,8 +150,8 @@ const CustomerInfoForm = ({
                 value={values.provinceId}
                 onChange={handleChange}
                 isRequired
-                isInvalid={!!errors.provinceId}
-                isError={!!errors.provinceId}
+                // isInvalid={!!errors.provinceId}
+                isError={showErrorMessages && !!errors.provinceId}
                 errorMessage={errors.provinceId}
               />
             </>
@@ -161,8 +163,8 @@ const CustomerInfoForm = ({
               name={"zip"}
               value={values.zip}
               onChange={handleChange}
-              isInvalid={!!errors.zip}
-              isError={!!errors.zip}
+              // isInvalid={!!errors.zip}
+              isError={showErrorMessages && !!errors.zip}
               errorMessage={errors.zip}
             />
           </>
@@ -177,8 +179,8 @@ const CustomerInfoForm = ({
               value={values.phoneCode}
               onChange={handleChange}
               isRequired
-              isInvalid={!!errors.phoneCode}
-              isError={!!errors.phoneCode}
+              // isInvalid={!!errors.phoneCode}
+              isError={showErrorMessages && !!errors.phoneCode}
               errorMessage={errors.phoneCode}
             />
             <Box w={4} />
@@ -188,8 +190,8 @@ const CustomerInfoForm = ({
               value={values.phone}
               onChange={handleChange}
               isRequired
-              isInvalid={!!errors.phone}
-              isError={!!errors.phone}
+              // isInvalid={!!errors.phone}
+              isError={showErrorMessages && !!errors.phone}
               errorMessage={errors.phone}
             />
           </Flex>
