@@ -47,6 +47,7 @@ const CustomInput = forwardRef(
         {label && <FormLabel>{label}</FormLabel>}
         <Input
           {...rest}
+          isDisabled={isDisabled}
           name={name}
           placeholder={placeholder}
           value={value}
