@@ -9,8 +9,10 @@ import { isSupportedCurrency, getGeoIpCountryCode } from "utils/geoIp";
 import { removeQueryParam } from "utils/removeQueryParam";
 
 export function useDetectAndSetCurrency() {
-  const { dispatch } = useContext(CheckoutContext);
+  const { dispatch, state } = useContext(CheckoutContext);
   const router = useRouter();
+
+  console.log('state updating cart >>>> ', state);
 
   useEffect(() => {
     const defaultCurrencyData = { currency_code: "USD" };
