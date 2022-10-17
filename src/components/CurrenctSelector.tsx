@@ -26,6 +26,7 @@ const CurrencySelector = ({
       w={"90px"}
       size="xs"
       {...rest}
+      value={selectedCurrency || ""}
       defaultValue={selectedCurrency}
     >
       {Object.keys({ ...TOP_CURRENCIES, ...CURRENCY_CODES }).map((currency) => (
