@@ -109,7 +109,7 @@ const Cart = React.forwardRef(
       dispatch(updateCurrency(currency));
     };
 
-    console.log('cart >>>> ', state, cart);
+    console.log('cart >>>> ', currency, state, cart);
 
     return (
       <Drawer
@@ -137,7 +137,7 @@ const Cart = React.forwardRef(
             <CurrencySelector
               display={["block", "none"]}
               mr={10}
-              selectedCurrency={currency}
+              selectedCurrency={state.cart.selectedCurrency}
               onChange={onCurrencyChange}
             />
           </DrawerHeader>
