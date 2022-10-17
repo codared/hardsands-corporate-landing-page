@@ -30,7 +30,7 @@ const VerifyEmail: NextPage<{
 
   return (
     <Container p={10} py={20}>
-      <Flex>
+      <Flex direction={"column"}>
         <Box textAlign={"center"}>
           {!isError && (
             <Image
