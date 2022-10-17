@@ -15,8 +15,6 @@ const CurrencySelector = ({
     onChange(e.target.value);
   };
 
-  console.log("selectedCurrency >>>>> ", selectedCurrency);
-
   return (
     <Select
       borderRadius={0}

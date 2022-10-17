@@ -109,8 +109,6 @@ const Cart = React.forwardRef(
       dispatch(updateCurrency(currency));
     };
 
-    console.log('cart >>>> ', currency, state, cart);
-
     return (
       <Drawer
         // @ts-ignore

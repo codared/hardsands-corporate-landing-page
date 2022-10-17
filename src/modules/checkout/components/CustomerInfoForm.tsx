@@ -41,7 +41,8 @@ const CustomerInfoForm = ({
 }) => {
   const { t } = useTranslation();
 
-  const handleSubmitCustomerInfoForm = () => {
+  const handleSubmitCustomerInfoForm = (e: any) => {
+    e.preventDefault();
     onFormSubmit(values, errors);
   };
 
@@ -69,7 +70,7 @@ const CustomerInfoForm = ({
         {t("checkout:customer-info", "Customer Info")}
       </Text>
       <Box h={2} />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmitCustomerInfoForm}>
         <>
           <CustomInput
             placeholder="Email address"

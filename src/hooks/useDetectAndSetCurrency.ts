@@ -12,8 +12,6 @@ export function useDetectAndSetCurrency() {
   const { dispatch, state } = useContext(CheckoutContext);
   const router = useRouter();
 
-  console.log('state updating cart >>>> ', state);
-
   useEffect(() => {
     const defaultCurrencyData = { currency_code: "USD" };
     const detectAndSet = async (country: string | null) => {
