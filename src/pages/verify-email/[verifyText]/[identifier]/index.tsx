@@ -90,7 +90,7 @@ const VerifyEmail: NextPage<{
             borderColor={"brand.100"}
             borderRadius="0"
             transition="all 200ms ease-in"
-            w={["100%", "30%"]}
+            w={["100%"]}
             textAlign="center"
             _hover={{
               bg: "transparent",
