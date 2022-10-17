@@ -1,5 +1,5 @@
 import { Select, SelectProps } from "@chakra-ui/react";
-import { TOP_CURRENCIES } from "utils/currency";
+import { CURRENCY_CODES, TOP_CURRENCIES } from "utils/currency";
 
 interface CurrenctSelectorProps extends SelectProps {
   onChange: any;
@@ -15,6 +15,8 @@ const CurrencySelector = ({
     onChange(e.target.value);
   };
 
+  console.log("selectedCurrency >>>>> ", selectedCurrency);
+
   return (
     <Select
       borderRadius={0}
@@ -26,7 +28,7 @@ const CurrencySelector = ({
       {...rest}
       defaultValue={selectedCurrency}
     >
-      {Object.keys(TOP_CURRENCIES).map((currency) => (
+      {Object.keys({ ...TOP_CURRENCIES, ...CURRENCY_CODES }).map((currency) => (
         <option key={currency} value={currency}>
           {currency}
         </option>

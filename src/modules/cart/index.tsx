@@ -137,7 +137,7 @@ const Cart = React.forwardRef(
             <CurrencySelector
               display={["block", "none"]}
               mr={10}
-              selectedCurrency={state.cart.selectedCurrency}
+              selectedCurrency={currency}
               onChange={onCurrencyChange}
             />
           </DrawerHeader>
