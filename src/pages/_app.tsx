@@ -27,6 +27,7 @@ import { CheckoutProvider } from "redux/context";
 import ErrorBoundary from "components/ErrorBoundary";
 import ErrorFallback from "components/ErrorBoundary/ErrorFallback";
 import config from "core/config";
+import CurrencyDetector from "components/CurrencyDetector";
 
 Sentry.init({
   release: process.env.COMMIT_SHA,
@@ -65,23 +66,24 @@ function HardsandsApp({
   return (
     <>
       <ChakraProvider theme={theme}>
-        <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <CopyrightYearProvider value={copyRightYear}>
-            <AnalyticsProvider>
-              <>
-                <CheckoutProvider currency={currency}>
-                  <>
-                    <ManualAnalyticsTags />
-                    {typeof window && <AnalyticsScriptTag />}
-                    <Fonts />
+        <CopyrightYearProvider value={copyRightYear}>
+          <AnalyticsProvider>
+            <>
+              <CheckoutProvider currency={currency}>
+                <>
+                  <ManualAnalyticsTags />
+                  {typeof window && <AnalyticsScriptTag />}
+                  <Fonts />
+                  <ErrorBoundary FallbackComponent={ErrorFallback}>
+                    <CurrencyDetector />
                     <ColorModeScript initialColorMode={"light"} />
                     <Component {...pageProps} />
-                  </>
-                </CheckoutProvider>
-              </>
-            </AnalyticsProvider>
-          </CopyrightYearProvider>
-        </ErrorBoundary>
+                  </ErrorBoundary>
+                </>
+              </CheckoutProvider>
+            </>
+          </AnalyticsProvider>
+        </CopyrightYearProvider>
       </ChakraProvider>
     </>
   );

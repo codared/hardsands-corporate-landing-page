@@ -19,7 +19,7 @@ import Cart from "modules/cart";
 import HardsandsAppLogo from "components/Logo";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { usePreloadProducts } from "modules/products/hooks";
-import { useCartItemCount } from "modules/cart/hooks";
+import { useCartItemCount, useCurrency } from "modules/cart/hooks";
 import CurrencySelector from "components/CurrenctSelector";
 import {
   loadOrCreateCart,
@@ -45,7 +45,7 @@ export default function Navigation() {
   const [isCartOpen, setCartOpen] = useState(false);
   const cartBtnRef = useRef(null);
   const cartInitialized = useRef(false);
-  const selectedCurrency = state.cart.selectedCurrency;
+  const currency = useCurrency();
   const cartId = state.cart.cart?.id;
   const ignoreCountryDiscount = false; // featureFlag('IGNORE_COUNTRY_DISCOUNT', true)
   const router = useRouter();
@@ -56,11 +56,11 @@ export default function Navigation() {
     const initCart = async () => {
       const country = await getGeoIpCountryCode();
       const cartBody: CreateCartBody = {
-        currency: selectedCurrency,
+        currency,
         country: ignoreCountryDiscount ? null : country,
       };
 
-      await dispatch(loadOrCreateCart(selectedCurrency));
+      await dispatch(loadOrCreateCart(currency));
       cartInitialized.current = true;
     };
 
@@ -68,7 +68,7 @@ export default function Navigation() {
       if (cartId) {
         dispatch(
           updateCart({
-            currency: selectedCurrency,
+            currency,
           })
         );
       }
@@ -80,9 +80,9 @@ export default function Navigation() {
       initCart();
     }
 
-    reduxDispatch(fetchAllProductsCached(selectedCurrency));
+    reduxDispatch(fetchAllProductsCached(currency));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCurrency]);
+  }, [currency]);
 
   const onCurrencyChange = (currency: string) => {
     dispatch(updateCurrency(currency));
@@ -116,7 +116,7 @@ export default function Navigation() {
           ml={["50px", "unset"]}
         >
           <CurrencySelector
-            selectedCurrency={selectedCurrency}
+            selectedCurrency={currency}
             mr={10}
             color="white"
             onChange={onCurrencyChange}

@@ -1,5 +1,8 @@
 import * as Sentry from "@sentry/browser";
-import { trackCartAdd, trackCartRemove } from "modules/analytics/functions/track";
+import {
+  trackCartAdd,
+  trackCartRemove,
+} from "modules/analytics/functions/track";
 import { Product } from "modules/products/types";
 import { getCookie, setCookie } from "modules/shared/cookie";
 import { ThunkDispatch } from "redux/context";
@@ -136,17 +139,24 @@ const trackAddingItemToCart = (
     const { productId, productVariant } = itemAdded;
     const itemsAdded =
       response.items.filter((item) => {
-        return item.product.id === productId && productVariant === item.productVariantKey;
+        return (
+          item.product.id === productId &&
+          productVariant === item.productVariantKey
+        );
       }) ?? [];
 
     const quantity = itemAdded.quantity || 1;
     if (itemsAdded.length === 1) {
-      trackCartAdd(getAddToCartEventData({ ...itemsAdded[0], quantity }, response.id));
+      trackCartAdd(
+        getAddToCartEventData({ ...itemsAdded[0], quantity }, response.id)
+      );
     } else if (itemsAdded.length > 1) {
       const generatedKey = `p=${productId}`;
       const addedItem = itemsAdded.find((item) => generatedKey === item.key);
       if (addedItem) {
-        trackCartAdd(getAddToCartEventData({ ...addedItem, quantity }, response.id));
+        trackCartAdd(
+          getAddToCartEventData({ ...addedItem, quantity }, response.id)
+        );
       }
     }
   } catch (e) {
@@ -190,7 +200,7 @@ export const removeCartItem: ThunkActionCreator<Promise<CartResponse>> =
     // } else {
     const resp = await apiRemoveCartItem(cartId, item.id);
     dispatch(loadCart(resp));
-    trackCartRemove(getAddToCartEventData(item, cartId))
+    trackCartRemove(getAddToCartEventData(item, cartId));
     return resp;
     // }
   };

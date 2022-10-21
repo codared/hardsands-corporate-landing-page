@@ -106,6 +106,7 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
       }
     } else {
       setShowErrorMessages(true);
+      setIsLoading(false);
     }
   };
 

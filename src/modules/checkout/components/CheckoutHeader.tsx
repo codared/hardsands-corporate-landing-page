@@ -62,12 +62,12 @@ export default function CheckoutHeader() {
           alignItems="center"
           ml={["50px", "unset"]}
         >
-          <CurrencySelector
+          {/* <CurrencySelector
             selectedCurrency={selectedCurrency}
             mr={10}
             color="white"
             onChange={onCurrencyChange}
-          />
+          /> */}
         </Stack>
       </Flex>
     </Box>
