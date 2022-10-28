@@ -294,31 +294,31 @@ export const ACTIONS: ActionsType[] = [
         type: "text",
         formKey: "position",
       },
-      {
-        name: "Birthday",
-        type: "date",
-        formKey: "birthday",
-      },
-      {
-        name: "Home Phone",
-        type: "text",
-        formKey: "homePhone",
-      },
-      {
-        name: "Office Phone",
-        type: "text",
-        formKey: "officePhone",
-      },
+      // {
+      //   name: "Birthday",
+      //   type: "date",
+      //   formKey: "birthday",
+      // },
+      // {
+      //   name: "Home Phone",
+      //   type: "text",
+      //   formKey: "homePhone",
+      // },
+      // {
+      //   name: "Office Phone",
+      //   type: "text",
+      //   formKey: "officePhone",
+      // },
       {
         name: "Personal Phone",
         type: "text",
         formKey: "personalPhone",
       },
-      {
-        name: "Office Fax",
-        type: "text",
-        formKey: "officeFax",
-      },
+      // {
+      //   name: "Office Fax",
+      //   type: "text",
+      //   formKey: "officeFax",
+      // },
       {
         name: "Alternative Phone",
         type: "text",
@@ -339,11 +339,11 @@ export const ACTIONS: ActionsType[] = [
         type: "url",
         formKey: "website1",
       },
-      {
-        name: "Website 2",
-        type: "url",
-        formKey: "website2",
-      },
+      // {
+      //   name: "Website 2",
+      //   type: "url",
+      //   formKey: "website2",
+      // },
       {
         name: "Payment Link",
         type: "url",
@@ -354,21 +354,21 @@ export const ACTIONS: ActionsType[] = [
         type: "text",
         formKey: "homeAddress",
       },
-      {
-        name: "Office address",
-        type: "text",
-        formKey: "officeAddress",
-      },
-      {
-        name: "Home Postal Code",
-        type: "text",
-        formKey: "homePostalCode",
-      },
-      {
-        name: "Office Postal Code",
-        type: "text",
-        formKey: "officePostalCode",
-      },
+      // {
+      //   name: "Office address",
+      //   type: "text",
+      //   formKey: "officeAddress",
+      // },
+      // {
+      //   name: "Home Postal Code",
+      //   type: "text",
+      //   formKey: "homePostalCode",
+      // },
+      // {
+      //   name: "Office Postal Code",
+      //   type: "text",
+      //   formKey: "officePostalCode",
+      // },
       {
         name: "Home Country",
         type: "country-select",
@@ -385,27 +385,27 @@ export const ACTIONS: ActionsType[] = [
         type: "text",
         formKey: "homeCity",
       },
-      {
-        name: "Office Country",
-        type: "country-select",
-        options: getCountries(),
-        formKey: "officeCountryId",
-      },
-      {
-        name: "Office State",
-        type: "state-select",
-        formKey: "officeStateId",
-      },
-      {
-        name: "Office City",
-        type: "text",
-        formKey: "officeCity",
-      },
-      {
-        name: "Theme",
-        type: "color",
-        formKey: "theme",
-      },
+      // {
+      //   name: "Office Country",
+      //   type: "country-select",
+      //   options: getCountries(),
+      //   formKey: "officeCountryId",
+      // },
+      // {
+      //   name: "Office State",
+      //   type: "state-select",
+      //   formKey: "officeStateId",
+      // },
+      // {
+      //   name: "Office City",
+      //   type: "text",
+      //   formKey: "officeCity",
+      // },
+      // {
+      //   name: "Theme",
+      //   type: "color",
+      //   formKey: "theme",
+      // },
     ],
   },
   {

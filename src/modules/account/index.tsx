@@ -62,6 +62,7 @@ const HardsandsAccountsApp = ({
             variant={"ghost"}
             aria-label={"App Menu"}
             href={"#"}
+            display={["initial", "none"]}
           >
             <HiMenuAlt3 color="black" size={30} />
           </HardsandLink>

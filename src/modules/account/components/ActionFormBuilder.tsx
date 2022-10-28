@@ -8,6 +8,8 @@ import {
   Select,
   Tag,
   Textarea,
+  Image,
+  Spinner,
 } from "@chakra-ui/react";
 import CustomMenu from "components/CustomMenu";
 import CustomSelect from "components/CustomSelect";
@@ -20,15 +22,19 @@ const ActionFormBuilder = ({
   fields,
   formState,
   onChange,
+  imageLoading,
+  selectedImageUrl,
 }: {
   formState?: any;
+  imageLoading?: boolean;
+  selectedImageUrl?: string;
   fields: ActionsFormType[];
   onChange: (e: any) => void;
 }) => {
   const [selectedColor, setSelectedColor] = useState<string>("brand.300");
   const [stateOptions, setStateOptions] = useState<string[]>([]);
 
-  const handleChange = (e: any) => {
+  const handleChange = async (e: any) => {
     onChange(e);
   };
 
@@ -51,20 +57,27 @@ const ActionFormBuilder = ({
           case "file":
             return (
               <FormControl key={index}>
-                <Box mb={4}>
+                <Flex mb={4} borderRadius={0} borderColor={"black"}>
                   <FormLabel>{name}</FormLabel>
+                  <Box maxW={'230px'}>
+                    {imageLoading ? (
+                      <Spinner size="md" />
+                    ) : selectedImageUrl ? (
+                      <Image src={selectedImageUrl} alt="image preview" />
+                    ) : null}
+                  </Box>
                   <Input
                     type={"file"}
-                    name={formKey as string}
                     borderRadius={0}
-                    borderColor={"black"}
+                    accept="image/png, image/jpeg"
+                    name={formKey as string}
                     onChange={handleChange}
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
                     defaultValue={formState[formKey as string]}
                   />
-                </Box>
+                </Flex>
               </FormControl>
             );
           case "text":
@@ -181,8 +194,8 @@ const ActionFormBuilder = ({
                   >
                     {options &&
                       // @ts-ignore
-                      options?.map((opt: string) => (
-                        <option key={opt} value={opt}>
+                      options?.map((opt: string, index: number) => (
+                        <option key={`${opt}_${index}`} value={opt}>
                           {opt}
                         </option>
                       ))}

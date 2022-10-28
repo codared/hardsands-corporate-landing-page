@@ -1,4 +1,4 @@
-import { Box, useDisclosure, useToast } from "@chakra-ui/react";
+import { Box, Flex, useDisclosure, useToast, Text } from "@chakra-ui/react";
 import CustomDrawer from "components/CustomDrawer";
 import React, { useEffect, useState } from "react";
 import { AiOutlineEdit, AiOutlineStar } from "react-icons/ai";
@@ -21,6 +21,7 @@ import NoCardMessage from "../components/NoCardMessage";
 import QRCodeShareSection from "../components/QRCodeShareSection";
 import { ACTION_FORM_STATUS, AppIcons } from "../constants";
 import useScreenNavigation from "../hooks";
+import { uploadImageData } from "../services";
 import { APP_SCREEN, UserCardType } from "../types";
 import ActionCards from "./components/ActionCards";
 import ActionItem from "./components/ActionItem";
@@ -55,6 +56,10 @@ function MainIndex() {
   } = useDisclosure();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [formStatus, setFormStatus] = useState<string>(ACTION_FORM_STATUS.ADD);
+  const [imageUploadData, setImageUploadData] = useState<{
+    name: string;
+    url: string;
+  }>();
 
   const handleActionSelect = (action: ActionsType) => {
     setSelectedAction(action);
@@ -76,8 +81,37 @@ function MainIndex() {
     }
   }, [reduxDispatch, selectedCard]);
 
-  const handleActionSubmit = (formData: any) => {
+  const handleImageUpload = async (data: string) => {
+    try {
+      if (!imageUploadData?.url) {
+        throw new Error("Image data from AWS is not available");
+      }
+      return await uploadImageData(imageUploadData.url, data);
+    } catch (error) {
+      setIsSubmitting(false);
+      console.log(error);
+      return;
+    }
+  };
+
+  const handleActionSubmit = async (formData: any) => {
     setIsSubmitting(true);
+    if (!!formData.profileImage) {
+      if (formData.profileImage.size > 2097152) {
+        reduxDispatch({
+          type: "APP_ERROR",
+          payload: {
+            isError: true,
+            name: "Profile Image",
+            message: "Image file is too large, should be less than 2MB",
+          } as any,
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      const res = await handleImageUpload(formData.profileImage);
+      formData.profileImage = imageUploadData?.name;
+    }
 
     if (formData.phone && !formData.phoneCode) {
       setIsSubmitting(false);
@@ -242,14 +276,28 @@ function MainIndex() {
               </>
             )}
 
-            {currentScreenState === APP_SCREEN.ACTIONS && (
-              <ActionCards
-                handleSelectedTab={handleSelectedTab}
-                setSelectedAction={setSelectedAction}
-                cardActions={cardActions as ActionsType[]}
-                onOpen={onActionCardDrawerOpen}
-              />
-            )}
+            {currentScreenState === APP_SCREEN.ACTIONS &&
+              (cardActions && cardActions.length > 0 ? (
+                <ActionCards
+                  handleSelectedTab={handleSelectedTab}
+                  setSelectedAction={setSelectedAction}
+                  cardActions={cardActions as ActionsType[]}
+                  onOpen={onActionCardDrawerOpen}
+                />
+              ) : (
+                <Flex
+                  w={"100%"}
+                  h={"100%"}
+                  justifyContent="center"
+                  alignItems={"center"}
+                >
+                  <Text>
+                    {
+                      'No Card Action has been set, Click the "+ Add Action" button'
+                    }
+                  </Text>
+                </Flex>
+              ))}
             {currentScreenState === APP_SCREEN.STATS && (
               <StatisticsScreen cardStatistics={cardStatistics} />
             )}
@@ -259,6 +307,7 @@ function MainIndex() {
                 isSubmitting={isSubmitting}
                 selectedAction={selectedAction}
                 handleActionSubmit={handleActionSubmit}
+                setImageUploadData={setImageUploadData}
               />
             )}
 

@@ -2,6 +2,7 @@ import { Box, Flex, Grid, Tag, Text, Image, Button } from "@chakra-ui/react";
 import ActionFormBuilder from "modules/account/components/ActionFormBuilder";
 import ProfileCardPreview from "modules/account/components/ProfileCardPreview";
 import { ACTION_FORM_STATUS, NumberFields } from "modules/account/constants";
+import { getUploadUrl } from "modules/account/services";
 import React, { useState } from "react";
 import { SOCIAL_LINKS } from "utils/constants";
 import { ActionsFormType, ActionsType } from "utils/types";
@@ -19,14 +20,18 @@ const EditFormScreen = ({
   handleActionSubmit,
   isSubmitting,
   formStatus,
+  setImageUploadData,
 }: {
   formStatus?: string;
   isSubmitting: boolean;
   selectedAction: ActionsType;
+  setImageUploadData?: any;
   handleActionSubmit: (action: ActionsType) => void;
 }) => {
   const [showAddSocials, setAddSocials] = useState<boolean>(false);
   const [selectedSocials, setSelectedSocials] = useState<any[]>([]);
+  const [selectedImageUrl, setSelectedImageUrl] = useState<any>();
+  const [imageLoading, setImageLoading] = useState<any>(false);
   const [formState, setFormState] = useState<any>(
     formStatus === ACTION_FORM_STATUS.ADD
       ? {}
@@ -42,8 +47,38 @@ const EditFormScreen = ({
     setAddSocials(true);
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = async (e: any) => {
     e.preventDefault();
+
+    if (e.target.name === "profileImage") {
+      const files = e.target.files;
+      if (files.length && files[0].size > 2097152) {
+        // only allow images less that 2mb
+        return;
+      } else {
+        // console.log("image value >>>>> ", files[0]);
+        setImageLoading(true);
+        const res = await getUploadUrl(files[0].imageType);
+        // console.log("res >>> ", res);
+        if (!res?.isError) {
+          setImageUploadData(res.result);
+          let reader = new window.FileReader();
+          reader.readAsDataURL(files[0]);
+          reader.onloadend = function () {
+            setSelectedImageUrl(reader.result);
+
+            reader.readAsBinaryString(files[0]);
+            reader.onloadend = () => {
+              setFormState({
+                ...formState,
+                [e.target.name]: files[0],
+              });
+            };
+          };
+        }
+        setImageLoading(false);
+      }
+    }
 
     if (NumberFields.includes(e.target.name) && isNaN(e.target.value)) {
       return;
@@ -149,6 +184,8 @@ const EditFormScreen = ({
               onChange={handleChange}
               formState={formState}
               fields={selectedAction.fields as ActionsFormType[]}
+              selectedImageUrl={selectedImageUrl}
+              imageLoading={imageLoading}
             />
             <Box p={[4]} position={"absolute"} bottom={0} left={0} right={0}>
               <Button
