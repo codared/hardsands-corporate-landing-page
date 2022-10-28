@@ -1,16 +1,16 @@
-import WithLayout from "components/WithLayout";
 import * as Sentry from "@sentry/react";
 import CardTapDisplay from "modules/account/components/CardTapDisplay";
 import { getCard } from "modules/authentication/services";
 import { NextPage, NextPageContext } from "next";
 import { isServerRequest } from "utils/nextjs";
 import generateVCard from "./vCardGenerator";
+import WithoutLayout from "components/WithoutLayout";
 
 const CheckCardActivation: NextPage<{ result: any }> = ({ result }) => {
   return (
-    <WithLayout pageTitle="Card Tap | Hardsands">
+    <WithoutLayout pageTitle="Card Tap | Hardsands">
       <CardTapDisplay result={result} />
-    </WithLayout>
+    </WithoutLayout>
   );
 };
 

@@ -6,6 +6,7 @@ import { CloseIcon } from '@chakra-ui/icons';
 import React, { ReactElement } from "react";
 import * as Sentry from "@sentry/react";
 import HardsandsButton from 'components/HardsandsButton';
+import { useTranslation } from 'react-i18next';
 
 class ErrorBoundary extends React.Component {
   constructor(
@@ -47,10 +48,10 @@ class ErrorBoundary extends React.Component {
             </Flex>
           </Box>
           <Heading as="h2" size="xl" mt={6} mb={2}>
-            {t('error:opps-there-is-an-error', 'Oops, there is an error!')}
+            {this.props.t('error:opps-there-is-an-error', 'Oops, there is an error!')}
           </Heading>
           <Text color={'gray.500'}>
-            {t('error:something-went-wrong', 'Something went wrong. We have gotten notified about this issue and we will take a look at it shortly.')}
+            {this.props.t('error:something-went-wrong', 'Something went wrong. We have gotten notified about this issue and we will take a look at it shortly.')}
           </Text>
           <Box h={50} />
           <HardsandsButton
@@ -58,9 +59,10 @@ class ErrorBoundary extends React.Component {
             bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
             color="white"
             variant="solid"
+            m="0 auto"
             href={'/'}
           >
-            {t('error:go-to-home', 'Go to Home')}
+            {this.props.t('error:go-to-home', 'Go to Home')}
           </HardsandsButton>
         </Box>
       );

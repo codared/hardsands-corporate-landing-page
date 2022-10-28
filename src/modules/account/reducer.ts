@@ -49,6 +49,12 @@ const appReducer = (
       return { ...state, cardStatistics: action.payload, loading: false };
     case "APP_ERROR":
       return { ...state, error: action.payload };
+    case "GET_USER_COUNTRY":
+      return {
+        ...state,
+        user: action.payload,
+        loading: false,
+      };
     default:
       return state;
   }

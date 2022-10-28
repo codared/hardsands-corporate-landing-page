@@ -1,5 +1,6 @@
 import { ThunkActionCreator } from "redux/rootReducer";
 import { mergeActions } from "utils/functions";
+import { getGeoIpCountryCode } from "utils/geoIp";
 import { ActionsType } from "utils/types";
 import { ACTIONS } from "./constants";
 import {
@@ -69,6 +70,25 @@ export const getAllActionsActions: ThunkActionCreator<
 
   return res.result;
 };
+
+export const getUserCountry: ThunkActionCreator<Promise<any>> =
+  () => async (dispatch, getState) => {
+    const _country = await getGeoIpCountryCode();
+
+    if (!_country) {
+      return dispatch({
+        type: "APP_ERROR",
+        payload: _country as any,
+      });
+    }
+
+    dispatch({
+      type: "GET_USER_COUNTRY",
+      payload: { ...getState(), country: _country },
+    });
+
+    return _country;
+  };
 
 export const getUserCardsAction: ThunkActionCreator<Promise<UserCardType[]>> =
   () => async (dispatch, getState) => {

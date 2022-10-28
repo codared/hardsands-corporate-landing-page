@@ -35,6 +35,10 @@ export interface UserAppError {
   type: "APP_ERROR";
   payload: any[];
 }
+export interface GetUserCountry {
+  type: "GET_USER_COUNTRY";
+  payload: any;
+}
 
 export interface UserAppLoading {
   type: "APP_LOADING";
@@ -49,4 +53,5 @@ export type UserAppActionTypes =
   | AddUserCardAction
   | GetCardStatistics
   | GetUserDetails
+  | GetUserCountry
   | UserAppLoading;

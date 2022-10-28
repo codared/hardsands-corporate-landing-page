@@ -218,7 +218,7 @@ function MainIndex() {
   };
 
   useEffect(() => {
-    if (appError.isError) {
+    if (appError?.isError) {
       toast({
         position: "top-right",
         title: appError.name,

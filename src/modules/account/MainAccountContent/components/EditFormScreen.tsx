@@ -2,8 +2,9 @@ import { Box, Flex, Grid, Tag, Text, Image, Button } from "@chakra-ui/react";
 import ActionFormBuilder from "modules/account/components/ActionFormBuilder";
 import ProfileCardPreview from "modules/account/components/ProfileCardPreview";
 import { ACTION_FORM_STATUS, NumberFields } from "modules/account/constants";
-import { getUploadUrl } from "modules/account/services";
-import React, { useState } from "react";
+import { getCountryBanks, getUploadUrl } from "modules/account/services";
+import React, { useState, useMemo, useEffect } from "react";
+import { useTypedSelector } from "redux/store";
 import { SOCIAL_LINKS } from "utils/constants";
 import { ActionsFormType, ActionsType } from "utils/types";
 
@@ -38,6 +39,15 @@ const EditFormScreen = ({
       : retrieveFormKeyValue(selectedAction)
   );
   const isProfile = selectedAction.title === "Profile";
+  const isBank = selectedAction.title === "Bank Account";
+  const user = useTypedSelector((state) => state.app?.user);
+
+  useMemo(() => {
+    if (isBank) {
+      const countryBanks = getCountryBanks(user?.country as string);
+      console.log('getCountryBanks >>> ', countryBanks);
+    }
+  }, [isBank, user?.country]);
 
   const handleAction = () => {
     handleActionSubmit({ ...formState, ...selectedAction });
