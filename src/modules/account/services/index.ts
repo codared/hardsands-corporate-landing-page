@@ -101,10 +101,9 @@ export const updateUserCardAction = async (id: number, data: any) => {
 
 export const getCountryBanks = async (countryCode: string) => {
   const res = await storefrontApiJsonFetch(
-    "https://www.theswiftcodes.com/ajax/code-finder.ajax.php",
+    `/banks/${countryCode}/response.json`,
     {
-      method: "POST",
-      body: JSON.stringify({ input: "country", country: countryCode }),
+      method: "GET",
     },
     false
   );

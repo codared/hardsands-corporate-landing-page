@@ -31,8 +31,6 @@ const HardsandsAccountsApp = ({
     }
   }, [reduxDispatch, user]);
 
-  console.log("user >>> ", user);
-
   return (
     <Box
       as="section"

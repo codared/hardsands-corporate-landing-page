@@ -55,9 +55,9 @@ class ErrorBoundary extends React.Component {
           </Text>
           <Box h={50} />
           <HardsandsButton
-            colorScheme="teal"
-            bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
-            color="white"
+            bg="brand.10"
+            bgGradient="linear(to-r, brand.10, brand.50, brand.10)"
+            color="black"
             variant="solid"
             m="0 auto"
             href={'/'}

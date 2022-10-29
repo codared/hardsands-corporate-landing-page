@@ -32,6 +32,10 @@ export type UserCardType = {
   url: string;
 };
 
+export type BankObjectType = {
+  value: string;
+}
+
 export type CardActionUpdate = {
   cardSerialId: string;
   actionId: number;

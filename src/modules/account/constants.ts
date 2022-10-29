@@ -480,7 +480,7 @@ export const ACTIONS: ActionsType[] = [
       },
       {
         name: "Bank Name",
-        type: "text",
+        type: "bank-select",
         formKey: "bankName",
       },
     ],

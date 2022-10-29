@@ -17,6 +17,7 @@ import React, { FormEventHandler, useState } from "react";
 import { getCountryPhoneCode, getState } from "utils/getCountries";
 import { ActionsFormType } from "utils/types";
 import { themeColorOptions } from "../constants";
+import { BankObjectType } from "../types";
 
 const ActionFormBuilder = ({
   fields,
@@ -24,11 +25,13 @@ const ActionFormBuilder = ({
   onChange,
   imageLoading,
   selectedImageUrl,
+  banks,
 }: {
   formState?: any;
   imageLoading?: boolean;
   selectedImageUrl?: string;
   fields: ActionsFormType[];
+  banks?: BankObjectType[];
   onChange: (e: any) => void;
 }) => {
   const [selectedColor, setSelectedColor] = useState<string>("brand.300");
@@ -59,7 +62,7 @@ const ActionFormBuilder = ({
               <FormControl key={index}>
                 <Flex mb={4} borderRadius={0} borderColor={"black"}>
                   <FormLabel>{name}</FormLabel>
-                  <Box maxW={'230px'}>
+                  <Box maxW={"230px"}>
                     {imageLoading ? (
                       <Spinner size="md" />
                     ) : selectedImageUrl ? (
@@ -187,7 +190,7 @@ const ActionFormBuilder = ({
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleCountrySelectChange}
-                    placeholder={`Enter ${name}`}
+                    placeholder={`Select ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
                     defaultValue={formState[formKey as string]}
@@ -213,21 +216,52 @@ const ActionFormBuilder = ({
                     borderRadius={0}
                     borderColor={"black"}
                     onChange={handleStateSelectChange}
-                    placeholder={`Enter ${name}`}
+                    placeholder={`Select ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
                     defaultValue={formState[formKey as string]}
                   >
                     {stateOptions.length ? (
                       // @ts-ignore
-                      stateOptions?.map((opt: string) => (
-                        <option key={opt} value={opt}>
+                      stateOptions?.map((opt: string, index: number) => (
+                        <option key={`${opt}_${index}`} value={opt}>
                           {opt}
                         </option>
                       ))
                     ) : (
                       <option>--Select Country first --</option>
                     )}
+                  </Select>
+                </Box>
+              </FormControl>
+            );
+          case "bank-select":
+            return (
+              <FormControl key={index}>
+                <Box mb={4}>
+                  <FormLabel>{name}</FormLabel>
+                  <Select
+                    name={formKey as string}
+                    borderRadius={0}
+                    borderColor={"black"}
+                    onChange={handleChange}
+                    placeholder={`Select ${name}`}
+                    _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
+                    size="lg"
+                    value={formState[formKey as string]}
+                    defaultValue={formState[formKey as string]}
+                  >
+                    {banks && banks?.length > 0
+                      ? // @ts-ignore
+                        banks?.map((opt: BankObjectType, index: number) => (
+                          <option
+                            key={`${opt.value}_${index}`}
+                            value={opt.value}
+                          >
+                            {opt.value}
+                          </option>
+                        ))
+                      : null}
                   </Select>
                 </Box>
               </FormControl>

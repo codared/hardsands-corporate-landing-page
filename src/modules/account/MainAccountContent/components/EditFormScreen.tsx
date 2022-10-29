@@ -41,11 +41,12 @@ const EditFormScreen = ({
   const isProfile = selectedAction.title === "Profile";
   const isBank = selectedAction.title === "Bank Account";
   const user = useTypedSelector((state) => state.app?.user);
+  const [countryBanks, setCountryBanks] = useState([]);
 
-  useMemo(() => {
+  useMemo(async () => {
     if (isBank) {
-      const countryBanks = getCountryBanks(user?.country as string);
-      console.log('getCountryBanks >>> ', countryBanks);
+      const _countryBanks = await getCountryBanks(user?.country as string);
+      setCountryBanks(_countryBanks as any);
     }
   }, [isBank, user?.country]);
 
@@ -196,6 +197,7 @@ const EditFormScreen = ({
               fields={selectedAction.fields as ActionsFormType[]}
               selectedImageUrl={selectedImageUrl}
               imageLoading={imageLoading}
+              banks={countryBanks}
             />
             <Box p={[4]} position={"absolute"} bottom={0} left={0} right={0}>
               <Button
