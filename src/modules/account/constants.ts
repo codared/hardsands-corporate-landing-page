@@ -79,7 +79,7 @@ export const ACCOUNT_NAV_ITEMS: AccountNavItemsType[] = [
 ];
 
 export const AppIcons = {
-  Profile: RiContactsLine,
+  "Social Card": RiContactsLine,
   WhatsApp: FaWhatsapp,
   URL: AiOutlineLink,
   Event: MdOutlineEventNote,
@@ -144,36 +144,26 @@ export const AppIcons = {
 */
 
 export const ACTIONS: ActionsType[] = [
-  // {
-  //   title: "Profile",
-  //   fields: [
-  //     {
-  //       name: "Profile Image",
-  //       type: "file",
-  //       formKey: "profileImage",
-  //     },
-  //     {
-  //       name: "Name",
-  //       type: "text",
-  //       formKey: "name",
-  //     },
-  //     {
-  //       name: "Title",
-  //       type: "text",
-  //       formKey: "title",
-  //     },
-  //     {
-  //       name: "Location",
-  //       type: "text",
-  //       formKey: "location",
-  //     },
-  //     {
-  //       name: "About",
-  //       type: "long-text",
-  //       formKey: "about",
-  //     },
-  //   ],
-  // },
+  {
+    title: "Social Card",
+    fields: [
+      {
+        name: "Profile Image",
+        type: "file",
+        formKey: "profileImage",
+      },
+      {
+        name: "Name",
+        type: "text",
+        formKey: "name",
+      },
+      {
+        name: "Work Title",
+        type: "text",
+        formKey: "workTitle",
+      },
+    ],
+  },
   {
     title: "WhatsApp",
     fields: [
@@ -545,140 +535,140 @@ export const SOCIAL_LINKS: ActionsFormType = {
       image: TelegramIcon,
     },
   ],
-  "Contact Info": [
-    {
-      id: 1,
-      label: "Sms",
-      image: SmsIcon,
-      fields: ["Number", "Text"],
-    },
-    {
-      id: 2,
-      label: "Email",
-      image: EmailIcon,
-    },
-    {
-      id: 3,
-      label: "WhatsApp",
-      image: WhatsappIcon,
-    },
-    // {
-    //   id: 4,
-    //   label: "Call",
-    //   image: CallIcon,
-    // },
-    // {
-    //   id: 5,
-    //   label: "Contact Card",
-    //   image: ContactCardIcon,
-    // },
-    // {
-    //   id: 6,
-    //   label: "Leads Form",
-    //   image: LeadsFormIcon,
-    //   pro: true,
-    // },
-  ],
-  "For Business": [
-    {
-      id: 1,
-      label: "website",
-      image: WebsiteIcon,
-    },
-    {
-      id: 2,
-      label: "Calendly",
-      image: CalendlyIcon,
-      pro: true,
-    },
-    {
-      id: 3,
-      label: "Yelp",
-      image: YelpIcon,
-      pro: true,
-    },
-    {
-      id: 4,
-      label: "Trip Advisor",
-      image: TripAdvicerIcon,
-      pro: true,
-    },
-  ],
-  Payment: [
-    {
-      id: 1,
-      label: "Bank Details",
-      image: BankIcon,
-    },
-    {
-      id: 2,
-      label: "Cash App",
-      image: CashAppIcon,
-    },
-    {
-      id: 3,
-      label: "Paypal",
-      image: PaypalIcon,
-    },
-    {
-      id: 4,
-      label: "Zelle",
-      image: ZelleIcon,
-    },
-    {
-      id: 5,
-      label: "Abeg",
-      image: AbegIcon,
-    },
-    {
-      id: 6,
-      label: "Venmo",
-      image: VenmoIcon,
-    },
-    {
-      id: 7,
-      label: "Patreon",
-      image: PatreonIcon,
-    },
-  ],
-  "Music Links": [
-    {
-      id: 1,
-      label: "Spotify",
-      image: SpotifyIcon,
-    },
-    {
-      id: 2,
-      label: "Apple Music",
-      image: AppleMusicIcon,
-    },
-    {
-      id: 3,
-      label: "Sound Cloud",
-      image: SoundcloudIcon,
-    },
-    {
-      id: 4,
-      label: "Apple Podcast",
-      image: ApplePodcastIcon,
-      pro: true,
-    },
-    {
-      id: 6,
-      label: "Deezer",
-      image: DeezerIcon,
-    },
-    {
-      id: 7,
-      label: "Boom Play",
-      image: BoomPlayIcon,
-    },
-    {
-      id: 8,
-      label: "Audio Mack",
-      image: AudioMackIcon,
-    },
-  ],
+  // "Contact Info": [
+  //   {
+  //     id: 1,
+  //     label: "Sms",
+  //     image: SmsIcon,
+  //     fields: ["Number", "Text"],
+  //   },
+  //   {
+  //     id: 2,
+  //     label: "Email",
+  //     image: EmailIcon,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: "WhatsApp",
+  //     image: WhatsappIcon,
+  //   },
+  // {
+  //   id: 4,
+  //   label: "Call",
+  //   image: CallIcon,
+  // },
+  // {
+  //   id: 5,
+  //   label: "Contact Card",
+  //   image: ContactCardIcon,
+  // },
+  // {
+  //   id: 6,
+  //   label: "Leads Form",
+  //   image: LeadsFormIcon,
+  //   pro: true,
+  // },
+  // ],
+  // "For Business": [
+  //   {
+  //     id: 1,
+  //     label: "website",
+  //     image: WebsiteIcon,
+  //   },
+  //   {
+  //     id: 2,
+  //     label: "Calendly",
+  //     image: CalendlyIcon,
+  //     pro: true,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: "Yelp",
+  //     image: YelpIcon,
+  //     pro: true,
+  //   },
+  //   {
+  //     id: 4,
+  //     label: "Trip Advisor",
+  //     image: TripAdvicerIcon,
+  //     pro: true,
+  //   },
+  // ],
+  // Payment: [
+  //   {
+  //     id: 1,
+  //     label: "Bank Details",
+  //     image: BankIcon,
+  //   },
+  //   {
+  //     id: 2,
+  //     label: "Cash App",
+  //     image: CashAppIcon,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: "Paypal",
+  //     image: PaypalIcon,
+  //   },
+  //   {
+  //     id: 4,
+  //     label: "Zelle",
+  //     image: ZelleIcon,
+  //   },
+  //   {
+  //     id: 5,
+  //     label: "Abeg",
+  //     image: AbegIcon,
+  //   },
+  //   {
+  //     id: 6,
+  //     label: "Venmo",
+  //     image: VenmoIcon,
+  //   },
+  //   {
+  //     id: 7,
+  //     label: "Patreon",
+  //     image: PatreonIcon,
+  //   },
+  // ],
+  // "Music Links": [
+  //   {
+  //     id: 1,
+  //     label: "Spotify",
+  //     image: SpotifyIcon,
+  //   },
+  //   {
+  //     id: 2,
+  //     label: "Apple Music",
+  //     image: AppleMusicIcon,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: "Sound Cloud",
+  //     image: SoundcloudIcon,
+  //   },
+  //   {
+  //     id: 4,
+  //     label: "Apple Podcast",
+  //     image: ApplePodcastIcon,
+  //     pro: true,
+  //   },
+  //   {
+  //     id: 6,
+  //     label: "Deezer",
+  //     image: DeezerIcon,
+  //   },
+  //   {
+  //     id: 7,
+  //     label: "Boom Play",
+  //     image: BoomPlayIcon,
+  //   },
+  //   {
+  //     id: 8,
+  //     label: "Audio Mack",
+  //     image: AudioMackIcon,
+  //   },
+  // ],
 };
 
 export const themeColorOptions = [

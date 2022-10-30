@@ -1,7 +1,7 @@
 import { ThunkActionCreator } from "redux/rootReducer";
 import { mergeActions } from "utils/functions";
 import { getGeoIpCountryCode } from "utils/geoIp";
-import { ActionsType } from "utils/types";
+import { ActionsType, BackendResponseType } from "utils/types";
 import { ACTIONS } from "./constants";
 import {
   addUserCardAction,
@@ -164,33 +164,13 @@ export const setUserCardsActionDefaultAction: ThunkActionCreator<
   return res.result;
 };
 
-export const addUserCardsAction: ThunkActionCreator<Promise<ActionsType[]>> =
-  (data: CardActionUpdate) => async (dispatch, getState) => {
-    const res = await addUserCardAction(data);
-
-    if (res.isError) {
-      return dispatch({
-        type: "APP_ERROR",
-        payload: res as any,
-      });
-    }
-    dispatch({
-      type: "ADD_CARD_ACTION",
-      payload: res.result,
-    });
-
-    return res.result;
-  };
-
-export const updateUserCardsAction: ThunkActionCreator<
-  Promise<ActionsType[]>
+export const addUserCardsAction: ThunkActionCreator<
+  Promise<BackendResponseType>
 > = (data: CardActionUpdate) => async (dispatch, getState) => {
-  const { actionId, ...rest } = data;
-  // return;
-  const res = await updateUserCardAction(actionId, rest);
+  const res = await addUserCardAction(data);
 
   if (res.isError) {
-    return dispatch({
+    dispatch({
       type: "APP_ERROR",
       payload: res as any,
     });
@@ -200,5 +180,26 @@ export const updateUserCardsAction: ThunkActionCreator<
     payload: res.result,
   });
 
-  return res.result;
+  return res;
+};
+
+export const updateUserCardsAction: ThunkActionCreator<
+  Promise<BackendResponseType>
+> = (data: CardActionUpdate) => async (dispatch, getState) => {
+  const { actionId, ...rest } = data;
+  // return;
+  const res = await updateUserCardAction(actionId, rest);
+
+  if (res.isError) {
+    dispatch({
+      type: "APP_ERROR",
+      payload: res as any,
+    });
+  }
+  dispatch({
+    type: "ADD_CARD_ACTION",
+    payload: res.result,
+  });
+
+  return res;
 };

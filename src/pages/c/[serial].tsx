@@ -8,6 +8,7 @@ import WithoutLayout from "components/WithoutLayout";
 
 const CheckCardActivation: NextPage<{ result: any }> = ({ result }) => {
   return (
+    // TODO: add display card title and description for seo
     <WithoutLayout pageTitle="Card Tap | Hardsands">
       <CardTapDisplay result={result} />
     </WithoutLayout>
@@ -79,7 +80,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
         case "Bank Account":
           // Show Bank Account details
           return { props: { result: _default } };
-        case "Profile":
+        case "Social Card":
           // Show user profile
           return { props: {} };
 

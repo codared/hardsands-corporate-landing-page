@@ -155,6 +155,7 @@ function MainIndex() {
       });
       return;
     }
+
     formData = {
       ...formData,
       cardSerialId: selectedCard.cardSerial,
@@ -174,29 +175,33 @@ function MainIndex() {
     if (formStatus === ACTION_FORM_STATUS.ADD) {
       reduxDispatch(addUserCardsAction(rest)).then((res) => {
         setIsSubmitting(false);
-        toast({
-          position: "bottom",
-          title: "Success",
-          description: "Action Added Successfully",
-          status: "success",
-          duration: 2000,
-          isClosable: true,
-        });
-        handleGoBack(screenState[screenState.length - 1]);
+        if (!res?.isError) {
+          toast({
+            position: "bottom",
+            title: "Success",
+            description: "Action Added Successfully",
+            status: "success",
+            duration: 2000,
+            isClosable: true,
+          });
+          handleGoBack(screenState[screenState.length - 1]);
+        }
       });
     }
     if (formStatus === ACTION_FORM_STATUS.EDIT) {
       reduxDispatch(updateUserCardsAction(rest)).then((res) => {
         setIsSubmitting(false);
-        toast({
-          position: "bottom",
-          title: "Success",
-          description: "Updated Successfully",
-          status: "success",
-          duration: 2000,
-          isClosable: true,
-        });
-        handleGoBack(screenState[screenState.length - 1]);
+        if (!res?.isError) {
+          toast({
+            position: "bottom",
+            title: "Success",
+            description: "Updated Successfully",
+            status: "success",
+            duration: 2000,
+            isClosable: true,
+          });
+          handleGoBack(screenState[screenState.length - 1]);
+        }
       });
     }
   };
@@ -306,6 +311,7 @@ function MainIndex() {
                 formStatus={formStatus}
                 isSubmitting={isSubmitting}
                 selectedAction={selectedAction}
+                setSelectedAction={setSelectedAction}
                 handleActionSubmit={handleActionSubmit}
                 setImageUploadData={setImageUploadData}
               />
