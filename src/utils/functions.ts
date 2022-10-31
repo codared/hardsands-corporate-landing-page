@@ -47,9 +47,9 @@ export const getToken = () => {
 };
 
 export const mergeActions = (dbActions: any, localActions: ActionsType[]) => {
-  return localActions.map((localAction: any) => {
+  return localActions.map((localAction: ActionsType) => {
     const neededActionsFromDB = dbActions.find(
-      ({ action }: any) => action === localAction.title
+      ({ action }: any) => action === localAction.fieldTitle
     );
     return {
       ...localAction,
@@ -63,10 +63,10 @@ export const getActionById = (id: number, cardActions: ActionsType[]) => {
 };
 
 export const mergeActionFields = (cardActions: ActionsType[], id: number) => {
-  const action = cardActions?.find((action) => action.id === id) as ActionsType;
+  const action = getActionById(id, cardActions);
 
   const localAction = ACTIONS?.find(
-    (act) => act.title === action.title
+    (act) => act.fieldTitle === action.title
   ) as ActionsType;
 
   localAction.fields = localAction?.fields?.map((_action) => {
@@ -88,5 +88,5 @@ export const mergeActionFields = (cardActions: ActionsType[], id: number) => {
 };
 
 export const getActionsName = () => {
-  return ACTIONS.map(({ title }) => title);
+  return ACTIONS.map(({ fieldTitle }) => fieldTitle);
 };

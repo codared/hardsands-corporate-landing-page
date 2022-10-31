@@ -53,8 +53,8 @@ const EditFormScreen = ({
       ? {}
       : retrieveFormKeyValue(selectedAction)
   );
-  const isProfile = selectedAction.title === "Social Card";
-  const isBank = selectedAction.title === "Bank Account";
+  const isProfile = selectedAction.fieldTitle === "Social Card";
+  const isBank = selectedAction.fieldTitle === "Bank Account";
   const user = useTypedSelector((state) => state.app?.user);
   const [countryBanks, setCountryBanks] = useState([]);
 
@@ -78,10 +78,8 @@ const EditFormScreen = ({
         // only allow images less that 2mb
         return;
       } else {
-        // console.log("image value >>>>> ", files[0]);
         setImageLoading(true);
         const res = await getUploadUrl(files[0].imageType);
-        // console.log("res >>> ", res);
         if (!res?.isError) {
           setImageUploadData(res.result);
           let reader = new window.FileReader();

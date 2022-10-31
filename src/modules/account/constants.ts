@@ -145,7 +145,7 @@ export const AppIcons = {
 
 export const ACTIONS: ActionsType[] = [
   {
-    title: "Social Card",
+    fieldTitle: "Social Card",
     fields: [
       {
         name: "Profile Image",
@@ -158,14 +158,14 @@ export const ACTIONS: ActionsType[] = [
         formKey: "name",
       },
       {
-        name: "Work Title",
+        name: "Title",
         type: "text",
-        formKey: "workTitle",
+        formKey: "title",
       },
     ],
   },
   {
-    title: "WhatsApp",
+    fieldTitle: "WhatsApp",
     fields: [
       {
         name: "Phone Code",
@@ -185,7 +185,7 @@ export const ACTIONS: ActionsType[] = [
     ],
   },
   {
-    title: "URL",
+    fieldTitle: "URL",
     fields: [
       {
         name: "URL",
@@ -257,7 +257,7 @@ export const ACTIONS: ActionsType[] = [
   //   ],
   // },
   {
-    title: "Contact Card",
+    fieldTitle: "Contact Card",
     fields: [
       {
         name: "Profile Image",
@@ -399,7 +399,7 @@ export const ACTIONS: ActionsType[] = [
     ],
   },
   {
-    title: "SMS",
+    fieldTitle: "SMS",
     requiresCountryCode:
       'Notice: Please put your country code before your number. For example: "+1".',
     fields: [
@@ -421,7 +421,7 @@ export const ACTIONS: ActionsType[] = [
     ],
   },
   {
-    title: "Call",
+    fieldTitle: "Call",
     fields: [
       {
         name: "Phone Code",
@@ -436,7 +436,7 @@ export const ACTIONS: ActionsType[] = [
     ],
   },
   {
-    title: "Email",
+    fieldTitle: "Email",
     fields: [
       {
         name: "Email",
@@ -456,7 +456,7 @@ export const ACTIONS: ActionsType[] = [
     ],
   },
   {
-    title: "Bank Account",
+    fieldTitle: "Bank Account",
     fields: [
       {
         name: "Name",
@@ -483,57 +483,68 @@ export const SOCIAL_LINKS: ActionsFormType = {
       id: 1,
       label: "Instagram",
       image: InstagramIcon,
+      link: 'https://instagram.com/${user}?igshid=YmMyMTA2M2Y=',
     },
     {
       id: 2,
       label: "Facebook",
       image: FacebookIcon,
+      link: 'https://www.facebook.com/${user}/',
     },
     {
       id: 3,
       label: "Twitter",
       image: TwitterIcon,
+      link: 'https://twitter.com/${user}?s=21&t=5NTWX9KJ3B_ZA_RMxzaJDw',
     },
     {
       id: 4,
       label: "Tiktok",
       image: TiktokIcon,
+      link: 'https://www.tiktok.com/@${user}?_t=8Wy0PdOVQBB&_r=1',
     },
     {
       id: 5,
       label: "Youtube",
       image: YoutubeIcon,
+      link: 'https://youtube.com/c/${user}',
     },
     {
       id: 6,
       label: "Pinterest",
       image: PinterestIcon,
+      link: 'https://www.pinterest.com/${user}/',
     },
     {
       id: 7,
       label: "LinkedIn",
       image: LinkedInIcon,
+      link: 'https://www.linkedin.com/in/${user}',
     },
     {
       id: 8,
       label: "Snapchat",
       image: SnapchatIcon,
+      link: 'https://www.snapchat.com/add/${user}',
     },
     {
       id: 8,
       label: "Vimeo",
       image: VimeoIcon,
+      link: 'https://vimeo.com/${user}',
     },
     {
       id: 8,
       label: "Twitch",
       image: TwitchIcon,
+      link: 'https://www.twitch.tv/${user}',
     },
-    {
-      id: 8,
-      label: "Telegram",
-      image: TelegramIcon,
-    },
+    // {
+    //   id: 8,
+    //   label: "Telegram",
+    //   image: TelegramIcon,
+    //   link: 'Vivian.vcf',
+    // },
   ],
   // "Contact Info": [
   //   {

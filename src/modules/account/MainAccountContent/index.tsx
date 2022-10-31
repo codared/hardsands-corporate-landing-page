@@ -163,7 +163,7 @@ function MainIndex() {
     };
     let {
       fields,
-      title,
+      fieldTitle,
       isDefault,
       id,
       action,
@@ -324,8 +324,12 @@ function MainIndex() {
               >
                 <>
                   <ActionItem
-                    Icon={AppIcons[selectedAction?.title]}
-                    title={selectedAction?.title}
+                    Icon={
+                      AppIcons[
+                        selectedAction?.title || selectedAction?.fieldTitle
+                      ]
+                    }
+                    title={selectedAction?.title || selectedAction?.fieldTitle}
                     withIcon={false}
                   />
                   {!selectedAction.isDefault && (

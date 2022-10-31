@@ -87,8 +87,8 @@ const AccountTabView = ({
                       handleSetDefault(action.id as number)
                     }
                     handleEdit={() => handleEdit(action.id as number)}
-                    title={action.title}
-                    Icon={AppIcons[action.title]}
+                    title={action.fieldTitle}
+                    Icon={AppIcons[action.fieldTitle]}
                     isDefault={action.isDefault}
                   />
                 ))

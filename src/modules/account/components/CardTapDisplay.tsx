@@ -8,7 +8,7 @@ function CardTapDisplay({ result }: { result: any }) {
     case "Bank Account":
       return <BankDetailDisplay {...result.fields} />;
     case "Social Card":
-      return <SocialProfile {...result.fields} />;
+      return <SocialProfile fields={result.fields} />;
     default:
       return <Container>No action for this card yet</Container>;
   }

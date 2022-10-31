@@ -103,7 +103,6 @@ export async function apiUpdateCart(
   cartId: string,
   body: UpdateCartBody
 ): Promise<CartResponse> {
-  // console.log("cart body", body);
   const resp = await storefrontApiJsonFetch<CartResponse>(
     `/api/cart/${cartId}`,
     {
