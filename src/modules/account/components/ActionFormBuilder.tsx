@@ -197,8 +197,8 @@ const ActionFormBuilder = ({
                   >
                     {options &&
                       // @ts-ignore
-                      options?.map((opt: string, index: number) => (
-                        <option key={`${opt}_${index}`} value={opt}>
+                      options?.map((opt: string, optIndex: number) => (
+                        <option key={`${opt}_${optIndex}`} value={opt}>
                           {opt}
                         </option>
                       ))}
@@ -223,8 +223,8 @@ const ActionFormBuilder = ({
                   >
                     {stateOptions.length ? (
                       // @ts-ignore
-                      stateOptions?.map((opt: string, index: number) => (
-                        <option key={`${opt}_${index}`} value={opt}>
+                      stateOptions?.map((opt: string, optIndex: number) => (
+                        <option key={`${opt}_${optIndex}`} value={opt}>
                           {opt}
                         </option>
                       ))
@@ -249,13 +249,12 @@ const ActionFormBuilder = ({
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
                     value={formState[formKey as string]}
-                    defaultValue={formState[formKey as string]}
                   >
                     {banks && banks?.length > 0
                       ? // @ts-ignore
-                        banks?.map((opt: BankObjectType, index: number) => (
+                        banks?.map((opt: BankObjectType, optIndex: number) => (
                           <option
-                            key={`${opt.value}_${index}`}
+                            key={`${opt.value}_${optIndex}`}
                             value={opt.value}
                           >
                             {opt.value}

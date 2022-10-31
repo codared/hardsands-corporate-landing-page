@@ -1,11 +1,4 @@
-import {
-  Grid,
-  Box,
-  Button,
-  IconButton,
-  Flex,
-  Text,
-} from "@chakra-ui/react";
+import { Grid, Box, Button, IconButton, Flex, Text } from "@chakra-ui/react";
 import { AppIcons } from "modules/account/constants";
 import { APP_SCREEN } from "modules/account/types";
 import { AiFillStar } from "react-icons/ai";
@@ -20,7 +13,7 @@ const ActionCards = ({
 }: {
   isDefault?: boolean;
   cardActions: ActionsType[];
-  setSelectedAction: (action: any) => void;
+  setSelectedAction: (action: ActionsType) => void;
   handleSelectedTab: (tab: APP_SCREEN) => void;
   onOpen: any;
 }) => {
@@ -32,7 +25,7 @@ const ActionCards = ({
     >
       {cardActions
         .map((action: ActionsType) => {
-          const Icon = AppIcons[action.title];
+          const Icon = AppIcons[action?.title || action.fieldTitle];
           return (
             <Box
               key={action.id}

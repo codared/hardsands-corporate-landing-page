@@ -31,7 +31,7 @@ const ActionFormModal = ({
   const [showAddSocials, setAddSocials] = useState<boolean>(false);
   const [selectedSocials, setSelectedSocials] = useState<any[]>([]);
   const [formState, setFormState] = useState<any>({});
-  const isProfile = selectedAction.title === "Profile";
+  const isProfile = selectedAction.fieldTitle === "Social Card";
 
   const handleAction = () => {
     handleActionSubmit({ ...formState, ...selectedAction });

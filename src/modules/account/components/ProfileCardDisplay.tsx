@@ -1,13 +1,8 @@
 import {
-  Heading,
-  Avatar,
   Box,
   Center,
   Text,
   Stack,
-  Button,
-  Link,
-  Badge,
   Image,
   useColorModeValue,
   Flex,
@@ -23,37 +18,10 @@ import {
 import HardsandLink from "components/HardsandsLink";
 import { useRef } from "react";
 import { FiEdit3 } from "react-icons/fi";
-import { MdArrowForwardIos, MdOutlineClose } from "react-icons/md";
 import { ActionsType } from "utils/types";
-import { AppIcons, SOCIAL_LINKS } from "../constants";
+import { SOCIAL_LINKS } from "../constants";
+import { SocialCardActionType } from "../types";
 import OurSiteMarketing from "./OurSiteMarketing";
-
-const socials = [
-  {
-    name: "Facebook",
-    icon: AppIcons.FacebookIcon.src,
-  },
-  {
-    name: "twitter",
-    icon: AppIcons.TwitterIcon.src,
-  },
-  {
-    name: "linkedIn",
-    icon: AppIcons.LinkedInIcon.src,
-  },
-  {
-    name: "Instagram",
-    icon: AppIcons.InstagramIcon.src,
-  },
-  {
-    name: "Tiktok",
-    icon: AppIcons.TiktokIcon.src,
-  },
-  {
-    name: "Google Plus",
-    icon: AppIcons.TwitchIcon.src,
-  },
-];
 
 export default function SocialProfile({
   editMode = false,
@@ -61,12 +29,14 @@ export default function SocialProfile({
   handleChange,
   selectedAction,
   selectedImageUrl,
+  fields,
 }: {
   editMode?: boolean;
   handleChange?: (e: any) => Promise<void>;
   handleSocialSelect?: (selectedSocials: any) => void;
   selectedAction?: ActionsType;
   selectedImageUrl?: string;
+  fields?: SocialCardActionType;
 }) {
   const hiddenFileInput = useRef(null);
   const EditableControls = ({ ...rest }) => {
@@ -93,6 +63,22 @@ export default function SocialProfile({
     return findingArray.find((finding) => finding.name === item.label);
   };
 
+  // Extract the static data and use the rest as socials
+  const { name, profileImage, title, ...rest } = fields as SocialCardActionType;
+
+  // Get social Icons for display
+  const getSocialIcons = () => {
+    return (SOCIAL_LINKS.social as any[]).map((social) => {
+      if (rest[social.label.toLowerCase()]) {
+        return {
+          ...social,
+          user: rest[social.label.toLowerCase()],
+        };
+      }
+      return undefined;
+    });
+  };
+
   return (
     <Center>
       <Box
@@ -112,6 +98,7 @@ export default function SocialProfile({
               m="0 auto"
               objectFit={"cover"}
               src={
+                profileImage ||
                 selectedImageUrl ||
                 "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
               }
@@ -159,8 +146,8 @@ export default function SocialProfile({
               fontSize={24}
               fontWeight={"bolder"}
               fontFamily={"body"}
-              defaultValue="Your Name"
-              placeholder={"Your Name"}
+              defaultValue={name || "Your Name"}
+              placeholder={name || "Your Name"}
               isPreviewFocusable={editMode}
               onChange={(val) => {
                 let e = {
@@ -178,14 +165,14 @@ export default function SocialProfile({
               <EditableControls top={6} right={6} />
             </Editable>
             <Editable
-              placeholder={"Work Title | Position"}
-              defaultValue="Work Title | Position"
+              placeholder={title || "Work Title | Position"}
+              defaultValue={title || "Work Title | Position"}
               isPreviewFocusable={editMode}
               onChange={(val) => {
                 let e = {
                   preventDefault: () => {},
                   target: {
-                    name: "workTitle",
+                    name: "title",
                     value: val,
                   },
                 };
@@ -193,7 +180,7 @@ export default function SocialProfile({
               }}
             >
               <EditablePreview />
-              <EditableInput name={"workTitle"} />
+              <EditableInput name={"title"} />
               <EditableControls top={16} right={6} />
             </Editable>
           </Stack>
@@ -205,21 +192,28 @@ export default function SocialProfile({
           {/* social icons */}
           {!editMode && (
             <SimpleGrid columns={3} spacing={10} px={8} mt={6}>
-              {socials.map((item: any, index: number) => (
-                <HardsandLink key={index} target="_blank" href={"#"}>
-                  {/* @ts-ignore */}
-                  <Box height="80px" align={"center"}>
-                    <Image
-                      w={"50px"}
-                      src={item.icon}
-                      alt={`${item.name} icons`}
-                    />
-                    <Text mt={2} textTransform={"capitalize"}>
-                      {item.name}
-                    </Text>
-                  </Box>
-                </HardsandLink>
-              ))}
+              {getSocialIcons().map((item: any, index: number) => {
+                if (!item) return null;
+                return (
+                  <HardsandLink
+                    key={index}
+                    target="_blank"
+                    href={item.link.replace("${user}", item.user) || "#"}
+                  >
+                    {/* @ts-ignore */}
+                    <Box height="80px" align={"center"}>
+                      <Image
+                        w={"50px"}
+                        src={item.image.src}
+                        alt={`${item.label} icons`}
+                      />
+                      <Text mt={2} textTransform={"capitalize"}>
+                        {item.label}
+                      </Text>
+                    </Box>
+                  </HardsandLink>
+                );
+              })}
             </SimpleGrid>
           )}
           {editMode && (
@@ -229,7 +223,9 @@ export default function SocialProfile({
                   <Text fontFamily={"MADE Outer sans"} mb={5}>
                     {socialLink}
                   </Text>
-                  <Text color="gray.500" mb={4}>Click an icon to add your username</Text>
+                  <Text color="gray.500" mb={4}>
+                    Click an icon to add your username
+                  </Text>
                   <SimpleGrid columns={3} spacing={10}>
                     {(SOCIAL_LINKS[socialLink] as any[]).map((item: any) => (
                       <Box
