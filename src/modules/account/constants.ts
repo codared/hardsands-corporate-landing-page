@@ -79,7 +79,7 @@ export const ACCOUNT_NAV_ITEMS: AccountNavItemsType[] = [
 ];
 
 export const AppIcons = {
-  Profile: RiContactsLine,
+  "Social Card": RiContactsLine,
   WhatsApp: FaWhatsapp,
   URL: AiOutlineLink,
   Event: MdOutlineEventNote,
@@ -144,38 +144,28 @@ export const AppIcons = {
 */
 
 export const ACTIONS: ActionsType[] = [
-  // {
-  //   title: "Profile",
-  //   fields: [
-  //     {
-  //       name: "Profile Image",
-  //       type: "file",
-  //       formKey: "profileImage",
-  //     },
-  //     {
-  //       name: "Name",
-  //       type: "text",
-  //       formKey: "name",
-  //     },
-  //     {
-  //       name: "Title",
-  //       type: "text",
-  //       formKey: "title",
-  //     },
-  //     {
-  //       name: "Location",
-  //       type: "text",
-  //       formKey: "location",
-  //     },
-  //     {
-  //       name: "About",
-  //       type: "long-text",
-  //       formKey: "about",
-  //     },
-  //   ],
-  // },
   {
-    title: "WhatsApp",
+    fieldTitle: "Social Card",
+    fields: [
+      {
+        name: "Profile Image",
+        type: "file",
+        formKey: "profileImage",
+      },
+      {
+        name: "Name",
+        type: "text",
+        formKey: "name",
+      },
+      {
+        name: "Title",
+        type: "text",
+        formKey: "title",
+      },
+    ],
+  },
+  {
+    fieldTitle: "WhatsApp",
     fields: [
       {
         name: "Phone Code",
@@ -195,7 +185,7 @@ export const ACTIONS: ActionsType[] = [
     ],
   },
   {
-    title: "URL",
+    fieldTitle: "URL",
     fields: [
       {
         name: "URL",
@@ -267,7 +257,7 @@ export const ACTIONS: ActionsType[] = [
   //   ],
   // },
   {
-    title: "Contact Card",
+    fieldTitle: "Contact Card",
     fields: [
       {
         name: "Profile Image",
@@ -294,31 +284,31 @@ export const ACTIONS: ActionsType[] = [
         type: "text",
         formKey: "position",
       },
-      {
-        name: "Birthday",
-        type: "date",
-        formKey: "birthday",
-      },
-      {
-        name: "Home Phone",
-        type: "text",
-        formKey: "homePhone",
-      },
-      {
-        name: "Office Phone",
-        type: "text",
-        formKey: "officePhone",
-      },
+      // {
+      //   name: "Birthday",
+      //   type: "date",
+      //   formKey: "birthday",
+      // },
+      // {
+      //   name: "Home Phone",
+      //   type: "text",
+      //   formKey: "homePhone",
+      // },
+      // {
+      //   name: "Office Phone",
+      //   type: "text",
+      //   formKey: "officePhone",
+      // },
       {
         name: "Personal Phone",
         type: "text",
         formKey: "personalPhone",
       },
-      {
-        name: "Office Fax",
-        type: "text",
-        formKey: "officeFax",
-      },
+      // {
+      //   name: "Office Fax",
+      //   type: "text",
+      //   formKey: "officeFax",
+      // },
       {
         name: "Alternative Phone",
         type: "text",
@@ -339,11 +329,11 @@ export const ACTIONS: ActionsType[] = [
         type: "url",
         formKey: "website1",
       },
-      {
-        name: "Website 2",
-        type: "url",
-        formKey: "website2",
-      },
+      // {
+      //   name: "Website 2",
+      //   type: "url",
+      //   formKey: "website2",
+      // },
       {
         name: "Payment Link",
         type: "url",
@@ -354,21 +344,21 @@ export const ACTIONS: ActionsType[] = [
         type: "text",
         formKey: "homeAddress",
       },
-      {
-        name: "Office address",
-        type: "text",
-        formKey: "officeAddress",
-      },
-      {
-        name: "Home Postal Code",
-        type: "text",
-        formKey: "homePostalCode",
-      },
-      {
-        name: "Office Postal Code",
-        type: "text",
-        formKey: "officePostalCode",
-      },
+      // {
+      //   name: "Office address",
+      //   type: "text",
+      //   formKey: "officeAddress",
+      // },
+      // {
+      //   name: "Home Postal Code",
+      //   type: "text",
+      //   formKey: "homePostalCode",
+      // },
+      // {
+      //   name: "Office Postal Code",
+      //   type: "text",
+      //   formKey: "officePostalCode",
+      // },
       {
         name: "Home Country",
         type: "country-select",
@@ -385,31 +375,31 @@ export const ACTIONS: ActionsType[] = [
         type: "text",
         formKey: "homeCity",
       },
-      {
-        name: "Office Country",
-        type: "country-select",
-        options: getCountries(),
-        formKey: "officeCountryId",
-      },
-      {
-        name: "Office State",
-        type: "state-select",
-        formKey: "officeStateId",
-      },
-      {
-        name: "Office City",
-        type: "text",
-        formKey: "officeCity",
-      },
-      {
-        name: "Theme",
-        type: "color",
-        formKey: "theme",
-      },
+      // {
+      //   name: "Office Country",
+      //   type: "country-select",
+      //   options: getCountries(),
+      //   formKey: "officeCountryId",
+      // },
+      // {
+      //   name: "Office State",
+      //   type: "state-select",
+      //   formKey: "officeStateId",
+      // },
+      // {
+      //   name: "Office City",
+      //   type: "text",
+      //   formKey: "officeCity",
+      // },
+      // {
+      //   name: "Theme",
+      //   type: "color",
+      //   formKey: "theme",
+      // },
     ],
   },
   {
-    title: "SMS",
+    fieldTitle: "SMS",
     requiresCountryCode:
       'Notice: Please put your country code before your number. For example: "+1".',
     fields: [
@@ -431,7 +421,7 @@ export const ACTIONS: ActionsType[] = [
     ],
   },
   {
-    title: "Call",
+    fieldTitle: "Call",
     fields: [
       {
         name: "Phone Code",
@@ -446,7 +436,7 @@ export const ACTIONS: ActionsType[] = [
     ],
   },
   {
-    title: "Email",
+    fieldTitle: "Email",
     fields: [
       {
         name: "Email",
@@ -466,7 +456,7 @@ export const ACTIONS: ActionsType[] = [
     ],
   },
   {
-    title: "Bank Account",
+    fieldTitle: "Bank Account",
     fields: [
       {
         name: "Name",
@@ -480,7 +470,7 @@ export const ACTIONS: ActionsType[] = [
       },
       {
         name: "Bank Name",
-        type: "text",
+        type: "bank-select",
         formKey: "bankName",
       },
     ],
@@ -493,192 +483,203 @@ export const SOCIAL_LINKS: ActionsFormType = {
       id: 1,
       label: "Instagram",
       image: InstagramIcon,
+      link: 'https://instagram.com/${user}?igshid=YmMyMTA2M2Y=',
     },
     {
       id: 2,
       label: "Facebook",
       image: FacebookIcon,
+      link: 'https://www.facebook.com/${user}/',
     },
     {
       id: 3,
       label: "Twitter",
       image: TwitterIcon,
+      link: 'https://twitter.com/${user}?s=21&t=5NTWX9KJ3B_ZA_RMxzaJDw',
     },
     {
       id: 4,
       label: "Tiktok",
       image: TiktokIcon,
+      link: 'https://www.tiktok.com/@${user}?_t=8Wy0PdOVQBB&_r=1',
     },
     {
       id: 5,
       label: "Youtube",
       image: YoutubeIcon,
+      link: 'https://youtube.com/c/${user}',
     },
     {
       id: 6,
       label: "Pinterest",
       image: PinterestIcon,
+      link: 'https://www.pinterest.com/${user}/',
     },
     {
       id: 7,
       label: "LinkedIn",
       image: LinkedInIcon,
+      link: 'https://www.linkedin.com/in/${user}',
     },
     {
       id: 8,
       label: "Snapchat",
       image: SnapchatIcon,
+      link: 'https://www.snapchat.com/add/${user}',
     },
     {
       id: 8,
       label: "Vimeo",
       image: VimeoIcon,
+      link: 'https://vimeo.com/${user}',
     },
     {
       id: 8,
       label: "Twitch",
       image: TwitchIcon,
-    },
-    {
-      id: 8,
-      label: "Telegram",
-      image: TelegramIcon,
-    },
-  ],
-  "Contact Info": [
-    {
-      id: 1,
-      label: "Sms",
-      image: SmsIcon,
-      fields: ["Number", "Text"],
-    },
-    {
-      id: 2,
-      label: "Email",
-      image: EmailIcon,
-    },
-    {
-      id: 3,
-      label: "WhatsApp",
-      image: WhatsappIcon,
+      link: 'https://www.twitch.tv/${user}',
     },
     // {
-    //   id: 4,
-    //   label: "Call",
-    //   image: CallIcon,
-    // },
-    // {
-    //   id: 5,
-    //   label: "Contact Card",
-    //   image: ContactCardIcon,
-    // },
-    // {
-    //   id: 6,
-    //   label: "Leads Form",
-    //   image: LeadsFormIcon,
-    //   pro: true,
+    //   id: 8,
+    //   label: "Telegram",
+    //   image: TelegramIcon,
+    //   link: 'Vivian.vcf',
     // },
   ],
-  "For Business": [
-    {
-      id: 1,
-      label: "website",
-      image: WebsiteIcon,
-    },
-    {
-      id: 2,
-      label: "Calendly",
-      image: CalendlyIcon,
-      pro: true,
-    },
-    {
-      id: 3,
-      label: "Yelp",
-      image: YelpIcon,
-      pro: true,
-    },
-    {
-      id: 4,
-      label: "Trip Advisor",
-      image: TripAdvicerIcon,
-      pro: true,
-    },
-  ],
-  Payment: [
-    {
-      id: 1,
-      label: "Bank Details",
-      image: BankIcon,
-    },
-    {
-      id: 2,
-      label: "Cash App",
-      image: CashAppIcon,
-    },
-    {
-      id: 3,
-      label: "Paypal",
-      image: PaypalIcon,
-    },
-    {
-      id: 4,
-      label: "Zelle",
-      image: ZelleIcon,
-    },
-    {
-      id: 5,
-      label: "Abeg",
-      image: AbegIcon,
-    },
-    {
-      id: 6,
-      label: "Venmo",
-      image: VenmoIcon,
-    },
-    {
-      id: 7,
-      label: "Patreon",
-      image: PatreonIcon,
-    },
-  ],
-  "Music Links": [
-    {
-      id: 1,
-      label: "Spotify",
-      image: SpotifyIcon,
-    },
-    {
-      id: 2,
-      label: "Apple Music",
-      image: AppleMusicIcon,
-    },
-    {
-      id: 3,
-      label: "Sound Cloud",
-      image: SoundcloudIcon,
-    },
-    {
-      id: 4,
-      label: "Apple Podcast",
-      image: ApplePodcastIcon,
-      pro: true,
-    },
-    {
-      id: 6,
-      label: "Deezer",
-      image: DeezerIcon,
-    },
-    {
-      id: 7,
-      label: "Boom Play",
-      image: BoomPlayIcon,
-    },
-    {
-      id: 8,
-      label: "Audio Mack",
-      image: AudioMackIcon,
-    },
-  ],
+  // "Contact Info": [
+  //   {
+  //     id: 1,
+  //     label: "Sms",
+  //     image: SmsIcon,
+  //     fields: ["Number", "Text"],
+  //   },
+  //   {
+  //     id: 2,
+  //     label: "Email",
+  //     image: EmailIcon,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: "WhatsApp",
+  //     image: WhatsappIcon,
+  //   },
+  // {
+  //   id: 4,
+  //   label: "Call",
+  //   image: CallIcon,
+  // },
+  // {
+  //   id: 5,
+  //   label: "Contact Card",
+  //   image: ContactCardIcon,
+  // },
+  // {
+  //   id: 6,
+  //   label: "Leads Form",
+  //   image: LeadsFormIcon,
+  //   pro: true,
+  // },
+  // ],
+  // "For Business": [
+  //   {
+  //     id: 1,
+  //     label: "website",
+  //     image: WebsiteIcon,
+  //   },
+  //   {
+  //     id: 2,
+  //     label: "Calendly",
+  //     image: CalendlyIcon,
+  //     pro: true,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: "Yelp",
+  //     image: YelpIcon,
+  //     pro: true,
+  //   },
+  //   {
+  //     id: 4,
+  //     label: "Trip Advisor",
+  //     image: TripAdvicerIcon,
+  //     pro: true,
+  //   },
+  // ],
+  // Payment: [
+  //   {
+  //     id: 1,
+  //     label: "Bank Details",
+  //     image: BankIcon,
+  //   },
+  //   {
+  //     id: 2,
+  //     label: "Cash App",
+  //     image: CashAppIcon,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: "Paypal",
+  //     image: PaypalIcon,
+  //   },
+  //   {
+  //     id: 4,
+  //     label: "Zelle",
+  //     image: ZelleIcon,
+  //   },
+  //   {
+  //     id: 5,
+  //     label: "Abeg",
+  //     image: AbegIcon,
+  //   },
+  //   {
+  //     id: 6,
+  //     label: "Venmo",
+  //     image: VenmoIcon,
+  //   },
+  //   {
+  //     id: 7,
+  //     label: "Patreon",
+  //     image: PatreonIcon,
+  //   },
+  // ],
+  // "Music Links": [
+  //   {
+  //     id: 1,
+  //     label: "Spotify",
+  //     image: SpotifyIcon,
+  //   },
+  //   {
+  //     id: 2,
+  //     label: "Apple Music",
+  //     image: AppleMusicIcon,
+  //   },
+  //   {
+  //     id: 3,
+  //     label: "Sound Cloud",
+  //     image: SoundcloudIcon,
+  //   },
+  //   {
+  //     id: 4,
+  //     label: "Apple Podcast",
+  //     image: ApplePodcastIcon,
+  //     pro: true,
+  //   },
+  //   {
+  //     id: 6,
+  //     label: "Deezer",
+  //     image: DeezerIcon,
+  //   },
+  //   {
+  //     id: 7,
+  //     label: "Boom Play",
+  //     image: BoomPlayIcon,
+  //   },
+  //   {
+  //     id: 8,
+  //     label: "Audio Mack",
+  //     image: AudioMackIcon,
+  //   },
+  // ],
 };
 
 export const themeColorOptions = [

@@ -8,10 +8,11 @@ import {
   Avatar,
 } from "@chakra-ui/react";
 import SidebarContent from "./components/Sidebar";
-import { ReactElement } from "react";
-import { useTypedSelector } from "redux/store";
+import { ReactElement, useEffect, useState } from "react";
+import { useTypedDispatch, useTypedSelector } from "redux/store";
 import HardsandLink from "components/HardsandsLink";
 import { HiMenuAlt3 } from "react-icons/hi";
+import { getUserCountry } from "./actions";
 
 const HardsandsAccountsApp = ({
   children,
@@ -20,8 +21,15 @@ const HardsandsAccountsApp = ({
   active: number;
   children: ReactElement;
 }) => {
+  const reduxDispatch = useTypedDispatch();
   const sidebar = useDisclosure();
   const user = useTypedSelector((state) => state.app?.user);
+
+  useEffect(() => {
+    if (!user?.country) {
+      reduxDispatch(getUserCountry());
+    }
+  }, [reduxDispatch, user]);
 
   return (
     <Box
@@ -62,6 +70,7 @@ const HardsandsAccountsApp = ({
             variant={"ghost"}
             aria-label={"App Menu"}
             href={"#"}
+            display={["initial", "none"]}
           >
             <HiMenuAlt3 color="black" size={30} />
           </HardsandLink>

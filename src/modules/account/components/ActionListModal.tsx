@@ -24,11 +24,11 @@ const ActionListModal = ({
     >
       <Box mb={8}>
         {actions.map((action: ActionsType) => {
-          const Icon = AppIcons[action.title];
+          const Icon = AppIcons[action.fieldTitle];
           return (
             <HStack
               cursor={"pointer"}
-              key={action.title}
+              key={action.fieldTitle}
               _hover={{
                 borderColor: "brand.300",
               }}
@@ -46,7 +46,7 @@ const ActionListModal = ({
                 <Box color="brand.300">
                   <Icon size={24} />
                 </Box>
-                <Text>{action.title}</Text>
+                <Text>{action.fieldTitle}</Text>
               </HStack>
               <Box p={[5]}>
                 <AiOutlinePlus />

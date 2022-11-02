@@ -3,7 +3,6 @@ import CustomDrawer from "components/CustomDrawer";
 import { ACTION_FORM_STATUS, AppIcons } from "modules/account/constants";
 import { APP_SCREEN } from "modules/account/types";
 import React from "react";
-import { AiOutlineEdit } from "react-icons/ai";
 import { FiPlus } from "react-icons/fi";
 import { ActionsType } from "utils/types";
 import ActionItem from "./ActionItem";
@@ -48,9 +47,9 @@ const AddAction = ({
             {actions.map((action: ActionsType) => {
               return (
                 <ActionItem
-                  key={action.title}
-                  title={action.title}
-                  Icon={AppIcons[action.title]}
+                  key={action.fieldTitle}
+                  title={action.fieldTitle}
+                  Icon={AppIcons[action.fieldTitle]}
                   handleActionSelect={() => handleEditScreen(action)}
                 />
               );

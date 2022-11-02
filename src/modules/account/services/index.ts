@@ -8,7 +8,7 @@ import { CardActionUpdate } from "../types";
 
 const makeTheAuthenticatedRequest = async (
   url: string,
-  method: string = "GET"
+  method: string | any = "GET"
 ) => {
   return (await storefrontApiJsonFetch(url, {
     method,
@@ -30,6 +30,25 @@ export const getUserCardActions = async (cardSerial: string) => {
   const res = await makeTheAuthenticatedRequest(
     `/api/card-action/user/${cardSerial}`
   );
+  return res;
+};
+
+export const getUploadUrl = async (imageType: string = "image/jpeg") => {
+  const res = await makeTheAuthenticatedRequest(
+    `/api/card-action/upload?imageType=${imageType}`
+  );
+  return res;
+};
+
+export const uploadImageData = async (uploadURL: string, imageData: any) => {
+  const res = (await storefrontApiJsonFetch(
+    uploadURL,
+    {
+      method: "PUT",
+      body: imageData,
+    },
+    false
+  )) as unknown as BackendResponseType;
   return res;
 };
 
@@ -76,6 +95,18 @@ export const updateUserCardAction = async (id: number, data: any) => {
     headers: requestAuthHeaders(),
     body: JSON.stringify(data),
   })) as BackendResponseType;
+
+  return res;
+};
+
+export const getCountryBanks = async (countryCode: string) => {
+  const res = await storefrontApiJsonFetch(
+    `/banks/${countryCode}/response.json`,
+    {
+      method: "GET",
+    },
+    false
+  );
 
   return res;
 };

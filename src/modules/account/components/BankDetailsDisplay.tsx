@@ -11,8 +11,10 @@ import {
   Button,
   useToast,
   HStack,
+  VStack,
 } from "@chakra-ui/react";
 import { FaCopy } from "react-icons/fa";
+import OurSiteMarketing from "./OurSiteMarketing";
 
 export default function BankDetailDisplay({
   bankName,
@@ -25,16 +27,16 @@ export default function BankDetailDisplay({
 }) {
   const toast = useToast();
   return (
-    <Center py={6}>
+    <Center>
       <Box
-        maxW={"270px"}
+        maxW={"480px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
-        boxShadow={"2xl"}
+        // boxShadow={"2xl"}
         rounded={"md"}
         overflow={"hidden"}
       >
-        <Image
+        {/* <Image
           h={"120px"}
           w={"full"}
           alt={""}
@@ -42,8 +44,8 @@ export default function BankDetailDisplay({
             "https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
           }
           objectFit={"cover"}
-        />
-        <Flex justify={"center"} mt={-12}>
+        /> */}
+        <Flex justify={"center"} mt={10}>
           <Avatar
             size={"xl"}
             bg={"white"}
@@ -59,58 +61,56 @@ export default function BankDetailDisplay({
 
         <Box p={6}>
           <Stack spacing={0} align={"center"} mb={5}>
-            <Heading fontSize={"2xl"} fontWeight={500} fontFamily={"body"}>
-              {bankAccountName}
+            <Heading fontSize={"2xl"} fontWeight={"bolder"} fontFamily={"body"}>
+              {bankName}
             </Heading>
             {/* <Text color={"black.500"}>{bankName}</Text> */}
           </Stack>
 
-          <Stack direction={"column"} justify={"center"} spacing={6}>
-            <Stack spacing={0} align={"center"}>
-              <Text fontWeight={600}>{bankName}</Text>
+          <Stack
+            bgColor={"brand.10"}
+            direction={"column"}
+            justify={"flex-start"}
+            spacing={6}
+            rounded={"2xl"}
+            p={8}
+            mb={10}
+          >
+            <Stack spacing={0} align={"flex-start"}>
               <Text fontSize={"sm"} color={"gray.500"}>
-                Bank Name
+                Account Name
               </Text>
+              <Text fontWeight={600}>{bankAccountName}</Text>
             </Stack>
-            <Stack spacing={0} align={"center"}>
-              <HStack>
+            <HStack
+              spacing={0}
+              justifyContent={"space-between"}
+              align={"flex-start"}
+            >
+              <VStack align={"flex-start"}>
+                <Text fontSize={"sm"} color={"gray.500"}>
+                  Account Number
+                </Text>
                 <Text fontWeight={600}>{bankAccountNumber}</Text>
-                <Button
-                  bg={"transparent"}
-                  onClick={() =>
-                    navigator.clipboard
-                      .writeText(bankAccountNumber)
-                      .then(() => {
-                        toast({
-                          status: "success",
-                          duration: 500,
-                          title: "Copied",
-                        });
-                      })
-                  }
-                >
-                  <FaCopy />
-                </Button>
-              </HStack>
-              <Text fontSize={"sm"} color={"gray.500"}>
-                Bank Account
-              </Text>
-            </Stack>
+              </VStack>
+              <Button
+                bg={"transparent"}
+                onClick={() =>
+                  navigator.clipboard.writeText(bankAccountNumber).then(() => {
+                    toast({
+                      status: "success",
+                      duration: 500,
+                      title: "Copied",
+                    });
+                  })
+                }
+              >
+                <FaCopy />
+              </Button>
+            </HStack>
           </Stack>
 
-          {/* <Button
-            w={"full"}
-            mt={8}
-            bg={useColorModeValue("#151f21", "gray.900")}
-            color={"white"}
-            rounded={"md"}
-            _hover={{
-              transform: "translateY(-2px)",
-              boxShadow: "lg",
-            }}
-          >
-            Follow
-          </Button> */}
+          <OurSiteMarketing />
         </Box>
       </Box>
     </Center>

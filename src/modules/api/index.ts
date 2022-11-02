@@ -6,7 +6,8 @@ let storefrontApiUrl: string | false = config("STOREFRONT_API_BASEURL");
 
 export const storefrontApiFetch = (
   path: string,
-  opts?: RequestInit
+  opts?: RequestInit,
+  internal: boolean = true
 ): Promise<Response> => {
   try {
     const baseUrl = storefrontApiUrl;
@@ -18,7 +19,7 @@ export const storefrontApiFetch = (
     const headers = opts.headers || {};
     opts.headers = headers;
 
-    return fetch(`${baseUrl}${path}`, opts);
+    return fetch(internal ? `${baseUrl}${path}` : path, opts);
   } catch (error) {
     console.log(error);
     return error as any;
@@ -27,9 +28,10 @@ export const storefrontApiFetch = (
 
 export async function storefrontApiJsonFetch<K>(
   path: string,
-  opts?: RequestInit
+  opts?: RequestInit,
+  internal: boolean = true
 ): Promise<StorefrontApiResponse<K>> {
-  const req = await storefrontApiFetch(path, opts);
+  const req = await storefrontApiFetch(path, opts, internal);
   return await req.json();
 }
 

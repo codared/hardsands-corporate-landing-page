@@ -32,6 +32,10 @@ export type UserCardType = {
   url: string;
 };
 
+export type BankObjectType = {
+  value: string;
+};
+
 export type CardActionUpdate = {
   cardSerialId: string;
   actionId: number;
@@ -46,9 +50,26 @@ export const enum APP_TAB {
 
 export const enum APP_SCREEN {
   HOME = "HOME",
-  CARD = 'CARD',
+  CARD = "CARD",
   STATS = "STATS",
   ACTIONS = "ACTIONS",
   EDIT = "EDIT",
   SETTINGS = "SETTINGS",
 }
+
+export type SocialCardActionType = {
+  title: string;
+  name: string;
+  profileImage?: string;
+  instagram?: string;
+  twitter?: string;
+  facebook?: string;
+  tiktok?: string;
+  youtube?: string;
+  pinterest?: string;
+  linkedin?: string;
+  snapchat?: string;
+  vimeo?: string;
+  twitch?: string;
+  telegram?: string;
+};

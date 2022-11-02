@@ -28,6 +28,7 @@ import ErrorBoundary from "components/ErrorBoundary";
 import ErrorFallback from "components/ErrorBoundary/ErrorFallback";
 import config from "core/config";
 import CurrencyDetector from "components/CurrencyDetector";
+import { useTranslation } from "react-i18next";
 
 Sentry.init({
   release: process.env.COMMIT_SHA,
@@ -62,6 +63,7 @@ function HardsandsApp({
     i18nLoaded.current = true;
   }
   const copyRightYear: number = new Date().getFullYear();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -74,7 +76,7 @@ function HardsandsApp({
                   <ManualAnalyticsTags />
                   {typeof window && <AnalyticsScriptTag />}
                   <Fonts />
-                  <ErrorBoundary FallbackComponent={ErrorFallback}>
+                  <ErrorBoundary t={t} FallbackComponent={ErrorFallback}>
                     <CurrencyDetector />
                     <ColorModeScript initialColorMode={"light"} />
                     <Component {...pageProps} />
