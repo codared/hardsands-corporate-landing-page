@@ -36,7 +36,7 @@ const HardsandsButton = ({
     transition="all 200ms ease-in"
     border="1px solid #F5D7BB"
     _hover={{
-      bg: "black",
+      bg: "transparent",
       color: "brand.300",
       border: "1px solid #DF9F71",
     }}

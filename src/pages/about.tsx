@@ -1,153 +1,75 @@
 import WithLayout from "components/WithLayout";
 import type { NextPage } from "next";
-import {
-  Box,
-  Image,
-  Heading,
-  Link,
-  Flex,
-  Stack,
-  Text,
-  Button,
-  Grid,
-} from "@chakra-ui/react";
-import { ReviewCard } from "components/ReviewCard";
-import HardsandLink from "components/HardsandsLink";
-import productRoutes from "modules/products/routes";
+import { Box, Heading, Flex, Text } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
+import HardsandsButton from "components/HardsandsButton";
 
 const About: NextPage = () => {
+  const { t } = useTranslation();
   return (
-    <WithLayout pageTitle="Hardsands - About">
+    <WithLayout pageTitle="About Us - Hardsands">
       <Flex
-        as="header"
-        px={["2rem", "8rem"]}
         pt="6rem"
         flexDir={["column-reverse", "row"]}
-        gap="6rem"
         justify="center"
+        w={"50%"}
+        m={"0 auto"}
+        mb={20}
       >
         <Box>
           <Heading fontSize="5xl" fontWeight="bolder" mb="1.5rem">
-            About Hardsands
+            {t("about-us:about-hardsands", "About Hardsands")}
           </Heading>
-          <Text fontSize="4xl" mb="1.5rem">
-            Share your business <br />
-            information with{" "}
+          <Flex fontFamily={"MADE Outer sans"} fontSize="2xl" mb="1.5rem">
+            <Text>
+              {t(
+                "about-us:share-your-business",
+                "Share your business information with"
+              )}
+            </Text>
+            <br />
             <Text
               as="span"
               display="block"
               textTransform="uppercase"
               color="brand.300"
+              ml={2}
             >
-              SWAG
+              {t("about-us:swag", "SWAG")}
             </Text>
+          </Flex>
+          <Text mb="40px" maxW="100%">
+            {t(
+              "about-us:digital-business-cards",
+              `Digital business cards are the new wave of business cards. They are
+            more versatile, easier to store, and more eco-friendly than
+            traditional business cards. And, at Hardsands, we are proud to offer
+            the best digital business cards on the market.`
+            )}
           </Text>
-          <Text mb="40px" maxW="480px">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+          <Text mb="40px" maxW="100%">
+            {t(
+              "about-us:our-team-is-comprised-of-experienced-professionals",
+              `Our team is comprised of experienced professionals who are passionate about delivering the best possible product to our customers. We use cutting-edge technology to create digital business cards that are both stylish and functional.`
+            )}
           </Text>
-          <HardsandLink
-            fontSize={"sm"}
-            fontWeight={500}
-            color={"white"}
-            bg={"black"}
-            href={productRoutes.products()}
-            w="fit-content"
-            p={["none", "12px 16px", "12px 46px"]}
-            border="1px solid black"
-            borderRadius="8px"
-            transition="all 200ms ease-in"
-            _hover={{
-              bg: "white",
-              color: "black",
-            }}
-          >
-            Buy Your Card
-          </HardsandLink>
-        </Box>
-        <Image
-          borderRadius={["300px", "200px"]}
-          maxH={["full", "600px"]}
-          objectFit="cover"
-          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428800/hardsands/about-header_n9m1qb.png"
-          alt="placeholder"
-        />
-      </Flex>
-      <Flex
-        as="section"
-        p={["2.5rem", "8rem"]}
-        flexDir={["column", "row"]}
-        gap="6rem"
-        justify="center"
-      >
-        <Image
-          borderRadius={["300px", "200px"]}
-          maxH={["full", "600px"]}
-          objectFit="cover"
-          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1655428491/hardsands/woman_rjf3sl.jpg"
-          alt="placeholder"
-        />
-        <Box>
-          <Heading
-            fontSize="5xl"
-            fontWeight="bolder"
-            mb="1.5rem"
-            color="brand.300"
-            textTransform="capitalize"
-          >
-            Take full control
-          </Heading>
-          <Text mb="40px" maxW="480px">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+          <Text mb="40px" maxW="100%">
+            {t(
+              "about-us:we-believe-that-first-impressions-are-everything",
+              `We believe that first impressions are everything, and that's why we're dedicated to helping businesses make the best possible impression with our high-quality, stylish business cards. And, most importantly, we offer a 100% satisfaction guarantee so that you can be sure you're making the best investment for your business.`
+            )}
           </Text>
-          <HardsandLink
-            fontSize={"sm"}
-            fontWeight={500}
-            color={"black"}
-            href={productRoutes.products()}
-            p={["none", "12px 16px", "12px 46px"]}
-            border="1px solid black"
-            borderRadius="8px"
-            transition="all 200ms ease-in"
-            _hover={{
-              bg: "black",
-              color: "white",
-            }}
-          >
-            Learn More
-          </HardsandLink>
+          <Text mb="40px" maxW="100%">
+            {t(
+              "about-us:so-why-wait",
+              `So why wait? Get started today and see the difference that our digital business cards can make for your business.`
+            )}
+          </Text>
+          <HardsandsButton>
+            {t("about-us:buy-your-card", "Buy Your Card")}
+          </HardsandsButton>
         </Box>
       </Flex>
-      <Box
-        as="section"
-        px={["2rem", "8rem"]}
-        pt="6rem"
-        bgColor="black"
-        color="white"
-      >
-        <Heading fontSize="5xl" fontWeight="bolder" textAlign="center">
-          What Customers are saying
-        </Heading>
-        <Flex overflow="auto" gap={12} py="60px">
-          <ReviewCard
-            name="John Doe"
-            review="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "
-          />
-          <ReviewCard
-            name="John Doe"
-            review="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "
-          />
-          <ReviewCard
-            name="John Doe"
-            review="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "
-          />
-        </Flex>
-      </Box>
     </WithLayout>
   );
 };
