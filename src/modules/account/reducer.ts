@@ -34,7 +34,6 @@ const appReducer = (
     case "GET_USER_CARD_ACTIONS":
       return { ...state, cardActions: action.payload, loading: false };
     case "GET_ALL_ACTIONS":
-      console.log("all actions >>> ", 'payload >>> ',  action.payload, ACTIONS);
       return {
         ...state,
         allActions: mergeActions(action.payload, ACTIONS),
