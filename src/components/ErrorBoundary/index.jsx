@@ -60,7 +60,7 @@ class ErrorBoundary extends React.Component {
             color="black"
             variant="solid"
             m="0 auto"
-            href={'/'}
+            href={location.pathname === '/app' ? '/app' : '/'}
           >
             {this.props.t('error:go-to-home', 'Go to Home')}
           </HardsandsButton>
