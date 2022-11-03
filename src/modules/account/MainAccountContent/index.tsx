@@ -84,7 +84,7 @@ function MainIndex() {
   const handleImageUpload = async (data: string) => {
     try {
       if (!imageUploadData?.url) {
-        throw new Error("Image data from AWS is not available");
+        return;
       }
       return await uploadImageData(imageUploadData.url, data);
     } catch (error) {
