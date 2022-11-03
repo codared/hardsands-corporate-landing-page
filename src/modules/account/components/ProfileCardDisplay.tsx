@@ -111,6 +111,7 @@ export default function SocialProfile({
                 profileImage ||
                 "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
               }
+              bgColor={"gray.300"}
               alt={"profile image"}
               css={{
                 border: "10px solid white",
@@ -197,7 +198,7 @@ export default function SocialProfile({
 
         <Flex direction={"column"}>
           {!editMode && <OurSiteMarketing />}
-          
+
           {/* social icons */}
           {!editMode && (
             <SimpleGrid columns={3} spacing={10} px={8} mt={6}>
