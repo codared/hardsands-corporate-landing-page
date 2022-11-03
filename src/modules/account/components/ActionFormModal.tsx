@@ -60,7 +60,6 @@ const ActionFormModal = ({
     setSelectedSocials([...selectedSocials, { ...selectedSocial }]);
     setAddSocials(false);
   };
-  // console.log("formState >>> ", formState);
 
   return (
     <CustomModal
