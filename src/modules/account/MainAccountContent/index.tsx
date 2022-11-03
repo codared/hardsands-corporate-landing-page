@@ -161,6 +161,8 @@ function MainIndex() {
       return;
     }
 
+    console.log('formData >>>> ', formData);
+
     formData = {
       ...formData,
       cardSerialId: selectedCard.cardSerial,

@@ -135,8 +135,11 @@ const EditFormScreen = ({
             },
           ],
         });
+
+        console.log("formState is profile >>>>> ", formState);
       }
     }
+    console.log("formState is not profile >>>> ", formState);
   };
 
   const handleSocialSelect = (selectedSocial: any) => {
