@@ -79,6 +79,15 @@ export default function SocialProfile({
     });
   };
 
+  const getSocialEditIcons = () => {
+    return (SOCIAL_LINKS.social as any[]).map((social) => {
+      return {
+        ...social,
+        user: rest[social.label.toLowerCase()],
+      };
+    });
+  };
+
   return (
     <Center>
       <Box
@@ -98,8 +107,8 @@ export default function SocialProfile({
               m="0 auto"
               objectFit={"cover"}
               src={
-                profileImage ||
                 selectedImageUrl ||
+                profileImage ||
                 "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
               }
               alt={"profile image"}
@@ -147,7 +156,7 @@ export default function SocialProfile({
               fontWeight={"bolder"}
               fontFamily={"body"}
               defaultValue={name || "Your Name"}
-              placeholder={name || "Your Name"}
+              placeholder={"Your Name"}
               isPreviewFocusable={editMode}
               onChange={(val) => {
                 let e = {
@@ -165,7 +174,7 @@ export default function SocialProfile({
               <EditableControls top={6} right={6} />
             </Editable>
             <Editable
-              placeholder={title || "Work Title | Position"}
+              placeholder={"Work Title | Position"}
               defaultValue={title || "Work Title | Position"}
               isPreviewFocusable={editMode}
               onChange={(val) => {
@@ -188,7 +197,7 @@ export default function SocialProfile({
 
         <Flex direction={"column"}>
           {!editMode && <OurSiteMarketing />}
-
+          
           {/* social icons */}
           {!editMode && (
             <SimpleGrid columns={3} spacing={10} px={8} mt={6}>
@@ -227,7 +236,7 @@ export default function SocialProfile({
                     Click an icon to add your username
                   </Text>
                   <SimpleGrid columns={3} spacing={10}>
-                    {(SOCIAL_LINKS[socialLink] as any[]).map((item: any) => (
+                    {getSocialEditIcons().map((item: any) => (
                       <Box
                         key={item.label}
                         height="80px"
@@ -245,7 +254,7 @@ export default function SocialProfile({
                             ? !!findSameSocials(
                                 item,
                                 selectedAction?.fields as any
-                              )
+                              ) && item.user
                               ? 1
                               : 0.5
                             : 1

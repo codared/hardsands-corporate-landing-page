@@ -163,6 +163,7 @@ const EditFormScreen = ({
                 editMode={true}
                 selectedAction={selectedAction}
                 handleChange={handleChange}
+                fields={formState}
                 selectedImageUrl={selectedImageUrl}
                 handleSocialSelect={handleSocialSelect}
               />
