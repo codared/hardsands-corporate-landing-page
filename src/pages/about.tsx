@@ -12,30 +12,29 @@ const About: NextPage = () => {
         pt="6rem"
         flexDir={["column-reverse", "row"]}
         justify="center"
-        w={"50%"}
+        w={["100%", "80%", "50%"]}
+        px={[6, 6, 10]}
         m={"0 auto"}
         mb={20}
       >
         <Box>
-          <Heading fontSize="5xl" fontWeight="bolder" mb="1.5rem">
+          <Heading fontSize={["3xl", "5xl"]} fontWeight="bolder" mb="1.5rem">
             {t("about-us:about-hardsands", "About Hardsands")}
           </Heading>
-          <Flex fontFamily={"MADE Outer sans"} fontSize="2xl" mb="1.5rem">
+          <Flex fontFamily={"MADE Outer sans"} fontSize={["xl", "2xl"]} mb="1.5rem">
             <Text>
               {t(
                 "about-us:share-your-business",
                 "Share your business information with"
               )}
-            </Text>
-            <br />
             <Text
               as="span"
-              display="block"
               textTransform="uppercase"
               color="brand.300"
               ml={2}
             >
               {t("about-us:swag", "SWAG")}
+            </Text>
             </Text>
           </Flex>
           <Text mb="40px" maxW="100%">
