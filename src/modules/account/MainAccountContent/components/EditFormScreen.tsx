@@ -66,6 +66,8 @@ const EditFormScreen = ({
   }, [isBank, user?.country]);
 
   const handleAction = () => {
+    console.log("formState >>> ", formState);
+    console.log("selectedAction >>> ", selectedAction);
     handleActionSubmit({ ...formState, ...selectedAction });
   };
 
@@ -122,6 +124,7 @@ const EditFormScreen = ({
       const fieldsList = selectedAction.fields?.find(
         (field: any) => field.name === selectedSocials?.label
       );
+      console.log("fieldsList is profile >>>>> ", fieldsList, selectedSocials);
       if (!fieldsList && setSelectedAction) {
         setSelectedAction({
           ...selectedAction,
@@ -139,7 +142,6 @@ const EditFormScreen = ({
         console.log("formState is profile >>>>> ", formState);
       }
     }
-    console.log("formState is not profile >>>> ", formState);
   };
 
   const handleSocialSelect = (selectedSocial: any) => {
@@ -162,6 +164,7 @@ const EditFormScreen = ({
         {isProfile && (
           <>
             <Flex w={"100%"} justifyContent={"center"}>
+              <>{console.log("selectedAction >>> ", selectedAction, formState)}</>
               <SocialProfile
                 editMode={true}
                 selectedAction={selectedAction}
