@@ -44,8 +44,14 @@ function MainIndex() {
   const [selectedCard, setSelectedCard] = useState<UserCardType>(
     {} as UserCardType
   );
-  const { screenState, currentScreenState, handleSelectedTab, handleGoBack } =
-    useScreenNavigation();
+  const {
+    screenState,
+    currentScreenState,
+    handleSelectedTab,
+    handleGoBack,
+    setIsSubmitting,
+    isSubmitting,
+  } = useScreenNavigation();
   const [selectedAction, setSelectedAction] = useState<ActionsType | null>(
     null
   );
@@ -54,7 +60,6 @@ function MainIndex() {
     onOpen: onActionCardDrawerOpen,
     onClose: onActionCardDrawerClose,
   } = useDisclosure();
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [formStatus, setFormStatus] = useState<string>(ACTION_FORM_STATUS.ADD);
   const [imageUploadData, setImageUploadData] = useState<{
     name: string;

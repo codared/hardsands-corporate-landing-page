@@ -16,9 +16,9 @@ export const NAV_ITEMS: Array<NavItem> = [
     label: "Products",
     href: productRoutes.products(),
   },
-  {
-    label: "Reviews",
-    href: "/reviews",
-  },
+  // {
+  //   label: "About Us",
+  //   href: "/about",
+  // },
   { label: "Account", href: "/login" },
 ];

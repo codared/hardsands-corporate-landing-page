@@ -6,6 +6,7 @@ const useScreenNavigation = () => {
     APP_SCREEN.HOME,
   ]);
   const [currentScreenState, setCurrentScreenState] = useState(APP_SCREEN.HOME);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   //   const [activeTabState, setActiveTabState] = useState(APP_TAB.ACTIONS);
 
   const handleSelectedTab = (tab: APP_SCREEN) => {
@@ -13,6 +14,7 @@ const useScreenNavigation = () => {
     if (screenState[screenState.length - 1] === tab) return;
     setScreenState([...screenState, tab]);
     setCurrentScreenState(tab);
+    setIsSubmitting(false);
   };
 
   const handleGoBack = (screen: APP_SCREEN) => {
@@ -29,6 +31,8 @@ const useScreenNavigation = () => {
     setCurrentScreenState,
     handleSelectedTab,
     handleGoBack,
+    isSubmitting,
+    setIsSubmitting,
   };
 };
 
