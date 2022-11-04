@@ -26,16 +26,18 @@ const CardLists = ({
 }) => {
   return (
     <Box>
-      <SimpleGrid columns={[2, 3]} gap={4}>
-        {cards.length > 0 &&
+      <SimpleGrid columns={[1, 2, 3]} gap={4}>
+        {cards && cards.length > 0 ? (
           cards.map((card: UserCardType) => (
             <CardBox
               handleCardSelect={() => handleCardSelect(card)}
               card={card}
               key={card.cardSerial}
             />
-          ))}
-        <AddCardBox />
+          ))
+        ) : (
+          <AddCardBox />
+        )}
       </SimpleGrid>
     </Box>
   );
@@ -75,7 +77,7 @@ const CardBox = ({
             <Heading
               fontWeight="bolder"
               textTransform="capitalize"
-              fontSize={12}
+              fontSize={18}
             >
               {card.cardTitle}
             </Heading>

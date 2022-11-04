@@ -25,6 +25,7 @@ import { uploadImageData } from "../services";
 import { APP_SCREEN, UserCardType } from "../types";
 import ActionCards from "./components/ActionCards";
 import ActionItem from "./components/ActionItem";
+import AddAction from "./components/AddAction";
 import CardLists from "./components/CardLists";
 import EditFormScreen from "./components/EditFormScreen";
 import MenuItem from "./components/MenuItem";
@@ -268,9 +269,23 @@ function MainIndex() {
                   handleSelectedTab={handleSelectedTab}
                 />
 
-                {/* QR code share section */}
-                <QRCodeShareSection card={selectedCard} />
-                {/* End QR code share section */}
+                {cardActions && cardActions.length > 0 ? (
+                  <QRCodeShareSection card={selectedCard} />
+                ) : (
+                  <Box>
+                    <Text textAlign={"center"} my={10} fontWeight="bolder">
+                      Make your card active now by adding an action.
+                    </Text>
+                    <AddAction
+                      actions={actions as ActionsType[]}
+                      setSelectedAction={setSelectedAction}
+                      handleSelectedTab={handleSelectedTab}
+                      setFormStatus={setFormStatus}
+                      // @ts-ignore
+                      w={"100%"}
+                    />
+                  </Box>
+                )}
               </>
             )}
             {currentScreenState === APP_SCREEN.HOME && (
@@ -286,28 +301,38 @@ function MainIndex() {
               </>
             )}
 
-            {currentScreenState === APP_SCREEN.ACTIONS &&
-              (cardActions && cardActions.length > 0 ? (
-                <ActionCards
-                  handleSelectedTab={handleSelectedTab}
+            {currentScreenState === APP_SCREEN.ACTIONS && (
+              <>
+                {cardActions && cardActions.length > 0 ? (
+                  <ActionCards
+                    handleSelectedTab={handleSelectedTab}
+                    setSelectedAction={setSelectedAction}
+                    cardActions={cardActions as ActionsType[]}
+                    onOpen={onActionCardDrawerOpen}
+                  />
+                ) : (
+                  <Flex
+                    w={"100%"}
+                    h={"100%"}
+                    justifyContent="center"
+                    alignItems={"center"}
+                  >
+                    <Text textAlign={"center"}>
+                      {"No Card Action has been set"}
+                    </Text>
+                  </Flex>
+                )}
+                <AddAction
+                  actions={actions as ActionsType[]}
                   setSelectedAction={setSelectedAction}
-                  cardActions={cardActions as ActionsType[]}
-                  onOpen={onActionCardDrawerOpen}
-                />
-              ) : (
-                <Flex
+                  handleSelectedTab={handleSelectedTab}
+                  setFormStatus={setFormStatus}
+                  // @ts-ignore
                   w={"100%"}
-                  h={"100%"}
-                  justifyContent="center"
-                  alignItems={"center"}
-                >
-                  <Text>
-                    {
-                      'No Card Action has been set, Click the "+ Add Action" button'
-                    }
-                  </Text>
-                </Flex>
-              ))}
+                  mt={20}
+                />
+              </>
+            )}
             {currentScreenState === APP_SCREEN.STATS && (
               <StatisticsScreen cardStatistics={cardStatistics} />
             )}
