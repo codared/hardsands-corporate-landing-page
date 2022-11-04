@@ -14,8 +14,6 @@ import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FaFacebookF } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
 import { APP_ROUTE, AUTH_ROUTES, HARDSANDS_LOGIN_COOKIE } from "../constants";
 import { LoginSchema } from "../formSchema";
 import { loginUser } from "../services";

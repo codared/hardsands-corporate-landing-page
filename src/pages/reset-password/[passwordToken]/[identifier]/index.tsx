@@ -1,14 +1,15 @@
 import WithLayout from "components/WithLayout";
 import ResetPasswordFormPage from "modules/authentication/components/ResetPasswordFormPage";
-import { AUTH_ROUTES } from "modules/authentication/constants";
+import { APP_ROUTE, AUTH_ROUTES } from "modules/authentication/constants";
 import { NextPage, NextPageContext } from "next";
+import nextCookies from "next-cookies";
+import { isTokenExpired } from "utils/functions";
 import { isServerRequest } from "utils/nextjs";
 
 const ResetPasswordForm: NextPage<{
   passwordToken: string;
   identifier: number;
 }> = ({ passwordToken, identifier }) => {
-
   return (
     <WithLayout pageTitle="Reset Password | Hardsands">
       <ResetPasswordFormPage
@@ -24,6 +25,20 @@ export async function getServerSideProps(ctx: NextPageContext) {
   // only initial page render
   if (!isServerRequest(ctx) || typeof window !== "undefined") {
     return { props: {} };
+  }
+
+  const redirectTo = (url: string) => {
+    if (res) {
+      res.setHeader("location", url);
+      res.statusCode = 302;
+      res.end();
+    }
+  };
+
+  const { hardsands_user_token } = nextCookies(ctx);
+  const _isTokenExpired = isTokenExpired(hardsands_user_token as string);
+  if (!_isTokenExpired) {
+    redirectTo(APP_ROUTE.home);
   }
 
   const {
