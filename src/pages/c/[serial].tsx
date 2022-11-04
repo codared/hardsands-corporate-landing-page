@@ -9,8 +9,14 @@ import WithoutLayout from "components/WithoutLayout";
 const CheckCardActivation: NextPage<{ result: any }> = ({ result }) => {
   return (
     <WithoutLayout
-      pageTitle={`My ${result.title} | Hardsands - Business Cards`}
-      image_url={result.fields?.profileImage}
+      pageTitle={
+        result?.title || result?.cardTitle
+          ? `My ${
+              result.title || result.cardTitle
+            } | Hardsands - Business Cards`
+          : "Hardsands - Business Cards"
+      }
+      image_url={result?.fields?.profileImage}
     >
       <CardTapDisplay result={result} />
     </WithoutLayout>
@@ -39,13 +45,13 @@ export async function getServerSideProps(ctx: NextPageContext) {
   try {
     const response = await getCard(serial as string);
 
-    const activationUrl = `/activate-card?serial=${response?.data?.data.cardSerial}&productId=${response?.data?.data.productId}`;
-
     if (
       !!response &&
       response.isError &&
       response?.data?.nextStep === "activateCard"
     ) {
+      const activationUrl = `/activate-card?serial=${response?.data?.data.cardSerial}&productId=${response?.data?.data.productId}`;
+
       redirectTo(activationUrl);
     }
 
@@ -55,7 +61,9 @@ export async function getServerSideProps(ctx: NextPageContext) {
 
       switch (_default.title) {
         case "WhatsApp":
-          const whatsappLink = `https://wa.me/${_default.fields.phoneCode}${_default.fields.phone}?text=${_default.fields.message}`;
+          const whatsappLink = `https://wa.me/${_default.fields.phoneCode}${
+            _default.fields.phone
+          }?text=${encodeURIComponent(_default.fields.message)}`;
           redirectTo(whatsappLink);
           return { props: {} };
         case "URL":
@@ -76,7 +84,9 @@ export async function getServerSideProps(ctx: NextPageContext) {
           return { props: {} };
         case "Email":
           redirectTo(
-            `mailto:${_default.fields.email}?subject=${_default.fields.subject}&body=${_default.fields.content}`
+            `mailto:${_default.fields.email}?subject=${encodeURIComponent(
+              _default.fields.subject
+            )}&body=${encodeURIComponent(_default.fields.content)}`
           );
           return { props: {} };
         case "Bank Account":
