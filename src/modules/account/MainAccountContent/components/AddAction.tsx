@@ -12,6 +12,7 @@ const AddAction = ({
   setSelectedAction,
   actions,
   setFormStatus,
+  ...rest
 }: {
   actions: ActionsType[];
   setFormStatus: (status: ACTION_FORM_STATUS) => void;
@@ -35,6 +36,7 @@ const AddAction = ({
         borderRadius={0}
         bg={"brand.100"}
         onClick={onOpen}
+        {...rest}
       >
         <Box mr={3} alignSelf={"center"}>
           <FiPlus size={20} />

@@ -13,32 +13,32 @@ const ScreenSelectorTabs = ({
 }) => {
   return (
     <Grid
-      templateColumns={["repeat(3, 1fr)"]}
+      templateColumns={["repeat(2, 1fr)"]}
       gap={["1rem", "2rem"]}
       overflow="hidden"
     >
       <Tab
         tabId={APP_SCREEN.ACTIONS}
-        title="Card Actions"
+        title="View Card Actions"
         active={currentScreenState}
         Icon={FiLink2}
         handleSelectedTab={handleSelectedTab}
       />
       <Tab
         tabId={APP_SCREEN.STATS}
-        title="Statistics"
+        title="View Statistics"
         active={currentScreenState}
         Icon={FiTrendingUp}
         handleSelectedTab={handleSelectedTab}
       />
-      <Tab
+      {/* <Tab
         tabId={APP_SCREEN.SETTINGS}
         title="Settings"
         disabled
         active={currentScreenState}
         Icon={IoSettingsOutline}
         handleSelectedTab={handleSelectedTab}
-      />
+      /> */}
     </Grid>
   );
 };

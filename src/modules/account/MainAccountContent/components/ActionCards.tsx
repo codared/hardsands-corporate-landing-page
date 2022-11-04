@@ -19,7 +19,7 @@ const ActionCards = ({
 }) => {
   return (
     <Grid
-      templateColumns={["repeat(3, 1fr)"]}
+      templateColumns={["repeat(2, 1fr)", "repeat(3, 1fr)", "repeat(4, 1fr)"]}
       gap={["1rem", "2rem"]}
       overflow="hidden"
     >

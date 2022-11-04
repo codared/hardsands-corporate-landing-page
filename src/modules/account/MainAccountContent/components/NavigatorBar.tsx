@@ -44,9 +44,9 @@ const NavigationBar = ({
           {card?.cardTitle || text}
         </Flex>
       ) : (
-        <Box>Home</Box>
+        <Box>My Cards</Box>
       )}
-      <Flex>
+      {/* <Flex>
         {screenState[screenState.length - 1] === APP_SCREEN.ACTIONS &&
           currentScreenState === APP_SCREEN.ACTIONS && (
             <AddAction
@@ -56,7 +56,7 @@ const NavigationBar = ({
               setFormStatus={setFormStatus}
             />
           )}
-      </Flex>
+      </Flex> */}
     </Flex>
   );
 };
