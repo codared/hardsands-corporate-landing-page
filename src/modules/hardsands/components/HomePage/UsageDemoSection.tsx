@@ -52,14 +52,16 @@ const UsageDemoSection = ({ horizontal }: { horizontal?: boolean }) => {
           >
             {!horizontal && (
               <Image
-                width={[300, 300, "auto"]}
+                width={["100%", "50%", "50%"]}
                 alignSelf={["center", "unset"]}
                 height="fit-content"
                 src={
-                  "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657211480/hardsands/Rectangle_214_j9mzoe.svg"
+                  "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/instruct.gif?v=1667851702"
                 }
                 alt="how to images"
                 zIndex={1}
+                mb={10}
+                mr={[0, 10]}
               />
             )}
             <Flex
@@ -75,7 +77,7 @@ const UsageDemoSection = ({ horizontal }: { horizontal?: boolean }) => {
                   key={title}
                   mx={2}
                   textAlign={horizontal ? "center" : "start"}
-                  maxW={horizontal ? ['100%', 250] : "unset"}
+                  maxW={horizontal ? ["100%", 250] : "unset"}
                 >
                   <Text fontWeight={"bolder"} fontSize={20} mb={4}>
                     {step} {title}
