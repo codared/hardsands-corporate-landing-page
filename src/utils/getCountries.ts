@@ -43,4 +43,10 @@ export const getCountryById = (countryId: string) => {
   if (!country) return countryId;
   return country.name;
 };
+
+export const getCountryByName = (countryName: string) => {
+  const country = countriesList.find((country) => country.name === countryName);
+  return country;
+};
+
 export default getCountries;

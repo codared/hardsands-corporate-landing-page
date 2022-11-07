@@ -11,8 +11,9 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import CustomMenu from "components/CustomMenu";
-import React, { FormEventHandler, useState } from "react";
+import React, { FormEventHandler, useEffect, useState } from "react";
 import {
+  getCountryByName,
   getCountryPhoneCode,
   getStatesList,
 } from "utils/getCountries";
@@ -90,6 +91,18 @@ const ActionFormBuilder = ({
   const handleColorChange = (color: string) => {
     setSelectedColor(color);
   };
+
+  useEffect(() => {
+    if (selectedCountryOption.label || formState["homeCountryId"]) {
+      setStateOptions(
+        getStatesList(
+          getCountryByName(
+            selectedCountryOption.label || formState["homeCountryId"]
+          )?.id as string
+        )
+      );
+    }
+  }, []);
 
   const chakraStyles: ChakraStylesConfig = {
     dropdownIndicator: (provided, state) => ({
