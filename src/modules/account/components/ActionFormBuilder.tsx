@@ -5,19 +5,23 @@ import {
   FormHelperText,
   FormLabel,
   Input,
-  Select,
   Tag,
   Textarea,
   Image,
   Spinner,
 } from "@chakra-ui/react";
 import CustomMenu from "components/CustomMenu";
-import CustomSelect from "components/CustomSelect";
 import React, { FormEventHandler, useState } from "react";
-import { getCountryPhoneCode, getState } from "utils/getCountries";
+import {
+  getCountryPhoneCode,
+  getStatesList,
+} from "utils/getCountries";
 import { ActionsFormType } from "utils/types";
 import { themeColorOptions } from "../constants";
 import { BankObjectType } from "../types";
+import { ChakraStylesConfig, Select, SingleValue } from "chakra-react-select";
+import { createSelectOptions } from "utils/functions";
+import { css } from "@emotion/react";
 
 const ActionFormBuilder = ({
   fields,
@@ -35,26 +39,80 @@ const ActionFormBuilder = ({
   onChange: (e: any) => void;
 }) => {
   const [selectedColor, setSelectedColor] = useState<string>("brand.300");
-  const [stateOptions, setStateOptions] = useState<string[]>([]);
+  const [stateOptions, setStateOptions] = useState<any[]>([]);
+  const [selectedCountryOption, setSelectedCountryOption] = useState<any>({
+    value: formState["homeCountryId"],
+    label: formState["homeCountryId"],
+  });
+  const [selectedStateOption, setSelectedStateOption] = useState<any>({
+    value: formState["homeStateId"],
+    label: formState["homeStateId"],
+  });
+  const [selectedPhoneCodeOption, setSelectedPhoneCodeOption] = useState<any>(
+    formState["phoneCode"]
+      ? {
+          value: formState["phoneCode"],
+          label: formState["phoneCode"],
+        }
+      : getCountryPhoneCode()[0]
+  );
 
   const handleChange = async (e: any) => {
     onChange(e);
   };
 
-  const handleStateSelectChange = () => {};
+  const handleOptionSelected = (
+    newValue: SingleValue<{ value: any; label: any }>,
+    name: string
+  ) => {
+    let e = {
+      preventDefault: () => {},
+      // @ts-ignore
+      target: { value: newValue?.value, name },
+    };
 
-  const handleCountrySelectChange = (e: any) => {
-    e.preventDefault();
+    if (name === "homeCountryId") {
+      setSelectedCountryOption(newValue);
+      setStateOptions(getStatesList(e.target.value));
+    }
 
-    setStateOptions(getState(e.target.value));
+    if (name === "homeStateId") {
+      setSelectedStateOption(newValue);
+    }
+
+    if (name === "phoneCode") {
+      setSelectedPhoneCodeOption(newValue);
+    }
+
+    onChange(e);
   };
 
   const handleColorChange = (color: string) => {
     setSelectedColor(color);
   };
 
+  const chakraStyles: ChakraStylesConfig = {
+    dropdownIndicator: (provided, state) => ({
+      ...provided,
+      background: "brand.100",
+      p: 0,
+      w: "40px",
+    }),
+    inputContainer: (provider) => ({
+      ...provider,
+      minW: "313px",
+    }),
+  };
+
   return (
-    <Box>
+    <Box
+      css={css`
+        .css-uz7ias {
+          border-color: black;
+          border-radius: 0;
+        }
+      `}
+    >
       {fields.map(({ name, type, options, formKey }, index) => {
         switch (type) {
           case "file":
@@ -78,7 +136,6 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={formState[formKey as string]}
                   />
                 </Flex>
               </FormControl>
@@ -88,18 +145,19 @@ const ActionFormBuilder = ({
               <FormControl key={index}>
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
-                  <Flex>
+                  <Flex minW={"100%"}>
                     {formKey === "phoneCode" ? (
-                      <CustomSelect
-                        _key={"value"}
-                        _value={"title"}
+                      <Select
                         size="lg"
                         placeholder="Phone Code"
                         options={getCountryPhoneCode()}
                         name={formKey}
-                        onChange={handleChange}
+                        onChange={(newValue) =>
+                          handleOptionSelected(newValue, formKey as string)
+                        }
                         isRequired
-                        defaultValue={formState[formKey as string]}
+                        value={selectedPhoneCodeOption}
+                        chakraStyles={chakraStyles}
                       />
                     ) : (
                       <Input
@@ -186,23 +244,18 @@ const ActionFormBuilder = ({
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
                   <Select
+                    instanceId="chakra-react-country-select"
                     name={formKey as string}
-                    borderRadius={0}
-                    borderColor={"black"}
-                    onChange={handleCountrySelectChange}
+                    onChange={(newValue) =>
+                      handleOptionSelected(newValue, formKey as string)
+                    }
                     placeholder={`Select ${name}`}
-                    _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={formState[formKey as string]}
-                  >
-                    {options &&
-                      // @ts-ignore
-                      options?.map((opt: string, optIndex: number) => (
-                        <option key={`${opt}_${optIndex}`} value={opt}>
-                          {opt}
-                        </option>
-                      ))}
-                  </Select>
+                    value={selectedCountryOption}
+                    selectedOptionStyle="check"
+                    options={options as any[]}
+                    chakraStyles={chakraStyles}
+                  />
                 </Box>
               </FormControl>
             );
@@ -212,26 +265,18 @@ const ActionFormBuilder = ({
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
                   <Select
+                    instanceId="chakra-react-state-select"
                     name={formKey as string}
-                    borderRadius={0}
-                    borderColor={"black"}
-                    onChange={handleStateSelectChange}
+                    onChange={(newValue) =>
+                      handleOptionSelected(newValue, formKey as string)
+                    }
                     placeholder={`Select ${name}`}
-                    _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={formState[formKey as string]}
-                  >
-                    {stateOptions.length ? (
-                      // @ts-ignore
-                      stateOptions?.map((opt: string, optIndex: number) => (
-                        <option key={`${opt}_${optIndex}`} value={opt}>
-                          {opt}
-                        </option>
-                      ))
-                    ) : (
-                      <option>--Select Country first --</option>
-                    )}
-                  </Select>
+                    value={selectedStateOption}
+                    selectedOptionStyle="check"
+                    options={createSelectOptions(stateOptions as any[])}
+                    chakraStyles={chakraStyles}
+                  />
                 </Box>
               </FormControl>
             );
@@ -241,27 +286,23 @@ const ActionFormBuilder = ({
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
                   <Select
+                    id={"bank-select"}
+                    instanceId="chakra-react-bank-select"
                     name={formKey as string}
-                    borderRadius={0}
-                    borderColor={"black"}
-                    onChange={handleChange}
+                    onChange={(newValue) =>
+                      // @ts-ignore
+                      handleOptionSelected(newValue, formKey as string)
+                    }
                     placeholder={`Select ${name}`}
-                    _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    value={formState[formKey as string]}
-                  >
-                    {banks && banks?.length > 0
-                      ? // @ts-ignore
-                        banks?.map((opt: BankObjectType, optIndex: number) => (
-                          <option
-                            key={`${opt.value}_${optIndex}`}
-                            value={opt.value}
-                          >
-                            {opt.value}
-                          </option>
-                        ))
-                      : null}
-                  </Select>
+                    value={{
+                      value: formState[formKey as string],
+                      label: formState[formKey as string],
+                    }}
+                    selectedOptionStyle="check"
+                    options={createSelectOptions(banks as any[])}
+                    chakraStyles={chakraStyles}
+                  />
                 </Box>
               </FormControl>
             );

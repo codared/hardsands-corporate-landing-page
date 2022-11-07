@@ -12,7 +12,7 @@ import {
   Heading,
   Button,
 } from "@chakra-ui/react";
-import CurrencySelector from "components/CurrenctSelector";
+import CurrencySelector from "components/CurrencySelector";
 import HardsandLink from "components/HardsandsLink";
 import React, { useContext, useEffect, useState } from "react";
 import CartItemCard from "modules/cart/components/CartItemCard";

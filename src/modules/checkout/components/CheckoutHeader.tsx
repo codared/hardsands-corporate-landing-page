@@ -1,7 +1,7 @@
 import { Box, Flex, Stack } from "@chakra-ui/react";
 import React, { useContext, useEffect, useRef } from "react";
 import HardsandsAppLogo from "components/Logo";
-import CurrencySelector from "components/CurrenctSelector";
+import CurrencySelector from "components/CurrencySelector";
 import {
   loadOrCreateCart,
   updateCart,
