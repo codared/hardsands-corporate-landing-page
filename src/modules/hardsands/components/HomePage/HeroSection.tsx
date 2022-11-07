@@ -59,13 +59,19 @@ const HeroSection = () => {
           alt="hero badge hardsands"
         />
       </Flex>
-      <Flex margin={["0 auto", "unset"]} boxSize={[350, 450, 650]}>
+      <Flex margin={["0 auto", "unset"]} boxSize={['100%', 450, 650]}>
         <Image
           objectFit={"cover"}
           w={["100%"]}
-          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1657202063/hardsands/4_tqi6h3.png"
+          src="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/instruct.gif?v=1667851702"
           alt="hero image hardsands"
         />
+        {/* <Image
+          objectFit={"cover"}
+          w={["100%"]}
+          src="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/instruct_1.gif?v=1667851818"
+          alt="hero image hardsands"
+        /> */}
       </Flex>
     </Flex>
   );
