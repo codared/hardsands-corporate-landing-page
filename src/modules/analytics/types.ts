@@ -93,7 +93,7 @@ export interface EcommerceCartAction extends EcommerceProduct {
   currency: string
   price: number
   cartId?: string
-  priceUsd: number
+  priceUsd?: number
   
 }
 
