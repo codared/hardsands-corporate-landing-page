@@ -122,6 +122,7 @@ const checkoutEvents = {
         variant: item.productVariantKey,
         category: item.productVariantKey?.toLowerCase() === "plain" || item.productVariantKey?.toLowerCase() === "customized" ? "CARD" : "EPOXY",
         price: item.priceUsd,
+        priceUsd: item.priceUsd,
         currency: 'USD', 
       }))
     );
@@ -155,6 +156,7 @@ const checkoutEvents = {
         name: item.title,
         category: item.variant_title,
         variant: item.variant_title,
+        priceUsd: item.priceUsd,
         brand: "hardsands",
         price: item.price.amount_usd_float,
         currency: 'USD',
