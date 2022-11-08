@@ -58,7 +58,7 @@ export const PreviewProductCard = ({
 
   return (
     <HardsandLink
-      href={`${productRoutes.products()}/${slugify(name)}`}
+      href={`${productRoutes.products()}/${productDetails.slug}`}
       outline="none"
       _hover={{ color: "unset" }}
       _focus={{

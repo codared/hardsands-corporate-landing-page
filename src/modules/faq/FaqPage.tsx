@@ -93,7 +93,7 @@ const FaqPage = () => {
           ref={searchNodeRef}
         >
           {/* <FaqCovidNotice /> */}
-          <Box my={[8, 10]} mb={["inherit"]}>
+          <Box my={[8, 10]} mb={[10]}>
             <Input
               value={searchQuery}
               onChange={handleChange}
