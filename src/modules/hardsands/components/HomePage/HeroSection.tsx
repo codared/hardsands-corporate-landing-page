@@ -21,10 +21,10 @@ const HeroSection = () => {
       }
       backgroundRepeat="no-repeat"
       backgroundSize={["cover"]}
-      flexDirection={["column", "row"]}
+      flexDirection={["column-reverse", "row"]}
     >
       <Flex
-        direction={["column"]}
+        direction="column"
         alignItems={["center", "unset"]}
         justifyContent={["center", "start"]}
         px={[18]}
@@ -46,18 +46,6 @@ const HeroSection = () => {
             "The only business card you'll need to improve your networking"
           )}
         </Text>
-        <Flex
-          margin={["0 auto", "unset"]}
-          mt={[20, 0]}
-          boxSize={["100%", 450, 650]}
-        >
-          <Image
-            objectFit={"cover"}
-            w={["100%"]}
-            src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1657202063/hardsands/4_tqi6h3.png"
-            alt="hero image hardsands"
-          />
-        </Flex>
         <HStack w={["100%"]} py={5} mt={["50px", 0]}>
           <HardsandsButton>Buy Now</HardsandsButton>
         </HStack>
@@ -69,6 +57,14 @@ const HeroSection = () => {
           w={["20%"]}
           src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1657201644/hardsands/Group_1-svg_vxsefu.svg"
           alt="hero badge hardsands"
+        />
+      </Flex>
+      <Flex margin={["0 auto", "unset"]} boxSize={[350, 450, 650]}>
+        <Image
+          objectFit={"cover"}
+          w={["100%"]}
+          src="https://res.cloudinary.com/dtumqh3dd/image/upload/v1657202063/hardsands/4_tqi6h3.png"
+          alt="hero image hardsands"
         />
       </Flex>
     </Flex>
