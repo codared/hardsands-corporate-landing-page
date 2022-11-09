@@ -1,10 +1,7 @@
 import {
   Box,
   Flex,
-  Grid,
-  Tag,
   Text,
-  Image,
   Button,
   FormControl,
   FormLabel,
@@ -13,12 +10,10 @@ import {
 import CustomDrawer from "components/CustomDrawer";
 import ActionFormBuilder from "modules/account/components/ActionFormBuilder";
 import SocialProfile from "modules/account/components/ProfileCardDisplay";
-import ProfileCardPreview from "modules/account/components/ProfileCardPreview";
 import { ACTION_FORM_STATUS, NumberFields } from "modules/account/constants";
 import { getCountryBanks, getUploadUrl } from "modules/account/services";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { useTypedSelector } from "redux/store";
-import { SOCIAL_LINKS } from "utils/constants";
 import { ActionsFormType, ActionsType } from "utils/types";
 
 const retrieveFormKeyValue = (action: ActionsType) => {
@@ -226,7 +221,7 @@ const SaveButton = ({
   loadingText = "Adding Action",
 }: any) => {
   return (
-    <Box p={[4]} position={"absolute"} bottom={0} left={0} right={0}>
+    <Box mt={[10]}>
       <Button
         px={[2]}
         py={[2]}

@@ -3,7 +3,10 @@ import countriesList from "utils/countries_full.json";
 import statesList from "utils/provinces.json";
 
 export const getCountries = () => {
-  return Object.keys(countries);
+  return countriesList.map((country) => ({
+    value: country.id,
+    label: country.name,
+  }));
 };
 
 export const getState = (country: string) => {
@@ -25,19 +28,25 @@ export const getCountryPhoneCode = () => {
     key: country.id,
     value: country.dial_code,
     title: `${country.name} (${country.dial_code})`,
+    label: `${country.name} (${country.dial_code})`,
   }));
 };
 
 export const getStateById = (stateId: string) => {
-  const state =  statesList.find((state) => state.id === stateId)
-  if (!state) return stateId
-  return state.name
-}
-
+  const state = statesList.find((state) => state.id === stateId);
+  if (!state) return stateId;
+  return state.name;
+};
 
 export const getCountryById = (countryId: string) => {
-  const country =  countriesList.find((country) => country.id === countryId)
-  if (!country) return countryId
-  return country.name
-}
+  const country = countriesList.find((country) => country.id === countryId);
+  if (!country) return countryId;
+  return country.name;
+};
+
+export const getCountryByName = (countryName: string) => {
+  const country = countriesList.find((country) => country.name === countryName);
+  return country;
+};
+
 export default getCountries;

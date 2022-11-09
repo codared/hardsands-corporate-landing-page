@@ -2,7 +2,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import Carousel from "components/Carousel";
 import { useRTL } from "modules/i18n/hooks";
 import { ProductColors } from "modules/shared/constants";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ProductDetails } from "utils/types";
 
@@ -24,7 +24,11 @@ const ProductImageSlide = ({
   const [carouselImages, setCarouselImages] = useState<string[]>(
     productDetails.otherImageUrls
   );
-  
+
+  useEffect(() => {
+    setCarouselImages(productDetails.otherImageUrls);
+  }, [productDetails.otherImageUrls]);
+
   return (
     <Box width={["100%", null, "50%"]} position={["unset"]} top="10px">
       <Flex align="center" justify="center" position="relative">

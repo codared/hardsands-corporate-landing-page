@@ -1,3 +1,4 @@
+import { SingleValue } from "chakra-react-select";
 import { IconType } from "react-icons";
 
 export type AnyDict = { [k: string]: any };
@@ -81,3 +82,5 @@ export type BackendResponseType = {
     data: any;
   };
 };
+
+export type OptionType = SingleValue<string | number>;

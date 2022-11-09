@@ -26,7 +26,13 @@ const CurrencySelector = ({
       {...rest}
       defaultValue={selectedCurrency || ""}
     >
-      {Object.keys({ ...TOP_CURRENCIES, ...CURRENCY_CODES }).map((currency) => (
+      {Object.keys({ ...TOP_CURRENCIES }).map((currency) => (
+        <option key={currency} value={currency}>
+          {currency}
+        </option>
+      ))}
+      <option>-----------------</option>
+      {Object.keys({ ...CURRENCY_CODES }).map((currency) => (
         <option key={currency} value={currency}>
           {currency}
         </option>

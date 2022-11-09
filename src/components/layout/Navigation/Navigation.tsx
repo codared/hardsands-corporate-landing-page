@@ -20,7 +20,7 @@ import HardsandsAppLogo from "components/Logo";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { usePreloadProducts } from "modules/products/hooks";
 import { useCartItemCount, useCurrency } from "modules/cart/hooks";
-import CurrencySelector from "components/CurrenctSelector";
+import CurrencySelector from "components/CurrencySelector";
 import {
   loadOrCreateCart,
   updateCart,

@@ -65,6 +65,7 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
       name: item.title,
       variant: item.productVariantKey,
       price: item.price / 100,
+      priceUsd: item.priceUsd,
       currency: item.currency,
       cartId: order.cartId,
       category:

@@ -75,8 +75,16 @@ export const mergeActionFields = (cardActions: ActionsType[], id: number) => {
 
     // Only do this for whatsApp as the whatsappMessage come on from the DB as message,
     // which causes an undefined value
-    const value =
-      formKey === "whatsappMessage" ? fields["message"] : fields[formKey];
+    let value;
+    if (formKey === "whatsappMessage") {
+      value = fields["message"];
+    } else if (formKey === "homeCountryId") {
+      value = fields["homeCountry"];
+    } else if (formKey === "homeStateId") {
+      value = fields["homeState"];
+    } else {
+      value = fields[formKey];
+    }
 
     return {
       ..._action,
@@ -89,4 +97,25 @@ export const mergeActionFields = (cardActions: ActionsType[], id: number) => {
 
 export const getActionsName = () => {
   return ACTIONS.map(({ fieldTitle }) => fieldTitle);
+};
+
+export const createSelectOptions = (options: any[]) => {
+  return options?.map((option: any) => {
+    if (typeof option === "string") {
+      return {
+        value: option,
+        label: option,
+      };
+    } else if (!option.value && option.id) {
+      return {
+        value: option.id,
+        label: option.value || option.name,
+      };
+    } else {
+      return {
+        ...option,
+        label: option.value || option.name,
+      };
+    }
+  });
 };

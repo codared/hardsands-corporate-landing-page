@@ -7,6 +7,7 @@ export const setCookie = function (
   value = "",
   expirationDurationInDays = 1 // Value of 0 will indicate to expire at end of session
 ) {
+  if (typeof window === "undefined") return;
   window.document.cookie = getSerializedCookie(
     key,
     value,

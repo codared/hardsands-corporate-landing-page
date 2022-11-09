@@ -4655,7 +4655,7 @@ react-scroll-parallax@^3.2.0:
   dependencies:
     parallax-controller "^1.5.0"
 
-react-select@^5.5.7:
+react-select@^5.5.7, react-select@^5.6.0:
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/react-select/-/react-select-5.6.0.tgz#d987f4c86b3dcd32307a0104e503e4e8a9777a34"
   integrity sha512-uUvP/72rA8NGhOL16RVBaeC12Wa4NUE0iXIa6hz0YRno9ZgxTmpuMeKzjR7vHcwmigpVCoe0prP+3NVb6Obq8Q==
