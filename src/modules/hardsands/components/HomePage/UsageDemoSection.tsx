@@ -56,7 +56,8 @@ const UsageDemoSection = ({ horizontal }: { horizontal?: boolean }) => {
                 alignSelf={["center", "unset"]}
                 height="fit-content"
                 src={
-                  "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/instruct.gif?v=1667851702"
+                  "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657211480/hardsands/Rectangle_214_j9mzoe.svg"
+                  // "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/instruct.gif?v=1667851702"
                 }
                 alt="how to images"
                 zIndex={1}

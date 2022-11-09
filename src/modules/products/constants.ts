@@ -16,8 +16,8 @@ export const PRODUCTS = {
     "how-it-works": `Hardsands Tag works with iPhone XR, iPhone XS, all iPhone 11s, all iPhone 12s, all iPhone 13s, all iPhone 14s, and the majority of Android devices. The receiver does not require an app or any hardsand device to receive your information!\n\nNFC must be enabled in the settings of Android receivers.`,
     Black: [
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/17.jpg?v=1666339897",
-      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0030.jpg?v=1665226740",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/15b.jpg?v=1665057392",
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0030.jpg?v=1665226740",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0029.jpg?v=1665226303",
     ],
     Sandtone: [
