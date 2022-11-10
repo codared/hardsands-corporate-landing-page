@@ -8,6 +8,7 @@ export const PRODUCTS = {
     ],
     Plain: [
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/12_1.jpg?v=1665057392",
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0007.jpg?v=1666340705",
     ],
   },
@@ -80,6 +81,7 @@ export const PRODUCTS = {
     Plain: [
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/11_1.jpg?v=1665057393",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/DSC00112_2.jpg?v=1666340367",
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS960_1.jpg?v=1668094031",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0005.jpg?v=1666340705",
     ],
   },
