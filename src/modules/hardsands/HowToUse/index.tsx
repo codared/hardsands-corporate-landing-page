@@ -20,7 +20,7 @@ const HowToUse = () => {
   const { t } = useTranslation();
 
   return (
-    <Container py={[20, 30]}>
+    <Container py={[8, 30]}>
       <Image
         my={10}
         w={"100%"}
@@ -41,17 +41,14 @@ const HowToUse = () => {
           <HardsandLink textDecoration={"underline"} href="/">
             Hardsands
           </HardsandLink>{" "}
-          comes in. We are a digital business card service that makes it easy to
-          keep track of your contacts and find the information you need when you
-          need it.
+          comes in. We are a digital business card service that helps you share
+          information instantly and on the go.
         </Text>
         <Text>
-          What sets us apart from other digital business card services is our
-          use of Near Field Communication (NFC) tags. With an NFC-enabled
-          device, such as a smartphone, you can simply tap your card on the
-          front or back camera of your device to automatically add the contact
-          to your address book. To learn more about how to use our service, read
-          on!
+          With an NFC-enabled device, such as a smartphone, you can simply tap
+          or hover your Hardsands card or hardsands epoxy on the front or back
+          camera of your device to automatically share your info with anyone. To
+          learn more about how to use our service, read on!
         </Text>
       </VStack>
       <Stack mb={2}>
@@ -75,19 +72,24 @@ const HowToUse = () => {
         </Heading>
         <Text>
           Once you have received your card, if you use an <b>Android</b> device
-          place it somewhere around your back camera or mid section of your
-          device. For <b>IPhone</b> place the card on the front camera or top of
-          the device, and a notification should pop up instantly. Click on the
+          you need to first ensure your NFC is turned on. To do so, go to your
+          settings, search for NFC, and make sure it’s turned on. Then proceed
+          to place it somewhere around your back camera or mid section of your
+          device.
+        </Text>{" "}
+        <Text>
+          For <b>IPhone</b> place the card on the front camera or top of the
+          device, and a notification should pop up instantly. Click on the
           notification, which redirects you to a page where you have to fill in
           your activation code and email.
         </Text>
-
         <Text mt={4}>
           <b>Note:</b> The Activation code would have been sent to you before
           you received the card. If you did not get one, please contact support.
         </Text>
         <Image
           my={10}
+          mx={"auto"}
           src={
             "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/activate-form.jpg?v=1668506739"
           }
@@ -100,8 +102,9 @@ const HowToUse = () => {
         <Image
           maxW={"302px"}
           my={10}
+          mx={"auto"}
           src={
-            "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/unnamed_1.jpg?v=1668506739"
+            "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Screenshot_2022-11-15_at_12.08.47_PM.png?v=1668510550"
           }
           alt={"hardsands business card - how to use 2"}
         />
@@ -115,6 +118,7 @@ const HowToUse = () => {
         </Text>
         <Image
           maxW={"302px"}
+          mx={"auto"}
           my={10}
           src={
             "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/unnamed_2.jpg?v=1668506739"
@@ -122,11 +126,12 @@ const HowToUse = () => {
           alt={"hardsands business card - how to use 3"}
         />
         <Text>
-          Click on your card, and you will be directed to a page like this.
+          Click on your card, and you will be directed to a screen like this.
         </Text>
         <Image
           maxW={"302px"}
           my={10}
+          mx={"auto"}
           src={
             "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/IMG_5569.jpg?v=1668506739"
           }
@@ -139,6 +144,7 @@ const HowToUse = () => {
         <Image
           maxW={"302px"}
           my={10}
+          mx={"auto"}
           src={
             "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/IMG_5571.jpg?v=1668506740"
           }
@@ -158,12 +164,13 @@ const HowToUse = () => {
             <ListItem>SMS</ListItem>
             <ListItem>Call</ListItem>
             <ListItem>Email</ListItem>
-            <ListItem>Bank Account</ListItem>
+            <ListItem>Bank Account Transfer Details</ListItem>
           </UnorderedList>
         </Box>
         <Image
           maxW={"302px"}
           my={10}
+          mx={"auto"}
           src={
             "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/IMG_5570.jpg?v=1668506739"
           }
