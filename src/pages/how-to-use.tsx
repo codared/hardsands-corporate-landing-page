@@ -9,7 +9,7 @@ const HowToUsePage = () => {
     <WithLayout
       pageTitle={t("how-to-use:title", "How to use")}
       pageDescription={t("how-to-use:description", "")}
-      image_url="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/12_1.jpg?v=1665057392"
+      image_url="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS959_1.jpg?v=1668505794"
     >
       <HowToUse />
     </WithLayout>
