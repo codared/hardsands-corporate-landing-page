@@ -29,9 +29,9 @@ const WhyYouNeed = () => {
           meet. It is a representation of who you are and what you do.
         </Text>
         <Text mb={6}>
-          It contains digital information that you access by scanning the card
-          with a smartphone. This information can include your website, social
-          media links, contact information, etc.
+          Your digital business card contains digital information that you
+          access by scanning the card with a smartphone. This information can
+          include your website, social media links, contact information, etc.
         </Text>
         <Text mb={6}>
           Digital business cards have several advantages over traditional
@@ -44,17 +44,25 @@ const WhyYouNeed = () => {
           The importance of Hardsands NFC business cards
         </Heading>
         <Text mb={6}>
-          Digital business cards are a convenient way to exchange contact
-          information and are becoming increasingly popular as more people use
-          smartphones and other devices to stay connected.
+          Before we begin, it is important we explain the meaning of NFC. NFC
+          (Near Field Communication) is a technology that enables two devices to
+          communicate with each other when they are close together. NFC can be
+          used for a variety of purposes, such as transferring data, making
+          payments, and reading tags.
         </Text>
         <Text mb={6}>
-          Digital business cards are easy to create and can be stored on your
-          phone or in a cloud-based storage system. You can also share digital
-          business cards via email, social media, or text. This makes it easy to
-          connect with people, even if you don&apos;t have their physical
-          business cards. Here are some of the reasons why you should make the
-          switch:
+          NFC technology is built into many devices, such as phones, tablets,
+          and smartwatches. It allows two devices to share data quickly and
+          easily. For example, you can use NFC to share a photo from your phone
+          to your friend&apos;s phone or to make a payment at a store.
+        </Text>
+        <Text mb={6}>
+          This is perfect for digital business cards, because it allows people
+          to quickly and easily exchange contact information without having to
+          type anything into their phone. All they need to do is tap their phone
+          against the NFC-enabled business card, and the contact information
+          will be transferred automatically. Here are some of the reasons why
+          you should make the switch to digital business cards:
         </Text>
 
         <Heading mb={4} size="sm">
