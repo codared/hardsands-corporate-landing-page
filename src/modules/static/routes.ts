@@ -21,6 +21,8 @@ const staticRoutes = buildRoutes("/", {
   privacyPolicy: "/privacy-policy",
   termsOfService: "/terms-of-service",
   returnPolicy: "/return-policy",
+  howToUse: "/article/how-to-use",
+  whyYouNeed: "/article/why-you-need-hardsands-digital-business-card",
   requestPersonalData: "/request-personal-data",
   blogs: "/blogs",
   giftCard: "/gift-card",

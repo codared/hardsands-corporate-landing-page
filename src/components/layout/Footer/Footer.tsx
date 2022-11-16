@@ -151,7 +151,7 @@ export default function Footer() {
       backgroundRepeat={["no-repeat", "repeat"]}
       backgroundSize={["cover"]}
     >
-      <Container as={Stack} maxW={["100%", "3xl", "6xl"]} py={24}>
+      <Container as={Stack} maxW={["100%", "3xl", "8xl"]} py={24}>
         <SimpleGrid templateColumns={["1fr", "2fr 1fr 1fr 2fr"]} spacing={8}>
           <Stack spacing={6}>
             <Box>
@@ -203,6 +203,12 @@ export default function Footer() {
           <Stack align={"flex-start"}>
             <ListHeader>Support</ListHeader>
             <HardsandLink href={staticRoutes.faq()}>FAQ</HardsandLink>
+            <HardsandLink href={staticRoutes.howToUse()}>
+              How to Use
+            </HardsandLink>
+            <HardsandLink href={staticRoutes.whyYouNeed()}>
+              Why you need a business card
+            </HardsandLink>
             <HardsandLink href={staticRoutes.returnPolicy()}>
               Return Policy
             </HardsandLink>
