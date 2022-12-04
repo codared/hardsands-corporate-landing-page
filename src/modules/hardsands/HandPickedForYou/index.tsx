@@ -331,7 +331,7 @@ const HandPickedForYou = () => {
           </Box>
           <Box w={["100%", "50%"]}>
             <Image
-              maxW={"md"}
+              maxW={["100%", "md"]}
               mx={"auto"}
               src={
                 "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A77062_1.jpg?v=1670110867"
