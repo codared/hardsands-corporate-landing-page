@@ -107,7 +107,7 @@ const HandPickedForYou = () => {
   ];
 
   return (
-    <Container maxW={"9xl"}>
+    <Container p={[0, "inherit"]} maxW={["100%", "9xl"]}>
       <Flex
         py={[10, 20]}
         px={[4, 48]}
@@ -349,7 +349,7 @@ const HandPickedForYou = () => {
           direction={["column-reverse", "row"]}
         >
           <Box w={["100%", "40%"]}>
-            <SimpleGrid w={"fit-content"} columns={3} gap={2}>
+            <SimpleGrid w={"fit-content"} columns={[2, 3]} gap={2}>
               {reasonsWhy.map((item, index) => (
                 <Flex
                   key={index}
@@ -366,7 +366,7 @@ const HandPickedForYou = () => {
               ))}
             </SimpleGrid>
           </Box>
-          <Box my={[6, "auto"]} ml={[10]} w={["100%", "30%"]}>
+          <Box my={[8, "auto"]} ml={[0, 10]} w={["100%", "30%"]}>
             <Heading>Reasons Why!</Heading>
             <Text my={[10]}>
               While there are many popular digital business cards, Hardsands
@@ -383,7 +383,12 @@ const HandPickedForYou = () => {
         </Flex>
       </Box>
 
-      <Flex bg={"black"} py={[10, 20]} px={[4, 48]}>
+      <Flex
+        direction={["column", "row"]}
+        bg={"black"}
+        py={[10, 20]}
+        px={[4, 48]}
+      >
         <Box w={["100%", "50%"]}>
           <Flex mb={4}>
             <Divider w={100} m={"auto 0"} />
