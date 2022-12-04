@@ -4,7 +4,7 @@ import QuantitySelector from "components/HardsandsButton/QuantitySelector";
 import VariantSelector from "components/ProductCard/VariantSelector";
 import Cart from "modules/cart";
 import { addItemToCart } from "modules/cart/actions";
-import { useCurrency } from "modules/cart/hooks";
+import { useAddtoCart, useCurrency } from "modules/cart/hooks";
 import { useContext, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
@@ -26,35 +26,16 @@ const ProductDescriptionSection = ({
   setActiveVariant: (val: string | number) => void;
 }) => {
   const { t } = useTranslation();
-  const { dispatch } = useContext(CheckoutContext);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const currency = useCurrency();
   const cartBtnRef = useRef(null);
   const [quantity, setQuantity] = useState(1);
-  const [isLoading, setIsLoading] = useState(false);
+  const { isCartOpen, setIsCartOpen, isLoading, handleAddtoCart } =
+    useAddtoCart({ productDetails, activeVariant, quantity });
 
   const price = formatCurrencyInteger(
     productDetails.variants[activeVariant].price,
     currency
   );
-
-  const handleAddtoCart = async () => {
-    setIsLoading(true);
-
-    const customizedCartItem = {
-      productId: productDetails.id,
-      productVariant: activeVariant,
-      quantity,
-    };
-
-    try {
-      await dispatch(addItemToCart(customizedCartItem));
-      setIsLoading(false);
-      setIsCartOpen(true);
-    } catch (err) {
-      setIsLoading(false);
-    }
-  };
 
   const accordionItems = [
     {

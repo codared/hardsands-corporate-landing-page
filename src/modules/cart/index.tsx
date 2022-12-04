@@ -118,12 +118,14 @@ const Cart = React.forwardRef(
         size="sm"
         onClose={() => {
           onClose();
-          const portal: any = document.querySelector(
-            "#cart__drawer_overlay"
-          ) as HTMLElement;
-          setTimeout(() => {
-            portal.parentNode.style.display = "none";
-          }, 500);
+          // const portal: any = document.querySelector(
+          //   "#cart__drawer_overlay"
+          // ) as HTMLElement;
+          // if (portal.parentNode) {
+          //   setTimeout(() => {
+          //     portal.parentNode.style.display = "none";
+          //   }, 500);
+          // }
         }}
         id="cart__drawer"
       >

@@ -2,6 +2,7 @@ import { Text, Image, Box, LinkProps } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import { rightArrow } from "design";
 import productRoutes from "modules/products/routes";
+import { SyntheticEvent } from "react";
 import { IconType } from "react-icons";
 
 export type HardsandButtonProps = Omit<LinkProps, any> & {
@@ -11,6 +12,7 @@ export type HardsandButtonProps = Omit<LinkProps, any> & {
   Icon?: IconType | null;
   children?: string;
   iconSize?: string | number;
+  onClick?: (e: SyntheticEvent) => void;
 };
 
 const HardsandsButton = ({
@@ -20,6 +22,7 @@ const HardsandsButton = ({
   iconMargin = "2rem",
   Icon,
   iconSize = 24,
+  onClick,
   ...rest
 }: HardsandButtonProps) => (
   <HardsandLink
@@ -41,6 +44,7 @@ const HardsandsButton = ({
       border: "1px solid #DF9F71",
     }}
     fontFamily="Made Outer Sans Regular"
+    onClick={onClick}
     {...rest}
   >
     <Text as="span">{children || text}</Text>
