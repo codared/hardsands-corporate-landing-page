@@ -7,10 +7,9 @@ const PromoBadge = ({ text }: { text: string }) => {
       bgColor={"orange.500"}
       textTransform={"uppercase"}
       color={"white"}
-      w={100}
-      h={100}
+      w={82}
+      h={82}
       zIndex={1}
-      // rounded="full"
       roundedBottom="full"
       justifyContent={"center"}
       alignItems={"center"}
@@ -18,7 +17,7 @@ const PromoBadge = ({ text }: { text: string }) => {
       top={0}
       left={0}
     >
-      <Text>{text}</Text>
+      <Text fontSize={12}>{text}</Text>
     </Flex>
   );
 };

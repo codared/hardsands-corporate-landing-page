@@ -108,32 +108,47 @@ const HandPickedForYou = () => {
 
   return (
     <Container p={[0, "inherit"]} maxW={["100%", "9xl"]}>
-      <Flex
-        py={[10, 20]}
-        px={[4, 48]}
-        bgImage={
-          "url(https://cdn.shopify.com/s/files/1/0559/0407/5843/files/promotion-header.png?v=1669723114)"
-        }
-        bgRepeat={"no-repeat"}
-        bgPosition={"bottom"}
-      >
-        <Flex maxW={"xl"} alignItems={"center"}>
-          <Box h={"fit-content"}>
+      <Flex py={[10, 20]} px={[4, 10, 48]} direction={["column", "row"]}>
+        <Flex maxW={["xl", "50%", "xl"]} alignItems={"center"}>
+          <Box w={["100%", "100%", "500%"]} h={"fit-content"}>
             <Heading>Reflect your unique personality</Heading>
             <Text my={[10]}>
               Connect wherever you go. You can easily share your Hardsands
               digital business card with anyone you meet. The best part is, they
               don’t even require an app!
             </Text>
-            <HardsandsButton href={productRoutes.products()}>
+            <Flex mb={10} display={["flex", "none"]} w={["100%", "50%", "50%"]}>
+              <Image
+                w={"full"}
+                src={
+                  "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/DSC00115_1.png?v=1669720132"
+                }
+                alt={"hand picked for you"}
+              />
+            </Flex>
+            {/* @ts-ignore */}
+            <HardsandsButton w={"full"} href={productRoutes.products()}>
               Buy Now
             </HardsandsButton>
           </Box>
         </Flex>
+        <Flex
+          display={["none", "flex"]}
+          m={"10px auto"}
+          w={["100%", "50%", "50%"]}
+        >
+          <Image
+            w={"full"}
+            src={
+              "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/DSC00115_1.png?v=1669720132"
+            }
+            alt={"hand picked for you"}
+          />
+        </Flex>
       </Flex>
 
       {/* New Products Handpicked For You! */}
-      <Box pt={[48]} pb={[10, 20]} px={[4, 48]}>
+      <Box px={[4, 48]}>
         <Flex direction={"column"} textAlign={"center"}>
           <Heading mb={4} color={"brand.300"}>
             New Products Handpicked For You!
@@ -144,12 +159,7 @@ const HandPickedForYou = () => {
           </Text>
         </Flex>
 
-        <Flex
-          as="section"
-          mb={20}
-          p={["4rem 1rem", "4rem 6rem"]}
-          justify="center"
-        >
+        <Flex as="section" p={["4rem 1rem", "4rem 6rem"]} justify="center">
           <Grid
             templateColumns={[
               "repeat(1, 1fr)",
@@ -187,7 +197,7 @@ const HandPickedForYou = () => {
         </Flex>
       </Box>
 
-      <Box py={[10, 20]} px={[4, 48]}>
+      <Box py={[10]} px={[4, 8, 48]}>
         <Flex direction={"column"} textAlign={"center"}>
           <Heading mb={4} color={"brand.300"}>
             How we compare
@@ -296,14 +306,15 @@ const HandPickedForYou = () => {
         </Box>
       </Box>
 
-      <Box position={"relative"} overflow="hidden" py={[10, 48]} px={[4, 48]}>
+      <Box position={"relative"} overflow="unset" py={[10, 48]} px={[4, 4, 48]}>
         <Box
           position={"absolute"}
           w={"200vw"}
-          height={"100vh"}
+          height={"50vh"}
           bg={"brand.100"}
           zIndex={-1}
-          top={-200}
+          top={[200, 50, -200]}
+          left={0}
           opacity={0.5}
           transform={"skewY(-20deg)"}
         />
@@ -327,11 +338,12 @@ const HandPickedForYou = () => {
               textTransform={"uppercase"}
               href={productRoutes.products()}
               text={"Shop Now"}
+              w={"full"}
             />
           </Box>
-          <Box w={["100%", "50%"]}>
+          <Box w={["100%", "50%", "50%"]}>
             <Image
-              maxW={["100%", "md"]}
+              maxW={["100%", "100%", "md"]}
               mx={"auto"}
               src={
                 "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A77062_1.jpg?v=1670110867"
@@ -342,14 +354,19 @@ const HandPickedForYou = () => {
         </Flex>
       </Box>
 
-      <Box py={[10, 48]} px={[4, 48]}>
+      <Box py={[10, 48]} px={[4, 2, 48]}>
         <Flex
           w={"full"}
           justifyContent={"center"}
           direction={["column-reverse", "row"]}
         >
           <Box w={["100%", "40%"]}>
-            <SimpleGrid w={"fit-content"} columns={[2, 3]} gap={2}>
+            <SimpleGrid
+              w={"fit-content"}
+              columns={[2, 2, 3]}
+              gap={2}
+              m={"0 auto"}
+            >
               {reasonsWhy.map((item, index) => (
                 <Flex
                   key={index}
@@ -378,18 +395,29 @@ const HandPickedForYou = () => {
               // @ts-ignore
               textTransform={"uppercase"}
               text={"Try a card"}
+              w={"full"}
+              display={["none", "flex"]}
             />
           </Box>
         </Flex>
+        <HardsandsButton
+          href={productRoutes.products()}
+          // @ts-ignore
+          textTransform={"uppercase"}
+          text={"Try a card"}
+          w={"full"}
+          my={20}
+          display={["flex", "none"]}
+        />
       </Box>
 
       <Flex
         direction={["column", "row"]}
         bg={"black"}
         py={[10, 20]}
-        px={[4, 48]}
+        px={[4, 8, 48]}
       >
-        <Box w={["100%", "50%"]}>
+        <Box mr={4} w={["100%", "50%", "50%"]}>
           <Flex mb={4}>
             <Divider w={100} m={"auto 0"} />
             <Text mt={"5px"} ml={3} textTransform={"uppercase"}>
@@ -414,6 +442,7 @@ const HandPickedForYou = () => {
               // @ts-ignore
               textTransform={"uppercase"}
               text={"Check our blog"}
+              w={"full"}
             />
           </Flex>
         </Box>
