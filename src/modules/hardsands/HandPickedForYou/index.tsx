@@ -107,17 +107,28 @@ const HandPickedForYou = () => {
   ];
 
   return (
-    <Container p={[0, "inherit"]} maxW={["100%", "9xl"]}>
-      <Flex py={[10, 20]} px={[4, 10, 48]} direction={["column", "row"]}>
-        <Flex maxW={["xl", "50%", "xl"]} alignItems={"center"}>
-          <Box w={["100%", "100%", "500%"]} h={"fit-content"}>
-            <Heading>Reflect your unique personality</Heading>
+    <Container overflow={"hidden"} p={[0, "inherit"]} maxW={["100%", "9xl"]}>
+      <Flex
+        py={[10, 20]}
+        px={[4, 10, 48]}
+        // h={'100vh'}
+        direction={["column", "row"]}
+        bgImage={
+          "url(https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A6845_-_low.jpg?v=1670370869)"
+        }
+        bgRepeat={"no-repeat"}
+        bgSize={["cover", "cover", "contain"]}
+        bgPosition={["inherit", "center", "inherit"]}
+      >
+        <Flex maxW={["full", "40%", "40%"]} alignItems={"center"}>
+          <Box w={["100%"]} h={"fit-content"}>
+            <Heading size={"2xl"}>Reflect your unique personality</Heading>
             <Text my={[10]}>
               Connect wherever you go. You can easily share your Hardsands
               digital business card with anyone you meet. The best part is, they
               don’t even require an app!
             </Text>
-            <Flex mb={10} display={["flex", "none"]} w={["100%", "50%", "50%"]}>
+            {/* <Flex mb={10} display={["flex", "none"]} w={["100%", "50%", "50%"]}>
               <Image
                 w={"full"}
                 src={
@@ -125,14 +136,24 @@ const HandPickedForYou = () => {
                 }
                 alt={"hand picked for you"}
               />
-            </Flex>
-            {/* @ts-ignore */}
-            <HardsandsButton w={"full"} href={productRoutes.products()}>
+            </Flex> */}
+            <HardsandsButton
+              // @ts-ignore
+              bg={"black"}
+              color={"brand.300"}
+              w={"full"}
+              href={productRoutes.products()}
+              _hover={{
+                bg: "transparent",
+                color: "black",
+                borderColor: "black",
+              }}
+            >
               Buy Now
             </HardsandsButton>
           </Box>
         </Flex>
-        <Flex
+        {/* <Flex
           display={["none", "flex"]}
           m={"10px auto"}
           w={["100%", "50%", "50%"]}
@@ -144,11 +165,11 @@ const HandPickedForYou = () => {
             }
             alt={"hand picked for you"}
           />
-        </Flex>
+        </Flex> */}
       </Flex>
 
       {/* New Products Handpicked For You! */}
-      <Box px={[4, 48]}>
+      <Box py={[10]} px={[4, 48]}>
         <Flex direction={"column"} textAlign={"center"}>
           <Heading mb={4} color={"brand.300"}>
             New Products Handpicked For You!
@@ -354,13 +375,13 @@ const HandPickedForYou = () => {
         </Flex>
       </Box>
 
-      <Box py={[10, 48]} px={[4, 2, 48]}>
+      <Box mb={[10, 20]} py={[10]} px={[4, 2, 48]}>
         <Flex
           w={"full"}
           justifyContent={"center"}
           direction={["column-reverse", "row"]}
         >
-          <Box w={["100%", "40%"]}>
+          <Box w={["100%", "50%"]}>
             <SimpleGrid
               w={"fit-content"}
               columns={[2, 2, 3]}
