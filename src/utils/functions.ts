@@ -1,7 +1,7 @@
 import jwt_decode from "jwt-decode";
 import { ACTIONS } from "modules/account/constants";
 import { HARDSANDS_LOGIN_COOKIE } from "modules/authentication/constants";
-import { ProductOptions } from "modules/products/types";
+import { Product, ProductOptions } from "modules/products/types";
 import { getCookie } from "modules/shared/cookie";
 import { SUPPORTED_CURRENCIES } from "./supportedCurrencies";
 import { ActionsType } from "./types";
@@ -118,4 +118,11 @@ export const createSelectOptions = (options: any[]) => {
       };
     }
   });
+};
+
+export const getProductBySlug = (
+  slugs: string[],
+  products: Product[] | undefined
+) => {
+  return products?.filter((prod) => slugs.includes(prod.slug));
 };

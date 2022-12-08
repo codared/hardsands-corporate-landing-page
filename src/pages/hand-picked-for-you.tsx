@@ -12,7 +12,7 @@ const HandPickedForYouPage = () => {
         "pages:hand-picked-for-you.desc",
         "Connect wherever you go. You can easily share your Hardsands digital business card with anyone you meet. The best part is, they don’t even require an app!"
       )}
-      image_url="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/12_1.jpg?v=1665057392"
+      image_url="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A6847_2_-_low.jpg?v=1670370868"
     >
       <HandPickedForYou />
     </WithLayout>
