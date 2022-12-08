@@ -19,7 +19,7 @@ interface HowWeCompareProps extends BoxProps {}
 
 function HowWeCompare({ ...rest }: HowWeCompareProps) {
   return (
-    <Box py={[10]} px={[4, 8, 48]}>
+    <Box {...rest} px={[4, 8, 48]}>
       <Flex direction={"column"} textAlign={"center"}>
         <Heading mb={4} color={"brand.300"}>
           How we compare

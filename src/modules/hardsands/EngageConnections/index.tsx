@@ -83,9 +83,11 @@ function EngageConnections() {
           color={"white"}
         >
           <Box w={["full", "60%"]}>
-            <Heading>save on your next purchase</Heading>
+            <Heading textTransform={"capitalize"}>
+              save on your next purchase
+            </Heading>
             <Text my={[6]}>
-              simply use the promo code on checkout. Thanks for shopping with
+              Simply use the promo code on checkout. Thanks for shopping with
               us!
             </Text>
           </Box>
@@ -97,26 +99,24 @@ function EngageConnections() {
             >
               {"CARD2022"}
             </HardsandsButton>
-            <HardsandsButton
+            <Text
               // @ts-ignore
               w={"half"}
-              href={"#"}
               // @ts-ignore
-              bg={"black"}
+              bg={"transparent"}
+              border={"none"}
               color={"brand.300"}
-              _hover={{
-                bg: "transparent",
-                color: "black",
-                borderColor: "black",
-              }}
+              fontWeight={"bold"}
+              fontFamily={"MADE Outer Sans"}
+              px={[10]}
             >
               {"DEC 1 - DEC 25"}
-            </HardsandsButton>
+            </Text>
           </HStack>
         </Box>
       </Stack>
 
-      <HowWeCompare />
+      <HowWeCompare py={[10, 40]} />
 
       <Stack
         direction={["column-reverse", "row"]}

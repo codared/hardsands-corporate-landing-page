@@ -45,17 +45,15 @@ function PromoPageProductList({
 
   return (
     <>
-      <Box py={[10]} px={[4, 48]}>
+      <Box py={[10, 40]} px={[4, 48]}>
         <Flex direction={"column"} textAlign={"center"}>
           <Heading mb={4} color={"brand.300"}>
             {title}
           </Heading>
-          <Text>
-            {subTitle}
-          </Text>
+          <Text>{subTitle}</Text>
         </Flex>
 
-        <Flex as="section" p={["4rem 1rem", "4rem 6rem"]} justify="center">
+        <Flex as="section" px={["4rem"]} pt={["1rem", "6rem"]} justify="center">
           <Grid
             templateColumns={[
               "repeat(1, 1fr)",

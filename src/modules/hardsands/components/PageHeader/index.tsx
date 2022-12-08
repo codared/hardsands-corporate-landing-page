@@ -24,7 +24,7 @@ function PageHeader({
 
   return (
     <Flex
-      py={[10, 20]}
+      py={[10, 40]}
       px={[4, 10, 48]}
       // h={'100vh'}
       direction={["column", "row"]}

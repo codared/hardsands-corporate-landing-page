@@ -97,13 +97,13 @@ const HandPickedForYou = () => {
         promoProducts={promoProducts}
       />
 
-      <HowWeCompare />
+      <HowWeCompare py={[10]} />
 
       <Box position={"relative"} overflow="unset" py={[10, 48]} px={[4, 4, 48]}>
         <Box
           position={"absolute"}
           w={"200vw"}
-          height={"50vh"}
+          height={["50vh", "80vh"]}
           bg={"brand.100"}
           zIndex={-1}
           top={[200, 50, -200]}
