@@ -30,8 +30,8 @@ function PageHeader({
       direction={["column", "row"]}
       bgImage={`url(${bgImage})`}
       bgRepeat={"no-repeat"}
-      bgSize={["cover", "cover", isLight ? "cover" : "contain"]}
-      bgPosition={["inherit", "center", isLight ? "center" : "inherit"]}
+      bgSize={["cover"]}
+      bgPosition={["inherit", "center"]}
       position={"relative"}
     >
       {isLight && (
