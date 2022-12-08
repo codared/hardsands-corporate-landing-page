@@ -30,30 +30,33 @@ function HowWeCompare({ ...rest }: HowWeCompareProps) {
       <TableContainer my={[16]}>
         <Table variant={"unstyled"} size="sm" maxW={"100%"}>
           <Thead>
-            <Tr fontSize={10}>
+            <Tr fontSize={[10, 14]}>
               <Th></Th>
               <Th
                 textAlign={"center"}
-                whiteSpace={["pre-wrap", "nowrap"]}
+                whiteSpace={["pre-wrap", "pre-wrap", "nowrap"]}
                 w={120}
                 maxW={120}
+                py={[8]}
               >
                 Paper Cards
               </Th>
               <Th
                 textAlign={"center"}
-                whiteSpace={["pre-wrap", "nowrap"]}
+                whiteSpace={["pre-wrap", "pre-wrap", "nowrap"]}
                 w={120}
                 maxW={120}
                 bg={"brand.100"}
+                py={[8]}
               >
                 Hardsands Cards
               </Th>
               <Th
                 textAlign={"center"}
-                whiteSpace={["pre-wrap", "nowrap"]}
+                whiteSpace={["pre-wrap", "pre-wrap", "nowrap"]}
                 w={120}
                 maxW={120}
+                py={[8]}
               >
                 Other Cards
               </Th>
@@ -68,24 +71,24 @@ function HowWeCompare({ ...rest }: HowWeCompareProps) {
               "Super intuitive user interface",
               "Basic card analytics",
             ].map((item: string, index: number) => (
-              <Tr whiteSpace={["pre-wrap"]} fontSize={[10, 12]} key={index}>
+              <Tr whiteSpace={["pre-wrap"]} fontSize={[10, 14]} key={index}>
                 <Td w={140} fontWeight={"600"}>
                   {item}
                 </Td>
-                <Td>
+                <Td py={[4, 8]}>
                   <AiOutlineCloseCircle
                     style={{ margin: "0 auto" }}
                     size={20}
                   />
                 </Td>
-                <Td bg={"brand.100"}>
+                <Td py={[4, 8]} bg={"brand.100"}>
                   <AiOutlineCheckCircle
                     style={{ margin: "0 auto" }}
                     color="orange"
                     size={20}
                   />
                 </Td>
-                <Td>
+                <Td py={[4, 8]}>
                   <AiOutlineCloseCircle
                     style={{ margin: "0 auto" }}
                     size={20}

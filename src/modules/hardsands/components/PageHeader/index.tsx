@@ -24,7 +24,7 @@ function PageHeader({
 
   return (
     <Flex
-      py={[10, 40]}
+      py={[120, 40]}
       px={[4, 10, 48]}
       // h={'100vh'}
       direction={["column", "row"]}
@@ -45,7 +45,7 @@ function PageHeader({
           zIndex={0}
         />
       )}
-      <Flex zIndex={1} maxW={["full", "40%", "40%"]} alignItems={"center"}>
+      <Flex zIndex={1} maxW={["full", "60%", "40%"]} alignItems={"center"}>
         <Box
           w={["100%"]}
           h={"fit-content"}
