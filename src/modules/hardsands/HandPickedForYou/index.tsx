@@ -19,6 +19,7 @@ import { getProductBySlug } from "utils/functions";
 import HowWeCompare from "../components/HowWeCompare";
 import PageHeader from "../components/PageHeader";
 import PromoPageProductList from "../components/PromoPageProductList";
+import WhatCustomersAreSaying from "../components/WhatCustomersAreSaying";
 
 const HandPickedForYou = () => {
   const { state } = useContext(CheckoutContext);
@@ -70,8 +71,8 @@ const HandPickedForYou = () => {
     <Container overflow={"hidden"} p={[0, "inherit"]} maxW={["100%", "9xl"]}>
       <PageHeader
         title={t(
-          "pages:header:title:reflect-your-unique-personality",
-          "Reflect your unique personality"
+          "pages:header:title:amplify-your-influence",
+          "Amplify your Influence"
         )}
         subTitle={t(
           "pages:header:description:connect-wherever-you-go",
@@ -146,6 +147,8 @@ const HandPickedForYou = () => {
           </Box>
         </Flex>
       </Box>
+
+      <WhatCustomersAreSaying />
 
       <Box mb={[10, 20]} py={[10]} px={[4, 2, 48]}>
         <Flex
