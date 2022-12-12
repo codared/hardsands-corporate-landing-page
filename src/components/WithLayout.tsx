@@ -67,6 +67,7 @@ const WithLayout = ({
         <meta property="og:site_name" content="Hardsands Technology" />
         <meta property="og:type" content={ogType} />
         <meta property="og:url" content={openGraphUrl} />
+        <meta name="facebook-domain-verification" content="0rddst5won3af00cv9hnfiz0mowd3s" />
       </Head>
       {!isCheckout ? <Navigation /> : <CheckoutHeader />}
       {children}
