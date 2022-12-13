@@ -1,9 +1,31 @@
-import { Box, Flex, Heading, HStack, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  HStack,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
+import { CartDataDetails } from "components/ProductCard/type";
 import Rating from "components/Rating";
-import React from "react";
+import { Product } from "modules/products/types";
+import React, { SyntheticEvent } from "react";
 
-function Header() {
+function Header({
+  price,
+  isAddingToCart,
+  handleAddToCart,
+  variant,
+  productDetails,
+}: {
+  price: string;
+  isAddingToCart?: boolean;
+  handleAddToCart?: (e: SyntheticEvent, details: CartDataDetails) => void;
+  variant: string;
+  productDetails: Product;
+}) {
   return (
     <Box
       p={[10, 10, 40]}
@@ -12,13 +34,13 @@ function Header() {
       }
       bgRepeat={"no-repeat"}
       bgPosition={["unset", "left"]}
+      id={"matte-black-purchase"}
     >
       <Flex direction={["column", "row"]} justifyContent={"center"}>
         <Image
           maxW={["xs", "xs", "sm"]}
-          //   boxSize={'300'}
           src={
-            "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A67802_-_low.jpg?v=1670370869"
+            "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Rectangle_753.png?v=1670959669"
           }
           alt={"0% Paper 100% sustainable"}
         />
@@ -27,47 +49,72 @@ function Header() {
         <Flex
           direction={"column"}
           ml={[0, 14]}
-          w={["100%", "50%", "30%"]}
+          w={["100%", "50%", "40%"]}
           textAlign={"left"}
           justifyContent={"center"}
         >
           <Heading>0% Paper 100% sustainable</Heading>
           <Box h={6} />
           <Text>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry&apos;s standard dummy
-            text ever since the 1500s, when an unknown printer took a galley of
-            ty
+            The matte black PVC card is a new product from our sustainable
+            range. It is made of 100% recycled PVC and is completely recyclable.
+            It has a beautiful matte finish and is designed to last.
           </Text>
           <Box h={6} />
           <HStack>
-            <Rating rating={4.2} numReviews={999999} />
+            <Rating rating={4.2} numReviews={155} />
           </HStack>
           <Box h={6} />
-          <HStack flexDirection={["row", "column-reverse", "row"]}>
-            <HardsandsButton
-              // @ts-ignore
-              w={["50%", "100%", "50%"]}
-              href={"#"}
+          <HStack flexDirection={["column-reverse", "column-reverse", "row"]}>
+            <Button
+              isLoading={isAddingToCart}
+              loadingText={"Adding to cart..."}
+              w={["100%", "100%", "50%"]}
+              fontSize={"sm"}
+              fontWeight="bold"
+              color={"black"}
+              bg={"brand.200"}
+              p={["12px 16px", "28px 46px"]}
+              display="flex"
+              alignItems="center"
+              justifyContent={"center"}
+              transition="all 200ms ease-in"
+              textTransform={"uppercase"}
+              border="1px solid #F5D7BB"
+              borderRadius={"none"}
+              _hover={{
+                bg: "transparent",
+                color: "brand.300",
+                border: "1px solid #DF9F71",
+              }}
+              fontFamily="Made Outer Sans Regular"
+              onClick={
+                !!handleAddToCart
+                  ? (e: SyntheticEvent) =>
+                      handleAddToCart(e, {
+                        variant,
+                        productDetails,
+                        quantity: 1,
+                      })
+                  : () => {}
+              }
             >
               {"Add to Cart"}
-            </HardsandsButton>
+            </Button>
             <Box
-              // @ts-ignore
-              w={["50%", "100%", "50%"]}
-              // @ts-ignore
+              w={["100%", "100%", "50%"]}
               bg={"transparent"}
               border={"none"}
               color={"brand.300"}
               fontWeight={"bold"}
               fontFamily={"MADE Outer Sans"}
-              px={[10, 0, 10]}
-              textAlign={["right", "left", "right"]}
+              px={[0, 0, 6]}
+              textAlign={["left"]}
             >
               <Text textDecoration={"line-through"} color={"black"}>
-                {"$45.00"}
+                {price}
               </Text>
-              <Text fontSize={["xl", "2xl"]}>{"$35.99"}</Text>
+              <Text fontSize={["xl", "2xl"]}>{price}</Text>
             </Box>
           </HStack>
         </Flex>

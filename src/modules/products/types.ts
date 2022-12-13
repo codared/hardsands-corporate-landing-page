@@ -33,6 +33,7 @@ export interface Product {
   tags: Array<string>;
   slug: string;
   options: ProductOptions;
+  discountedPrice?: number;
   variants: {
     [key: string]: ProductVariants;
   };

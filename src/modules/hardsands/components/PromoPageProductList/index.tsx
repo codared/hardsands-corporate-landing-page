@@ -45,7 +45,7 @@ function PromoPageProductList({
 
   return (
     <>
-      <Box py={[10, 40]} px={[4, 48]}>
+      <Box id="our-trending-products" py={[10, 40]} px={[4, 48]}>
         <Flex direction={"column"} textAlign={"center"}>
           <Heading mb={4} color={"brand.300"}>
             {title}

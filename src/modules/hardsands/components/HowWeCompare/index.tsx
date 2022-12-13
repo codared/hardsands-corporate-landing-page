@@ -65,8 +65,8 @@ function HowWeCompare({ ...rest }: HowWeCompareProps) {
           <Tbody>
             {[
               "High-level security",
-              "Payment links for Visa, Mastercard and more",
-              "Card sharing via QR code, email, text, WhatsApp, and NFC tag",
+              "Payment links and more",
+              "Card sharing via QR code, e.t.c",
               "Social media links",
               "Super intuitive user interface",
               "Basic card analytics",
