@@ -20,7 +20,8 @@ const UsageDemoSection = ({ horizontal }: { horizontal?: boolean }) => {
   return (
     <Box
       bg={horizontal ? "black" : "unset"}
-      py={[10, 20]}
+      pb={[10, 10, 0]}
+      pt={[10, 20, 20]}
       backgroundImage={
         "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657261446/hardsands/background_vector_dq6aud.svg"
       }
@@ -47,7 +48,7 @@ const UsageDemoSection = ({ horizontal }: { horizontal?: boolean }) => {
             </Text>
           </Box>
           <Flex
-            my={14}
+            my={[0, 14]}
             justifyContent={"center"}
             flexDirection={horizontal ? ["column"] : ["column", "row"]}
           >
