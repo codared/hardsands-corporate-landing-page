@@ -5,22 +5,23 @@ import {
   Image,
   Text,
   Heading,
+  Button,
 } from "@chakra-ui/react";
 import queryString from "query-string";
 import HardsandsButton from "components/HardsandsButton";
 import HardsandLink from "components/HardsandsLink";
 import { useCurrency } from "modules/cart/hooks";
 import productRoutes from "modules/products/routes";
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { formatCurrencyInteger } from "utils/currency";
 import { getProductOptions } from "utils/functions";
-import { slugify } from "utils/string";
 import { ProductCardProps } from "./type";
 import VariantSelector from "./VariantSelector";
 import { EcommerceProduct } from "modules/analytics/types";
 import useTrackProductImpression from "modules/analytics/hooks/useTrackProductImpression";
 import { getProductImageFromSlug } from "modules/products/functions";
+import { useTranslation } from "react-i18next";
 
 const data = {
   isNew: true,
@@ -73,7 +74,7 @@ export const PreviewProductCard = ({
       >
         <Image
           src={productImage || img}
-          alt={`Picture of ${data.name}`}
+          alt={`Picture of ${name}`}
           objectFit="cover"
           w="100%"
         />
@@ -112,7 +113,11 @@ export const ProductCard = ({
   description,
   id,
   pushImpression,
+  onButtonClick,
+  isLoading = false,
+  buttonText = "Shop Now".toUpperCase(),
 }: ProductCardProps) => {
+  const { t } = useTranslation();
   const selectedCurrency = useCurrency();
   const productVariants = getProductOptions(productDetails.options);
   const [variant, setVariant] = useState(productVariants[0]);
@@ -161,7 +166,7 @@ export const ProductCard = ({
       >
         <Image
           src={productImage || img}
-          alt={`Picture of ${data.name}`}
+          alt={`Picture of ${name}`}
           objectFit="cover"
           w="100%"
         />
@@ -211,27 +216,60 @@ export const ProductCard = ({
                 </Text>
               </Box>
             </Flex>
-            <HardsandsButton
-              text={"Shop Now".toUpperCase()}
-              href={`${productDetailsURL}?variant=${variant}`}
-              // @ts-ignore
-              w={"full"}
-              p={["12px 16px", "10px 25px"]}
-              Icon={AiOutlineShoppingCart}
-              iconSize={20}
-              borderWidth="1px"
-              borderStyle="solid"
-              borderColor="brand.100"
-              bg={"brand.100"}
-              color="black"
-              _hover={{
-                bg: "transparent",
-                color: "black",
-                borderWidth: "1px",
-                borderStyle: "solid",
-                borderColor: "brand.200",
-              }}
-            />
+            {!!onButtonClick ? (
+              <Button
+                onClick={(e: SyntheticEvent) =>
+                  onButtonClick(e, { variant, productDetails, quantity: 1 })
+                }
+                isLoading={isLoading}
+                loadingText="Adding to cart..."
+                // @ts-ignore
+                w={"full"}
+                cursor="pointer"
+                borderRadius={"none"}
+                justifyContent={"center"}
+                transition={"all ease-in-out 200ms"}
+                fontFamily={"MADE Outer sans"}
+                userSelect="none"
+                p={["12px 16px", "10px 25px"]}
+                borderWidth="1px"
+                borderStyle="solid"
+                borderColor="brand.100"
+                bg={"brand.100"}
+                color="black"
+                _hover={{
+                  bg: "transparent",
+                  color: "black",
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "brand.200",
+                }}
+              >
+                <Text>{t("product:add-to-cart", "Add to cart")}</Text>
+              </Button>
+            ) : (
+              <HardsandsButton
+                text={buttonText}
+                href={`${productDetailsURL}?variant=${variant}`}
+                // @ts-ignore
+                w={"full"}
+                p={["12px 16px", "10px 25px"]}
+                Icon={AiOutlineShoppingCart}
+                iconSize={20}
+                borderWidth="1px"
+                borderStyle="solid"
+                borderColor="brand.100"
+                bg={"brand.100"}
+                color="black"
+                _hover={{
+                  bg: "transparent",
+                  color: "black",
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "brand.200",
+                }}
+              />
+            )}
           </Flex>
         </Flex>
       </Box>

@@ -6,7 +6,7 @@ type NextButtonProps = {
   showControlsAbove?: boolean
   onClick?: () => void
   rounded?: boolean
-  right?: number,
+  right?: string | number | [any],
   arrowColor?: string
   overrideContainerStyle?: FlexProps
 }

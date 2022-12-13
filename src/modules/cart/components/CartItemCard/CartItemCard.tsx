@@ -4,7 +4,7 @@ import QuantityModifier from "components/QuantityModifier";
 import { updateCartItem } from "modules/cart/actions";
 import { CartResponse, CartResponseItem } from "modules/cart/types";
 import { getProductImageFromSlug } from "modules/products/functions";
-import { useContext, useState } from "react";
+import { SyntheticEvent, useContext, useState } from "react";
 import { CheckoutContext } from "redux/context";
 import { formatCurrencyInteger } from "utils/currency";
 
@@ -30,7 +30,8 @@ const CartItemCard = ({ cartProduct, onRemoveItem }: CartItemCardProd) => {
     return;
   };
 
-  const handleRemoveCartItem = () => {
+  const handleRemoveCartItem = (e: SyntheticEvent) => {
+    e.preventDefault();
     setIsUpdating(true);
     onRemoveItem(cartProduct);
   };

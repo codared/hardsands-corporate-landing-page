@@ -48,22 +48,24 @@ const UsageDemoSection = ({ horizontal }: { horizontal?: boolean }) => {
           </Box>
           <Flex
             my={14}
+            justifyContent={"center"}
             flexDirection={horizontal ? ["column"] : ["column", "row"]}
           >
             {!horizontal && (
-              <Image
-                width={["100%", "50%", "50%"]}
-                alignSelf={["center", "unset"]}
-                height="fit-content"
-                src={
-                  "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657211480/hardsands/Rectangle_214_j9mzoe.svg"
-                  // "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/instruct.gif?v=1667851702"
-                }
-                alt="how to images"
-                zIndex={1}
-                mb={10}
-                mr={[0, 10]}
-              />
+              <Box w={["100%", "50%", "50%"]}>
+                <Image
+                  w={["100%", "90%", "70%"]}
+                  alignSelf={["center", "unset"]}
+                  height="fit-content"
+                  src={
+                    "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/landing_page_asset_1.png?v=1670851695"
+                    // "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/instruct.gif?v=1667851702"
+                  }
+                  alt="how to images"
+                  zIndex={1}
+                  m={["0 auto 50px", "0 auto"]}
+                />
+              </Box>
             )}
             <Flex
               justifyContent="center"

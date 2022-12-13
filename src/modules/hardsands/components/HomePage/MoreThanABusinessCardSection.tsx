@@ -1,6 +1,5 @@
 import {
   Stack,
-  Flex,
   Box,
   SimpleGrid,
   Icon,
@@ -8,20 +7,35 @@ import {
   Container,
   Heading,
 } from "@chakra-ui/react";
-import React, { ReactElement } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
-import { FcAssistant, FcDonate, FcInTransit } from "react-icons/fc";
+import { IconType } from "react-icons";
+import { CgListTree, CgUserList } from "react-icons/cg";
+import {
+  MdOutlineLeaderboard,
+} from "react-icons/md";
+import { TbCalendarTime } from "react-icons/tb";
 
 interface FeatureProps {
   title: string;
   text: string;
-  icon: ReactElement;
+  icon: IconType;
 }
 
 const Feature = ({ title, text, icon }: FeatureProps) => {
   return (
     <Stack textAlign={"center"} mb={10}>
-      <Text minHeight={['unset', "72px"]} fontSize={"2xl"} fontWeight={600}>
+      <Box
+        mx={"auto"}
+        w={20}
+        h={20}
+        p={4}
+        bgColor={"brand.100"}
+        borderRadius={"full"}
+      >
+        <Icon fontSize={40} as={icon} />
+      </Box>
+      <Text minHeight={["unset", "72px"]} fontSize={"2xl"} fontWeight={600}>
         {title}
       </Text>
       <Text color={"gray.600"}>{text}</Text>
@@ -56,7 +70,7 @@ const MoreThanABusinessCardSection = () => {
         </Box>
         <SimpleGrid columns={[1, 2, 4]} spacing={10}>
           <Feature
-            icon={<Icon as={FcAssistant} w={10} h={10} />}
+            icon={CgListTree}
             title={t(
               "common:title:share-your-contact-details",
               "Share Your Contact Details"
@@ -67,7 +81,7 @@ const MoreThanABusinessCardSection = () => {
             )}
           />
           <Feature
-            icon={<Icon as={FcDonate} w={10} h={10} />}
+            icon={CgUserList}
             title={t("common:title:conversion-of-leads", "Conversion of leads")}
             text={t(
               "common:conversion-of-leads:text",
@@ -75,7 +89,7 @@ const MoreThanABusinessCardSection = () => {
             )}
           />
           <Feature
-            icon={<Icon as={FcInTransit} w={10} h={10} />}
+            icon={MdOutlineLeaderboard}
             title={t("common:title:digital-marketing", "Digital Marketing")}
             text={t(
               "common:digital-marketing:text",
@@ -83,7 +97,7 @@ const MoreThanABusinessCardSection = () => {
             )}
           />
           <Feature
-            icon={<Icon as={FcInTransit} w={10} h={10} />}
+            icon={TbCalendarTime}
             title={t("common:title:real-time-update", "Real-Time Update")}
             text={t(
               "common:real-time-update:text",

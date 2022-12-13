@@ -7,7 +7,7 @@ type PrevButtonProps = {
   showControlsAbove?: boolean
   onClick?: () => void
   rounded?: boolean
-  left?: number, 
+  left?: string | number | [any],
   arrowColor?: string
   overrideContainerStyle? : FlexProps
 }
