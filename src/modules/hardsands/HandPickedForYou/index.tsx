@@ -106,7 +106,7 @@ const HandPickedForYou = () => {
           height={["50vh", "60vh"]}
           bg={"brand.100"}
           zIndex={-1}
-          top={[200, 50, -200]}
+          top={[200, 50, -250]}
           left={0}
           opacity={0.5}
           transform={"skewY(-20deg)"}
