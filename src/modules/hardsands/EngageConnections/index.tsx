@@ -1,171 +1,199 @@
 import {
-  Container,
-  Heading,
-  Stack,
-  Text,
-  HStack,
   Box,
+  Container,
+  Flex,
+  Heading,
+  Text,
   Image,
   VStack,
-  Flex,
 } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
-import productRoutes from "modules/products/routes";
-import React, { useContext } from "react";
-import { useTranslation } from "react-i18next";
-import { CheckoutContext } from "redux/context";
-import { useTypedSelector } from "redux/store";
-import { getProductBySlug } from "utils/functions";
-import HowWeCompare from "../components/HowWeCompare";
-import PageHeader from "../components/PageHeader";
-import PromoPageProductList from "../components/PromoPageProductList";
+import React from "react";
+import Header from "./components/Header";
 
 function EngageConnections() {
-  const { state } = useContext(CheckoutContext);
-  const { t } = useTranslation();
-  const selectedCurrency = state.cart.selectedCurrency;
-  const products = useTypedSelector(
-    (prodState) => prodState?.products?.all[selectedCurrency]
-  );
-
-  const promoProducts = getProductBySlug(
-    ["bamboo-wood", "sapele-wood", "matte-black-card"],
-    products
-  );
+  const steps = [
+    {
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      title: "Ease of sharing",
+      text: "We offer you various ways to share your card so you can maximise client engagement. This might include sharing via a QR Code, text, email, and more.",
+    },
+    {
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      title: "Analytics and tracking",
+      text: "Our solution lets you track engagement with your cards, such as the number of card views, best-performing cards, and more.",
+    },
+    {
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      title: "Highly customizable",
+      text: "Our customisable dashboard allows you to add more than just basic contact information, such as social media handles, business locations, website URLs, and images.",
+    },
+    {
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      title: "Security",
+      text: "Your information remains encrypted and can only be read by authorized parties. This ensures that your information stays safe and confidential.",
+    },
+  ];
 
   return (
     <Container overflow={"hidden"} p={[0, "inherit"]} maxW={["100%", "9xl"]}>
-      <PageHeader
-        title={t(
-          "pages:header:title:dont-miss-out-on-this-special-offer",
-          "Don't miss out on this special offer! "
-        )}
-        subTitle={t(
-          "pages:header:description:looking-to-save-on-your-next-purchase",
-          "Looking to save on your next purchase? For a limited time, get a 20% discount on all purchases. Act now to take advantage of this special offer!"
-        )}
-        type={"light"}
-        bgImage={
-          "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Rectangle_705_1.jpg?v=1670441529"
-        }
-        buttonHref={productRoutes.products()}
-        buttonText="Buy Now"
-      />
+      <Header />
 
-      <PromoPageProductList
-        title={t(
-          "pages:header:title:our-trending-products",
-          "Our Trending Products"
-        )}
-        subTitle={t(
-          "pages:header:description:explore-our-collection-of-unique-business-cards",
-          "Explore our collection of unique business cards. We guarantee you’ll find a match"
-        )}
-        promoProducts={promoProducts}
-      />
-
-      <Stack
-        // h={'100vh'}
-        direction={["column", "row"]}
-        bgImage={`url(https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A67932_-_low.jpg?v=1670370869)`}
-        bgRepeat={"no-repeat"}
-        bgSize={["cover", "cover", "cover"]}
-        bgPosition={["inherit", "center", "center"]}
-        position={"relative"}
+      <Flex
+        direction={["column", "column", "row"]}
+        justifyContent={"center"}
+        bg={"black"}
+        p={[10, 10, 40]}
       >
         <Box
-          py={[10, 20]}
-          px={[4, 10, 48]}
-          bgGradient={
-            "linear(to-r, rgba(0, 0, 0, 1), rgba(0, 0, 0, .8), rgba(0, 0, 0, .4), transparent)"
-          }
-          w={"full"}
+          mb={[20, 20, 0]}
+          w={["100%", "100%", "50%"]}
           color={"white"}
-        >
-          <Box w={["full", "60%"]}>
-            <Heading textTransform={"capitalize"}>
-              save on your next purchase
-            </Heading>
-            <Text my={[6]}>
-              Simply use the promo code on checkout. Thanks for shopping with
-              us!
-            </Text>
-          </Box>
-          <HStack>
-            <HardsandsButton
-              // @ts-ignore
-              w={"half"}
-              href={"#"}
-            >
-              {"CARD2022"}
-            </HardsandsButton>
-            <Text
-              // @ts-ignore
-              w={"half"}
-              // @ts-ignore
-              bg={"transparent"}
-              border={"none"}
-              color={"brand.300"}
-              fontWeight={"bold"}
-              fontFamily={"MADE Outer Sans"}
-              px={[10]}
-            >
-              {"DEC 1 - DEC 25"}
-            </Text>
-          </HStack>
-        </Box>
-      </Stack>
-
-      <HowWeCompare py={[10, 40]} />
-
-      <Stack
-        direction={["column-reverse", "row"]}
-        bgImage={
-          "https://res.cloudinary.com/dtumqh3dd/image/upload/v1657261446/hardsands/background_vector_dq6aud.svg"
-        }
-        bgRepeat={["no-repeat", "repeat"]}
-        bgSize={["cover"]}
-        bgColor={"black"}
-        position={"relative"}
-        py={[10, 20]}
-        px={[4, 10, 48]}
-      >
-        <Flex
-          direction={"column"}
           justifyContent={"center"}
-          w={["full", "40%"]}
-          color={"white"}
         >
-          <Box>
-            <Heading textTransform={"capitalize"}>
-              A better way to connect, regardless of your line of work
-            </Heading>
-            <Text my={[6]}>
-              Whether you&apos;re a freelancer, a small business owner, or a
-              corporate executive, we provide you with the perfect way to
-              connect with potential leads and colleagues
+          <Heading fontSize={["4xl", "6xl"]}>
+            Engage connections with an immersive experience
+          </Heading>
+          <Box h={6} />
+          <Text w={["100%", "60%"]}>
+            It may seem like a simple way to share your contact information. But
+            with a little creativity, you can create an immersive experience
+            that will engage your connections and leave a lasting impression.
+          </Text>
+          <Box h={6} />
+          <HardsandsButton>Buy Now</HardsandsButton>
+        </Box>
+
+        <Image
+          w={["lg", "lg", "50%"]}
+          h={"auto"}
+          src={
+            "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Group_944.png?v=1670886355"
+          }
+          alt={"Engage connections with an immersive experience"}
+        />
+      </Flex>
+
+      <Flex direction={["column"]} justifyContent={"center"} p={[10, 10, 40]}>
+        <Box w={["full"]} textAlign={"center"} mb={[10, 20]}>
+          <Heading textTransform={"capitalize"}>
+            4 REASONS WHY YOU NEED THE BLACK MATTE CARD
+          </Heading>
+        </Box>
+
+        <Flex direction={["column"]} w={["100%", "100%", "70%"]} m={"0 auto"}>
+          {steps.map((step: any, index: number) => (
+            <Flex
+              key={step.title}
+              justifyContent={["center"]}
+              alignItems={["center"]}
+              direction={["column", index % 2 === 0 ? "row" : "row-reverse"]}
+              mb={[14, 0]}
+            >
+              <Image w={["full", "xs"]} src={step.img} alt={step.title} />
+              <Box w={[0, 24, 32]} h={[6, 10, 0]} />
+              <Box
+                w={["100%", "40%"]}
+                textAlign={["left", index % 2 === 0 ? "left" : "right"]}
+              >
+                <Heading fontWeight={"normal"}>{step.title}</Heading>
+                <Box h={6} />
+                <Text>{step.text}</Text>
+              </Box>
+            </Flex>
+          ))}
+        </Flex>
+      </Flex>
+
+      <Box
+        p={[10, 10, 48]}
+        bg={
+          "url(https://cdn.shopify.com/s/files/1/0559/0407/5843/files/slideBg.svg?v=1670951411)"
+        }
+        bgRepeat={"no-repeat"}
+        bgPosition={["center"]}
+        bgSize={"cover"}
+        mb={[10]}
+      >
+        <Flex direction={["column", "row"]} justifyContent={"center"}>
+          <Flex
+            direction={"column"}
+            ml={[0, 14]}
+            w={["100%", "60%", "40%"]}
+            textAlign={"left"}
+            justifyContent={"center"}
+          >
+            <Heading>Join the 1% of the 1%</Heading>
+            <Box h={6} />
+            <Text>
+              What if we told you that in one step, you could join the 1%? Sure,
+              it sounds like a sales pitch. But it&apos;s true! We want you to
+              be ahead of the game.
             </Text>
-          </Box>
-          <HStack>
+            <Box h={6} />
             <HardsandsButton
               // @ts-ignore
               w={"full"}
               href={"#"}
             >
-              {"SHOP NOW"}
+              {"TRY NOW"}
             </HardsandsButton>
-          </HStack>
-        </Flex>
-        <Box my={20} w={["full", "50%"]}>
+          </Flex>
+          {/* <Box w={20} />
+          <Box h={14} display={["block", "none"]} />
           <Image
-            m={"0 auto"}
+            maxW={"sm"}
             src={
-              "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/grid.svg?v=1670447649"
+              "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/landing_page_asset_1.png?v=1670851695"
             }
-            alt={"grid points"}
+            alt={"Join the 1% of the 1%"}
+          /> */}
+        </Flex>
+      </Box>
+
+      <Box maxW={"80%"} m={"0 auto 100px"} p={[10, 10, 40]} bgColor={"black"}>
+        <Flex
+          direction={["column", "column", "row"]}
+          justifyContent={"center"}
+          alignItems={["center"]}
+        >
+          <Image
+            maxW={["100%"]}
+            w={"sm"}
+            src={
+              "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/landing_page_asset_1.png?v=1670851695"
+            }
+            alt={"Personalized Corporate Gifting"}
           />
-        </Box>
-      </Stack>
+          <Box w={20} />
+          <Box h={[14]} display={["block", "block", "none"]} />
+          <Flex
+            direction={"column"}
+            ml={[0, 0, 14]}
+            w={["100%", "60%", "30%"]}
+            textAlign={"left"}
+            justifyContent={"center"}
+            color={"white"}
+          >
+            <Heading>Personalized Corporate Gifting</Heading>
+            <Box h={6} />
+            <Text>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry&apos;s standard dummy
+              text ever since the 1500s, when an unknown printer took a galley
+              of ty
+            </Text>
+            <Box h={6} />
+            <HardsandsButton
+              // @ts-ignore
+              w={"full"}
+              href={"#"}
+            >
+              {"Coming Soon"}
+            </HardsandsButton>
+          </Flex>
+        </Flex>
+      </Box>
     </Container>
   );
 }

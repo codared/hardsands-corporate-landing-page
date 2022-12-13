@@ -15,7 +15,7 @@ function EngageConnectionsPage() {
         "pages:engage-connections-with-an-emmersive-experience.desc",
         "It may seem like a simple way to share your contact information. But with a little creativity, you can create an immersive experience that will engage your connections and leave a lasting impression."
       )}
-      image_url="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Rectangle_705_1.jpg?v=1670441529"
+      image_url="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A67802_-_low.jpg?v=1670370869"
     >
       <EngageConnections />
     </WithLayout>
