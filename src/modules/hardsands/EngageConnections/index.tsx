@@ -68,7 +68,7 @@ function EngageConnections() {
           w={["lg", "lg", "50%"]}
           h={"auto"}
           src={
-            "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Group_944.png?v=1670886355"
+            "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Group_945.png?v=1670954330"
           }
           alt={"Engage connections with an immersive experience"}
         />
