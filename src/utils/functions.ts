@@ -120,9 +120,15 @@ export const createSelectOptions = (options: any[]) => {
   });
 };
 
-export const getProductBySlug = (
+export const getProductsBySlug = (
   slugs: string[],
   products: Product[] | undefined
 ) => {
   return products?.filter((prod) => slugs.includes(prod.slug));
+};
+export const getProductBySlug = (
+  slugs: string,
+  products: Product[] | undefined
+) => {
+  return products?.find((prod) => slugs.includes(prod.slug));
 };

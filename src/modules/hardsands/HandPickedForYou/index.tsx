@@ -9,13 +9,12 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
-import productRoutes, { blogRoute } from "modules/products/routes";
-import { Product } from "modules/products/types";
+import { blogRoute } from "modules/products/routes";
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { CheckoutContext } from "redux/context";
 import { useTypedSelector } from "redux/store";
-import { getProductBySlug } from "utils/functions";
+import { getProductsBySlug } from "utils/functions";
 import HowWeCompare from "../components/HowWeCompare";
 import PageHeader from "../components/PageHeader";
 import PromoPageProductList from "../components/PromoPageProductList";
@@ -29,7 +28,7 @@ const HandPickedForYou = () => {
     (prodState) => prodState?.products?.all[selectedCurrency]
   );
 
-  const promoProducts = getProductBySlug(
+  const promoProducts = getProductsBySlug(
     ["bamboo-wood", "sapele-wood", "matte-black-card"],
     products
   );
@@ -82,7 +81,7 @@ const HandPickedForYou = () => {
         bgImage={
           "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A6845_-_low.jpg?v=1670370869"
         }
-        buttonHref={productRoutes.products()}
+        buttonHref={"#our-trending-products"}
         buttonText="Buy Now"
       />
 
@@ -104,10 +103,10 @@ const HandPickedForYou = () => {
         <Box
           position={"absolute"}
           w={"200vw"}
-          height={["50vh", "80vh"]}
+          height={["50vh", "60vh"]}
           bg={"brand.100"}
           zIndex={-1}
-          top={[200, 50, -200]}
+          top={[200, 50, -250]}
           left={0}
           opacity={0.5}
           transform={"skewY(-20deg)"}
@@ -130,17 +129,18 @@ const HandPickedForYou = () => {
             <HardsandsButton
               // @ts-ignore
               textTransform={"uppercase"}
-              href={productRoutes.products()}
+              href={"#our-trending-products"}
               text={"Shop Now"}
               w={"full"}
             />
           </Box>
           <Box w={["100%", "50%", "50%"]}>
             <Image
-              maxW={["100%", "100%", "md"]}
+              maxW={["100%", "100%", "lg"]}
               mx={"auto"}
               src={
-                "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A77062_1.jpg?v=1670110867"
+                "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A8144.jpg?v=1670961535"
+                // "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/landing_page_asset_1.png?v=1670851695"
               }
               alt={""}
             />
@@ -187,7 +187,7 @@ const HandPickedForYou = () => {
               you more effectively connect, communicate, and market yourself.
             </Text>
             <HardsandsButton
-              href={productRoutes.products()}
+              href={"#our-trending-products"}
               // @ts-ignore
               textTransform={"uppercase"}
               text={"Try a card"}
@@ -197,7 +197,7 @@ const HandPickedForYou = () => {
           </Box>
         </Flex>
         <HardsandsButton
-          href={productRoutes.products()}
+          href={"#our-trending-products"}
           // @ts-ignore
           textTransform={"uppercase"}
           text={"Try a card"}

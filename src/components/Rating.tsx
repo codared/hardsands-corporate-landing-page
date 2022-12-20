@@ -1,5 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
+import { colors } from "styles/theme";
 
 interface RatingProps {
   rating: number;
@@ -18,14 +19,26 @@ function Rating({ rating, numReviews }: RatingProps) {
               <BsStarFill
                 key={i}
                 style={{ marginLeft: "1" }}
-                color={i < rating ? "teal.500" : "gray.300"}
+                color={i < rating ? colors.brand[300] : "gray.300"}
               />
             );
           }
           if (roundedRating - i === 0.5) {
-            return <BsStarHalf key={i} style={{ marginLeft: "1" }} />;
+            return (
+              <BsStarHalf
+                color={colors.brand[300]}
+                key={i}
+                style={{ marginLeft: "1" }}
+              />
+            );
           }
-          return <BsStar key={i} style={{ marginLeft: "1" }} />;
+          return (
+            <BsStar
+              color={colors.brand[300]}
+              key={i}
+              style={{ marginLeft: "1" }}
+            />
+          );
         })}
       <Box mx={2}>|</Box>
       <Box as="span" color="gray.600" fontSize="sm">
