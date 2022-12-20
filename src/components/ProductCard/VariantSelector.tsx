@@ -67,10 +67,10 @@ const VariantSelector = ({
               borderWidth={1}
               borderColor={active === variant ? "brand.300" : "brand.100"}
               onClick={(e) =>
-                variant === CUSTOMIZED ? () => {} : handleClick(e, variant)
+                handleClick(e, variant)
               }
-              opacity={variant === CUSTOMIZED ? 0.5 : 1}
-              cursor={variant === CUSTOMIZED ? "not-allowed" : "pointer"}
+              opacity={1}
+              cursor={"pointer"}
               mr={2}
             >
               <TagLabel>{variant}</TagLabel>
@@ -91,10 +91,10 @@ const VariantSelector = ({
                 py={[2]}
                 mr={[4]}
                 onClick={(e) =>
-                  variant === CUSTOMIZED ? () => {} : handleClick(e, variant)
+                  handleClick(e, variant)
                 }
-                opacity={variant === CUSTOMIZED ? 0.5 : 1}
-                cursor={variant === CUSTOMIZED ? "not-allowed" : "pointer"}
+                opacity={1}
+                cursor={"pointer"}
                 transition={"all ease-in-out 200ms"}
               >
                 {!!colorMap[variant] && (
