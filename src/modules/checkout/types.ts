@@ -206,6 +206,7 @@ export interface Order {
   cart_hash: string;
   cartHash: string;
   checkoutToken: string;
+  discountCode: string;
   userDetails: {
     email: string;
     firstName: string;
@@ -229,7 +230,7 @@ export interface Order {
     };
   };
   currency: CURRENCY_CODES;
-  discount_amount: Amount;
+  discountAmount: number;
   type: string;
   shipping_amount: Amount;
   subtotal: Amount;
@@ -291,6 +292,7 @@ export interface ShippingMethods {
   priceUsd: number;
   title: string;
   id?: number;
+  discountAmount?: number;
 }
 
 export interface UserData {
