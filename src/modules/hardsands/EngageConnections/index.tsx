@@ -191,12 +191,15 @@ function EngageConnections() {
             textAlign={"left"}
             justifyContent={"center"}
           >
-            <Heading>Become a trailblazer in your field</Heading>
+            <Heading>
+              Become a trailblazer in your field with a single tap
+            </Heading>
             <Box h={6} />
             <Text>
               No one likes playing catch up, least of all in business. With
               hardsands, you give potential leads the notion that you value
-              current trends, and love to constantly improve
+              current trends, and love to constantly improve. You are just a tap
+              away.
             </Text>
             <Box h={6} />
             <HardsandsButton
