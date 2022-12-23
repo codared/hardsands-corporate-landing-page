@@ -75,7 +75,7 @@ const HandPickedForYou = () => {
         )}
         subTitle={t(
           "pages:header:description:connect-wherever-you-go",
-          "Connect wherever you go. You can easily share your Hardsands digital business card with anyone you meet. The best part is, they don’t even require an app!"
+          "Connect wherever you go. You can easily share your info with anyone you meet by tapping any Hardsands digital business card on their smartphones. The best part is, they don’t even require an app!"
         )}
         type={"light"}
         bgImage={
@@ -92,7 +92,7 @@ const HandPickedForYou = () => {
         )}
         subTitle={t(
           "pages:product-list:subtitle:explore-our-collection-of-unique-business-cards",
-          "Explore our collection of unique business cards. We guarantee you’ll find a match"
+          "Explore our collection of unique digital business cards. We guarantee you’ll find a match"
         )}
         promoProducts={promoProducts}
       />
@@ -123,8 +123,8 @@ const HandPickedForYou = () => {
             </Heading>
             <Text my={[10]}>
               Say farewell to stacks of paper business cards. Say hello to
-              sleek, simple and modern networking gear. Express yourself in ways
-              never before possible with a business card.
+              sleek, simple, and modern networking gear. Express yourself in
+              ways never before possible with our digital business card.
             </Text>
             <HardsandsButton
               // @ts-ignore

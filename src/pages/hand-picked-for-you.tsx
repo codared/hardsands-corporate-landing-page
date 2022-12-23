@@ -7,10 +7,13 @@ const HandPickedForYouPage = () => {
   const { t } = useTranslation();
   return (
     <WithLayout
-      pageTitle={t("pages:hand-picked-for-you", "Hand Picked for you - Hardsands Business cards")}
+      pageTitle={t(
+        "pages:hand-picked-for-you",
+        "Hand Picked for you - Hardsands Business cards"
+      )}
       pageDescription={t(
         "pages:hand-picked-for-you.desc",
-        "Connect wherever you go. You can easily share your Hardsands digital business card with anyone you meet. The best part is, they don’t even require an app!"
+        "Connect wherever you go. You can easily share your info with anyone you meet by tapping any Hardsands digital business card on their smartphones. The best part is, they don’t even require an app!"
       )}
       image_url="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A6847_2_-_low.jpg?v=1670370868"
     >
