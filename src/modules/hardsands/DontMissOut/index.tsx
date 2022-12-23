@@ -91,23 +91,27 @@ function DontMissOut() {
             </Text>
           </Box>
           <HStack>
-            <HardsandsButton
-              // @ts-ignore
-              w={"half"}
-              href={"#"}
+            <Text
+              fontWeight={"bold"}
+              fontFamily={"MADE Outer Sans"}
+              borderColor={"brand.300"}
+              borderWidth={"1px"}
+              color={"white"}
+              px={[8]}
+              py={[4]}
             >
               {"CARD2022"}
-            </HardsandsButton>
+            </Text>
             <Text
               // @ts-ignore
               w={"half"}
               // @ts-ignore
               bg={"transparent"}
               border={"none"}
-              color={"brand.300"}
+              color={"white"}
               fontWeight={"bold"}
               fontFamily={"MADE Outer Sans"}
-              px={[10]}
+              px={[8]}
             >
               {"DEC 1 - DEC 25"}
             </Text>

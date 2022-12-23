@@ -1,11 +1,4 @@
-import {
-  Box,
-  Container,
-  Flex,
-  Heading,
-  Text,
-  Image,
-} from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
 import { CartDataDetails } from "components/ProductCard/type";
 import Cart from "modules/cart";
@@ -231,7 +224,7 @@ function EngageConnections() {
             src={
               "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A67802_-_low.jpg?v=1670370869"
             }
-            alt={"Personalized Corporate Gifting"}
+            alt={"Be the first to know"}
           />
           <Box w={20} />
           <Box h={[14]} display={["block", "block", "none"]} />
@@ -243,21 +236,13 @@ function EngageConnections() {
             justifyContent={"center"}
             color={"white"}
           >
-            <Heading>Personalized Corporate Gifting</Heading>
+            <Heading>Be the first to know</Heading>
             <Box h={6} />
             <Text>
-              Very soon, you would be able to give the gift of professional
-              networking. it is a great way to show your appreciation for an
-              employee or to support a friend as they start their own business
+              We want to offer you the easiest route to gift your friends,
+              colleagues or employees a Hardsands Card as a sign of
+              encouragement or celebration. Drop by again soon.
             </Text>
-            <Box h={6} />
-            <HardsandsButton
-              // @ts-ignore
-              w={"full"}
-              href={"#"}
-            >
-              {"Coming Soon"}
-            </HardsandsButton>
           </Flex>
         </Flex>
       </Box>

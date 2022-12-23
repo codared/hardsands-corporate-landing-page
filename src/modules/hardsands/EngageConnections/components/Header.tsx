@@ -27,15 +27,7 @@ function Header({
   productDetails: Product;
 }) {
   return (
-    <Box
-      p={[10, 10, 40]}
-      bg={
-        "url(https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Group_877.png?v=1670882076)"
-      }
-      bgRepeat={"no-repeat"}
-      bgPosition={["unset", "left"]}
-      id={"matte-black-purchase"}
-    >
+    <Box p={[10, 10, 40]} id={"matte-black-purchase"}>
       <Flex direction={["column", "row"]} justifyContent={"center"}>
         <Image
           maxW={["xs", "xs", "sm"]}

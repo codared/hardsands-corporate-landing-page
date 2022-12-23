@@ -76,10 +76,18 @@ function HowWeCompare({ ...rest }: HowWeCompareProps) {
                   {item}
                 </Td>
                 <Td py={[4, 8]}>
-                  <AiOutlineCloseCircle
-                    style={{ margin: "0 auto" }}
-                    size={20}
-                  />
+                  {[2].includes(index) ? (
+                    <AiOutlineCheckCircle
+                      style={{ margin: "0 auto" }}
+                      color="orange"
+                      size={20}
+                    />
+                  ) : (
+                    <AiOutlineCloseCircle
+                      style={{ margin: "0 auto" }}
+                      size={20}
+                    />
+                  )}
                 </Td>
                 <Td py={[4, 8]} bg={"brand.100"}>
                   <AiOutlineCheckCircle
@@ -89,10 +97,18 @@ function HowWeCompare({ ...rest }: HowWeCompareProps) {
                   />
                 </Td>
                 <Td py={[4, 8]}>
-                  <AiOutlineCloseCircle
-                    style={{ margin: "0 auto" }}
-                    size={20}
-                  />
+                  {[2, 3].includes(index) ? (
+                    <AiOutlineCheckCircle
+                      style={{ margin: "0 auto" }}
+                      color="orange"
+                      size={20}
+                    />
+                  ) : (
+                    <AiOutlineCloseCircle
+                      style={{ margin: "0 auto" }}
+                      size={20}
+                    />
+                  )}
                 </Td>
               </Tr>
             ))}
