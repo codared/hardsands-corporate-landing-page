@@ -27,25 +27,33 @@ function Header({
   productDetails: Product;
 }) {
   return (
-    <Box p={[10, 10, 40]} id={"matte-black-purchase"}>
+    <Box p={[0, 10, 40]} id={"matte-black-purchase"}>
       <Flex direction={["column", "row"]} justifyContent={"center"}>
         <Image
-          maxW={["xs", "xs", "sm"]}
+          maxW={["full", "xs", "sm"]}
           src={
             "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Rectangle_753.png?v=1670959669"
           }
           alt={"0% Paper 100% sustainable"}
         />
         <Box w={[0, 10, 20]} />
-        <Box h={14} display={["block", "none"]} />
+        <Box h={[0, 14]} display={["block", "none"]} />
         <Flex
           direction={"column"}
           ml={[0, 14]}
           w={["100%", "50%", "40%"]}
           textAlign={"left"}
           justifyContent={"center"}
+          p={[10, 0, 0]}
         >
-          <Heading>0% Paper 100% sustainable</Heading>
+          <Heading>
+            0% Paper
+            <br />{" "}
+            <Box as={"span"} color={"brand.300"}>
+              100%
+            </Box>{" "}
+            sustainable
+          </Heading>
           <Box h={6} />
           <Text>
             The matte black PVC card is a new product from our sustainable
@@ -59,6 +67,7 @@ function Header({
           <Box h={6} />
           <HStack flexDirection={["column-reverse", "column-reverse", "row"]}>
             <Button
+              mt={[6, 0, 0]}
               isLoading={isAddingToCart}
               loadingText={"Adding to cart..."}
               w={["100%", "100%", "50%"]}
@@ -97,15 +106,15 @@ function Header({
               w={["100%", "100%", "50%"]}
               bg={"transparent"}
               border={"none"}
-              color={"brand.300"}
+              // color={"brand.300"}
               fontWeight={"bold"}
               fontFamily={"MADE Outer Sans"}
               px={[0, 0, 6]}
               textAlign={["left"]}
             >
-              <Text textDecoration={"line-through"} color={"black"}>
+              {/* <Text textDecoration={"line-through"} color={"black"}>
                 {price}
-              </Text>
+              </Text> */}
               <Text fontSize={["xl", "2xl"]}>{price}</Text>
             </Box>
           </HStack>

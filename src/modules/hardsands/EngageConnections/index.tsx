@@ -62,22 +62,22 @@ function EngageConnections() {
 
   const steps = [
     {
-      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/001_1.jpg?v=1671757592",
       title: "Sleek and professional",
       text: "The perfect way to exude an air of professionalism. This sleek card gives you an edge over the competition and conveys a message of sophistication and success.",
     },
     {
-      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/003_1.jpg?v=1671757592",
       title: "Power and prestige",
       text: "This is the card for people who mean business - it conveys a sense of class. It commands attention and leaves a lasting impression.",
     },
     {
-      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/002_1.jpg?v=1671757592",
       title: "Perfect for formal occasions",
       text: "The elegant, yet simple design makes it ideal for formal gatherings. Plus, its black colour gives it a professional look that sets it apart from other business cards.",
     },
     {
-      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/004_1.jpg?v=1671757592",
       title: "Luxurious look and feel",
       text: "The black matte finish adds a touch of class and sophistication to the card. We have designed the card with careful attention to detail and it exudes quality.",
     },
@@ -135,8 +135,14 @@ function EngageConnections() {
         />
       </Flex>
 
-      <Flex direction={["column"]} justifyContent={"center"} p={[10, 10, 40]}>
-        <Box w={["full"]} textAlign={"center"} mb={[10, 20]}>
+      <Flex direction={["column"]} justifyContent={"center"} p={[0, 10, 40]}>
+        <Box
+          w={["full"]}
+          textAlign={"center"}
+          mt={[6, 0]}
+          mb={[6, 20]}
+          p={[6, 0, 0]}
+        >
           <Heading textTransform={"capitalize"}>
             4 REASONS WHY YOU NEED THE BLACK MATTE CARD
           </Heading>
@@ -156,6 +162,7 @@ function EngageConnections() {
               <Box
                 w={["100%", "40%"]}
                 textAlign={["left", index % 2 === 0 ? "left" : "right"]}
+                p={[10, 0, 0]}
               >
                 <Heading fontWeight={"normal"}>{step.title}</Heading>
                 <Box h={6} />

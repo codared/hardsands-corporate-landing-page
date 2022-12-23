@@ -77,7 +77,7 @@ const HandPickedForYou = () => {
           "pages:header:description:connect-wherever-you-go",
           "Connect wherever you go. You can easily share your Hardsands digital business card with anyone you meet. The best part is, they don’t even require an app!"
         )}
-        type={"dark"}
+        type={"light"}
         bgImage={
           "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A6845_-_low.jpg?v=1670370869"
         }
@@ -154,10 +154,14 @@ const HandPickedForYou = () => {
         <Flex
           w={"full"}
           justifyContent={"center"}
-          direction={["column-reverse", "row"]}
+          direction={["column-reverse", "row-reverse"]}
         >
           <Box w={["100%", "50%"]}>
-            <SimpleGrid
+            <Image
+              src="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/005.jpg?v=1671758151"
+              alt={"Reasons Why"}
+            />
+            {/* <SimpleGrid
               w={"fit-content"}
               columns={[2, 2, 3]}
               gap={2}
@@ -177,7 +181,7 @@ const HandPickedForYou = () => {
                   <Text>{item.text}</Text>
                 </Flex>
               ))}
-            </SimpleGrid>
+            </SimpleGrid> */}
           </Box>
           <Box my={[8, "auto"]} ml={[0, 10]} w={["100%", "30%"]}>
             <Heading>Reasons Why!</Heading>
