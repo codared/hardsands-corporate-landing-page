@@ -111,7 +111,7 @@ function EngageConnections() {
           justifyContent={"center"}
         >
           <Heading fontSize={["4xl", "6xl"]}>
-            Engage connections with an immersive experience
+            Give the gift of a unique experience
           </Heading>
           <Box h={6} />
           <Text w={["100%", "60%"]}>
@@ -191,12 +191,12 @@ function EngageConnections() {
             textAlign={"left"}
             justifyContent={"center"}
           >
-            <Heading>Join the 1% of the 1%</Heading>
+            <Heading>Become a trailblazer in your field</Heading>
             <Box h={6} />
             <Text>
-              What if we told you that in one step, you could join the 1%? Sure,
-              it sounds like a sales pitch. But it&apos;s true! We want you to
-              be ahead of the game.
+              No one likes playing catch up, least of all in business. With
+              hardsands, you give potential leads the notion that you value
+              current trends, and love to constantly improve
             </Text>
             <Box h={6} />
             <HardsandsButton

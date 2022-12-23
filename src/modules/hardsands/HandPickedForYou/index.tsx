@@ -70,8 +70,8 @@ const HandPickedForYou = () => {
     <Container overflow={"hidden"} p={[0, "inherit"]} maxW={["100%", "9xl"]}>
       <PageHeader
         title={t(
-          "pages:header:title:amplify-your-influence",
-          "Amplify your Influence"
+          "pages:header:title:you-can-share-your-information-with-anyone-you-meet",
+          "You can share your information with anyone you meet"
         )}
         subTitle={t(
           "pages:header:description:connect-wherever-you-go",
