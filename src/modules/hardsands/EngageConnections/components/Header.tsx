@@ -9,9 +9,11 @@ import {
 } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
 import { CartDataDetails } from "components/ProductCard/type";
+import VariantSelector from "components/ProductCard/VariantSelector";
 import Rating from "components/Rating";
 import { Product } from "modules/products/types";
 import React, { SyntheticEvent } from "react";
+import { getProductOptions } from "utils/functions";
 
 function Header({
   price,
@@ -19,13 +21,17 @@ function Header({
   handleAddToCart,
   variant,
   productDetails,
+  setActiveVariant,
 }: {
   price: string;
   isAddingToCart?: boolean;
   handleAddToCart?: (e: SyntheticEvent, details: CartDataDetails) => void;
   variant: string;
+  setActiveVariant: (val: string | number) => void;
   productDetails: Product;
 }) {
+  const productVariants = getProductOptions(productDetails.options);
+  
   return (
     <Box p={[0, 10, 40]} id={"matte-black-purchase"}>
       <Flex direction={["column", "row"]} justifyContent={"center"}>
@@ -46,7 +52,7 @@ function Header({
           justifyContent={"center"}
           p={[10, 0, 0]}
         >
-          <Heading>
+          <Heading fontSize={[24]}>
             0% Paper
             <br />{" "}
             <Box as={"span"} color={"brand.300"}>
@@ -64,6 +70,15 @@ function Header({
           <HStack>
             <Rating rating={4.2} numReviews={155} />
           </HStack>
+          <Box h={6} />
+          <Flex w="full">
+            <VariantSelector
+              selectorType={`${productDetails.options.title}_`}
+              variants={productVariants}
+              activeVariant={variant}
+              onChange={setActiveVariant}
+            />
+          </Flex>
           <Box h={6} />
           <HStack flexDirection={["column-reverse", "column-reverse", "row"]}>
             <Button

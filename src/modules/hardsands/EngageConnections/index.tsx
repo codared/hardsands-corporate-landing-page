@@ -23,7 +23,7 @@ function EngageConnections() {
   const { t } = useTranslation();
   const cartBtnRef = useRef(null);
   const [cartData, setCartData] = useState<CartDataDetails | null>();
-  const [selectedVariant, setSelectedVariant] = useState<string>("Plain");
+  const [selectedVariant, setSelectedVariant] = useState<string | number>("Plain");
   const selectedCurrency = state.cart.selectedCurrency;
   const products = useTypedSelector(
     (prodState) => prodState?.products?.all[selectedCurrency]
@@ -92,8 +92,9 @@ function EngageConnections() {
           isAddingToCart={isLoading}
           price={price}
           handleAddToCart={handleAddToCart}
-          variant={selectedVariant}
+          variant={selectedVariant as string}
           productDetails={promoProduct}
+          setActiveVariant={setSelectedVariant}
         />
       )}
 
