@@ -33,7 +33,7 @@ function Header({
   const productVariants = getProductOptions(productDetails.options);
   
   return (
-    <Box p={[0, 10, 40]} id={"matte-black-purchase"}>
+    <Box p={[10, 10, 40]} id={"matte-black-purchase"}>
       <Flex direction={["column", "row"]} justifyContent={"center"}>
         <Image
           maxW={["full", "xs", "sm"]}
@@ -50,7 +50,7 @@ function Header({
           w={["100%", "50%", "40%"]}
           textAlign={"left"}
           justifyContent={"center"}
-          p={[10, 0, 0]}
+          pt={[10, 0, 0]}
         >
           <Heading fontSize={[24]}>
             0% Paper
