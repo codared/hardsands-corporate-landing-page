@@ -45,7 +45,6 @@ function EngageConnections() {
   const price = formatCurrencyInteger(
     !!promoProduct ? promoProduct?.variants[selectedVariant].price : 0,
     selectedCurrency,
-    0
   );
 
   const handleAddToCart = (e: SyntheticEvent, details: CartDataDetails) => {
