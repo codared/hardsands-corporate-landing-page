@@ -6,6 +6,7 @@ import { CHECKOUT_STEPS } from "../constants";
 import { Order, OrderItem } from "../types";
 import OrderItemCard from "./OrderItemCard";
 import AcceptedPaymentMethods from "./AcceptedPaymentMethods";
+import Discount from "modules/Discount";
 
 const OrderSummary = ({
   order,
@@ -18,6 +19,7 @@ const OrderSummary = ({
   currency: string;
   activeStep: CHECKOUT_STEPS;
 }) => {
+  console.log("order summary >>> ", order);
   return (
     <Box w="100%" mb={[12, 0]}>
       <Flex direction={"column"} bg={"brand.10"} p={5}>
@@ -35,12 +37,18 @@ const OrderSummary = ({
           />
         ))}
         <Divider my={5} />
+        <Discount moduleType={"checkout"} moduleId={order.checkoutToken} />
+        <Divider my={5} />
         <PriceSummary
           t={t}
           activeStep={activeStep}
           currency={currency}
           total={order.total}
-          totalDue={order.totalDue}
+          totalDue={order.discountTotal || order.totalDue}
+          discount={{
+            discountCode: order.discountCode,
+            discountedAmount: order.discountedAmount,
+          }}
           fontSize={18}
           shippingSelected={order.shippingSelected}
         />

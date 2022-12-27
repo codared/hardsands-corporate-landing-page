@@ -141,6 +141,8 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
     );
   }
 
+  console.log('checkout page >>>> ', order);
+
   return (
     <Container maxW={"4xl"} py={20} position={"relative"}>
       {processingPayment && (

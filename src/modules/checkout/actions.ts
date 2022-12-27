@@ -142,7 +142,7 @@ export const loadUserState = (payload?: UserStateMinimal) => ({
 /**
  * Wraps a thunk that should handle generic ApiErrors.
  */
-function apiThunkWrapper<T extends ThunkAction<any, any, any, any>>(
+export function apiThunkWrapper<T extends ThunkAction<any, any, any, any>>(
   thunk: T
 ): (...args: Parameters<T>) => ReturnType<T> | Promise<void> {
   return async (...args: Parameters<T>) => {
