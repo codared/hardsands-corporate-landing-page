@@ -63,7 +63,9 @@ export interface CartResponse {
   id: string;
   currency: CURRENCY_CODES;
   items: CartResponseItem[];
+  discountCode: string;
   discountTotal: number;
+  discountedAmount: number;
   subtotal: number;
   total: number;
 }

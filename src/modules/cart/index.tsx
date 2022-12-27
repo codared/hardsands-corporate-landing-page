@@ -31,6 +31,7 @@ import { getCheckoutRoutes } from "modules/checkout/routes";
 import { createCartOrder } from "./cartApi";
 import { loadOrder } from "modules/checkout/actions";
 import { trackCartViewed } from "modules/analytics/functions/track";
+import Discount from "modules/Discount";
 
 const Cart = React.forwardRef(
   (
@@ -161,7 +162,13 @@ const Cart = React.forwardRef(
                 flexDirection={["column"]}
                 justifyContent="space-between"
               >
-                {/* <Flex
+                <Discount
+                  w={["full"]}
+                  mb={[6]}
+                  moduleType={"cart"}
+                  moduleId={cart.id}
+                />
+                <Flex
                   mb={[6]}
                   w="100%"
                   display="flex"
@@ -171,8 +178,8 @@ const Cart = React.forwardRef(
                   <Text>
                     {formatCurrencyInteger(cart.subtotal, cart.currency)}
                   </Text>
-                </Flex> */}
-                {/* {cart.discountTotal !== 0 && (
+                </Flex>
+                {!!cart.discountCode && cart.discountedAmount !== 0 && (
                   <Flex
                     mb={[6]}
                     w="100%"
@@ -180,13 +187,17 @@ const Cart = React.forwardRef(
                     justifyContent="space-between"
                   >
                     <Text>
-                      {t("checkout:discount-total", "DiscountTotal:")}
+                      {t("checkout:discount-total", "Discount Amount:")}
                     </Text>
                     <Text>
-                      {formatCurrencyInteger(cart.discountTotal, cart.currency)}
+                      {"- "}
+                      {formatCurrencyInteger(
+                        cart.discountedAmount,
+                        cart.currency
+                      )}
                     </Text>
                   </Flex>
-                )} */}
+                )}
                 <Flex
                   mb={[6]}
                   w="100%"
@@ -195,7 +206,10 @@ const Cart = React.forwardRef(
                 >
                   <Text fontWeight="bolder">Total:</Text>
                   <Text fontWeight="bolder">
-                    {formatCurrencyInteger(cart.total, cart.currency)}
+                    {formatCurrencyInteger(
+                      cart.discountTotal || cart.total,
+                      cart.currency
+                    )}
                   </Text>
                 </Flex>
                 <Flex
@@ -234,25 +248,6 @@ const Cart = React.forwardRef(
                   >
                     {t("common:proceed-to-checkout", "Proceed to checkout")}
                   </Button>
-                  {/* <HardsandLink
-                    fontSize={"sm"}
-                    fontWeight={500}
-                    color={"black"}
-                    bg={"white"}
-                    href={"#"}
-                    p={["12px 16px", "12px 46px"]}
-                    border="1px solid black"
-                    borderRadius="8px"
-                    transition="all 200ms ease-in"
-                    w="100%"
-                    textAlign="center"
-                    display={["none"]}
-                    _hover={{
-                      bg: "whiteAlpha01",
-                    }}
-                  >
-                    {t("common:continue-shopping", "Continue shopping")}
-                  </HardsandLink> */}
                 </Flex>
               </DrawerFooter>
             </>

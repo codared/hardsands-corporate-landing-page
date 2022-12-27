@@ -44,10 +44,10 @@ const OrderSummary = ({
           activeStep={activeStep}
           currency={currency}
           total={order.total}
-          totalDue={order.totalDue}
+          totalDue={order.discountTotal || order.totalDue}
           discount={{
             discountCode: order.discountCode,
-            discountAmount: order.discountAmount,
+            discountedAmount: order.discountedAmount,
           }}
           fontSize={18}
           shippingSelected={order.shippingSelected}

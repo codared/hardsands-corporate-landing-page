@@ -18,7 +18,7 @@ const PriceSummary = ({
   total: number;
   currency: string;
   totalDue: number;
-  discount?: { discountCode: string; discountAmount: number };
+  discount?: { discountCode: string; discountedAmount: number };
   shippingSelected: ShippingMethods;
   activeStep: CHECKOUT_STEPS;
   t: TFunction;
@@ -42,9 +42,7 @@ const PriceSummary = ({
     }
   };
   const getDiscountPrice = (): string | null => {
-    return !!shippingSelected
-      ? formatCurrencyInteger(discount?.discountAmount as number, currency)
-      : formatCurrencyInteger(0, currency);
+    return formatCurrencyInteger(discount?.discountedAmount as number, currency);
   };
 
   return (

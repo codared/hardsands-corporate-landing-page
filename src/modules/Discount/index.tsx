@@ -1,17 +1,20 @@
-import { Button, HStack } from "@chakra-ui/react";
+import { Button, HStack, StackProps } from "@chakra-ui/react";
 import CustomInput from "components/CustomInput";
 import React, { SyntheticEvent, useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { CheckoutContext } from "redux/context";
 import { addDiscountCodeCheckoutAction, addDiscountCodeCart } from "./actions";
 
+interface DiscountProps extends StackProps {
+  moduleType: string;
+  moduleId: string;
+};
+
 function Discount({
   moduleType,
   moduleId,
-}: {
-  moduleType: string;
-  moduleId: string;
-}) {
+  ...rest
+}: DiscountProps) {
   const { dispatch } = useContext(CheckoutContext);
   const { t } = useTranslation();
   const [code, setCode] = useState("");
@@ -49,7 +52,7 @@ function Discount({
   };
 
   return (
-    <HStack>
+    <HStack {...rest}>
       <CustomInput
         placeholder="Discount Code"
         name={"discountCode"}
