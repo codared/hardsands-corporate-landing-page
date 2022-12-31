@@ -3,6 +3,7 @@ export const PRODUCTS = {
     description: `'Introducing the Hardsands Bamboo Card. This lovely Polished finish card features a Back-Laser engraved QR code and is powered by Hardsands Technology.\nAn eco-friendly approach to networking is certain to create an impression.\nTap your Hardsands Bamboo Card to the back of any compatible smartphone or use the QR code to share your contact information, social media, websites, payment applications, and more.\n\nThe receiver does not require an app or any hardsands device to obtain your information!'`,
     "how-it-works": `Hardsands Sapele Wood works with iPhone XR, iPhone XS, all iPhone 11s, all iPhone 12s, all iPhone 13s, all iPhone 14s, and the majority of Android devices.\nThe receiver does not require an app or any hardsand device to receive your information!\n\nNFC must be enabled in the settings of Android receivers.`,
     Customized: [
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Bamboo-wood-GIF.gif?v=1672479356",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/12a_1.jpg?v=1665057392",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0007.jpg?v=1666340705",
     ],
@@ -32,6 +33,7 @@ export const PRODUCTS = {
     description: `The Black Metal Hardsands Card is a premium stainless steel Smart Business Card that has our next-generation NFC Chip embedded in it.\nTap your Hardsand Card to the back of any compatible smartphone or use the QR code to share your contact information, social media, websites, payment applications, and more\n\nThis magnificent metal card is intended to leave an impact....\nThe receiver does not require an app or any hardsand device to obtain your information!`,
     "how-it-works": `Hardsands Matte black metal works with iPhone XR, iPhone XS, all iPhone 11s, all iPhone 12s, all iPhone 13s, all iPhone 14s, and the majority of Android devices.\nThe receiver does not require an app or any hardsand device to receive your information!\n\nNFC must be enabled in the settings of Android receivers.`,
     Customized: [
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Matte-GIF.gif?v=1672479390",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/14a_1.jpg?v=1665057392",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0012.jpg?v=1666340705",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/DSC00136_1.jpg?v=1666340367",
@@ -60,6 +62,7 @@ export const PRODUCTS = {
     description: `Introducing Hardsands Matte PVC Card. The only business card you'll ever buy...\n\nThis premium polypropylene card has Hardsands technology and an iconic QR code for fast sharing.\nTap your Hardsand Matte PVC Card to the back of any compatible smartphone or use the QR code to share your contact information, social media, websites, payment applications, and more.\n\n\nThe receiver does not require an app or any hardsands device to obtain your information!`,
     "how-it-works": `Hardsand Matte black PVC works with iPhone XR, iPhone XS, all iPhone 11s, all iPhone 12s, all iPhone 13s, all iPhone 14s, and the majority of Android devices.\nThe receiver does not require an app or any hardsand device to receive your information!\n\nNFC must be enabled in the settings of Android receivers`,
     Customized: [
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Matte-GIF.gif?v=1672479390",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/14a_1.jpg?v=1665057392",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0012.jpg?v=1666340705",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/DSC00136_1.jpg?v=1666340367",
@@ -74,6 +77,7 @@ export const PRODUCTS = {
     description: `Introducing the Hardsands Sapele Card. This lovely Polished finish card features a Back-Laser engraved QR code and is powered by Hardsands Technology.\n\nAn eco-friendly approach to networking is certain to create an impression.\nTap your Hardsands Sapele Card to the back of any compatible smartphone or use the QR code to share your contact information, social media, websites, payment applications, and more.\n\nThe receiver does not require an app or any hardsands device to obtain your information!`,
     "how-it-works": `Hardsands Sapele Wood works with iPhone XR, iPhone XS, all iPhone 11s, all iPhone 12s, all iPhone 13s, all iPhone 14s, and the majority of Android devices.\nThe receiver does not require an app or any hardsand device to receive your information!\n\nNFC must be enabled in the settings of Android receivers.`,
     Customized: [
+      "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Sapele-wood-GIF.gif?v=1672479407",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/11a_1.jpg?v=1665057393",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS0005.jpg?v=1666340705",
       "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/DSC00112_2.jpg?v=1666340367",
