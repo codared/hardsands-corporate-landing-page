@@ -19,7 +19,7 @@ export const ngn = "₦";
 export enum SOCIAL_LINKS {
   INSTAGRAM = "https://instagram.com/hardsandscard?igshid=YmMyMTA2M2Y=",
   TWITTER = "https://twitter.com/hardsandscard?s=21&t=9OYQOXg7JFUYuYEcm2vCVA",
-  FACEBOOK = "https://facebook.com/profile.php?id=100083028413736",
+  FACEBOOK = "https://facebook.com/profile.php?id=100086101846164",
   LINKEDIN = "https://www.linkedin.com/company/hardsandscard/",
   EMAIL = "mailto:info@hardsands.com",
   // TIKTOK = 'https://instagram.com/hardsandscard?igshid=YmMyMTA2M2Y=',
