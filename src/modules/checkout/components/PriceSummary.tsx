@@ -12,11 +12,13 @@ const PriceSummary = ({
   activeStep,
   shippingSelected,
   t,
+  discount,
 }: {
   fontSize?: number;
   total: number;
   currency: string;
   totalDue: number;
+  discount?: { discountCode: string; discountedAmount: number };
   shippingSelected: ShippingMethods;
   activeStep: CHECKOUT_STEPS;
   t: TFunction;
@@ -39,6 +41,9 @@ const PriceSummary = ({
         return t("checkout:to-be-calculated", "To be calculated at next step");
     }
   };
+  const getDiscountPrice = (): string | null => {
+    return formatCurrencyInteger(discount?.discountedAmount as number, currency);
+  };
 
   return (
     <Box>
@@ -60,6 +65,16 @@ const PriceSummary = ({
           </Text>
         </Flex>
       }
+      {!!discount?.discountCode && (
+        <Flex mb={[6]} w="100%" display="flex" justifyContent="space-between">
+          <Text fontSize={[fontSize - 4, fontSize - 2]}>
+            {t("checkout:promo", `Promo: (${discount?.discountCode})`)}
+          </Text>
+          <Text fontSize={[fontSize - 4, fontSize - 2]}>
+            -{getDiscountPrice()}
+          </Text>
+        </Flex>
+      )}
       {/* TODO: Undo this comment when tax is added to payment */}
       {/* <Flex mb={[6]} w="100%" display="flex" justifyContent="space-between">
         <Text fontSize={[fontSize - 4, fontSize - 2]}>Tax:</Text>

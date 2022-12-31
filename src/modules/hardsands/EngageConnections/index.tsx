@@ -1,11 +1,4 @@
-import {
-  Box,
-  Container,
-  Flex,
-  Heading,
-  Text,
-  Image,
-} from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
 import { CartDataDetails } from "components/ProductCard/type";
 import Cart from "modules/cart";
@@ -30,7 +23,7 @@ function EngageConnections() {
   const { t } = useTranslation();
   const cartBtnRef = useRef(null);
   const [cartData, setCartData] = useState<CartDataDetails | null>();
-  const [selectedVariant, setSelectedVariant] = useState<string>("Plain");
+  const [selectedVariant, setSelectedVariant] = useState<string | number>("Plain");
   const selectedCurrency = state.cart.selectedCurrency;
   const products = useTypedSelector(
     (prodState) => prodState?.products?.all[selectedCurrency]
@@ -52,7 +45,6 @@ function EngageConnections() {
   const price = formatCurrencyInteger(
     !!promoProduct ? promoProduct?.variants[selectedVariant].price : 0,
     selectedCurrency,
-    0
   );
 
   const handleAddToCart = (e: SyntheticEvent, details: CartDataDetails) => {
@@ -69,22 +61,22 @@ function EngageConnections() {
 
   const steps = [
     {
-      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/001_1.jpg?v=1671757592",
       title: "Sleek and professional",
       text: "The perfect way to exude an air of professionalism. This sleek card gives you an edge over the competition and conveys a message of sophistication and success.",
     },
     {
-      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/003_1.jpg?v=1671757592",
       title: "Power and prestige",
       text: "This is the card for people who mean business - it conveys a sense of class. It commands attention and leaves a lasting impression.",
     },
     {
-      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/002_1.jpg?v=1671757592",
       title: "Perfect for formal occasions",
       text: "The elegant, yet simple design makes it ideal for formal gatherings. Plus, its black colour gives it a professional look that sets it apart from other business cards.",
     },
     {
-      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS945_1.jpg?v=1668094030",
+      img: "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/004_1.jpg?v=1671757592",
       title: "Luxurious look and feel",
       text: "The black matte finish adds a touch of class and sophistication to the card. We have designed the card with careful attention to detail and it exudes quality.",
     },
@@ -99,8 +91,9 @@ function EngageConnections() {
           isAddingToCart={isLoading}
           price={price}
           handleAddToCart={handleAddToCart}
-          variant={selectedVariant}
+          variant={selectedVariant as string}
           productDetails={promoProduct}
+          setActiveVariant={setSelectedVariant}
         />
       )}
 
@@ -118,7 +111,7 @@ function EngageConnections() {
           justifyContent={"center"}
         >
           <Heading fontSize={["4xl", "6xl"]}>
-            Engage connections with an immersive experience
+            Give the gift of a unique experience
           </Heading>
           <Box h={6} />
           <Text w={["100%", "60%"]}>
@@ -142,8 +135,14 @@ function EngageConnections() {
         />
       </Flex>
 
-      <Flex direction={["column"]} justifyContent={"center"} p={[10, 10, 40]}>
-        <Box w={["full"]} textAlign={"center"} mb={[10, 20]}>
+      <Flex direction={["column"]} justifyContent={"center"} p={[0, 10, 40]}>
+        <Box
+          w={["full"]}
+          textAlign={"center"}
+          mt={[6, 0]}
+          mb={[6, 20]}
+          p={[6, 0, 0]}
+        >
           <Heading textTransform={"capitalize"}>
             4 REASONS WHY YOU NEED THE BLACK MATTE CARD
           </Heading>
@@ -163,6 +162,7 @@ function EngageConnections() {
               <Box
                 w={["100%", "40%"]}
                 textAlign={["left", index % 2 === 0 ? "left" : "right"]}
+                p={[10, 0, 0]}
               >
                 <Heading fontWeight={"normal"}>{step.title}</Heading>
                 <Box h={6} />
@@ -191,12 +191,15 @@ function EngageConnections() {
             textAlign={"left"}
             justifyContent={"center"}
           >
-            <Heading>Join the 1% of the 1%</Heading>
+            <Heading>
+              Become a trailblazer in your field with a single tap
+            </Heading>
             <Box h={6} />
             <Text>
-              What if we told you that in one step, you could join the 1%? Sure,
-              it sounds like a sales pitch. But it&apos;s true! We want you to
-              be ahead of the game.
+              No one likes playing catch up, least of all in business. With
+              hardsands, you give potential leads the notion that you value
+              current trends, and love to constantly improve. You are just a tap
+              away.
             </Text>
             <Box h={6} />
             <HardsandsButton
@@ -231,7 +234,7 @@ function EngageConnections() {
             src={
               "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A67802_-_low.jpg?v=1670370869"
             }
-            alt={"Personalized Corporate Gifting"}
+            alt={"Be the first to know"}
           />
           <Box w={20} />
           <Box h={[14]} display={["block", "block", "none"]} />
@@ -243,21 +246,13 @@ function EngageConnections() {
             justifyContent={"center"}
             color={"white"}
           >
-            <Heading>Personalized Corporate Gifting</Heading>
+            <Heading>Be the first to know</Heading>
             <Box h={6} />
             <Text>
-              Very soon, you would be able to give the gift of professional
-              networking. it is a great way to show your appreciation for an
-              employee or to support a friend as they start their own business
+              We want to offer you the easiest route to gift your friends,
+              colleagues or employees a Hardsands Card as a sign of
+              encouragement or celebration. Drop by again soon.
             </Text>
-            <Box h={6} />
-            <HardsandsButton
-              // @ts-ignore
-              w={"full"}
-              href={"#"}
-            >
-              {"Coming Soon"}
-            </HardsandsButton>
           </Flex>
         </Flex>
       </Box>

@@ -19,14 +19,14 @@ function Rating({ rating, numReviews }: RatingProps) {
               <BsStarFill
                 key={i}
                 style={{ marginLeft: "1" }}
-                color={i < rating ? colors.brand[300] : "gray.300"}
+                color={i < rating ? 'black' : "gray.300"}
               />
             );
           }
           if (roundedRating - i === 0.5) {
             return (
               <BsStarHalf
-                color={colors.brand[300]}
+                color={'black'}
                 key={i}
                 style={{ marginLeft: "1" }}
               />
@@ -34,7 +34,7 @@ function Rating({ rating, numReviews }: RatingProps) {
           }
           return (
             <BsStar
-              color={colors.brand[300]}
+              color={'black'}
               key={i}
               style={{ marginLeft: "1" }}
             />

@@ -70,14 +70,14 @@ const HandPickedForYou = () => {
     <Container overflow={"hidden"} p={[0, "inherit"]} maxW={["100%", "9xl"]}>
       <PageHeader
         title={t(
-          "pages:header:title:amplify-your-influence",
-          "Amplify your Influence"
+          "pages:header:title:you-can-share-your-information-with-anyone-you-meet",
+          "You can share your information with anyone you meet"
         )}
         subTitle={t(
           "pages:header:description:connect-wherever-you-go",
-          "Connect wherever you go. You can easily share your Hardsands digital business card with anyone you meet. The best part is, they don’t even require an app!"
+          "Connect wherever you go. You can easily share your info with anyone you meet by tapping any Hardsands digital business card on their smartphones. The best part is, they don’t even require an app!"
         )}
-        type={"dark"}
+        type={"light"}
         bgImage={
           "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A6845_-_low.jpg?v=1670370869"
         }
@@ -92,7 +92,7 @@ const HandPickedForYou = () => {
         )}
         subTitle={t(
           "pages:product-list:subtitle:explore-our-collection-of-unique-business-cards",
-          "Explore our collection of unique business cards. We guarantee you’ll find a match"
+          "Explore our collection of unique digital business cards. We guarantee you’ll find a match"
         )}
         promoProducts={promoProducts}
       />
@@ -123,8 +123,8 @@ const HandPickedForYou = () => {
             </Heading>
             <Text my={[10]}>
               Say farewell to stacks of paper business cards. Say hello to
-              sleek, simple and modern networking gear. Express yourself in ways
-              never before possible with a business card.
+              sleek, simple, and modern networking gear. Express yourself in
+              ways never before possible with our digital business card.
             </Text>
             <HardsandsButton
               // @ts-ignore
@@ -154,10 +154,14 @@ const HandPickedForYou = () => {
         <Flex
           w={"full"}
           justifyContent={"center"}
-          direction={["column-reverse", "row"]}
+          direction={["column-reverse", "row-reverse"]}
         >
           <Box w={["100%", "50%"]}>
-            <SimpleGrid
+            <Image
+              src="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/005.jpg?v=1671758151"
+              alt={"Reasons Why"}
+            />
+            {/* <SimpleGrid
               w={"fit-content"}
               columns={[2, 2, 3]}
               gap={2}
@@ -177,7 +181,7 @@ const HandPickedForYou = () => {
                   <Text>{item.text}</Text>
                 </Flex>
               ))}
-            </SimpleGrid>
+            </SimpleGrid> */}
           </Box>
           <Box my={[8, "auto"]} ml={[0, 10]} w={["100%", "30%"]}>
             <Heading>Reasons Why!</Heading>
