@@ -113,7 +113,7 @@ function DontMissOut() {
               fontFamily={"MADE Outer Sans"}
               px={[8]}
             >
-              {"DEC 1 - DEC 31"}
+              {"JAN 1 - JAN 15"}
             </Text>
           </HStack>
         </Box>
