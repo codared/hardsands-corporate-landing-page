@@ -16,6 +16,7 @@ import { CheckoutContext } from "redux/context";
 import { useTypedSelector } from "redux/store";
 import { formatCurrencyInteger } from "utils/currency";
 import { getProductBySlug } from "utils/functions";
+import ActionSection from "../components/NewActionsSection";
 import Header from "./components/Header";
 
 function EngageConnections() {
@@ -23,7 +24,9 @@ function EngageConnections() {
   const { t } = useTranslation();
   const cartBtnRef = useRef(null);
   const [cartData, setCartData] = useState<CartDataDetails | null>();
-  const [selectedVariant, setSelectedVariant] = useState<string | number>("Plain");
+  const [selectedVariant, setSelectedVariant] = useState<string | number>(
+    "Plain"
+  );
   const selectedCurrency = state.cart.selectedCurrency;
   const products = useTypedSelector(
     (prodState) => prodState?.products?.all[selectedCurrency]
@@ -44,7 +47,7 @@ function EngageConnections() {
 
   const price = formatCurrencyInteger(
     !!promoProduct ? promoProduct?.variants[selectedVariant].price : 0,
-    selectedCurrency,
+    selectedCurrency
   );
 
   const handleAddToCart = (e: SyntheticEvent, details: CartDataDetails) => {
@@ -221,6 +224,8 @@ function EngageConnections() {
           /> */}
         </Flex>
       </Box>
+
+      <ActionSection />
 
       <Box maxW={"80%"} m={"0 auto 100px"} p={[10, 10, 40]} bgColor={"black"}>
         <Flex
