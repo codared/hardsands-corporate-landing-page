@@ -16,6 +16,7 @@ import { CheckoutContext } from "redux/context";
 import { useTypedSelector } from "redux/store";
 import { getProductsBySlug } from "utils/functions";
 import HowWeCompare from "../components/HowWeCompare";
+import ActionSection from "../components/NewActionsSection";
 import PageHeader from "../components/PageHeader";
 import PromoPageProductList from "../components/PromoPageProductList";
 

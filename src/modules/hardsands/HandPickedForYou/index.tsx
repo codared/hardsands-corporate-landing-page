@@ -16,6 +16,7 @@ import { CheckoutContext } from "redux/context";
 import { useTypedSelector } from "redux/store";
 import { getProductsBySlug } from "utils/functions";
 import HowWeCompare from "../components/HowWeCompare";
+import ActionSection from "../components/NewActionsSection";
 import PageHeader from "../components/PageHeader";
 import PromoPageProductList from "../components/PromoPageProductList";
 import WhatCustomersAreSaying from "../components/WhatCustomersAreSaying";
@@ -210,6 +211,8 @@ const HandPickedForYou = () => {
           display={["flex", "none"]}
         />
       </Box>
+
+      <ActionSection />
 
       <Flex
         direction={["column", "row"]}
