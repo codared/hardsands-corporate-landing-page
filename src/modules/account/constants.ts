@@ -253,6 +253,11 @@ export const ACTIONS: ActionsType[] = [
     fieldTitle: "Event",
     fields: [
       {
+        name: "Event Image",
+        type: "file",
+        formKey: "profileImage",
+      },
+      {
         name: "Title",
         type: "text",
         formKey: "title",
@@ -267,11 +272,6 @@ export const ACTIONS: ActionsType[] = [
         type: "date",
         formKey: "endDate",
       },
-      // {
-      //   name: "Time",
-      //   type: "time",
-      //   formKey: "time",
-      // },
       {
         name: "Address",
         type: "text",
