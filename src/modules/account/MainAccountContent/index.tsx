@@ -147,6 +147,11 @@ function MainIndex() {
       return;
     }
 
+    // We might not need this
+    if (formData.startDate && formData.time) {
+      formData.time = `${formData.startDate}`;
+    }
+
     const emailField =
       formData["workEmail"] ?? formData["personalEmail"] ?? formData["email"];
     if (emailField && !EMAIL_REGEX.test(emailField)) {
