@@ -233,7 +233,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    value={formState[formKey as string].replace(":00.000Z", "")}
+                    value={formState[formKey as string]?.replace(":00.000Z", "")}
                   />
                 </Box>
               </FormControl>

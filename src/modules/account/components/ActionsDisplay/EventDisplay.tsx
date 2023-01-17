@@ -13,7 +13,7 @@ import moment from "moment";
 import React from "react";
 import { BsClock } from "react-icons/bs";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import { MdCheckCircle, MdOutlineEventNote, MdSettings } from "react-icons/md";
+import { MdOutlineEventNote } from "react-icons/md";
 
 function EventDisplay({
   about,
@@ -81,7 +81,7 @@ function EventDisplay({
           </ListItem>
           <ListItem>
             <ListIcon as={BsClock} fontSize={24} color="brand.300" />
-            {moment(time).format("LT")}
+            {moment(time ?? startDate).format("LT")}
           </ListItem>
         </List>
       </Box>
