@@ -71,7 +71,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
           return { props: {} };
         case "Event":
           // Show event details
-          return;
+          return { props: { result: _default } };
         case "Contact Card":
           // download contact card in vcf
           generateVCard(_default.fields, res);

@@ -48,7 +48,7 @@ import { FiPhoneCall } from "react-icons/fi";
 import { RiContactsLine } from "react-icons/ri";
 import { MdOutlineContactMail, MdOutlineEventNote } from "react-icons/md";
 import { AccountNavItemsType, ActionsFormType, ActionsType } from "utils/types";
-import getCountries, { getState } from "utils/getCountries";
+import getCountries, { getState, getStatesList } from "utils/getCountries";
 
 export const ACCOUNT_ROOT = "/app";
 
@@ -249,68 +249,68 @@ export const ACTIONS: ActionsType[] = [
       },
     ],
   },
-  // {
-  //   title: "Event",
-  //   fields: [
-  //     {
-  //       name: "Title",
-  //       type: "text",
-  //       formKey: "url",
-  //     },
-  //     {
-  //       name: "Start Date",
-  //       type: "date",
-  //       formKey: "startDate",
-  //     },
-  //     {
-  //       name: "End Date",
-  //       type: "date",
-  //       formKey: "endDate",
-  //     },
-  //     {
-  //       name: "Time",
-  //       type: "time",
-  //       formKey: "time",
-  //     },
-  //     {
-  //       name: "Address",
-  //       type: "location",
-  //       formKey: "location",
-  //     },
-  //     {
-  //       name: "Postal Code",
-  //       type: "text",
-  //       formKey: "postalCode",
-  //     },
-  //     {
-  //       name: "Country",
-  //       type: "country-select",
-  //       options: getCountries(),
-  //       formKey: "countryId",
-  //     },
-  //     {
-  //       name: "State",
-  //       type: "state-select",
-  //       options: getState("Nigeria"),
-  //       formKey: "provinceId",
-  //     },
-  //     {
-  //       name: "City",
-  //       type: "text",
-  //       formKey: "city",
-  //     },
-  //     {
-  //       name: "Url",
-  //       type: "url",
-  //       formKey: "url",
-  //     },
-  //     {
-  //       name: "Description",
-  //       type: "long-text",
-  //       formKey: "about",
-  //     },
-  //   ],
-  // },
+  {
+    fieldTitle: "Event",
+    fields: [
+      {
+        name: "Event Image",
+        type: "file",
+        formKey: "profileImage",
+      },
+      {
+        name: "Title",
+        type: "text",
+        formKey: "title",
+      },
+      {
+        name: "Start Date",
+        type: "date",
+        formKey: "startDate",
+      },
+      {
+        name: "End Date",
+        type: "date",
+        formKey: "endDate",
+      },
+      {
+        name: "Address",
+        type: "text",
+        formKey: "location",
+      },
+      {
+        name: "Postal Code",
+        type: "text",
+        formKey: "postalCode",
+      },
+      {
+        name: "Country",
+        type: "country-select",
+        options: getCountries(),
+        formKey: "countryId",
+      },
+      {
+        name: "State",
+        type: "state-select",
+        // options: getStatesList("NG"),
+        formKey: "provinceId",
+      },
+      {
+        name: "City",
+        type: "text",
+        formKey: "homeCity",
+      },
+      {
+        name: "Url",
+        type: "url",
+        formKey: "url",
+      },
+      {
+        name: "Description",
+        type: "long-text",
+        formKey: "about",
+      },
+    ],
+  },
   {
     fieldTitle: "Contact Card",
     fields: [

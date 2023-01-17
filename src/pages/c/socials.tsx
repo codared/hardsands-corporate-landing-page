@@ -1,6 +1,6 @@
 import WithoutLayout from "components/WithoutLayout";
-import BankDetailDisplay from "modules/account/components/BankDetailsDisplay";
-import SocialProfile from "modules/account/components/ProfileCardDisplay";
+import BankDetailDisplay from "modules/account/components/ActionsDisplay/BankDetailsDisplay";
+import SocialProfile from "modules/account/components/ActionsDisplay/ProfileCardDisplay";
 
 const Socials = () => {
   return (

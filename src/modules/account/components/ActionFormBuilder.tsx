@@ -42,12 +42,12 @@ const ActionFormBuilder = ({
   const [selectedColor, setSelectedColor] = useState<string>("brand.300");
   const [stateOptions, setStateOptions] = useState<any[]>([]);
   const [selectedCountryOption, setSelectedCountryOption] = useState<any>({
-    value: formState["homeCountryId"],
-    label: formState["homeCountryId"],
+    value: formState["countryId"] || formState["homeCountryId"],
+    label: formState["countryId"] || formState["homeCountryId"],
   });
   const [selectedStateOption, setSelectedStateOption] = useState<any>({
-    value: formState["homeStateId"],
-    label: formState["homeStateId"],
+    value: formState["provinceId"] || formState["homeStateId"],
+    label: formState["provinceId"] || formState["homeStateId"],
   });
   const [selectedPhoneCodeOption, setSelectedPhoneCodeOption] = useState<any>(
     formState["phoneCode"]
@@ -72,12 +72,12 @@ const ActionFormBuilder = ({
       target: { value: newValue?.value, name },
     };
 
-    if (name === "homeCountryId") {
+    if (name === "homeCountryId" || name === "countryId") {
       setSelectedCountryOption(newValue);
       setStateOptions(getStatesList(e.target.value));
     }
 
-    if (name === "homeStateId") {
+    if (name === "homeStateId" || name === "provinceId") {
       setSelectedStateOption(newValue);
     }
 
@@ -93,11 +93,17 @@ const ActionFormBuilder = ({
   };
 
   useEffect(() => {
-    if (selectedCountryOption.label || formState["homeCountryId"]) {
+    if (
+      selectedCountryOption.label ||
+      formState["countryId"] ||
+      formState["homeCountryId"]
+    ) {
       setStateOptions(
         getStatesList(
           getCountryByName(
-            selectedCountryOption.label || formState["homeCountryId"]
+            selectedCountryOption.label ||
+              formState["countryId"] ||
+              formState["homeCountryId"]
           )?.id as string
         )
       );
@@ -219,7 +225,7 @@ const ActionFormBuilder = ({
                 <Box mb={4}>
                   <FormLabel>{name}</FormLabel>
                   <Input
-                    type={"date"}
+                    type={"datetime-local"}
                     name={formKey as string}
                     borderRadius={0}
                     borderColor={"black"}
@@ -227,7 +233,7 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    defaultValue={formState[formKey as string]}
+                    value={formState[formKey as string]?.replace(":00.000Z", "")}
                   />
                 </Box>
               </FormControl>
