@@ -19,7 +19,6 @@ const OrderSummary = ({
   currency: string;
   activeStep: CHECKOUT_STEPS;
 }) => {
-  console.log("order summary >>> ", order);
   return (
     <Box w="100%" mb={[12, 0]}>
       <Flex direction={"column"} bg={"brand.10"} p={5}>

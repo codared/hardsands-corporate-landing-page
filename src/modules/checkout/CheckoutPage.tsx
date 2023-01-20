@@ -141,8 +141,6 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
     );
   }
 
-  console.log('checkout page >>>> ', order);
-
   return (
     <Container maxW={"4xl"} py={20} position={"relative"}>
       {processingPayment && (
@@ -195,6 +193,7 @@ const CheckoutPage = ({ checkoutId, language }: CheckoutPageProp) => {
           {activeStep === CHECKOUT_STEPS.STEP_PAYMENT_INFO && (
             <PaymentInfo
               t={t}
+              currency={currency}
               order={order}
               handleCancel={handleCancel}
               setProcessingPayment={setProcessingPayment}

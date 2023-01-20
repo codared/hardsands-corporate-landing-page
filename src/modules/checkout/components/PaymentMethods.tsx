@@ -1,19 +1,21 @@
-import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import CheckAccordion from "components/CheckAccordion";
-import { MasterCardIcon, VisaCardIcon } from "design";
 import { useState } from "react";
 import { TFunction } from "react-i18next";
+import { FaWhatsapp } from "react-icons/fa";
 import PaystackButtonComponent from "../paymentMethods/Paystack";
+import WhatsAppOrderCompletionComponent from "../paymentMethods/WhatsAppOrderCompletionComponent";
 import { Order } from "../types";
-import LoadingSpinner from "./LoadingSpinner";
 
 const PaymentMethods = ({
   order,
+  currency,
   t,
   handleCancel,
   setProcessingPayment,
 }: {
   t: TFunction;
+  currency: string;
   order: Order;
   handleCancel: (message: string) => void;
   setProcessingPayment: (loading: boolean) => void;
@@ -29,7 +31,7 @@ const PaymentMethods = ({
           case "paystack":
             return {
               value: 1,
-              title: "Paystack",
+              title: <Flex alignItems={"center"}>Paystack</Flex>,
               content: (
                 <PaystackButtonComponent
                   order={order}
@@ -40,6 +42,23 @@ const PaymentMethods = ({
             };
           // case 'paypal':
           // case 'stripe':
+          // case 'whatsapp':
+          case "bankTransfer":
+            return {
+              value: 2,
+              title: (
+                <Flex alignItems={"center"}>
+                  <FaWhatsapp color="green" style={{ marginRight: "10px" }} />{" "}
+                  WhatsApp
+                </Flex>
+              ),
+              content: (
+                <WhatsAppOrderCompletionComponent
+                  currency={currency}
+                  order={order}
+                />
+              ),
+            };
           default:
             return;
         }
@@ -52,7 +71,7 @@ const PaymentMethods = ({
       <Box mb={10}>
         <>
           <Text fontWeight={"bold"}>
-            {t("checkout:payment method", "Payment Method")}
+            {t("checkout:payment options", "Payment Options")}
           </Text>
           <Box h={2} />
           <CheckAccordion
