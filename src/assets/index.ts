@@ -44,3 +44,4 @@ export { default as DeezerIcon } from './icons/deezer.png';
 export { default as BoomPlayIcon } from './icons/boom-play.png';
 export { default as AudioMackIcon } from './icons/audiomack.png';
 export { default as CheckIcon } from './icons/check.png';
+export { default as PayStackIcon } from './icons/paystack.svg';

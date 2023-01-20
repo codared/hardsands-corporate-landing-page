@@ -1,4 +1,5 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image } from "@chakra-ui/react";
+import { PayStackIcon } from "assets";
 import React from "react";
 import { TFunction } from "react-i18next";
 import { FaCcMastercard, FaCcPaypal, FaCcStripe } from "react-icons/fa";
@@ -10,7 +11,15 @@ function AcceptedPaymentMethods({ t }: { t: TFunction }) {
       <Heading size={"sm"}>
         {t("checkout:accepted-payments", "Accepted Payment Methods")}
       </Heading>
-      <Flex mt={4}>
+      <Flex mt={4} alignItems={'center'}>
+        <Box mr={4}>
+          <Image
+            boxSize={30}
+            src={PayStackIcon.src}
+            alt={"PayStackIcon"}
+            filter={"grayscale(1) invert(1)"}
+          />
+        </Box>
         <Box mr={4}>
           <RiVisaLine size={50} />
         </Box>

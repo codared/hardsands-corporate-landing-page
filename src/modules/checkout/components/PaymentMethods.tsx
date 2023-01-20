@@ -1,4 +1,5 @@
-import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text, Image } from "@chakra-ui/react";
+import { PayStackIcon } from "assets";
 import CheckAccordion from "components/CheckAccordion";
 import { useState } from "react";
 import { TFunction } from "react-i18next";
@@ -31,7 +32,17 @@ const PaymentMethods = ({
           case "paystack":
             return {
               value: 1,
-              title: <Flex alignItems={"center"}>Paystack</Flex>,
+              title: (
+                <Flex alignItems={"center"}>
+                  <Image
+                    boxSize={"14px"}
+                    src={PayStackIcon.src}
+                    alt={"PayStackIcon"}
+                    style={{ marginRight: "10px" }}
+                  />
+                  Paystack
+                </Flex>
+              ),
               content: (
                 <PaystackButtonComponent
                   order={order}
