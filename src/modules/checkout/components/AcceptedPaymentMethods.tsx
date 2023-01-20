@@ -11,22 +11,23 @@ function AcceptedPaymentMethods({ t }: { t: TFunction }) {
       <Heading size={"sm"}>
         {t("checkout:accepted-payments", "Accepted Payment Methods")}
       </Heading>
-      <Flex mt={4} alignItems={'center'}>
+      <Flex mt={4} alignItems={"center"}>
         <Box mr={4}>
           <Image
             boxSize={30}
+            title={"paystack"}
             src={PayStackIcon.src}
             alt={"PayStackIcon"}
             filter={"grayscale(1) invert(1)"}
           />
         </Box>
-        <Box mr={4}>
+        <Box mr={4} title={"visa"}>
           <RiVisaLine size={50} />
         </Box>
-        <Box mr={4}>
+        <Box mr={4} title={"paypal"}>
           <FaCcPaypal size={50} />
         </Box>
-        <Box mr={4}>
+        <Box mr={4} title={"mastercard"}>
           <FaCcMastercard size={50} />
         </Box>
         {/* <Box mr={4}>
