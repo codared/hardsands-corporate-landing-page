@@ -1,11 +1,11 @@
 import WithLayout from "components/WithLayout";
-import { HomePage } from "modules/hardsands";
+import HandPickedForYou from "modules/hardsands/HandPickedForYou";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
     <WithLayout pageTitle="Hardsands - One time Business Card">
-      <HomePage />
+      <HandPickedForYou />
     </WithLayout>
   );
 };

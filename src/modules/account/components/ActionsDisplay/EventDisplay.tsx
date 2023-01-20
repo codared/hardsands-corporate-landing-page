@@ -58,32 +58,38 @@ function EventDisplay({
           borderRadius={"25px"}
         />
 
-        <Heading color={"brand.300"}>{title}</Heading>
-        <Box h={10} />
-        <Text>{about}</Text>
-        <Box h={10} />
-        <List spacing={3}>
-          <ListItem>
-            <ListIcon
-              as={HiOutlineLocationMarker}
-              fontSize={24}
-              color="brand.300"
-            />
-            {location}
-          </ListItem>
-          <ListItem>
-            <ListIcon as={MdOutlineEventNote} fontSize={24} color="brand.300" />
-            {isSameDay
-              ? `${moment(startDate).format("LL")}`
-              : `${moment(startDate).format("LL")} to ${moment(endDate).format(
-                  "LL"
-                )}`}
-          </ListItem>
-          <ListItem>
-            <ListIcon as={BsClock} fontSize={24} color="brand.300" />
-            {moment(time ?? startDate).format("LT")}
-          </ListItem>
-        </List>
+        <Box p={[10]}>
+          <Heading color={"brand.300"}>{title}</Heading>
+          <Box h={10} />
+          <Text>{about}</Text>
+          <Box h={10} />
+          <List spacing={3}>
+            <ListItem>
+              <ListIcon
+                as={HiOutlineLocationMarker}
+                fontSize={24}
+                color="brand.300"
+              />
+              {location}
+            </ListItem>
+            <ListItem>
+              <ListIcon
+                as={MdOutlineEventNote}
+                fontSize={24}
+                color="brand.300"
+              />
+              {isSameDay
+                ? `${moment(startDate).format("LL")}`
+                : `${moment(startDate).format("LL")} to ${moment(
+                    endDate
+                  ).format("LL")}`}
+            </ListItem>
+            <ListItem>
+              <ListIcon as={BsClock} fontSize={24} color="brand.300" />
+              {moment(time ?? startDate).format("LT")}
+            </ListItem>
+          </List>
+        </Box>
       </Box>
     </Center>
   );

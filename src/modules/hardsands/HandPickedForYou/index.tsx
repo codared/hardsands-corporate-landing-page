@@ -9,7 +9,7 @@ import {
   Divider,
 } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
-import { blogRoute } from "modules/products/routes";
+import productRoutes, { blogRoute } from "modules/products/routes";
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { CheckoutContext } from "redux/context";
@@ -33,39 +33,6 @@ const HandPickedForYou = () => {
     ["bamboo-wood", "sapele-wood", "matte-black-card"],
     products
   );
-
-  const reasonsWhy = [
-    {
-      text: "No Apps Needed!",
-      bg: "brand.100",
-      color: "black",
-    },
-    {
-      text: "WorldWide Shipping",
-      bg: "red",
-      color: "white",
-    },
-    {
-      text: "User-friendly",
-      bg: "teal",
-      color: "white",
-    },
-    {
-      text: "Eco-freiendly",
-      bg: "orange.500",
-      color: "white",
-    },
-    {
-      text: "Cost Effective",
-      bg: "brand.100",
-      color: "black",
-    },
-    {
-      text: "24/7 responsive customer support",
-      bg: "black",
-      color: "white",
-    },
-  ];
 
   return (
     <Container overflow={"hidden"} p={[0, "inherit"]} maxW={["100%", "9xl"]}>
@@ -130,7 +97,7 @@ const HandPickedForYou = () => {
             <HardsandsButton
               // @ts-ignore
               textTransform={"uppercase"}
-              href={"#our-trending-products"}
+              href={productRoutes.products()}
               text={"Shop Now"}
               w={"full"}
             />
@@ -162,27 +129,6 @@ const HandPickedForYou = () => {
               src="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/005.jpg?v=1671758151"
               alt={"Reasons Why"}
             />
-            {/* <SimpleGrid
-              w={"fit-content"}
-              columns={[2, 2, 3]}
-              gap={2}
-              m={"0 auto"}
-            >
-              {reasonsWhy.map((item, index) => (
-                <Flex
-                  key={index}
-                  bg={item.bg}
-                  justifyContent={"center"}
-                  alignItems={"center"}
-                  boxSize={150}
-                  p={[10]}
-                  color={item.color}
-                  textTransform={"uppercase"}
-                >
-                  <Text>{item.text}</Text>
-                </Flex>
-              ))}
-            </SimpleGrid> */}
           </Box>
           <Box my={[8, "auto"]} ml={[0, 10]} w={["100%", "30%"]}>
             <Heading>Reasons Why!</Heading>
@@ -192,7 +138,7 @@ const HandPickedForYou = () => {
               you more effectively connect, communicate, and market yourself.
             </Text>
             <HardsandsButton
-              href={"#our-trending-products"}
+              href={productRoutes.products()}
               // @ts-ignore
               textTransform={"uppercase"}
               text={"Try a card"}
@@ -202,7 +148,7 @@ const HandPickedForYou = () => {
           </Box>
         </Flex>
         <HardsandsButton
-          href={"#our-trending-products"}
+          href={productRoutes.products()}
           // @ts-ignore
           textTransform={"uppercase"}
           text={"Try a card"}
