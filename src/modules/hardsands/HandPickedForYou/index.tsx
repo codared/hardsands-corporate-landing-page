@@ -49,7 +49,7 @@ const HandPickedForYou = () => {
         bgImage={
           "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A6845_-_low.jpg?v=1670370869"
         }
-        buttonHref={"#our-trending-products"}
+        buttonHref={productRoutes.products()}
         buttonText="Buy Now"
       />
 
