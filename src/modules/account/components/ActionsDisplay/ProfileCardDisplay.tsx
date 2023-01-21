@@ -16,12 +16,17 @@ import {
   Input,
 } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
+import {
+  findSameSocials,
+  getSocialIcons,
+  getSocialEditIcons,
+} from "modules/account/functions";
 import { useRef } from "react";
 import { FiEdit3 } from "react-icons/fi";
 import { ActionsType } from "utils/types";
-import { SOCIAL_LINKS } from "../constants";
-import { SocialCardActionType } from "../types";
-import OurSiteMarketing from "./OurSiteMarketing";
+import { SOCIAL_LINKS } from "../../constants";
+import { SocialCardActionType } from "../../types";
+import OurSiteMarketing from "../OurSiteMarketing";
 
 export default function SocialProfile({
   editMode = false,
@@ -59,34 +64,8 @@ export default function SocialProfile({
     ) : null;
   };
 
-  const findSameSocials = (item: any, findingArray: any[]) => {
-    return findingArray.find((finding) => finding.name === item.label);
-  };
-
   // Extract the static data and use the rest as socials
   const { name, profileImage, title, ...rest } = fields as SocialCardActionType;
-
-  // Get social Icons for display
-  const getSocialIcons = () => {
-    return (SOCIAL_LINKS.social as any[]).map((social) => {
-      if (rest[social.label.toLowerCase()]) {
-        return {
-          ...social,
-          user: rest[social.label.toLowerCase()],
-        };
-      }
-      return undefined;
-    });
-  };
-
-  const getSocialEditIcons = () => {
-    return (SOCIAL_LINKS.social as any[]).map((social) => {
-      return {
-        ...social,
-        user: rest[social.label.toLowerCase()],
-      };
-    });
-  };
 
   return (
     <Center>
@@ -202,7 +181,7 @@ export default function SocialProfile({
           {/* social icons */}
           {!editMode && (
             <SimpleGrid columns={3} spacing={10} px={8} mt={6}>
-              {getSocialIcons().map((item: any, index: number) => {
+              {getSocialIcons(rest).map((item: any, index: number) => {
                 if (!item) return null;
                 return (
                   <HardsandLink
@@ -237,7 +216,7 @@ export default function SocialProfile({
                     Click an icon to add your username
                   </Text>
                   <SimpleGrid columns={3} spacing={10}>
-                    {getSocialEditIcons().map((item: any) => (
+                    {getSocialEditIcons(rest).map((item: any) => (
                       <Box
                         key={item.label}
                         height="80px"

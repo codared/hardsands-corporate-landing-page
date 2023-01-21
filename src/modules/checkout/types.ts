@@ -27,6 +27,7 @@ export type ShippingMethodType = {
   content: ReactElement;
   value: string | number;
   isChecked?: boolean;
+  onOptionChange?: (data: any) => void;
 };
 
 export interface Amount {

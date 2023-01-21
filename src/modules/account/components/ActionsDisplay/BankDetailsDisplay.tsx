@@ -14,7 +14,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { FaCopy } from "react-icons/fa";
-import OurSiteMarketing from "./OurSiteMarketing";
+import OurSiteMarketing from "../OurSiteMarketing";
 
 export default function BankDetailDisplay({
   bankName,

@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 import CustomDrawer from "components/CustomDrawer";
 import ActionFormBuilder from "modules/account/components/ActionFormBuilder";
-import SocialProfile from "modules/account/components/ProfileCardDisplay";
+import SocialProfile from "modules/account/components/ActionsDisplay/ProfileCardDisplay";
 import { ACTION_FORM_STATUS, NumberFields } from "modules/account/constants";
 import { getCountryBanks, getUploadUrl } from "modules/account/services";
 import React, { useState, useMemo } from "react";

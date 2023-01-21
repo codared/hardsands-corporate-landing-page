@@ -1,5 +1,5 @@
-import countries from "utils/countries.min.json";
-import countriesList from "utils/countries_full.json";
+import countries from "utils/countries.mini.json";
+import countriesList from "utils/countries_min.json";
 import statesList from "utils/provinces.json";
 
 export const getCountries = () => {

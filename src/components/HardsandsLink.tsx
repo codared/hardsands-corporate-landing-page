@@ -24,7 +24,7 @@ const HardsandLink: React.FC<HardsandLinkProps> = forwardRef(
     ref
   ) => {
     const hoverStyle = {
-      color: "brand.200",
+      color: "brand.300",
     };
 
     if (isInternal) {

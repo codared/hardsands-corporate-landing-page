@@ -5293,5 +5293,85 @@
     "country_id": "ZA",
     "id": "ZA:WC",
     "name": "Western Cape"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:AF",
+    "name": "Ahafo"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:AH",
+    "name": "Ashanti"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:BO",
+    "name": "Bono"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:BE",
+    "name": "Bono East"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:CP",
+    "name": "Central"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:EP",
+    "name": "Eastern"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:AA",
+    "name": "Greater Accra"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:NE",
+    "name": "North East"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:NP",
+    "name": "Northern"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:OT",
+    "name": "Oti"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:SV",
+    "name": "Savannah"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:UE",
+    "name": "Upper East"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:UW",
+    "name": "Upper West"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:TV",
+    "name": "Volta"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:WP",
+    "name": "Western"
+  },
+  {
+    "country_id": "GH",
+    "id": "GH:WN",
+    "name": "Western North"
   }
 ]

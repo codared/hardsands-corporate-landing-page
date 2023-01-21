@@ -31,9 +31,9 @@ const CheckAccordion = ({
             content,
             value,
             isChecked,
-          }: ShippingMethodType) => (
+          }: ShippingMethodType, index: number) => (
             <AccordionItem
-              key={title}
+              key={index}
               borderWidth={1}
               borderColor={"black"}
               mb={2}
