@@ -5,13 +5,7 @@ import { formatCurrencyInteger } from "utils/currency";
 import { WHATSAPP_MESSAGE, WHATSAPP_PHONE_NUMBER } from "../constants";
 import { Order } from "../types";
 
-function WhatsAppOrderCompletionComponent({
-  order,
-  currency,
-}: {
-  currency: string;
-  order: Order;
-}) {
+export const redirectToWhatsApp = (order: Order, currency: string) => {
   const orderTotal = formatCurrencyInteger(
     order.discountTotal || order.totalDue,
     currency
@@ -27,10 +21,27 @@ function WhatsAppOrderCompletionComponent({
   const whatsappLink = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodeURIComponent(
     message
   )}`;
+  return whatsappLink;
+};
+
+function WhatsAppOrderCompletionComponent({
+  order,
+  currency,
+  onOptionChange,
+}: {
+  currency: string;
+  order: Order;
+  onOptionChange: (data: any) => void;
+}) {
+  const handleClick = () => {
+    onOptionChange(redirectToWhatsApp(order, currency));
+  };
 
   return (
     <Box>
-      <HardsandLink href={whatsappLink}>Complete on WhatsApp</HardsandLink>
+      <HardsandLink onClick={handleClick} href={"#"}>
+        Complete on WhatsApp
+      </HardsandLink>
     </Box>
   );
 }

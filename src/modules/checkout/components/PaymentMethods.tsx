@@ -1,11 +1,14 @@
 import { Box, Button, Flex, Text, Image } from "@chakra-ui/react";
 import { PayStackIcon } from "assets";
 import CheckAccordion from "components/CheckAccordion";
-import { useState } from "react";
+import Router from "next/router";
+import { useEffect, useState } from "react";
 import { TFunction } from "react-i18next";
 import { FaWhatsapp } from "react-icons/fa";
 import PaystackButtonComponent from "../paymentMethods/Paystack";
-import WhatsAppOrderCompletionComponent from "../paymentMethods/WhatsAppOrderCompletionComponent";
+import WhatsAppOrderCompletionComponent, {
+  redirectToWhatsApp,
+} from "../paymentMethods/WhatsAppOrderCompletionComponent";
 import { Order } from "../types";
 
 const PaymentMethods = ({
@@ -21,7 +24,25 @@ const PaymentMethods = ({
   handleCancel: (message: string) => void;
   setProcessingPayment: (loading: boolean) => void;
 }) => {
-  const [payment, setPayment] = useState<number | null>(null);
+  const [payment, setPayment] = useState<number | null>(1);
+  const [optionSelected, setOptionSelected] = useState<any | null>(null);
+
+  const onOptionChange = (data: any) => {
+    setOptionSelected(data);
+  };
+
+  const handleCompleteCheckout = () => {
+    // call option selected
+    switch (payment) {
+      case 1:
+        break;
+      case 2:
+        Router.push(redirectToWhatsApp(order, currency));
+        break;
+      default:
+        break;
+    }
+  };
 
   const buildPaymentMethods = () => {
     const keys = Object.keys(order.paymentMethod);
@@ -46,6 +67,7 @@ const PaymentMethods = ({
               content: (
                 <PaystackButtonComponent
                   order={order}
+                  onOptionChange={onOptionChange}
                   handleCancel={handleCancel}
                   setLoading={setProcessingPayment}
                 />
@@ -67,6 +89,7 @@ const PaymentMethods = ({
                 <WhatsAppOrderCompletionComponent
                   currency={currency}
                   order={order}
+                  onOptionChange={onOptionChange}
                 />
               ),
             };
@@ -98,7 +121,7 @@ const PaymentMethods = ({
         color={"black"}
         bg={"brand.100"}
         fontFamily="MADE Outer sans"
-        onClick={() => {}}
+        onClick={handleCompleteCheckout}
         p={["24px 16px", "24px 46px"]}
         borderWidth="2px"
         borderColor={"brand.100"}

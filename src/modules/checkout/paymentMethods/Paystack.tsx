@@ -15,8 +15,10 @@ const PaystackButtonComponent = ({
   order,
   handleCancel,
   setLoading,
+  onOptionChange,
 }: {
   order: Order;
+  onOptionChange: (data: any) => void;
   setLoading: (loading: boolean) => void;
   handleCancel: (message: string) => void;
 }) => {
@@ -30,6 +32,7 @@ const PaystackButtonComponent = ({
     userDetails: { email },
     total,
     totalDue,
+    discountedAmount,
   } = order;
 
   const handleOrderPaymentCheck = async () => {
@@ -54,9 +57,13 @@ const PaystackButtonComponent = ({
     return setLoading(false); // not complete;
   };
 
+  const handleClick = () => {
+    onOptionChange(handleOrderPaymentCheck);
+  };
+
   const componentProps = {
     email,
-    amount: totalDue,
+    amount: !!discountedAmount ? discountedAmount : totalDue,
     metadata: {
       custom_fields,
     },
@@ -65,7 +72,6 @@ const PaystackButtonComponent = ({
     currency,
     text: "Pay with Paystack",
     onSuccess: handleOrderPaymentCheck,
-    // onSuccess: () => router.push(`/checkout/${checkoutHash}/confirmation`),
     onClose: () => {},
     // onClose: () => handleCancel("Your Payment wasn't Successful!!!"),
   };
