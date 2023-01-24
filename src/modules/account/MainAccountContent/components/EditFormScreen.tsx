@@ -70,11 +70,11 @@ const EditFormScreen = ({
     if (e.target.name === "profileImage") {
       const files = e.target.files;
       if (files.length && files[0].size > 2097152) {
-        // only allow images less that 2mb
+        // only allow images less that 2mb 
         return;
       } else {
         setImageLoading(true);
-        const res = await getUploadUrl(files[0].imageType);
+        const res = await getUploadUrl(files[0].type);
         if (!res?.isError) {
           setImageUploadData(res.result);
           let reader = new window.FileReader();
