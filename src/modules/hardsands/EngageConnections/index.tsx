@@ -17,6 +17,7 @@ import { useTypedSelector } from "redux/store";
 import { formatCurrencyInteger } from "utils/currency";
 import { getProductBySlug } from "utils/functions";
 import ActionSection from "../components/NewActionsSection";
+import GiftOfferForm from "./components/GiftOfferForm";
 import Header from "./components/Header";
 
 function EngageConnections() {
@@ -258,6 +259,8 @@ function EngageConnections() {
               colleagues or employees a Hardsands Card as a sign of
               encouragement or celebration. Drop by again soon.
             </Text>
+            <Box h={6} />
+            <GiftOfferForm />
           </Flex>
         </Flex>
       </Box>

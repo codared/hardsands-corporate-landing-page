@@ -258,7 +258,7 @@ export const ACTIONS: ActionsType[] = [
         formKey: "profileImage",
       },
       {
-        name: "Title",
+        name: "Event Name",
         type: "text",
         formKey: "title",
       },
@@ -273,15 +273,15 @@ export const ACTIONS: ActionsType[] = [
         formKey: "endDate",
       },
       {
-        name: "Address",
+        name: "Event Venue",
         type: "text",
         formKey: "location",
       },
-      {
-        name: "Postal Code",
-        type: "text",
-        formKey: "postalCode",
-      },
+      // {
+      //   name: "Postal Code",
+      //   type: "text",
+      //   formKey: "postalCode",
+      // },
       {
         name: "Country",
         type: "country-select",
