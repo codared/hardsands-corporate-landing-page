@@ -273,7 +273,7 @@ export const ACTIONS: ActionsType[] = [
         formKey: "endDate",
       },
       {
-        name: "Address",
+        name: "Event Venue",
         type: "text",
         formKey: "location",
       },
