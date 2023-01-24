@@ -99,6 +99,23 @@ export const updateUserCardAction = async (id: number, data: any) => {
   return res;
 };
 
+export const createGiftOfferUserAction = async (data: any) => {
+  const res = await storefrontApiJsonFetch(
+    `https://sheet.best/api/sheets/82a1317a-4a8c-4f24-b988-1652133a6885`,
+    {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    },
+    false
+  );
+
+  return res;
+};
+
 export const getCountryBanks = async (countryCode: string) => {
   const res = await storefrontApiJsonFetch(
     `/banks/${countryCode}/response.json`,
