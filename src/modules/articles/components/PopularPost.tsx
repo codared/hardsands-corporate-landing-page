@@ -16,6 +16,13 @@ function PopularPost() {
           >
             Popular Post
           </Heading>
+          <Image
+            mt={[6]}
+            display={["block", "none"]}
+            mx={"auto"}
+            src="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Group_948.png?v=1674729819"
+            alt="blog image"
+          />
           <Box w={["100%"]}>
             <Heading py={6}>
               Menstrual Leaves; should every work place adopt the menstrual
@@ -48,6 +55,7 @@ function PopularPost() {
         </Box>
         <Box w={["100%", "50%"]}>
           <Image
+            display={["none", "block"]}
             mx={"auto"}
             src="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Group_948.png?v=1674729819"
             alt="blog image"
