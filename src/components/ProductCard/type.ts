@@ -32,4 +32,13 @@ export interface HomeProductCardProps {
   t: TFunction;
 }
 
+export interface BlogCardProps {
+  title: string;
+  slug: string;
+  dateCreated: string;
+  img: string;
+  description: string;
+  t: TFunction;
+}
+
 export const CUSTOMIZED = "Customized";
