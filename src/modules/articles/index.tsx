@@ -1,13 +1,23 @@
 import { Box } from "@chakra-ui/react";
+import { trackPageView } from "modules/analytics/functions/track";
 import PageHeader from "modules/hardsands/components/PageHeader";
 import { blogRoute } from "modules/products/routes";
-import React from "react";
+import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import PopularPost from "./components/PopularPost";
 import TrendingPost from "./components/TrendingPost";
 
 function Articles() {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    trackPageView({
+      path: "/articles",
+      url: "/articles",
+      title: "Blogs - Hardsands Digital Business Cards",
+      type: "blogs_page",
+    });
+  }, []);
 
   return (
     <Box>
