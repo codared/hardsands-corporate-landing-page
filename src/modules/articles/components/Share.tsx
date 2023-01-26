@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FiLink, FiFacebook, FiTwitter } from "react-icons/fi";
 
-function Share({ link }: any) {
+function Share({ link, message }: any) {
   const toast = useToast();
 
   return (
@@ -30,7 +30,7 @@ function Share({ link }: any) {
           <FiLink size={24} />
         </HardsandLink>
         <HardsandLink
-          href={`https://www.linkedin.com/shareArticle?mini=true&url=http://developer.linkedin.com&source=Hardsands
+          href={`https://www.linkedin.com/shareArticle?mini=true&url=${link}&source=Hardsands
           `}
           target={"_blank"}
         >
@@ -43,7 +43,9 @@ function Share({ link }: any) {
           <FiFacebook size={24} />
         </HardsandLink>
         <HardsandLink
-          href={"http://www.twitter.com/share?url=http://www.google.com/"}
+          href={`http://www.twitter.com/share?text=${encodeURIComponent(
+            message
+          )}&url=${link}`}
           target={"_blank"}
         >
           <FiTwitter size={24} />
