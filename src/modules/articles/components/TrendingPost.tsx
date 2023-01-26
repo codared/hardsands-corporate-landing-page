@@ -7,7 +7,7 @@ function TrendingPost() {
   const { t } = useTranslation();
 
   return (
-    <Box p={[10]}>
+    <Box w={["100%", "100%", "80%"]} py={[10]} px={[6, 0]} mx={["auto"]}>
       <Box mb={[10]}>
         <Heading color={"brand.300"}>Trending Posts</Heading>
         <Text>

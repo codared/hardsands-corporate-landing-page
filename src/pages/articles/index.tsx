@@ -2,7 +2,7 @@ import WithLayout from "components/WithLayout";
 import Articles from "modules/articles";
 import React from "react";
 
-function ArticlePage() {
+function ArticlesPage() {
   return (
     <WithLayout pageTitle="Blogs - Hardsands Digital Business Cards">
       <Articles />
@@ -10,4 +10,4 @@ function ArticlePage() {
   );
 }
 
-export default ArticlePage;
+export default ArticlesPage;
