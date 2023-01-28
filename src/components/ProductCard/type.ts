@@ -33,11 +33,17 @@ export interface HomeProductCardProps {
 }
 
 export interface BlogCardProps {
-  title: string;
-  slug: string;
-  dateCreated: string;
-  img: string;
-  description: string;
+  article: {
+    uid: string;
+    data: any;
+    url: string;
+    first_publication_date: string;
+    title: string;
+    slug: string;
+    dateCreated: string;
+    img: string;
+    description: string;
+  };
   t: TFunction;
 }
 

@@ -1,13 +1,66 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Heading } from "@chakra-ui/react";
+import { PrismicLink } from "@prismicio/react";
 import { trackPageView } from "modules/analytics/functions/track";
 import PageHeader from "modules/hardsands/components/PageHeader";
 import { blogRoute } from "modules/products/routes";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { slugify } from "utils/string";
+import AllPosts from "./components/AllPosts";
 import PopularPost from "./components/PopularPost";
-import TrendingPost from "./components/TrendingPost";
+import * as prismicH from "@prismicio/helpers";
+import { dateFormatter, getExcerpt } from "utils/functions";
 
-function Articles() {
+export const richTextComponents = {
+  heading1: ({ children }: any) => (
+    <Heading as="h2" size="3xl" className="mb-7 mt-12 first:mt-0 last:mb-0">
+      {children}
+    </Heading>
+  ),
+  heading2: ({ children }: any) => (
+    <Heading as="h3" size="2xl" className="mb-7 last:mb-0">
+      {children}
+    </Heading>
+  ),
+  heading3: ({ children }: any) => (
+    <Heading as="h4" size="xl" className="mb-7 last:mb-0">
+      {children}
+    </Heading>
+  ),
+  paragraph: ({ children }: any) => (
+    <p className="mb-7 last:mb-0">{children}</p>
+  ),
+  oList: ({ children }: any) => (
+    <ol className="mb-7 pl-4 last:mb-0 md:pl-6">{children}</ol>
+  ),
+  oListItem: ({ children }: any) => (
+    <li className="mb-1 list-decimal pl-1 last:mb-0 md:pl-2">{children}</li>
+  ),
+  list: ({ children }: any) => (
+    <ul className="mb-7 pl-4 last:mb-0 md:pl-6">{children}</ul>
+  ),
+  listItem: ({ children }: any) => (
+    <li className="mb-1 list-disc pl-1 last:mb-0 md:pl-2">{children}</li>
+  ),
+  preformatted: ({ children }: any) => (
+    <pre className="mb-7 rounded bg-slate-100 p-4 text-sm last:mb-0 md:p-8 md:text-lg">
+      <code>{children}</code>
+    </pre>
+  ),
+  strong: ({ children }: any) => (
+    <strong className="font-semibold">{children}</strong>
+  ),
+  hyperlink: ({ children, node }: any) => (
+    <PrismicLink
+      field={node.data}
+      className="underline decoration-1 underline-offset-2"
+    >
+      {children}
+    </PrismicLink>
+  ),
+};
+
+function Articles({ articles, settings }: { articles: any; settings: any }) {
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -19,35 +72,41 @@ function Articles() {
     });
   }, []);
 
+  const firstArticle = articles[0];
+  const date = prismicH.asDate(
+    firstArticle.data.publishDate || firstArticle.first_publication_date
+  );
+  const excerpt = getExcerpt(firstArticle.data.slices);
+
   return (
     <Box>
       <PageHeader
         title={t(
-          "pages:header:title:no-paper-no-fuss-just-better-networks-made-straight-away",
-          "No paper no fuss, just better networks made straight away"
+          `pages:header:title:${slugify(firstArticle.data.title[0].text)}`,
+          firstArticle.data.title[0].text
         )}
         size={"large"}
         showProfile={{
-          image: "https://avatars0.githubusercontent.com/u/1164541?v=4",
-          author: "Achim Rolle",
-          date: "Feb 08, 2021",
-          minRead: "6min read",
+          image: settings.data.profilePicture.url,
+          author: settings.data.name[0].text,
+          date: dateFormatter.format(date as Date),
         }}
         subTitle={t(
-          "pages:header:description:connect-wherever-you-go",
-          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, "
+          `pages:header:description:${excerpt}`,
+          `${excerpt.slice(0, 350)}`
         )}
         type={"light"}
-        bgImage={
-          "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Rectangle_331.png?v=1674726801"
-        }
-        buttonHref={blogRoute.blogs()}
+        bgImage={firstArticle.data.featuredImage.url}
+        buttonHref={blogRoute.detail({ slug: firstArticle.uid })}
         buttonText="READ FULL ARTICLE"
       />
 
-      <TrendingPost />
+      <AllPosts articles={articles} />
 
-      <PopularPost />
+      <PopularPost
+        article={articles[0]}
+        authorName={settings.data.name[0].text}
+      />
     </Box>
   );
 }

@@ -5,12 +5,33 @@ import AuthorComponent from "./AuthorComponent";
 import PopularPost from "./PopularPost";
 import Share from "./Share";
 import TrendingPost from "./TrendingPost";
+import * as prismicH from "@prismicio/helpers";
+import { dateFormatter, findFirstImage, getExcerpt } from "utils/functions";
+import { PrismicText } from "@prismicio/react";
 
-function Article({ blog }: { blog: any }) {
+function Article({
+  article,
+  latestArticles,
+  settings,
+}: {
+  settings: any;
+  article: any;
+  latestArticles: any[];
+}) {
+  const featuredImage =
+    (prismicH.isFilled.image(article.data.featuredImage) &&
+      article.data.featuredImage) ||
+    findFirstImage(article.data.slices);
+
+  const date = prismicH.asDate(
+    article.data.publishDate || article.first_publication_date
+  );
+  const excerpt = getExcerpt(article.data.slices);
+
   return (
     <Box my={[10]}>
       <Heading textAlign={"center"} color={"brand.300"}>
-        {blog.title}
+        <PrismicText field={article.data.title} />
       </Heading>
 
       <Flex
@@ -21,29 +42,33 @@ function Article({ blog }: { blog: any }) {
         justifyContent={["flex-start", "space-between"]}
       >
         <AuthorComponent
-          image={blog.author.image}
-          name={blog.author.name}
-          minRead={blog.minRead}
-          createdAt={blog.createdAt}
+          image={settings.data.profilePicture.url}
+          name={settings.data.name[0].text}
+          createdAt={dateFormatter.format(date as Date)}
         />
-        <Share link={""} />
+        {typeof window === "object" && (
+          <Share
+            link={location?.href}
+            message={
+              "Check out this great article on Hardsands Digital business cards"
+            }
+          />
+        )}
       </Flex>
 
       <Box mx={"auto"} w={["80%"]}>
         <Image
           w={["full"]}
-          src={
-            "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Rectangle_331.png?v=1674726801"
-          }
-          alt={"article post image"}
+          src={featuredImage.url}
+          alt={article.data.title[0].text}
         />
       </Box>
 
-      <ArticlePost />
+      <ArticlePost content={excerpt} />
 
-      <TrendingPost />
+      <TrendingPost articles={latestArticles} />
 
-      <PopularPost />
+      <PopularPost article={latestArticles[0]} authorName={settings.data.name[0].text} />
     </Box>
   );
 }

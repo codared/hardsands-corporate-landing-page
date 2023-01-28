@@ -1,9 +1,28 @@
-import { Box, Flex, Heading, Text, Image } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, Image, Stack } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
 import { blogRoute } from "modules/products/routes";
 import React from "react";
+import { dateFormatter, findFirstImage, getExcerpt } from "utils/functions";
+import * as prismicH from "@prismicio/helpers";
+import { PrismicText } from "@prismicio/react";
 
-function PopularPost() {
+function PopularPost({
+  article,
+  authorName,
+}: {
+  article?: any;
+  authorName: string;
+}) {
+  const featuredImage =
+    (prismicH.isFilled.image(article.data.featuredImage) &&
+      article.data.featuredImage) ||
+    findFirstImage(article.data.slices);
+
+  const date = prismicH.asDate(
+    article.data.publishDate || article.first_publication_date
+  );
+  const excerpt = getExcerpt(article.data.slices);
+
   return (
     <Box mb={[10]} w={["100%", "100%", "80%"]} py={[10]} mx={["auto"]}>
       <Flex px={[6, 40]} direction={["column", "row"]}>
@@ -20,19 +39,16 @@ function PopularPost() {
             mt={[6]}
             display={["block", "none"]}
             mx={"auto"}
-            src="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Group_948.png?v=1674729819"
+            src={featuredImage.url}
             alt="blog image"
           />
           <Box w={["100%"]}>
             <Heading py={6}>
-              Menstrual Leaves; should every work place adopt the menstrual
-              leave policy
+              <PrismicText field={article.data.title} />
             </Heading>
-            <Text py={[6]}>
-              Lorem Ipsum is simply dummy text of the printing
-            </Text>
+            <Text py={[6]}>{excerpt}</Text>
             <HardsandsButton
-              href={blogRoute.detail({ slug: "mentrual-reviews" })}
+              href={blogRoute.detail({ slug: article.uid })}
               // @ts-ignore
               _hover={{
                 bg: "transparent",
@@ -49,18 +65,18 @@ function PopularPost() {
               pb={2}
               mt={10}
             >
-              Posted: Jan 5, 2021 by kennedy sM
+              Posted: {dateFormatter.format(date as Date)} by {authorName}
             </Text>
           </Box>
         </Box>
-        <Box w={["100%", "50%"]}>
+        <Box w={[0, 10]} />
+        <Stack justifyContent={"center"} w={["100%", "50%"]}>
           <Image
             display={["none", "block"]}
-            mx={"auto"}
-            src="https://cdn.shopify.com/s/files/1/0559/0407/5843/files/Group_948.png?v=1674729819"
+            src={featuredImage.url}
             alt="blog image"
           />
-        </Box>
+        </Stack>
       </Flex>
     </Box>
   );

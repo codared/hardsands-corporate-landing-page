@@ -4,12 +4,10 @@ import React from "react";
 function AuthorComponent({
   image,
   name,
-  minRead,
   createdAt,
 }: {
   image: string;
   name: string;
-  minRead: string;
   createdAt: string;
 }) {
   return (
@@ -22,7 +20,7 @@ function AuthorComponent({
       <Stack direction={"column"} spacing={0} fontSize={"sm"}>
         <Text fontWeight={600}>{name}</Text>
         <Text color={"gray.400"}>
-          {createdAt} · {minRead}
+          Posted {createdAt}
         </Text>
       </Stack>
     </Stack>
