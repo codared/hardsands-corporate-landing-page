@@ -1,4 +1,4 @@
-import productRoutes from "modules/products/routes";
+import productRoutes, { blogRoute } from "modules/products/routes";
 
 export interface NavItem {
   label: string;
@@ -18,11 +18,11 @@ export const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: "How to Use",
-    href: '/articles/how-to-use',
+    href: "/articles/how-to-use",
   },
-  // {
-  //   label: "About Us",
-  //   href: "/about",
-  // },
+  {
+    label: "Blogs",
+    href: blogRoute.blogs(),
+  },
   { label: "Account", href: "/login" },
 ];

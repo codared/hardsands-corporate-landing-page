@@ -28,6 +28,7 @@ import { TFunction, useTranslation } from "react-i18next";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { SOCIAL_LINKS } from "utils/constants";
 import staticRoutes from "modules/static/routes";
+import { blogRoute } from "modules/products/routes";
 //   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 //   import { BiMailSend } from 'react-icons/bi';
 
@@ -198,7 +199,7 @@ export default function Footer() {
             <HardsandLink href={"mailto:info@hardsands.com"} isExternal={true}>
               Contact us
             </HardsandLink>
-            {/* <HardsandLink href={"#"}>Testimonials</HardsandLink> */}
+            <HardsandLink href={blogRoute.blogs()}>Blogs</HardsandLink>
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Support</ListHeader>

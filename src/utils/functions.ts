@@ -5,6 +5,40 @@ import { Product, ProductOptions } from "modules/products/types";
 import { getCookie } from "modules/shared/cookie";
 import { SUPPORTED_CURRENCIES } from "./supportedCurrencies";
 import { ActionsType } from "./types";
+import * as prismicH from "@prismicio/helpers";
+
+export const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
+
+export const findFirstImage = (slices: any[]) => {
+  const imageSlice = slices.find(
+    (slice: { slice_type: string }) => slice.slice_type === "image"
+  );
+
+  if (imageSlice && prismicH.isFilled.image(imageSlice.primary.image)) {
+    return imageSlice.primary.image;
+  }
+};
+
+export const getExcerpt = (slices: any) => {
+  const text = slices
+    .filter((slice: { slice_type: string }) => slice.slice_type === "text")
+    .map((slice: { primary: { text: any } }) =>
+      prismicH.asText(slice.primary.text)
+    )
+    .join(" ");
+
+  const excerpt = text.substring(0, 300);
+
+  if (text.length > 300) {
+    return excerpt.substring(0, excerpt.lastIndexOf(" ")) + "…";
+  } else {
+    return excerpt;
+  }
+};
 
 export const requestAuthHeaders = () => {
   return new Headers({

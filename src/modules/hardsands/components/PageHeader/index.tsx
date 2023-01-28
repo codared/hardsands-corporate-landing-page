@@ -1,7 +1,6 @@
-import { Flex, Box, Heading, Text } from "@chakra-ui/react";
+import { Flex, Box, Heading, Text, Stack, Avatar } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
-import productRoutes from "modules/products/routes";
-import React from "react";
+import React, { ReactElement } from "react";
 import { useTranslation } from "react-i18next";
 
 function PageHeader({
@@ -9,15 +8,19 @@ function PageHeader({
   subTitle,
   buttonHref = "/",
   type = "light",
+  size = "small",
+  showProfile,
   buttonText = "Buy Now",
   bgImage = "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A6845_-_low.jpg?v=1670370869",
 }: {
   title: string;
-  subTitle: string;
+  size?: string;
+  subTitle: string | ReactElement;
   buttonHref: string;
   type: string;
   buttonText: string;
   bgImage: string;
+  showProfile?: any;
 }) {
   const { t } = useTranslation();
   const isLight = type === "light";
@@ -45,14 +48,37 @@ function PageHeader({
           zIndex={0}
         />
       )}
-      <Flex zIndex={1} maxW={["full", "60%", "40%"]} alignItems={"center"}>
+      <Flex
+        zIndex={1}
+        maxW={["full", "60%", size === "small" ? "40%" : "60%"]}
+        alignItems={"center"}
+      >
         <Box
           w={["100%"]}
           h={"fit-content"}
           color={isLight ? "white" : "inherit"}
         >
           <Heading size={"2xl"}>{title}</Heading>
-          <Text my={[10]}>{subTitle}</Text>
+          {typeof subTitle === "string" ? (
+            <Text my={[6]}>{subTitle}</Text>
+          ) : (
+            title
+          )}
+          {!!showProfile && (
+            <Stack my={6} direction={"row"} spacing={4} align={"center"}>
+              <Avatar
+                src={showProfile.image}
+                // @ts-ignore
+                alt={`Author - ${showProfile.author}`}
+              />
+              <Stack direction={"column"} spacing={0} fontSize={"sm"}>
+                <Text fontWeight={600}>{showProfile.author}</Text>
+                <Text color={"gray.400"}>
+                  {showProfile.date} · {showProfile.minRead}
+                </Text>
+              </Stack>
+            </Stack>
+          )}
           {isLight ? (
             <HardsandsButton
               // @ts-ignore
