@@ -26,8 +26,6 @@ function Article({
   const date = prismicH.asDate(
     article.data.publishDate || article.first_publication_date
   );
-  // const excerpt = getExcerpt(article.data.slices);
-  console.log("article.data.slices >>>> ", article.data.slices);
 
   return (
     <Box my={[10]}>
