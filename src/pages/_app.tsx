@@ -32,7 +32,7 @@ import config from "core/config";
 import CurrencyDetector from "components/CurrencyDetector";
 import { useTranslation } from "react-i18next";
 import HardsandLink from "components/HardsandsLink";
-import { richTextComponents } from "modules/articles";
+import { richTextComponents } from "modules/articles/constants";
 import { repositoryName } from "modules/articles/prismicio";
 
 Sentry.init({

@@ -65,7 +65,7 @@ const BlogCard = ({ article, t }: BlogCardProps) => {
             </Heading>
           </Flex>
 
-          <Text mb={4} fontSize={[12, 14]} noOfLines={[3, 3, 4]}>
+          <Text mb={4} fontSize={[14]} noOfLines={[3, 3, 4]}>
             {excerpt}
           </Text>
           <Flex justify={"space-between"} direction="row">
