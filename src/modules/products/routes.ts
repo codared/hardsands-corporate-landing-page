@@ -27,6 +27,13 @@ export const blogRoute = buildRoutes("articles", {
     }
     return `?filter=${filter}`;
   },
+  detail: ({ slug }: { slug?: string } = {}) => {
+    if (!slug) {
+      return "/articles";
+    }
+    const base = `/articles/${slug}`;
+    return `${base}`;
+  },
 });
 
 export default productRoutes;

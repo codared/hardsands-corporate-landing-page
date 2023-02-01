@@ -2,6 +2,8 @@ import "../styles/globals.css";
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
+import { PrismicProvider } from "@prismicio/react";
+import { PrismicPreview } from "@prismicio/next";
 import { createWrapper, MakeStore, Context } from "next-redux-wrapper";
 import type { AppProps } from "next/app";
 import theme from "styles/theme";
@@ -29,6 +31,9 @@ import ErrorFallback from "components/ErrorBoundary/ErrorFallback";
 import config from "core/config";
 import CurrencyDetector from "components/CurrencyDetector";
 import { useTranslation } from "react-i18next";
+import HardsandLink from "components/HardsandsLink";
+import { richTextComponents } from "modules/articles/constants";
+import { repositoryName } from "modules/articles/prismicio";
 
 Sentry.init({
   release: process.env.COMMIT_SHA,
@@ -72,16 +77,24 @@ function HardsandsApp({
           <AnalyticsProvider>
             <>
               <CheckoutProvider currency={currency}>
-                <>
-                  <ManualAnalyticsTags />
-                  {typeof window && <AnalyticsScriptTag />}
-                  <Fonts />
-                  <ErrorBoundary t={t} FallbackComponent={ErrorFallback}>
-                    <CurrencyDetector />
-                    <ColorModeScript initialColorMode={"light"} />
-                    <Component {...pageProps} />
-                  </ErrorBoundary>
-                </>
+                <PrismicProvider
+                  internalLinkComponent={(props) => <HardsandLink {...props} />}
+                  richTextComponents={richTextComponents}
+                >
+                  <PrismicPreview repositoryName={repositoryName}>
+                    <>
+                      <ManualAnalyticsTags />
+                      <script async defer src="https://static.cdn.prismic.io/prismic.js?new=true&repo=hardsands-blogs"></script>
+                      {typeof window && <AnalyticsScriptTag />}
+                      <Fonts />
+                      <ErrorBoundary t={t} FallbackComponent={ErrorFallback}>
+                        <CurrencyDetector />
+                        <ColorModeScript initialColorMode={"light"} />
+                        <Component {...pageProps} />
+                      </ErrorBoundary>
+                    </>
+                  </PrismicPreview>
+                </PrismicProvider>
               </CheckoutProvider>
             </>
           </AnalyticsProvider>
