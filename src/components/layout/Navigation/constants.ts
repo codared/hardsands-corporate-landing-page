@@ -21,7 +21,7 @@ export const NAV_ITEMS: Array<NavItem> = [
     href: "/articles/how-to-use",
   },
   {
-    label: "Blogs",
+    label: "Blog",
     href: blogRoute.blogs(),
   },
   { label: "Account", href: "/login" },

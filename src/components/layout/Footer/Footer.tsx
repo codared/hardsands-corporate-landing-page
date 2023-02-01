@@ -199,7 +199,7 @@ export default function Footer() {
             <HardsandLink href={"mailto:info@hardsands.com"} isExternal={true}>
               Contact us
             </HardsandLink>
-            <HardsandLink href={blogRoute.blogs()}>Blogs</HardsandLink>
+            <HardsandLink href={blogRoute.blogs()}>Blog</HardsandLink>
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Support</ListHeader>
