@@ -51,6 +51,7 @@ const HandPickedForYou = () => {
         }
         buttonHref={productRoutes.products()}
         buttonText="Buy Now"
+        showStory
       />
 
       <PromoPageProductList
