@@ -22,6 +22,7 @@ const ProductPage = ({ product: initialProduct }: { product?: Product }) => {
     query: { slug, color, variant },
   } = router;
 
+  console.log("slug >>>> ", slug); // hardsands-epoxy-pvc
   const { product, productDetails } = useProduct(
     initialProduct,
     slug as string
