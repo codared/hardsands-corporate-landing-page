@@ -38,14 +38,14 @@ function TrackForm() {
   };
 
   return (
-    <Container py={[40]}>
+    <Container mb={[20]} justifyContent={"center"} alignItems={"center"}>
       <Image
         my={[10]}
         mx={"auto"}
         src={TrackingLogo.src}
         alt={"tracking logo"}
       />
-      <Heading color={"brand.300"} textAlign={["center", "left"]}>
+      <Heading color={"brand.300"} textAlign={["center"]}>
         Track Order Status
       </Heading>
       {errorMessage && (
@@ -56,13 +56,15 @@ function TrackForm() {
           setShowCancelMessage={() => {}}
         />
       )}
-      <CustomInput
-        onChange={handleChange}
-        name={"trackNumber"}
-        value={trackingId}
-        placeholder={"Enter Tracking ID"}
-        my={[6]}
-      />
+      <Box w={["100%", "50%"]} my={[6]} mx={"auto"}>
+        <CustomInput
+          onChange={handleChange}
+          name={"trackNumber"}
+          value={trackingId}
+          placeholder={"Enter Tracking ID"}
+          borderColor={"black"}
+        />
+      </Box>
       <Button
         fontSize={"sm"}
         fontWeight="bold"
@@ -70,6 +72,7 @@ function TrackForm() {
         bg={"brand.200"}
         p={["12px 16px", "12px 46px"]}
         w={["100%", "50%"]}
+        mx={"auto"}
         display="flex"
         alignItems="center"
         justifyContent={"center"}
