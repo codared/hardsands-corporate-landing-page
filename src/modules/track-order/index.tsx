@@ -53,7 +53,7 @@ function TrackForm() {
           t={t}
           status={"error"}
           showCancelMessage={errorMessage}
-          setShowCancelMessage={() => {}}
+          setShowCancelMessage={() => setErrorMessage("")}
         />
       )}
       <Box w={["100%", "50%"]} my={[6]} mx={"auto"}>
