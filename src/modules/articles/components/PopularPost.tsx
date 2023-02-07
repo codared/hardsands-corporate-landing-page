@@ -48,6 +48,8 @@ function PopularPost({
             </Heading>
             <Text py={[6]}>{excerpt}</Text>
             <HardsandsButton
+              // @ts-ignore
+              w={["12rem"]}
               href={blogRoute.detail({ slug: article.uid })}
               // @ts-ignore
               _hover={{
