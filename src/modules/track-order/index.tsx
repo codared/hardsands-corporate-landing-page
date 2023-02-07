@@ -29,7 +29,7 @@ function TrackForm() {
         Router.push(`/order/track/${trackingId}`);
         setLoading(false);
       } else {
-        setErrorMessage(`Invalid Tracking ID: ${res.message}`);
+        setErrorMessage("Tracking ID is invalid or doesn't exist");
         setLoading(false);
       }
     } catch (error) {
