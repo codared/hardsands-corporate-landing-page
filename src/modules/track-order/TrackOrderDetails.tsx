@@ -16,10 +16,11 @@ import { TrackOrderDetails } from "./types";
 import { STEPS } from "modules/track-order/constants";
 
 function TrackOrderDetails({ details }: { details: TrackOrderDetails }) {
+  console.log("🚀 ~ file: TrackOrderDetails.tsx:19 ~ TrackOrderDetails ~ details", details)
   const activeStep = buildDeliverySteps(
-    details.delaysAt,
-    details.deliveredAt,
-    details.dispatchedAt
+    details?.delaysAt,
+    details?.deliveredAt,
+    details?.dispatchedAt
   );
 
   return (
@@ -85,7 +86,12 @@ function TrackOrderDetails({ details }: { details: TrackOrderDetails }) {
           {STEPS.map(({ step, title, description }) => {
             if (step === 3 && !details.delaysAt) return null;
             return (
-              <Box position={"relative"} h={130} key={step}>
+              <Box
+                position={"relative"}
+                h={activeStep !== step ? 70 : 130}
+                key={step}
+                transition={"all ease-in-out 200ms"}
+              >
                 <Box
                   boxSize={6}
                   borderRadius={"full"}
@@ -112,7 +118,9 @@ function TrackOrderDetails({ details }: { details: TrackOrderDetails }) {
                   <Text textTransform={"uppercase"} mb={[2]} fontSize={13}>
                     {title}
                   </Text>
-                  <Text fontSize={13}>{description}</Text>
+                  {activeStep === step && (
+                    <Text fontSize={13}>{description}</Text>
+                  )}
                 </Box>
               </Box>
             );
