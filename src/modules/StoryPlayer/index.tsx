@@ -28,65 +28,7 @@ import PrevButton from "components/PrevButton";
 import NextButton from "components/NextButton";
 import { MdClose } from "react-icons/md";
 import VariantSelectionModal from "./components/VariantSelectionModal";
-
-const PROFILES = [
-  {
-    id: 1,
-    image: "https://randomuser.me/api/portraits/women/89.jpg",
-    status: "Products",
-    stories: [
-      {
-        url: "https://player.vimeo.com/external/366974782.sd.mp4?s=cb1c5618db8ee20a68d8bfd026e6b4cee35a68be&profile_id=164&oauth2_token_id=57447761",
-        // duration: 5000,
-        header: {
-          heading: "Mohit Karekar",
-          // subheading: "Posted 30m ago",
-          profileImage: "https://picsum.photos/100/100",
-        },
-        type: "video",
-      },
-      {
-        url: "https://player.vimeo.com/external/491176465.sd.mp4?s=3b5e8d84be1388e4b435a6aacaa0e16c958a77b4&profile_id=165&oauth2_token_id=57447761",
-        // duration: 5000,
-        type: "video",
-      },
-    ],
-  },
-  {
-    id: 2,
-    image: "https://randomuser.me/api/portraits/women/74.jpg",
-    status: "Reviews",
-    stories: [
-      {
-        url: "https://player.vimeo.com/external/538561465.sd.mp4?s=786eeae0e3c0f89892c3c0ef13d59127799f3182&profile_id=165&oauth2_token_id=57447761",
-        // duration: 5000,
-        type: "video",
-      },
-      {
-        url: "https://player.vimeo.com/external/364006452.sd.mp4?s=39e0fadb487cf1e6fe39a94a4f84d0c8a0f2cfd1&profile_id=164&oauth2_token_id=57447761",
-        // duration: 5000,
-        header: {
-          heading: "Mohit Karekar",
-          // subheading: "Posted 30m ago",
-          profileImage: "https://picsum.photos/100/100",
-        },
-        type: "video",
-      },
-    ],
-  },
-  {
-    id: 3,
-    image: "https://randomuser.me/api/portraits/women/17.jpg",
-    status: "Guidelines",
-    stories: [],
-  },
-  {
-    id: 4,
-    image: "https://randomuser.me/api/portraits/women/36.jpg",
-    status: "New Features",
-    stories: [],
-  },
-];
+import { PROFILES } from "./constants";
 
 const getProfilesWithStories = (profiles: any[]) => {
   return profiles.filter(
@@ -155,9 +97,11 @@ function Story({
                 borderRadius="full"
                 borderColor={"white"}
                 borderWidth={"2px"}
+                h={"100%"}
               >
                 <Image
                   borderRadius="full"
+                  h={"100%"}
                   src={story.image}
                   alt={story.status}
                 />
@@ -208,7 +152,7 @@ function Story({
             <Stories
               currentIndex={0}
               stories={PROFILES[storyPosition - 1].stories as Story[]}
-              defaultInterval={1500}
+              defaultInterval={28000}
               width={425}
               height={868} // 955
               onAllStoriesEnd={() => {
