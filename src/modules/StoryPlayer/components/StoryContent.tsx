@@ -1,5 +1,7 @@
 import { Flex, Button, Image } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
+import productRoutes from "modules/products/routes";
+import buildRoutes from "modules/shared/buildRoutes";
 import React, { useEffect, useState } from "react";
 import { IoVolumeHighOutline, IoVolumeMuteOutline } from "react-icons/io5";
 
@@ -35,8 +37,8 @@ const StoryContent = ({
         <HardsandsButton
           // @ts-ignore
           w={"full"}
-          href={"#"}
-          onClick={() => onOpen()}
+          href={productRoutes.products()}
+          // onClick={() => onOpen()}
           _hover={{ color: "white" }}
         >
           {buttonText}
