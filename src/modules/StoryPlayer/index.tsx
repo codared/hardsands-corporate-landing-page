@@ -52,6 +52,7 @@ function Story({
     onClose: onCloseVariantSelection,
   } = useDisclosure();
   const [storyPosition, setStoryPosition] = useState<number>(1);
+  const [currentStoryIndex, setCurrentStoryIndex] = useState<number>(0);
 
   const handleStorySelect = (profile: any) => {
     if (profile.stories.length) {
@@ -72,6 +73,7 @@ function Story({
         color={["black", "black", "white"]}
         size={"md"}
         my={[4]}
+        ml={[10]}
       >
         Try it Below
       </Heading>
@@ -150,16 +152,23 @@ function Story({
               }}
             />
             <Stories
-              currentIndex={0}
+              keyboardNavigation
+              currentIndex={currentStoryIndex}
               stories={PROFILES[storyPosition - 1].stories as Story[]}
-              defaultInterval={28000}
+              defaultInterval={15000}
+              // width={360}
+              // height={640} // 955
               width={425}
               height={868} // 955
-              onAllStoriesEnd={() => {
-                if (storyPosition === getProfilesWithStories(PROFILES)) {
-                  return handleModalClose();
-                }
-                setStoryPosition(storyPosition + 1);
+              onStoryEnd={(s: any, st: any) => {}}
+              onAllStoriesEnd={(s: any, st: any) => {
+                try {
+                  if (storyPosition === getProfilesWithStories(PROFILES)) {
+                    return handleModalClose();
+                  }
+                  setCurrentStoryIndex(0);
+                  setStoryPosition(storyPosition + 1);
+                } catch (e) {}
               }}
             />
             <NextButton
