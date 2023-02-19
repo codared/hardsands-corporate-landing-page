@@ -22,11 +22,17 @@ const QRCodeShareSection = ({ card }: { card: UserCardType }) => {
       title: "Copied!",
       status: "success",
       duration: 1000,
-    })
+    });
   };
 
   return (
-    <Box p={4} my={8} borderWidth={1} borderStyle="solid">
+    <Box
+      id={"data-tut-qr-code-share"}
+      p={4}
+      my={8}
+      borderWidth={1}
+      borderStyle="solid"
+    >
       <Flex justify={"space-between"}>
         <Heading fontSize={14} alignSelf={"center"}>
           Share

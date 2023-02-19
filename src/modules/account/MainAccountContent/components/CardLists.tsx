@@ -7,23 +7,44 @@ import {
   Image,
   SimpleGrid,
 } from "@chakra-ui/react";
+import { useTour } from "@reactour/tour";
 import HardsandsButton from "components/HardsandsButton";
-import { UserCardType } from "modules/account/types";
+import { APP_SCREEN, UserCardType } from "modules/account/types";
 import { getCardImageFromSlug } from "modules/products/functions";
 import productRoutes from "modules/products/routes";
-import React from "react";
+import React, { useEffect } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
 import { colors } from "styles/theme";
+import { ONBOARDING_TOUR } from "utils/constants";
 import { slugify } from "utils/string";
 
 const CardLists = ({
   cards,
   handleCardSelect,
+  currentScreenState,
 }: {
+  currentScreenState: string;
   cards: UserCardType[];
   handleCardSelect: (card: UserCardType) => void;
 }) => {
+  const isOnBoarded = localStorage.getItem(ONBOARDING_TOUR);
+  const { setIsOpen: setIsTourOpen } = useTour();
+
+  useEffect(() => {
+    if (!isOnBoarded || isOnBoarded !== "1") {
+      setIsTourOpen(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      setIsTourOpen(false);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentScreenState]);
+
   return (
     <Box>
       <SimpleGrid columns={[1, 2, 3]} gap={4}>
@@ -53,7 +74,7 @@ const CardBox = ({
   const cardTitle = slugify(card.cardTitle);
 
   return (
-    <Box>
+    <Box id={"data-tut"}>
       <Flex
         direction={["column"]}
         bg={"brand.10"}
