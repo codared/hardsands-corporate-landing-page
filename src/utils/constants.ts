@@ -5,6 +5,7 @@ export const CUSTOMER_ENTRY_LANDING_PAGE = "customer_entry_landing_page";
 export const PROMOCODE_COOKIE = "selected_promocode";
 export const CART_ID_LOCAL_STORAGE_KEY = "hardsands_cart_id";
 export const CURRENCY_COOKIE = "hardsands_selected_currency";
+export const ONBOARDING_TOUR = "hardsands_onboarding_tour_shown";
 
 export const BRAND_DESCRIPTION = `One time Business Card for your team, business and personal use.
 All you have to do it tap on the device with the Hardsands card to share your

@@ -19,6 +19,7 @@ const Tab = ({
 }) => {
   return (
     <Box
+      id={tabId}
       textAlign={"center"}
       position="relative"
       py={[4]}
