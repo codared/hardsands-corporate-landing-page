@@ -19,6 +19,7 @@ import {
 import Loader from "../components/Loader";
 import NoCardMessage from "../components/NoCardMessage";
 import { ACTION_FORM_STATUS, AppIcons } from "../constants";
+import { NotFoundErrorMessage } from "../functions";
 import useScreenNavigation from "../hooks";
 import { uploadImageData } from "../services";
 import { APP_SCREEN, UserCardType } from "../types";
@@ -236,7 +237,7 @@ function MainIndex() {
     if (appError?.isError) {
       toast({
         position: "top-right",
-        title: appError.name,
+        title: NotFoundErrorMessage(appError.name),
         description: appError.message,
         status: "error",
         duration: 9000,

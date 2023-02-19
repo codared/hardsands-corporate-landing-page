@@ -25,3 +25,7 @@ export const getSocialEditIcons = (rest: any) => {
     };
   });
 };
+
+export const NotFoundErrorMessage = (errorMessage: string | any) => {
+  return errorMessage.includes("NotFoundError") ? "Failed Error" : errorMessage;
+};
