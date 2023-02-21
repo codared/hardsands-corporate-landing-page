@@ -27,27 +27,30 @@ function HowWeCompare({ ...rest }: HowWeCompareProps) {
         <Text>Check out the features comparison to see for yourself.</Text>
       </Flex>
 
-      <TableContainer my={[16]}>
+      <TableContainer my={[10, 16]}>
         <Table variant={"unstyled"} size="sm" maxW={"100%"}>
           <Thead>
-            <Tr fontSize={[10, 14]}>
+            <Tr fontSize={[".488rem", 14]}>
               <Th></Th>
               <Th
                 textAlign={"center"}
                 whiteSpace={["pre-wrap", "pre-wrap", "nowrap"]}
                 w={120}
                 maxW={120}
-                py={[8]}
+                py={[2, 8,  8]}
+                px={[2, 4, 8]}
               >
                 Paper Cards
               </Th>
               <Th
                 textAlign={"center"}
+                borderTopRadius={[10, 20]}
                 whiteSpace={["pre-wrap", "pre-wrap", "nowrap"]}
                 w={120}
                 maxW={120}
                 bg={"brand.100"}
-                py={[8]}
+                py={[2, 8,  8]}
+                px={[2, 4, 8]}
               >
                 Hardsands Cards
               </Th>
@@ -56,7 +59,8 @@ function HowWeCompare({ ...rest }: HowWeCompareProps) {
                 whiteSpace={["pre-wrap", "pre-wrap", "nowrap"]}
                 w={120}
                 maxW={120}
-                py={[8]}
+                py={[2, 8,  8]}
+                px={[2, 4, 8]}
               >
                 Other Cards
               </Th>
@@ -66,13 +70,13 @@ function HowWeCompare({ ...rest }: HowWeCompareProps) {
             {[
               "High-level security",
               "Payment links and more",
-              "Card sharing via QR code, e.t.c",
+              "Info sharing via QR code & NFC",
               "Social media links",
               "Super intuitive user interface",
-              "Basic card analytics",
+              "Card usage analytics",
             ].map((item: string, index: number) => (
               <Tr whiteSpace={["pre-wrap"]} fontSize={[10, 14]} key={index}>
-                <Td w={140} fontWeight={"600"}>
+                <Td w={140} padding={0} fontWeight={"600"}>
                   {item}
                 </Td>
                 <Td py={[4, 8]}>

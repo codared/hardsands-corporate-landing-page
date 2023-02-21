@@ -65,7 +65,7 @@ const HandPickedForYou = () => {
         promoProducts={promoProducts}
       />
 
-      <HowWeCompare py={[10]} />
+      <HowWeCompare py={[2]} />
 
       <Box position={"relative"} overflow="unset" py={[10, 48]} px={[4, 4, 48]}>
         <Box
