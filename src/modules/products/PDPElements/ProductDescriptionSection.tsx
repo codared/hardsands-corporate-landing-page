@@ -101,7 +101,7 @@ const ProductDescriptionSection = ({
             bg: "black",
             color: "brand.200",
           }}
-          fontFamily={"MADE Outer sans"}
+          fontFamily="Made Outer Sans Light"
           onClick={handleAddtoCart}
           userSelect="none"
           ref={cartBtnRef}

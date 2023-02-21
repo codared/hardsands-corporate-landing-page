@@ -245,7 +245,8 @@ export const ProductCard = ({
                   borderColor: "brand.200",
                 }}
               >
-                <Text>{t("product:add-to-cart", "Add to cart")}</Text>
+                <Text 
+                fontFamily="Made Outer Sans Light">{t("product:add-to-cart", "Add to cart")}</Text>
               </Button>
             ) : (
               <HardsandsButton

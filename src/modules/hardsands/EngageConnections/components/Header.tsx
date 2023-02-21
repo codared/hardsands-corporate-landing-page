@@ -103,7 +103,7 @@ function Header({
                 color: "brand.300",
                 border: "1px solid #DF9F71",
               }}
-              fontFamily="Made Outer Sans Regular"
+              fontFamily="Made Outer Sans Light"
               onClick={
                 !!handleAddToCart
                   ? (e: SyntheticEvent) =>
