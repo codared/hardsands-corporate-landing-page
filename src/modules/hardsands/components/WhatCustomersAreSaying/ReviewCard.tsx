@@ -5,8 +5,7 @@ function ReviewCard({ review }: { review: any }) {
   return (
     <VStack
       p={[10]}
-      minW={["100%", 500]}
-      h={["300px", "288px"]}
+      minW={["100%", 500]} 
       justifyContent={"space-between"}
       alignItems={["center"]}
       bg={"brand.10"}

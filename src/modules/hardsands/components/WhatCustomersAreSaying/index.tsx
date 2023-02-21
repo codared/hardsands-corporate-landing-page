@@ -5,19 +5,19 @@ import ReviewCarouselSlide from "./ReviewCarousel";
 function WhatCustomersAreSaying() {
   const reviews = [
     {
-      text: "We had to print new cards every time one of our employees got a promotion, and it was simply wasteful.  With Hardsands, we just update the info on the portal. Much easier and less expensive than ordering a new batch. Plus, our customers enjoy the first tap. There is a significant wow factor.",
-      author: "Sue Carney",
-      location: "UK",
+      text: "This card is a life-saver when it comes to networking! Sharing my details with just one tap has made everything so much easier. It is so convenient and hassle-free it is, and it's definitely saved me time and effort. I no longer have to fumble around with a stack of business cards and worry about losing them. I highly recommend it to anyone who wants to make networking a breeze.",
+      author: "Okoli Chinonso",
+      location: "Lagos, Nigeria",
     },
     {
-      text: "Very quick service with customising my dashboard. Very professional business cards. The dashboard is very simple to use and I love how quickly you can change your default action on each card if needed.",
-      author: "ERIC JONES",
-      location: "USA",
+      text: "I was a bit skeptical about getting the card at first, but after using it for a few weeks, I'm sold! It's amazing how much more professional and sophisticated I feel when I share my details with just one tap. I had to get it for my staff, and it has been a game-changer. Not only does it save us costs from constantly printing new business cards, but it's amazing how something as simple as a digital card can have such a big impact on our business. I'm glad I made the investment, and I'm sure you will too!",
+      author: "Bello Halimat",
+      location: "Abuja, Nigeria",
     },
     {
-      text: "We're launching a new company called Eco Warriors, and the idea of a more environmentally friendly business card fits perfectly with our values. It's a great way to share your contact information without cutting down any more trees!! Please save the trees!!",
-      author: "DAVID BASSEY",
-      location: "NIGERIA",
+      text: "I've been using my Hardsands card for a while now, and it never fails to impress people. It's sleek and sophisticated, and it definitely adds to my professional image. I love how I can bring it out and share my details with just one tap, it's always a great conversation starter too. If you want to leave a lasting impression, this is the card for you!",
+      author: "Eronmosele Adesua",
+      location: "Benin, Nigeria",
     },
   ];
 
