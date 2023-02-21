@@ -38,8 +38,8 @@ const HandPickedForYou = () => {
     <Container overflow={"hidden"} p={[0, "inherit"]} maxW={["100%", "9xl"]}>
       <PageHeader
         title={t(
-          "pages:header:title:you-can-share-your-information-with-anyone-you-meet",
-          "You can share your information with anyone you meet"
+          "pages:header:title:tap-and-share-your-information-with-anyone-on-the-go",
+          "Tap and share your Information with anyone on the Go"
         )}
         subTitle={t(
           "pages:header:description:connect-wherever-you-go",
@@ -88,7 +88,7 @@ const HandPickedForYou = () => {
         >
           <Box my={[6, "auto"]} mr={[10]} w={["100%", "30%"]}>
             <Heading>
-              A one-stop-shop that helps you connect with new people
+              The fastest way to connect with new people
             </Heading>
             <Text my={[10]}>
               Say farewell to stacks of paper business cards. Say hello to
@@ -132,7 +132,7 @@ const HandPickedForYou = () => {
             />
           </Box>
           <Box my={[8, "auto"]} ml={[0, 10]} w={["100%", "30%"]}>
-            <Heading>Reasons Why!</Heading>
+            <Heading>Why Us?</Heading>
             <Text my={[10]}>
               While there are many popular digital business cards, Hardsands
               offers you a truly customizable dashboard with features that let
