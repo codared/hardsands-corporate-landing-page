@@ -169,7 +169,7 @@ export const ProductCard = ({
           alt={`Picture of ${name}`}
           objectFit="cover"
           objectPosition={"center"}
-          w={["90%", "100%"]}
+          w={["95%", "100%"]}
           margin="auto"
         />
 
