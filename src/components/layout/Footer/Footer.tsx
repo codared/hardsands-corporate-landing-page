@@ -94,7 +94,7 @@ const ListHeader = ({
   return (
     <Text
       fontWeight={"600"}
-      fontFamily="Made Outer sans"
+      fontFamily="Made Outer sans Regular"
       fontSize={"lg"}
       mb={2}
       color={color}

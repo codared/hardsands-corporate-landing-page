@@ -123,7 +123,7 @@ function Header({
               border={"none"}
               // color={"brand.300"}
               fontWeight={"bold"}
-              fontFamily={"MADE Outer Sans"}
+              fontFamily={"MADE Outer Sans Light"}
               px={[0, 0, 6]}
               textAlign={["left"]}
             >
