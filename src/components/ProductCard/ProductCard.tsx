@@ -168,13 +168,15 @@ export const ProductCard = ({
           src={productImage || img}
           alt={`Picture of ${name}`}
           objectFit="cover"
-          w="100%"
+          objectPosition={"center"}
+          w={["90%", "100%"]}
+          margin="auto"
         />
 
         <Flex
           direction={"column"}
           justifyContent={"space-between"}
-          p={["4"]}
+          p={["4"]} 
           textAlign="center"
           height={"55%"}
         >
