@@ -38,8 +38,8 @@ const HandPickedForYou = () => {
     <Container overflow={"hidden"} p={[0, "inherit"]} maxW={["100%", "9xl"]}>
       <PageHeader
         title={t(
-          "pages:header:title:you-can-share-your-information-with-anyone-you-meet",
-          "You can share your information with anyone you meet"
+          "pages:header:title:tap-and-share-your-information-with-anyone-on-the-go",
+          "Tap and share your Information with anyone on the Go"
         )}
         subTitle={t(
           "pages:header:description:connect-wherever-you-go",
@@ -65,7 +65,7 @@ const HandPickedForYou = () => {
         promoProducts={promoProducts}
       />
 
-      <HowWeCompare py={[10]} />
+      <HowWeCompare py={[2]} />
 
       <Box position={"relative"} overflow="unset" py={[10, 48]} px={[4, 4, 48]}>
         <Box
@@ -87,7 +87,7 @@ const HandPickedForYou = () => {
         >
           <Box my={[6, "auto"]} mr={[10]} w={["100%", "30%"]}>
             <Heading>
-              A one-stop-shop that helps you connect with new people
+              The fastest way to connect with new people
             </Heading>
             <Text my={[10]}>
               Say farewell to stacks of paper business cards. Say hello to
@@ -106,9 +106,10 @@ const HandPickedForYou = () => {
             <Image
               maxW={["100%", "100%", "lg"]}
               mx={"auto"}
+              mb={[0, '4rem']}
               src={
-                "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A8144.jpg?v=1670961535"
-                // "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/landing_page_asset_1.png?v=1670851695"
+                // "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS960_1_d5bc5fc9-7373-49f3-8f5a-e5ff8c25a2fb.jpg?v=1677052452"
+                "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/landing_page_asset_1.png?v=1670851695"
               }
               alt={""}
             />
@@ -131,7 +132,7 @@ const HandPickedForYou = () => {
             />
           </Box>
           <Box my={[8, "auto"]} ml={[0, 10]} w={["100%", "30%"]}>
-            <Heading>Reasons Why!</Heading>
+            <Heading>Why Us?</Heading>
             <Text my={[10]}>
               While there are many popular digital business cards, Hardsands
               offers you a truly customizable dashboard with features that let

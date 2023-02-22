@@ -18,7 +18,7 @@ function NoCardMessage() {
         fontWeight={500}
         color={"black"}
         bg={"brand.100"}
-        fontFamily="MADE Outer sans"
+        fontFamily="MADE Outer sans Light"
         py={[2]}
         borderWidth="2px"
         borderColor={"brand.100"}

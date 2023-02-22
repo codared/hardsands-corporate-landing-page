@@ -5,16 +5,15 @@ function ReviewCard({ review }: { review: any }) {
   return (
     <VStack
       p={[10]}
-      minW={["100%", 500]}
-      h={["300px", "288px"]}
+      minW={["100%", 500]} 
       justifyContent={"space-between"}
       alignItems={["center"]}
       bg={"brand.10"}
     >
-      <Text textAlign={["center"]}>{review.text}</Text>
+      <Text textAlign={"center"}>{review.text}</Text>
 
       <VStack mt={[10]}>
-        <Heading textTransform={"uppercase"} size={"md"} color={"brand.300"}>
+        <Heading textTransform={"uppercase"} textAlign={"center"} size={"md"} color={"brand.300"}>
           {review.author}
         </Heading>
         <Text>{review.location}</Text>
