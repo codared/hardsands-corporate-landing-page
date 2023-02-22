@@ -106,9 +106,10 @@ const HandPickedForYou = () => {
             <Image
               maxW={["100%", "100%", "lg"]}
               mx={"auto"}
+              mb={[0, '4rem']}
               src={
-                "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/2Q7A8144.jpg?v=1670961535"
-                // "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/landing_page_asset_1.png?v=1670851695"
+                // "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS960_1_d5bc5fc9-7373-49f3-8f5a-e5ff8c25a2fb.jpg?v=1677052452"
+                "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/landing_page_asset_1.png?v=1670851695"
               }
               alt={""}
             />
