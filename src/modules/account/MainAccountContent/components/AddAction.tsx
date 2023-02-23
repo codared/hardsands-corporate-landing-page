@@ -24,8 +24,8 @@ const AddAction = ({
   setSelectedAction: (action: ActionsType) => void;
   handleSelectedTab: (tab: APP_SCREEN) => void;
 }) => {
-  const { setIsOpen: setIsTourOpen, setSteps } = useTour();
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { setIsOpen: setIsTourOpen, setSteps } = useTour();
   const isOnBoarded = localStorage.getItem(ONBOARDING_TOUR);
 
   useEffect(() => {
