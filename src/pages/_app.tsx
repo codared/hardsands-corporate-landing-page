@@ -78,7 +78,7 @@ function HardsandsApp({
         <CopyrightYearProvider value={copyRightYear}>
           <AnalyticsProvider>
             <>
-              <TourProvider steps={tourConfig} styles={styleConfig}>
+              <TourProvider steps={[]} styles={styleConfig}>
                 <CheckoutProvider currency={currency}>
                   <PrismicProvider
                     internalLinkComponent={(props) => (
