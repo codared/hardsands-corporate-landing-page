@@ -35,7 +35,7 @@ import HardsandLink from "components/HardsandsLink";
 import { richTextComponents } from "modules/articles/constants";
 import { repositoryName } from "modules/articles/prismicio";
 import { TourProvider } from "@reactour/tour";
-import { styleConfig, tourConfig } from "modules/Tour";
+import { styleConfig } from "modules/Tour";
 
 Sentry.init({
   release: process.env.COMMIT_SHA,
