@@ -19,12 +19,6 @@ export const tourActionConfig = [
     delay: 30000,
     selector: '[id="add-action-button"]',
     content:
-      "Action is what your receiver sees when they tap/scan your card. click “Add action” to get started.",
-  },
-  {
-    delay: 30000,
-    selector: '[id="add-action-button"]',
-    content:
       "Action is what your receiver sees when they tap/scan your card. click “Add action” to get started. Choose an action from the list",
   },
 ];
