@@ -2,28 +2,38 @@ import React, { useEffect, useState } from "react";
 import { colors } from "styles/theme";
 import Tour from "reactour";
 
-export const tourConfig = [
-  {
-    delay: 30000,
-    selector: '[id="data-tut-epoxy-tag-black"]',
-    content: "Welcome! Show see list of cards you have purchased",
-  },
-  {
-    delay: 30000,
-    selector: '[id="data-tut"]',
-    content: "Click a card you want to make changes too",
-  },
-];
+// export const tourConfig = [
+//   {
+//     delay: 30000,
+//     selector: '[id="data-tut-epoxy-tag-black"]',
+//     content: "Welcome! Show see list of cards you have purchased",
+//   },
+//   {
+//     delay: 30000,
+//     selector: '[id="data-tut"]',
+//     content: "Click a card you want to make changes too",
+//   },
+// ];
 export const tourActionConfig = [
   {
     delay: 30000,
     selector: '[id="add-action-button"]',
-    content: "Click Add Action, to create an action for your card",
+    content:
+      "Action is what your receiver sees when they tap/scan your card. click “Add action” to get started. Choose an action from the list",
+  },
+];
+export const tourSelectActionConfig = [
+  {
+    delay: 30000,
+    selector: '[id="tour-select-action"]',
+    content:
+      "Choose action you want your receiver to see when they tap/scan your card",
   },
   {
     delay: 30000,
-    selector: '[id="add-action-button"]',
-    content: "Click Add Action, to create an action for your card",
+    selector: '[id="tour-select-action"]',
+    content:
+      "Choose action you want your receiver to see when they tap/scan your card",
   },
 ];
 
