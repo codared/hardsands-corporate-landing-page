@@ -128,7 +128,12 @@ function Story({
         scrollBehavior={"inside"}
       >
         <ModalOverlay />
-        <ModalContent w={"initial"} my={"auto"} maxH={"100%"}>
+        <ModalContent
+          w={"initial"}
+          my={"auto"}
+          position={"relative"}
+          maxH={"100%"}
+        >
           <ModalBody p={0} position={"relative"} overflow={"visible"}>
             <Box
               position={"absolute"}
@@ -156,10 +161,10 @@ function Story({
               currentIndex={currentStoryIndex}
               stories={PROFILES[storyPosition - 1].stories as Story[]}
               defaultInterval={15000}
-              // width={360}
+              // width={"100%"}
               // height={640} // 955
-              width={425}
-              height={868} // 955
+              // width={425}
+              // height={868} // 955
               onStoryEnd={(s: any, st: any) => {}}
               onAllStoriesEnd={(s: any, st: any) => {
                 try {
