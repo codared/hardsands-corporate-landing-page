@@ -132,6 +132,7 @@ const EditFormScreen = ({
             },
           ],
         });
+
       }
     }
   };
@@ -248,7 +249,7 @@ const SaveButton = ({
           borderWidth: "2px",
           borderColor: "brand.100",
         }}
-        fontFamily={"MADE Outer sans"}
+        fontFamily={"MADE Outer sans Light"}
         onClick={handleAction}
         userSelect="none"
         isLoading={isSubmitting}

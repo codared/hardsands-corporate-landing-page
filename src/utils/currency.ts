@@ -180,12 +180,17 @@ export function formatCurrencyInteger(
     ? 0
     : fractionDigits;
 
-  return new Intl.NumberFormat(language, {
+  let final = new Intl.NumberFormat(language, {
     style: "currency",
     currency: currency.toUpperCase(),
     minimumFractionDigits: fractionDigits,
     maximumFractionDigits: fractionDigits,
   }).format(amount / 100);
+
+  if (currency === CURRENCY_CODES.NGN){
+   final = "₦" +final.slice(4)
+  }
+  return final
 }
 
 export function replaceCurrencies(text: string) {

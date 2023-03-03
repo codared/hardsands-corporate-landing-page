@@ -67,7 +67,7 @@ export const isSupportedCurrency = (currency: string): boolean => {
 };
 
 export const getProductOptions = (options: ProductOptions) => {
-  return Object.values(options.options).map((opt) => opt.text);
+  return Object.values(options.options).map((opt) => opt.text).reverse();
 };
 
 export const isTokenExpired = (token: string) => {

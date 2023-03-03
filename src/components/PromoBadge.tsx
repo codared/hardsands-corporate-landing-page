@@ -15,7 +15,7 @@ const PromoBadge = ({ text }: { text: string }) => {
       alignItems={"center"}
       position={"absolute"}
       top={0}
-      left={0}
+      left={['2.5%', 0]}
     >
       <Text fontSize={12}>{text}</Text>
     </Flex>

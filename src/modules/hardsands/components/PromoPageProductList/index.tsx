@@ -2,9 +2,11 @@ import { Box, Flex, Heading, Grid, Text } from "@chakra-ui/react";
 import ProductCard from "components/ProductCard";
 import { CartDataDetails } from "components/ProductCard/type";
 import PromoBadge from "components/PromoBadge";
+import productRoutes from "modules/products/routes";
 import Cart from "modules/cart";
 import { useAddtoCart } from "modules/cart/hooks";
 import { Product } from "modules/products/types";
+import Link from "next/link";
 import React, { SyntheticEvent, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -88,6 +90,13 @@ function PromoPageProductList({
                 </Box>
               ))}
           </Grid>
+        </Flex>
+        <Flex direction={"column"} textAlign={["center", "right"]} mt={[2,8]}>
+          <Link href={productRoutes.products()}>
+            <Text cursor="pointer" fontFamily="made outer sans light" textDecoration="underline">
+              {'Browse All Products >>'}
+            </Text>
+          </Link>
         </Flex>
       </Box>
 

@@ -168,13 +168,15 @@ export const ProductCard = ({
           src={productImage || img}
           alt={`Picture of ${name}`}
           objectFit="cover"
-          w="100%"
+          objectPosition={"center"}
+          w={["95%", "100%"]}
+          margin="auto"
         />
 
         <Flex
           direction={"column"}
           justifyContent={"space-between"}
-          p={["4"]}
+          p={["4"]} 
           textAlign="center"
           height={"55%"}
         >
@@ -229,7 +231,7 @@ export const ProductCard = ({
                 borderRadius={"none"}
                 justifyContent={"center"}
                 transition={"all ease-in-out 200ms"}
-                fontFamily={"MADE Outer sans"}
+                fontFamily="Made Outer Sans Light"
                 userSelect="none"
                 p={["12px 16px", "10px 25px"]}
                 borderWidth="1px"
@@ -245,7 +247,8 @@ export const ProductCard = ({
                   borderColor: "brand.200",
                 }}
               >
-                <Text>{t("product:add-to-cart", "Add to cart")}</Text>
+                <Text 
+                fontFamily="Made Outer Sans Light">{t("product:add-to-cart", "Add to cart")}</Text>
               </Button>
             ) : (
               <HardsandsButton

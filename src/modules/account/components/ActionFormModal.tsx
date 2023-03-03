@@ -60,7 +60,6 @@ const ActionFormModal = ({
     setSelectedSocials([...selectedSocials, { ...selectedSocial }]);
     setAddSocials(false);
   };
-  // console.log("formState >>> ", formState);
 
   return (
     <CustomModal
@@ -88,7 +87,7 @@ const ActionFormModal = ({
             borderWidth: "2px",
             borderColor: "brand.100",
           }}
-          fontFamily={"MADE Outer sans"}
+          fontFamily={"MADE Outer sans Light"}
           onClick={handleAction}
           userSelect="none"
           isLoading={isSubmitting}
@@ -113,7 +112,7 @@ const ActionFormModal = ({
             <Box w={"full"}>
               {Object.keys(SOCIAL_LINKS).map((socialLink, index) => (
                 <Box key={index} mb={10}>
-                  <Text fontFamily={"MADE Outer sans"} mb={5}>
+                  <Text fontFamily={"MADE Outer sans Light"} mb={5}>
                     {socialLink}
                   </Text>
                   <Grid
@@ -143,7 +142,7 @@ const ActionFormModal = ({
                           {social.pro && (
                             <Tag
                               position={"absolute"}
-                              fontFamily={"MADE Outer sans"}
+                              fontFamily={"MADE Outer sans Light"}
                             >
                               PRO
                             </Tag>

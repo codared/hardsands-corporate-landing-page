@@ -209,7 +209,7 @@ export default function SocialProfile({
             <>
               {Object.keys(SOCIAL_LINKS).map((socialLink, index) => (
                 <Box key={index} mb={10} px={8} mt={6}>
-                  <Text fontFamily={"MADE Outer sans"} mb={5}>
+                  <Text fontFamily={"MADE Outer sans Light"} mb={5}>
                     {socialLink}
                   </Text>
                   <Text color="gray.500" mb={4}>
@@ -243,7 +243,7 @@ export default function SocialProfile({
                         {item.pro && (
                           <Tag
                             position={"absolute"}
-                            fontFamily={"MADE Outer sans"}
+                            fontFamily={"MADE Outer sans Light"}
                           >
                             PRO
                           </Tag>

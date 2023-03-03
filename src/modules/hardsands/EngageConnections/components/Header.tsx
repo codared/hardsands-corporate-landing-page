@@ -103,7 +103,7 @@ function Header({
                 color: "brand.300",
                 border: "1px solid #DF9F71",
               }}
-              fontFamily="Made Outer Sans Regular"
+              fontFamily="Made Outer Sans Light"
               onClick={
                 !!handleAddToCart
                   ? (e: SyntheticEvent) =>
@@ -123,7 +123,7 @@ function Header({
               border={"none"}
               // color={"brand.300"}
               fontWeight={"bold"}
-              fontFamily={"MADE Outer Sans"}
+              fontFamily={"MADE Outer Sans Light"}
               px={[0, 0, 6]}
               textAlign={["left"]}
             >

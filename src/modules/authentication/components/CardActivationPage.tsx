@@ -331,7 +331,7 @@ function CardActivationPage({
             fontWeight={500}
             color={"black"}
             bg={"brand.100"}
-            fontFamily="MADE Outer sans"
+            fontFamily="MADE Outer sans Light"
             onClick={() => {}}
             p={["24px 16px", "24px 46px"]}
             borderWidth="2px"

@@ -83,7 +83,7 @@ const Customization = () => {
               bg: "black",
               color: "brand.200",
             }}
-            fontFamily={"MADE Outer sans"}
+            fontFamily={"MADE Outer sans Light"}
             onClick={handleDownload}
             userSelect="none"
           >
