@@ -66,7 +66,7 @@ function PromoPageProductList({
               promoProducts?.length > 0 &&
               promoProducts?.map((prod: Product, id) => (
                 <Box key={id} position={"relative"}>
-                  {prod.slug === "matte-black-card" && (
+                  {prod.slug === "matte-black-pvc-card" && (
                     <PromoBadge text="Trending" />
                   )}
                   <ProductCard
