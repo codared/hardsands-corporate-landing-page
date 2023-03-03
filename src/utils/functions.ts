@@ -154,12 +154,22 @@ export const createSelectOptions = (options: any[]) => {
   });
 };
 
+
 export const getProductsBySlug = (
   slugs: string[],
   products: Product[] | undefined
 ) => {
-  return products?.filter((prod) => slugs.includes(prod.slug));
+  let newProducts: any = [];
+  if (products?.length) {
+    slugs.forEach((slug) => {
+      newProducts.push(products?.find((prod) => slug === prod.slug));
+    });
+  } else {
+    return products?.filter((prod) => slugs.includes(prod.slug));
+  }
+  return newProducts;
 };
+
 export const getProductBySlug = (
   slugs: string,
   products: Product[] | undefined

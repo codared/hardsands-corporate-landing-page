@@ -30,7 +30,7 @@ const HandPickedForYou = () => {
   );
 
   const promoProducts = getProductsBySlug(
-    ["bamboo-wood", "sapele-wood", "matte-black-card"],
+    ["matte-black-pvc-card", "bamboo-wood", "sapele-wood"],
     products
   );
 
