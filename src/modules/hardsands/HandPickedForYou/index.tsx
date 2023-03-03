@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import HardsandsButton from "components/HardsandsButton";
 import productRoutes, { blogRoute } from "modules/products/routes";
+import { Product } from "modules/products/types";
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { CheckoutContext } from "redux/context";
@@ -54,17 +55,19 @@ const HandPickedForYou = () => {
         showStory
       />
 
-      <PromoPageProductList
-        title={t(
-          "pages:product-list:title:new-products-handpicked-for-you",
-          "New Products Handpicked For You!"
-        )}
-        subTitle={t(
-          "pages:product-list:subtitle:explore-our-collection-of-unique-business-cards",
-          "Explore our collection of unique digital business cards. We guarantee you’ll find a match"
-        )}
-        promoProducts={promoProducts}
-      />
+      {
+        <PromoPageProductList
+          title={t(
+            "pages:product-list:title:new-products-handpicked-for-you",
+            "New Products Handpicked For You!"
+          )}
+          subTitle={t(
+            "pages:product-list:subtitle:explore-our-collection-of-unique-business-cards",
+            "Explore our collection of unique digital business cards. We guarantee you’ll find a match"
+          )}
+          promoProducts={promoProducts}
+        />
+      }
 
       <HowWeCompare py={[10]} />
 
@@ -87,9 +90,7 @@ const HandPickedForYou = () => {
           direction={["column-reverse", "row"]}
         >
           <Box my={[6, "auto"]} mr={[10]} w={["100%", "30%"]}>
-            <Heading>
-              The fastest way to connect with new people
-            </Heading>
+            <Heading>The fastest way to connect with new people</Heading>
             <Text my={[10]}>
               Say farewell to stacks of paper business cards. Say hello to
               sleek, simple, and modern networking gear. Express yourself in
