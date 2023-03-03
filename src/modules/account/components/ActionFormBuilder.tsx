@@ -10,6 +10,7 @@ import {
   Textarea,
   Image,
   Spinner,
+  IconButton,
 } from "@chakra-ui/react";
 import CustomMenu from "components/CustomMenu";
 import React, { FormEventHandler, useEffect, useState } from "react";
@@ -24,6 +25,7 @@ import { BankObjectType } from "../types";
 import { ChakraStylesConfig, Select, SingleValue } from "chakra-react-select";
 import { createSelectOptions } from "utils/functions";
 import { css } from "@emotion/react";
+import { CloseIcon } from "@chakra-ui/icons";
 
 const ActionFormBuilder = ({
   fields,
@@ -32,6 +34,7 @@ const ActionFormBuilder = ({
   imageLoading,
   selectedImageUrl,
   selectedImageData,
+  handleImagePreviewClose,
   banks,
 }: {
   formState?: any;
@@ -41,6 +44,7 @@ const ActionFormBuilder = ({
     name: string;
     size: number;
   };
+  handleImagePreviewClose: () => void;
   fields: ActionsFormType[];
   banks?: BankObjectType[];
   onChange: (e: any) => void;
@@ -168,7 +172,7 @@ const ActionFormBuilder = ({
                           {imageLoading ? (
                             <Spinner size="md" />
                           ) : selectedImageUrl ? (
-                            <Flex h={"full"}>
+                            <Flex h={"full"} position={'relative'}>
                               <Image
                                 src={selectedImageUrl}
                                 objectFit={"cover"}
@@ -177,9 +181,22 @@ const ActionFormBuilder = ({
                               {selectedImageData && (
                                 <Box ml={2}>
                                   <Text>{selectedImageData?.name}</Text>
-                                  <Text>{selectedImageData?.size / 1000} KB</Text>
+                                  <Text>
+                                    {selectedImageData?.size / 1000} KB
+                                  </Text>
                                 </Box>
                               )}
+                              <IconButton
+                                borderRadius="50%"
+                                aria-label="Close"
+                                fontSize="10px"
+                                size="sm"
+                                onClick={handleImagePreviewClose}
+                                icon={<CloseIcon />}
+                                position={'absolute'}
+                                top={0}
+                                right={0}
+                              />
                             </Flex>
                           ) : null}
                         </Box>

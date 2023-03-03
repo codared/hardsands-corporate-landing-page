@@ -151,6 +151,11 @@ const EditFormScreen = ({
     setOpenTextModal(false);
   };
 
+  const handleImagePreviewClose = () => {
+    setSelectedImageUrl(null);
+    setSelectedImageData({});
+  };
+
   return (
     <Box mb={8}>
       <Flex direction={["column", "column", "row"]}>
@@ -206,6 +211,7 @@ const EditFormScreen = ({
               fields={selectedAction.fields as ActionsFormType[]}
               selectedImageUrl={selectedImageUrl}
               selectedImageData={selectedImageData}
+              handleImagePreviewClose={handleImagePreviewClose}
               imageLoading={imageLoading}
               banks={countryBanks}
             />
