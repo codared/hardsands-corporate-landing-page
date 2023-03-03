@@ -44,7 +44,7 @@ const ActionFormBuilder = ({
     name: string;
     size: number;
   };
-  handleImagePreviewClose: () => void;
+  handleImagePreviewClose?: () => void;
   fields: ActionsFormType[];
   banks?: BankObjectType[];
   onChange: (e: any) => void;
