@@ -6,6 +6,7 @@ import {
   FormLabel,
   Input,
   Tag,
+  Text,
   Textarea,
   Image,
   Spinner,
@@ -30,11 +31,16 @@ const ActionFormBuilder = ({
   onChange,
   imageLoading,
   selectedImageUrl,
+  selectedImageData,
   banks,
 }: {
   formState?: any;
   imageLoading?: boolean;
   selectedImageUrl?: string;
+  selectedImageData?: {
+    name: string;
+    size: number;
+  };
   fields: ActionsFormType[];
   banks?: BankObjectType[];
   onChange: (e: any) => void;
@@ -137,15 +143,8 @@ const ActionFormBuilder = ({
           case "file":
             return (
               <FormControl key={index}>
-                <Flex mb={4} borderRadius={0} borderColor={"black"}>
+                <Box mb={4} borderRadius={0} borderColor={"black"}>
                   <FormLabel>{name}</FormLabel>
-                  <Box maxW={"230px"}>
-                    {imageLoading ? (
-                      <Spinner size="md" />
-                    ) : selectedImageUrl ? (
-                      <Image src={selectedImageUrl} alt="image preview" />
-                    ) : null}
-                  </Box>
                   <Input
                     type={"file"}
                     borderRadius={0}
@@ -156,7 +155,37 @@ const ActionFormBuilder = ({
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
                   />
-                </Flex>
+                  {imageLoading ||
+                    (selectedImageUrl && (
+                      <Flex
+                        borderWidth={1}
+                        mt={4}
+                        borderColor={"gray.300"}
+                        p={2}
+                        maxW={"full"}
+                      >
+                        <Box maxH={"80px"}>
+                          {imageLoading ? (
+                            <Spinner size="md" />
+                          ) : selectedImageUrl ? (
+                            <Flex h={"full"}>
+                              <Image
+                                src={selectedImageUrl}
+                                objectFit={"cover"}
+                                alt="image preview"
+                              />
+                              {selectedImageData && (
+                                <Box ml={2}>
+                                  <Text>{selectedImageData?.name}</Text>
+                                  <Text>{selectedImageData?.size / 1000} KB</Text>
+                                </Box>
+                              )}
+                            </Flex>
+                          ) : null}
+                        </Box>
+                      </Flex>
+                    ))}
+                </Box>
               </FormControl>
             );
           case "text":
@@ -233,7 +262,10 @@ const ActionFormBuilder = ({
                     placeholder={`Enter ${name}`}
                     _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                     size="lg"
-                    value={formState[formKey as string]?.replace(":00.000Z", "")}
+                    value={formState[formKey as string]?.replace(
+                      ":00.000Z",
+                      ""
+                    )}
                   />
                 </Box>
               </FormControl>

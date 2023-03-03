@@ -41,6 +41,7 @@ const EditFormScreen = ({
 }) => {
   const [selectedSocials, setSelectedSocials] = useState<{ label: string }>();
   const [selectedImageUrl, setSelectedImageUrl] = useState<any>();
+  const [selectedImageData, setSelectedImageData] = useState<any>({});
   const [imageLoading, setImageLoading] = useState<any>(false);
   const [openTextModal, setOpenTextModal] = useState<any>(false);
   const [formState, setFormState] = useState<any>(
@@ -70,10 +71,11 @@ const EditFormScreen = ({
     if (e.target.name === "profileImage") {
       const files = e.target.files;
       if (files.length && files[0].size > 2097152) {
-        // only allow images less that 2mb 
+        // only allow images less that 2mb
         return;
       } else {
         setImageLoading(true);
+        setSelectedImageData({ name: files[0].name, size: files[0].size });
         const res = await getUploadUrl(files[0].type);
         if (!res?.isError) {
           setImageUploadData(res.result);
@@ -202,6 +204,7 @@ const EditFormScreen = ({
               formState={formState}
               fields={selectedAction.fields as ActionsFormType[]}
               selectedImageUrl={selectedImageUrl}
+              selectedImageData={selectedImageData}
               imageLoading={imageLoading}
               banks={countryBanks}
             />
