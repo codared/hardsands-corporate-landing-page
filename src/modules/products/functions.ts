@@ -1,7 +1,19 @@
+import { getProductsBySlug } from "utils/functions";
 import { CARD_IMAGES, PRODUCTS } from "./constants";
 import { Product } from "./types";
 
 export const mergeProductsImages = (products: Product[]) => {
+  products = getProductsBySlug(
+    [
+      "matte-black-pvc-card",
+      "bamboo-wood",
+      "sapele-wood",
+      "matte-black-card",
+      "hardsands-epoxy-pvc",
+    ],
+    products
+  );
+
   return products.map((prod) => {
     return mergeProductImages(prod);
   });
