@@ -34,6 +34,7 @@ import { useTranslation } from "react-i18next";
 import HardsandLink from "components/HardsandsLink";
 import { richTextComponents } from "modules/articles/constants";
 import { repositoryName } from "modules/articles/prismicio";
+import { Analytics } from '@vercel/analytics/react';
 
 Sentry.init({
   release: process.env.COMMIT_SHA,
@@ -98,6 +99,7 @@ function HardsandsApp({
               </CheckoutProvider>
             </>
           </AnalyticsProvider>
+          <Analytics />
         </CopyrightYearProvider>
       </ChakraProvider>
     </>
