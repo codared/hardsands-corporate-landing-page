@@ -17,7 +17,6 @@ const generateVCard = (data: any, res?: any) => {
   vCard.photo.attachFromUrl(data.profileImage || "", "JPEG");
 
   vCard.workPhone = data.officePhone;
-  vCard.birthday = new Date(data.birthday);
   vCard.title = data.title;
   vCard.url = data.website1;
   vCard.workUrl = data.website2;
