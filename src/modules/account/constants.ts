@@ -562,7 +562,7 @@ export const SOCIAL_LINKS: ActionsFormType = {
       id: 5,
       label: "Youtube",
       image: YoutubeIcon,
-      link: "https://youtube.com/c/${user}",
+      link: "https://youtube.com/@${user}",
     },
     {
       id: 6,
