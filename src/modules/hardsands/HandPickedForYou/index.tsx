@@ -13,6 +13,7 @@ import productRoutes, { blogRoute } from "modules/products/routes";
 import { Product } from "modules/products/types";
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
+import ReactPlayer from "react-player";
 import { CheckoutContext } from "redux/context";
 import { useTypedSelector } from "redux/store";
 import { getProductsBySlug } from "utils/functions";
@@ -91,6 +92,26 @@ const HandPickedForYou = () => {
         >
           <Box my={[6, "auto"]} mr={[10]} w={["100%", "30%"]}>
             <Heading>The fastest way to connect with new people</Heading>
+            <Flex
+              mt={[10]}
+              justifyContent={"center"}
+              w={["100%", "50%", "50%"]}
+              display={["flex", "none"]}
+            >
+              <Box w={["340px"]} h={["540px"]}>
+                <ReactPlayer
+                  width={"100%"}
+                  height={"100%"}
+                  loop
+                  volume={0}
+                  playing
+                  url={[
+                    "https://cdn.shopify.com/videos/c/o/v/fdfbb784b6e64fd6b84138b1bf880ecb.mp4",
+                    "https://cdn.shopify.com/videos/c/o/v/d7f60bcd1646492e95bc981fdb94d039.mp4",
+                  ]}
+                />
+              </Box>
+            </Flex>
             <Text my={[10]}>
               Say farewell to stacks of paper business cards. Say hello to
               sleek, simple, and modern networking gear. Express yourself in
@@ -104,18 +125,25 @@ const HandPickedForYou = () => {
               w={"full"}
             />
           </Box>
-          <Box w={["100%", "50%", "50%"]}>
-            <Image
-              maxW={["100%", "100%", "lg"]}
-              mx={"auto"}
-              mb={[0, "4rem"]}
-              src={
-                // "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/HARDSANDS960_1_d5bc5fc9-7373-49f3-8f5a-e5ff8c25a2fb.jpg?v=1677052452"
-                "https://cdn.shopify.com/s/files/1/0559/0407/5843/files/landing_page_asset_1.png?v=1670851695"
-              }
-              alt={""}
-            />
-          </Box>
+          <Flex
+            justifyContent={"center"}
+            w={["100%", "50%", "50%"]}
+            display={["none", "flex"]}
+          >
+            <Box w={["340px"]} h={["540px"]}>
+              <ReactPlayer
+                width={"100%"}
+                height={"100%"}
+                loop
+                volume={0}
+                playing
+                url={[
+                  "https://cdn.shopify.com/videos/c/o/v/fdfbb784b6e64fd6b84138b1bf880ecb.mp4",
+                  "https://cdn.shopify.com/videos/c/o/v/d7f60bcd1646492e95bc981fdb94d039.mp4",
+                ]}
+              />
+            </Box>
+          </Flex>
         </Flex>
       </Box>
 
