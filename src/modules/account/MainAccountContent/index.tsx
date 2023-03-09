@@ -18,19 +18,19 @@ import {
 } from "../actions";
 import Loader from "../components/Loader";
 import NoCardMessage from "../components/NoCardMessage";
-import QRCodeShareSection from "../components/QRCodeShareSection";
 import { ACTION_FORM_STATUS, AppIcons } from "../constants";
+import { NotFoundErrorMessage } from "../functions";
 import useScreenNavigation from "../hooks";
 import { uploadImageData } from "../services";
 import { APP_SCREEN, UserCardType } from "../types";
 import ActionCards from "./components/ActionCards";
 import ActionItem from "./components/ActionItem";
 import AddAction from "./components/AddAction";
+import CardDetailView from "./components/CardDetailView";
 import CardLists from "./components/CardLists";
 import EditFormScreen from "./components/EditFormScreen";
 import MenuItem from "./components/MenuItem";
 import NavigationBar from "./components/NavigatorBar";
-import ScreenSelectorTabs from "./components/ScreenSelectorTabs";
 import StatisticsScreen from "./components/StatisticsScreen";
 
 function MainIndex() {
@@ -237,7 +237,7 @@ function MainIndex() {
     if (appError?.isError) {
       toast({
         position: "top-right",
-        title: appError.name,
+        title: NotFoundErrorMessage(appError.name),
         description: appError.message,
         status: "error",
         duration: 9000,
@@ -268,36 +268,22 @@ function MainIndex() {
         <Box as={"main"} transition={"all 200ms ease-in-out"}>
           <>
             {currentScreenState === APP_SCREEN.CARD && (
-              <>
-                <ScreenSelectorTabs
-                  currentScreenState={currentScreenState}
-                  handleSelectedTab={handleSelectedTab}
-                />
-
-                {cardActions && cardActions.length > 0 ? (
-                  <QRCodeShareSection card={selectedCard} />
-                ) : (
-                  <Box>
-                    <Text textAlign={"center"} my={10} fontWeight="bolder">
-                      Make your card active now by adding an action.
-                    </Text>
-                    <AddAction
-                      actions={actions as ActionsType[]}
-                      setSelectedAction={setSelectedAction}
-                      handleSelectedTab={handleSelectedTab}
-                      setFormStatus={setFormStatus}
-                      // @ts-ignore
-                      w={"100%"}
-                    />
-                  </Box>
-                )}
-              </>
+              <CardDetailView
+                currentScreenState={currentScreenState}
+                handleSelectedTab={handleSelectedTab}
+                cardActions={cardActions}
+                selectedCard={selectedCard}
+                actions={actions}
+                setSelectedAction={setSelectedAction}
+                setFormStatus={setFormStatus}
+              />
             )}
             {currentScreenState === APP_SCREEN.HOME && (
               <>
                 {/* Cards list screen  */}
                 <CardLists
                   cards={cards}
+                  currentScreenState={currentScreenState}
                   handleCardSelect={(card: UserCardType) => {
                     setSelectedCard(card);
                     handleSelectedTab(APP_SCREEN.CARD);
@@ -332,6 +318,7 @@ function MainIndex() {
                   setSelectedAction={setSelectedAction}
                   handleSelectedTab={handleSelectedTab}
                   setFormStatus={setFormStatus}
+                  currentScreenState={currentScreenState}
                   // @ts-ignore
                   w={"100%"}
                   mt={20}

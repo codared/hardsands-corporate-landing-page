@@ -16,6 +16,7 @@ const ActionItem = ({
 }) => {
   return (
     <HStack
+      id="tour-select-action"
       cursor={"pointer"}
       _hover={{
         borderColor: "brand.300",
@@ -28,9 +29,7 @@ const ActionItem = ({
       py={[2]}
       justify={"space-between"}
       transition="all ease-in-out 200ms"
-      onClick={() =>
-        handleActionSelect ? handleActionSelect() : null
-      }
+      onClick={() => (handleActionSelect ? handleActionSelect() : null)}
     >
       <HStack>
         <Box color="brand.300">
