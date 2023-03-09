@@ -105,6 +105,7 @@ const HandPickedForYou = () => {
                   loop
                   volume={0}
                   playing
+                  playsInline
                   url={
                     "https://cdn.shopify.com/videos/c/o/v/fdfbb784b6e64fd6b84138b1bf880ecb.mp4"
                   }
@@ -136,6 +137,7 @@ const HandPickedForYou = () => {
                 loop
                 volume={0}
                 playing
+                playsInline
                 url={
                   "https://cdn.shopify.com/videos/c/o/v/fdfbb784b6e64fd6b84138b1bf880ecb.mp4"
                 }
