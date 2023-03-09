@@ -105,10 +105,9 @@ const HandPickedForYou = () => {
                   loop
                   volume={0}
                   playing
-                  url={[
-                    "https://cdn.shopify.com/videos/c/o/v/fdfbb784b6e64fd6b84138b1bf880ecb.mp4",
-                    "https://cdn.shopify.com/videos/c/o/v/d7f60bcd1646492e95bc981fdb94d039.mp4",
-                  ]}
+                  url={
+                    "https://cdn.shopify.com/videos/c/o/v/fdfbb784b6e64fd6b84138b1bf880ecb.mp4"
+                  }
                 />
               </Box>
             </Flex>
@@ -137,10 +136,9 @@ const HandPickedForYou = () => {
                 loop
                 volume={0}
                 playing
-                url={[
-                  "https://cdn.shopify.com/videos/c/o/v/fdfbb784b6e64fd6b84138b1bf880ecb.mp4",
-                  "https://cdn.shopify.com/videos/c/o/v/d7f60bcd1646492e95bc981fdb94d039.mp4",
-                ]}
+                url={
+                  "https://cdn.shopify.com/videos/c/o/v/fdfbb784b6e64fd6b84138b1bf880ecb.mp4"
+                }
               />
             </Box>
           </Flex>
