@@ -56,7 +56,7 @@ const HandPickedForYou = () => {
         }
         buttonHref={productRoutes.products()}
         buttonText="Buy Now"
-        showStory
+        showStory={false}
       />
 
       {
