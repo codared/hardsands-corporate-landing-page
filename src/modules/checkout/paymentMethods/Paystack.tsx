@@ -63,7 +63,7 @@ const PaystackButtonComponent = ({
 
   const componentProps = {
     email,
-    amount: !!discountedAmount ? discountedAmount : totalDue,
+    amount: totalDue,
     metadata: {
       custom_fields,
     },
