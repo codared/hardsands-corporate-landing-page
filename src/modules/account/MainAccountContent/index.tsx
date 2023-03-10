@@ -238,7 +238,7 @@ function MainIndex() {
       toast({
         position: "top-right",
         title: NotFoundErrorMessage(appError.name),
-        description: appError.message,
+        description: "Please try again, or contact support.",
         status: "error",
         duration: 9000,
         isClosable: true,

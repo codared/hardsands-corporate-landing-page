@@ -39,7 +39,11 @@ const EditFormScreen = ({
   setImageUploadData?: any;
   handleActionSubmit: (action: ActionsType) => void;
 }) => {
-  const [selectedSocials, setSelectedSocials] = useState<{ label: string }>();
+  const [selectedSocials, setSelectedSocials] = useState<{
+    label: string;
+    id: number;
+    user: string;
+  }>();
   const [selectedImageUrl, setSelectedImageUrl] = useState<any>();
   const [selectedImageData, setSelectedImageData] = useState<any>({});
   const [imageLoading, setImageLoading] = useState<any>(false);
@@ -132,7 +136,6 @@ const EditFormScreen = ({
             },
           ],
         });
-
       }
     }
   };
@@ -151,7 +154,7 @@ const EditFormScreen = ({
     setOpenTextModal(false);
   };
 
-  const handleImagePreviewClose = () => {
+  const handleImagePreviewClose = (): void => {
     setSelectedImageUrl(null);
     setSelectedImageData({});
   };
@@ -187,6 +190,7 @@ const EditFormScreen = ({
                       borderRadius={0}
                       borderColor={"black"}
                       onChange={handleChange}
+                      value={selectedSocials?.user || ""}
                       placeholder={`Enter ${selectedSocials?.label} Username`}
                       _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                       size="lg"
