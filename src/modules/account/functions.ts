@@ -26,6 +26,15 @@ export const getSocialEditIcons = (rest: any) => {
   });
 };
 
+export const getSocialLink = (item: any) => {
+  if (item.user.includes("http") || item.user.includes("www")) {
+    return item.user;
+  }
+  return item.link.replace("${user}", item.user) || "#";
+};
+
 export const NotFoundErrorMessage = (errorMessage: string | any) => {
-  return errorMessage.includes("NotFoundError") ? "Failed Error" : errorMessage;
+  return errorMessage.includes("NotFoundError")
+    ? "Failed Error"
+    : "Something went wrong.";
 };

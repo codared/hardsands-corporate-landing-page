@@ -20,6 +20,7 @@ import {
   findSameSocials,
   getSocialIcons,
   getSocialEditIcons,
+  getSocialLink,
 } from "modules/account/functions";
 import { useRef } from "react";
 import { FiEdit3 } from "react-icons/fi";
@@ -187,7 +188,7 @@ export default function SocialProfile({
                   <HardsandLink
                     key={index}
                     target="_blank"
-                    href={item.link.replace("${user}", item.user) || "#"}
+                    href={getSocialLink(item)}
                   >
                     {/* @ts-ignore */}
                     <Box height="80px" align={"center"}>

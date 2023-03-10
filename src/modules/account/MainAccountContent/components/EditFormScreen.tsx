@@ -39,7 +39,11 @@ const EditFormScreen = ({
   setImageUploadData?: any;
   handleActionSubmit: (action: ActionsType) => void;
 }) => {
-  const [selectedSocials, setSelectedSocials] = useState<{ label: string }>();
+  const [selectedSocials, setSelectedSocials] = useState<{
+    label: string;
+    id: number;
+    user: string;
+  }>();
   const [selectedImageUrl, setSelectedImageUrl] = useState<any>();
   const [selectedImageData, setSelectedImageData] = useState<any>({});
   const [imageLoading, setImageLoading] = useState<any>(false);
@@ -132,7 +136,6 @@ const EditFormScreen = ({
             },
           ],
         });
-
       }
     }
   };
@@ -151,7 +154,7 @@ const EditFormScreen = ({
     setOpenTextModal(false);
   };
 
-  const handleImagePreviewClose = () => {
+  const handleImagePreviewClose = (): void => {
     setSelectedImageUrl(null);
     setSelectedImageData({});
   };
@@ -180,14 +183,15 @@ const EditFormScreen = ({
               <>
                 <FormControl>
                   <Box mb={4}>
-                    <FormLabel>{selectedSocials?.label} Username</FormLabel>
+                    <FormLabel>{selectedSocials?.label} Username or Link to Social Profile</FormLabel>
                     <Input
                       type={"text"}
                       name={selectedSocials?.label.toLowerCase()}
                       borderRadius={0}
                       borderColor={"black"}
                       onChange={handleChange}
-                      placeholder={`Enter ${selectedSocials?.label} Username`}
+                      value={selectedSocials?.user || ""}
+                      placeholder={`Enter ${selectedSocials?.label} Username/Link`}
                       _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                       size="lg"
                     />
