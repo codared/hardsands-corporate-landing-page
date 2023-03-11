@@ -183,14 +183,18 @@ const EditFormScreen = ({
               <>
                 <FormControl>
                   <Box mb={4}>
-                    <FormLabel>{selectedSocials?.label} Username or Link to Social Profile</FormLabel>
+                    <FormLabel>
+                      {selectedSocials?.label} Username or Link to Social
+                      Profile
+                    </FormLabel>
                     <Input
                       type={"text"}
                       name={selectedSocials?.label.toLowerCase()}
                       borderRadius={0}
                       borderColor={"black"}
                       onChange={handleChange}
-                      value={selectedSocials?.user || ""}
+                      // @ts-ignore
+                      value={formState[selectedSocials?.label.toLowerCase()]}
                       placeholder={`Enter ${selectedSocials?.label} Username/Link`}
                       _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                       size="lg"
