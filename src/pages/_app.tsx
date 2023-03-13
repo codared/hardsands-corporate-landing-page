@@ -79,7 +79,7 @@ function HardsandsApp({
         <CopyrightYearProvider value={copyRightYear}>
           <AnalyticsProvider>
             <>
-              <TourProvider steps={[]} styles={styleConfig}>
+              {/* <TourProvider steps={[]} styles={styleConfig}> */}
                 <CheckoutProvider currency={currency}>
                   <PrismicProvider
                     internalLinkComponent={(props) => (
@@ -106,7 +106,7 @@ function HardsandsApp({
                     </PrismicPreview>
                   </PrismicProvider>
                 </CheckoutProvider>
-              </TourProvider>
+              {/* </TourProvider> */}
             </>
           </AnalyticsProvider>
           <Analytics />
