@@ -34,9 +34,7 @@ import { useTranslation } from "react-i18next";
 import HardsandLink from "components/HardsandsLink";
 import { richTextComponents } from "modules/articles/constants";
 import { repositoryName } from "modules/articles/prismicio";
-import { Analytics } from '@vercel/analytics/react';
-import { TourProvider } from "@reactour/tour";
-import { styleConfig } from "modules/Tour";
+import { Analytics } from "@vercel/analytics/react";
 
 Sentry.init({
   release: process.env.COMMIT_SHA,
@@ -79,34 +77,30 @@ function HardsandsApp({
         <CopyrightYearProvider value={copyRightYear}>
           <AnalyticsProvider>
             <>
-              <TourProvider steps={[]} styles={styleConfig}>
-                <CheckoutProvider currency={currency}>
-                  <PrismicProvider
-                    internalLinkComponent={(props) => (
-                      <HardsandLink {...props} />
-                    )}
-                    richTextComponents={richTextComponents}
-                  >
-                    <PrismicPreview repositoryName={repositoryName}>
-                      <>
-                        <ManualAnalyticsTags />
-                        <script
-                          async
-                          defer
-                          src="https://static.cdn.prismic.io/prismic.js?new=true&repo=hardsands-blogs"
-                        ></script>
-                        {typeof window && <AnalyticsScriptTag />}
-                        <Fonts />
-                        <ErrorBoundary t={t} FallbackComponent={ErrorFallback}>
-                          <CurrencyDetector />
-                          <ColorModeScript initialColorMode={"light"} />
-                          <Component {...pageProps} />
-                        </ErrorBoundary>
-                      </>
-                    </PrismicPreview>
-                  </PrismicProvider>
-                </CheckoutProvider>
-              </TourProvider>
+              <CheckoutProvider currency={currency}>
+                <PrismicProvider
+                  internalLinkComponent={(props) => <HardsandLink {...props} />}
+                  richTextComponents={richTextComponents}
+                >
+                  <PrismicPreview repositoryName={repositoryName}>
+                    <>
+                      <ManualAnalyticsTags />
+                      <script
+                        async
+                        defer
+                        src="https://static.cdn.prismic.io/prismic.js?new=true&repo=hardsands-blogs"
+                      ></script>
+                      {typeof window && <AnalyticsScriptTag />}
+                      <Fonts />
+                      <ErrorBoundary t={t} FallbackComponent={ErrorFallback}>
+                        <CurrencyDetector />
+                        <ColorModeScript initialColorMode={"light"} />
+                        <Component {...pageProps} />
+                      </ErrorBoundary>
+                    </>
+                  </PrismicPreview>
+                </PrismicProvider>
+              </CheckoutProvider>
             </>
           </AnalyticsProvider>
           <Analytics />
