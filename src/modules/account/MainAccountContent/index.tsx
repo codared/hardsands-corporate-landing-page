@@ -147,8 +147,8 @@ function MainIndex() {
       return;
     }
     if (
-      (formData.name && !formData.name) ||
-      (formData.title && !formData.title)
+      (formData.id === 1 && !formData.name) ||
+      (formData.id === 1 && !formData.title)
     ) {
       setIsSubmitting(false);
       reduxDispatch({
@@ -253,7 +253,7 @@ function MainIndex() {
       toast({
         position: "top-right",
         title: NotFoundErrorMessage(appError.name),
-        description: "Please try again, or contact support.",
+        description: appError.message || "Please try again, or contact support.",
         status: "error",
         duration: 9000,
         isClosable: true,

@@ -34,7 +34,5 @@ export const getSocialLink = (item: any) => {
 };
 
 export const NotFoundErrorMessage = (errorMessage: string | any) => {
-  return errorMessage.includes("NotFoundError")
-    ? "Failed Error"
-    : "Something went wrong.";
+  return errorMessage.includes("NotFoundError") ? "Failed Error" : errorMessage;
 };
