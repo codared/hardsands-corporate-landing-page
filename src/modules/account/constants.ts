@@ -319,13 +319,13 @@ export const ACTIONS: ActionsType[] = [
         type: "file",
         formKey: "profileImage",
       },
+      // {
+      //   name: "Title",
+      //   type: "text",
+      //   formKey: "title",
+      // },
       {
-        name: "Title",
-        type: "text",
-        formKey: "title",
-      },
-      {
-        name: "Name",
+        name: "Full Name",
         type: "text",
         formKey: "name",
       },
@@ -337,7 +337,7 @@ export const ACTIONS: ActionsType[] = [
       {
         name: "Position",
         type: "text",
-        formKey: "position",
+        formKey: "title",
       },
       // {
       //   name: "Birthday",
@@ -355,7 +355,7 @@ export const ACTIONS: ActionsType[] = [
       //   formKey: "officePhone",
       // },
       {
-        name: "Personal Phone",
+        name: "Personal Phone Number",
         type: "text",
         formKey: "personalPhone",
       },
@@ -365,7 +365,7 @@ export const ACTIONS: ActionsType[] = [
       //   formKey: "officeFax",
       // },
       {
-        name: "Alternative Phone",
+        name: "Alternative phone number",
         type: "text",
         formKey: "altPhone",
       },
@@ -380,7 +380,7 @@ export const ACTIONS: ActionsType[] = [
         formKey: "personalEmail",
       },
       {
-        name: "Website 1",
+        name: "Personal/Work Website",
         type: "url",
         formKey: "website1",
       },
@@ -389,18 +389,18 @@ export const ACTIONS: ActionsType[] = [
       //   type: "url",
       //   formKey: "website2",
       // },
-      {
-        name: "Payment Link",
-        type: "url",
-        formKey: "paymentLink",
-      },
+      // {
+      //   name: "Payment Link",
+      //   type: "url",
+      //   formKey: "paymentLink",
+      // },
       // {
       //   name: "Home address",
       //   type: "text",
       //   formKey: "homeAddress",
       // },
       {
-        name: "Office address",
+        name: "Home/office address",
         type: "text",
         formKey: "officeAddress",
       },
