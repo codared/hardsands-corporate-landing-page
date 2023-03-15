@@ -146,6 +146,21 @@ function MainIndex() {
       });
       return;
     }
+    if (
+      (formData.id === 1 && !formData.name) ||
+      (formData.id === 1 && !formData.title)
+    ) {
+      setIsSubmitting(false);
+      reduxDispatch({
+        type: "APP_ERROR",
+        payload: {
+          isError: true,
+          name: "Missing fields",
+          message: "Name or Title is required",
+        } as any,
+      });
+      return;
+    }
 
     // We might not need this
     if (formData.startDate && formData.time) {
@@ -238,7 +253,7 @@ function MainIndex() {
       toast({
         position: "top-right",
         title: NotFoundErrorMessage(appError.name),
-        description: "Please try again, or contact support.",
+        description: appError.message || "Please try again, or contact support.",
         status: "error",
         duration: 9000,
         isClosable: true,

@@ -394,16 +394,16 @@ export const ACTIONS: ActionsType[] = [
         type: "url",
         formKey: "paymentLink",
       },
-      {
-        name: "Home address",
-        type: "text",
-        formKey: "homeAddress",
-      },
       // {
-      //   name: "Office address",
+      //   name: "Home address",
       //   type: "text",
-      //   formKey: "officeAddress",
+      //   formKey: "homeAddress",
       // },
+      {
+        name: "Office address",
+        type: "text",
+        formKey: "officeAddress",
+      },
       // {
       //   name: "Home Postal Code",
       //   type: "text",
@@ -414,22 +414,22 @@ export const ACTIONS: ActionsType[] = [
       //   type: "text",
       //   formKey: "officePostalCode",
       // },
-      {
-        name: "Home Country",
-        type: "country-select",
-        options: getCountries(),
-        formKey: "homeCountryId",
-      },
-      {
-        name: "Home State",
-        type: "state-select",
-        formKey: "homeStateId",
-      },
-      {
-        name: "Home City",
-        type: "text",
-        formKey: "homeCity",
-      },
+      // {
+      //   name: "Home Country",
+      //   type: "country-select",
+      //   options: getCountries(),
+      //   formKey: "homeCountryId",
+      // },
+      // {
+      //   name: "Home State",
+      //   type: "state-select",
+      //   formKey: "homeStateId",
+      // },
+      // {
+      //   name: "Home City",
+      //   type: "text",
+      //   formKey: "homeCity",
+      // },
       // {
       //   name: "Office Country",
       //   type: "country-select",
