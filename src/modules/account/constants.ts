@@ -430,22 +430,22 @@ export const ACTIONS: ActionsType[] = [
       //   type: "text",
       //   formKey: "homeCity",
       // },
-      {
-        name: "Office Country",
-        type: "country-select",
-        options: getCountries(),
-        formKey: "officeCountryId",
-      },
-      {
-        name: "Office State",
-        type: "state-select",
-        formKey: "officeStateId",
-      },
-      {
-        name: "Office City",
-        type: "text",
-        formKey: "officeCity",
-      },
+      // {
+      //   name: "Office Country",
+      //   type: "country-select",
+      //   options: getCountries(),
+      //   formKey: "officeCountryId",
+      // },
+      // {
+      //   name: "Office State",
+      //   type: "state-select",
+      //   formKey: "officeStateId",
+      // },
+      // {
+      //   name: "Office City",
+      //   type: "text",
+      //   formKey: "officeCity",
+      // },
       // {
       //   name: "Theme",
       //   type: "color",

@@ -82,12 +82,12 @@ const ActionFormBuilder = ({
       target: { value: newValue?.value, name },
     };
 
-    if (name === "homeCountryId" || name === "countryId") {
+    if (name === "officeCountryId" || name === "countryId") {
       setSelectedCountryOption(newValue);
       setStateOptions(getStatesList(e.target.value));
     }
 
-    if (name === "homeStateId" || name === "provinceId") {
+    if (name === "officeStateId" || name === "provinceId") {
       setSelectedStateOption(newValue);
     }
 
@@ -106,14 +106,14 @@ const ActionFormBuilder = ({
     if (
       selectedCountryOption.label ||
       formState["countryId"] ||
-      formState["homeCountryId"]
+      formState["officeCountryId"]
     ) {
       setStateOptions(
         getStatesList(
           getCountryByName(
             selectedCountryOption.label ||
               formState["countryId"] ||
-              formState["homeCountryId"]
+              formState["officeCountryId"]
           )?.id as string
         )
       );
@@ -172,7 +172,7 @@ const ActionFormBuilder = ({
                           {imageLoading ? (
                             <Spinner size="md" />
                           ) : selectedImageUrl ? (
-                            <Flex h={"full"} position={'relative'}>
+                            <Flex h={"full"} position={"relative"}>
                               <Image
                                 src={selectedImageUrl}
                                 objectFit={"cover"}
@@ -193,7 +193,7 @@ const ActionFormBuilder = ({
                                 size="sm"
                                 onClick={handleImagePreviewClose}
                                 icon={<CloseIcon />}
-                                position={'absolute'}
+                                position={"absolute"}
                                 top={0}
                                 right={0}
                               />
