@@ -146,6 +146,21 @@ function MainIndex() {
       });
       return;
     }
+    if (
+      (formData.name && !formData.name) ||
+      (formData.title && !formData.title)
+    ) {
+      setIsSubmitting(false);
+      reduxDispatch({
+        type: "APP_ERROR",
+        payload: {
+          isError: true,
+          name: "Missing fields",
+          message: "Name or Title is required",
+        } as any,
+      });
+      return;
+    }
 
     // We might not need this
     if (formData.startDate && formData.time) {
