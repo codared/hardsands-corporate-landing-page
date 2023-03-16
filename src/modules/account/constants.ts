@@ -51,6 +51,7 @@ import { AccountNavItemsType, ActionsFormType, ActionsType } from "utils/types";
 import getCountries, { getState, getStatesList } from "utils/getCountries";
 
 export const ACCOUNT_ROOT = "/app";
+export const DASH_ROOT = "/dashboard/${corporateId}";
 
 export const enum ACTION_FORM_STATUS {
   ADD = "ADD",
@@ -76,6 +77,15 @@ export const ACCOUNT_NAV_ITEMS: AccountNavItemsType[] = [
   //   href: `${ACCOUNT_ROOT}/profile`,
   //   icon: CgProfile,
   // },
+];
+
+export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
+  {
+    id: 1,
+    title: "Dashboard",
+    href: `${DASH_ROOT}`,
+    icon: AiOutlineIdcard,
+  },
 ];
 
 export const AppIcons = {
