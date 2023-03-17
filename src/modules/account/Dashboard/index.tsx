@@ -1,4 +1,5 @@
 import React from "react";
+import Home from "./Home";
 import Members from "./Members";
 
 const Dashboard = ({ route }: { route: string[] }) => {
@@ -7,7 +8,7 @@ const Dashboard = ({ route }: { route: string[] }) => {
       return <Members />;
 
     default:
-      return <div>Dashoboard</div>;
+      return <Home />;
   }
 };
 

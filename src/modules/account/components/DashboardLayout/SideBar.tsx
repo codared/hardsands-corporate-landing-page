@@ -22,6 +22,7 @@ import {
   HARDSANDS_LOGIN_COOKIE,
 } from "modules/authentication/constants";
 import Router from "next/router";
+import { hardsandsIconLogo } from "design";
 
 const DashSidebarContent = (props: any) => {
   const integrations = useDisclosure();

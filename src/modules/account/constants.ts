@@ -34,15 +34,15 @@ import {
   YelpIcon,
   YoutubeIcon,
   ZelleIcon,
-  SupportIcon,
-  ReportIcon,
-  MessagesIcon,
+  // SupportIcon,
+  // ReportIcon,
+  // MessagesIcon,
   MemberIcon,
-  LeadsIcon,
+  // LeadsIcon,
   DashboardIcon,
-  DashWhatsAppIcon,
-  ContactCardIconSVG,
-  BankIconSVG,
+  // DashWhatsAppIcon,
+  // ContactCardIconSVG,
+  // BankIconSVG,
 } from "assets";
 import {
   AiFillBank,
@@ -104,6 +104,7 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
     icon: MemberIcon,
     isImg: true,
   },
+ 
 ];
 
 export const AppIcons = {
