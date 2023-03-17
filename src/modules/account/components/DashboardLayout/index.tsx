@@ -60,7 +60,7 @@ const HardsandsCorperateDash = ({
         </DrawerContent>
       </Drawer>
       <Box ml={[0, 80]} transition=".3s ease">
-        <Flex
+        {/* <Flex
           as="header"
           align="center"
           justify="space-between"
@@ -94,9 +94,9 @@ const HardsandsCorperateDash = ({
               cursor="pointer"
             />
           </Flex>
-        </Flex>
+        </Flex> */}
 
-        <Box as="main" p={4}>
+        <Box as="main" p={4} bgColor="#f9f9f9">
           <Container
             maxW={["full", "80%", "full"]}
             mx={["0", "10px", "auto"]}

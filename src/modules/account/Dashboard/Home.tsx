@@ -1,6 +1,6 @@
-import { Box, Text, BoxProps, Avatar } from "@chakra-ui/react";
+import { Box, Text, BoxProps, Avatar, Heading } from "@chakra-ui/react";
 import Image from "next/image";
-import Hardsands_Whatsapp from "../../../assets/Hardsands_Whatsapp.svg"
+import Hardsands_Whatsapp from "../../../assets/Hardsands_Whatsapp.svg";
 import { Card } from "components/index";
 
 const Bar = (props: BoxProps) => {
@@ -66,9 +66,7 @@ const Home = () => {
       <Text color="#737373" fontSize="14px">
         Hi Andrei,
       </Text>
-      <Text fontWeight="700" fontSize="4xl">
-        Welcome Greens Limited
-      </Text>
+      <Heading>Welcome Greens Limited</Heading>
       <Box
         display="flex"
         flexDir={["column", "row"]}
@@ -83,9 +81,7 @@ const Home = () => {
             justifyContent="space-between"
             alignItems="baseline"
           >
-            <Text sx={{ fontWeight: "bold" }} fontSize="2xl">
-              630
-            </Text>
+            <Heading fontSize="2xl">630</Heading>
             <Box
               px="3"
               py="1"
@@ -108,9 +104,7 @@ const Home = () => {
             justifyContent="space-between"
             alignItems="baseline"
           >
-            <Text sx={{ fontWeight: "bold" }} fontSize="2xl">
-              130
-            </Text>
+            <Heading fontSize="2xl">130</Heading>
             <Box
               px="3"
               py="1"
@@ -128,16 +122,14 @@ const Home = () => {
         </Card>
         <Card bgColor="#df9f71" width="100%" color="#fff">
           <Text>Activity</Text>
-          <Text sx={{ fontWeight: "bold" }} fontSize="2xl">
-            60%
-          </Text>
+          <Heading fontSize="2xl">60%</Heading>
         </Card>
       </Box>
 
       <Box mt="8" display={"flex"} justifyContent="stretch" gap={8}>
         <Card bgColor="#fff" w="100%" maxW="720px" p="8">
           <Text fontSize={"14px"}>Total Clicks</Text>
-          <Text fontSize="2xl">5127</Text>
+          <Heading fontSize="2xl">5127</Heading>
           <Box
             display="flex"
             justifyContent="space-between"
@@ -200,9 +192,7 @@ const Home = () => {
       >
         <Card w="100%" maxW="720px" p="8">
           <Text fontSize={"14px"}>Clicks this month</Text>
-          <Text fontSize="2xl" fontWeight={"extrabold"}>
-            300
-          </Text>
+          <Heading fontSize="2xl">300</Heading>
           <Box
             display="flex"
             justifyContent="space-between"
@@ -222,20 +212,22 @@ const Home = () => {
           </Box>
         </Card>
         <Card p={8}>
-          <Text>Your Activity</Text>
+          <Heading fontSize={"xl"}>Your Activity</Heading>
           <Box as="ul" mt={6}>
             <Box
               as="li"
               display={"flex"}
               justifyContent="space-between"
               alignItems={"center"}
-              mb={3}
+              my={3}
             >
               <Box display={"flex"} alignItems="center" gap={3}>
-                <img src={Hardsands_Whatsapp.src} />
+                <Image src={Hardsands_Whatsapp.src} height={40} width={40} />
                 <Box>
-                  <Text>Whatsapp</Text>
-                  <Text fontSize={"12px"} color="#757575">
+                  <Heading fontSize={"0.9rem"} mb={1}>
+                    WhatsApp
+                  </Heading>
+                  <Text fontSize={"10px"} color="#757575">
                     Kennedy John
                   </Text>
                 </Box>
@@ -244,42 +236,43 @@ const Home = () => {
                 Today 10:30
               </Text>
             </Box>
-          </Box>
-          <Box as="ul" mt={6}>
+
             <Box
               as="li"
               display={"flex"}
               justifyContent="space-between"
               alignItems={"center"}
-              mb={3}
+              my={3}
             >
               <Box display={"flex"} alignItems="center" gap={3}>
-              <Image src={Hardsands_Whatsapp.src}/>
+                <Image src={Hardsands_Whatsapp.src} height={40} width={40} />
                 <Box>
-                  <Text>Whatsapp</Text>
-                  <Text fontSize={"12px"} color="#757575">
+                  <Heading fontSize={"0.9rem"} mb={1}>
+                    Bank Details
+                  </Heading>
+                  <Text fontSize={"10px"} color="#757575">
                     Kennedy John
                   </Text>
                 </Box>
               </Box>
-              <Text fontSize={"11px"} color="#757575">
+              <Text fontSize={"10px"} color="#757575">
                 Today 10:000
               </Text>
             </Box>
-          </Box>
-          <Box as="ul" mt={6}>
             <Box
               as="li"
               display={"flex"}
               justifyContent="space-between"
               alignItems={"center"}
-              mb={3}
+              my={3}
             >
               <Box display={"flex"} alignItems="center" gap={3}>
-                <img src={Hardsands_Whatsapp.src} />
+                <Image src={Hardsands_Whatsapp.src} height={40} width={40} />
                 <Box>
-                  <Text>Whatsapp</Text>
-                  <Text fontSize={"12px"} color="#757575">
+                  <Heading fontSize={"0.9rem"} mb={1}>
+                    Contact Card
+                  </Heading>
+                  <Text fontSize={"10px"} color="#757575">
                     Kennedy John
                   </Text>
                 </Box>

@@ -104,42 +104,7 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
     icon: MemberIcon,
     isImg: true,
   },
-  {
-    id: 2,
-    title: "Member",
-    href: `${DASH_ROOT}`,
-    icon: AiOutlineIdcard,
-  },
-  {
-    id: 3,
-    title: "Messages",
-    href: `${DASH_ROOT}`,
-    icon: AiOutlineIdcard,
-  },
-  {
-    id: 4,
-    title: "Reports",
-    href: `${DASH_ROOT}`,
-    icon: AiOutlineIdcard,
-  },
-  {
-    id: 5,
-    title: "Support",
-    href: `${DASH_ROOT}`,
-    icon: AiOutlineIdcard,
-  },
-  {
-    id: 6,
-    title: "Devices",
-    href: `${DASH_ROOT}`,
-    icon: AiOutlineIdcard,
-  },
-  {
-    id: 7,
-    title: "Settings",
-    href: `${DASH_ROOT}`,
-    icon: AiOutlineIdcard,
-  },
+ 
 ];
 
 export const AppIcons = {
