@@ -34,15 +34,15 @@ import {
   YelpIcon,
   YoutubeIcon,
   ZelleIcon,
-  // SupportIcon,
-  // ReportIcon,
-  // MessagesIcon,
   MemberIcon,
-  // LeadsIcon,
   DashboardIcon,
-  // DashWhatsAppIcon,
-  // ContactCardIconSVG,
-  // BankIconSVG,
+  SupportIcon,
+  ReportIcon,
+  MessagesIcon,
+  LeadsIcon,
+  DashWhatsAppIcon,
+  ContactCardIconSVG,
+  BankIconSVG,
 } from "assets";
 import {
   AiFillBank,
@@ -152,6 +152,13 @@ export const AppIcons = {
   YelpIcon,
   YoutubeIcon,
   ZelleIcon,
+  SupportIcon,
+  ReportIcon,
+  MessagesIcon,
+  LeadsIcon,
+  DashWhatsAppIcon,
+  ContactCardIconSVG,
+  BankIconSVG,
 };
 
 /*

@@ -1,13 +1,15 @@
-import { Flex, Text, Box, Avatar } from "@chakra-ui/react";
+import { Flex, Text, Box, Avatar, Tag } from "@chakra-ui/react";
 
 const NameColumn = ({
   name,
   img,
-  email,
+  subText,
+  isActive,
 }: {
   name: string;
   img?: string;
-  email?: string;
+  subText?: string;
+  isActive?: boolean;
 }) => {
   return (
     <Flex>
@@ -20,7 +22,8 @@ const NameColumn = ({
         <Text fontWeight={"bolder"} fontSize={20}>
           {name}
         </Text>
-        {email && <Text>{email}</Text>}
+        {subText && <Text>{subText}</Text>}
+        {isActive && <Tag>Active</Tag>}
       </Box>
     </Flex>
   );

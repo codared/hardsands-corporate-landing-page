@@ -12,6 +12,7 @@ import {
   Flex,
   Text,
   HStack,
+  FlexProps,
 } from "@chakra-ui/react";
 import React, { ReactElement } from "react";
 
@@ -19,13 +20,13 @@ type DataTable = {
   [key: string]: string | number | ReactElement;
 };
 
-interface Props {
+interface Props extends FlexProps {
   tableTitle: string;
   headers: string[];
   data: DataTable[];
 }
 
-const DataTable = ({ tableTitle, headers, data }: Props) => {
+const DataTable = ({ tableTitle, headers, data, ...rest }: Props) => {
   return (
     <Flex
       direction={"column"}
@@ -33,6 +34,7 @@ const DataTable = ({ tableTitle, headers, data }: Props) => {
       my={[10]}
       bg={"white"}
       p={[6]}
+      {...rest}
     >
       <HStack pb={[8]}>
         <Text fontSize={24} fontWeight={"bolder"}>
@@ -63,7 +65,7 @@ const DataTable = ({ tableTitle, headers, data }: Props) => {
             {data.map((row: any, index: number) => (
               <Tr key={index}>
                 {Object.keys(row).map((actualRow: any, i: number) => (
-                  <Td key={index}>{row[actualRow]}</Td>
+                  <Td key={i}>{row[actualRow]}</Td>
                 ))}
               </Tr>
             ))}

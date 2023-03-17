@@ -15,19 +15,24 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import React from "react";
-import { CiMenuKebab } from "react-icons/ci";
+import React, { useState } from "react";
 import DataTable from "../sharedComponents/DataTable";
+import CustomDrawer from "components/CustomDrawer";
 import StatsCard from "../sharedComponents/StatsCard";
 import AddMemberButton from "./components/AddMemberButton";
+import MemberProfile from "./components/MemberProfile";
 import NameColumn from "./components/NameColumn";
 import RowMenu from "./components/RowMenu";
 
-export const buildMemberRow = (members: any) => {
+export const buildMemberRow = (members: any, rowMenuOptions: any) => {
   return members.map((member: any) => {
     return {
       name: (
-        <NameColumn name={member.name} email={member.email} img={member.img} />
+        <NameColumn
+          name={member.name}
+          subText={member.email}
+          img={member.img}
+        />
       ),
       usage: (
         <Flex flexDirection={["column", "row"]} alignItems={"center"}>
@@ -58,7 +63,7 @@ export const buildMemberRow = (members: any) => {
               {member.active ? "Active" : "Inactive"}
             </TagLabel>
           </Tag>
-          <RowMenu />
+          <RowMenu menuOption={rowMenuOptions(member)} />
         </Flex>
       ),
     };
@@ -67,6 +72,7 @@ export const buildMemberRow = (members: any) => {
 
 const Members = () => {
   const memberDrawer = useDisclosure();
+  const [activeMember, setActiveMember] = useState({});
   const columnHeaders = ["Name", "Card Usage", "Clicks", "Role", "Status"];
   const dataStore = [
     {
@@ -98,29 +104,61 @@ const Members = () => {
     },
   ];
 
-  const data = buildMemberRow(dataStore);
+  const rowMenuOptions = (member: any) => {
+    return [
+      {
+        id: 1,
+        title: "Edit Member",
+        onClick: () => {
+          setActiveMember(member);
+          memberDrawer.onOpen();
+        },
+      },
+      {
+        id: 2,
+        title: "Set Permissions",
+        onClick: () => {},
+      },
+      {
+        id: 3,
+        title: "Lock Profile",
+        onClick: () => {},
+      },
+      {
+        id: 4,
+        title: "View Report",
+        onClick: () => {},
+      },
+      {
+        id: 5,
+        title: "Remove Member",
+        onClick: () => {},
+      },
+    ];
+  };
+
+  const data = buildMemberRow(dataStore, rowMenuOptions);
 
   return (
     <Box>
-      <Drawer
+      <CustomDrawer
+        title={"Edit Member"}
+        size={"sm"}
+        placement="right"
         isOpen={memberDrawer.isOpen}
         onClose={memberDrawer.onClose}
-        placement="right"
-        size={"md"}
       >
-        {/* <DrawerOverlay /> */}
-        <DrawerContent>
-          <DrawerCloseButton />
-          <>Hello</>
-        </DrawerContent>
-      </Drawer>
+        <MemberProfile member={activeMember} />
+      </CustomDrawer>
 
-      <Box py={[8]}>
+      <Box>
+        <Text color="#737373" fontSize="14px">
+          Add a member by using any of the options below
+        </Text>
         <Heading>Team Members</Heading>
-        <Text>Add a member by using any of the options below</Text>
       </Box>
 
-      <Flex flexDirection={["column", "column", "row"]} gap={4}>
+      <Flex mt="8" flexDirection={["column", "column", "row"]} gap="8">
         <AddMemberButton
           title={"Add Manually"}
           subtitle={"Add using members credentials"}
@@ -138,11 +176,24 @@ const Members = () => {
         />
       </Flex>
 
+      {/* <Flex gap={4} width={"100%"} transition={"all ease-in-out 200ms"}> */}
       <DataTable
         headers={columnHeaders}
         data={data}
         tableTitle={"Member Overview"}
+        //   w={`${100 / 1.5}%`}
       />
+      {/* <Flex
+          direction={"column"}
+          justifyContent={"start"}
+          my={[10]}
+          bg={"white"}
+          p={[6]}
+          w={`${100 / 3}%`}
+        >
+          <Text fontWeight={"bold"}>Recent Activity</Text>
+        </Flex> */}
+      {/* </Flex> */}
     </Box>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./Home";
+import Home from "./mainDash";
 import Members from "./Members";
 
 const Dashboard = ({ route }: { route: string[] }) => {

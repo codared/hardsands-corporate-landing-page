@@ -9,8 +9,15 @@ import {
 import React from "react";
 import { CiMenuKebab } from "react-icons/ci";
 
-const RowMenu = () => {
+const RowMenu = ({ menuOption }: any) => {
   const menuHover = { color: "black", bg: "blackAlpha.100" };
+  if (!menuOption) return null;
+
+  const handleClick = (onClick: any) => {
+    console.log("clicked");
+    onClick();
+  };
+
   return (
     <Menu>
       <MenuButton
@@ -26,11 +33,11 @@ const RowMenu = () => {
         }}
       />
       <MenuList>
-        <MenuItem _hover={menuHover}>Download</MenuItem>
-        <MenuItem _hover={menuHover}>Create a Copy</MenuItem>
-        <MenuItem _hover={menuHover}>Mark as Draft</MenuItem>
-        <MenuItem _hover={menuHover}>Delete</MenuItem>
-        <MenuItem _hover={menuHover}>Attend a Workshop</MenuItem>
+        {menuOption.map((item: any, index: number) => (
+          <MenuItem onClick={item.onClick} key={index} _hover={menuHover}>
+            {item.title}
+          </MenuItem>
+        ))}
       </MenuList>
     </Menu>
   );
