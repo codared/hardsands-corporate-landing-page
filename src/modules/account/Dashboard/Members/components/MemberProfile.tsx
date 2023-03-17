@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Image } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import { AppIcons } from "modules/account/constants";
 import ActionItem from "modules/account/MainAccountContent/components/ActionItem";
 import React from "react";
@@ -32,20 +32,32 @@ const MemberProfile = ({ member }: any) => {
       <Box>
         <Heading size={"md"}>Active Actions</Heading>
         <Flex direction={"column"} py={[6]}>
-          <ActionItem title="URL" Icon={AppIcons.URL} handleActionSelect={() => {}} />
-          <ActionItem title="Contact Card" Icon={AppIcons["Contact Card"]} handleActionSelect={() => {}} />
-          <ActionItem title="Leads" Icon={AppIcons.Event} handleActionSelect={() => {}} />
+          <ActionItem
+            title="URL"
+            Icon={AppIcons.URL}
+            handleActionSelect={() => {}}
+          />
+          <ActionItem
+            title="Contact Card"
+            Icon={AppIcons["Contact Card"]}
+            handleActionSelect={() => {}}
+          />
+          <ActionItem
+            title="Leads"
+            Icon={AppIcons.Event}
+            handleActionSelect={() => {}}
+          />
         </Flex>
         <Button
           w={"full"}
           color="white"
           bg={"brand.300"}
-          _hover={{ textColor: "black" }}
+          _hover={{ textColor: "black", bg: "brand.200" }}
           borderRadius={"none"}
           py={[6]}
         >
           <MdAdd size={24} />
-          Add Action
+          <Text>Add Action</Text>
         </Button>
       </Box>
     </Box>

@@ -9,7 +9,9 @@ import {
   TagLabel,
   Text,
   BoxProps,
+  Image,
 } from "@chakra-ui/react";
+import { AppIcons } from "modules/account/constants";
 import React from "react";
 import { CiMenuKebab } from "react-icons/ci";
 
@@ -47,6 +49,11 @@ const StatsCard = ({
             {number}
           </Heading>
         </Box>
+        {!curves && (
+          <Box>
+            <Image src={AppIcons.ChartIconSVG.src} alt={"chart"} />
+          </Box>
+        )}
         <Flex direction={"column"} alignItems={"end"}>
           {showMenu && (
             <IconButton

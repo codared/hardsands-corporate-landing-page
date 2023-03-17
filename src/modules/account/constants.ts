@@ -43,6 +43,7 @@ import {
   DashWhatsAppIcon,
   ContactCardIconSVG,
   BankIconSVG,
+  ChartIconSVG,
 } from "assets";
 import {
   AiFillBank,
@@ -159,6 +160,7 @@ export const AppIcons = {
   DashWhatsAppIcon,
   ContactCardIconSVG,
   BankIconSVG,
+  ChartIconSVG,
 };
 
 /*
