@@ -137,20 +137,12 @@ const Members = () => {
           decline={true}
         />
       </Flex>
-      <Flex
-        direction={"column"}
-        justifyContent={"start"}
-        my={[10]}
-        bg={"white"}
-        p={[6]}
-      >
-        <HStack pb={[8]}>
-          <Text fontSize={24} fontWeight={"bolder"}>
-            Members Overview
-          </Text>
-        </HStack>
-        <DataTable headers={columnHeaders} data={data} />
-      </Flex>
+
+      <DataTable
+        headers={columnHeaders}
+        data={data}
+        tableTitle={"Member Overview"}
+      />
     </Box>
   );
 };
