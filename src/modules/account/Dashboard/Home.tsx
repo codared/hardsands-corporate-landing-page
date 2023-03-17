@@ -1,4 +1,6 @@
 import { Box, Text, BoxProps, Avatar } from "@chakra-ui/react";
+import Image from "next/image";
+import Hardsands_Whatsapp from "../../../assets/Hardsands_Whatsapp.svg"
 import { Card } from "components/index";
 
 const Bar = (props: BoxProps) => {
@@ -74,8 +76,8 @@ const Home = () => {
         gap="8"
         mt="8"
       >
-        <Card bgColor="#fff" width="100%">
-          <Text> Clicks This Month</Text>
+        <Card width="100%">
+          <Text>Total Clicks</Text>
           <Box
             display="flex"
             justifyContent="space-between"
@@ -99,13 +101,36 @@ const Home = () => {
             </Box>
           </Box>
         </Card>
-        <Card bgColor="#fff" width="100%">
-          <Text> Clicks This Month</Text>
-          <Text fontSize="2xl">630</Text>
+        <Card width="100%">
+          <Text> Members</Text>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Text sx={{ fontWeight: "bold" }} fontSize="2xl">
+              130
+            </Text>
+            <Box
+              px="3"
+              py="1"
+              borderRadius="2rem"
+              fontWeight="bold"
+              bgColor="#e7faf5"
+              color="#05CD99"
+              w="fit-content"
+              h="fit-content"
+              fontSize="12px"
+            >
+              2.45%
+            </Box>
+          </Box>
         </Card>
         <Card bgColor="#df9f71" width="100%" color="#fff">
-          <Text> Clicks This Month</Text>
-          <Text fontSize="2xl">630</Text>
+          <Text>Activity</Text>
+          <Text sx={{ fontWeight: "bold" }} fontSize="2xl">
+            60%
+          </Text>
         </Card>
       </Box>
 
@@ -129,7 +154,7 @@ const Home = () => {
             ))}
           </Box>
         </Card>
-        <Card bgColor={"#fff"} w="100%" maxW="344px">
+        <Card w="100%" maxW="344px">
           <Text>Top Performer</Text>
           <Box display={"flex"} justifyContent="center">
             <Avatar src="" w="45" h="45" mx="auto" />
@@ -161,6 +186,136 @@ const Home = () => {
             <Box display={"flex"} alignItems="center" gap={3}>
               <Box borderRadius="50%" w="8px" h="8px" bgColor="#d9d9d9" />{" "}
               <Text>Activity</Text>
+            </Box>
+          </Box>
+        </Card>
+      </Box>
+
+      <Box
+        display="grid"
+        gridTemplateColumns={"repeat(3, 1fr)"}
+        gap={6}
+        mt={6}
+        h="350px"
+      >
+        <Card w="100%" maxW="720px" p="8">
+          <Text fontSize={"14px"}>Clicks this month</Text>
+          <Text fontSize="2xl" fontWeight={"extrabold"}>
+            300
+          </Text>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="baseline"
+            mt="10"
+          >
+            {compositeBarData.map(({ id, activity, clicks }) => (
+              <Box key={id}>
+                <CompositeBar
+                  activity={activity}
+                  clicks={clicks}
+                  w="16px"
+                  borderRadius={"16px"}
+                />
+              </Box>
+            ))}
+          </Box>
+        </Card>
+        <Card p={8}>
+          <Text>Your Activity</Text>
+          <Box as="ul" mt={6}>
+            <Box
+              as="li"
+              display={"flex"}
+              justifyContent="space-between"
+              alignItems={"center"}
+              mb={3}
+            >
+              <Box display={"flex"} alignItems="center" gap={3}>
+                <img src={Hardsands_Whatsapp.src} />
+                <Box>
+                  <Text>Whatsapp</Text>
+                  <Text fontSize={"12px"} color="#757575">
+                    Kennedy John
+                  </Text>
+                </Box>
+              </Box>
+              <Text fontSize={"11px"} color="#757575">
+                Today 10:30
+              </Text>
+            </Box>
+          </Box>
+          <Box as="ul" mt={6}>
+            <Box
+              as="li"
+              display={"flex"}
+              justifyContent="space-between"
+              alignItems={"center"}
+              mb={3}
+            >
+              <Box display={"flex"} alignItems="center" gap={3}>
+              <Image src={Hardsands_Whatsapp.src}/>
+                <Box>
+                  <Text>Whatsapp</Text>
+                  <Text fontSize={"12px"} color="#757575">
+                    Kennedy John
+                  </Text>
+                </Box>
+              </Box>
+              <Text fontSize={"11px"} color="#757575">
+                Today 10:000
+              </Text>
+            </Box>
+          </Box>
+          <Box as="ul" mt={6}>
+            <Box
+              as="li"
+              display={"flex"}
+              justifyContent="space-between"
+              alignItems={"center"}
+              mb={3}
+            >
+              <Box display={"flex"} alignItems="center" gap={3}>
+                <img src={Hardsands_Whatsapp.src} />
+                <Box>
+                  <Text>Whatsapp</Text>
+                  <Text fontSize={"12px"} color="#757575">
+                    Kennedy John
+                  </Text>
+                </Box>
+              </Box>
+              <Text fontSize={"11px"} color="#757575">
+                Today 10:00
+              </Text>
+            </Box>
+          </Box>
+        </Card>
+        <Card textAlign={"center"}>
+          <Box display={"flex"} justifyContent="center" mb="4">
+            <Avatar src="" w="118px" h="118px" />
+          </Box>
+          <Text color="brand.300" fontSize={"2xl"}>
+            Greens Limited
+          </Text>
+          <Text fontSize="14px">Lagos, Nigeria</Text>
+          <Box mt="10" display={"flex"} justifyContent="center" gap="6">
+            <Box>
+              <Text fontSize="12px">Leads</Text>
+              <Text color="brand.300" fontSize={"2xl"}>
+                28
+              </Text>
+            </Box>
+            <Box>
+              <Text fontSize="12px">Members</Text>
+              <Text color="brand.300" fontSize={"2xl"}>
+                130
+              </Text>
+            </Box>
+            <Box>
+              <Text fontSize="12px">Clicks</Text>
+              <Text color="brand.300" fontSize={"2xl"}>
+                630
+              </Text>
             </Box>
           </Box>
         </Card>

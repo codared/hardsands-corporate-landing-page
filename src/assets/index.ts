@@ -46,4 +46,8 @@ export { default as AudioMackIcon } from "./icons/audiomack.png";
 export { default as CheckIcon } from "./icons/check.png";
 export { default as PayStackIcon } from "./icons/paystack.svg";
 
+import Hardsands_BankDetails from "./Hardsands_BankDetails.svg";
+import Hardsands_Whatsapp from "./Hardsands_Whatsapp.svg";
 export { default as AvatarImg } from "./avatar-img.png";
+export { Hardsands_BankDetails, Hardsands_Whatsapp };
+export { default as Hardsands_ContactCard } from "./Hardsands_ContactCard.svg";
