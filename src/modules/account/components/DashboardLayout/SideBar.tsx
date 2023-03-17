@@ -4,15 +4,15 @@ import {
   Icon,
   Collapse,
   useDisclosure,
-  Avatar,
+  Heading,
   Text,
+  Image,
 } from "@chakra-ui/react";
-import Image from "next/image";
 import HardsandLink from "components/HardsandsLink";
 import HardsandsAppLogo from "components/Logo";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
-import { DASH_NAV_ITEMS } from "../../constants";
+import { DASH_NAV_ITEMS, routeId } from "../../constants";
 import NavItem from "../Navitems";
 import { useState } from "react";
 import { AccountNavItemsType } from "utils/types";
@@ -41,6 +41,8 @@ const DashSidebarContent = (props: any) => {
       left="0"
       zIndex="sticky"
       h="full"
+      pb="10"
+      px={[10]}
       overflowX="hidden"
       overflowY="auto"
       bg="white"
@@ -50,18 +52,10 @@ const DashSidebarContent = (props: any) => {
       border
       color="inherit"
       borderRightWidth="1px"
+      w="80"
       {...props}
     >
-      <Flex
-        px="6"
-        pt="10"
-        pb="6"
-        display="flex"
-        gap="1rem"
-        align="center"
-        borderBottom="1px solid #f4f7fe"
-      >
-        <Image src={hardsandsIconLogo.src} width={45} height={45} />
+      <Flex px="4" py="5" justifyContent={"center"} alignItems="center">
         <HardsandsAppLogo />
       </Flex>
       <Flex
@@ -70,34 +64,47 @@ const DashSidebarContent = (props: any) => {
         fontSize="sm"
         color="gray.600"
         aria-label="Main Navigation"
-        gap={"3rem"}
-        p="4"
+        h="95%"
       >
-        <Box display="flex" flexDir="column" alignItems="center">
-          <Avatar src="../" width={98} height={98} />
-          <Text textAlign="center" fontSize="11px">
-            {" "}
-            Welcome Back
+        <Flex
+          direction={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
+          <Image
+            rounded={"full"}
+            width={"50%"}
+            src="https://bit.ly/dan-abramov"
+            alt={"Dan Abrahmov"}
+          />
+          <Box h={4} />
+          <Text fontSize={14}>Welcome Back</Text>
+          <Text fontSize={20} fontWeight={"bolder"}>
+            Greens Limited
           </Text>
-          <Text textAlign="center"> Greens Limited</Text>
-        </Box>
-        <Box>
+        </Flex>
+        <Box mt={[10]}>
           {DASH_NAV_ITEMS.map((item: AccountNavItemsType) => {
             return (
               <HardsandLink
                 key={item.title}
-                href={item.href}
+                href={item.href.replace(routeId, props.routes[0])}
                 onClick={() => setActive(item.id)}
               >
                 <NavItem
                   color={active === item.id ? "brand.300" : "inherit"}
                   icon={item.icon}
+                  isImg={item.isImg}
                 >
                   {item.title}
                 </NavItem>
                 {item.children?.length && (
                   <>
-                    <NavItem icon={item.icon} onClick={integrations.onToggle}>
+                    <NavItem
+                      icon={item.icon}
+                      isImg={item.isImg}
+                      onClick={integrations.onToggle}
+                    >
                       {item.title}
                       <Icon
                         as={MdKeyboardArrowRight}
@@ -108,7 +115,12 @@ const DashSidebarContent = (props: any) => {
                     </NavItem>
                     <Collapse in={integrations.isOpen}>
                       {item.children.map((childItem: { title: any }) => (
-                        <NavItem key={childItem.title} pl="12" py="2">
+                        <NavItem
+                          isImg={item.isImg}
+                          key={childItem.title}
+                          pl="12"
+                          py="2"
+                        >
                           {childItem.title}
                         </NavItem>
                       ))}

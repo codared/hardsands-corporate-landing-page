@@ -1,13 +1,12 @@
 import React from "react";
-import { useRouter } from "next/router";
 import Home from "./Home";
+import Members from "./Members";
 
 const Dashboard = ({ route }: { route: string[] }) => {
-  const { pathname } = useRouter();
+  switch (route[1]) {
+    case "members":
+      return <Members />;
 
-  switch (pathname) {
-    case "/dashboard/[...corpName]":
-      return <Home />;
     default:
       return <Home />;
   }

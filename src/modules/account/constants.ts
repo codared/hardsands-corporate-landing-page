@@ -34,6 +34,15 @@ import {
   YelpIcon,
   YoutubeIcon,
   ZelleIcon,
+  // SupportIcon,
+  // ReportIcon,
+  // MessagesIcon,
+  MemberIcon,
+  // LeadsIcon,
+  DashboardIcon,
+  // DashWhatsAppIcon,
+  // ContactCardIconSVG,
+  // BankIconSVG,
 } from "assets";
 import {
   AiFillBank,
@@ -50,8 +59,9 @@ import { MdOutlineContactMail, MdOutlineEventNote } from "react-icons/md";
 import { AccountNavItemsType, ActionsFormType, ActionsType } from "utils/types";
 import getCountries, { getState, getStatesList } from "utils/getCountries";
 
+export const routeId = "${corporateId}";
 export const ACCOUNT_ROOT = "/app";
-export const DASH_ROOT = "/dashboard/${corporateId}";
+export const DASH_ROOT = `/dashboard/${routeId}`;
 
 export const enum ACTION_FORM_STATUS {
   ADD = "ADD",
@@ -84,7 +94,15 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
     id: 1,
     title: "Dashboard",
     href: `${DASH_ROOT}`,
-    icon: AiOutlineIdcard,
+    icon: DashboardIcon,
+    isImg: true,
+  },
+  {
+    id: 2,
+    title: "Members",
+    href: `${DASH_ROOT}/members`,
+    icon: MemberIcon,
+    isImg: true,
   },
   {
     id: 2,
