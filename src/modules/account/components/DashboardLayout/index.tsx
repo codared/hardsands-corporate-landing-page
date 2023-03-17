@@ -50,8 +50,8 @@ import DashSidebarContent from "./SideBar";
             <DashSidebarContent w="full" borderRight="none" active={active} />
           </DrawerContent>
         </Drawer>
-        <Box ml={[0, 60]} transition=".3s ease">
-          <Flex
+        <Box ml={[0, 280]} transition=".3s ease">
+          {/* <Flex
             as="header"
             align="center"
             justify="space-between"
@@ -85,9 +85,9 @@ import DashSidebarContent from "./SideBar";
                 cursor="pointer"
               />
             </Flex>
-          </Flex>
+          </Flex> */}
   
-          <Box as="main" p="4">
+          <Box as="main" px="8" py="12" bgColor="#f9f9f9">
             {children}
           </Box>
         </Box>

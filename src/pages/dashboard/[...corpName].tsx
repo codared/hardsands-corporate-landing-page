@@ -6,6 +6,7 @@ import React from "react";
 const Corperate = (pageContext: any) => {
   const router = useRouter();
   const corpName = (router.query.corpName as string[]) || [];
+
   return (
     <HardsandsCorperateDash active={1}>
       <Dashboard route={corpName} />

@@ -1,4 +1,5 @@
-import { Box, Flex, Icon, Collapse, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex, Icon, Collapse, useDisclosure, Avatar, Text } from "@chakra-ui/react";
+import Image from "next/image";
 import HardsandLink from "components/HardsandsLink";
 import HardsandsAppLogo from "components/Logo";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -13,6 +14,7 @@ import {
   HARDSANDS_LOGIN_COOKIE,
 } from "modules/authentication/constants";
 import Router from "next/router";
+import { hardsandsIconLogo } from "design";
 
 const DashSidebarContent = (props: any) => {
   const integrations = useDisclosure();
@@ -31,7 +33,6 @@ const DashSidebarContent = (props: any) => {
       left="0"
       zIndex="sticky"
       h="full"
-      pb="10"
       overflowX="hidden"
       overflowY="auto"
       bg="white"
@@ -41,10 +42,10 @@ const DashSidebarContent = (props: any) => {
       border
       color="inherit"
       borderRightWidth="1px"
-      w="60"
       {...props}
     >
-      <Flex px="4" py="5" align="center">
+      <Flex px="6" pt="10" pb="6" display="flex" gap="1rem" align="center" borderBottom="1px solid #f4f7fe">
+        <Image src={hardsandsIconLogo.src} width={45} height={45}/>
         <HardsandsAppLogo />
       </Flex>
       <Flex
@@ -53,9 +54,14 @@ const DashSidebarContent = (props: any) => {
         fontSize="sm"
         color="gray.600"
         aria-label="Main Navigation"
-        justify={"space-between"}
-        h="95%"
+        gap={"3rem"}
+        p="4"
       >
+        <Box display="flex" flexDir="column" alignItems="center">
+          <Avatar src="../" width={98} height={98} />
+          <Text textAlign="center" fontSize="11px"> Welcome Back</Text>
+          <Text textAlign="center"> Greens Limited</Text>
+        </Box>
         <Box>
           {DASH_NAV_ITEMS.map((item: AccountNavItemsType) => {
             return (
