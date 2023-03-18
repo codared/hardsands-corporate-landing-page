@@ -89,7 +89,7 @@ const DataTable = ({
           </Thead>
           <Tbody>
             {data.map((row: any, index: number) => (
-              <Tr key={index}>
+              <Tr key={index} bg={false ? "brand.10" : "none"} rounded={"md"}>
                 {checkable && (
                   <Td>
                     <Checkbox

@@ -1,15 +1,18 @@
 import { Text, Box, Avatar, Tag, HStack } from "@chakra-ui/react";
+import { MdOutlineTimer } from "react-icons/md";
 
 const NameColumn = ({
   name,
   img,
   subText,
   isActive,
+  timer,
 }: {
   name: string;
   img?: string;
   subText?: string;
   isActive?: boolean;
+  timer?: boolean;
 }) => {
   return (
     <HStack>
@@ -22,7 +25,12 @@ const NameColumn = ({
         <Text fontWeight={"bolder"} fontSize={20}>
           {name}
         </Text>
-        {subText && <Text>{subText}</Text>}
+        {subText && (
+          <HStack>
+            {timer && <MdOutlineTimer color={"grey"} />}
+            <Text>{subText}</Text>
+          </HStack>
+        )}
         {isActive && <Tag>Active</Tag>}
       </Box>
     </HStack>

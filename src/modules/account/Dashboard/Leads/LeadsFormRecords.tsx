@@ -20,7 +20,7 @@ export const buildLeadRow = (leads: any, rowMenuOptionsFunction: any) => {
   return leads.map(({ lead, contact, status, source, owner }: any) => {
     return {
       "Lead Name": (
-        <NameColumn name={lead.name} subText={lead.createdAt} img={lead.img} />
+        <NameColumn name={lead.name} subText={lead.createdAt} timer img={lead.img} />
       ),
       Contact: (
         <Flex flexDirection={["column"]} alignItems={"flex-start"}>
