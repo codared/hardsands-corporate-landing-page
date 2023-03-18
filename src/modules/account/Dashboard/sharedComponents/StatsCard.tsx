@@ -21,6 +21,7 @@ interface StatsCardProps extends BoxProps {
   curves?: string;
   decline?: boolean;
   showMenu?: boolean;
+  width?: number;
 }
 const StatsCard = ({
   name,
@@ -28,13 +29,13 @@ const StatsCard = ({
   curves,
   decline,
   showMenu = true,
+  width = 100 / 3,
   ...rest
 }: StatsCardProps) => {
-  const memberStatWidth = 100 / 3;
   return (
     <Box
       //   h={"max-content"}
-      w={["full", "full", memberStatWidth]}
+      w={["full", "full", width]}
       p={[6]}
       borderColor={"grey.300"}
       bg={"white"}

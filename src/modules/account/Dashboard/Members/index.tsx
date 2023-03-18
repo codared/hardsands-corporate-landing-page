@@ -22,7 +22,7 @@ import StatsCard from "../sharedComponents/StatsCard";
 import AddMemberButton from "./components/AddMemberButton";
 import MemberProfile from "./components/MemberProfile";
 import NameColumn from "./components/NameColumn";
-import RowMenu from "./components/RowMenu";
+import RowMenu from "../sharedComponents/RowMenu";
 import CreateMemberForm from "./components/CreateMemberForm";
 import ImportMemberForm from "./components/ImportMemberForm";
 

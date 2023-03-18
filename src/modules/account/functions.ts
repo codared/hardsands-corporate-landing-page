@@ -47,3 +47,13 @@ export const getFileExtension = (filename: string) => {
   }
   return "";
 };
+
+/*
+ * Replaces non-alphanumeric characters in a string with `replacementChar`
+ */
+export const slugify = (str: string, replacementChar = "-") => {
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9-]+/g, replacementChar);
+};

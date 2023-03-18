@@ -1,5 +1,27 @@
+import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import { isEmptyObject } from "../functions";
+import { isEmptyObject, slugify } from "../functions";
+import queryString from "query-string";
+
+export const useRouteChange = (changeValue: any) => {
+  const route = useRouter();
+  let currentRoute = route.asPath.split("?")[0];
+  const queryParams = queryString.parse(route.asPath.split("?")[1]);
+
+  useEffect(() => {
+    const stringified = queryString.stringify({
+      ...queryParams,
+      form: changeValue,
+    });
+
+    route.push(`${currentRoute}?${stringified}`, undefined, {
+      shallow: true,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [changeValue]);
+
+  return { queryParams };
+};
 
 export const useForm = (initialValues: any, schema: any, cb: any) => {
   const [loading, setLoading] = useState(false);

@@ -6,17 +6,17 @@ const AddMemberButton = ({
   title,
   subtitle,
   onClick = (e: any) => {},
+  width = 100 / 3,
 }: {
   title: string;
   subtitle: string;
   onClick?: (e: any) => void;
+  width?: number;
 }) => {
-  const memberStatWidth = 100 / 3;
-  const memberMdStatWidth = 100 / 2;
   return (
     <Box
       //   h={"max-content"}
-      w={["full", "full", memberStatWidth]}
+      w={["full", "full", width]}
       p={[6]}
       borderColor={"brand.300"}
       borderWidth={1}

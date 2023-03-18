@@ -1,4 +1,4 @@
-import { Flex, Text, Box, Avatar, Tag } from "@chakra-ui/react";
+import { Text, Box, Avatar, Tag, HStack } from "@chakra-ui/react";
 
 const NameColumn = ({
   name,
@@ -12,7 +12,7 @@ const NameColumn = ({
   isActive?: boolean;
 }) => {
   return (
-    <Flex>
+    <HStack>
       {img && (
         <Box mr={[4]}>
           <Avatar name={name} src={img} />
@@ -25,7 +25,7 @@ const NameColumn = ({
         {subText && <Text>{subText}</Text>}
         {isActive && <Tag>Active</Tag>}
       </Box>
-    </Flex>
+    </HStack>
   );
 };
 

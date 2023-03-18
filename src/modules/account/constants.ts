@@ -106,6 +106,13 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
     icon: MemberIcon,
     isImg: true,
   },
+  {
+    id: 3,
+    title: "Leads",
+    href: `${DASH_ROOT}/leads`,
+    icon: LeadsIcon,
+    isImg: true,
+  },
  
 ];
 
