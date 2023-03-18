@@ -14,15 +14,11 @@ import DataTable from "../sharedComponents/DataTable";
 import { BsTelephone } from "react-icons/bs";
 import { IoMailOutline } from "react-icons/io5";
 import { STATUS_BADGE } from "./constants";
+import { colors } from "styles/theme";
 
-export const buildLeadRow = (
-  leads: any,
-  rowMenuOptionsFunction: any,
-  handleCheckBox?: () => void
-) => {
-  return leads.map(({ id, lead, contact, status, source, owner }: any) => {
+export const buildLeadRow = (leads: any, rowMenuOptionsFunction: any) => {
+  return leads.map(({ lead, contact, status, source, owner }: any) => {
     return {
-      selector: <Checkbox onChange={handleCheckBox} value={id} />,
       "Lead Name": (
         <NameColumn name={lead.name} subText={lead.createdAt} img={lead.img} />
       ),
@@ -61,7 +57,6 @@ export const buildLeadRow = (
 
 const LeadsFormRecords = ({ selectForm }: any) => {
   const columnHeaders = [
-    "",
     "Lead Name",
     "Contact",
     "Status",
@@ -144,17 +139,19 @@ const LeadsFormRecords = ({ selectForm }: any) => {
     ];
   };
 
-  const handleCheckBox = () => {
-    console.log("checkbox clicked");
+  const handleCheckBox = (row: any) => {
+    console.log("checkbox clicked >>> ", row);
   };
 
-  const data = buildLeadRow(dataStore, rowMenuOptions, handleCheckBox);
+  const data = buildLeadRow(dataStore, rowMenuOptions);
   return (
     <Box>
       <DataTable
+        checkable
         headers={columnHeaders}
         data={data}
         tableTitle={"Leads Overview"}
+        onCheck={handleCheckBox}
       />
     </Box>
   );

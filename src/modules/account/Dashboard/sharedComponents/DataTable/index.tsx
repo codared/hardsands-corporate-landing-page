@@ -13,6 +13,7 @@ import {
   Text,
   HStack,
   FlexProps,
+  Checkbox,
 } from "@chakra-ui/react";
 import React, { ReactElement } from "react";
 
@@ -21,12 +22,29 @@ type DataTable = {
 };
 
 interface Props extends FlexProps {
+  checkable?: boolean;
   tableTitle: string;
   headers: string[];
   data: DataTable[];
+  onCheck?: (row: any) => void;
 }
 
-const DataTable = ({ tableTitle, headers, data, ...rest }: Props) => {
+const DataTable = ({
+  checkable,
+  tableTitle,
+  headers,
+  data,
+  onCheck,
+  ...rest
+}: Props) => {
+  const handleCheckBox = (e: any, row: any) => {
+    onCheck && onCheck(row);
+  };
+
+  const handleAllCheckBox = (e: any) => {
+    // onCheck && onCheck(data);
+  };
+
   return (
     <Flex
       direction={"column"}
@@ -50,6 +68,14 @@ const DataTable = ({ tableTitle, headers, data, ...rest }: Props) => {
           </TableCaption>
           <Thead bg={"blackAlpha.50"}>
             <Tr>
+              {checkable && (
+                <Th textTransform={"capitalize"} fontFamily={"Campton"}>
+                  <Checkbox
+                    onChange={(e: any) => handleAllCheckBox(e)}
+                    colorScheme={"orange"}
+                  />
+                </Th>
+              )}
               {headers.map((header, index) => (
                 <Th
                   textTransform={"capitalize"}
@@ -64,6 +90,15 @@ const DataTable = ({ tableTitle, headers, data, ...rest }: Props) => {
           <Tbody>
             {data.map((row: any, index: number) => (
               <Tr key={index}>
+                {checkable && (
+                  <Td>
+                    <Checkbox
+                      onChange={(e: any) => handleCheckBox(e, row)}
+                      value={index}
+                      colorScheme={"orange"}
+                    />
+                  </Td>
+                )}
                 {Object.keys(row).map((actualRow: any, i: number) => (
                   <Td key={i}>{row[actualRow]}</Td>
                 ))}
