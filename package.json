@@ -92,7 +92,7 @@
     "vcard-creator": "^0.5.0",
     "vcards-js": "^2.10.0",
     "wreck": "^14.2.0",
-    "yup": "^0.32.11"
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^9.4.4",

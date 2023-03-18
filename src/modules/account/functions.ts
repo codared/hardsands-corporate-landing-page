@@ -36,3 +36,14 @@ export const getSocialLink = (item: any) => {
 export const NotFoundErrorMessage = (errorMessage: string | any) => {
   return errorMessage.includes("NotFoundError") ? "Failed Error" : errorMessage;
 };
+
+export const isEmptyObject = (obj: any) => {
+  return JSON.stringify(obj) === "{}";
+};
+
+export const getFileExtension = (filename: string) => {
+  if (filename) {
+    return filename.split(".").pop();
+  }
+  return "";
+};

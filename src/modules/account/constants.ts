@@ -44,6 +44,7 @@ import {
   ContactCardIconSVG,
   BankIconSVG,
   ChartIconSVG,
+  ImportIconSVG,
 } from "assets";
 import {
   AiFillBank,
@@ -161,6 +162,7 @@ export const AppIcons = {
   ContactCardIconSVG,
   BankIconSVG,
   ChartIconSVG,
+  ImportIconSVG,
 };
 
 /*

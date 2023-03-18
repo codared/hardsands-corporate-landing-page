@@ -55,3 +55,4 @@ export { default as DashWhatsAppIcon } from './icons/dash-whatsApp.svg';
 export { default as ContactCardIconSVG } from './icons/contact-card.svg';
 export { default as BankIconSVG } from './icons/bank.svg';
 export { default as ChartIconSVG } from './icons/chart.svg';
+export { default as ImportIconSVG } from './icons/import.svg';

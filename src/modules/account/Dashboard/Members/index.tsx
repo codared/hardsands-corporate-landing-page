@@ -23,6 +23,8 @@ import AddMemberButton from "./components/AddMemberButton";
 import MemberProfile from "./components/MemberProfile";
 import NameColumn from "./components/NameColumn";
 import RowMenu from "./components/RowMenu";
+import CreateMemberForm from "./components/CreateMemberForm";
+import ImportMemberForm from "./components/ImportMemberForm";
 
 export const buildMemberRow = (members: any, rowMenuOptions: any) => {
   return members.map((member: any) => {
@@ -72,7 +74,13 @@ export const buildMemberRow = (members: any, rowMenuOptions: any) => {
 
 const Members = () => {
   const memberDrawer = useDisclosure();
+  const createDrawer = useDisclosure();
   const [activeMember, setActiveMember] = useState({});
+  const [drawerFormState, setDrawerFormState] = useState({
+    name: "",
+    subTitle: "",
+    form: <></>,
+  });
   const columnHeaders = ["Name", "Card Usage", "Clicks", "Role", "Status"];
   const dataStore = [
     {
@@ -150,6 +158,18 @@ const Members = () => {
       >
         <MemberProfile member={activeMember} />
       </CustomDrawer>
+      <CustomDrawer
+        title={drawerFormState.name}
+        size={"sm"}
+        placement="right"
+        isOpen={createDrawer.isOpen}
+        onClose={createDrawer.onClose}
+      >
+        <>
+          <Text>{drawerFormState.subTitle}</Text>
+          {drawerFormState.form}
+        </>
+      </CustomDrawer>
 
       <Box>
         <Text color="#737373" fontSize="14px">
@@ -162,11 +182,26 @@ const Members = () => {
         <AddMemberButton
           title={"Add Manually"}
           subtitle={"Add using members credentials"}
-          onClick={memberDrawer.onOpen}
+          onClick={() => {
+            setDrawerFormState({
+              name: "Add Manually",
+              subTitle: "Add using members credentials",
+              form: <CreateMemberForm />,
+            });
+            createDrawer.onOpen();
+          }}
         />
         <AddMemberButton
           title={"Import CSV/Excel"}
           subtitle={"Add by importing member’s file"}
+          onClick={() => {
+            setDrawerFormState({
+              name: "Add Member via Import CSV/Excel",
+              subTitle: "Add by importing member’s file",
+              form: <ImportMemberForm />,
+            });
+            createDrawer.onOpen();
+          }}
         />
         <StatsCard
           name={"Members"}
@@ -176,24 +211,11 @@ const Members = () => {
         />
       </Flex>
 
-      {/* <Flex gap={4} width={"100%"} transition={"all ease-in-out 200ms"}> */}
       <DataTable
         headers={columnHeaders}
         data={data}
         tableTitle={"Member Overview"}
-        //   w={`${100 / 1.5}%`}
       />
-      {/* <Flex
-          direction={"column"}
-          justifyContent={"start"}
-          my={[10]}
-          bg={"white"}
-          p={[6]}
-          w={`${100 / 3}%`}
-        >
-          <Text fontWeight={"bold"}>Recent Activity</Text>
-        </Flex> */}
-      {/* </Flex> */}
     </Box>
   );
 };
