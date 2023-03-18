@@ -14,7 +14,7 @@ export const importMemberSchema = yup.object().shape({
     .test({
       message: "Please provide a supported file type, .csv or .xlsx",
       test: (file: any, context) => {
-        const isValid = ["xlsx", "csv", "pdf"].includes(
+        const isValid = ["xlsx", "csv"].includes(
           getFileExtension(file?.name as string) as string
         );
         if (!isValid) context?.createError();
