@@ -122,7 +122,7 @@ const Home = () => {
         mt={6}
         h="350px"
       >
-        <Card w="100%" maxW="720px" p="8">
+        <Card w="100%" maxW="720px" maxH={"350px"} p="8">
           <Text fontSize={"14px"}>Clicks this month</Text>
           <Heading fontSize="2xl">300</Heading>
           <Box
@@ -143,7 +143,7 @@ const Home = () => {
             ))}
           </Box>
         </Card>
-        <Card p={8}>
+        <Card p={8} maxH={"350px"} overflowY={"scroll"}>
           <Heading fontSize={"xl"}>Your Activity</Heading>
           <Box as="ul" mt={6}>
             <Box
@@ -157,23 +157,22 @@ const Home = () => {
                 <Image
                   src={AppIcons.DashWhatsAppIcon.src}
                   alt={"whats"}
-                  height={40}
-                  width={40}
+                  height={50}
+                  width={50}
                 />
                 <Box>
-                  <Heading fontSize={"0.9rem"} mb={1}>
+                  <Heading fontSize={18} mb={1}>
                     WhatsApp
                   </Heading>
-                  <Text fontSize={"10px"} color="#757575">
+                  <Text fontSize={14} color="#757575">
                     Kennedy John
                   </Text>
                 </Box>
               </Box>
-              <Text fontSize={"11px"} color="#757575">
+              <Text fontSize={14} color="#757575">
                 Today 10:30
               </Text>
             </Box>
-
             <Box
               as="li"
               display={"flex"}
@@ -183,22 +182,22 @@ const Home = () => {
             >
               <Box display={"flex"} alignItems="center" gap={3}>
                 <Image
-                  src={AppIcons.BankIconSVG.src}
-                  alt={"bank"}
-                  height={40}
-                  width={40}
+                  src={AppIcons.DashWhatsAppIcon.src}
+                  alt={"whats"}
+                  height={50}
+                  width={50}
                 />
                 <Box>
-                  <Heading fontSize={"0.9rem"} mb={1}>
-                    Bank Details
+                  <Heading fontSize={18} mb={1}>
+                    WhatsApp
                   </Heading>
-                  <Text fontSize={"10px"} color="#757575">
+                  <Text fontSize={14} color="#757575">
                     Kennedy John
                   </Text>
                 </Box>
               </Box>
-              <Text fontSize={"10px"} color="#757575">
-                Today 10:000
+              <Text fontSize={14} color="#757575">
+                Today 10:30
               </Text>
             </Box>
             <Box
@@ -210,22 +209,76 @@ const Home = () => {
             >
               <Box display={"flex"} alignItems="center" gap={3}>
                 <Image
-                  src={AppIcons.ContactCardIconSVG.src}
-                  alt={"bank"}
-                  height={40}
-                  width={40}
+                  src={AppIcons.DashWhatsAppIcon.src}
+                  alt={"whats"}
+                  height={50}
+                  width={50}
                 />
                 <Box>
-                  <Heading fontSize={"0.9rem"} mb={1}>
-                    Contact Card
+                  <Heading fontSize={18} mb={1}>
+                    WhatsApp
                   </Heading>
-                  <Text fontSize={"10px"} color="#757575">
+                  <Text fontSize={14} color="#757575">
                     Kennedy John
                   </Text>
                 </Box>
               </Box>
-              <Text fontSize={"11px"} color="#757575">
-                Today 10:00
+              <Text fontSize={14} color="#757575">
+                Today 10:30
+              </Text>
+            </Box>
+            <Box
+              as="li"
+              display={"flex"}
+              justifyContent="space-between"
+              alignItems={"center"}
+              my={3}
+            >
+              <Box display={"flex"} alignItems="center" gap={3}>
+                <Image
+                  src={AppIcons.DashWhatsAppIcon.src}
+                  alt={"whats"}
+                  height={50}
+                  width={50}
+                />
+                <Box>
+                  <Heading fontSize={18} mb={1}>
+                    WhatsApp
+                  </Heading>
+                  <Text fontSize={14} color="#757575">
+                    Kennedy John
+                  </Text>
+                </Box>
+              </Box>
+              <Text fontSize={14} color="#757575">
+                Today 10:30
+              </Text>
+            </Box>
+            <Box
+              as="li"
+              display={"flex"}
+              justifyContent="space-between"
+              alignItems={"center"}
+              my={3}
+            >
+              <Box display={"flex"} alignItems="center" gap={3}>
+                <Image
+                  src={AppIcons.DashWhatsAppIcon.src}
+                  alt={"whats"}
+                  height={50}
+                  width={50}
+                />
+                <Box>
+                  <Heading fontSize={18} mb={1}>
+                    WhatsApp
+                  </Heading>
+                  <Text fontSize={14} color="#757575">
+                    Kennedy John
+                  </Text>
+                </Box>
+              </Box>
+              <Text fontSize={14} color="#757575">
+                Today 10:30
               </Text>
             </Box>
           </Box>
