@@ -1,18 +1,43 @@
-import { useState } from "react";
+import React from "react";
 import { Box, Text, BoxProps, Avatar, Heading } from "@chakra-ui/react";
 import Image from "next/image";
-import { Card } from "components";
-import { AppIcons } from "modules/account/constants";
-import CompositeBar from "./components/CompositeBar";
-import StatsCard from "../sharedComponents/StatsCard";
+import Hardsands_Whatsapp from "../../../assets/Hardsands_Whatsapp.svg";
+import { Card } from "components/index";
 
 const Bar = (props: BoxProps) => {
   return <Box maxW="35px" borderRadius="8px" {...props} />;
 };
 
-const Home = () => {
-  const [spreadComponent, setSpreadComponent] = useState(false);
+interface CompositeBarProps extends BoxProps {
+  clicks?: string | number;
+  activity?: string | number;
+}
 
+const CompositeBar = (props: CompositeBarProps) => {
+  return (
+    <Box
+      borderRadius="4px"
+      display="block"
+      w="18px"
+      pos={"relative"}
+      {...props}
+      bgColor="#f7f7f7"
+      h={props.activity}
+    >
+      <Box
+        borderRadius="4px"
+        w="100%"
+        bgColor="#DF9F71"
+        pos={"absolute"}
+        bottom={0}
+        h={props.clicks}
+        {...props}
+      />
+    </Box>
+  );
+};
+
+const Home = () => {
   const monthlyClicks = [
     { month: "Jan", numberOfClicks: "58", bgColor: "#f7f7f7" },
     { month: "Feb", numberOfClicks: "142", bgColor: "#f7f7f7" },
@@ -50,15 +75,56 @@ const Home = () => {
         gap="8"
         mt="8"
       >
-        <StatsCard name="Total Clicks" number="130" curves="2.45%" />
-        <StatsCard name="Member" number="130" curves="2.45%" />
-        <StatsCard
-          bgColor="#df9f71"
-          color="#fff"
-          showMenu={false}
-          name="Activity"
-          number="130"
-        />
+        <Card width="100%">
+          <Text>Total Clicks</Text>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Heading fontSize="2xl">630</Heading>
+            <Box
+              px="3"
+              py="1"
+              borderRadius="2rem"
+              fontWeight="bold"
+              bgColor="#e7faf5"
+              color="#05CD99"
+              w="fit-content"
+              h="fit-content"
+              fontSize="12px"
+            >
+              2.45%
+            </Box>
+          </Box>
+        </Card>
+        <Card width="100%">
+          <Text> Members</Text>
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="baseline"
+          >
+            <Heading fontSize="2xl">130</Heading>
+            <Box
+              px="3"
+              py="1"
+              borderRadius="2rem"
+              fontWeight="bold"
+              bgColor="#e7faf5"
+              color="#05CD99"
+              w="fit-content"
+              h="fit-content"
+              fontSize="12px"
+            >
+              2.45%
+            </Box>
+          </Box>
+        </Card>
+        <Card bgColor="#df9f71" width="100%" color="#fff">
+          <Text>Activity</Text>
+          <Heading fontSize="2xl">60%</Heading>
+        </Card>
       </Box>
 
       <Box mt="8" display={"flex"} justifyContent="stretch" gap={8}>
@@ -124,7 +190,6 @@ const Home = () => {
         gap={6}
         mt={6}
         h="350px"
-        pos={"relative"}
       >
         <Card w="100%" maxW="720px" p="8">
           <Text fontSize={"14px"}>Clicks this month</Text>
@@ -147,17 +212,7 @@ const Home = () => {
             ))}
           </Box>
         </Card>
-        <Card
-          p={8}
-          sx={{
-            position: spreadComponent ? "absolute" : "relative",
-            transition: "0.3s",
-            width: spreadComponent ? "100%" : "",
-            height: "100%",
-            zIndex: "10",
-          }}
-          onClick={() => setSpreadComponent((prev) => !prev)}
-        >
+        <Card p={8}>
           <Heading fontSize={"xl"}>Your Activity</Heading>
           <Box as="ul" mt={6}>
             <Box
@@ -168,12 +223,7 @@ const Home = () => {
               my={3}
             >
               <Box display={"flex"} alignItems="center" gap={3}>
-                <Image
-                  src={AppIcons.DashWhatsAppIcon.src}
-                  alt={"whats"}
-                  height={40}
-                  width={40}
-                />
+                <Image src={Hardsands_Whatsapp.src} height={40} width={40} />
                 <Box>
                   <Heading fontSize={"0.9rem"} mb={1}>
                     WhatsApp
@@ -196,12 +246,7 @@ const Home = () => {
               my={3}
             >
               <Box display={"flex"} alignItems="center" gap={3}>
-                <Image
-                  src={AppIcons.BankIconSVG.src}
-                  alt={"bank"}
-                  height={40}
-                  width={40}
-                />
+                <Image src={Hardsands_Whatsapp.src} height={40} width={40} />
                 <Box>
                   <Heading fontSize={"0.9rem"} mb={1}>
                     Bank Details
@@ -223,12 +268,7 @@ const Home = () => {
               my={3}
             >
               <Box display={"flex"} alignItems="center" gap={3}>
-                <Image
-                  src={AppIcons.ContactCardIconSVG.src}
-                  alt={"bank"}
-                  height={40}
-                  width={40}
-                />
+                <Image src={Hardsands_Whatsapp.src} height={40} width={40} />
                 <Box>
                   <Heading fontSize={"0.9rem"} mb={1}>
                     Contact Card
