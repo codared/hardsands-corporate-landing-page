@@ -182,14 +182,14 @@ const Home = () => {
             >
               <Box display={"flex"} alignItems="center" gap={3}>
                 <Image
-                  src={AppIcons.DashWhatsAppIcon.src}
+                  src={AppIcons.BankIconSVG.src}
                   alt={"whats"}
                   height={50}
                   width={50}
                 />
                 <Box>
                   <Heading fontSize={18} mb={1}>
-                    WhatsApp
+                    Bank Details
                   </Heading>
                   <Text fontSize={14} color="#757575">
                     Kennedy John
@@ -209,68 +209,14 @@ const Home = () => {
             >
               <Box display={"flex"} alignItems="center" gap={3}>
                 <Image
-                  src={AppIcons.DashWhatsAppIcon.src}
+                  src={AppIcons.ContactCardIconSVG.src}
                   alt={"whats"}
                   height={50}
                   width={50}
                 />
                 <Box>
                   <Heading fontSize={18} mb={1}>
-                    WhatsApp
-                  </Heading>
-                  <Text fontSize={14} color="#757575">
-                    Kennedy John
-                  </Text>
-                </Box>
-              </Box>
-              <Text fontSize={14} color="#757575">
-                Today 10:30
-              </Text>
-            </Box>
-            <Box
-              as="li"
-              display={"flex"}
-              justifyContent="space-between"
-              alignItems={"center"}
-              my={3}
-            >
-              <Box display={"flex"} alignItems="center" gap={3}>
-                <Image
-                  src={AppIcons.DashWhatsAppIcon.src}
-                  alt={"whats"}
-                  height={50}
-                  width={50}
-                />
-                <Box>
-                  <Heading fontSize={18} mb={1}>
-                    WhatsApp
-                  </Heading>
-                  <Text fontSize={14} color="#757575">
-                    Kennedy John
-                  </Text>
-                </Box>
-              </Box>
-              <Text fontSize={14} color="#757575">
-                Today 10:30
-              </Text>
-            </Box>
-            <Box
-              as="li"
-              display={"flex"}
-              justifyContent="space-between"
-              alignItems={"center"}
-              my={3}
-            >
-              <Box display={"flex"} alignItems="center" gap={3}>
-                <Image
-                  src={AppIcons.DashWhatsAppIcon.src}
-                  alt={"whats"}
-                  height={50}
-                  width={50}
-                />
-                <Box>
-                  <Heading fontSize={18} mb={1}>
-                    WhatsApp
+                    Contact Card
                   </Heading>
                   <Text fontSize={14} color="#757575">
                     Kennedy John
