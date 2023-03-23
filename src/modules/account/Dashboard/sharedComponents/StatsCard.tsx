@@ -29,8 +29,7 @@ const StatsCard = ({
   curves,
   decline,
   showMenu = true,
-  width = 100 / 3,
-  ...rest
+  width = 100 / 3,  ...rest
 }: StatsCardProps) => {
   return (
     <Box
