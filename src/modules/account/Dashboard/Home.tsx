@@ -39,7 +39,7 @@ const CompositeBar = (props: CompositeBarProps) => {
 
 const Home = () => {
   const monthlyClicks = [
-    { month: "Jan", numberOfClicks: "58", bgColor: "#f7f7f7" },
+    { month: "Jn", numberOfClicks: "58", bgColor: "#f7f7f7" },
     { month: "Feb", numberOfClicks: "142", bgColor: "#f7f7f7" },
     { month: "Mar", numberOfClicks: "98", bgColor: "#f7f7f7" },
     { month: "Apr", numberOfClicks: "112", bgColor: "#f7f7f7" },
