@@ -12,6 +12,8 @@ import { NextPage, NextPageContext } from "next";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { isServerRequest } from "utils/nextjs";
+// import { slugify } from "utils/string";
+import { useTypedDispatch } from "redux/store";
 
 const VerifyCorperateEmail: NextPage<{
   isError?: boolean;
@@ -20,10 +22,12 @@ const VerifyCorperateEmail: NextPage<{
   name?: string;
 }> = ({ isError, result, message }) => {
   const { t } = useTranslation();
+  const dispatch = useTypedDispatch();
 
   useEffect(() => {
     if (!isError && result.token) {
       setCookie(HARDSANDS_LOGIN_COOKIE, result.token, 365);
+    //   dispatch({ type: "GET_USER_DETAILS", payload: result });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -79,7 +83,7 @@ const VerifyCorperateEmail: NextPage<{
         <Box h={100} />
         {!isError && (
           <HardsandLink
-            href={"/dashboard/accounts"}
+            href={`/app`}
             fontSize={"sm"}
             fontWeight={500}
             color={"black"}
