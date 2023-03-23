@@ -15,6 +15,11 @@ export type CardActivationType = {
   password?: string;
 };
 
+export type CorperateCardActivationType = {
+  cardSerial: string;
+  email: string;
+};
+
 export type SignupCardActivationType = CardActivationType & SignUpUserType;
 
 export type LoginUserType = {
@@ -35,6 +40,12 @@ export type ResetUserPasswordFormType = {
 export type VerifyEmailType = {
   verifyText: string;
   identifier: number;
+};
+
+export type VerifyCorperateEmailType = {
+  verifyHash: string;
+  userId: number;
+  cardSerial: string;
 };
 
 export type VerifyGoogleAuthType = {
