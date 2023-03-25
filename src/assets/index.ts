@@ -59,10 +59,3 @@ export { default as ChartIconSVG } from "./icons/chart.svg";
 export { default as ImportIconSVG } from "./icons/import.svg";
 export {default as PersonalCardIcon} from "./icons/personal-card.svg";
 
-// Images
-
-export { default as BambooWoodCardImg } from "./images/bambooWOodCard.png";
-export { default as BlackMatteMetalCardImg } from "./images/blackMatteMetalCard.png";
-export { default as BlackMattePcvCardImg } from "./images/blackMattePvcCard.png";
-export { default as EpoxyPvcCardImg } from "./images/epoxyPvcCard.png";
-export { default as SapeleCardImg } from "./images/sapeleCard.png";

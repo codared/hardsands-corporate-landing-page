@@ -6,7 +6,6 @@ import Devices from "./Devices";
 import DeviceWithId from "./Devices/[id]";
 
 const Dashboard = ({ route }: { route: string[] }) => {
-  console.log(route)
   switch (route[1]) {
     case "members":
       return <Members />;

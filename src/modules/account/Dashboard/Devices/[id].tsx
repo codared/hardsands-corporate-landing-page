@@ -1,15 +1,6 @@
 import { useState } from "react";
 import { Box, Text, Heading } from "@chakra-ui/react";
 import StatsCard from "../sharedComponents/StatsCard";
-import {
-  BambooWoodCardImg,
-  BlackMatteMetalCardImg,
-  BlackMattePcvCardImg,
-  EpoxyPvcCardImg,
-  PersonalCardIcon,
-  SapeleCardImg,
-} from "assets/index";
-import Image from "next/image";
 
 const DeviceWithId = () => {
   const deviceCards = [
