@@ -10,3 +10,4 @@ export const APP_ROUTE = {
 };
 
 export const HARDSANDS_LOGIN_COOKIE = "hardsands_user_token";
+export const HARDSANDS_CORPERATE_SLUG = "hardsands_corperate_slug";
