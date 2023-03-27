@@ -50,6 +50,7 @@ export { default as ReportIcon } from "./icons/report.svg";
 export { default as MessagesIcon } from "./icons/messages.svg";
 export { default as MemberIcon } from "./icons/member.svg";
 export { default as DevicesIcon } from "./icons/devices-icon.svg";
+export { default as ReportsIcon } from "./icons/reports-icon.svg";
 export { default as LeadsIcon } from "./icons/leads.svg";
 export { default as DashboardIcon } from "./icons/dashboard.svg";
 export { default as DashWhatsAppIcon } from "./icons/dash-whatsApp.svg";
@@ -57,5 +58,4 @@ export { default as ContactCardIconSVG } from "./icons/contact-card.svg";
 export { default as BankIconSVG } from "./icons/bank.svg";
 export { default as ChartIconSVG } from "./icons/chart.svg";
 export { default as ImportIconSVG } from "./icons/import.svg";
-export {default as PersonalCardIcon} from "./icons/personal-card.svg";
-
+export { default as PersonalCardIcon } from "./icons/personal-card.svg";
