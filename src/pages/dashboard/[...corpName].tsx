@@ -13,7 +13,7 @@ const Corperate = (pageContext: any) => {
       <Head>
         <title>Dashboard</title>
       </Head>
-      <HardsandsCorperateDash routes={corpName} active={1}>
+      <HardsandsCorperateDash routes={corpName}>
         <Dashboard route={corpName} />
       </HardsandsCorperateDash>
     </>

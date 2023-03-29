@@ -12,11 +12,11 @@ const Dashboard = ({ route }: { route: string[] }) => {
     case "leads":
       return <Leads />;
     case "devices":
-      if(route[2]) {
-        return <DeviceWithId />
+      if (route[2]) {
+        return <DeviceWithId />;
       } else {
-        return  <Devices />
-      };
+        return <Devices />;
+      }
     default:
       return <Home />;
   }

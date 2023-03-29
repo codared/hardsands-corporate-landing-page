@@ -18,10 +18,8 @@ import DashSidebarContent from "./SideBar";
 
 const HardsandsCorperateDash = ({
   children,
-  active,
   routes,
 }: {
-  active: number;
   children: ReactElement;
   routes: string[];
 }) => {
@@ -46,7 +44,6 @@ const HardsandsCorperateDash = ({
       <DashSidebarContent
         routes={routes}
         display={["none", "unset", "block"]}
-        active={active}
       />
       <Drawer
         isOpen={sidebar.isOpen}
@@ -56,7 +53,7 @@ const HardsandsCorperateDash = ({
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DashSidebarContent w="full" borderRight="none" active={active} />
+          <DashSidebarContent w="full" borderRight="none" />
         </DrawerContent>
       </Drawer>
       <Box ml={[0, 80]} transition=".3s ease">
@@ -97,10 +94,7 @@ const HardsandsCorperateDash = ({
         </Flex> */}
 
         <Box as="main" p={4} bgColor="#f9f9f9">
-          <Container
-             maxW={["full", "80%", "full"]}
-            mx={["0", "10px", "auto"]}
-          >
+          <Container maxW={["full", "80%", "full"]} mx={["0", "10px", "auto"]}>
             {children}
           </Container>
         </Box>

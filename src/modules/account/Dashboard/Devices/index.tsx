@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { Box, Text, Heading } from "@chakra-ui/react";
+import { Box, Text, Heading, Image } from "@chakra-ui/react";
 import StatsCard from "../sharedComponents/StatsCard";
 import { PersonalCardIcon } from "assets/index";
-import Image from "next/image";
 
 const Home = () => {
   const deviceCards = [
@@ -72,21 +71,13 @@ const Home = () => {
           gap={8}
         >
           {deviceCards.map(({ id, img, name, number }) => (
-            <Link href={`/dashboard/$%7BcorporateId%7D/devices/${id}`}>
+            <Link key={id} href={`/dashboard/$%7BcorporateId%7D/devices/${id}`}>
               <Box key={id} pos="relative" borderRadius="15px">
                 <Heading as="h4" fontSize={"18px"} mb={4}>
                   {name}
                 </Heading>
-                <Box
-                  pos="relative"
-                  sx={{
-                    "& img": {
-                      width: "100%",
-                      borderRadius: "15px",
-                    },
-                  }}
-                >
-                  <img src={img} alt={name} />
+                <Box pos="relative">
+                  <Image src={img} alt={name} />
                   <Box
                     bg="rgba(0, 0, 0, 0.54)"
                     color="#fff"
@@ -103,12 +94,11 @@ const Home = () => {
                     gap={2}
                   >
                     <Image
-                      src={PersonalCardIcon}
+                      src={PersonalCardIcon.src}
                       alt="personal card"
-                      width={20}
-                      height={20}
+                      boxSize={"30px"}
                     />
-                    {number} cards
+                    <Text>{number} cards</Text>
                   </Box>
                 </Box>
               </Box>
