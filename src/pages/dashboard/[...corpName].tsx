@@ -1,5 +1,5 @@
-import HardsandsCorperateDash from "modules/account/components/DashboardLayout";
 import Dashboard from "modules/account/Dashboard";
+import HardsandsCorperateDash from "modules/account/Dashboard/sharedComponents/DashboardLayout";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";

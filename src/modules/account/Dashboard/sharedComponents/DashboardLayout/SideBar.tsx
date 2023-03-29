@@ -4,7 +4,6 @@ import {
   Icon,
   Collapse,
   useDisclosure,
-  Heading,
   Text,
   Image,
 } from "@chakra-ui/react";
@@ -12,8 +11,6 @@ import HardsandLink from "components/HardsandsLink";
 import HardsandsAppLogo from "components/Logo";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
-import { DASH_NAV_ITEMS, routeId } from "../../constants";
-import NavItem from "../Navitems";
 import { useState } from "react";
 import { AccountNavItemsType } from "utils/types";
 import { removeCookie } from "modules/shared/cookie";
@@ -22,7 +19,8 @@ import {
   HARDSANDS_LOGIN_COOKIE,
 } from "modules/authentication/constants";
 import Router from "next/router";
-import { hardsandsIconLogo } from "design";
+import NavItem from "modules/account/components/Navitems";
+import { DASH_NAV_ITEMS, routeId } from "modules/account/constants";
 
 const DashSidebarContent = (props: any) => {
   const integrations = useDisclosure();
