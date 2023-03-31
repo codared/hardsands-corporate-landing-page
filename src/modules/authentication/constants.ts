@@ -10,5 +10,11 @@ export const APP_ROUTE = {
   dashboard: "/dashboard/:slug",
 };
 
+export const UserTypes = {
+  NORMAL: "NORMAL",
+  CORP_USER: "CORP_USER",
+  CORP_ADMIN: "CORP_ADMIN",
+};
+
 export const HARDSANDS_LOGIN_COOKIE = "hardsands_user_token";
 export const HARDSANDS_CORPERATE_SLUG = "hardsands_corperate_slug";
