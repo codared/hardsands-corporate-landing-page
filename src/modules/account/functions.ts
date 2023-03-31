@@ -1,4 +1,4 @@
-import { SOCIAL_LINKS } from "./constants";
+import { DASH_ROOT, routeId, SOCIAL_LINKS } from "./constants";
 
 export const findSameSocials = (item: any, findingArray: any[]) => {
   return findingArray.find((finding) => finding.name === item.label);
@@ -56,4 +56,12 @@ export const slugify = (str: string, replacementChar = "-") => {
     .toLowerCase()
     .trim()
     .replace(/[^a-z0-9-]+/g, replacementChar);
+};
+
+export const resolveRoute = (companyRoute: string, slug?: string) => {
+  let route = DASH_ROOT.replace(routeId, companyRoute);
+  if (slug) {
+    route = `${route}${slug}`;
+  }
+  return route;
 };

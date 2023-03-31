@@ -7,6 +7,7 @@ export const AUTH_ROUTES = {
 
 export const APP_ROUTE = {
   home: "/app",
+  dashboard: "/dashboard/:slug",
 };
 
 export const HARDSANDS_LOGIN_COOKIE = "hardsands_user_token";

@@ -4,12 +4,22 @@ export type DashboardReducerState = {
   error: any;
   loading: boolean;
   members: Member[];
+  corpCards: any;
 };
 
 const initialState: DashboardReducerState = {
   error: {},
   loading: true,
   members: [],
+  corpCards: [],
+};
+
+export type CorpCard = {
+  cardSerial: string;
+  status: "ASSIGNED" | "UNASSIGNED" | "INACTIVE";
+  clicks: number;
+  user: Member;
+  cardVariant: string;
 };
 
 export type Member = {
@@ -33,6 +43,8 @@ const dashboardReducer = (
       return { ...state, loading: action.payload };
     case "GET_MEMBERS":
       return { ...state, loading: false, members: action.payload };
+    case "GET_CORP_CARD":
+      return { ...state, loading: false, corpCards: action.payload };
     case "UPDATE_MEMBERS":
       return { ...state, loading: false, members: action.payload };
     default:

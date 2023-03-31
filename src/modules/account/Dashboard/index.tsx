@@ -17,7 +17,7 @@ const Dashboard = ({ route }: { route: string[] }) => {
       if (route[2]) {
         return <DeviceWithId />;
       } else {
-        return <Devices />;
+        return <Devices routes={route} />;
       }
     case "reports":
       if (route[2]) {
