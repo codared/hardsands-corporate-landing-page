@@ -72,11 +72,11 @@ const ReportWithId = () => {
             />
           ))}
         </Box>
-        <Box mt={6} display="grid" gridTemplateColumns={["repeat(1, 1fr)", "65% 1fr"]} gap="1rem">
+        <Box mt={10} display="grid" gridTemplateColumns={["repeat(1, 1fr)", "65% 1fr"]} gap="1rem">
           <LeadsStatChart />
-          <Box>
+          <Box display="grid" gap="1.5rem">
             <ReportCard title="Call Hits" number={6} />
-            <ReportCard title="Call Hits" number={6} />
+            <ReportCard title="Social Card Hits" number={6} />
           </Box>
         </Box>
       </Box>

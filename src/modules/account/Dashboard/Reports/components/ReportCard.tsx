@@ -21,7 +21,9 @@ const ReportCard = ({ bgWhite, title, number }: CardProps) => {
       <Heading
         color={
           title.toLowerCase() === "email hits" ||
-          title.toLowerCase() === "social hits"
+          title.toLowerCase() === "social hits"||
+          title.toLowerCase() === "call hits" ||
+          title.toLowerCase() === "social card hits" 
             ? "#DF9F71"
             : "#000"
         }
