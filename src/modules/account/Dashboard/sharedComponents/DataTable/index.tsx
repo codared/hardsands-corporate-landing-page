@@ -58,7 +58,7 @@ const DataTable = ({
       {...rest}
     >
       <HStack pb={[8]}>
-        <Text fontSize={24} fontWeight={"bolder"}>
+        <Text fontSize={24} fontWeight="600">
           {tableTitle}
         </Text>
       </HStack>

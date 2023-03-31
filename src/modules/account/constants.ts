@@ -45,6 +45,8 @@ import {
   BankIconSVG,
   ChartIconSVG,
   ImportIconSVG,
+  DevicesIcon,
+  ReportsIcon,
 } from "assets";
 import {
   AiFillBank,
@@ -106,12 +108,25 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
   },
   {
     id: 3,
+    title: "Devices",
+    href: `${DASH_ROOT}/devices`,
+    icon: DevicesIcon,
+    isImg: true,
+  },
+  {
+    id: 4,
     title: "Leads",
     href: `${DASH_ROOT}/leads`,
     icon: LeadsIcon,
     isImg: true,
   },
- 
+  {
+    id: 5,
+    title: "Reports",
+    href: `${DASH_ROOT}/reports`,
+    icon: ReportsIcon,
+    isImg: true,
+  },
 ];
 
 export const AppIcons = {

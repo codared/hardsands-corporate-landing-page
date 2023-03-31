@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Box, Text, BoxProps, Avatar, Heading } from "@chakra-ui/react";
 import Image from "next/image";
 import { Card } from "components";
@@ -10,6 +11,8 @@ const Bar = (props: BoxProps) => {
 };
 
 const Home = () => {
+  const [spreadComponent, setSpreadComponent] = useState(false);
+
   const monthlyClicks = [
     { month: "Jan", numberOfClicks: "58", bgColor: "#f7f7f7" },
     { month: "Feb", numberOfClicks: "142", bgColor: "#f7f7f7" },
@@ -121,6 +124,7 @@ const Home = () => {
         gap={6}
         mt={6}
         h="350px"
+        pos={"relative"}
       >
         <Card w="100%" maxW="720px" maxH={"350px"} p="8">
           <Text fontSize={"14px"}>Clicks this month</Text>
