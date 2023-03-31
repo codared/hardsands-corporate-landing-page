@@ -15,12 +15,18 @@ import { AppIcons } from "modules/account/constants";
 import { useForm } from "modules/account/Dashboard/hooks";
 import React, { useEffect, useRef } from "react";
 import { AiFillFileText } from "react-icons/ai";
+import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { colors } from "styles/theme";
+import { addMembersAction, getMembersAction } from "../../actions";
 import { importMemberSchema } from "./schema";
 
 const ImportMemberForm = () => {
+  const dispatch = useTypedDispatch();
   const toast = useToast();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  // @ts-ignore
+  const { error } = useTypedSelector((state) => state.dashboard);
+
   const {
     formData: values,
     handleChange,
@@ -37,29 +43,54 @@ const ImportMemberForm = () => {
     loading,
   } = useForm(
     {
-      memberFile: null,
+      file: null,
     },
     importMemberSchema,
-    (formData: any) => {
+    async (formData: any) => {
+      const form = new FormData();
+      form.append("file", formData.file);
       console.log(
         "🚀 ~ file: index.tsx:16 ~ ImportMemberForm ~ formData",
-        formData
+        formData,
+        form
       );
+      const res = await dispatch(addMembersAction(form, "import"));
+      if (res?.message) {
+        setSuccessMessage(res?.message);
+        dispatch(getMembersAction());
+      }
     }
   );
 
   useEffect(() => {
-    if (errorMessage) {
+    if (error.message || errorMessage) {
       toast({
         position: "top-right",
-        title: errorMessage,
+        title: error.message || errorMessage,
         status: "error",
+        duration: 9000,
+        isClosable: true,
+        onCloseComplete: () => {
+          setErrorMessage("");
+          dispatch({ type: "DASHBOARD_APP_ERROR", payload: {} });
+        },
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error, errorMessage]);
+
+  useEffect(() => {
+    if (successMessage) {
+      toast({
+        position: "top-right",
+        title: successMessage,
+        status: "success",
         duration: 9000,
         isClosable: true,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [errorMessage]);
+  }, [successMessage]);
 
   return (
     <Box mt={4}>
@@ -80,7 +111,7 @@ const ImportMemberForm = () => {
               onDragEnter={handleDrag}
               onDragLeave={handleDrag}
               onDragOver={handleDrag}
-              onDrop={(e) => handleDrop(e, "memberFile")}
+              onDrop={(e) => handleDrop(e, "file")}
             >
               <Image
                 boxSize={70}
@@ -113,14 +144,14 @@ const ImportMemberForm = () => {
             <Text>Browse File</Text>
           </Button>
           <Input
-            name={"memberFile"}
+            name={"file"}
             onChange={handleFileChange}
             ref={fileInputRef}
             type="file"
             display={"none"}
           />
         </VStack>
-        {values.memberFile && (
+        {values.file && (
           <HStack
             mt={4}
             p={[2]}
@@ -129,13 +160,13 @@ const ImportMemberForm = () => {
           >
             <Flex>
               <AiFillFileText size={24} color={colors.brand["300"]} />
-              <Text>{values.memberFile.name}</Text>
+              <Text>{values.file.name}</Text>
             </Flex>
             <IconButton
               aria-label="remove file"
               icon={<CloseIcon />}
               onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                handleRemoveFile(e, "memberFile");
+                handleRemoveFile(e, "file");
               }}
             />
           </HStack>
@@ -150,6 +181,8 @@ const ImportMemberForm = () => {
         py={[6]}
         my={[6]}
         onClick={handleSubmit}
+        isLoading={loading}
+        loadingText={"Adding Member"}
       >
         <Text>Add Member</Text>
       </Button>

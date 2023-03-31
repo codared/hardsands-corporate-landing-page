@@ -51,15 +51,13 @@ import {
   AiOutlineIdcard,
   AiOutlineLink,
   AiOutlineMail,
-  AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
 import { FaSms, FaWhatsapp } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
 import { RiContactsLine } from "react-icons/ri";
 import { MdOutlineContactMail, MdOutlineEventNote } from "react-icons/md";
 import { AccountNavItemsType, ActionsFormType, ActionsType } from "utils/types";
-import getCountries, { getState, getStatesList } from "utils/getCountries";
+import getCountries from "utils/getCountries";
 
 export const routeId = "${corporateId}";
 export const ACCOUNT_ROOT = "/app";

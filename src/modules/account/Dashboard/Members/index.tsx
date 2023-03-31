@@ -15,7 +15,7 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DataTable from "../sharedComponents/DataTable";
 import CustomDrawer from "components/CustomDrawer";
 import StatsCard from "../sharedComponents/StatsCard";
@@ -25,15 +25,18 @@ import NameColumn from "./components/NameColumn";
 import RowMenu from "../sharedComponents/RowMenu";
 import CreateMemberForm from "./components/CreateMemberForm";
 import ImportMemberForm from "./components/ImportMemberForm";
+import { getMembersAction } from "./actions";
+import { useTypedDispatch, useTypedSelector } from "redux/store";
+import { DashboardReducerState, Member } from "../reducer";
 
 export const buildMemberRow = (members: any, rowMenuOptions: any) => {
-  return members.map((member: any) => {
+  return members.map((member: Member) => {
     return {
       name: (
         <NameColumn
-          name={member.name}
+          name={member.fullName}
           subText={member.email}
-          img={member.img}
+          // img={member.img}
         />
       ),
       usage: (
@@ -42,15 +45,15 @@ export const buildMemberRow = (members: any, rowMenuOptions: any) => {
             rounded={"full"}
             size={"sm"}
             colorScheme={"orange"}
-            value={80}
+            value={member.cardVisits}
             w={"full"}
             mr={[2]}
           />
-          <Text>{member.usage}%</Text>
+          <Text>{member.cardVisits}%</Text>
         </Flex>
       ),
-      clicks: member.clicks,
-      role: member.role,
+      clicks: member.cardVisits,
+      role: member.corporatePosition,
       status: (
         <Flex justifyContent={["none", "space-between"]}>
           <Tag
@@ -58,11 +61,11 @@ export const buildMemberRow = (members: any, rowMenuOptions: any) => {
             py={[1]}
             size={"sm"}
             variant="subtle"
-            bg={member.active ? "green.400" : "gray.300"}
+            bg={member.isActive ? "green.400" : "gray.300"}
             rounded={"full"}
           >
             <TagLabel color={"white"}>
-              {member.active ? "Active" : "Inactive"}
+              {member.isActive ? "Active" : "Inactive"}
             </TagLabel>
           </Tag>
           <RowMenu menuOption={rowMenuOptions(member)} />
@@ -73,6 +76,10 @@ export const buildMemberRow = (members: any, rowMenuOptions: any) => {
 };
 
 const Members = () => {
+  const dispatch = useTypedDispatch();
+  const { members, loading } = useTypedSelector(
+    (state) => state.dashboard
+  ) as DashboardReducerState;
   const memberDrawer = useDisclosure();
   const createDrawer = useDisclosure();
   const [activeMember, setActiveMember] = useState({});
@@ -82,36 +89,7 @@ const Members = () => {
     form: <></>,
   });
   const columnHeaders = ["Name", "Card Usage", "Clicks", "Role", "Status"];
-  const dataStore = [
-    {
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 80,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-    {
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 100,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-    {
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 10,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-  ];
-
+  
   const rowMenuOptions = (member: any) => {
     return [
       {
@@ -145,7 +123,12 @@ const Members = () => {
     ];
   };
 
-  const data = buildMemberRow(dataStore, rowMenuOptions);
+  const data = buildMemberRow(members, rowMenuOptions);
+
+  useEffect(() => {
+    dispatch(getMembersAction());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Box>
@@ -212,6 +195,7 @@ const Members = () => {
       </Flex>
 
       <DataTable
+        loading={loading}
         headers={columnHeaders}
         data={data}
         tableTitle={"Member Overview"}

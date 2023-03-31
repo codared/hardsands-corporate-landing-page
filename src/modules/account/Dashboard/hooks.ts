@@ -115,7 +115,7 @@ export const useForm = (initialValues: any, schema: any, cb: any) => {
       });
     const isValid = await schema.isValid(formData);
     if (isValid) {
-      cb(formData);
+      await cb(formData);
       return setLoading(false);
     }
   };

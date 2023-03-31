@@ -9,7 +9,7 @@ export const createMemberSchema = yup.object().shape({
 
 const MAX_FILE_SIZE = 5120;
 export const importMemberSchema = yup.object().shape({
-  memberFile: yup
+  file: yup
     .mixed()
     .test({
       message: "Please provide a supported file type, .csv or .xlsx",

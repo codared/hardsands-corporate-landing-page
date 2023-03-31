@@ -2,10 +2,19 @@ import { Box, Button, Text, useToast } from "@chakra-ui/react";
 import CustomInput from "components/CustomInput";
 import { useForm } from "modules/account/Dashboard/hooks";
 import React, { useEffect } from "react";
+import { useTypedDispatch, useTypedSelector } from "redux/store";
+import {
+  addMembersAction,
+  editMembersAction,
+  getMembersAction,
+} from "../../actions";
 import { createMemberSchema } from "./schema";
 
-const CreateMemberForm = () => {
+const CreateMemberForm = ({ editMode = false, defaultValues }: any) => {
+  const dispatch = useTypedDispatch();
   const toast = useToast();
+  // @ts-ignore
+  const { error } = useTypedSelector((state) => state.dashboard);
   const {
     formData: values,
     handleChange,
@@ -17,31 +26,56 @@ const CreateMemberForm = () => {
     loading,
   } = useForm(
     {
-      name: "",
-      email: "",
-      position: "",
+      fullname: defaultValues?.fullName || "",
+      email: defaultValues?.email || "",
+      position: defaultValues?.corporatePosition || "",
     },
     createMemberSchema,
-    (formData: any) => {
-      console.log(
-        "🚀 ~ file: index.tsx:16 ~ CreateMemberForm ~ formData",
-        formData
-      );
+    async (formData: any) => {
+      let res;
+      if (editMode) {
+        res = await dispatch(
+          editMembersAction(formData, defaultValues?.userId)
+        );
+      } else {
+        res = await dispatch(addMembersAction(formData));
+      }
+      if (res?.message) {
+        setSuccessMessage(res?.message);
+        dispatch(getMembersAction());
+      }
     }
   );
 
   useEffect(() => {
-    if (errorMessage) {
+    if (error.message || errorMessage) {
       toast({
         position: "top-right",
-        title: errorMessage,
+        title: error.message || errorMessage,
         status: "error",
+        duration: 9000,
+        isClosable: true,
+        onCloseComplete: () => {
+          setErrorMessage("");
+          dispatch({ type: "DASHBOARD_APP_ERROR", payload: {} });
+        },
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [error, errorMessage]);
+
+  useEffect(() => {
+    if (successMessage) {
+      toast({
+        position: "top-right",
+        title: successMessage,
+        status: "success",
         duration: 9000,
         isClosable: true,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [errorMessage]);
+  }, [successMessage]);
 
   return (
     <Box>
@@ -49,8 +83,9 @@ const CreateMemberForm = () => {
         <CustomInput
           label="Name"
           placeholder="Name"
-          name="name"
+          name="fullname"
           type="text"
+          value={values.fullname}
           isRequired
           onChange={handleChange}
         />
@@ -59,14 +94,17 @@ const CreateMemberForm = () => {
           placeholder="Email"
           name="email"
           type="email"
+          value={values.email}
           isRequired
           onChange={handleChange}
+          isDisabled={editMode}
         />
         <CustomInput
           label="Position"
           placeholder="Position"
           name="position"
           type="text"
+          value={values.position}
           isRequired
           onChange={handleChange}
         />
@@ -80,8 +118,10 @@ const CreateMemberForm = () => {
         py={[6]}
         my={[6]}
         onClick={handleSubmit}
+        isLoading={loading}
+        loadingText={"Adding Member"}
       >
-        <Text>Add Member</Text>
+        {editMode ? <Text>Update Member</Text> : <Text>Add Member</Text>}
       </Button>
     </Box>
   );

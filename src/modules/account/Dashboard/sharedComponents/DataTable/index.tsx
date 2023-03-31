@@ -15,6 +15,7 @@ import {
   FlexProps,
   Checkbox,
 } from "@chakra-ui/react";
+import Loader from "modules/account/components/Loader";
 import React, { ReactElement } from "react";
 
 type DataTable = {
@@ -23,6 +24,7 @@ type DataTable = {
 
 interface Props extends FlexProps {
   checkable?: boolean;
+  loading?: boolean;
   tableTitle: string;
   headers: string[];
   data: DataTable[];
@@ -35,6 +37,7 @@ const DataTable = ({
   headers,
   data,
   onCheck,
+  loading,
   ...rest
 }: Props) => {
   const handleCheckBox = (e: any, row: any) => {
@@ -60,52 +63,56 @@ const DataTable = ({
         </Text>
       </HStack>
       <TableContainer>
-        <Table size="lg" variant="simple">
-          <TableCaption>
-            <Flex w={"full"}>
-              <Text>Page 1 of 1</Text>
-            </Flex>
-          </TableCaption>
-          <Thead bg={"blackAlpha.50"}>
-            <Tr>
-              {checkable && (
-                <Th textTransform={"capitalize"} fontFamily={"Campton"}>
-                  <Checkbox
-                    onChange={(e: any) => handleAllCheckBox(e)}
-                    colorScheme={"orange"}
-                  />
-                </Th>
-              )}
-              {headers.map((header, index) => (
-                <Th
-                  textTransform={"capitalize"}
-                  fontFamily={"Campton"}
-                  key={index}
-                >
-                  {header}
-                </Th>
-              ))}
-            </Tr>
-          </Thead>
-          <Tbody>
-            {data.map((row: any, index: number) => (
-              <Tr key={index} bg={false ? "brand.10" : "none"} rounded={"md"}>
+        {loading ? (
+          <Loader h={"30vh"} />
+        ) : (
+          <Table size="lg" variant="simple">
+            <TableCaption>
+              <Flex w={"full"}>
+                <Text>Page 1 of 1</Text>
+              </Flex>
+            </TableCaption>
+            <Thead bg={"blackAlpha.50"}>
+              <Tr>
                 {checkable && (
-                  <Td>
+                  <Th textTransform={"capitalize"} fontFamily={"Campton"}>
                     <Checkbox
-                      onChange={(e: any) => handleCheckBox(e, row)}
-                      value={index}
+                      onChange={(e: any) => handleAllCheckBox(e)}
                       colorScheme={"orange"}
                     />
-                  </Td>
+                  </Th>
                 )}
-                {Object.keys(row).map((actualRow: any, i: number) => (
-                  <Td key={i}>{row[actualRow]}</Td>
+                {headers.map((header, index) => (
+                  <Th
+                    textTransform={"capitalize"}
+                    fontFamily={"Campton"}
+                    key={index}
+                  >
+                    {header}
+                  </Th>
                 ))}
               </Tr>
-            ))}
-          </Tbody>
-        </Table>
+            </Thead>
+            <Tbody>
+              {data.map((row: any, index: number) => (
+                <Tr key={index} bg={false ? "brand.10" : "none"} rounded={"md"}>
+                  {checkable && (
+                    <Td>
+                      <Checkbox
+                        onChange={(e: any) => handleCheckBox(e, row)}
+                        value={index}
+                        colorScheme={"orange"}
+                      />
+                    </Td>
+                  )}
+                  {Object.keys(row).map((actualRow: any, i: number) => (
+                    <Td key={i}>{row[actualRow]}</Td>
+                  ))}
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        )}
       </TableContainer>
     </Flex>
   );

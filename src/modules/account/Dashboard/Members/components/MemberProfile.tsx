@@ -3,6 +3,7 @@ import { AppIcons } from "modules/account/constants";
 import ActionItem from "modules/account/MainAccountContent/components/ActionItem";
 import React from "react";
 import { MdAdd } from "react-icons/md";
+import CreateMemberForm from "./CreateMemberForm";
 import NameColumn from "./NameColumn";
 
 const MemberProfile = ({ member }: any) => {
@@ -12,6 +13,9 @@ const MemberProfile = ({ member }: any) => {
   );
   return (
     <Box>
+      <>
+        <CreateMemberForm editMode defaultValues={member} />
+      </>
       <Box>
         <Image
           rounded={"lg"}
