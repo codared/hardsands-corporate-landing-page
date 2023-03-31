@@ -7,26 +7,43 @@ interface BarProps {
 
 const Bar = ({ title, width }: BarProps) => {
   return (
-    <Box display={"flex"} alignItems="center" gap="0.5rem">
+    <Box display={"flex"} alignItems="center" gap="0.5rem" mb={5}>
       <Text width={"120px"} textAlign="right">
         {title}
       </Text>
-      <Box bg="#D9D9D9" borderRadius="4px" height="35px" w={width} />{" "}
+      <Box
+        bg={`${
+          title.toLowerCase() === "responses" ||
+          title.toLowerCase() === "hits"
+            ? "#DF9F71"
+            : "#D9D9D9"
+        }`}
+        borderRadius="4px"
+        height="35px"
+        w={width}
+      />{" "}
     </Box>
   );
 };
 
 const LeadStartsChart = () => {
-  const leadStats = [{ id: 1, title: "Responses", number: 23 }];
+  const leadStats = [
+    { id: 1, title: "Responses", number: 22 },
+    { id: 2, title: "Completion", number: 14 },
+    { id: 3, title: "Conversion", number: 5 },
+    { id: 4, title: "Hits", number: 13 },
+  ];
 
-  console.log;
   return (
     <Box bg="#f9f9f9" px={3} pt={3}>
-      <Heading fontSize="1.125rem" ml="200px">
+      <Heading fontSize="1.125rem" ml="125px">
         Lead Stats
       </Heading>
       <Box mt={4}>
-        {leadStats.map(({ id, title, number }) => (
+        {/* {leadStats.map(({ id, title, number }) => (
+          <Bar key={id} title={title} width={`${(number / 25) * 100}%`} />
+        ))} */}
+        {leadStats.map(({ id, number, title }) => (
           <Bar key={id} title={title} width={`${(number / 25) * 100}%`} />
         ))}
       </Box>
