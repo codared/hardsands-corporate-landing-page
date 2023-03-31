@@ -1,10 +1,19 @@
-import { Box, Heading, Image, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Image,
+  Text,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
+import CustomDrawer from "components/CustomDrawer";
 import { AppIcons } from "modules/account/constants";
 import { resolveRoute } from "modules/account/functions";
 import { getCardImageFromSlug } from "modules/products/functions";
 import Link from "next/link";
 import React from "react";
 import { slugify } from "utils/string";
+import MemberProfile from "../../Members/components/MemberProfile";
 import { CorpCard } from "../../reducer";
 
 type DeviceCardProps = {
@@ -13,11 +22,28 @@ type DeviceCardProps = {
 };
 
 const DeviceCard = ({ device, routes }: DeviceCardProps) => {
+  const deviceDrawer = useDisclosure();
+  const toast = useToast();
   const img = getCardImageFromSlug(slugify(device.cardVariant));
 
   return (
-    <Link href={resolveRoute(routes[0], `/devices/${device.cardSerial}`)}>
-      <Box pos="relative" borderRadius="15px" cursor={"pointer"}>
+    <>
+      <Box
+        pos="relative"
+        borderRadius="15px"
+        cursor={"pointer"}
+        onClick={() =>
+          device.user
+            ? deviceDrawer.onOpen()
+            : toast({
+                position: "top-right",
+                title: "No user assigned to this device",
+                status: "info",
+                duration: 9000,
+                isClosable: true,
+              })
+        }
+      >
         <Heading as="h4" fontSize={"18px"} mb={4}>
           {device.cardVariant}
         </Heading>
@@ -47,7 +73,24 @@ const DeviceCard = ({ device, routes }: DeviceCardProps) => {
           </Box>
         </Box>
       </Box>
-    </Link>
+      <CustomDrawer
+        title={"View Device Holder"}
+        size={"sm"}
+        placement="right"
+        isOpen={deviceDrawer.isOpen}
+        onClose={deviceDrawer.onClose}
+      >
+        <MemberProfile
+          member={{
+            ...device.user,
+            img,
+            fullname: `${device.user?.firstName} ${device.user?.lastName}`,
+          }}
+          showActions={false}
+          showForm={false}
+        />
+      </CustomDrawer>
+    </>
   );
 };
 

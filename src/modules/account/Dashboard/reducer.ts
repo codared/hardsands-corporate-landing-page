@@ -18,7 +18,12 @@ export type CorpCard = {
   cardSerial: string;
   status: "ASSIGNED" | "UNASSIGNED" | "INACTIVE";
   clicks: number;
-  user: Member;
+  user: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    position: string;
+  };
   cardVariant: string;
 };
 
