@@ -8,7 +8,6 @@ import {
   Tag,
   TagLabel,
   useDisclosure,
-  Button,
 } from "@chakra-ui/react";
 import StatsCard from "../sharedComponents/StatsCard";
 import NameColumn from "../Members/components/NameColumn";
@@ -41,28 +40,27 @@ const buildMemberRow = (members: any, rowMenuOptions: any) => {
       clicks: member.clicks,
       role: member.role,
       status: (
-        // <Flex justifyContent={["none", "space-between"]}>
-        //   <Tag
-        //     px={[4]}
-        //     py={[1]}
-        //     size={"sm"}
-        //     variant="subtle"
-        //     bg={member.active ? "green.400" : "gray.300"}
-        //     rounded={"full"}
-        //   >
-        //     <TagLabel color={"white"}>
-        //       {member.active ? "Active" : "Inactive"}
-        //     </TagLabel>
-        //   </Tag>
-        //   <RowMenu menuOption={rowMenuOptions(member)} />
-        // </Flex>
-        <Button>Download</Button>
+        <Flex justifyContent={["none", "space-between"]}>
+          <Tag
+            px={[4]}
+            py={[1]}
+            size={"sm"}
+            variant="subtle"
+            bg={member.active ? "green.400" : "gray.300"}
+            rounded={"full"}
+          >
+            <TagLabel color={"white"}>
+              {member.active ? "Active" : "Inactive"}
+            </TagLabel>
+          </Tag>
+          <RowMenu menuOption={rowMenuOptions(member)} />
+        </Flex>
       ),
     };
   });
 };
 
-const Reports = () => {
+const ReportWithId = () => {
   const memberDrawer = useDisclosure();
   const createDrawer = useDisclosure();
   const [activeMember, setActiveMember] = useState({});
@@ -71,10 +69,9 @@ const Reports = () => {
     subTitle: "",
     form: <></>,
   });
-  const columnHeaders = ["Name", "Card Usage", "Clicks", "Role", "Reports"];
+  const columnHeaders = ["Name", "Card Usage", "Clicks", "Role", "Status"];
   const dataStore = [
     {
-      id: 1,
       img: "https://bit.ly/sage-adebayo",
       name: "John Doe",
       email: "gab@hardsands.com",
@@ -84,7 +81,6 @@ const Reports = () => {
       status: "Active",
     },
     {
-      id: 2,
       img: "https://bit.ly/sage-adebayo",
       name: "John Doe",
       email: "gab@hardsands.com",
@@ -94,7 +90,6 @@ const Reports = () => {
       status: "Active",
     },
     {
-      id: 3,
       img: "https://bit.ly/sage-adebayo",
       name: "John Doe",
       email: "gab@hardsands.com",
@@ -104,7 +99,6 @@ const Reports = () => {
       status: "Active",
     },
     {
-      id: 4,
       img: "https://bit.ly/sage-adebayo",
       name: "John Doe",
       email: "gab@hardsands.com",
@@ -114,7 +108,6 @@ const Reports = () => {
       status: "Active",
     },
     {
-      id: 5,
       img: "https://bit.ly/sage-adebayo",
       name: "John Doe",
       email: "gab@hardsands.com",
@@ -124,7 +117,6 @@ const Reports = () => {
       status: "Active",
     },
     {
-      id: 6,
       img: "https://bit.ly/sage-adebayo",
       name: "John Doe",
       email: "gab@hardsands.com",
@@ -171,9 +163,9 @@ const Reports = () => {
   const data = buildMemberRow(dataStore, rowMenuOptions);
   return (
     <Box>
-      <Heading>Reports</Heading>
+      <Heading>Device</Heading>{" "}
       <Text color="#737373" fontSize="14px">
-        Please review the information below to access and download your reports.
+        Please find below a list of members who have been assigned cards
       </Text>
       <Box
         display="flex"
@@ -182,23 +174,21 @@ const Reports = () => {
         gap="8"
         mt="8"
       >
-        <StatsCard name="Total Clicks" number="630" curves="2.45%" />
-        <StatsCard name="Members" number="130" curves="2.45%" />
         <StatsCard
-          showMenu={false}
-          name="Activity"
-          number="60%"
-          bgColor="#DF9F71"
-          color="#fff"
+          name="Card Monthly Activity"
+          number="130"
+          bgColor="#fef8f3"
         />
+        <StatsCard name="Total Cards" number="11" />
+        <StatsCard showMenu={false} name="Unassigned Cards" number="6" />
       </Box>
       <DataTable
         headers={columnHeaders}
         data={data}
-        tableTitle={"Member Overview"}
+        tableTitle={"Card Holders"}
       />
     </Box>
   );
 };
 
-export default Reports;
+export default ReportWithId;

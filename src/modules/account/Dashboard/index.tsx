@@ -5,6 +5,7 @@ import Members from "./Members";
 import Devices from "./Devices";
 import DeviceWithId from "./Devices/[id]";
 import Reports from "./Reports";
+import ReportWithId from "./Reports/[id]";
 
 const Dashboard = ({ route }: { route: string[] }) => {
   switch (route[1]) {
@@ -19,7 +20,11 @@ const Dashboard = ({ route }: { route: string[] }) => {
         return <Devices />;
       }
     case "reports":
-      return <Reports />;
+      if (route[2]) {
+        return <ReportWithId />;
+      } else {
+        return <Reports />;
+      }
     default:
       return <Home />;
   }
