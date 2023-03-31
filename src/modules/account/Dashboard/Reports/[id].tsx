@@ -1,192 +1,79 @@
-import { useState } from "react";
-import {
-  Box,
-  Text,
-  Heading,
-  Flex,
-  Progress,
-  Tag,
-  TagLabel,
-  useDisclosure,
-} from "@chakra-ui/react";
-import StatsCard from "../sharedComponents/StatsCard";
-import NameColumn from "../Members/components/NameColumn";
-import RowMenu from "../sharedComponents/RowMenu";
-import DataTable from "../sharedComponents/DataTable";
-
-const buildMemberRow = (members: any, rowMenuOptions: any) => {
-  return members.map((member: any) => {
-    return {
-      name: (
-        <NameColumn
-          name={member.name}
-          subText={member.email}
-          img={member.img}
-        />
-      ),
-      usage: (
-        <Flex flexDirection={["column", "row"]} alignItems={"center"}>
-          <Progress
-            rounded={"full"}
-            size={"sm"}
-            colorScheme={"orange"}
-            value={80}
-            w={"full"}
-            mr={[2]}
-          />
-          <Text>{member.usage}%</Text>
-        </Flex>
-      ),
-      clicks: member.clicks,
-      role: member.role,
-      status: (
-        <Flex justifyContent={["none", "space-between"]}>
-          <Tag
-            px={[4]}
-            py={[1]}
-            size={"sm"}
-            variant="subtle"
-            bg={member.active ? "green.400" : "gray.300"}
-            rounded={"full"}
-          >
-            <TagLabel color={"white"}>
-              {member.active ? "Active" : "Inactive"}
-            </TagLabel>
-          </Tag>
-          <RowMenu menuOption={rowMenuOptions(member)} />
-        </Flex>
-      ),
-    };
-  });
-};
+import { Box, Text, Heading, Button, Avatar } from "@chakra-ui/react";
+import { ReportCard, LeadsStatChart } from "./components";
 
 const ReportWithId = () => {
-  const memberDrawer = useDisclosure();
-  const createDrawer = useDisclosure();
-  const [activeMember, setActiveMember] = useState({});
-  const [drawerFormState, setDrawerFormState] = useState({
-    name: "",
-    subTitle: "",
-    form: <></>,
-  });
-  const columnHeaders = ["Name", "Card Usage", "Clicks", "Role", "Status"];
-  const dataStore = [
+  const reportData = [
+    { id: 1, title: "Email Hits", number: 23, bgWhite: false },
+    { id: 2, title: "Bank Account Hits", number: 1, bgWhite: false },
+    { id: 3, title: "Whatsapp Hits", number: 32, bgWhite: false },
+    { id: 4, title: "URL Hits", number: 0, bgWhite: true },
     {
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 80,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
+      id: 5,
+      title: "Social Hits",
+      number: 12,
+      bgWhite: false,
+    },
+    { id: 6, title: "Events Hits", number: 3, bgWhite: false },
+    {
+      id: 7,
+      title: "Contact Card Hits",
+      number: 10,
+      bgWhite: false,
     },
     {
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 100,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-    {
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 10,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-    {
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 10,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-    {
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 10,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-    {
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 10,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
+      id: 8,
+      title: "Instagram Hits",
+      number: 3,
+      bgWhite: true,
     },
   ];
 
-  const rowMenuOptions = (member: any) => {
-    return [
-      {
-        id: 1,
-        title: "Edit Member",
-        onClick: () => {
-          setActiveMember(member);
-          memberDrawer.onOpen();
-        },
-      },
-      {
-        id: 2,
-        title: "Set Permissions",
-        onClick: () => {},
-      },
-      {
-        id: 3,
-        title: "Lock Profile",
-        onClick: () => {},
-      },
-      {
-        id: 4,
-        title: "View Report",
-        onClick: () => {},
-      },
-      {
-        id: 5,
-        title: "Remove Member",
-        onClick: () => {},
-      },
-    ];
-  };
-
-  const data = buildMemberRow(dataStore, rowMenuOptions);
+  const leadStats = [];
   return (
     <Box>
-      <Heading>Device</Heading>{" "}
+      <Heading mb={2}>Reports</Heading>
       <Text color="#737373" fontSize="14px">
-        Please find below a list of members who have been assigned cards
+        Please review the information below to access and download your reports.
       </Text>
-      <Box
-        display="flex"
-        flexDir={["column", "row"]}
-        justifyContent={[""]}
-        gap="8"
-        mt="8"
-      >
-        <StatsCard
-          name="Card Monthly Activity"
-          number="130"
-          bgColor="#fef8f3"
-        />
-        <StatsCard name="Total Cards" number="11" />
-        <StatsCard showMenu={false} name="Unassigned Cards" number="6" />
+      <Box display="flex" gap="1rem" justifyContent="flex-end" mt={4}>
+        <Button color="#737373" border="1px solid #e0e0e0">
+          Filter
+        </Button>
+        <Button bgColor="#48BB78" color="#fff">
+          Download
+        </Button>
       </Box>
-      <DataTable
-        headers={columnHeaders}
-        data={data}
-        tableTitle={"Card Holders"}
-      />
+      <Box bg="#fff" padding={["1rem", "2rem"]} mt={6}>
+        <Box display="flex" alignItems="center" gap="1.5rem" mb={6}>
+          <Avatar src="" />
+          <Box>
+            <Heading fontSize="0.875rem">Kennedy Johnson</Heading>
+            <Text fontSize="0.75rem" color="#616161">
+              kennedy@greenlimited.com
+            </Text>
+          </Box>
+        </Box>
+        <Box
+          display={"grid"}
+          gridTemplateColumns={[
+            "repeat(1, 1fr)",
+            "repeat(2, 1fr)",
+            "1fr 20% 20% 1fr",
+          ]}
+          gap="1rem"
+          fontWeight={"700"}
+        >
+          {reportData.map(({ id, title, number, bgWhite }) => (
+            <ReportCard
+              key={id}
+              title={title}
+              bgWhite={bgWhite}
+              number={number}
+            />
+          ))}
+        </Box>
+        <LeadsStatChart />
+      </Box>
     </Box>
   );
 };

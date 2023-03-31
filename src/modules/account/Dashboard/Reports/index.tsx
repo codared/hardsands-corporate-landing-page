@@ -56,7 +56,9 @@ const buildMemberRow = (members: any, rowMenuOptions: any) => {
         //   </Tag>
         //   <RowMenu menuOption={rowMenuOptions(member)} />
         // </Flex>
-        <Button>Download</Button>
+        <Button bg="#48BB78" color="#fff">
+          Download
+        </Button>
       ),
     };
   });
