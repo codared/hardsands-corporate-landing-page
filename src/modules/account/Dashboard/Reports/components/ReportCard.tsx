@@ -1,7 +1,7 @@
 import { Box, Heading } from "@chakra-ui/react";
 
 interface CardProps {
-  bgWhite: boolean;
+  bgWhite?: boolean;
   title: string;
   number: string | number;
 }
