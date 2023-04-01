@@ -1,28 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   Text,
   Heading,
   Flex,
   Progress,
+  useDisclosure,
   Tag,
   TagLabel,
-  useDisclosure,
-  Button,
 } from "@chakra-ui/react";
 import StatsCard from "../sharedComponents/StatsCard";
 import NameColumn from "../Members/components/NameColumn";
-import RowMenu from "../sharedComponents/RowMenu";
 import DataTable from "../sharedComponents/DataTable";
+import { useTypedDispatch, useTypedSelector } from "redux/store";
+import { getReportsAction } from "./actions";
+import { Member } from "../reducer";
 
-const buildMemberRow = (members: any, rowMenuOptions: any) => {
-  return members.map((member: any) => {
+export const buildMemberRow = (members: any, rowMenuOptions?: any) => {
+  return members.map((member: Member) => {
     return {
       name: (
         <NameColumn
-          name={member.name}
+          name={member.fullName}
           subText={member.email}
-          img={member.img}
+          // img={member.img}
         />
       ),
       usage: (
@@ -31,111 +32,42 @@ const buildMemberRow = (members: any, rowMenuOptions: any) => {
             rounded={"full"}
             size={"sm"}
             colorScheme={"orange"}
-            value={80}
+            value={member.cardVisits}
             w={"full"}
             mr={[2]}
           />
-          <Text>{member.usage}%</Text>
+          <Text>{member.cardVisits}%</Text>
         </Flex>
       ),
-      clicks: member.clicks,
-      role: member.role,
+      clicks: member.cardVisits,
+      role: member.corporatePosition,
       status: (
-        // <Flex justifyContent={["none", "space-between"]}>
-        //   <Tag
-        //     px={[4]}
-        //     py={[1]}
-        //     size={"sm"}
-        //     variant="subtle"
-        //     bg={member.active ? "green.400" : "gray.300"}
-        //     rounded={"full"}
-        //   >
-        //     <TagLabel color={"white"}>
-        //       {member.active ? "Active" : "Inactive"}
-        //     </TagLabel>
-        //   </Tag>
-        //   <RowMenu menuOption={rowMenuOptions(member)} />
-        // </Flex>
-        <Button bg="#48BB78" color="#fff">
-          Download
-        </Button>
+        <Flex justifyContent={["none", "space-between"]}>
+          <Tag
+            px={[4]}
+            py={[1]}
+            size={"sm"}
+            variant="subtle"
+            bg={member.isActive ? "green.400" : "gray.300"}
+            rounded={"full"}
+          >
+            <TagLabel color={"white"}>
+              {member.isActive ? "Active" : "Inactive"}
+            </TagLabel>
+          </Tag>
+        </Flex>
       ),
     };
   });
 };
 
 const Reports = () => {
+  // @ts-ignore
+  const { reports, loading } = useTypedSelector((state) => state.dashboard);
+  const dispatch = useTypedDispatch();
   const memberDrawer = useDisclosure();
-  const createDrawer = useDisclosure();
   const [activeMember, setActiveMember] = useState({});
-  const [drawerFormState, setDrawerFormState] = useState({
-    name: "",
-    subTitle: "",
-    form: <></>,
-  });
-  const columnHeaders = ["Name", "Card Usage", "Clicks", "Role", "Reports"];
-  const dataStore = [
-    {
-      id: 1,
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 80,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-    {
-      id: 2,
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 100,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-    {
-      id: 3,
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 10,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-    {
-      id: 4,
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 10,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-    {
-      id: 5,
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 10,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-    {
-      id: 6,
-      img: "https://bit.ly/sage-adebayo",
-      name: "John Doe",
-      email: "gab@hardsands.com",
-      usage: 10,
-      clicks: 200,
-      role: "Developer",
-      status: "Active",
-    },
-  ];
+  const columnHeaders = ["Name", "Card Usage", "Clicks", "Role", "Status"];
 
   const rowMenuOptions = (member: any) => {
     return [
@@ -170,34 +102,49 @@ const Reports = () => {
     ];
   };
 
-  const data = buildMemberRow(dataStore, rowMenuOptions);
+  const data = buildMemberRow(reports?.members);
+
+  useEffect(() => {
+    dispatch(getReportsAction());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleCheckBox = (row: any) => {
+    console.log("checkbox clicked >>> ", row);
+  };
+
   return (
     <Box>
       <Heading>Reports</Heading>
       <Text color="#737373" fontSize="14px">
         Please review the information below to access and download your reports.
       </Text>
-      <Box
-        display="flex"
-        flexDir={["column", "row"]}
-        justifyContent={[""]}
-        gap="8"
-        mt="8"
-      >
-        <StatsCard name="Total Clicks" number="630" curves="2.45%" />
-        <StatsCard name="Members" number="130" curves="2.45%" />
+      <Box display="flex" flexDir={["column", "row"]} gap="8" mt="8">
         <StatsCard
           showMenu={false}
-          name="Activity"
-          number="60%"
+          name="Total Clicks"
+          number={String(reports.totalClicks)}
+        />
+        <StatsCard
+          showMenu={false}
+          name="Members"
+          number={String(reports.totalMembers)}
+        />
+        <StatsCard
+          showMenu={false}
+          name="Total Cards"
+          number={String(reports.totalCards)}
           bgColor="#DF9F71"
           color="#fff"
         />
       </Box>
       <DataTable
+        checkable
+        loading={loading}
         headers={columnHeaders}
         data={data}
-        tableTitle={"Member Overview"}
+        tableTitle={"Reports Overview"}
+        onCheck={handleCheckBox}
       />
     </Box>
   );

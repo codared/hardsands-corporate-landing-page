@@ -1,10 +1,12 @@
 import { AppActionTypes } from "redux/context";
+import { Report } from "./Reports/types";
 
 export type DashboardReducerState = {
   error: any;
   loading: boolean;
   members: Member[];
   corpCards: any;
+  reports: Report;
 };
 
 const initialState: DashboardReducerState = {
@@ -12,6 +14,12 @@ const initialState: DashboardReducerState = {
   loading: true,
   members: [],
   corpCards: [],
+  reports: {
+    totalMembers: 0,
+    totalClicks: 0,
+    totalCards: 0,
+    members: [],
+  },
 };
 
 export type CorpCard = {
@@ -35,6 +43,12 @@ export type Member = {
   fullName: string;
   isActive: boolean;
   userId: number;
+  actions?: {
+    id: number | string;
+    action: string;
+    type: string;
+    actionCategory: string;
+  };
 };
 
 const dashboardReducer = (
@@ -48,6 +62,8 @@ const dashboardReducer = (
       return { ...state, loading: action.payload };
     case "GET_MEMBERS":
       return { ...state, loading: false, members: action.payload };
+    case "GET_REPORTS":
+      return { ...state, loading: false, reports: action.payload };
     case "GET_CORP_CARD":
       return { ...state, loading: false, corpCards: action.payload };
     case "UPDATE_MEMBERS":

@@ -1,4 +1,5 @@
 import { CorpCard, Member } from "./reducer";
+import { Report } from "./Reports/types";
 
 export interface GetMembers {
   type: "GET_MEMBERS";
@@ -24,9 +25,16 @@ export interface GetCorpCards {
   type: "GET_CORP_CARD";
   payload: CorpCard[];
 }
+
+export interface GetReports {
+  type: "GET_REPORTS";
+  payload: Report;
+}
+
 export type DashboardActionTypes =
   | GetMembers
   | AddMembers
   | UpdateMembers
   | DashboardAppError
+  | GetReports
   | GetCorpCards;
