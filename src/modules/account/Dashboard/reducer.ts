@@ -36,6 +36,7 @@ export type CorpCard = {
 };
 
 export type Member = {
+  id?: number;
   cardStatus: string;
   cardVisits: number;
   corporatePosition: string;

@@ -15,10 +15,13 @@ import DataTable from "../sharedComponents/DataTable";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { getReportsAction } from "./actions";
 import { Member } from "../reducer";
+import { buildMemberDownloadableData } from "../sharedComponents/DataTable/functions";
 
 export const buildMemberRow = (members: any, rowMenuOptions?: any) => {
   return members.map((member: Member) => {
     return {
+      id: member.id,
+      isSelected: false,
       name: (
         <NameColumn
           name={member.fullName}
@@ -109,8 +112,8 @@ const Reports = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleCheckBox = (row: any) => {
-    console.log("checkbox clicked >>> ", row);
+  const handleCheckBox = (rows: any) => {
+    // console.log("checkbox clicked >>> ", rows);
   };
 
   return (
@@ -145,6 +148,10 @@ const Reports = () => {
         data={data}
         tableTitle={"Reports Overview"}
         onCheck={handleCheckBox}
+        downloadableData={{
+          data: reports.members,
+          buildMethod: buildMemberDownloadableData,
+        }}
       />
     </Box>
   );

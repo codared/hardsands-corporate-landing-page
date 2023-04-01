@@ -53,6 +53,7 @@
     "clsx": "^1.2.1",
     "dompurify": "^2.2.6",
     "emotion-theming": "10.0.27",
+    "export-from-json": "^1.7.2",
     "file-saver": "^2.0.5",
     "formik": "^2.2.9",
     "framer-motion": "^4",
