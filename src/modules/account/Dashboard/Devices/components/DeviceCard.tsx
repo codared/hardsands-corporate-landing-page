@@ -69,12 +69,17 @@ const DeviceCard = ({ device, routes }: DeviceCardProps) => {
               alt="personal card"
               boxSize={"30px"}
             />
-            <Text>{device.clicks} Clicks</Text>
+            <Box>
+              <Text>{device.clicks} Clicks</Text>
+              <Text>
+                {device.user?.firstName} {device.user?.lastName}
+              </Text>
+            </Box>
           </Box>
         </Box>
       </Box>
       <CustomDrawer
-        title={"View Device Holder"}
+        title={"Device Holder"}
         size={"sm"}
         placement="right"
         isOpen={deviceDrawer.isOpen}
