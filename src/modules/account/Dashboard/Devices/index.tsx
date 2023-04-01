@@ -25,6 +25,11 @@ const Devices = ({ routes }: { routes: string[] }) => {
     0
   );
 
+  // get number of active devices that has the proper user and not null
+  const activeDevices = corpCards?.filter((card: CorpCard) => {
+    return card.user && card.user !== null;
+  });
+
   return (
     <Box>
       <Heading>Devices</Heading>{" "}
@@ -43,13 +48,13 @@ const Devices = ({ routes }: { routes: string[] }) => {
           number={totalNumberOfclicks}
           // curves="2.45%"
         />
-        <StatsCard name="Member" number="130" />
+        <StatsCard name="Total Devices" number={String(corpCards.length)} />
         <StatsCard
           bgColor="#df9f71"
           color="#fff"
           showMenu={false}
-          name="Activity"
-          number="130"
+          name="Devices Activated"
+          number={String(activeDevices?.length)}
         />
       </Box>
       <Box mt={6} bg="#fff" py={10} px={5}>

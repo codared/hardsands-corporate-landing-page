@@ -48,12 +48,21 @@ const ImportMemberForm = () => {
     importMemberSchema,
     async (formData: any) => {
       const form = new FormData();
-      form.append("file", formData.file);
-      console.log(
-        "🚀 ~ file: index.tsx:16 ~ ImportMemberForm ~ formData",
-        formData,
-        form
+      form.append(
+        "file",
+        new File(
+          [
+            new Blob([formData.file], {
+              type: formData.file.type,
+            }),
+          ],
+          formData.file.name,
+          {
+            type: formData.file.type,
+          }
+        )
       );
+
       const res = await dispatch(addMembersAction(form, "import"));
       if (res?.message) {
         setSuccessMessage(res?.message);

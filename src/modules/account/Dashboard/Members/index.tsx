@@ -25,7 +25,7 @@ import NameColumn from "./components/NameColumn";
 import RowMenu from "../sharedComponents/RowMenu";
 import CreateMemberForm from "./components/CreateMemberForm";
 import ImportMemberForm from "./components/ImportMemberForm";
-import { getMembersAction } from "./actions";
+import { editMembersAction, getMembersAction } from "./actions";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { DashboardReducerState, Member } from "../reducer";
 
@@ -89,7 +89,7 @@ const Members = () => {
     form: <></>,
   });
   const columnHeaders = ["Name", "Card Usage", "Clicks", "Role", "Status"];
-  
+
   const rowMenuOptions = (member: any) => {
     return [
       {
@@ -100,26 +100,30 @@ const Members = () => {
           memberDrawer.onOpen();
         },
       },
-      {
-        id: 2,
-        title: "Set Permissions",
-        onClick: () => {},
-      },
+      // {
+      //   id: 2,
+      //   title: "Set Permissions",
+      //   onClick: () => {},
+      // },
       {
         id: 3,
-        title: "Lock Profile",
-        onClick: () => {},
+        title: member.isActive ? "Lock Profile" : "Unlock Profile",
+        onClick: () => {
+          dispatch(
+            editMembersAction({ isActive: !member.isActive }, member.id)
+          );
+        },
       },
-      {
-        id: 4,
-        title: "View Report",
-        onClick: () => {},
-      },
-      {
-        id: 5,
-        title: "Remove Member",
-        onClick: () => {},
-      },
+      // {
+      //   id: 4,
+      //   title: "View Report",
+      //   onClick: () => {},
+      // },
+      // {
+      //   id: 5,
+      //   title: "Remove Member",
+      //   onClick: () => {},
+      // },
     ];
   };
 
@@ -188,9 +192,9 @@ const Members = () => {
         />
         <StatsCard
           name={"Members"}
-          number={"130"}
-          curves={"2.45%"}
-          decline={true}
+          number={String(members.length)}
+          // curves={"2.45%"}
+          // decline={true}
         />
       </Flex>
 
