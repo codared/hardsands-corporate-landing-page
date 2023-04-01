@@ -7,13 +7,13 @@ export const AUTH_ROUTES = {
 
 export const APP_ROUTE = {
   home: "/app",
-  dashboard: "/dashboard/:slug",
+  dashboard: "/dashboard/{slug}",
 };
 
 export const UserTypes = {
   NORMAL: "NORMAL",
-  CORP_USER: "CORP_USER",
-  CORP_ADMIN: "CORP_ADMIN",
+  CORP_USER: "USER",
+  CORP_ADMIN: "ADMIN",
 };
 
 export const HARDSANDS_LOGIN_COOKIE = "hardsands_user_token";

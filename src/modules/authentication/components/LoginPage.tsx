@@ -14,12 +14,18 @@ import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { APP_ROUTE, AUTH_ROUTES, HARDSANDS_LOGIN_COOKIE } from "../constants";
+import {
+  APP_ROUTE,
+  AUTH_ROUTES,
+  HARDSANDS_LOGIN_COOKIE,
+  UserTypes,
+} from "../constants";
 import { LoginSchema } from "../formSchema";
 import { loginUser } from "../services";
 import { LoginUserType } from "../types";
 import { setCookie } from "modules/shared/cookie";
 import GoogleLogin from "./GoogleLogin";
+import { slugify } from "utils/string";
 
 function LoginPage() {
   const { t } = useTranslation();
@@ -57,7 +63,17 @@ function LoginPage() {
             message: res.result.message as string,
           });
           setCookie(HARDSANDS_LOGIN_COOKIE, res.result.token, 365);
-          router.push(APP_ROUTE.home);
+
+          if (res.result.role === UserTypes.CORP_ADMIN) {
+            router.push(
+              APP_ROUTE.dashboard.replace(
+                "{slug}",
+                slugify(res.result.corpName)
+              )
+            );
+          } else {
+            router.push(APP_ROUTE.home);
+          }
         }
 
         setIsLoading(false);
@@ -110,7 +126,9 @@ function LoginPage() {
           />
         </Flex>
         <Box position="relative" my={10}>
-          <Text bg="white" position={'absolute'} top="-11px" zIndex={1} px={2}>Or signin with Email</Text>
+          <Text bg="white" position={"absolute"} top="-11px" zIndex={1} px={2}>
+            Or signin with Email
+          </Text>
           <Divider />
         </Box>
         <form onSubmit={handleSubmitForm}>
