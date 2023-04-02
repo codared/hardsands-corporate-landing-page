@@ -12,15 +12,17 @@ import HardsandsAppLogo from "components/Logo";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
 import { AccountNavItemsType } from "utils/types";
-import { removeCookie } from "modules/shared/cookie";
+import { getCookie, removeCookie } from "modules/shared/cookie";
 import {
   AUTH_ROUTES,
+  HARDSANDS_CORPERATE_NAME,
   HARDSANDS_LOGIN_COOKIE,
 } from "modules/authentication/constants";
 import Router from "next/router";
 import NavItem from "modules/account/components/Navitems";
 import { DASH_NAV_ITEMS, routeId } from "modules/account/constants";
 import { useActiveSidebarItem } from "../../hooks";
+import { getCardImageFromSlug } from "modules/products/functions";
 
 const DashSidebarContent = (props: any) => {
   const integrations = useDisclosure();
@@ -33,6 +35,9 @@ const DashSidebarContent = (props: any) => {
     removeCookie(HARDSANDS_LOGIN_COOKIE);
     Router.push(AUTH_ROUTES.login);
   };
+
+  const img = getCardImageFromSlug("epoxy-tag-black");
+  const companyName = getCookie(HARDSANDS_CORPERATE_NAME) || "";
 
   return (
     <Box
@@ -74,14 +79,16 @@ const DashSidebarContent = (props: any) => {
         >
           <Image
             rounded={"full"}
-            width={"50%"}
-            src="https://bit.ly/dan-abramov"
-            alt={"Dan Abrahmov"}
+            width={"150px"}
+            h={"150px"}
+            objectFit={"cover"}
+            src={img}
+            alt={companyName}
           />
           <Box h={4} />
           <Text fontSize={14}>Welcome Back</Text>
-          <Text fontSize={20} fontWeight={"bolder"}>
-            Greens Limited
+          <Text fontSize={20} fontWeight={"bolder"} textAlign={"center"}>
+            {companyName}
           </Text>
         </Flex>
         <Box mt={[10]}>

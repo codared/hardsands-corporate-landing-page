@@ -87,10 +87,11 @@ const DeviceCard = ({ device, routes }: DeviceCardProps) => {
           member={{
             ...device.user,
             img,
-            fullname: `${device.user?.firstName} ${device.user?.lastName}`,
+            fullName: `${device.user?.firstName} ${device.user?.lastName}`,
           }}
           showActions={false}
           showForm={false}
+          showCard
         />
       </CustomDrawer>
     </>

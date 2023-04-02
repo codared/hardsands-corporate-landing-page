@@ -15,4 +15,10 @@ export type Member = {
     type: string;
     actionCategory: string;
   }[];
+  cards?: {
+    cardSerial: string;
+    cardStatus: "ACTIVE" | "INACTIVE" | "EXPIRED" | "LOST" | "STOLEN";
+    cardVisits: number;
+    variant: string;
+  }[];
 };

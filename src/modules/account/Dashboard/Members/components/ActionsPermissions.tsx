@@ -9,8 +9,9 @@ import {
 } from "@chakra-ui/react";
 import CustomDrawer from "components/CustomDrawer";
 import { AppIcons } from "modules/account/constants";
-import { getOnlyActions } from "modules/account/functions";
+import { getOnlyActions, slugify } from "modules/account/functions";
 import ActionItem from "modules/account/MainAccountContent/components/ActionItem";
+import { getCardImageFromSlug } from "modules/products/functions";
 import React, { useState } from "react";
 import { MdAdd } from "react-icons/md";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
@@ -23,6 +24,7 @@ import {
 import NameColumn from "./NameColumn";
 
 const ActionsPermissions = ({ member }: { member: Member }) => {
+  console.log("🚀 ~ file: ActionsPermissions.tsx:27 ~ ActionsPermissions ~ member", member)
   const actionDrawer = useDisclosure();
 
   const [actionsToUpdate, setActionsToUpdate] = useState(member.actions);
@@ -65,6 +67,11 @@ const ActionsPermissions = ({ member }: { member: Member }) => {
   const onSelect = (id: number) => {
     setSelectedActions([...selectedActions, id]);
   };
+
+  let img;
+  if (member?.cards && member?.cards.length > 0) {
+    img = getCardImageFromSlug(slugify(member?.cards[0].variant));
+  }
 
   return (
     <Box position={"relative"}>
@@ -114,9 +121,7 @@ const ActionsPermissions = ({ member }: { member: Member }) => {
       <Box>
         <Image
           rounded={"lg"}
-          src={
-            member.img || "https://via.placeholder.com/150x150?text=No+Image"
-          }
+          src={img || "https://via.placeholder.com/150x150?text=No+Image"}
           alt={member.fullName}
         />
         <Box py={[6]}>
