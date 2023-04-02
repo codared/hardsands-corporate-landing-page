@@ -1,5 +1,5 @@
 import { ThunkActionCreator } from "redux/rootReducer";
-import { Member } from "../reducer";
+import { Member } from "../Members/types";
 import { getCards } from "./services";
 
 export const getCorpCardsAction: ThunkActionCreator<Promise<Member>> =
