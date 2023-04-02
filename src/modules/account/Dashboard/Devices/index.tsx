@@ -5,7 +5,7 @@ import { getCorpCardsAction } from "./actions";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
 import Loader from "modules/account/components/Loader";
 import DeviceCard from "./components/DeviceCard";
-import { CorpCard, DashboardReducerState } from "../Members/types";
+import { CorpCard, DashboardReducerState } from "../types";
 
 const Devices = ({ routes }: { routes: string[] }) => {
   const dispatch = useTypedDispatch();

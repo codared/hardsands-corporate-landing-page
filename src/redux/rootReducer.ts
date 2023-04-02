@@ -11,9 +11,8 @@ import { AppActionTypes } from "./context";
 import { countryReducer } from "modules/checkout/countriesState/reducer";
 import { customerInfoReducer } from "modules/checkout/customerInfoState/reducer";
 import appReducer, { UserAppReducerState } from "modules/account/reducer";
-import dashboardReducer, {
-  DashboardReducerState,
-} from "modules/account/Dashboard/reducer";
+import dashboardReducer from "modules/account/Dashboard/reducer";
+import { DashboardReducerState } from "modules/account/Dashboard/types";
 
 export const rootReducer = combineReducers({
   products: productsReducer,

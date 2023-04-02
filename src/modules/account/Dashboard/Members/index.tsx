@@ -20,8 +20,9 @@ import CreateMemberForm from "./components/CreateMemberForm";
 import ImportMemberForm from "./components/ImportMemberForm";
 import { editMembersAction, getMembersAction } from "./actions";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
-import { DashboardReducerState, Member } from "../Members/types";
+import { DashboardReducerState } from "../types";
 import { getAllActionsActions } from "modules/account/actions";
+import { Member } from "./types";
 
 export const buildMemberRow = (members: any, rowMenuOptions: any) => {
   return members.map((member: Member) => {

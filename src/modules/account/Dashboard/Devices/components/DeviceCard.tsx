@@ -12,7 +12,7 @@ import { getCardImageFromSlug } from "modules/products/functions";
 import React from "react";
 import { slugify } from "utils/string";
 import MemberProfile from "../../Members/components/MemberProfile";
-import { CorpCard } from "../../Members/types";
+import { CorpCard } from "../../types";
 
 type DeviceCardProps = {
   device: CorpCard;
