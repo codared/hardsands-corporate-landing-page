@@ -34,14 +34,15 @@ const CreateMemberForm = ({ editMode = false, defaultValues }: any) => {
     async (formData: any) => {
       let res;
       if (editMode) {
-        res = await dispatch(
-          editMembersAction(formData, defaultValues?.userId)
-        );
+        res = await dispatch(editMembersAction(formData, defaultValues?.id));
       } else {
         res = await dispatch(addMembersAction(formData));
       }
-      if (res?.message) {
-        setSuccessMessage(res?.message);
+
+      if (res?.length) {
+        setSuccessMessage(
+          editMode ? "Member update successfully" : "Member added successfully"
+        );
         dispatch(getMembersAction());
       }
     }

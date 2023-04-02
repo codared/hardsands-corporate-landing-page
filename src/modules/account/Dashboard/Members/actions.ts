@@ -1,6 +1,13 @@
 import { ThunkActionCreator } from "redux/rootReducer";
-import { Member } from "../reducer";
-import { addMembers, addMultipleMembers, getMembers, updateMembers } from "./services";
+import { Member } from "../Members/types";
+import {
+  addActionToMember,
+  addMembers,
+  addMultipleMembers,
+  getMembers,
+  removeActionToMember,
+  updateMembers,
+} from "./services";
 
 export const getMembersAction: ThunkActionCreator<Promise<Member>> =
   () => async (dispatch, getState) => {
@@ -57,6 +64,42 @@ export const editMembersAction: ThunkActionCreator<Promise<any>> =
     }
     dispatch({
       type: "UPDATE_MEMBERS",
+      payload: res.result,
+    });
+
+    return res.result;
+  };
+
+export const addActionToMembersAction: ThunkActionCreator<Promise<any>> =
+  (data, userId) => async (dispatch, getState) => {
+    const res = await addActionToMember(data, userId);
+
+    if (res.isError) {
+      return dispatch({
+        type: "DASHBOARD_APP_ERROR",
+        payload: res as any,
+      });
+    }
+    dispatch({
+      type: "ADD_MEMBER_ACTION",
+      payload: res.result,
+    });
+
+    return res.result;
+  };
+
+export const removeActionToMembersAction: ThunkActionCreator<Promise<any>> =
+  (data, userId) => async (dispatch, getState) => {
+    const res = await removeActionToMember(data, userId);
+
+    if (res.isError) {
+      return dispatch({
+        type: "DASHBOARD_APP_ERROR",
+        payload: res as any,
+      });
+    }
+    dispatch({
+      type: "REMOVE_MEMBER_ACTION",
       payload: res.result,
     });
 

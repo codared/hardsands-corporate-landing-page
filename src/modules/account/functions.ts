@@ -65,3 +65,7 @@ export const resolveRoute = (companyRoute: string, slug?: string) => {
   }
   return route;
 };
+
+export const getOnlyActions = (actions: any) => {
+  return actions.map((action: any) => action.action);
+};

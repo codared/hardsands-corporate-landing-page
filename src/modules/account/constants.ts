@@ -51,6 +51,7 @@ import {
 } from "assets";
 import {
   AiFillBank,
+  AiOutlineFileText,
   AiOutlineIdcard,
   AiOutlineLink,
   AiOutlineMail,
@@ -185,6 +186,10 @@ export const AppIcons = {
   ChartIconSVG,
   ImportIconSVG,
   PersonalCardIcon,
+  "Registration Form": AiOutlineFileText,
+  "Sales Form": AiOutlineFileText,
+  "Coming soon Form": AiOutlineFileText,
+  "Consultation Form": AiOutlineFileText,
 };
 
 /*
@@ -591,6 +596,22 @@ export const ACTIONS: ActionsType[] = [
         formKey: "bankName",
       },
     ],
+  },
+  {
+    fieldTitle: "Registration Form",
+    fields: [],
+  },
+  {
+    fieldTitle: "Sales Form",
+    fields: [],
+  },
+  {
+    fieldTitle: "Coming soon Form",
+    fields: [],
+  },
+  {
+    fieldTitle: "Consultation Form",
+    fields: [],
   },
 ];
 

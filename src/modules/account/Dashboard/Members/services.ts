@@ -48,3 +48,29 @@ export const updateMembers = async (data: any, id: number) => {
 
   return res;
 };
+
+export const addActionToMember = async (data: any, userId: number) => {
+  const res = (await storefrontApiJsonFetch(
+    `/api/corporate-admin/addAction/${userId}`,
+    {
+      method: "PUT",
+      headers: requestAuthHeaders(),
+      body: JSON.stringify(data),
+    }
+  )) as BackendResponseType;
+
+  return res;
+};
+
+export const removeActionToMember = async (data: any, userId: number) => {
+  const res = (await storefrontApiJsonFetch(
+    `/api/corporate-admin/removeAction/${userId}`,
+    {
+      method: "PUT",
+      headers: requestAuthHeaders(),
+      body: JSON.stringify(data),
+    }
+  )) as BackendResponseType;
+
+  return res;
+};

@@ -1,4 +1,4 @@
-import { CorpCard, Member } from "./reducer";
+import { Member, CorpCard } from "./Members/types";
 import { Report } from "./Reports/types";
 
 export interface GetMembers {
@@ -31,10 +31,22 @@ export interface GetReports {
   payload: Report;
 }
 
+export interface AddActionMember {
+  type: "ADD_MEMBER_ACTION";
+  payload: any;
+}
+
+export interface RemoveActionMember {
+  type: "REMOVE_MEMBER_ACTION";
+  payload: any;
+}
+
 export type DashboardActionTypes =
   | GetMembers
   | AddMembers
   | UpdateMembers
   | DashboardAppError
   | GetReports
-  | GetCorpCards;
+  | GetCorpCards
+  | AddActionMember
+  | RemoveActionMember;

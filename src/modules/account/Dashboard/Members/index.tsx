@@ -1,14 +1,7 @@
 import {
-  Avatar,
   Box,
-  Drawer,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerOverlay,
   Flex,
   Heading,
-  HStack,
-  IconButton,
   Progress,
   Tag,
   TagLabel,
@@ -27,7 +20,8 @@ import CreateMemberForm from "./components/CreateMemberForm";
 import ImportMemberForm from "./components/ImportMemberForm";
 import { editMembersAction, getMembersAction } from "./actions";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
-import { DashboardReducerState, Member } from "../reducer";
+import { DashboardReducerState, Member } from "../Members/types";
+import { getAllActionsActions } from "modules/account/actions";
 
 export const buildMemberRow = (members: any, rowMenuOptions: any) => {
   return members.map((member: Member) => {
@@ -80,9 +74,7 @@ const Members = () => {
   const { members, loading } = useTypedSelector(
     (state) => state.dashboard
   ) as DashboardReducerState;
-  const memberDrawer = useDisclosure();
   const createDrawer = useDisclosure();
-  const [activeMember, setActiveMember] = useState({});
   const [drawerFormState, setDrawerFormState] = useState({
     name: "",
     subTitle: "",
@@ -96,15 +88,26 @@ const Members = () => {
         id: 1,
         title: "Edit Member",
         onClick: () => {
-          setActiveMember(member);
-          memberDrawer.onOpen();
+          setDrawerFormState({
+            name: "Edit Member",
+            subTitle: "Update Member details",
+            form: <MemberProfile showActions={false} member={member} />,
+          });
+          createDrawer.onOpen();
         },
       },
-      // {
-      //   id: 2,
-      //   title: "Set Permissions",
-      //   onClick: () => {},
-      // },
+      {
+        id: 2,
+        title: "Set Permissions",
+        onClick: () => {
+          setDrawerFormState({
+            name: "Set permissions",
+            subTitle: "Add and update member card actions",
+            form: <MemberProfile showForm={false} member={member} />,
+          });
+          createDrawer.onOpen();
+        },
+      },
       {
         id: 3,
         title: member.isActive ? "Lock Profile" : "Unlock Profile",
@@ -131,20 +134,12 @@ const Members = () => {
 
   useEffect(() => {
     dispatch(getMembersAction());
+    dispatch(getAllActionsActions());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Box>
-      <CustomDrawer
-        title={"Edit Member"}
-        size={"sm"}
-        placement="right"
-        isOpen={memberDrawer.isOpen}
-        onClose={memberDrawer.onClose}
-      >
-        <MemberProfile member={activeMember} />
-      </CustomDrawer>
       <CustomDrawer
         title={drawerFormState.name}
         size={"sm"}
@@ -190,12 +185,7 @@ const Members = () => {
             createDrawer.onOpen();
           }}
         />
-        <StatsCard
-          name={"Members"}
-          number={String(members.length)}
-          // curves={"2.45%"}
-          // decline={true}
-        />
+        <StatsCard name={"Members"} number={String(members.length)} />
       </Flex>
 
       <DataTable

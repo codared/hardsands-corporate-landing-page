@@ -1,4 +1,4 @@
-import { Member } from "../reducer";
+import { Member } from "../Members/types";
 
 export type Report = {
   totalMembers: number | string;

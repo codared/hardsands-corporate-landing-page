@@ -31,7 +31,15 @@ const NameColumn = ({
             <Text>{subText}</Text>
           </HStack>
         )}
-        {isActive && <Tag>Active</Tag>}
+
+        {isActive && (
+          <Tag
+            bg={isActive ? "green.500" : "gray.500"}
+            color={isActive ? "white" : "black"}
+          >
+            {isActive ? "Active" : "Inactive"}
+          </Tag>
+        )}
       </Box>
     </HStack>
   );

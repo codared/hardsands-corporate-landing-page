@@ -14,7 +14,7 @@ import NameColumn from "../Members/components/NameColumn";
 import DataTable from "../sharedComponents/DataTable";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { getReportsAction } from "./actions";
-import { Member } from "../reducer";
+import { Member } from "../Members/types";
 import { buildMemberDownloadableData } from "../sharedComponents/DataTable/functions";
 
 export const buildMemberRow = (members: any, rowMenuOptions?: any) => {

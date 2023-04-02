@@ -1,13 +1,6 @@
 import { AppActionTypes } from "redux/context";
-import { Report } from "./Reports/types";
-
-export type DashboardReducerState = {
-  error: any;
-  loading: boolean;
-  members: Member[];
-  corpCards: any;
-  reports: Report;
-};
+import { getOnlyActions } from "../functions";
+import { DashboardReducerState } from "./Members/types";
 
 const initialState: DashboardReducerState = {
   error: {},
@@ -22,36 +15,6 @@ const initialState: DashboardReducerState = {
   },
 };
 
-export type CorpCard = {
-  cardSerial: string;
-  status: "ASSIGNED" | "UNASSIGNED" | "INACTIVE";
-  clicks: number;
-  user: {
-    firstName: string;
-    lastName: string;
-    email: string;
-    position: string;
-  };
-  cardVariant: string;
-};
-
-export type Member = {
-  id?: number;
-  cardStatus: string;
-  cardVisits: number;
-  corporatePosition: string;
-  email: string;
-  fullName: string;
-  isActive: boolean;
-  userId: number;
-  actions?: {
-    id: number | string;
-    action: string;
-    type: string;
-    actionCategory: string;
-  };
-};
-
 const dashboardReducer = (
   state = initialState,
   action: AppActionTypes
@@ -63,6 +26,27 @@ const dashboardReducer = (
       return { ...state, loading: action.payload };
     case "GET_MEMBERS":
       return { ...state, loading: false, members: action.payload };
+    case "ADD_MEMBER_ACTION":
+      const members = JSON.parse(JSON.stringify([...state.members]));
+      const newMembers = members.map((m: any) => {
+        if (m.id === action.payload[0].userId) {
+          m.actions = [...getOnlyActions(action.payload)];
+        }
+        return { ...m };
+      });
+      return { ...state, members: [...newMembers] };
+    case "REMOVE_MEMBER_ACTION":
+      const statemembers = JSON.parse(JSON.stringify([...state.members]));
+      // find the member and add the action
+      const newStateMembers = statemembers.map(
+        (m: { id: any; actions: any }) => {
+          if (m.id === action.payload[0].userId) {
+            m.actions = [...getOnlyActions(action.payload)];
+          }
+          return { ...m };
+        }
+      );
+      return { ...state, members: [...newStateMembers] };
     case "GET_REPORTS":
       return { ...state, loading: false, reports: action.payload };
     case "GET_CORP_CARD":
