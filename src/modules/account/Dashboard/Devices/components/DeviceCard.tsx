@@ -8,13 +8,11 @@ import {
 } from "@chakra-ui/react";
 import CustomDrawer from "components/CustomDrawer";
 import { AppIcons } from "modules/account/constants";
-import { resolveRoute } from "modules/account/functions";
 import { getCardImageFromSlug } from "modules/products/functions";
-import Link from "next/link";
 import React from "react";
 import { slugify } from "utils/string";
 import MemberProfile from "../../Members/components/MemberProfile";
-import { CorpCard } from "../../reducer";
+import { CorpCard } from "../../Members/types";
 
 type DeviceCardProps = {
   device: CorpCard;

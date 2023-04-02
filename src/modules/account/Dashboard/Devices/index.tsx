@@ -3,9 +3,9 @@ import StatsCard from "../sharedComponents/StatsCard";
 import { useEffect } from "react";
 import { getCorpCardsAction } from "./actions";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
-import { CorpCard, DashboardReducerState } from "../reducer";
 import Loader from "modules/account/components/Loader";
 import DeviceCard from "./components/DeviceCard";
+import { CorpCard, DashboardReducerState } from "../Members/types";
 
 const Devices = ({ routes }: { routes: string[] }) => {
   const dispatch = useTypedDispatch();
