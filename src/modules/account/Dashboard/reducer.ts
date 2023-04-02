@@ -1,10 +1,11 @@
 import { AppActionTypes } from "redux/context";
 import { getOnlyActions } from "../functions";
-import { DashboardReducerState } from "./Members/types";
+import { DashboardReducerState } from "./types";
 
 const initialState: DashboardReducerState = {
   error: {},
   loading: true,
+  company: '',
   members: [],
   corpCards: [],
   reports: {
@@ -53,6 +54,8 @@ const dashboardReducer = (
       return { ...state, loading: false, corpCards: action.payload };
     case "UPDATE_MEMBERS":
       return { ...state, loading: false, members: action.payload };
+    case "SET_COMPANY_NAME":
+      return { ...state, loading: false, company: action.payload };
     default:
       return state;
   }
