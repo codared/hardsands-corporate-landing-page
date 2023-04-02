@@ -1,5 +1,6 @@
-import { Member, CorpCard } from "./Members/types";
+import { CorpCard } from "./types";
 import { Report } from "./Reports/types";
+import { Member } from "./Members/types";
 
 export interface GetMembers {
   type: "GET_MEMBERS";
@@ -40,6 +41,10 @@ export interface RemoveActionMember {
   type: "REMOVE_MEMBER_ACTION";
   payload: any;
 }
+export interface SetCompanyName {
+  type: "SET_COMPANY_NAME";
+  payload: any;
+}
 
 export type DashboardActionTypes =
   | GetMembers
@@ -49,4 +54,5 @@ export type DashboardActionTypes =
   | GetReports
   | GetCorpCards
   | AddActionMember
-  | RemoveActionMember;
+  | RemoveActionMember
+  | SetCompanyName;
