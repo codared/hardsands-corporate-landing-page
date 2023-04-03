@@ -1,0 +1,22 @@
+export type Lead = {
+  id: 1;
+  cardSerialId: string;
+  userCardActionId: number;
+  name: string | null;
+  title: string | null;
+  location: string | null;
+  about: string | null;
+  phone: string | null;
+  url: string | null;
+  city: string | null;
+  company: string | null;
+  position: string | null;
+  text: string | null;
+  email: string | null;
+  instagram: string | null;
+  twitter: string | null;
+  bankAccountName: string | null;
+  bankName: string | null;
+  bankAccountNumber: string | null;
+  status: string;
+};

@@ -41,8 +41,14 @@ export interface RemoveActionMember {
   type: "REMOVE_MEMBER_ACTION";
   payload: any;
 }
+
 export interface SetCompanyName {
   type: "SET_COMPANY_NAME";
+  payload: any;
+}
+
+export interface GetLeadsResponse {
+  type: "GET_LEADS_RESPONSE";
   payload: any;
 }
 
@@ -55,4 +61,5 @@ export type DashboardActionTypes =
   | GetCorpCards
   | AddActionMember
   | RemoveActionMember
-  | SetCompanyName;
+  | SetCompanyName
+  | GetLeadsResponse;

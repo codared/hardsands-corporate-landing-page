@@ -32,6 +32,7 @@ interface Props extends FlexProps {
   data: DataTable[];
   onCheck?: (row: any) => void;
   downloadableData?: any;
+  excludeProps?: string[];
 }
 
 const DataTable = ({
@@ -41,6 +42,7 @@ const DataTable = ({
   data,
   onCheck,
   loading,
+  excludeProps,
   downloadableData,
   ...rest
 }: Props) => {
@@ -55,9 +57,12 @@ const DataTable = ({
   } = useSelectable(data, onCheck);
 
   // filter out the data that is selected from downloadable data to be used for download
-  const filteredDownloadableData = downloadableData?.data.filter((item: any) =>
-    rowSelected.find((row) => item.id === row.id)
-  );
+  const filteredDownloadableData =
+    downloadableData.length > 0
+      ? downloadableData?.data.filter((item: any) =>
+          rowSelected.find((row) => item.id === row.id)
+        )
+      : [];
 
   return (
     <Flex
@@ -105,6 +110,7 @@ const DataTable = ({
                   </Th>
                 )}
                 {headers.map((header, index) => {
+                  if (excludeProps?.includes(header)) return null;
                   return (
                     <Th
                       textTransform={"capitalize"}
@@ -136,8 +142,7 @@ const DataTable = ({
                       </Td>
                     )}
                     {Object.keys(row).map((actualRow: any, i: number) => {
-                      if (actualRow === "isSelected" || actualRow === "id")
-                        return null;
+                      if (excludeProps?.includes(actualRow)) return null;
                       return <Td key={i}>{row[actualRow]}</Td>;
                     })}
                   </Tr>

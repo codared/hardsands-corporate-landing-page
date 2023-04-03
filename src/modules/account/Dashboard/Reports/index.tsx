@@ -146,6 +146,7 @@ const Reports = () => {
         loading={loading}
         headers={columnHeaders}
         data={data}
+        excludeProps={["id", "isSelected"]}
         tableTitle={"Reports Overview"}
         onCheck={handleCheckBox}
         downloadableData={{

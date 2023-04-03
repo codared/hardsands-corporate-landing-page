@@ -30,7 +30,7 @@ const Leads = () => {
         <Heading>Leads</Heading>
       </Box>
 
-      <Flex
+      {/* <Flex
         mt="8"
         flexDirection={["row", "row", "row"]}
         gap="8"
@@ -46,7 +46,7 @@ const Leads = () => {
             onClick={setActiveForm}
           />
         ))}
-      </Flex>
+      </Flex> */}
 
       <Box mt="8">
         <LeadsFormRecords selectForm={activeForm} />
