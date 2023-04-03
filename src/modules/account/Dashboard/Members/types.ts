@@ -2,7 +2,7 @@ export type Member = {
   id: number;
   cardStatus: string;
   status: string;
-  cardVisits: number;
+  totalCardVisits: number;
   corporatePosition: string;
   email: string;
   fullName: string;

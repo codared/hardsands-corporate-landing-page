@@ -8,7 +8,7 @@ export const buildMemberDownloadableData = (
       email: item.email,
       role: item.corporatePosition,
       status: item.isActive ? "Active" : "Inactive",
-      clicks: item.cardVisits,
+      clicks: item.totalCardVisits,
     };
   });
   return downloadableData;

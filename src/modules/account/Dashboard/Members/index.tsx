@@ -40,14 +40,14 @@ export const buildMemberRow = (members: any, rowMenuOptions: any) => {
             rounded={"full"}
             size={"sm"}
             colorScheme={"orange"}
-            value={member.cardVisits}
+            value={member.totalCardVisits}
             w={"full"}
             mr={[2]}
           />
-          <Text>{member.cardVisits}%</Text>
+          <Text>{member.totalCardVisits}%</Text>
         </Flex>
       ),
-      clicks: member.cardVisits,
+      clicks: member.totalCardVisits,
       role: member.corporatePosition,
       status: (
         <Flex justifyContent={["none", "space-between"]}>
