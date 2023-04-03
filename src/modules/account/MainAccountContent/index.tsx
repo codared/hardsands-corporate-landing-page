@@ -95,7 +95,7 @@ function MainIndex() {
       return await uploadImageData(imageUploadData.url, data);
     } catch (error) {
       setIsSubmitting(false);
-      console.log(error);
+      // console.log(error);
       return;
     }
   };

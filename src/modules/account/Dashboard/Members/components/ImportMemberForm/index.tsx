@@ -47,7 +47,7 @@ const ImportMemberForm = () => {
     },
     importMemberSchema,
     async (formData: any) => {
-      console.log("🚀 ~ file: index.tsx:50 ~ formData", formData);
+      // console.log("🚀 ~ file: index.tsx:50 ~ formData", formData);
 
       // const form = new FormData();
       // form.append(
@@ -64,7 +64,7 @@ const ImportMemberForm = () => {
 
       reader.onload = (readerEvent) => {
         // @ts-ignore
-        console.log("🚀 ~ file: index.tsx:50 ~ result", readerEvent.target.result);
+        // console.log("🚀 ~ file: index.tsx:50 ~ result", readerEvent.target.result);
         // @ts-ignore
         form.append("file", readerEvent.target.result);
       };

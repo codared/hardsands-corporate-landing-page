@@ -14,7 +14,7 @@ const RowMenu = ({ menuOption }: any) => {
   if (!menuOption) return null;
 
   const handleClick = (onClick: any) => {
-    console.log("clicked");
+    // console.log("clicked");
     onClick();
   };
 
