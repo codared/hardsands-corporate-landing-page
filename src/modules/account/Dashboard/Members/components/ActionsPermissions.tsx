@@ -24,7 +24,6 @@ import {
 import NameColumn from "./NameColumn";
 
 const ActionsPermissions = ({ member }: { member: Member }) => {
-  console.log("🚀 ~ file: ActionsPermissions.tsx:27 ~ ActionsPermissions ~ member", member)
   const actionDrawer = useDisclosure();
 
   const [actionsToUpdate, setActionsToUpdate] = useState(member.actions);
