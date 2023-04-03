@@ -9,6 +9,7 @@ const initialState: DashboardReducerState = {
   members: [],
   corpCards: [],
   leads: [],
+  dashboard: {},
   reports: {
     totalMembers: 0,
     totalClicks: 0,
@@ -55,6 +56,8 @@ const dashboardReducer = (
       return { ...state, loading: false, corpCards: action.payload };
     case "GET_LEADS_RESPONSE":
       return { ...state, loading: false, leads: action.payload };
+    case "GET_DASHBOARD_DATA":
+      return { ...state, loading: false, dashboard: action.payload };
     case "UPDATE_MEMBERS":
       return { ...state, loading: false, members: action.payload };
     case "SET_COMPANY_NAME":

@@ -58,7 +58,7 @@ const DataTable = ({
 
   // filter out the data that is selected from downloadable data to be used for download
   const filteredDownloadableData =
-    downloadableData.length > 0
+    downloadableData?.length > 0
       ? downloadableData?.data.filter((item: any) =>
           rowSelected.find((row) => item.id === row.id)
         )

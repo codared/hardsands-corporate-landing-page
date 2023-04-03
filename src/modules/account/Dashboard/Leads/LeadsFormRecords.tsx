@@ -8,9 +8,7 @@ import { IoMailOutline } from "react-icons/io5";
 import { STATUS_BADGE } from "./constants";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { getLeadsResponseAction } from "./actions";
-import {
-  buildLeadsDownloadableData,
-} from "../sharedComponents/DataTable/functions";
+import { buildLeadsDownloadableData } from "../sharedComponents/DataTable/functions";
 
 export const buildLeadRow = (leads: any, rowMenuOptionsFunction: any) => {
   return leads.map(({ lead, contact, status, source, owner }: any) => {
@@ -85,14 +83,10 @@ const LeadsFormRecords = ({ selectForm }: any) => {
     ];
   };
 
-  const columnHeaders = Object.keys(leads[0]) || [
-    "Lead Name",
-    "Contact",
-    "Status",
-    "Source",
-    "Owner",
-    "",
-  ];
+  const columnHeaders =
+    leads?.length > 0
+      ? Object.keys(leads[0])
+      : ["Lead Name", "Contact", "Status", "Source", "Owner", ""];
 
   const handleCheckBox = (row: any) => {
     // console.log("checkbox clicked >>> ", row);
@@ -107,7 +101,7 @@ const LeadsFormRecords = ({ selectForm }: any) => {
         data={leads}
         tableTitle={"Leads Overview"}
         onCheck={handleCheckBox}
-        excludeProps={["id", 'cardSerialId', 'userCardActionId']}
+        excludeProps={["id", "cardSerialId", "userCardActionId"]}
         downloadableData={{
           data: leads,
           buildMethod: buildLeadsDownloadableData,

@@ -1,25 +1,45 @@
-import { useState } from "react";
-import { Box, Text, BoxProps, Avatar, Heading } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import {
+  Box,
+  Text,
+  BoxProps,
+  Avatar,
+  Heading,
+  HStack,
+} from "@chakra-ui/react";
 import Image from "next/image";
 import { Card } from "components";
 import { AppIcons } from "modules/account/constants";
 import CompositeBar from "./components/CompositeBar";
 import StatsCard from "../sharedComponents/StatsCard";
+import { useTypedDispatch, useTypedSelector } from "redux/store";
+import { getDashboardDataAction } from "../actions";
+import { getCookie } from "modules/shared/cookie";
+import { HARDSANDS_CORPERATE_NAME } from "modules/authentication/constants";
 
 const Bar = (props: BoxProps) => {
   return <Box maxW="35px" borderRadius="8px" {...props} />;
 };
 
 const Home = () => {
+  const dispatch = useTypedDispatch();
+  const companyName = getCookie(HARDSANDS_CORPERATE_NAME) || "Company Name";
+  //get dashboard from redux
+  const { dashboard, loading } = useTypedSelector((state) => state.dashboard) as any;
   const [spreadComponent, setSpreadComponent] = useState(false);
+
+  useEffect(() => {
+    dispatch(getDashboardDataAction());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const monthlyClicks = [
     { month: "Jan", numberOfClicks: "58", bgColor: "#f7f7f7" },
     { month: "Feb", numberOfClicks: "142", bgColor: "#f7f7f7" },
     { month: "Mar", numberOfClicks: "98", bgColor: "#f7f7f7" },
-    { month: "Apr", numberOfClicks: "112", bgColor: "#f7f7f7" },
+    { month: "Apr", numberOfClicks: "112", bgColor: "#DF9F71" },
     { month: "May", numberOfClicks: "90", bgColor: "#f7f7f7" },
-    { month: "Jun", numberOfClicks: "161", bgColor: "#DF9F71" },
+    { month: "Jun", numberOfClicks: "161", bgColor: "#f7f7f7" },
     { month: "Jul", numberOfClicks: "78", bgColor: "#f7f7f7" },
     { month: "Aug", numberOfClicks: "142", bgColor: "#f7f7f7" },
     { month: "Sep", numberOfClicks: "39", bgColor: "#f7f7f7" },
@@ -39,10 +59,7 @@ const Home = () => {
 
   return (
     <Box>
-      <Text color="#737373" fontSize="14px">
-        Hi Andrei,
-      </Text>
-      <Heading>Welcome Greens Limited</Heading>
+      <Heading>Welcome {companyName}</Heading>
       <Box
         display="flex"
         flexDir={["column", "row"]}
@@ -50,21 +67,21 @@ const Home = () => {
         gap="8"
         mt="8"
       >
-        <StatsCard name="Total Clicks" number="130" curves="2.45%" />
-        <StatsCard name="Member" number="130" curves="2.45%" />
+        <StatsCard name="Active Cards" number={dashboard?.activeCards} />
+        <StatsCard name="Inactive Cards" number={dashboard?.inactiveCards} />
         <StatsCard
           bgColor="#df9f71"
           color="#fff"
           showMenu={false}
-          name="Activity"
-          number="130"
+          name="Members"
+          number={dashboard?.members}
         />
       </Box>
 
       <Box mt="8" display={"flex"} justifyContent="stretch" gap={8}>
         <Card bgColor="#fff" w="100%" maxW="720px" p="8">
           <Text fontSize={"14px"}>Total Clicks</Text>
-          <Heading fontSize="2xl">5127</Heading>
+          <Heading fontSize="2xl">{dashboard?.totalClicks}</Heading>
           <Box
             display="flex"
             justifyContent="space-between"
@@ -83,9 +100,10 @@ const Home = () => {
         </Card>
         <Card w="100%" maxW="344px">
           <Text>Top Performer</Text>
-          <Box display={"flex"} justifyContent="center">
-            <Avatar src="" w="45" h="45" mx="auto" />
-          </Box>
+          <HStack justifyContent="center">
+            <Avatar src="" w="45" h="45" />
+            <Text>{dashboard?.topPerformer?.lastName}</Text>
+          </HStack>
           <Box
             display="flex"
             justifyContent="space-between"
@@ -126,7 +144,7 @@ const Home = () => {
         h="350px"
         pos={"relative"}
       >
-        <Card w="100%" maxW="720px" maxH={"350px"} p="8">
+        {/* <Card w="100%" maxW="720px" maxH={"350px"} p="8">
           <Text fontSize={"14px"}>Clicks this month</Text>
           <Heading fontSize="2xl">300</Heading>
           <Box
@@ -146,7 +164,7 @@ const Home = () => {
               </Box>
             ))}
           </Box>
-        </Card>
+        </Card> */}
         <Card p={8} maxH={"350px"} overflowY={"scroll"}>
           <Heading fontSize={"xl"}>Your Activity</Heading>
           <Box as="ul" mt={6}>
@@ -238,26 +256,26 @@ const Home = () => {
             <Avatar src="" w="118px" h="118px" />
           </Box>
           <Text color="brand.300" fontSize={"2xl"}>
-            Greens Limited
+            {companyName}
           </Text>
           <Text fontSize="14px">Lagos, Nigeria</Text>
           <Box mt="10" display={"flex"} justifyContent="center" gap="6">
             <Box>
-              <Text fontSize="12px">Leads</Text>
+              <Text fontSize="12px">Total Cards</Text>
               <Text color="brand.300" fontSize={"2xl"}>
-                28
+                {dashboard?.totalCards}
               </Text>
             </Box>
             <Box>
               <Text fontSize="12px">Members</Text>
               <Text color="brand.300" fontSize={"2xl"}>
-                130
+                {dashboard?.members}
               </Text>
             </Box>
             <Box>
               <Text fontSize="12px">Clicks</Text>
               <Text color="brand.300" fontSize={"2xl"}>
-                630
+                {dashboard?.totalClicks}
               </Text>
             </Box>
           </Box>

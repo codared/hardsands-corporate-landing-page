@@ -52,7 +52,13 @@ export interface GetLeadsResponse {
   payload: any;
 }
 
+export interface GetDashboardData {
+  type: "GET_DASHBOARD_DATA";
+  payload: any;
+}
+
 export type DashboardActionTypes =
+  | GetDashboardData
   | GetMembers
   | AddMembers
   | UpdateMembers

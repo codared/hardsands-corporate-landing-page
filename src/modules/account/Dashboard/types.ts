@@ -10,6 +10,7 @@ export type DashboardReducerState = {
   corpCards: any;
   reports: Report;
   company: string;
+  dashboard: any;
 };
 
 export type CorpCard = {
