@@ -198,6 +198,8 @@ function MainIndex() {
       ...rest
     } = formData;
 
+    console.log("rest >>>> ", rest);
+
     if (formStatus === ACTION_FORM_STATUS.ADD) {
       reduxDispatch(addUserCardsAction(rest)).then((res) => {
         setIsSubmitting(false);
@@ -253,7 +255,8 @@ function MainIndex() {
       toast({
         position: "top-right",
         title: NotFoundErrorMessage(appError.name),
-        description: appError.message || "Please try again, or contact support.",
+        description:
+          appError.message || "Please try again, or contact support.",
         status: "error",
         duration: 9000,
         isClosable: true,
