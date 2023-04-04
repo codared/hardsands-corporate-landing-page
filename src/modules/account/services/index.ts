@@ -6,7 +6,7 @@ import { CardActionUpdate } from "../types";
 
 // Sentry.captureException(error);
 
-const makeTheAuthenticatedRequest = async (
+export const makeTheAuthenticatedRequest = async (
   url: string,
   method: string | any = "GET"
 ) => {

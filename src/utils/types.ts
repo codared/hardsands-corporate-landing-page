@@ -50,6 +50,7 @@ export type AccountNavItemsType = {
   href: string;
   icon: IconType;
   children?: Array<AccountNavItemsType>;
+  isImg?: boolean;
 };
 
 export type ActionsType = {

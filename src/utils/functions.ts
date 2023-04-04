@@ -47,6 +47,14 @@ export const requestAuthHeaders = () => {
   });
 };
 
+export const fileRequestAuthHeaders = () => {
+  return new Headers({
+    accept: "application/json",
+    Authorization: `Bearer ${getToken()}`,
+    "Content-Type": "multipart/form-data",
+  });
+};
+
 export const requestJsonHeaders = () => {
   return new Headers({
     "Content-Type": "application/json",
@@ -67,7 +75,9 @@ export const isSupportedCurrency = (currency: string): boolean => {
 };
 
 export const getProductOptions = (options: ProductOptions) => {
-  return Object.values(options.options).map((opt) => opt.text).reverse();
+  return Object.values(options.options)
+    .map((opt) => opt.text)
+    .reverse();
 };
 
 export const isTokenExpired = (token: string) => {
@@ -153,7 +163,6 @@ export const createSelectOptions = (options: any[]) => {
     }
   });
 };
-
 
 export const getProductsBySlug = (
   slugs: string[],

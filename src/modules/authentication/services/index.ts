@@ -1,10 +1,12 @@
 import {
   CardActivationType,
+  CorperateCardActivationType,
   LoginUserType,
   ResetUserPasswordFormType,
   ResetUserPasswordType,
   SignupCardActivationType,
   SignUpUserType,
+  VerifyCorperateEmailType,
   VerifyEmailType,
   VerifyGoogleAuthType,
   VerifyGoogleAuthTypeAndCreateCard,
@@ -63,6 +65,18 @@ export const loginActivateCard = async (data: CardActivationType) => {
   return res;
 };
 
+export const loginCorperateActivateCard = async (
+  data: CorperateCardActivationType
+) => {
+  const res = (await storefrontApiJsonFetch(`/api/cards/corp/login-activate`, {
+    method: "POST",
+    headers: requestJsonHeaders(),
+    body: JSON.stringify(data),
+  })) as BackendResponseType;
+
+  return res;
+};
+
 export const signupActivateCard = async (data: SignupCardActivationType) => {
   const res = (await storefrontApiJsonFetch(`/api/cards/signup-activate`, {
     method: "POST",
@@ -101,6 +115,16 @@ export const verifyEmail = async (data: VerifyEmailType) => {
   return res;
 };
 
+export const verifyCorperateEmail = async (data: VerifyCorperateEmailType) => {
+  const res = (await storefrontApiJsonFetch(`/api/cards/corp/verify-email`, {
+    method: "POST",
+    headers: requestJsonHeaders(),
+    body: JSON.stringify(data),
+  })) as BackendResponseType;
+
+  return res;
+};
+
 export const verifyGoogleAuth = async (data: VerifyGoogleAuthType) => {
   const res = (await storefrontApiJsonFetch(`/api/auth/google/login`, {
     method: "POST",
@@ -111,7 +135,9 @@ export const verifyGoogleAuth = async (data: VerifyGoogleAuthType) => {
   return res;
 };
 
-export const verifyGoogleAuthAndActivateCard = async (data: VerifyGoogleAuthTypeAndCreateCard) => {
+export const verifyGoogleAuthAndActivateCard = async (
+  data: VerifyGoogleAuthTypeAndCreateCard
+) => {
   const res = (await storefrontApiJsonFetch(`/api/cards/google-activate`, {
     method: "POST",
     headers: requestJsonHeaders(),

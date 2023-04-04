@@ -16,7 +16,6 @@ import { TrackOrderDetails } from "./types";
 import { STEPS } from "modules/track-order/constants";
 
 function TrackOrderDetails({ details }: { details: TrackOrderDetails }) {
-  console.log("🚀 ~ file: TrackOrderDetails.tsx:19 ~ TrackOrderDetails ~ details", details)
   const activeStep = buildDeliverySteps(
     details?.delaysAt,
     details?.deliveredAt,

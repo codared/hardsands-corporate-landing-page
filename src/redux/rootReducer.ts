@@ -11,6 +11,8 @@ import { AppActionTypes } from "./context";
 import { countryReducer } from "modules/checkout/countriesState/reducer";
 import { customerInfoReducer } from "modules/checkout/customerInfoState/reducer";
 import appReducer, { UserAppReducerState } from "modules/account/reducer";
+import dashboardReducer from "modules/account/Dashboard/reducer";
+import { DashboardReducerState } from "modules/account/Dashboard/types";
 
 export const rootReducer = combineReducers({
   products: productsReducer,
@@ -19,6 +21,7 @@ export const rootReducer = combineReducers({
   countries: countryReducer,
   customerInfo: customerInfoReducer,
   app: appReducer,
+  dashboard: dashboardReducer,
 });
 
 export type AppState = {
@@ -28,6 +31,7 @@ export type AppState = {
   countries: CountryState;
   customerInfo: CustomerInfoState;
   app?: UserAppReducerState;
+  dashboard?: DashboardReducerState;
 };
 
 export type ThunkActionCreator<R> = ActionCreator<

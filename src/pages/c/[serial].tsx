@@ -53,6 +53,14 @@ export async function getServerSideProps(ctx: NextPageContext) {
       const activationUrl = `/activate-card?serial=${response?.data?.data.cardSerial}&productId=${response?.data?.data.productId}`;
 
       redirectTo(activationUrl);
+    } else if (
+      !!response &&
+      response.isError &&
+      response?.data?.nextStep === "activateCorporateCard"
+    ) {
+      const activationUrl = `/corperate/activate-card?serial=${response?.data?.data.cardSerial}`;
+
+      redirectTo(activationUrl);
     }
 
     if (!!response && !response.isError) {
