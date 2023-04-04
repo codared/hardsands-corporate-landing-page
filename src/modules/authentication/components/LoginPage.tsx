@@ -14,16 +14,26 @@ import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { APP_ROUTE, AUTH_ROUTES, HARDSANDS_LOGIN_COOKIE } from "../constants";
+import {
+  APP_ROUTE,
+  AUTH_ROUTES,
+  HARDSANDS_CORPERATE_NAME,
+  HARDSANDS_LOGIN_COOKIE,
+  UserTypes,
+} from "../constants";
 import { LoginSchema } from "../formSchema";
 import { loginUser } from "../services";
 import { LoginUserType } from "../types";
 import { setCookie } from "modules/shared/cookie";
 import GoogleLogin from "./GoogleLogin";
+import { slugify } from "utils/string";
+import { setCompanyNameAction } from "modules/account/Dashboard/actions";
+import { useTypedDispatch } from "redux/store";
 
 function LoginPage() {
   const { t } = useTranslation();
   const router = useRouter();
+  const dispatch = useTypedDispatch();
   const [alertMessage, setAlertMessage] = useState<{
     status: AlertStatus;
     name?: string;
@@ -56,8 +66,15 @@ function LoginPage() {
             name: "Redirecting",
             message: res.result.message as string,
           });
-          setCookie(HARDSANDS_LOGIN_COOKIE, res.result.token, 365);
-          router.push(APP_ROUTE.home);
+          setCookie(HARDSANDS_LOGIN_COOKIE, res.result.token, 1);
+
+          if (res.result.role === UserTypes.CORP_ADMIN) {
+            setCookie(HARDSANDS_CORPERATE_NAME, res.result.corpName, 1);
+            dispatch(setCompanyNameAction(res.result.corpName));
+            router.push(APP_ROUTE.dashboard);
+          } else {
+            router.push(APP_ROUTE.home);
+          }
         }
 
         setIsLoading(false);
@@ -110,7 +127,9 @@ function LoginPage() {
           />
         </Flex>
         <Box position="relative" my={10}>
-          <Text bg="white" position={'absolute'} top="-11px" zIndex={1} px={2}>Or signin with Email</Text>
+          <Text bg="white" position={"absolute"} top="-11px" zIndex={1} px={2}>
+            Or signin with Email
+          </Text>
           <Divider />
         </Box>
         <form onSubmit={handleSubmitForm}>

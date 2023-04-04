@@ -34,23 +34,38 @@ import {
   YelpIcon,
   YoutubeIcon,
   ZelleIcon,
+  MemberIcon,
+  DashboardIcon,
+  SupportIcon,
+  ReportIcon,
+  MessagesIcon,
+  LeadsIcon,
+  DashWhatsAppIcon,
+  ContactCardIconSVG,
+  BankIconSVG,
+  ChartIconSVG,
+  ImportIconSVG,
+  DevicesIcon,
+  ReportsIcon,
+  PersonalCardIcon,
 } from "assets";
 import {
   AiFillBank,
+  AiOutlineFileText,
   AiOutlineIdcard,
   AiOutlineLink,
   AiOutlineMail,
-  AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { CgProfile } from "react-icons/cg";
 import { FaSms, FaWhatsapp } from "react-icons/fa";
 import { FiPhoneCall } from "react-icons/fi";
 import { RiContactsLine } from "react-icons/ri";
 import { MdOutlineContactMail, MdOutlineEventNote } from "react-icons/md";
 import { AccountNavItemsType, ActionsFormType, ActionsType } from "utils/types";
-import getCountries, { getState, getStatesList } from "utils/getCountries";
+import getCountries from "utils/getCountries";
 
+export const routeId = "${corporateId}";
 export const ACCOUNT_ROOT = "/app";
+export const DASH_ROOT = `/dashboard/${routeId}`;
 
 export const enum ACTION_FORM_STATUS {
   ADD = "ADD",
@@ -76,6 +91,44 @@ export const ACCOUNT_NAV_ITEMS: AccountNavItemsType[] = [
   //   href: `${ACCOUNT_ROOT}/profile`,
   //   icon: CgProfile,
   // },
+];
+
+export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
+  {
+    id: 1,
+    title: "Dashboard",
+    href: `${DASH_ROOT}`,
+    icon: DashboardIcon,
+    isImg: true,
+  },
+  {
+    id: 2,
+    title: "Members",
+    href: `${DASH_ROOT}/members`,
+    icon: MemberIcon,
+    isImg: true,
+  },
+  {
+    id: 3,
+    title: "Devices",
+    href: `${DASH_ROOT}/devices`,
+    icon: DevicesIcon,
+    isImg: true,
+  },
+  {
+    id: 4,
+    title: "Leads",
+    href: `${DASH_ROOT}/leads`,
+    icon: LeadsIcon,
+    isImg: true,
+  },
+  {
+    id: 5,
+    title: "Reports",
+    href: `${DASH_ROOT}/reports`,
+    icon: ReportsIcon,
+    isImg: true,
+  },
 ];
 
 export const AppIcons = {
@@ -123,6 +176,20 @@ export const AppIcons = {
   YelpIcon,
   YoutubeIcon,
   ZelleIcon,
+  SupportIcon,
+  ReportIcon,
+  MessagesIcon,
+  LeadsIcon,
+  DashWhatsAppIcon,
+  ContactCardIconSVG,
+  BankIconSVG,
+  ChartIconSVG,
+  ImportIconSVG,
+  PersonalCardIcon,
+  "Registration Form": AiOutlineFileText,
+  "Sales Form": AiOutlineFileText,
+  "Coming soon Form": AiOutlineFileText,
+  "Consultation Form": AiOutlineFileText,
 };
 
 /*
@@ -529,6 +596,22 @@ export const ACTIONS: ActionsType[] = [
         formKey: "bankName",
       },
     ],
+  },
+  {
+    fieldTitle: "Registration Form",
+    fields: [],
+  },
+  {
+    fieldTitle: "Sales Form",
+    fields: [],
+  },
+  {
+    fieldTitle: "Coming soon Form",
+    fields: [],
+  },
+  {
+    fieldTitle: "Consultation Form",
+    fields: [],
   },
 ];
 

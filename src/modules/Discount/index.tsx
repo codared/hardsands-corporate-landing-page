@@ -47,7 +47,7 @@ function Discount({
       setLoading(false);
       setShowErrorMessages(true);
       setErrors((error as any).message);
-      console.log("error >>> ", error);
+      // console.log("error >>> ", error);
     }
   };
 

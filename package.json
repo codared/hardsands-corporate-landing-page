@@ -53,6 +53,7 @@
     "clsx": "^1.2.1",
     "dompurify": "^2.2.6",
     "emotion-theming": "10.0.27",
+    "export-from-json": "^1.7.2",
     "file-saver": "^2.0.5",
     "formik": "^2.2.9",
     "framer-motion": "^4",
@@ -73,7 +74,7 @@
     "react-easy-swipe": "^0.0.22",
     "react-hook-form": "^7.34.2",
     "react-i18next": "^11.7.0",
-    "react-icons": "^4.4.0",
+    "react-icons": "^4.8.0",
     "react-insta-stories": "^2.4.2",
     "react-paystack": "^4.0.1",
     "react-player": "^2.11.0",
@@ -92,7 +93,7 @@
     "vcard-creator": "^0.5.0",
     "vcards-js": "^2.10.0",
     "wreck": "^14.2.0",
-    "yup": "^0.32.11"
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^9.4.4",

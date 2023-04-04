@@ -1,8 +1,26 @@
-import { Flex, Icon, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Icon, useColorModeValue, Image } from "@chakra-ui/react";
 
 const NavItem = (props: any) => {
-  const { icon, children, ...rest } = props;
+  const { icon, children, isImg, ...rest } = props;
   const color = useColorModeValue("brand.300", "brand.300");
+
+  const renderIcon = () => {
+    switch (isImg) {
+      case true:
+        return <Image src={icon.src} mx={2} alt={"sidebar icon"} />;
+      default:
+        return (
+          <Icon
+            mx="2"
+            boxSize={5}
+            _groupHover={{
+              color: color,
+            }}
+            as={icon}
+          />
+        );
+    }
+  };
 
   return (
     <Flex
@@ -23,16 +41,7 @@ const NavItem = (props: any) => {
       transition=".15s ease"
       {...rest}
     >
-      {icon && (
-        <Icon
-          mx="2"
-          boxSize={5}
-          _groupHover={{
-            color: color,
-          }}
-          as={icon}
-        />
-      )}
+      {renderIcon()}
       {children}
     </Flex>
   );

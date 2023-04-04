@@ -31,6 +31,12 @@ export const CardActivationSchema = Yup.object().shape({
   password: Yup.string(),
 });
 
+export const CorperateCardActivationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email")
+    .required("Email Address is required"),
+});
+
 export const LoginSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email")
