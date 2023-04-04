@@ -71,7 +71,12 @@ function LoginPage() {
           if (res.result.role === UserTypes.CORP_ADMIN) {
             setCookie(HARDSANDS_CORPERATE_NAME, res.result.corpName, 1);
             dispatch(setCompanyNameAction(res.result.corpName));
-            router.push(APP_ROUTE.dashboard);
+            router.push(
+              APP_ROUTE.dashboard.replace(
+                "{slug}",
+                slugify(res.result.corpName)
+              )
+            );
           } else {
             router.push(APP_ROUTE.home);
           }
