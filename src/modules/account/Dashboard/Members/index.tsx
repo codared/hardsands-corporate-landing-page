@@ -169,7 +169,7 @@ const Members = () => {
             setDrawerFormState({
               name: "Add Manually",
               subTitle: "Add using members credentials",
-              form: <CreateMemberForm />,
+              form: <CreateMemberForm createDrawer={createDrawer} />,
             });
             createDrawer.onOpen();
           }}
