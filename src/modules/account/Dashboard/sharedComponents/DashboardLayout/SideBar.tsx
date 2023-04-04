@@ -12,7 +12,8 @@ import HardsandsAppLogo from "components/Logo";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
 import { AccountNavItemsType } from "utils/types";
-import { getCookie, removeCookie } from "modules/shared/cookie";
+import { removeCookie } from "modules/shared/cookie";
+import { getCookie } from 'cookies-next';
 import {
   AUTH_ROUTES,
   HARDSANDS_CORPERATE_NAME,
@@ -83,7 +84,7 @@ const DashSidebarContent = (props: any) => {
             h={"150px"}
             objectFit={"cover"}
             src={img}
-            alt={companyName}
+            alt={companyName as string}
           />
           <Box h={4} />
           <Text fontSize={14}>Welcome Back</Text>

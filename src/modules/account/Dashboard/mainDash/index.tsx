@@ -14,8 +14,9 @@ import CompositeBar from "./components/CompositeBar";
 import StatsCard from "../sharedComponents/StatsCard";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { getDashboardDataAction } from "../actions";
-import { getCookie } from "modules/shared/cookie";
 import { HARDSANDS_CORPERATE_NAME } from "modules/authentication/constants";
+import { getCookie } from 'cookies-next';
+
 
 const Bar = (props: BoxProps) => {
   return <Box maxW="35px" borderRadius="8px" {...props} />;
@@ -23,7 +24,7 @@ const Bar = (props: BoxProps) => {
 
 const Home = () => {
   const dispatch = useTypedDispatch();
-  const companyName = getCookie(HARDSANDS_CORPERATE_NAME) || "Company Name";
+  const companyName = getCookie(HARDSANDS_CORPERATE_NAME) || "";
   //get dashboard from redux
   const { dashboard, loading } = useTypedSelector((state) => state.dashboard) as any;
   const [spreadComponent, setSpreadComponent] = useState(false);
