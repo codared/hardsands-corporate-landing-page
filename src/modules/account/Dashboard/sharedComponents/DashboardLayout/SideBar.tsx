@@ -102,7 +102,7 @@ const DashSidebarContent = (props: any) => {
             h={"150px"}
             objectFit={"cover"}
             src={img}
-            alt={companyName}
+            alt={companyName as string}
           />
           <Box h={4} />
           <Text fontSize={14}>Welcome Back</Text>
