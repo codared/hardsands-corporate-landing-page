@@ -15,7 +15,7 @@ const companyName = getCookie(HARDSANDS_CORPERATE_NAME);
 
 export const APP_ROUTE = {
   home: "/app",
-  dashboard: `/dashboard/${slugify(companyName)}`,
+  dashboard: `/dashboard/{slug}`,
 };
 
 export const UserTypes = {
