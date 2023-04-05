@@ -1,42 +1,32 @@
-import {
-  Box,
-  Heading,
-  Image,
-  Text,
-  useDisclosure,
-  useToast,
-} from "@chakra-ui/react";
-import CustomDrawer from "components/CustomDrawer";
+import { Box, Text, Image } from "@chakra-ui/react";
 import { AppIcons } from "modules/account/constants";
-import { getCardImageFromSlug } from "modules/products/functions";
-import React from "react";
-import { slugify } from "utils/string";
-import MemberProfile from "../../Members/components/MemberProfile";
-import { CorpCard } from "../../types";
 
 type DeviceCardProps = {
   cardName: string;
-
-  routes?: string[];
+  icon: any;
 };
 
-const DeviceCard = ({ cardName, routes }: DeviceCardProps) => {
-  const deviceDrawer = useDisclosure();
-  const toast = useToast();
-  const img = getCardImageFromSlug(slugify(device.cardVariant));
-
+const DeviceCard = ({ cardName, icon }: DeviceCardProps) => {
   return (
-    <>
-      <Box
-        pos="relative"
-        borderRadius="15px"
-        cursor={"pointer"}
-        background={"#FEF8F3"}
-        padding={"1rem 2rem"}
-      >
+    <Box
+      pos="relative"
+      cursor={"pointer"}
+      background={"#FEF8F3"}
+      padding={"1.75rem"}
+    >
+      <Image pos={"absolute"} right={3} src={AppIcons.VerticalDots.src} />
+      <Image
+        src={icon?.src}
+        alt={cardName}
+        display={"block"}
+        mx="auto"
+        mt={8}
+        mb={3}
+      />
+      <Text fontSize={"19px"} textAlign={"center"}>
         {cardName}
-      </Box>
-    </>
+      </Text>
+    </Box>
   );
 };
 
