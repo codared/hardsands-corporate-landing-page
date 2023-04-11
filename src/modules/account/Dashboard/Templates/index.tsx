@@ -6,24 +6,75 @@ import { useTypedDispatch, useTypedSelector } from "redux/store";
 import Loader from "modules/account/components/Loader";
 import TemplateCard from "./components/TemplateCard";
 import { DashboardReducerState } from "../types";
+import { APP_ROUTE } from "modules/authentication/constants";
 
-const Templates = () => {
+const Templates = ({ routes }: { routes: string[] }) => {
   const dispatch = useTypedDispatch();
   const { loading } = useTypedSelector(
     (state) => state.dashboard
   ) as DashboardReducerState;
 
   const tempCards = [
-    { id: 1, cardName: "Social Card", icon: AppIcons.SocialCardIcon },
-    { id: 2, cardName: "Whatsapp", icon: AppIcons.WhatsappOutline },
-    { id: 3, cardName: "SMS", icon: AppIcons.SmsOutlineIcon },
-    { id: 4, cardName: "Email", icon: AppIcons.MessageIconOutline },
-    { id: 5, cardName: "Events", icon: AppIcons.CalendarOutlineIcon },
-    { id: 6, cardName: "Leads", icon: AppIcons.LeadsOutlineIcon },
-    { id: 7, cardName: "Bank Account", icon: AppIcons.BankOutlineIcon },
-    { id: 8, cardName: "Contact Card", icon: AppIcons.ContactCardOutlineIcon },
-    { id: 9, cardName: "Call", icon: AppIcons.CallOutlineIcon },
-    { id: 10, cardName: "URL", icon: AppIcons.LinkOutlineIcon },
+    {
+      id: 1,
+      cardName: "Social Card",
+      icon: AppIcons.SocialCardIcon,
+      actionsLink: `${APP_ROUTE.dashboard}/edit-event`,
+    },
+    {
+      id: 2,
+      cardName: "Whatsapp",
+      icon: AppIcons.WhatsappOutline,
+      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+    },
+    {
+      id: 3,
+      cardName: "SMS",
+      icon: AppIcons.SmsOutlineIcon,
+      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+    },
+    {
+      id: 4,
+      cardName: "Email",
+      icon: AppIcons.MessageIconOutline,
+      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+    },
+    {
+      id: 5,
+      cardName: "Events",
+      icon: AppIcons.CalendarOutlineIcon,
+      actionsLink: `${APP_ROUTE.dashboard}/edit-events`,
+    },
+    {
+      id: 6,
+      cardName: "Leads",
+      icon: AppIcons.LeadsOutlineIcon,
+      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+    },
+    {
+      id: 7,
+      cardName: "Bank Account",
+      icon: AppIcons.BankOutlineIcon,
+      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+    },
+    {
+      id: 8,
+      cardName: "Contact Card",
+      icon: AppIcons.ContactCardOutlineIcon,
+      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+    },
+    {
+      id: 9,
+      cardName: "Call",
+      icon: AppIcons.CallOutlineIcon,
+      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+    },
+    {
+      id: 10,
+      cardName: "URL",
+      icon: AppIcons.LinkOutlineIcon,
+      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+    },
   ];
 
   useEffect(() => {
@@ -54,8 +105,13 @@ const Templates = () => {
             mt={8}
           >
             {tempCards?.length > 0 ? (
-              tempCards.map(({ id, cardName, icon }) => (
-                <TemplateCard key={id} cardName={cardName} icon={icon} />
+              tempCards.map(({ id, cardName, icon, actionsLink }) => (
+                <TemplateCard
+                  key={id}
+                  cardName={cardName}
+                  icon={icon}
+                  actionsLink={actionsLink}
+                />
               ))
             ) : (
               <Text>No Device available</Text>

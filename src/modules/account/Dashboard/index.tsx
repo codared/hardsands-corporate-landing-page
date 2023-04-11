@@ -7,13 +7,14 @@ import DeviceWithId from "./Devices/DeviceWithId";
 import Reports from "./Reports";
 import ReportWithId from "./Reports/ReportWithId";
 import Templates from "./Templates";
+import EditEvents from "./Templates/Events/EditEvent";
 
 const Dashboard = ({ route }: { route: string[] }) => {
   switch (route[1]) {
     case "members":
       return <Members />;
     case "templates":
-      return <Templates />;
+      return <Templates routes={route} />;
     case "leads":
       return <Leads />;
     case "devices":
@@ -22,12 +23,16 @@ const Dashboard = ({ route }: { route: string[] }) => {
       } else {
         return <Devices routes={route} />;
       }
+
     case "reports":
       if (route[2]) {
         return <ReportWithId />;
       } else {
         return <Reports />;
       }
+
+    case "edit-events":
+      return <EditEvents />;
 
     default:
       return <Home />;
