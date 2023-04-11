@@ -19,61 +19,71 @@ const Templates = ({ routes }: { routes: string[] }) => {
       id: 1,
       cardName: "Social Card",
       icon: AppIcons.SocialCardIcon,
-      actionsLink: `${APP_ROUTE.dashboard}/edit-event`,
+      editLink: `${APP_ROUTE.dashboard}/edit-event`,
+      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {
       id: 2,
       cardName: "Whatsapp",
       icon: AppIcons.WhatsappOutline,
-      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      editLink: `${APP_ROUTE.dashboard}/edit-whatsapp`,
+      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {
       id: 3,
       cardName: "SMS",
       icon: AppIcons.SmsOutlineIcon,
-      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      editLink: `${APP_ROUTE.dashboard}/edit-sms`,
+      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {
       id: 4,
       cardName: "Email",
       icon: AppIcons.MessageIconOutline,
-      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      editLink: `${APP_ROUTE.dashboard}/edit-social-card`,
+      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {
       id: 5,
       cardName: "Events",
       icon: AppIcons.CalendarOutlineIcon,
-      actionsLink: `${APP_ROUTE.dashboard}/edit-events`,
+      editLink: `${APP_ROUTE.dashboard}/edit-events`,
+      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {
       id: 6,
       cardName: "Leads",
       icon: AppIcons.LeadsOutlineIcon,
-      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      editLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {
       id: 7,
       cardName: "Bank Account",
       icon: AppIcons.BankOutlineIcon,
-      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      editLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {
       id: 8,
       cardName: "Contact Card",
       icon: AppIcons.ContactCardOutlineIcon,
-      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      editLink: `${APP_ROUTE.dashboard}/edit-contact-card`,
+      assignLink: `${APP_ROUTE.dashboard}/assign-contact-card`,
     },
     {
       id: 9,
       cardName: "Call",
       icon: AppIcons.CallOutlineIcon,
-      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      editLink: `${APP_ROUTE.dashboard}/edit-call`,
+      assignLink: `${APP_ROUTE.dashboard}/assign-call`,
     },
     {
       id: 10,
       cardName: "URL",
       icon: AppIcons.LinkOutlineIcon,
-      actionsLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      editLink: `${APP_ROUTE.dashboard}/edit-url`,
+      assignLink: `${APP_ROUTE.dashboard}/assign-url`,
     },
   ];
 
@@ -105,12 +115,13 @@ const Templates = ({ routes }: { routes: string[] }) => {
             mt={8}
           >
             {tempCards?.length > 0 ? (
-              tempCards.map(({ id, cardName, icon, actionsLink }) => (
+              tempCards.map(({ id, cardName, icon, editLink, assignLink }) => (
                 <TemplateCard
                   key={id}
                   cardName={cardName}
                   icon={icon}
-                  actionsLink={actionsLink}
+                  editLink={editLink}
+                  assignLink={assignLink}
                 />
               ))
             ) : (

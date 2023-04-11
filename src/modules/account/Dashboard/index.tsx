@@ -8,6 +8,10 @@ import Reports from "./Reports";
 import ReportWithId from "./Reports/ReportWithId";
 import Templates from "./Templates";
 import EditEvents from "./Templates/Events/EditEvent";
+import AssignEvent from "./Templates/Events/AssignEvent";
+import EditURL from "./Templates/URL/EditUrl";
+import EditCall from "./Templates/Call/EditCall";
+import EditWhatsapp from "./Templates/Whatsapp/EditWhatsapp";
 
 const Dashboard = ({ route }: { route: string[] }) => {
   switch (route[1]) {
@@ -33,7 +37,14 @@ const Dashboard = ({ route }: { route: string[] }) => {
 
     case "edit-events":
       return <EditEvents />;
-
+    case "assign-event":
+      return <AssignEvent />;
+    case "edit-call":
+      return <EditCall />;
+    case "edit-whatsapp":
+      return <EditWhatsapp />;
+    case "edit-url":
+      return <EditURL />;
     default:
       return <Home />;
   }

@@ -6,10 +6,11 @@ import Link from "next/link";
 type TemplateCardProps = {
   cardName: string;
   icon: any;
-  actionsLink?: string;
+  editLink?: string;
+  assignLink?: string;
 };
 
-const TemplateCard = ({ cardName, icon, actionsLink }: TemplateCardProps) => {
+const TemplateCard = ({ cardName, icon, editLink, assignLink }: TemplateCardProps) => {
   const [showActionsModal, setShowActionsModal] = useState(false);
 
   const toggleActionsModal = () => {
@@ -47,10 +48,10 @@ const TemplateCard = ({ cardName, icon, actionsLink }: TemplateCardProps) => {
           }}
         >
           <ListItem borderBottom={"1px solid #d9d9d9"}>
-            <Link href={`${actionsLink}`}>Edit Action</Link>
+            <Link href={`${editLink}`}>Edit Action</Link>
           </ListItem>
           <ListItem>
-            <Link href={`${actionsLink}`}>Assign / Unassign</Link>
+            <Link href={`${assignLink}`}>Assign / Unassign</Link>
           </ListItem>
         </List>
       )}
