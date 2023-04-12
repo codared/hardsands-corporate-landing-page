@@ -14,7 +14,7 @@ import { useTypedDispatch, useTypedSelector } from "redux/store";
 import Loader from "modules/account/components/Loader";
 import { DashboardReducerState } from "../../types";
 
-const EditWhatsapp = () => {
+const EditSocialCard = () => {
   const dispatch = useTypedDispatch();
   const { loading } = useTypedSelector(
     (state) => state.dashboard
@@ -34,7 +34,7 @@ const EditWhatsapp = () => {
       </Text>
       <Box mt={16}>
         <Heading fontSize={"1.25rem"} color={"#DF9F71"}>
-          Whatsapp Action
+          Social Card
         </Heading>
         <Box bg="#fff">
           {loading ? (
@@ -50,34 +50,10 @@ const EditWhatsapp = () => {
               flexDir={"column"}
               justifyContent={"space-between"}
             >
-              <Box>
-                <FormControl mb={8} w={["100%", "40%"]}>
-                  <FormLabel htmlFor="phone-code">Phone Code</FormLabel>
-                  <Input
-                    id="phone-code"
-                    type="text"
-                    placeholder="Enter Event"
-                  />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="phone-number">Phone Number</FormLabel>
-                  <Input
-                    id="phone-number"
-                    type="text"
-                    placeholder="Enter Phone Number"
-                  />
-                  <Text mt={4}>
-                    Please select phone code before number E.g +1
-                  </Text>
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="message">Message</FormLabel>
-                  <Textarea id="message" placeholder="Enter Message" />
-                  <Text mt={4}>
-                    Please select phone code before number E.g +1
-                  </Text>
-                </FormControl>
-              </Box>
+              <FormControl mb={8}>
+                <FormLabel htmlFor="urk">URL</FormLabel>
+                <Input id="url" type="text" placeholder="Enter URL" />
+              </FormControl>
 
               <Button bg="brand.200" width={"100%"} mt={1}>
                 Save and Assign
@@ -90,4 +66,4 @@ const EditWhatsapp = () => {
   );
 };
 
-export default EditWhatsapp;
+export default EditSocialCard;

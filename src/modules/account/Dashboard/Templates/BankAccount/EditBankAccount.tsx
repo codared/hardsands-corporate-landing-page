@@ -6,7 +6,6 @@ import {
   FormControl,
   FormLabel,
   Button,
-  Textarea,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { getCorpCardsAction } from "../../Devices/actions";
@@ -14,7 +13,7 @@ import { useTypedDispatch, useTypedSelector } from "redux/store";
 import Loader from "modules/account/components/Loader";
 import { DashboardReducerState } from "../../types";
 
-const EditWhatsapp = () => {
+const EditBankAccount = () => {
   const dispatch = useTypedDispatch();
   const { loading } = useTypedSelector(
     (state) => state.dashboard
@@ -34,7 +33,7 @@ const EditWhatsapp = () => {
       </Text>
       <Box mt={16}>
         <Heading fontSize={"1.25rem"} color={"#DF9F71"}>
-          Whatsapp Action
+          Bank Account Action
         </Heading>
         <Box bg="#fff">
           {loading ? (
@@ -52,30 +51,20 @@ const EditWhatsapp = () => {
             >
               <Box>
                 <FormControl mb={8} w={["100%", "40%"]}>
-                  <FormLabel htmlFor="phone-code">Phone Code</FormLabel>
+                  <FormLabel htmlFor="name">Name</FormLabel>
+                  <Input id="name" type="text" placeholder="Enter Name" />
+                </FormControl>
+                <FormControl mb={8}>
+                  <FormLabel htmlFor="account-number">Account Number</FormLabel>
                   <Input
-                    id="phone-code"
+                    id="account-number"
                     type="text"
-                    placeholder="Enter Event"
+                    placeholder="Enter Account Number"
                   />
                 </FormControl>
                 <FormControl mb={8}>
-                  <FormLabel htmlFor="phone-number">Phone Number</FormLabel>
-                  <Input
-                    id="phone-number"
-                    type="text"
-                    placeholder="Enter Phone Number"
-                  />
-                  <Text mt={4}>
-                    Please select phone code before number E.g +1
-                  </Text>
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="message">Message</FormLabel>
-                  <Textarea id="message" placeholder="Enter Message" />
-                  <Text mt={4}>
-                    Please select phone code before number E.g +1
-                  </Text>
+                  <FormLabel htmlFor="bank-name">Bank Name</FormLabel>
+                  <Input type="text" id="bank-name" placeholder="Enter Bank Name" />
                 </FormControl>
               </Box>
 
@@ -90,4 +79,4 @@ const EditWhatsapp = () => {
   );
 };
 
-export default EditWhatsapp;
+export default EditBankAccount;

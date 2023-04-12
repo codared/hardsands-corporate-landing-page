@@ -14,7 +14,7 @@ import { useTypedDispatch, useTypedSelector } from "redux/store";
 import Loader from "modules/account/components/Loader";
 import { DashboardReducerState } from "../../types";
 
-const EditWhatsapp = () => {
+const EditEmail = () => {
   const dispatch = useTypedDispatch();
   const { loading } = useTypedSelector(
     (state) => state.dashboard
@@ -34,7 +34,7 @@ const EditWhatsapp = () => {
       </Text>
       <Box mt={16}>
         <Heading fontSize={"1.25rem"} color={"#DF9F71"}>
-          Whatsapp Action
+          Email Action
         </Heading>
         <Box bg="#fff">
           {loading ? (
@@ -52,30 +52,18 @@ const EditWhatsapp = () => {
             >
               <Box>
                 <FormControl mb={8} w={["100%", "40%"]}>
-                  <FormLabel htmlFor="phone-code">Phone Code</FormLabel>
-                  <Input
-                    id="phone-code"
-                    type="text"
-                    placeholder="Enter Event"
-                  />
+                  <FormLabel htmlFor="email">Email</FormLabel>
+                  <Input id="email" type="email" placeholder="Enter Email" />
                 </FormControl>
+          
                 <FormControl mb={8}>
-                  <FormLabel htmlFor="phone-number">Phone Number</FormLabel>
-                  <Input
-                    id="phone-number"
-                    type="text"
-                    placeholder="Enter Phone Number"
-                  />
-                  <Text mt={4}>
-                    Please select phone code before number E.g +1
-                  </Text>
+                  <FormLabel htmlFor="subject">Subject</FormLabel>
+                  <Input id="subject" type="text" placeholder="Enter Subject" />
                 </FormControl>
+
                 <FormControl mb={8}>
-                  <FormLabel htmlFor="message">Message</FormLabel>
-                  <Textarea id="message" placeholder="Enter Message" />
-                  <Text mt={4}>
-                    Please select phone code before number E.g +1
-                  </Text>
+                  <FormLabel htmlFor="content">Content</FormLabel>
+                  <Textarea id="content" placeholder="Enter Content" />
                 </FormControl>
               </Box>
 
@@ -90,4 +78,4 @@ const EditWhatsapp = () => {
   );
 };
 
-export default EditWhatsapp;
+export default EditEmail;

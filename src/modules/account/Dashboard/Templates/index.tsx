@@ -19,7 +19,7 @@ const Templates = ({ routes }: { routes: string[] }) => {
       id: 1,
       cardName: "Social Card",
       icon: AppIcons.SocialCardIcon,
-      editLink: `${APP_ROUTE.dashboard}/edit-event`,
+      editLink: `${APP_ROUTE.dashboard}/edit-social-card`,
       assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {
@@ -40,7 +40,7 @@ const Templates = ({ routes }: { routes: string[] }) => {
       id: 4,
       cardName: "Email",
       icon: AppIcons.MessageIconOutline,
-      editLink: `${APP_ROUTE.dashboard}/edit-social-card`,
+      editLink: `${APP_ROUTE.dashboard}/edit-email`,
       assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {
@@ -54,14 +54,14 @@ const Templates = ({ routes }: { routes: string[] }) => {
       id: 6,
       cardName: "Leads",
       icon: AppIcons.LeadsOutlineIcon,
-      editLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      editLink: `${APP_ROUTE.dashboard}/edit-leads`,
       assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {
       id: 7,
       cardName: "Bank Account",
       icon: AppIcons.BankOutlineIcon,
-      editLink: `${APP_ROUTE.dashboard}/templates/social-card/actions`,
+      editLink: `${APP_ROUTE.dashboard}/edit-bank-account`,
       assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {

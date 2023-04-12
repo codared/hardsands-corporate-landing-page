@@ -14,7 +14,7 @@ import { useTypedDispatch, useTypedSelector } from "redux/store";
 import Loader from "modules/account/components/Loader";
 import { DashboardReducerState } from "../../types";
 
-const EditWhatsapp = () => {
+const EditSMS = () => {
   const dispatch = useTypedDispatch();
   const { loading } = useTypedSelector(
     (state) => state.dashboard
@@ -34,7 +34,7 @@ const EditWhatsapp = () => {
       </Text>
       <Box mt={16}>
         <Heading fontSize={"1.25rem"} color={"#DF9F71"}>
-          Whatsapp Action
+          SMS Action
         </Heading>
         <Box bg="#fff">
           {loading ? (
@@ -71,11 +71,8 @@ const EditWhatsapp = () => {
                   </Text>
                 </FormControl>
                 <FormControl mb={8}>
-                  <FormLabel htmlFor="message">Message</FormLabel>
-                  <Textarea id="message" placeholder="Enter Message" />
-                  <Text mt={4}>
-                    Please select phone code before number E.g +1
-                  </Text>
+                  <FormLabel htmlFor="message">Text</FormLabel>
+                  <Textarea id="text" placeholder="Enter Text" />
                 </FormControl>
               </Box>
 
@@ -90,4 +87,4 @@ const EditWhatsapp = () => {
   );
 };
 
-export default EditWhatsapp;
+export default EditSMS;

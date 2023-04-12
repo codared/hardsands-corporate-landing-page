@@ -12,6 +12,11 @@ import AssignEvent from "./Templates/Events/AssignEvent";
 import EditURL from "./Templates/URL/EditUrl";
 import EditCall from "./Templates/Call/EditCall";
 import EditWhatsapp from "./Templates/Whatsapp/EditWhatsapp";
+import EditEmail from "./Templates/Email/EditEmail";
+import EditSMS from "./Templates/SMS/EditSMS";
+import EditBankAccount from "./Templates/BankAccount/EditBankAccount";
+import EditContactCard from "./Templates/ContactCard/EditContactCard";
+import EditSocialCard from "./Templates/SocialCard/EditSocialCard";
 
 const Dashboard = ({ route }: { route: string[] }) => {
   switch (route[1]) {
@@ -43,8 +48,18 @@ const Dashboard = ({ route }: { route: string[] }) => {
       return <EditCall />;
     case "edit-whatsapp":
       return <EditWhatsapp />;
+    case "edit-bank-account":
+      return <EditBankAccount />;
+    case "edit-sms":
+      return <EditSMS />;
+    case "edit-email":
+      return <EditEmail />;
     case "edit-url":
       return <EditURL />;
+    case "edit-contact-card":
+      return <EditContactCard />;
+    case "edit-social-card":
+      return <EditSocialCard />;
     default:
       return <Home />;
   }
