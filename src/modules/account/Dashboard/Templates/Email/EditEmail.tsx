@@ -51,9 +51,9 @@ const EditEmail = () => {
               justifyContent={"space-between"}
             >
               <Box>
-                <FormControl mb={8} w={["100%", "40%"]}>
+                <FormControl mb={8}>
                   <FormLabel htmlFor="email">Email</FormLabel>
-                  <Input id="email" type="email" placeholder="Enter Email" />
+                  <Input sx={{border: "1px solid #000"}} id="email" type="email" placeholder="Enter Email" />
                 </FormControl>
           
                 <FormControl mb={8}>
