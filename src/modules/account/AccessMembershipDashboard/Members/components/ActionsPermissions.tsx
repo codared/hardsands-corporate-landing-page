@@ -17,10 +17,10 @@ import { MdAdd } from "react-icons/md";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { ActionsType } from "utils/types";
 import { Member } from "../../Members/types";
-import {
-  addActionToMembersAction,
-  removeActionToMembersAction,
-} from "../actions";
+// import {
+//   addActionToMembersAction,
+//   removeActionToMembersAction,
+// } from "../actions";
 import NameColumn from "./NameColumn";
 
 const ActionsPermissions = ({ member }: { member: Member }) => {
@@ -44,22 +44,22 @@ const ActionsPermissions = ({ member }: { member: Member }) => {
 
   // select multiple actions and add them to the member
   const handleAddActions = async () => {
-    const payload = {
-      actionId: selectedActions,
-    };
-    setAddingAction(true);
-    try {
-      const res = await dispatch(addActionToMembersAction(payload, member.id));
+    // const payload = {
+    //   actionId: selectedActions,
+    // };
+    // setAddingAction(true);
+    // try {
+    //   const res = await dispatch(addActionToMembersAction(payload, member.id));
 
-      if (res.length) {
-        setAddingAction(false);
-        setSelectedActions([]);
-        setActionsToUpdate(getOnlyActions(res));
-        actionDrawer.onClose();
-      }
-    } catch (error) {
-      setAddingAction(false);
-    }
+    //   if (res.length) {
+    //     setAddingAction(false);
+    //     setSelectedActions([]);
+    //     setActionsToUpdate(getOnlyActions(res));
+    //     actionDrawer.onClose();
+    //   }
+    // } catch (error) {
+    //   setAddingAction(false);
+    // }
   };
 
   // on select action add it to state
@@ -143,20 +143,20 @@ const ActionsPermissions = ({ member }: { member: Member }) => {
                 title={action.action}
                 Icon={AppIcons[action.action]}
                 handleActionSelect={async (setLoading?: any) => {
-                  setLoading(true);
-                  const payload = {
-                    actionId: [action.id],
-                  };
-                  try {
-                    const res = await dispatch(
-                      removeActionToMembersAction(payload, member.id)
-                    );
-                    setLoading(false);
+                  // setLoading(true);
+                  // const payload = {
+                  //   actionId: [action.id],
+                  // };
+                  // try {
+                  //   const res = await dispatch(
+                  //     removeActionToMembersAction(payload, member.id)
+                  //   );
+                  //   setLoading(false);
 
-                    setActionsToUpdate(getOnlyActions(res));
-                  } catch (error) {
-                    setLoading(false);
-                  }
+                  //   setActionsToUpdate(getOnlyActions(res));
+                  // } catch (error) {
+                  //   setLoading(false);
+                  // }
                 }}
                 iconColor={"black"}
                 withIcon={false}
