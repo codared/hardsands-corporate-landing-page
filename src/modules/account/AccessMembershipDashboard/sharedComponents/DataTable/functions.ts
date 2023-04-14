@@ -1,4 +1,3 @@
-import { Lead } from "../../Leads/types";
 
 // build the downloadable data
 export const buildMemberDownloadableData = (
@@ -16,7 +15,7 @@ export const buildMemberDownloadableData = (
   return downloadableData;
 };
 
-export const leadStructure = (item: Lead) => {
+export const leadStructure = (item: any) => {
   return {
     name: item.name,
     title: item.title,
@@ -39,7 +38,7 @@ export const leadStructure = (item: Lead) => {
 };
 
 export const buildLeadsDownloadableData = (filteredDownloadableData: any[]) => {
-  const downloadableData = filteredDownloadableData.map((item: Lead) => {
+  const downloadableData = filteredDownloadableData.map((item: any) => {
     return leadStructure(item);
   });
   return downloadableData;
