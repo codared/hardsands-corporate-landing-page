@@ -12,11 +12,11 @@ import HardsandsAppLogo from "components/Logo";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
 import { AccountNavItemsType } from "utils/types";
-import { getCookie } from "modules/shared/cookie";
+import { getCookie, removeCookie } from "modules/shared/cookie";
 import {
   AUTH_ROUTES,
   HARDSANDS_CORPERATE,
-  UserModuleTypes,
+  HARDSANDS_LOGIN_COOKIE,
 } from "modules/authentication/constants";
 import Router from "next/router";
 import NavItem from "modules/account/components/Navitems";
@@ -29,24 +29,12 @@ import { useActiveSidebarItem } from "../../hooks";
 import { getCardImageFromSlug } from "modules/products/functions";
 import { handleLogout } from "utils/functions";
 
-const getDashBoardModule = (data: any) => {
-  if (data.module === UserModuleTypes.CORPORATE) {
-    return DASH_NAV_ITEMS;
-  } else if (data.module === UserModuleTypes.ACCESS) {
-    return ACCESS_DASH_NAV_ITEMS;
-  } else {
-    return [];
-  }
-};
-
 const DashSidebarContent = (props: any) => {
   const integrations = useDisclosure();
   const { active, setActive } = useActiveSidebarItem(
     DASH_NAV_ITEMS,
     props.routes[1]
   );
-
-  const dashNavItems = getDashBoardModule(props.data);
 
   const handleSidebarLogout = () => {
     handleLogout();
@@ -102,7 +90,7 @@ const DashSidebarContent = (props: any) => {
             h={"150px"}
             objectFit={"cover"}
             src={img}
-            alt={companyName as string}
+            alt={companyName}
           />
           <Box h={4} />
           <Text fontSize={14}>Welcome Back</Text>
@@ -111,7 +99,7 @@ const DashSidebarContent = (props: any) => {
           </Text>
         </Flex>
         <Box mt={[10]}>
-          {dashNavItems.map((item: AccountNavItemsType) => {
+          {DASH_NAV_ITEMS.map((item: AccountNavItemsType) => {
             return (
               <HardsandLink
                 key={item.title}

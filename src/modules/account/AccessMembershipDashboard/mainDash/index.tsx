@@ -99,7 +99,7 @@ const Home = () => {
           <Text>Top Performer</Text>
           <HStack justifyContent="center">
             <Avatar src="" w="45" h="45" />
-            <Text>{dashboard?.topPerformer?.lastName}</Text>
+            <Text>{dashboard?.topPerformer?.fullName}</Text>
           </HStack>
           <Box
             display="flex"
