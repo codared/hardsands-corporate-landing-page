@@ -1,13 +1,6 @@
-import useAuthentication from "hooks/useAuthentication";
-import AccessMembershipDashboard from "modules/account/AccessMembershipDashboard";
 import Dashboard from "modules/account/Dashboard";
 import HardsandsCorperateDash from "modules/account/Dashboard/sharedComponents/DashboardLayout";
-import {
-  AUTH_ROUTES,
-  HARDSANDS_CORPERATE,
-  UserModuleTypes,
-} from "modules/authentication/constants";
-import { getCookie } from "modules/shared/cookie";
+import { AUTH_ROUTES } from "modules/authentication/constants";
 import { NextPageContext } from "next";
 import nextCookies from "next-cookies";
 import Head from "next/head";
@@ -17,23 +10,6 @@ import { isTokenExpired } from "utils/functions";
 import { isServerRequest } from "utils/nextjs";
 
 const Corperate = (pageContext: any) => {
-  useAuthentication();
-
-  const hardsands_corperate = JSON.parse(
-    getCookie(HARDSANDS_CORPERATE) || "{}"
-  );
-
-  const renderModule = () => {
-    switch (hardsands_corperate.module) {
-      case UserModuleTypes.ACCESS:
-        return <AccessMembershipDashboard route={corpName} />;
-      case UserModuleTypes.CORPORATE:
-        return <Dashboard route={corpName} />;
-      default:
-        return null;
-    }
-  };
-
   const router = useRouter();
   const corpName = (router.query.corpName as string[]) || [];
 
@@ -42,8 +18,8 @@ const Corperate = (pageContext: any) => {
       <Head>
         <title>Dashboard</title>
       </Head>
-      <HardsandsCorperateDash data={hardsands_corperate} routes={corpName}>
-        <>{renderModule()}</>
+      <HardsandsCorperateDash routes={corpName}>
+        <Dashboard route={corpName} />
       </HardsandsCorperateDash>
     </>
   );

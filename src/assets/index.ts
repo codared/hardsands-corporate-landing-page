@@ -59,5 +59,3 @@ export { default as BankIconSVG } from "./icons/bank.svg";
 export { default as ChartIconSVG } from "./icons/chart.svg";
 export { default as ImportIconSVG } from "./icons/import.svg";
 export { default as PersonalCardIcon } from "./icons/personal-card.svg";
-export { default as SilverMembershipIcon } from "./icons/silver-membership.svg";
-export { default as GoldMembershipIcon } from "./icons/gold-membership.svg";

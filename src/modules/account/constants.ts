@@ -130,29 +130,6 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
     isImg: true,
   },
 ];
-export const ACCESS_DASH_NAV_ITEMS: AccountNavItemsType[] = [
-  {
-    id: 1,
-    title: "Dashboard",
-    href: `${DASH_ROOT}`,
-    icon: DashboardIcon,
-    isImg: true,
-  },
-  {
-    id: 2,
-    title: "Members",
-    href: `${DASH_ROOT}/members`,
-    icon: MemberIcon,
-    isImg: true,
-  },
-  {
-    id: 3,
-    title: "Devices",
-    href: `${DASH_ROOT}/devices`,
-    icon: DevicesIcon,
-    isImg: true,
-  },
-];
 
 export const AppIcons = {
   "Social Card": RiContactsLine,

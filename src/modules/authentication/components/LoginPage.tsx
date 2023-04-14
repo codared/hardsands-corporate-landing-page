@@ -17,11 +17,9 @@ import { useTranslation } from "react-i18next";
 import {
   APP_ROUTE,
   AUTH_ROUTES,
-  HARDSANDS_CORPERATE,
+  HARDSANDS_CORPERATE_NAME,
   HARDSANDS_LOGIN_COOKIE,
-  SERVER_APP_ROUTE,
-  UserModuleTypes,
-  UserRoleTypes,
+  UserTypes,
 } from "../constants";
 import { LoginSchema } from "../formSchema";
 import { loginUser } from "../services";
@@ -68,20 +66,14 @@ function LoginPage() {
             name: "Redirecting",
             message: res.result.message as string,
           });
-          const { token, ...rest } = res.result;
-          setCookie(HARDSANDS_LOGIN_COOKIE, token, 1);
+          setCookie(HARDSANDS_LOGIN_COOKIE, res.result.token, 1);
 
-          if (res.result.role === UserRoleTypes.CORP_ADMIN) {
-            setCookie(HARDSANDS_CORPERATE, JSON.stringify(rest), 1);
+          if (res.result.role === UserTypes.CORP_ADMIN) {
+            setCookie(HARDSANDS_CORPERATE_NAME, res.result.corpName, 1);
             dispatch(setCompanyNameAction(res.result.corpName));
-            router.push(
-              SERVER_APP_ROUTE.dashboard.replace(
-                "{companyName}",
-                slugify(res.result.corpName)
-              )
-            );
+            router.push(APP_ROUTE.dashboard);
           } else {
-            router.push(SERVER_APP_ROUTE.home);
+            router.push(APP_ROUTE.home);
           }
         }
 

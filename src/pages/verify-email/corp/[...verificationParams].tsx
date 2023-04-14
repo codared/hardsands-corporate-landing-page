@@ -81,7 +81,7 @@ const VerifyCorperateEmail: NextPage<{
           </HardsandLink>
         </Box>
         <Box h={100} />
-        {/* {!isError && (
+        {!isError && (
           <HardsandLink
             href={`/app`}
             fontSize={"sm"}
@@ -107,7 +107,7 @@ const VerifyCorperateEmail: NextPage<{
           >
             {t("verify:go-to-account", "Go to Accounts")}
           </HardsandLink>
-        )} */}
+        )}
       </Flex>
     </Container>
   );

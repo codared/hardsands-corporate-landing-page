@@ -77,21 +77,6 @@ export const loginCorperateActivateCard = async (
   return res;
 };
 
-export const loginAccessCorperateActivateCard = async (
-  data: CorperateCardActivationType
-) => {
-  const res = (await storefrontApiJsonFetch(
-    `/api/cards/access-corp/login-activate`,
-    {
-      method: "POST",
-      headers: requestJsonHeaders(),
-      body: JSON.stringify(data),
-    }
-  )) as BackendResponseType;
-
-  return res;
-};
-
 export const signupActivateCard = async (data: SignupCardActivationType) => {
   const res = (await storefrontApiJsonFetch(`/api/cards/signup-activate`, {
     method: "POST",
@@ -136,21 +121,6 @@ export const verifyCorperateEmail = async (data: VerifyCorperateEmailType) => {
     headers: requestJsonHeaders(),
     body: JSON.stringify(data),
   })) as BackendResponseType;
-
-  return res;
-};
-
-export const verifyAccessCorperateEmail = async (
-  data: VerifyCorperateEmailType
-) => {
-  const res = (await storefrontApiJsonFetch(
-    `/api/cards/access-corp/verify-email`,
-    {
-      method: "POST",
-      headers: requestJsonHeaders(),
-      body: JSON.stringify(data),
-    }
-  )) as BackendResponseType;
 
   return res;
 };

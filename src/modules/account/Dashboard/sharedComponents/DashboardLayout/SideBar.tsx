@@ -12,32 +12,17 @@ import HardsandsAppLogo from "components/Logo";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
 import { AccountNavItemsType } from "utils/types";
-import { getCookie } from "modules/shared/cookie";
+import { getCookie, removeCookie } from "modules/shared/cookie";
 import {
   AUTH_ROUTES,
-  HARDSANDS_CORPERATE,
-  UserModuleTypes,
+  HARDSANDS_CORPERATE_NAME,
+  HARDSANDS_LOGIN_COOKIE,
 } from "modules/authentication/constants";
 import Router from "next/router";
 import NavItem from "modules/account/components/Navitems";
-import {
-  DASH_NAV_ITEMS,
-  ACCESS_DASH_NAV_ITEMS,
-  routeId,
-} from "modules/account/constants";
+import { DASH_NAV_ITEMS, routeId } from "modules/account/constants";
 import { useActiveSidebarItem } from "../../hooks";
 import { getCardImageFromSlug } from "modules/products/functions";
-import { handleLogout } from "utils/functions";
-
-const getDashBoardModule = (data: any) => {
-  if (data.module === UserModuleTypes.CORPORATE) {
-    return DASH_NAV_ITEMS;
-  } else if (data.module === UserModuleTypes.ACCESS) {
-    return ACCESS_DASH_NAV_ITEMS;
-  } else {
-    return [];
-  }
-};
 
 const DashSidebarContent = (props: any) => {
   const integrations = useDisclosure();
@@ -46,17 +31,13 @@ const DashSidebarContent = (props: any) => {
     props.routes[1]
   );
 
-  const dashNavItems = getDashBoardModule(props.data);
-
-  const handleSidebarLogout = () => {
-    handleLogout();
+  const handleLogout = () => {
+    removeCookie(HARDSANDS_LOGIN_COOKIE);
     Router.push(AUTH_ROUTES.login);
   };
 
   const img = getCardImageFromSlug("epoxy-tag-black");
-  const { corpName: companyName } = JSON.parse(
-    getCookie(HARDSANDS_CORPERATE) || "{}"
-  ) || { corpName: "" };
+  const companyName = getCookie(HARDSANDS_CORPERATE_NAME) || "";
 
   return (
     <Box
@@ -111,7 +92,7 @@ const DashSidebarContent = (props: any) => {
           </Text>
         </Flex>
         <Box mt={[10]}>
-          {dashNavItems.map((item: AccountNavItemsType) => {
+          {DASH_NAV_ITEMS.map((item: AccountNavItemsType) => {
             return (
               <HardsandLink
                 key={item.title}
@@ -160,7 +141,7 @@ const DashSidebarContent = (props: any) => {
         </Box>
         <Box>
           <NavItem
-            onClick={handleSidebarLogout}
+            onClick={handleLogout}
             color="red.300"
             icon={IoLogOutOutline}
           >
