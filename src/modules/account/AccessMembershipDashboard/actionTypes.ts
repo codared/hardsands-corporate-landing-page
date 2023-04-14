@@ -1,5 +1,4 @@
 import { CorpCard } from "./types";
-import { Report } from "./Reports/types";
 import { Member } from "./Members/types";
 
 export interface GetMembers {
@@ -29,7 +28,7 @@ export interface GetCorpCards {
 
 export interface GetReports {
   type: "GET_REPORTS";
-  payload: Report;
+  payload: any;
 }
 
 export interface AddActionMember {
