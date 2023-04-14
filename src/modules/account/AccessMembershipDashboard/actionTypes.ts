@@ -56,7 +56,12 @@ export interface GetDashboardData {
   payload: any;
 }
 
-export type DashboardActionTypes =
+export interface AccessRemoveMember {
+  type: "ACCESS_REMOVE_MEMBER";
+  payload: any;
+}
+
+export type AccessDashboardActionTypes =
   | GetDashboardData
   | GetMembers
   | AddMembers
@@ -67,4 +72,5 @@ export type DashboardActionTypes =
   | AddActionMember
   | RemoveActionMember
   | SetCompanyName
+  | AccessRemoveMember
   | GetLeadsResponse;

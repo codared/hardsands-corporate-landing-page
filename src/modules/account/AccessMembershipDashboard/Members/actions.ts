@@ -5,7 +5,7 @@ import {
   addMembers,
   // addMultipleMembers,
   getMembers,
-  // removeActionToMember,
+  removeMember,
   updateMembers,
 } from "./services";
 
@@ -89,20 +89,20 @@ export const editMembersAction: ThunkActionCreator<Promise<any>> =
 //     return res.result;
 //   };
 
-// export const removeActionToMembersAction: ThunkActionCreator<Promise<any>> =
-//   (data, userId) => async (dispatch, getState) => {
-//     const res = await removeActionToMember(data, userId);
+export const removeMemberAction: ThunkActionCreator<Promise<any>> =
+  (userId) => async (dispatch, getState) => {
+    const res = await removeMember(userId);
 
-//     if (res.isError) {
-//       return dispatch({
-//         type: "DASHBOARD_APP_ERROR",
-//         payload: res as any,
-//       });
-//     }
-//     dispatch({
-//       type: "REMOVE_MEMBER_ACTION",
-//       payload: res.result,
-//     });
+    if (res.isError) {
+      return dispatch({
+        type: "DASHBOARD_APP_ERROR",
+        payload: res as any,
+      });
+    }
+    dispatch({
+      type: "ACCESS_REMOVE_MEMBER" as any,
+      payload: res.result,
+    });
 
-//     return res.result;
-//   };
+    return res.result;
+  };
