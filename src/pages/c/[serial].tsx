@@ -5,6 +5,8 @@ import { NextPage, NextPageContext } from "next";
 import { isServerRequest } from "utils/nextjs";
 import generateVCard from "./vCardGenerator";
 import WithoutLayout from "components/WithoutLayout";
+import nextCookies from "next-cookies";
+import { v5 as uuid } from "uuid";
 
 const CheckCardActivation: NextPage<{ result: any }> = ({ result }) => {
   return (
@@ -32,6 +34,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
   const {
     query: { serial },
     res,
+    req,
   } = ctx;
 
   const redirectTo = (url: string) => {
@@ -43,6 +46,19 @@ export async function getServerSideProps(ctx: NextPageContext) {
   };
 
   try {
+    let { hardsands_device_id } = nextCookies(ctx);
+    const userAgent = req?.headers["user-agent"] as string;
+    const deviceUUID = uuid(userAgent, uuid.URL);
+
+    if (!hardsands_device_id) {
+      // set new device id forever
+      // setCookie("hardsands_device_id", deviceUUID, {
+      //   maxAge: 30 * 24 * 60 * 60,
+      //   path: "/",
+      // });
+      // hardsands_device_id = deviceUUID;
+    }
+
     const response = await getCard(serial as string);
 
     if (
@@ -58,7 +74,15 @@ export async function getServerSideProps(ctx: NextPageContext) {
       response.isError &&
       response?.data?.nextStep === "activateCorporateCard"
     ) {
-      const activationUrl = `/corperate/activate-card?serial=${response?.data?.data.cardSerial}`;
+      const activationUrl = `/corporate/activate-card?serial=${response?.data?.data.cardSerial}`;
+
+      redirectTo(activationUrl);
+    } else if (
+      !!response &&
+      response.isError &&
+      response?.data?.nextStep === "activateAccessCard"
+    ) {
+      const activationUrl = `/membership/activate-card?serial=${response?.data?.data.cardSerial}`;
 
       redirectTo(activationUrl);
     }

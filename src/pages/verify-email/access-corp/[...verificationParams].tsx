@@ -6,16 +6,15 @@ import {
   AUTH_ROUTES,
   HARDSANDS_LOGIN_COOKIE,
 } from "modules/authentication/constants";
-import { verifyCorperateEmail } from "modules/authentication/services";
+import { verifyAccessCorperateEmail } from "modules/authentication/services";
 import { setCookie } from "modules/shared/cookie";
 import { NextPage, NextPageContext } from "next";
 import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { isServerRequest } from "utils/nextjs";
-// import { slugify } from "utils/string";
 import { useTypedDispatch } from "redux/store";
 
-const VerifyCorperateEmail: NextPage<{
+const VerifyAccessCorperateEmail: NextPage<{
   isError?: boolean;
   result?: any;
   message?: string;
@@ -128,7 +127,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
   const [verificationCode, userId, cardSerial] = verificationParams as string[];
 
   try {
-    let verifyEmailResponse = await verifyCorperateEmail({
+    let verifyEmailResponse = await verifyAccessCorperateEmail({
       verifyHash: verificationCode as string,
       userId: parseInt(userId as string, 10),
       cardSerial: cardSerial as string,
@@ -145,4 +144,4 @@ export async function getServerSideProps(ctx: NextPageContext) {
   }
 }
 
-export default VerifyCorperateEmail;
+export default VerifyAccessCorperateEmail;

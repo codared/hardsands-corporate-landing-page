@@ -18,11 +18,9 @@ import DashSidebarContent from "./SideBar";
 
 const HardsandsCorperateDash = ({
   children,
-  data,
   routes,
 }: {
   children: ReactElement;
-  data: any;
   routes: string[];
 }) => {
   const reduxDispatch = useTypedDispatch();
@@ -45,7 +43,6 @@ const HardsandsCorperateDash = ({
     >
       <DashSidebarContent
         routes={routes}
-        data={data}
         display={["none", "unset", "block"]}
       />
       <Drawer
@@ -56,12 +53,7 @@ const HardsandsCorperateDash = ({
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DashSidebarContent
-            data={data}
-            routes={routes}
-            w="full"
-            borderRight="none"
-          />
+          <DashSidebarContent w="full" borderRight="none" />
         </DrawerContent>
       </Drawer>
       <Box ml={[0, 80]} transition=".3s ease">
