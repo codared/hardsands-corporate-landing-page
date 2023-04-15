@@ -47,19 +47,7 @@ export async function getServerSideProps(ctx: NextPageContext) {
 
   try {
     let { hardsands_device_id } = nextCookies(ctx);
-    const userAgent = req?.headers["user-agent"] as string;
-    const deviceUUID = uuid(userAgent, uuid.URL);
-
-    if (!hardsands_device_id) {
-      // set new device id forever
-      // setCookie("hardsands_device_id", deviceUUID, {
-      //   maxAge: 30 * 24 * 60 * 60,
-      //   path: "/",
-      // });
-      // hardsands_device_id = deviceUUID;
-    }
-
-    const response = await getCard(serial as string);
+    const response = await getCard(serial as string, hardsands_device_id);
 
     if (
       !!response &&

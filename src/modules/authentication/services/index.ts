@@ -112,9 +112,11 @@ export const activateCard = async (data: CardActivationType) => {
   return res;
 };
 
-export const getCard = async (serial: string) => {
+export const getCard = async (serial: string, deviceId?: string) => {
   const res = (await storefrontApiJsonFetch(
-    `/api/cards/${serial}`
+    deviceId
+      ? `/api/cards/${serial}?deviceId=${deviceId}`
+      : `/api/cards/${serial}`
   )) as BackendResponseType;
 
   return res;
