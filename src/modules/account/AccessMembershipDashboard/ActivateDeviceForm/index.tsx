@@ -46,6 +46,7 @@ const ActivateDeviceForm = () => {
       } else if (res.isError === false) {
         setErrorMessage("");
         setSuccessMessage(res.result.message);
+        setFields("");
         setLoading(false);
       }
       setLoading(false);
@@ -82,7 +83,7 @@ const ActivateDeviceForm = () => {
           />
         )}
         <HStack mb={10}>
-          <PinInput onChange={handleChange} size="lg" otp manageFocus={true}>
+          <PinInput value={fields} onChange={handleChange} size="lg" otp manageFocus={true}>
             <PinInputField borderColor={"black"} w={100} />
             <PinInputField borderColor={"black"} w={100} />
             <PinInputField borderColor={"black"} w={100} />
