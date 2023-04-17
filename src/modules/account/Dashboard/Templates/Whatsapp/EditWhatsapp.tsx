@@ -8,6 +8,7 @@ import {
   Button,
   Textarea,
 } from "@chakra-ui/react";
+import ActionsInput from "../components/ActionInput";
 
 const EditWhatsapp = () => {
 

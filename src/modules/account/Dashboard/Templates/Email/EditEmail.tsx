@@ -2,29 +2,14 @@ import {
   Box,
   Text,
   Heading,
-  Input,
   FormControl,
   FormLabel,
   Button,
   Textarea,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
-import { getCorpCardsAction } from "../../Devices/actions";
-import { useTypedDispatch, useTypedSelector } from "redux/store";
-import Loader from "modules/account/components/Loader";
-import { DashboardReducerState } from "../../types";
+import ActionsInput from "../components/ActionInput";
 
 const EditEmail = () => {
-  const dispatch = useTypedDispatch();
-  const { loading } = useTypedSelector(
-    (state) => state.dashboard
-  ) as DashboardReducerState;
-
-  useEffect(() => {
-    dispatch(getCorpCardsAction());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <Box>
       <Heading>Templates</Heading>{" "}
@@ -37,41 +22,49 @@ const EditEmail = () => {
           Email Action
         </Heading>
         <Box bg="#fff">
-          {loading ? (
-            <Loader h={"30vh"} />
-          ) : (
-            <Box
-              as="form"
-              mt={8}
-              p={14}
-              minH={"75vh"}
-              pos="relative"
-              display={"flex"}
-              flexDir={"column"}
-              justifyContent={"space-between"}
-            >
-              <Box>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="email">Email</FormLabel>
-                  <Input sx={{border: "1px solid #000"}} id="email" type="email" placeholder="Enter Email" />
-                </FormControl>
-          
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="subject">Subject</FormLabel>
-                  <Input id="subject" type="text" placeholder="Enter Subject" />
-                </FormControl>
+          <Box
+            as="form"
+            mt={8}
+            p={14}
+            minH={"75vh"}
+            pos="relative"
+            display={"flex"}
+            flexDir={"column"}
+            justifyContent={"space-between"}
+          >
+            <Box>
+              <ActionsInput
+                label="Email"
+                id="email"
+                type="email"
+                placeholder="Enter Email"
+                mb={8}
+              />
 
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="content">Content</FormLabel>
-                  <Textarea id="content" placeholder="Enter Content" />
-                </FormControl>
-              </Box>
+              <ActionsInput
+                label="Subject"
+                id="subject"
+                type="text"
+                placeholder="Enter Subject"
+                mb={8}
+              />
 
-              <Button bg="brand.200" width={"100%"} mt={1}>
-                Save and Assign
-              </Button>
+              <FormControl mb={8}>
+                <FormLabel htmlFor="content">Content</FormLabel>
+                <Textarea
+                  id="content"
+                  placeholder="Enter Content"
+                  border="1px solid #000 !important"
+                  borderRadius={0}
+                  _placeholder={{ color: "#000" }}
+                />
+              </FormControl>
             </Box>
-          )}
+
+            <Button bg="brand.200" width={"100%"} mt={1}>
+              Save and Assign
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>

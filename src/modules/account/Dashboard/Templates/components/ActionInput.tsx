@@ -5,8 +5,15 @@ interface ActionsInputProps extends InputProps {
   label?: string;
   type?: string;
   placeholder?: string;
+
 }
-const ActionsInput = ({ id, type, placeholder, label }: ActionsInputProps) => {
+const ActionsInput = ({
+  id,
+  type,
+  placeholder,
+  label,
+  ...rest
+}: ActionsInputProps) => {
   return (
     <FormControl>
       {label && <FormLabel htmlFor="phone-number">{label}</FormLabel>}
@@ -16,6 +23,12 @@ const ActionsInput = ({ id, type, placeholder, label }: ActionsInputProps) => {
         placeholder={placeholder}
         border="1px solid #000 !important"
         borderRadius={0}
+        sx={{
+          "&::placeholder": {
+            color: "#000 !important",
+          },
+        }}
+        {...rest}
       />
     </FormControl>
   );

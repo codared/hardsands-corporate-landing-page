@@ -1,30 +1,51 @@
-import { Box, FormLabel, FormControl, SelectProps } from "@chakra-ui/react";
-import { ChakraStylesConfig, Select, SingleValue } from "chakra-react-select";
-import { ChangeEventHandler } from "react";
-
+import {
+  FormControl,
+  FormLabel,
+  Select,
+  SelectProps,
+  Image,
+} from "@chakra-ui/react";
+import { SelectDropdownIcon } from "assets/index";
 interface HardsandsSelectProps extends SelectProps {
-  id?: string;
-  name?: string;
-  placeholder?: string;
-  label?: string;
   onChange?: any;
-  value?: string | number;
-  options?: any[];
+  selectedValue?: string;
+  label?: string;
+  id?: string;
+  w?: string;
+  options: string[];
 }
-const HardsandsSelect = ({id, label, placeholder, onChange, value, options}: HardsandsSelectProps) => {
+
+const HardsandsSelect = ({
+  w,
+  label,
+  id,
+  onChange,
+  options,
+  selectedValue,
+  ...rest
+}: HardsandsSelectProps) => {
   return (
-    <FormControl>
-        <FormLabel htmlFor={id}>{label}</FormLabel>
-        <Select
-          id={id}
-          name={id}
-          onChange={onChange}
-          placeholder={`Select ${label}`}
-          size="lg"
-          value={value}
-          selectedOptionStyle="check"
-          options={options}
-        />
+    <FormControl w={w ? w : "full"}>
+      {label && <FormLabel>{label}</FormLabel>}
+      <Select
+        icon={<Image src={SelectDropdownIcon.src} alt={label} />}
+        borderRadius={0}
+        borderColor={"black"}
+        onChange={onChange}
+        _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
+        w={"full"}
+        size="xs"
+        {...rest}
+        defaultValue={selectedValue || ""}
+        height="40px"
+      >
+        {options &&
+          options.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+      </Select>
     </FormControl>
   );
 };

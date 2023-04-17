@@ -8,8 +8,12 @@ import {
   Button,
   Textarea,
 } from "@chakra-ui/react";
+import ActionsInput from "../components/ActionInput";
+import HardsandsSelect from "components/HardsandsSelect";
+import { ChangeEvent, useState } from "react";
 
 const EditEvent = () => {
+  const [country, setCountry] = useState("");
   return (
     <Box>
       <Heading>Templates</Heading>{" "}
@@ -23,52 +27,68 @@ const EditEvent = () => {
         </Heading>
         <Box bg="#fff">
           <Box as="form" mt={8} p={14}>
-            <Box display="flex" gap={[5, 10, 20]} mb={6}>
-              <FormControl>
-                <FormLabel htmlFor="event-name">Event</FormLabel>
-                <Input
-                  id="event-name"
-                  type="text"
-                  placeholder="Enter Event"
-                  border={"1px solid #000"}
-                />
-              </FormControl>
-              <FormControl>
-                <FormLabel htmlFor="event-address">Address</FormLabel>
-                <Input
-                  id="event-address"
-                  type="text"
-                  placeholder="Enter Address"
-                />
-              </FormControl>
+            <Box
+              display="grid"
+              gridTemplateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]}
+              columnGap={[5, 10, 20]}
+              rowGap={[3, 6, 12]}
+              mb={6}
+            >
+              <ActionsInput
+                id="event-name"
+                type="text"
+                label="Event"
+                placeholder="Enter Event"
+                border={"1px solid #000"}
+              />
+              <ActionsInput
+                id="event-time"
+                label="Time"
+                type="text"
+                placeholder="Enter Time"
+              />
+              <ActionsInput
+                id="event-date"
+                type="date"
+                label="Date"
+                placeholder="Enter Date"
+                border={"1px solid #000"}
+              />
+              <HardsandsSelect
+                label="Country"
+                options={["+233", "+234"]}
+                onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                  setCountry(e.target.value)
+                }
+                placeholder="Select Country"
+              />
+              <HardsandsSelect
+                id="state"
+                label="State"
+                placeholder="Select State"
+                options={["9am", "10pm"]}
+              />
+              <ActionsInput
+                id="event-time"
+                label="Time"
+                type="text"
+                placeholder="Enter Time"
+              />
             </Box>
 
-            <Box display="flex" gap={[5, 10, 20]} mb={6}>
-              <FormControl>
-                <FormLabel htmlFor="event-date">Date</FormLabel>
-                <Input
-                  id="event-date"
-                  type="date"
-                  placeholder="Enter Date"
-                  border={"1px solid #000"}
-                />
-              </FormControl>
-              <FormControl>
-                <FormLabel htmlFor="event-time">Time</FormLabel>
-                <Input id="event-time" type="text" placeholder="Enter Time" />
-              </FormControl>
-            </Box>
             <FormControl mb={6}>
               <FormLabel htmlFor="event-description">Description</FormLabel>
               <Textarea
                 id="event-description"
                 placeholder="Enter Description"
+                border="1px solid #000 !important"
+                borderRadius={0}
               />
             </FormControl>
 
             <FormControl mb={10}>
               <FormLabel htmlFor="event-image">Upload Image</FormLabel>
-              <Input id="event-image" type="file" />
+              <ActionsInput id="event-image" type="file" />
             </FormControl>
             <Button bg="brand.200" width={"100%"}>
               Save and Assign
