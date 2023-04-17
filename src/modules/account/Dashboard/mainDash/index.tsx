@@ -1,12 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Box,
-  Text,
-  BoxProps,
-  Avatar,
-  Heading,
-  HStack,
-} from "@chakra-ui/react";
+import { Box, Text, BoxProps, Avatar, Heading, HStack } from "@chakra-ui/react";
 import Image from "next/image";
 import { Card } from "components";
 import { AppIcons } from "modules/account/constants";
@@ -15,7 +8,7 @@ import StatsCard from "../sharedComponents/StatsCard";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { getDashboardDataAction } from "../actions";
 import { getCookie } from "modules/shared/cookie";
-import { HARDSANDS_CORPERATE_NAME } from "modules/authentication/constants";
+import { HARDSANDS_CORPERATE } from "modules/authentication/constants";
 
 const Bar = (props: BoxProps) => {
   return <Box maxW="35px" borderRadius="8px" {...props} />;
@@ -23,9 +16,13 @@ const Bar = (props: BoxProps) => {
 
 const Home = () => {
   const dispatch = useTypedDispatch();
-  const companyName = getCookie(HARDSANDS_CORPERATE_NAME) || "Company Name";
+  const { corpName: companyName } = JSON.parse(
+    getCookie(HARDSANDS_CORPERATE) || "{}"
+  ) || { corpName: "" };
   //get dashboard from redux
-  const { dashboard, loading } = useTypedSelector((state) => state.dashboard) as any;
+  const { dashboard, loading } = useTypedSelector(
+    (state) => state.dashboard
+  ) as any;
   const [spreadComponent, setSpreadComponent] = useState(false);
 
   useEffect(() => {

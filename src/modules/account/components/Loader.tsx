@@ -1,7 +1,13 @@
 import { Flex, Spinner, Text } from "@chakra-ui/react";
 import React from "react";
 
-function Loader({ h = "100vh" }) {
+function Loader({
+  h = "100vh",
+  showText = true,
+}: {
+  h?: string;
+  showText?: boolean;
+}) {
   return (
     <Flex
       w={"full"}
@@ -11,7 +17,7 @@ function Loader({ h = "100vh" }) {
       direction="column"
     >
       <Spinner size="xl" />
-      <Text>loading...</Text>
+      {showText && <Text>loading...</Text>}
     </Flex>
   );
 }

@@ -1,8 +1,8 @@
 import jwt_decode from "jwt-decode";
 import { ACTIONS } from "modules/account/constants";
-import { HARDSANDS_LOGIN_COOKIE } from "modules/authentication/constants";
+import { HARDSANDS_CORPERATE, HARDSANDS_LOGIN_COOKIE } from "modules/authentication/constants";
 import { Product, ProductOptions } from "modules/products/types";
-import { getCookie } from "modules/shared/cookie";
+import { getCookie, removeCookie } from "modules/shared/cookie";
 import { SUPPORTED_CURRENCIES } from "./supportedCurrencies";
 import { ActionsType } from "./types";
 import * as prismicH from "@prismicio/helpers";
@@ -184,4 +184,10 @@ export const getProductBySlug = (
   products: Product[] | undefined
 ) => {
   return products?.find((prod) => slugs.includes(prod.slug));
+};
+
+export const handleLogout = () => {
+  removeCookie(HARDSANDS_LOGIN_COOKIE);
+  removeCookie(HARDSANDS_CORPERATE);
+  return;
 };
