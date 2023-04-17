@@ -37,50 +37,42 @@ const EditSMS = () => {
           SMS Action
         </Heading>
         <Box bg="#fff">
-          {loading ? (
-            <Loader h={"30vh"} />
-          ) : (
-            <Box
-              as="form"
-              mt={8}
-              p={14}
-              minH={"75vh"}
-              pos="relative"
-              display={"flex"}
-              flexDir={"column"}
-              justifyContent={"space-between"}
-            >
-              <Box>
-                <FormControl mb={8} w={["100%", "40%"]}>
-                  <FormLabel htmlFor="phone-code">Phone Code</FormLabel>
-                  <Input
-                    id="phone-code"
-                    type="text"
-                    placeholder="Enter Event"
-                  />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="phone-number">Phone Number</FormLabel>
-                  <Input
-                    id="phone-number"
-                    type="text"
-                    placeholder="Enter Phone Number"
-                  />
-                  <Text mt={4}>
-                    Please select phone code before number E.g +1
-                  </Text>
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="message">Text</FormLabel>
-                  <Textarea id="text" placeholder="Enter Text" />
-                </FormControl>
-              </Box>
-
-              <Button bg="brand.200" width={"100%"} mt={1}>
-                Save and Assign
-              </Button>
+          <Box
+            as="form"
+            mt={8}
+            p={14}
+            minH={"75vh"}
+            pos="relative"
+            display={"flex"}
+            flexDir={"column"}
+            justifyContent={"space-between"}
+          >
+            <Box>
+              <FormControl mb={8} w={["100%", "40%"]}>
+                <FormLabel htmlFor="phone-code">Phone Code</FormLabel>
+                <Input id="phone-code" type="text" placeholder="Enter Event" />
+              </FormControl>
+              <FormControl mb={8}>
+                <FormLabel htmlFor="phone-number">Phone Number</FormLabel>
+                <Input
+                  id="phone-number"
+                  type="text"
+                  placeholder="Enter Phone Number"
+                />
+                <Text mt={4}>
+                  Please select phone code before number E.g +1
+                </Text>
+              </FormControl>
+              <FormControl mb={8}>
+                <FormLabel htmlFor="message">Text</FormLabel>
+                <Textarea id="text" placeholder="Enter Text" />
+              </FormControl>
             </Box>
-          )}
+
+            <Button bg="brand.200" width={"100%"} mt={1}>
+              Save and Assign
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>

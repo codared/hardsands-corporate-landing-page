@@ -1,38 +1,30 @@
-import { Box, FormLabel, FormControl } from "@chakra-ui/react";
+import { Box, FormLabel, FormControl, SelectProps } from "@chakra-ui/react";
 import { ChakraStylesConfig, Select, SingleValue } from "chakra-react-select";
+import { ChangeEventHandler } from "react";
 
-const HardsandsSelect = () => {
-     const chakraStyles: ChakraStylesConfig = {
-       dropdownIndicator: (provided, state) => ({
-         ...provided,
-         background: "brand.100",
-         p: 0,
-         w: "40px",
-       }),
-       inputContainer: (provider) => ({
-         ...provider,
-         minW: "313px",
-       }),
-     };
-
+interface HardsandsSelectProps extends SelectProps {
+  id?: string;
+  name?: string;
+  placeholder?: string;
+  label?: string;
+  onChange?: any;
+  value?: string | number;
+  options?: any[];
+}
+const HardsandsSelect = ({id, label, placeholder, onChange, value, options}: HardsandsSelectProps) => {
   return (
     <FormControl>
-      <Box mb={4}>
-        <FormLabel>{name}</FormLabel>
+        <FormLabel htmlFor={id}>{label}</FormLabel>
         <Select
-          instanceId="chakra-react-state-select"
-          name={formKey as string}
-          onChange={(newValue) =>
-            handleOptionSelected(newValue, formKey as string)
-          }
-          placeholder={`Select ${name}`}
+          id={id}
+          name={id}
+          onChange={onChange}
+          placeholder={`Select ${label}`}
           size="lg"
-          value={selectedStateOption}
+          value={value}
           selectedOptionStyle="check"
-          options={createSelectOptions(stateOptions as any[])}
-          chakraStyles={chakraStyles}
+          options={options}
         />
-      </Box>
     </FormControl>
   );
 };

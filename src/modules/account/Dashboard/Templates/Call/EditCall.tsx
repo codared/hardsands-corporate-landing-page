@@ -8,23 +8,7 @@ import {
   Button,
   Textarea,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
-import { getCorpCardsAction } from "../../Devices/actions";
-import { useTypedDispatch, useTypedSelector } from "redux/store";
-import Loader from "modules/account/components/Loader";
-import { DashboardReducerState } from "../../types";
-
 const EditCall = () => {
-  const dispatch = useTypedDispatch();
-  const { loading } = useTypedSelector(
-    (state) => state.dashboard
-  ) as DashboardReducerState;
-
-  useEffect(() => {
-    dispatch(getCorpCardsAction());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <Box>
       <Heading>Templates</Heading>{" "}
@@ -37,29 +21,25 @@ const EditCall = () => {
           Call Action
         </Heading>
         <Box bg="#fff">
-          {loading ? (
-            <Loader h={"30vh"} />
-          ) : (
-            <Box
-              as="form"
-              mt={8}
-              p={14}
-              minH={"75vh"}
-              pos="relative"
-              display={"flex"}
-              flexDir={"column"}
-              justifyContent={"space-between"}
-            >
-              <FormControl mb={8}>
-                <FormLabel htmlFor="urk">URL</FormLabel>
-                <Input id="url" type="text" placeholder="Enter URL" />
-              </FormControl>
+          <Box
+            as="form"
+            mt={8}
+            p={14}
+            minH={"75vh"}
+            pos="relative"
+            display={"flex"}
+            flexDir={"column"}
+            justifyContent={"space-between"}
+          >
+            <FormControl mb={8}>
+              <FormLabel htmlFor="urk">URL</FormLabel>
+              <Input id="url" type="text" placeholder="Enter URL" />
+            </FormControl>
 
-              <Button bg="brand.200" width={"100%"} mt={1}>
-                Save and Assign
-              </Button>
-            </Box>
-          )}
+            <Button bg="brand.200" width={"100%"} mt={1}>
+              Save and Assign
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>

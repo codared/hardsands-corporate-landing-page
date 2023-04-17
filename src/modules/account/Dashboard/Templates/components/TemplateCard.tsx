@@ -1,7 +1,7 @@
+import { useState, useRef, useEffect } from "react";
+import Link from "next/link";
 import { Box, Text, Image, List, ListItem } from "@chakra-ui/react";
 import { AppIcons } from "modules/account/constants";
-import { useState } from "react";
-import Link from "next/link";
 
 type TemplateCardProps = {
   cardName: string;
@@ -10,12 +10,30 @@ type TemplateCardProps = {
   assignLink?: string;
 };
 
-const TemplateCard = ({ cardName, icon, editLink, assignLink }: TemplateCardProps) => {
+const TemplateCard = ({
+  cardName,
+  icon,
+  editLink,
+  assignLink,
+}: TemplateCardProps) => {
+  const actionBtnRef = useRef<any>();
   const [showActionsModal, setShowActionsModal] = useState(false);
 
   const toggleActionsModal = () => {
     setShowActionsModal((prev) => !prev);
   };
+
+  const closeDropdownWhenOutsideIsClicked = (e: MouseEvent) => {
+    if (e.target !== actionBtnRef.current) {
+      setShowActionsModal(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", closeDropdownWhenOutsideIsClicked);
+
+    return () => document.removeEventListener("click", closeDropdownWhenOutsideIsClicked)
+  }, [showActionsModal])
 
   return (
     <Box
@@ -30,6 +48,7 @@ const TemplateCard = ({ cardName, icon, editLink, assignLink }: TemplateCardProp
         src={AppIcons.VerticalDots.src}
         alt="action"
         onClick={toggleActionsModal}
+        ref={actionBtnRef}
       />
       {showActionsModal && (
         <List
@@ -39,7 +58,8 @@ const TemplateCard = ({ cardName, icon, editLink, assignLink }: TemplateCardProp
           zIndex={10}
           border={"1px solid #d9d9d9"}
           fontSize={"0.875rem"}
-          right={"-160px"}
+          top="3.5rem"
+          right={0}
           sx={{
             "& a": {
               display: "block",

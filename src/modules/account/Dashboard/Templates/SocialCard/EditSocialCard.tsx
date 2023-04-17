@@ -53,70 +53,62 @@ const EditSocialCard = () => {
           Social Card
         </Heading>
         <Box bg="#fff" minH="75vh" mt={8} p={3}>
-          {loading ? (
-            <Loader h={"30vh"} />
-          ) : (
-            <Box>
-              <Box maxW="300px" m="auto">
-                <Box bg="brand.100" pos="relative" h="155px" zIndex={5} />
-                <Box pos="relative" zIndex={10} marginTop="-100px">
-                  <Image
-                    src={UserAvatar.src}
-                    alt="user avatar"
-                    borderRadius={"20px"}
-                    border="10px solid #fff"
-                    background={"#e9e7e9"}
-                    display={"block"}
-                    margin="0 auto 1rem"
-                  />
-                  <Box display="flex" justifyContent="center" gap="0.75rem" mb={1}>
-                    <Text fontSize={"1.25rem"} fontWeight={"700"}>
-                      Input Name
-                    </Text>
-                    <Image src={EditTextIcon.src} alt="edit" />
-                  </Box>
-                  <Box display="flex" justifyContent="center" gap="0.75rem">
-                    <Text color="#616161">Data Analyst at MMV</Text>{" "}
-                    <Image src={EditTextIcon.src} alt="edit" />
-                  </Box>
-                </Box>
-
-                <Box mt={8}>
-                  <Text fontWeight={"700"}>Social</Text>
-                  <Text color="#616161">
-                    Click an icon to add your username{" "}
-                  </Text>
-                  <Box
-                    display="grid"
-                    gridTemplateColumns={"repeat(3, 1fr)"}
-                    columnGap={20}
-                    mt={6}
-                    alignContent={"space-between"}
-                  >
-                    {socialMediaApps.map(({ name, icon }, i) => (
-                      <Box key={i} mb={10}>
-                        <Image
-                          src={icon.src}
-                          alt={name}
-                          width={30}
-                          mb={6}
-                          display="block"
-                          mx="auto"
-                        />
-                        <Text textAlign={"center"} fontSize={"10px"}>
-                          {name}
-                        </Text>
-                      </Box>
-                    ))}
-                  </Box>
-                </Box>
+          <Box maxW="300px" m="auto">
+            <Box bg="brand.100" pos="relative" h="155px" zIndex={5} />
+            <Box pos="relative" zIndex={10} marginTop="-100px">
+              <Image
+                src={UserAvatar.src}
+                alt="user avatar"
+                borderRadius={"20px"}
+                border="10px solid #fff"
+                background={"#e9e7e9"}
+                display={"block"}
+                margin="0 auto 1rem"
+              />
+              <Box display="flex" justifyContent="center" gap="0.75rem" mb={1}>
+                <Text fontSize={"1.25rem"} fontWeight={"700"}>
+                  Input Name
+                </Text>
+                <Image src={EditTextIcon.src} alt="edit" />
               </Box>
-
-              <Button bg="brand.100" width={"100%"} mt={18}>
-                Save and Assign
-              </Button>
+              <Box display="flex" justifyContent="center" gap="0.75rem">
+                <Text color="#616161">Data Analyst at MMV</Text>{" "}
+                <Image src={EditTextIcon.src} alt="edit" />
+              </Box>
             </Box>
-          )}
+
+            <Box mt={8}>
+              <Text fontWeight={"700"}>Social</Text>
+              <Text color="#616161">Click an icon to add your username </Text>
+              <Box
+                display="grid"
+                gridTemplateColumns={"repeat(3, 1fr)"}
+                columnGap={20}
+                mt={6}
+                alignContent={"space-between"}
+              >
+                {socialMediaApps.map(({ name, icon }, i) => (
+                  <Box key={i} mb={10}>
+                    <Image
+                      src={icon.src}
+                      alt={name}
+                      width={30}
+                      mb={6}
+                      display="block"
+                      mx="auto"
+                    />
+                    <Text textAlign={"center"} fontSize={"10px"}>
+                      {name}
+                    </Text>
+                  </Box>
+                ))}
+              </Box>
+            </Box>
+          </Box>
+
+          <Button bg="brand.100" width={"100%"} mt={18}>
+            Save and Assign
+          </Button>
         </Box>
       </Box>
     </Box>
