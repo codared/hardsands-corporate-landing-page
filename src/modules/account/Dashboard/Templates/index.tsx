@@ -111,7 +111,6 @@ const Templates = ({ routes }: { routes: string[] }) => {
             ]}
             gap={12}
             mt={8}
-            width={["full", "full", "90%"]}
           >
             {tempCards?.length > 0 ? (
               tempCards.map(({ id, cardName, icon, editLink, assignLink }) => (

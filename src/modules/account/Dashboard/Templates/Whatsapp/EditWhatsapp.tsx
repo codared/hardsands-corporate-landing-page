@@ -9,9 +9,9 @@ import {
   Textarea,
 } from "@chakra-ui/react";
 import ActionsInput from "../components/ActionInput";
+import HardsandsSelect from "components/HardsandsSelect";
 
 const EditWhatsapp = () => {
-
   return (
     <Box>
       <Heading>Templates</Heading>{" "}
@@ -35,25 +35,37 @@ const EditWhatsapp = () => {
             justifyContent={"space-between"}
           >
             <Box>
-              <FormControl mb={8} w={["100%", "40%"]}>
-                <FormLabel htmlFor="phone-code">Phone Code</FormLabel>
-                <Input id="phone-code" type="text" placeholder="Enter Event" />
-              </FormControl>
-              <FormControl mb={8}>
-                <FormLabel htmlFor="phone-number">Phone Number</FormLabel>
-                <Input
-                  id="phone-number"
-                  type="text"
-                  placeholder="Enter Phone Number"
-                />
-                <Text mt={4}>
-                  Please select phone code before number E.g +1
-                </Text>
-              </FormControl>
+              <HardsandsSelect
+                id="phone-code"
+                label="Phone Code"
+                placeholder="Enter Phone Code"
+                mb={8}
+                w={["100%", "40%"]}
+                options={["+233", "+234"]}
+              />
+              <ActionsInput
+                label="Phone Number"
+                id="phone-number"
+                type="text"
+                placeholder="Enter Phone Number"
+              />
+              <Text mt={3} mb={8} color="#616161" fontWeight={300}>
+                Please select phone code before number E.g +1
+              </Text>
               <FormControl mb={8}>
                 <FormLabel htmlFor="message">Message</FormLabel>
-                <Textarea id="message" placeholder="Enter Message" />
-                <Text mt={4}>
+                <Textarea
+                  id="message"
+                  placeholder="Enter Message"
+                  border="1px solid #000 !important"
+                  borderRadius="none"
+                  sx={{
+                    "&::placeholder": {
+                      color: "#616161",
+                    },
+                  }}
+                />
+                <Text mt={3} color="#616161" fontWeight={300}>
                   Please select phone code before number E.g +1
                 </Text>
               </FormControl>

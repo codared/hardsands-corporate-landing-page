@@ -11,12 +11,10 @@ interface HardsandsSelectProps extends SelectProps {
   selectedValue?: string;
   label?: string;
   id?: string;
-  w?: string;
   options: string[];
 }
 
 const HardsandsSelect = ({
-  w,
   label,
   id,
   onChange,
@@ -25,16 +23,20 @@ const HardsandsSelect = ({
   ...rest
 }: HardsandsSelectProps) => {
   return (
-    <FormControl w={w ? w : "full"}>
+    <FormControl>
       {label && <FormLabel>{label}</FormLabel>}
       <Select
         icon={<Image src={SelectDropdownIcon.src} alt={label} />}
         borderRadius={0}
         borderColor={"black"}
         onChange={onChange}
-        _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
+        sx={{
+          "&::placeholder": {
+            color: "#616161 !important",
+          },
+        }}
         w={"full"}
-        size="xs"
+        size="md"
         {...rest}
         defaultValue={selectedValue || ""}
         height="40px"

@@ -25,7 +25,7 @@ const ActionsInput = ({
         borderRadius={0}
         sx={{
           "&::placeholder": {
-            color: "#000 !important",
+            color: "#616161 !important",
           },
         }}
         {...rest}
