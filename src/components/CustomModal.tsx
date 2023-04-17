@@ -18,6 +18,8 @@ interface CustomModalProps extends ModalProps {
   children: ReactElement;
   title?: string;
   footer?: ReactElement;
+  width?: string | number;
+  hideBtn?: boolean;
 }
 
 const CustomModal = ({
@@ -26,21 +28,21 @@ const CustomModal = ({
   children,
   title,
   footer,
+  width,
+  hideBtn,
   ...rest
 }: CustomModalProps) => {
   return (
     <>
       <Modal {...rest} onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
-        <ModalContent>
+        <ModalContent sx={{ maxWidth: "fit-content" }}>
           {title && <ModalHeader>{title}</ModalHeader>}
-          <ModalCloseButton />
-          <ModalBody>{children}</ModalBody>
-          {!!footer && (
-            <ModalFooter>
-              {footer}
-            </ModalFooter>
-          )}
+          {!hideBtn && <ModalCloseButton />}
+          <ModalBody p={0}>
+            {children}
+          </ModalBody>
+          {!!footer && <ModalFooter>{footer}</ModalFooter>}
         </ModalContent>
       </Modal>
     </>

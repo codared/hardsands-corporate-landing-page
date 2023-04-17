@@ -54,7 +54,7 @@ const Templates = ({ routes }: { routes: string[] }) => {
       id: 6,
       cardName: "Leads",
       icon: AppIcons.LeadsOutlineIcon,
-      editLink: `${APP_ROUTE.dashboard}/edit-leads`,
+      editLink: `${APP_ROUTE.dashboard}/edit-lead`,
       assignLink: `${APP_ROUTE.dashboard}/assign-event`,
     },
     {
@@ -101,9 +101,7 @@ const Templates = ({ routes }: { routes: string[] }) => {
       </Text>
       <Box mt={16} bg="#fff" py={8} px={10}>
         <Heading fontSize={"1.5rem"}>Modify Templates</Heading>
-        {loading ? (
-          <Loader h={"30vh"} />
-        ) : (
+  
           <Box
             display="grid"
             gridTemplateColumns={[
@@ -128,7 +126,6 @@ const Templates = ({ routes }: { routes: string[] }) => {
               <Text>No Device available</Text>
             )}
           </Box>
-        )}
       </Box>
     </Box>
   );

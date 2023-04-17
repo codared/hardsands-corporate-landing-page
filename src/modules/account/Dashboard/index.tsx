@@ -17,6 +17,7 @@ import EditSMS from "./Templates/SMS/EditSMS";
 import EditBankAccount from "./Templates/BankAccount/EditBankAccount";
 import EditContactCard from "./Templates/ContactCard/EditContactCard";
 import EditSocialCard from "./Templates/SocialCard/EditSocialCard";
+import EditLead from "./Templates/Lead/EditLead";
 
 const Dashboard = ({ route }: { route: string[] }) => {
   switch (route[1]) {
@@ -56,6 +57,8 @@ const Dashboard = ({ route }: { route: string[] }) => {
       return <EditEmail />;
     case "edit-url":
       return <EditURL />;
+    case "edit-lead":
+      return <EditLead />;
     case "edit-contact-card":
       return <EditContactCard />;
     case "edit-social-card":
