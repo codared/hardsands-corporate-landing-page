@@ -1,5 +1,4 @@
 import { Flex, HStack, Text } from "@chakra-ui/react";
-import contact from "pages/contact";
 import React from "react";
 import { BsTelephone } from "react-icons/bs";
 import { IoMailOutline } from "react-icons/io5";

@@ -19,9 +19,13 @@ import NameColumn from "./components/NameColumn";
 import RowMenu from "../sharedComponents/RowMenu";
 import CreateMemberForm from "./components/CreateMemberForm";
 import ImportMemberForm from "./components/ImportMemberForm";
-import { editMembersAction, getMembersAction } from "./actions";
+import {
+  editMembersAction,
+  getMembersAction,
+  removeMemberAction,
+} from "./actions";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
-import { DashboardReducerState } from "../types";
+import { AccessDashboardReducerState } from "../types";
 import { getAllActionsActions } from "modules/account/actions";
 import { Member } from "./types";
 import { GoldMembershipIcon, SilverMembershipIcon } from "assets";
@@ -31,11 +35,7 @@ import moment from "moment";
 export const buildMemberRow = (members: any, rowMenuOptions: any) => {
   return members.map((member: Member) => {
     return {
-      name: (
-        <NameColumn
-          name={member.fullName}
-        />
-      ),
+      name: <NameColumn name={member.fullName} />,
       clicks: member.totalCardHits,
       contact: <ContactColumn email={member.email} phone={member.phone} />,
       status: (
@@ -82,7 +82,7 @@ const Members = () => {
   const dispatch = useTypedDispatch();
   const { members, loading } = useTypedSelector(
     (state) => state.dashboard
-  ) as DashboardReducerState;
+  ) as AccessDashboardReducerState;
   const createDrawer = useDisclosure();
   const [drawerFormState, setDrawerFormState] = useState({
     name: "",
@@ -130,7 +130,10 @@ const Members = () => {
       {
         id: 5,
         title: "Remove Member",
-        onClick: () => {},
+        onClick: async () => {
+          await dispatch(removeMemberAction(member.id));
+          dispatch(getMembersAction());
+        },
       },
     ];
   };
@@ -139,7 +142,6 @@ const Members = () => {
 
   useEffect(() => {
     dispatch(getMembersAction());
-    dispatch(getAllActionsActions());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

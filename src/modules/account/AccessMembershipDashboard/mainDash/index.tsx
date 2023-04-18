@@ -9,6 +9,7 @@ import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { getDashboardDataAction } from "../actions";
 import { getCookie } from "modules/shared/cookie";
 import { HARDSANDS_CORPERATE } from "modules/authentication/constants";
+import { monthClicks } from "../../functions";
 
 const Bar = (props: BoxProps) => {
   return <Box maxW="35px" borderRadius="8px" {...props} />;
@@ -23,27 +24,11 @@ const Home = () => {
   const { dashboard, loading } = useTypedSelector(
     (state) => state.dashboard
   ) as any;
-  const [spreadComponent, setSpreadComponent] = useState(false);
 
   useEffect(() => {
     dispatch(getDashboardDataAction());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const monthlyClicks = [
-    { month: "Jan", numberOfClicks: "58", bgColor: "#f7f7f7" },
-    { month: "Feb", numberOfClicks: "142", bgColor: "#f7f7f7" },
-    { month: "Mar", numberOfClicks: "98", bgColor: "#f7f7f7" },
-    { month: "Apr", numberOfClicks: "112", bgColor: "#DF9F71" },
-    { month: "May", numberOfClicks: "90", bgColor: "#f7f7f7" },
-    { month: "Jun", numberOfClicks: "161", bgColor: "#f7f7f7" },
-    { month: "Jul", numberOfClicks: "78", bgColor: "#f7f7f7" },
-    { month: "Aug", numberOfClicks: "142", bgColor: "#f7f7f7" },
-    { month: "Sep", numberOfClicks: "39", bgColor: "#f7f7f7" },
-    { month: "Oct", numberOfClicks: "112", bgColor: "#f7f7f7" },
-    { month: "Nov", numberOfClicks: "63", bgColor: "#f7f7f7" },
-    { month: "Dec", numberOfClicks: "98", bgColor: "#f7f7f7" },
-  ];
 
   const compositeBarData = [
     { id: 1, clicks: "88", activity: "152" },
@@ -85,7 +70,7 @@ const Home = () => {
             alignItems="baseline"
             mt="10"
           >
-            {monthlyClicks.map(({ month, numberOfClicks, bgColor }) => (
+            {monthClicks().map(({ month, numberOfClicks, bgColor }) => (
               <Box key={month}>
                 <Bar mb="2" bgColor={bgColor} height={numberOfClicks} />
                 <Text color="#B5B7BD" fontSize={"12px"} textAlign="center">
@@ -96,7 +81,7 @@ const Home = () => {
           </Box>
         </Card>
         <Card w="100%" maxW="344px">
-          <Text>Top Performer</Text>
+          <Text>Top Customer</Text>
           <HStack justifyContent="center">
             <Avatar src="" w="45" h="45" />
             <Text>{dashboard?.topPerformer?.fullName}</Text>
@@ -141,27 +126,6 @@ const Home = () => {
         h="350px"
         pos={"relative"}
       >
-        {/* <Card w="100%" maxW="720px" maxH={"350px"} p="8">
-          <Text fontSize={"14px"}>Clicks this month</Text>
-          <Heading fontSize="2xl">300</Heading>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="baseline"
-            mt="10"
-          >
-            {compositeBarData.map(({ id, activity, clicks }) => (
-              <Box key={id}>
-                <CompositeBar
-                  activity={activity}
-                  clicks={clicks}
-                  w="16px"
-                  borderRadius={"16px"}
-                />
-              </Box>
-            ))}
-          </Box>
-        </Card> */}
         <Card p={8} maxH={"350px"} overflowY={"scroll"}>
           <Heading fontSize={"xl"}>Your Activity</Heading>
           <Box as="ul" mt={6}>

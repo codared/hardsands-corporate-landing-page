@@ -1,9 +1,9 @@
 import { AppActionTypes } from "redux/context";
 import { getOnlyActions } from "../functions";
 import { Member } from "./Members/types";
-import { DashboardReducerState } from "./types";
+import { AccessDashboardReducerState } from "./types";
 
-const initialState: DashboardReducerState = {
+const initialState: AccessDashboardReducerState = {
   error: {},
   loading: true,
   company: "",
@@ -22,7 +22,7 @@ const initialState: DashboardReducerState = {
 const dashboardReducer = (
   state = initialState,
   action: AppActionTypes
-): DashboardReducerState => {
+): AccessDashboardReducerState => {
   switch (action.type) {
     case "DASHBOARD_APP_ERROR":
       return { ...state, error: action.payload };
@@ -51,6 +51,10 @@ const dashboardReducer = (
         }
       );
       return { ...state, members: [...newStateMembers] };
+    // @ts-ignore
+    case "ACCESS_REMOVE_MEMBER":
+      // @ts-ignore
+      return { ...state, loading: false, members: action.payload as any };
     case "GET_REPORTS":
       return { ...state, loading: false, reports: action.payload as any };
     case "GET_CORP_CARD":

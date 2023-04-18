@@ -2,6 +2,7 @@ import { Container } from "@chakra-ui/react";
 import React from "react";
 import BankDetailDisplay from "./ActionsDisplay/BankDetailsDisplay";
 import EventDisplay from "./ActionsDisplay/EventDisplay";
+import MemberShipProfile from "./ActionsDisplay/MemberShipProfile";
 import SocialProfile from "./ActionsDisplay/ProfileCardDisplay";
 
 function CardTapDisplay({ result }: { result: any }) {
@@ -10,6 +11,8 @@ function CardTapDisplay({ result }: { result: any }) {
       return <BankDetailDisplay {...result.fields} />;
     case "Social Card":
       return <SocialProfile fields={result.fields} />;
+    case "ACCESS CARD":
+      return <MemberShipProfile fields={result} />;
     case "Event":
       return <EventDisplay {...result.fields} />;
     default:

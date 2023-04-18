@@ -1,21 +1,17 @@
-import { makeTheAuthenticatedRequest } from "modules/account/services";
 import { storefrontApiJsonFetch } from "modules/api";
 import { requestAuthHeaders } from "utils/functions";
 import { BackendResponseType } from "utils/types";
 
-export const getCards = async () => {
-  const res = await makeTheAuthenticatedRequest(
-    `/api/access-corporate-admin/cards`
-  );
-  return res;
-};
-
-export const registerDevice = async () => {
+export const registerDevice = async (data: {
+  pin: number;
+  deviceId: string;
+}) => {
   const res = (await storefrontApiJsonFetch(
-    `/api/access-corporate-admin/activate-device`,
+    `/api/cards/access-corp/device-activate`,
     {
       method: "POST",
       headers: requestAuthHeaders(),
+      body: JSON.stringify(data),
     }
   )) as BackendResponseType;
 

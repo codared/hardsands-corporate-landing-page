@@ -1,6 +1,6 @@
 import { Member } from "./Members/types";
 
-export type DashboardReducerState = {
+export type AccessDashboardReducerState = {
   error: any;
   loading: boolean;
   members: Member[];

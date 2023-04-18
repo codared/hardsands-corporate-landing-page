@@ -1,4 +1,5 @@
 import { Box, Flex, HStack, Stack, Text, VStack } from "@chakra-ui/react";
+import Loader from "modules/account/components/Loader";
 import React from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 
@@ -7,11 +8,13 @@ const AddMemberButton = ({
   subtitle,
   onClick = (e: any) => {},
   width = 100 / 3,
+  loading = false,
 }: {
   title: string;
   subtitle: string;
   onClick?: (e: any) => void;
   width?: number;
+  loading?: boolean;
 }) => {
   return (
     <Box
@@ -22,16 +25,21 @@ const AddMemberButton = ({
       flexGrow={1}
       onClick={onClick}
       cursor={"pointer"}
+      display={"flex"}
+      alignItems={"center"}
     >
-      <Flex>
-        <HStack bg={"brand.300"} p={4}>
-          <AiOutlinePlus size={24} color={"white"} />
-        </HStack>
-        <Box ml={[4]} my={"auto"}>
-          <Text fontWeight={"bold"}>{title}</Text>
-          <Text>{subtitle}</Text>
-        </Box>
-      </Flex>
+      {!loading && (
+        <Flex>
+          <HStack bg={"brand.300"} p={4}>
+            <AiOutlinePlus size={24} color={"white"} />
+          </HStack>
+          <Box ml={[4]} my={"auto"}>
+            <Text fontWeight={"bold"}>{title}</Text>
+            <Text>{subtitle}</Text>
+          </Box>
+        </Flex>
+      )}
+      {loading && <Loader showText={false} h={"100%"} />}
     </Box>
   );
 };

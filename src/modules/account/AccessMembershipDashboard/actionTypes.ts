@@ -1,5 +1,4 @@
 import { CorpCard } from "./types";
-import { Report } from "./Reports/types";
 import { Member } from "./Members/types";
 
 export interface GetMembers {
@@ -29,7 +28,7 @@ export interface GetCorpCards {
 
 export interface GetReports {
   type: "GET_REPORTS";
-  payload: Report;
+  payload: any;
 }
 
 export interface AddActionMember {
@@ -57,7 +56,12 @@ export interface GetDashboardData {
   payload: any;
 }
 
-export type DashboardActionTypes =
+export interface AccessRemoveMember {
+  type: "ACCESS_REMOVE_MEMBER";
+  payload: any;
+}
+
+export type AccessDashboardActionTypes =
   | GetDashboardData
   | GetMembers
   | AddMembers
@@ -68,4 +72,5 @@ export type DashboardActionTypes =
   | AddActionMember
   | RemoveActionMember
   | SetCompanyName
+  | AccessRemoveMember
   | GetLeadsResponse;
