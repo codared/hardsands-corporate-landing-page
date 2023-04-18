@@ -73,3 +73,15 @@ export type SocialCardActionType = {
   twitch?: string;
   telegram?: string;
 };
+
+export type MembershipType = {
+  accessCorpName: string;
+  accessCorpImage: string;
+  userName: string;
+  userEmail: string;
+  userPhone: string;
+  membershipStatus: string;
+  membershipDueDate: string;
+  hits: string;
+  tag: string;
+};
