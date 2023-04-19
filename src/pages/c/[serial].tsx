@@ -6,7 +6,6 @@ import { isServerRequest } from "utils/nextjs";
 import generateVCard from "./vCardGenerator";
 import WithoutLayout from "components/WithoutLayout";
 import nextCookies from "next-cookies";
-import { v5 as uuid } from "uuid";
 
 const CheckCardActivation: NextPage<{ result: any }> = ({ result }) => {
   return (
@@ -34,7 +33,6 @@ export async function getServerSideProps(ctx: NextPageContext) {
   const {
     query: { serial },
     res,
-    req,
   } = ctx;
 
   const redirectTo = (url: string) => {
@@ -76,6 +74,9 @@ export async function getServerSideProps(ctx: NextPageContext) {
     }
 
     if (!!response && !response.isError) {
+      if (response.result.title === "ACCESS CARD") {
+        return { props: { result: response.result } };
+      }
       // redirect to card default action;
       const _default = response.result.default;
 

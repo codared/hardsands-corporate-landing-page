@@ -265,6 +265,7 @@ export default function SocialProfile({
             </>
           )}
         </Flex>
+        <Box h={"180px"} w={"full"} />
       </Box>
     </Center>
   );

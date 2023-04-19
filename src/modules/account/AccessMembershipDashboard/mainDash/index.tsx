@@ -9,7 +9,7 @@ import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { getDashboardDataAction } from "../actions";
 import { getCookie } from "modules/shared/cookie";
 import { HARDSANDS_CORPERATE } from "modules/authentication/constants";
-import { monthClicks } from "./functions";
+import { monthClicks } from "../../functions";
 
 const Bar = (props: BoxProps) => {
   return <Box maxW="35px" borderRadius="8px" {...props} />;
