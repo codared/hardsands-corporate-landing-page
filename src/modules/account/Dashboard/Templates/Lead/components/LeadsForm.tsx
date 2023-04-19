@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Box, Flex, Image, Button, Text } from "@chakra-ui/react";
 import { getCardImageFromSlug } from "modules/products/functions";
-import { getCookie } from "modules/shared/cookie";
-import { HARDSANDS_CORPERATE_NAME } from "modules/authentication/constants";
 import FormInput from "./FormInput";
 import CustomModal from "components/CustomModal";
 
@@ -29,7 +27,7 @@ const LeadsForm = ({ formData, isPreview, togglePreview }: FormProps) => {
   } = formData;
 
   const img = getCardImageFromSlug("epoxy-tag-black");
-  const companyName = getCookie(HARDSANDS_CORPERATE_NAME) || "";
+  const companyName =  "Johnson's and Jonhson's";
   return (
     <>
       <Box bg="#fff" as="form" p={6} border="1px solid #D9D9D9" w={"517px"}>

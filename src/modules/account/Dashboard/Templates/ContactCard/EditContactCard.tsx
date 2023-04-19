@@ -13,6 +13,7 @@ import { getCorpCardsAction } from "../../Devices/actions";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
 import Loader from "modules/account/components/Loader";
 import { DashboardReducerState } from "../../types";
+import ActionsInput from "../components/ActionInput";
 
 const EditContactCard = () => {
   const dispatch = useTypedDispatch();
@@ -48,10 +49,15 @@ const EditContactCard = () => {
             justifyContent={"space-between"}
           >
             <Box>
-              <FormControl mb={8}>
-                <FormLabel htmlFor="image">Upload Image</FormLabel>
-                <Input id="image" type="file" />
-              </FormControl>
+                <ActionsInput
+                  id="image"
+                  type="file"
+                  label="Upload Image"
+                  mb={8}
+                  sx={{"#file-upload-button": {
+                    display: "none"
+                  }}}
+                />
               <Box
                 display={"grid"}
                 gridTemplateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]}
