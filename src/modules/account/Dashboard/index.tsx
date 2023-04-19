@@ -7,7 +7,7 @@ import DeviceWithId from "./Devices/DeviceWithId";
 import Reports from "./Reports";
 import ReportWithId from "./Reports/ReportWithId";
 import Templates from "./Templates";
-import EditEvents from "./Templates/Events/EditEvent";
+import EditEvent from "./Templates/Events/EditEvent";
 import AssignEvent from "./Templates/Events/AssignEvent";
 import EditURL from "./Templates/URL/EditUrl";
 import EditCall from "./Templates/Call/EditCall";
@@ -24,7 +24,30 @@ const Dashboard = ({ route }: { route: string[] }) => {
     case "members":
       return <Members />;
     case "templates":
-      return <Templates routes={route} />;
+     switch (route[2]) {
+       case "social-card-edit":
+         return <EditSocialCard />;
+       case "whatsapp-edit":
+         return <EditWhatsapp />;
+       case "sms-edit":
+         return <EditSMS />;
+       case "email-edit":
+         return <EditEmail />;
+       case "events-edit":
+         return <EditEvent />;
+       case "leads-edit":
+         return <EditLead />;
+       case "bank-account-edit":
+         return <EditBankAccount />;
+       case "contact-card-edit":
+         return <EditContactCard />;
+       case "call-edit":
+         return <EditCall />;
+       case "url-edit":
+         return <EditURL />;
+       default:
+         return <Templates />;
+     }
     case "leads":
       return <Leads />;
     case "devices":
@@ -40,29 +63,6 @@ const Dashboard = ({ route }: { route: string[] }) => {
       } else {
         return <Reports />;
       }
-
-    case "edit-events":
-      return <EditEvents />;
-    case "assign-event":
-      return <AssignEvent />;
-    case "edit-call":
-      return <EditCall />;
-    case "edit-whatsapp":
-      return <EditWhatsapp />;
-    case "edit-bank-account":
-      return <EditBankAccount />;
-    case "edit-sms":
-      return <EditSMS />;
-    case "edit-email":
-      return <EditEmail />;
-    case "edit-url":
-      return <EditURL />;
-    case "edit-lead":
-      return <EditLead />;
-    case "edit-contact-card":
-      return <EditContactCard />;
-    case "edit-social-card":
-      return <EditSocialCard />;
     default:
       return <Home />;
   }

@@ -31,7 +31,7 @@ const HardsandsSelect = ({
         borderColor={"black"}
         onChange={onChange}
         sx={{
-          "&::placeholder": {
+          "&:placeholder": {
             color: "#616161 !important",
           },
         }}
@@ -39,7 +39,7 @@ const HardsandsSelect = ({
         size="md"
         {...rest}
         defaultValue={selectedValue || ""}
-        height="40px"
+        height="54px"
       >
         {options &&
           options.map((option) => (

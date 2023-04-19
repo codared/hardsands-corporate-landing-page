@@ -59,6 +59,7 @@ import {
   YelpIcon,
   YoutubeIcon,
   ZelleIcon,
+  TemplatesIcon,
 } from "assets";
 import {
   AiFillBank,
@@ -123,7 +124,7 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
     id: 3,
     title: "Templates",
     href: `${DASH_ROOT}/templates`,
-    icon: MemberIcon,
+    icon: TemplatesIcon,
     isImg: true,
   },
   {
@@ -148,6 +149,8 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
     isImg: true,
   },
 ];
+
+
 export const ACCESS_DASH_NAV_ITEMS: AccountNavItemsType[] = [
   {
     id: 1,
@@ -165,8 +168,36 @@ export const ACCESS_DASH_NAV_ITEMS: AccountNavItemsType[] = [
   },
   {
     id: 3,
+    title: "Templates",
+    href: `${DASH_ROOT}/templates`,
+    icon: TemplatesIcon,
+    isImg: true,
+  },
+  {
+    id: 4,
     title: "Devices",
     href: `${DASH_ROOT}/devices`,
+    icon: DevicesIcon,
+    isImg: true,
+  },
+  {
+    id: 5,
+    title: "Leads",
+    href: `${DASH_ROOT}/leads`,
+    icon: LeadsIcon,
+    isImg: true,
+  },
+  {
+    id: 6,
+    title: "Reports",
+    href: `${DASH_ROOT}/reports`,
+    icon: ReportIcon,
+    isImg: true,
+  },
+  {
+    id: 4,
+    title: "Support",
+    href: `${DASH_ROOT}/support`,
     icon: DevicesIcon,
     isImg: true,
   },

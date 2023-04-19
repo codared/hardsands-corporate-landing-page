@@ -1,33 +1,36 @@
-import { Input, FormLabel, FormControl, InputProps } from "@chakra-ui/react";
+import {
+  Textarea,
+  FormLabel,
+  FormControl,
+  TextareaProps,
+} from "@chakra-ui/react";
 
-interface ActionsInputProps extends InputProps {
+interface ActionsTextareaProps extends TextareaProps {
   id?: string;
   label?: string;
   type?: string;
   placeholder?: string;
-
 }
-const ActionsInput = ({
+const ActionsTextarea = ({
   id,
   type,
   placeholder,
   label,
   ...rest
-}: ActionsInputProps) => {
+}: ActionsTextareaProps) => {
   return (
     <FormControl>
       {label && <FormLabel htmlFor="phone-number">{label}</FormLabel>}
-      <Input
+      <Textarea
         id={id}
         type={type}
         placeholder={placeholder}
         border="1px solid #000 !important"
         borderRadius={0}
-        height="54px"
         {...rest}
       />
     </FormControl>
   );
 };
 
-export default ActionsInput;
+export default ActionsTextarea;

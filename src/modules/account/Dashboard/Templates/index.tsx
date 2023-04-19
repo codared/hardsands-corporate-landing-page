@@ -1,96 +1,82 @@
 import { Box, Text, Heading } from "@chakra-ui/react";
 import { AppIcons } from "modules/account/constants";
-import { useEffect } from "react";
-import { getCorpCardsAction } from "../Devices/actions";
-import { useTypedDispatch, useTypedSelector } from "redux/store";
-import Loader from "modules/account/components/Loader";
 import TemplateCard from "./components/TemplateCard";
-import { DashboardReducerState } from "../types";
 import { APP_ROUTE } from "modules/authentication/constants";
 
-const Templates = ({ routes }: { routes: string[] }) => {
-  const dispatch = useTypedDispatch();
-  const { loading } = useTypedSelector(
-    (state) => state.dashboard
-  ) as DashboardReducerState;
+const Templates = () => {
 
   const tempCards = [
     {
       id: 1,
       cardName: "Social Card",
       icon: AppIcons.SocialCardIcon,
-      editLink: `${APP_ROUTE.dashboard}/edit-social-card`,
-      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
+      editLink: `${APP_ROUTE.dashboard}/templates/social-card-edit`,
+      assignLink: `${APP_ROUTE.dashboard}/templates`,
     },
     {
       id: 2,
       cardName: "Whatsapp",
       icon: AppIcons.WhatsappOutline,
-      editLink: `${APP_ROUTE.dashboard}/edit-whatsapp`,
-      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
+      editLink: `${APP_ROUTE.dashboard}/templates/whatsapp-edit`,
+      assignLink: `${APP_ROUTE.dashboard}/templates`,
     },
     {
       id: 3,
       cardName: "SMS",
       icon: AppIcons.SmsOutlineIcon,
-      editLink: `${APP_ROUTE.dashboard}/edit-sms`,
-      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
+      editLink: `${APP_ROUTE.dashboard}/templates/sms-edit`,
+      assignLink: `${APP_ROUTE.dashboard}/templates`,
     },
     {
       id: 4,
       cardName: "Email",
       icon: AppIcons.MessageIconOutline,
-      editLink: `${APP_ROUTE.dashboard}/edit-email`,
-      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
+      editLink: `${APP_ROUTE.dashboard}/templates/email-edit`,
+      assignLink: `${APP_ROUTE.dashboard}/templates`,
     },
     {
       id: 5,
       cardName: "Events",
       icon: AppIcons.CalendarOutlineIcon,
-      editLink: `${APP_ROUTE.dashboard}/edit-events`,
-      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
+      editLink: `${APP_ROUTE.dashboard}/templates/events-edit`,
+      assignLink: `${APP_ROUTE.dashboard}/templates`,
     },
     {
       id: 6,
       cardName: "Leads",
       icon: AppIcons.LeadsOutlineIcon,
-      editLink: `${APP_ROUTE.dashboard}/edit-lead`,
-      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
+      editLink: `${APP_ROUTE.dashboard}/templates/leads-edit`,
+      assignLink: `${APP_ROUTE.dashboard}/templates`,
     },
     {
       id: 7,
       cardName: "Bank Account",
       icon: AppIcons.BankOutlineIcon,
-      editLink: `${APP_ROUTE.dashboard}/edit-bank-account`,
-      assignLink: `${APP_ROUTE.dashboard}/assign-event`,
+      editLink: `${APP_ROUTE.dashboard}/templates/bank-account-edit`,
+      assignLink: `${APP_ROUTE.dashboard}/templates`,
     },
     {
       id: 8,
       cardName: "Contact Card",
       icon: AppIcons.ContactCardOutlineIcon,
-      editLink: `${APP_ROUTE.dashboard}/edit-contact-card`,
-      assignLink: `${APP_ROUTE.dashboard}/assign-contact-card`,
+      editLink: `${APP_ROUTE.dashboard}/templates/contact-card-edit`,
+      assignLink: `${APP_ROUTE.dashboard}/templates`,
     },
     {
       id: 9,
       cardName: "Call",
       icon: AppIcons.CallOutlineIcon,
-      editLink: `${APP_ROUTE.dashboard}/edit-call`,
-      assignLink: `${APP_ROUTE.dashboard}/assign-call`,
+      editLink: `${APP_ROUTE.dashboard}/templates/call-edit`,
+      assignLink: `${APP_ROUTE.dashboard}/templates`,
     },
     {
       id: 10,
       cardName: "URL",
       icon: AppIcons.LinkOutlineIcon,
-      editLink: `${APP_ROUTE.dashboard}/edit-url`,
+      editLink: `${APP_ROUTE.dashboard}/templates/url-edit`,
       assignLink: `${APP_ROUTE.dashboard}/assign-url`,
     },
   ];
-
-  useEffect(() => {
-    dispatch(getCorpCardsAction());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <Box>
@@ -101,7 +87,6 @@ const Templates = ({ routes }: { routes: string[] }) => {
       </Text>
       <Box mt={16} bg="#fff" py={8} px={10}>
         <Heading fontSize={"1.5rem"}>Modify Templates</Heading>
-  
           <Box
             display="grid"
             gridTemplateColumns={[

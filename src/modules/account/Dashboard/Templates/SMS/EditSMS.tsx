@@ -2,17 +2,15 @@ import {
   Box,
   Text,
   Heading,
-  Input,
-  FormControl,
-  FormLabel,
   Button,
-  Textarea,
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { getCorpCardsAction } from "../../Devices/actions";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
-import Loader from "modules/account/components/Loader";
 import { DashboardReducerState } from "../../types";
+import ActionsInput from "../components/ActionInput";
+import ActionsTextarea from "../components/ActionTextarea";
+import HardsandsSelect from "components/HardsandsSelect";
 
 const EditSMS = () => {
   const dispatch = useTypedDispatch();
@@ -48,25 +46,29 @@ const EditSMS = () => {
             justifyContent={"space-between"}
           >
             <Box>
-              <FormControl mb={8} w={["100%", "40%"]}>
-                <FormLabel htmlFor="phone-code">Phone Code</FormLabel>
-                <Input id="phone-code" type="text" placeholder="Enter Event" />
-              </FormControl>
-              <FormControl mb={8}>
-                <FormLabel htmlFor="phone-number">Phone Number</FormLabel>
-                <Input
-                  id="phone-number"
-                  type="text"
-                  placeholder="Enter Phone Number"
-                />
-                <Text mt={4}>
-                  Please select phone code before number E.g +1
-                </Text>
-              </FormControl>
-              <FormControl mb={8}>
-                <FormLabel htmlFor="message">Text</FormLabel>
-                <Textarea id="text" placeholder="Enter Text" />
-              </FormControl>
+              <HardsandsSelect
+                id="phone-code"
+                placeholder="Enter Event"
+                label="Phone Code"
+                mb={8}
+                w={["100%", "40%"]}
+                options={["+233", "+234"]}
+              />
+              <ActionsInput
+                id="phone-number"
+                type="text"
+                placeholder="Enter Phone Number"
+                label="Phone Number"
+              />
+              <Text mt={4} mb={8} color="#616161">
+                Please select phone code before number E.g +1
+              </Text>
+              <ActionsTextarea
+                label="Text"
+                id="text"
+                placeholder="Enter Text"
+                mb={8}
+              />
             </Box>
 
             <Button bg="brand.200" width={"100%"} mt={1}>

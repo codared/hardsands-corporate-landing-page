@@ -8,6 +8,9 @@ import {
   Button,
   Textarea,
 } from "@chakra-ui/react";
+import ActionsInput from "../components/ActionInput";
+import HardsandsSelect from "components/HardsandsSelect";
+
 const EditCall = () => {
   return (
     <Box>
@@ -31,11 +34,25 @@ const EditCall = () => {
             flexDir={"column"}
             justifyContent={"space-between"}
           >
-            <FormControl mb={8}>
-              <FormLabel htmlFor="urk">URL</FormLabel>
-              <Input id="url" type="text" placeholder="Enter URL" />
-            </FormControl>
-
+            <Box>
+              <HardsandsSelect
+                id="phone-number"
+                label="Phone Code"
+                placeholder="Enter Phone Code"
+                options={["+233", "+234"]}
+                w={["full", "full", "40%"]}
+                mb={8}
+              />
+              <ActionsInput
+                label="Phone Number"
+                id="phone-number"
+                type="text"
+                placeholder="Enter Phone Number"
+              />
+              <Text mt={3} mb={8} color="#616161">
+                Please select phone code before number E.g +1
+              </Text>
+            </Box>
             <Button bg="brand.200" width={"100%"} mt={1}>
               Save and Assign
             </Button>

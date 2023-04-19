@@ -39,7 +39,6 @@ const EditEvent = () => {
                 type="text"
                 label="Event"
                 placeholder="Enter Event"
-                border={"1px solid #000"}
               />
               <ActionsInput
                 id="event-time"
@@ -52,7 +51,6 @@ const EditEvent = () => {
                 type="date"
                 label="Date"
                 placeholder="Enter Date"
-                border={"1px solid #000"}
               />
               <HardsandsSelect
                 label="Country"
