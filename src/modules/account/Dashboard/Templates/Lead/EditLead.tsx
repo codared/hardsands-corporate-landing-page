@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { Box, Text, Heading, Button, Flex } from "@chakra-ui/react";
 import LeadsForm from "./components/LeadsForm";
 import CustomModal from "components/CustomModal";
@@ -34,6 +34,12 @@ const EditLead = () => {
     setText(e.target.value);
   };
 
+  const submitForm = (e: FormEvent) => {
+    e.preventDefault();
+
+    setShowSaveFormModal(true);
+  };
+
   const formData = {
     firstName,
     lastName,
@@ -49,6 +55,11 @@ const EditLead = () => {
 
   const toggleModal = () => {
     setShowPreview((prev) => !prev);
+  };
+
+  const saveForm = () => {
+    setShowPreview(false);
+    setShowSaveFormModal(false);
   };
 
   return (
@@ -90,11 +101,14 @@ const EditLead = () => {
               formData={formData}
               isPreview={showPreview}
               togglePreview={toggleModal}
+              submitForm={submitForm}
             />
           ) : (
-            <Box>
+            <Box w={"383px"} p="1.5rem 2rem">
               <FormInput label="Form Name" />
-              <Button>Save</Button>
+              <Button bg="brand.300" color="#fff" w="full" onClick={saveForm}>
+                Save
+              </Button>
             </Box>
           )}
         </CustomModal>

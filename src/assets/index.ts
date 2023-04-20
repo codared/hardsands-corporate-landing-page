@@ -14,6 +14,7 @@ export { default as CalendlyIcon } from "./icons/calendly.png";
 export { default as CallIcon } from "./icons/call.png";
 export { default as CalendarOutlineIcon } from "./icons/calendar-outline-icon.svg";
 export { default as CallOutlineIcon } from "./icons/call-outline-icon.svg";
+export { default as CameraIcon } from "./icons/camera-icon.svg";
 export { default as CashAppIcon } from "./icons/cash-app.png";
 export { default as ClubhouseIcon } from "./icons/clubhouse.png";
 export { default as ContactCardIcon } from "./icons/contact-card.png";

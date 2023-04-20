@@ -1,12 +1,5 @@
-import {
-  Box,
-  Text,
-  Heading,
-  Input,
-  FormControl,
-  FormLabel,
-  Button,
-} from "@chakra-ui/react";
+import { Box, Text, Heading, Button } from "@chakra-ui/react";
+import ActionsInput from "../components/ActionInput";
 
 const EditBankAccount = () => {
   return (
@@ -21,40 +14,43 @@ const EditBankAccount = () => {
           Bank Account Action
         </Heading>
         <Box bg="#fff">
-        
-            <Box
-              as="form"
-              mt={8}
-              p={14}
-              minH={"75vh"}
-              pos="relative"
-              display={"flex"}
-              flexDir={"column"}
-              justifyContent={"space-between"}
-            >
-              <Box>
-                <FormControl mb={8} w={["100%", "40%"]}>
-                  <FormLabel htmlFor="name">Name</FormLabel>
-                  <Input id="name" type="text" placeholder="Enter Name" />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="account-number">Account Number</FormLabel>
-                  <Input
-                    id="account-number"
-                    type="text"
-                    placeholder="Enter Account Number"
-                  />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="bank-name">Bank Name</FormLabel>
-                  <Input type="text" id="bank-name" placeholder="Enter Bank Name" />
-                </FormControl>
-              </Box>
+          <Box
+            as="form"
+            mt={8}
+            p={14}
+            minH={"75vh"}
+            pos="relative"
+            display={"flex"}
+            flexDir={"column"}
+            justifyContent={"space-between"}
+          >
+            <Box>
+              <ActionsInput
+                id="name"
+                label="Name"
+                placeholder="Enter Name"
+                mb={8}
+              />
 
-              <Button bg="brand.200" width={"100%"} mt={1}>
-                Save and Assign
-              </Button>
+              <ActionsInput
+                id="account-number"
+                label="Account Number"
+                placeholder="Enter Account Number"
+                mb={8}
+              />
+
+              <ActionsInput
+                id="bank-name"
+                label="Bank Name"
+                placeholder="Enter Bank Name"
+                mb={8}
+              />
             </Box>
+
+            <Button bg="brand.200" width={"100%"} mt={1}>
+              Save and Assign
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>

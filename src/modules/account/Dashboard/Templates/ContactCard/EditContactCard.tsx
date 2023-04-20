@@ -8,14 +8,23 @@ import {
   Button,
   Textarea,
 } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { getCorpCardsAction } from "../../Devices/actions";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
 import Loader from "modules/account/components/Loader";
 import { DashboardReducerState } from "../../types";
 import ActionsInput from "../components/ActionInput";
+import HardsandsSelect from "components/HardsandsSelect";
 
 const EditContactCard = () => {
+  const uploadRef = useRef<HTMLInputElement>(null);
+
+  const [selectedFile, setSelectedFile] = useState<any>();
+
+  const handleSelectedFile = (e: any) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
   const dispatch = useTypedDispatch();
   const { loading } = useTypedSelector(
     (state) => state.dashboard
@@ -25,6 +34,7 @@ const EditContactCard = () => {
     dispatch(getCorpCardsAction());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
 
   return (
     <Box>
@@ -49,104 +59,129 @@ const EditContactCard = () => {
             justifyContent={"space-between"}
           >
             <Box>
-                <ActionsInput
+              <FormControl mb={8}>
+                <FormLabel>Upload Image</FormLabel>
+                <Input
                   id="image"
                   type="file"
-                  label="Upload Image"
-                  mb={8}
-                  sx={{"#file-upload-button": {
-                    display: "none"
-                  }}}
+                  hidden
+                  ref={uploadRef}
+                  onChange={handleSelectedFile}
+                  accept=".jpg,.jpeg,.png,.svg"
                 />
+                <Box
+                  height={"72px"}
+                  border={"1px solid #000"}
+                  display="flex"
+                  alignItems={"center"}
+                  justifyContent={"space-between"}
+                  px={4}
+                >
+                  <Button
+                    color="#0038FF"
+                    fontWeight={300}
+                    bg="#d9d9d971"
+                    borderRadius={"1rem"}
+                    sx={{
+                      "&:hover": {
+                        color: "#0038FF",
+                      },
+                    }}
+                    onClick={() => uploadRef.current?.click()}
+                  >
+                    {selectedFile ? "Replace" : "Choose"} File
+                  </Button>
+                  <Text>
+                    {selectedFile ? selectedFile?.name : "no file selected"}
+                  </Text>
+                </Box>
+              </FormControl>
+
               <Box
                 display={"grid"}
                 gridTemplateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)"]}
                 columnGap={16}
               >
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="image">Title</FormLabel>
-                  <Input id="title" type="text" placeholder="Enter Title" />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="name">Name</FormLabel>
-                  <Input id="name" type="text" placeholder="Enter Name" />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="company">Company</FormLabel>
-                  <Input id="company" type="text" placeholder="Enter Company" />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="position">Position</FormLabel>
-                  <Input
-                    id="position"
-                    type="text"
-                    placeholder="Enter Position"
-                  />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="personal-phone">Personal Phone</FormLabel>
-                  <Input id="personal-phone" type="tel" placeholder="Enter" />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="alternative-phone">
-                    Alternative Phone
-                  </FormLabel>
-                  <Input
-                    id="image"
-                    type="tel"
-                    placeholder="Enter Alternative Phone"
-                  />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="work-email">
-                    Personal and Work Email
-                  </FormLabel>
-                  <Input
-                    id="work-email"
-                    type="text"
-                    placeholder="Enter Work Email"
-                  />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="website-url">Website URL</FormLabel>
-                  <Input
-                    id="website-url"
-                    type="text"
-                    placeholder="Enter Website url"
-                  />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="payment-link">Payment Link</FormLabel>
-                  <Input
-                    id="payment-link"
-                    type="text"
-                    placeholder="Enter Payment Link"
-                  />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="home-address">Home Address</FormLabel>
-                  <Input
-                    id="home-address"
-                    type="text"
-                    placeholder="Enter Home Address"
-                  />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="home-country">Home Country</FormLabel>
-                  <Input
-                    id="home-country"
-                    type="text"
-                    placeholder="Enter Home Country"
-                  />
-                </FormControl>
-                <FormControl mb={8}>
-                  <FormLabel htmlFor="home-state">Home State</FormLabel>
-                  <Input
-                    id="home-state"
-                    type="text"
-                    placeholder="Enter Home State"
-                  />
-                </FormControl>
+                <ActionsInput
+                  id="title"
+                  label="Title"
+                  type="text"
+                  placeholder="Enter Title"
+                  mb={8}
+                />
+                <ActionsInput
+                  id="name"
+                  label="Name"
+                  type="text"
+                  placeholder="Enter Name"
+                  mb={8}
+                />
+                <ActionsInput
+                  id="company"
+                  label="Company"
+                  type="text"
+                  placeholder="Enter Company"
+                  mb={8}
+                />
+                <ActionsInput
+                  label="Position"
+                  id="position"
+                  type="text"
+                  placeholder="Enter Position"
+                  mb={8}
+                />
+                <ActionsInput
+                  label="Personal Phone"
+                  id="personal-phone"
+                  type="text"
+                  placeholder="Enter Personal Phone"
+                  mb={8}
+                />
+                <ActionsInput
+                  label="Alternative Phone"
+                  id="alt-phone"
+                  type="text"
+                  placeholder="Enter Alternative Phone"
+                  mb={8}
+                />
+                <ActionsInput
+                  label="Personal And Work Email"
+                  id="work-email"
+                  type="text"
+                  placeholder="Enter Work Email"
+                  mb={8}
+                />
+                <ActionsInput
+                  label="Webiste URL"
+                  id="website-url"
+                  type="text"
+                  placeholder="Enter Website URL"
+                  mb={8}
+                />
+                <ActionsInput
+                  label="Payment Link"
+                  id="payment-link"
+                  type="text"
+                  placeholder="Enter Payment Link"
+                  mb={8}
+                />
+                <ActionsInput
+                  label="Home Address"
+                  id="home-address"
+                  type="text"
+                  placeholder="Enter Home Address"
+                  mb={8}
+                />
+                <HardsandsSelect
+                  label="Home Country"
+                  options={["Ghana", "Nigeria"]}
+                  mb={8}
+                />
+                <HardsandsSelect
+                  label="Home State"
+                  options={["Lagos", "Abuja"]}
+                  mb={8}
+                />
               </Box>
             </Box>
 

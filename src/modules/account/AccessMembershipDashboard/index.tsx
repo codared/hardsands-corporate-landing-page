@@ -49,7 +49,7 @@ const AccessMembershipDashboard = ({ route }: { route: string[] }) => {
       }
     case "leads":
       return <Leads />;
-    case "report":
+    case "reports":
       return <Reports />;
 
     default:

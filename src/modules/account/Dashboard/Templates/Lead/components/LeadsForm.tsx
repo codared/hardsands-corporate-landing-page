@@ -1,18 +1,19 @@
-import { useState } from "react";
-import { Box, Flex, Image, Button, Text } from "@chakra-ui/react";
+import { useState, useRef, FormEvent } from "react";
+import { Box, Flex, Image, Button, Text, Input } from "@chakra-ui/react";
 import { getCardImageFromSlug } from "modules/products/functions";
 import FormInput from "./FormInput";
-import CustomModal from "components/CustomModal";
+import { CameraIcon, EditTextIcon } from "assets/index";
+
 
 interface FormProps {
   formData: any;
   firstName?: string;
   isPreview?: boolean;
   togglePreview: () => void;
+  submitForm?: (e: FormEvent) => void;
 }
 
-const LeadsForm = ({ formData, isPreview, togglePreview }: FormProps) => {
-
+const LeadsForm = ({ formData, isPreview, togglePreview, submitForm }: FormProps) => {
   const {
     firstName,
     lastName,
@@ -27,24 +28,54 @@ const LeadsForm = ({ formData, isPreview, togglePreview }: FormProps) => {
   } = formData;
 
   const img = getCardImageFromSlug("epoxy-tag-black");
-  const companyName =  "Johnson's and Jonhson's";
+  const companyName = "Johnson's and Jonhson's";
+  const [companyLogo, setCompanyLogo] = useState(img);
+  const uploadLogoRef = useRef<HTMLInputElement>(null);
+
+  const handleCompanyLogo = (e: any) => {
+    setCompanyLogo(e.target.files[0]);
+  };
+
+  console.log(companyLogo);
+
   return (
     <>
       <Box bg="#fff" as="form" p={6} border="1px solid #D9D9D9" w={"517px"}>
         <Flex alignItems={"center"} mb={16}>
-          <Image
-            rounded={"full"}
-            width={"85px"}
-            h={"85px"}
-            objectFit={"cover"}
-            src={img}
-            alt={companyName}
-            mr={6}
-          />
-          <Box h={4} />
-          <Text fontSize={20} fontWeight={"bolder"} textAlign={"center"}>
+          <Box pos="relative" mr={6}>
+            <Image
+              rounded={"full"}
+              width={"85px"}
+              h={"85px"}
+              objectFit={"cover"}
+              src={img}
+              alt={companyName}
+            />
+            {!isPreview && (
+              <Image
+                src={CameraIcon.src}
+                alt="Upload company logo"
+                pos="absolute"
+                right={0}
+                bottom={0}
+                onClick={() => uploadLogoRef.current?.click()}
+              />
+            )}
+
+            <Input
+              type="file"
+              onChange={handleCompanyLogo}
+              alt="upload company logo"
+              hidden
+              ref={uploadLogoRef}
+              accept=".jpg,.jpeg,.png,.svg"
+            />
+          </Box>
+
+          <Text fontSize={20} fontWeight={"bolder"} textAlign={"center"} mr={2}>
             {companyName}
           </Text>
+          {!isPreview && <Image src={EditTextIcon.src} alt="Edit company name" />}
         </Flex>
         <Text fontSize={"0.875rem"} fontWeight="500">
           Full Name
@@ -94,7 +125,7 @@ const LeadsForm = ({ formData, isPreview, togglePreview }: FormProps) => {
           readOnly={isPreview}
         />
         {isPreview ? (
-          <Button bg="brand.300" width={"100%"} mt={5} color="#fff">
+          <Button bg="brand.300" width={"100%"} mt={5} color="#fff" onClick={submitForm}>
             Submit
           </Button>
         ) : (

@@ -10,10 +10,18 @@ import {
 } from "@chakra-ui/react";
 import ActionsInput from "../components/ActionInput";
 import HardsandsSelect from "components/HardsandsSelect";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useRef } from "react";
 
 const EditEvent = () => {
   const [country, setCountry] = useState("");
+
+   const uploadRef = useRef<HTMLInputElement>(null);
+
+   const [selectedFile, setSelectedFile] = useState<any>();
+
+   const handleSelectedFile = (e: any) => {
+     setSelectedFile(e.target.files[0]);
+   };
   return (
     <Box>
       <Heading>Templates</Heading>{" "}
@@ -85,8 +93,41 @@ const EditEvent = () => {
             </FormControl>
 
             <FormControl mb={10}>
-              <FormLabel htmlFor="event-image">Upload Image</FormLabel>
-              <ActionsInput id="event-image" type="file" />
+              <FormLabel>Upload Image</FormLabel>
+              <Input
+                id="image"
+                type="file"
+                hidden
+                ref={uploadRef}
+                onChange={handleSelectedFile}
+                accept=".jpg,.jpeg,.png,.svg"
+              />
+              <Box
+                height={"72px"}
+                border={"1px solid #000"}
+                display="flex"
+                alignItems={"center"}
+                justifyContent={"space-between"}
+                px={4}
+              >
+                <Button
+                  color="#0038FF"
+                  fontWeight={300}
+                  bg="#d9d9d971"
+                  borderRadius={"1rem"}
+                  sx={{
+                    "&:hover": {
+                      color: "#0038FF",
+                    },
+                  }}
+                  onClick={() => uploadRef.current?.click()}
+                >
+                  {selectedFile ? "Replace" : "Choose"} File
+                </Button>
+                <Text>
+                  {selectedFile ? selectedFile?.name : "no file selected"}
+                </Text>
+              </Box>
             </FormControl>
             <Button bg="brand.200" width={"100%"}>
               Save and Assign
