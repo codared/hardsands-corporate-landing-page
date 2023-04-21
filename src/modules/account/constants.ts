@@ -148,6 +148,13 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
     icon: ReportsIcon,
     isImg: true,
   },
+  {
+    id:7,
+    title: "Support",
+    href: `${DASH_ROOT}/support`,
+    icon: ReportsIcon,
+    isImg: true,
+  },
 ];
 
 

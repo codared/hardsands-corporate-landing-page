@@ -26,7 +26,7 @@ interface CustomInputProps extends InputProps {
 const CustomInput = forwardRef(
   (
     {
-      placeholder = "Input",
+      placeholder,
       onChange,
       value,
       name,

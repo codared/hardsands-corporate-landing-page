@@ -15,6 +15,7 @@ import EditContactCard from "../Dashboard/Templates/ContactCard/EditContactCard"
 import EditCall from "../Dashboard/Templates/Call/EditCall";
 import Leads from "../Dashboard/Leads";
 import Reports from "../Dashboard/Reports";
+import Support from "../Dashboard/Support";
 
 const AccessMembershipDashboard = ({ route }: { route: string[] }) => {
   switch (route[1]) {
@@ -51,7 +52,8 @@ const AccessMembershipDashboard = ({ route }: { route: string[] }) => {
       return <Leads />;
     case "reports":
       return <Reports />;
-
+    case "support":
+      return <Support />;
     default:
       return <Home />;
   }
