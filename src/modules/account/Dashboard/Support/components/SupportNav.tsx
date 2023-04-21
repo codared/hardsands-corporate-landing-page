@@ -22,7 +22,7 @@ const SupportNav = () => {
           bg={corpName[2] === "faq" ? "brand.300" : "#d9d9d917"}
           border={corpName[2] === "faq" ? "none" : "1px solid #d9d9d9"}
           color={corpName[2] === "faq" ? "#fff" : "#000"}
-          fontWeight={500}
+          fontWeight={"bold"}
           w="full"
           maxW="204px"
           textAlign="center"
@@ -37,7 +37,7 @@ const SupportNav = () => {
           bg={corpName[2] === "report-issue" ? "brand.300" : "#d9d9d917"}
           border={corpName[2] === "report-issue" ? "none" : "1px solid #d9d9d9"}
           color={corpName[2] === "report-issue" ? "#fff" : "#000"}
-          fontWeight={500}
+          fontWeight={"bold"}
           w="full"
           maxW="204px"
           textAlign="center"

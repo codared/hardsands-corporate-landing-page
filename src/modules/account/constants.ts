@@ -152,7 +152,7 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
     id:7,
     title: "Support",
     href: `${DASH_ROOT}/support`,
-    icon: ReportsIcon,
+    icon: SupportIcon,
     isImg: true,
   },
 ];
@@ -205,7 +205,7 @@ export const ACCESS_DASH_NAV_ITEMS: AccountNavItemsType[] = [
     id: 4,
     title: "Support",
     href: `${DASH_ROOT}/support/faq`,
-    icon: DevicesIcon,
+    icon: SupportIcon,
     isImg: true,
   },
 ];

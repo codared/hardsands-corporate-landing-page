@@ -46,7 +46,7 @@ export { default as VenmoIcon } from "./icons/venmo.png";
 export { default as DeezerIcon } from "./icons/deezer.png";
 export { default as CheckIcon } from "./icons/check.png";
 export { default as PayStackIcon } from "./icons/paystack.svg";
-export { default as SupportIcon } from "./icons/support.svg";
+export { default as SupportIcon } from "./icons/support-icon.svg";
 export { default as ReportIcon } from "./icons/report.svg";
 export { default as MailBlockIcon } from "./icons/mail-block-icon.svg";
 export { default as MessagesIcon } from "./icons/messages.svg";
