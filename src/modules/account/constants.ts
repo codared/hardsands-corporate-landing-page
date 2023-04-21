@@ -203,7 +203,7 @@ export const ACCESS_DASH_NAV_ITEMS: AccountNavItemsType[] = [
   },
   {
     id: 4,
-    title: "Suport",
+    title: "Support",
     href: `${DASH_ROOT}/support/faq`,
     icon: DevicesIcon,
     isImg: true,
