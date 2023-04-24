@@ -79,6 +79,12 @@ const AddAction = ({
         <CustomDrawer onClose={onClose} isOpen={isOpen} title={"Add Actions"}>
           <>
             {actions.map((action: ActionsType) => {
+              // We dont want to show the lead form in the list
+              if (
+                action.actionCategory === "LEAD_FORM" ||
+                action.type === "FORM"
+              )
+                return;
               return (
                 <ActionItem
                   key={action.fieldTitle}
