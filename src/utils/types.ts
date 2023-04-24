@@ -60,6 +60,8 @@ export type ActionsType = {
   fields?: ActionsFormType[];
   isDefault?: boolean;
   requiresCountryCode?: string;
+  type?: string;
+  actionCategory?: "NORMAL" | "LEAD_FORM";
 };
 
 export type ActionsFormType = {
