@@ -205,6 +205,7 @@ const EditFormScreen = ({
             <Flex w={"100%"} justifyContent={"center"}>
               <SocialProfile
                 editMode={true}
+                imageLoading={imageLoading}
                 selectedAction={selectedAction}
                 handleChange={handleChange}
                 fields={formState}
