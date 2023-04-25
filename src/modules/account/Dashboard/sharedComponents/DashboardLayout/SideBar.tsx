@@ -75,22 +75,21 @@ const DashSidebarContent = (props: any) => {
         bg: "gray.800",
       }}
       border
-      color="inherit"
       borderRightWidth="1px"
       w="80"
       {...props}
+      display="flex"
+      flexDirection="column"
+      fontSize="sm"
+      color="gray.600"
+      aria-label="Main Navigation"
+      justifyContent={"space-between"}
     >
-      <Flex px="4" py="5" justifyContent={"center"} alignItems="center">
-        <HardsandsAppLogo />
-      </Flex>
-      <Flex
-        direction="column"
-        as="nav"
-        fontSize="sm"
-        color="gray.600"
-        aria-label="Main Navigation"
-        h="95%"
-      >
+      <Box>
+        <Flex px="4" py="5" justifyContent={"center"} alignItems="center">
+          <HardsandsAppLogo />
+        </Flex>
+
         <Flex
           direction={"column"}
           justifyContent={"center"}
@@ -158,16 +157,16 @@ const DashSidebarContent = (props: any) => {
             );
           })}
         </Box>
-        <Box>
-          <NavItem
-            onClick={handleSidebarLogout}
-            color="red.300"
-            icon={IoLogOutOutline}
-          >
-            Logout
-          </NavItem>
-        </Box>
-      </Flex>
+      </Box>
+      <Box>
+        <NavItem
+          onClick={handleSidebarLogout}
+          color="red.300"
+          icon={IoLogOutOutline}
+        >
+          Logout
+        </NavItem>
+      </Box>
     </Box>
   );
 };
