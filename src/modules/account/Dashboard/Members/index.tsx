@@ -164,11 +164,11 @@ const Members = () => {
       <Flex mt="8" flexDirection={["column", "column", "row"]} gap="8">
         <AddMemberButton
           title={"Add Manually"}
-          subtitle={"Import your member sheet"}
+          subtitle={"Add using members credentials"}
           onClick={() => {
             setDrawerFormState({
               name: "Add Manually",
-              subTitle: "Import your member sheet",
+              subTitle: "Add using members credentials",
               form: <CreateMemberForm />,
             });
             createDrawer.onOpen();
