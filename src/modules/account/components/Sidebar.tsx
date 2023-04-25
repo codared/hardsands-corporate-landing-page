@@ -100,7 +100,7 @@ const SidebarContent = (props: any) => {
             color="red.300"
             icon={IoLogOutOutline}
           >
-            Logout
+            
           </NavItem>
         </Box>
       </Flex>
