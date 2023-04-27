@@ -134,9 +134,21 @@ const CreateMemberForm = ({
           placeholder="Phone"
           name="phone"
           type="text"
-          value={values.phone}
+          maxLength={11}
+          value={values.phone.trim()}
           isRequired
           onChange={handleChange}
+          onKeyDown={(e: any) => {
+            if (
+              e.key === " " ||
+              (!Number(e.key) &&
+                e.key !== "Backspace" &&
+                e.key !== "ArrowLeft" &&
+                e.key !== "ArrowRight")
+            ) {
+              e.preventDefault();
+            }
+          }}
         />
         <Box mb={4}>
           <FormLabel>Select Membership Tag</FormLabel>
