@@ -78,12 +78,12 @@ const DashSidebarContent = (props: any) => {
       borderRightWidth="1px"
       w="80"
       {...props}
-      display="flex"
-      flexDirection="column"
+      display={"flex"}
+      flexDir={"column"}
+      justifyContent={"space-between"}
       fontSize="sm"
       color="gray.600"
       aria-label="Main Navigation"
-      justifyContent={"space-between"}
     >
       <Box>
         <Flex px="4" py="5" justifyContent={"center"} alignItems="center">
