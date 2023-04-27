@@ -142,10 +142,12 @@ const CreateMemberForm = ({
             if (
               e.key === " " ||
               (!Number(e.key) &&
+                e.key !== "0" &&
                 e.key !== "Backspace" &&
                 e.key !== "ArrowLeft" &&
                 e.key !== "ArrowRight")
             ) {
+              // if the entered key is not an interger, not a zero, backspace or arrow key
               e.preventDefault();
             }
           }}
