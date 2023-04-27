@@ -134,9 +134,23 @@ const CreateMemberForm = ({
           placeholder="Phone"
           name="phone"
           type="text"
-          value={values.phone}
+          maxLength={11}
+          value={values.phone.trim()}
           isRequired
           onChange={handleChange}
+          onKeyDown={(e: any) => {
+            if (
+              e.key === " " ||
+              (!Number(e.key) &&
+                e.key !== "0" &&
+                e.key !== "Backspace" &&
+                e.key !== "ArrowLeft" &&
+                e.key !== "ArrowRight")
+            ) {
+              // if the entered key is not an interger, not a zero, backspace or arrow key
+              e.preventDefault();
+            }
+          }}
         />
         <Box mb={4}>
           <FormLabel>Select Membership Tag</FormLabel>
