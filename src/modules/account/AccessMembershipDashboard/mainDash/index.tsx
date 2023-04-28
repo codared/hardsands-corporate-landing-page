@@ -10,6 +10,7 @@ import { getDashboardDataAction } from "../actions";
 import { getCookie } from "modules/shared/cookie";
 import { HARDSANDS_CORPERATE } from "modules/authentication/constants";
 import { monthClicks } from "../../functions";
+import { FingerprintIcon } from "assets/index";
 
 const Bar = (props: BoxProps) => {
   return <Box maxW="35px" borderRadius="8px" {...props} />;
@@ -24,6 +25,8 @@ const Home = () => {
   const { dashboard, loading } = useTypedSelector(
     (state) => state.dashboard
   ) as any;
+
+  console.log(dashboard);
 
   useEffect(() => {
     dispatch(getDashboardDataAction());
@@ -49,20 +52,28 @@ const Home = () => {
         gap="8"
         mt="8"
       >
-        <StatsCard name="Active Cards" number={dashboard?.activeCards} />
-        <StatsCard name="Inactive Cards" number={dashboard?.inactiveCards} />
+        <StatsCard name="Total Clicks" number={dashboard?.activeCards} />
         <StatsCard
-          bgColor="#df9f71"
-          color="#fff"
           showMenu={false}
           name="Members"
           number={dashboard?.members}
         />
+        <StatsCard
+          name="Card Hits"
+          bgColor="#df9f71"
+          color="#fff"
+          number={dashboard?.inactiveCards}
+        />
       </Box>
 
-      <Box mt="8" display={"grid"} gridTemplateColumns={["none","65% 35%"]} gap={6}>
+      <Box
+        mt="8"
+        display={"grid"}
+        gridTemplateColumns={["none", "65% 35%"]}
+        gap={6}
+      >
         <Card bgColor="#fff" p="8">
-          <Text fontSize={"14px"}>Total Clicks</Text>
+          <Text fontSize={"14px"}>Monthly Hits</Text>
           <Heading fontSize="2xl">{dashboard?.totalClicks}</Heading>
           <Box
             display="flex"
@@ -81,7 +92,7 @@ const Home = () => {
           </Box>
         </Card>
         <Card w="100%">
-          <Text>Top Customer</Text>
+          <Text>Top Member</Text>
           <HStack justifyContent="center">
             <Avatar src="" w="45" h="45" />
             <Text>{dashboard?.topPerformer?.fullName}</Text>
@@ -120,98 +131,41 @@ const Home = () => {
 
       <Box
         display="grid"
-        gridTemplateColumns={"repeat(2, 1fr)"}
+        gridTemplateColumns={"repeat(3, 1fr)"}
         gap={6}
         mt={6}
         h="350px"
         pos={"relative"}
       >
         <Card p={8} maxH={"350px"} overflowY={"scroll"}>
-          <Heading fontSize={"xl"}>Your Activity</Heading>
-          <Box as="ul" mt={6}>
-            <Box
-              as="li"
-              display={"flex"}
-              justifyContent="space-between"
-              alignItems={"center"}
-              my={3}
-            >
-              <Box display={"flex"} alignItems="center" gap={3}>
-                <Image
-                  src={AppIcons.DashWhatsAppIcon.src}
-                  alt={"whats"}
-                  height={50}
-                  width={50}
-                />
-                <Box>
-                  <Heading fontSize={18} mb={1}>
-                    WhatsApp
-                  </Heading>
-                  <Text fontSize={14} color="#757575">
-                    Kennedy John
-                  </Text>
-                </Box>
-              </Box>
-              <Text fontSize={14} color="#757575">
-                Today 10:30
-              </Text>
-            </Box>
-            <Box
-              as="li"
-              display={"flex"}
-              justifyContent="space-between"
-              alignItems={"center"}
-              my={3}
-            >
-              <Box display={"flex"} alignItems="center" gap={3}>
-                <Image
-                  src={AppIcons.BankIconSVG.src}
-                  alt={"whats"}
-                  height={50}
-                  width={50}
-                />
-                <Box>
-                  <Heading fontSize={18} mb={1}>
-                    Bank Details
-                  </Heading>
-                  <Text fontSize={14} color="#757575">
-                    Kennedy John
-                  </Text>
-                </Box>
-              </Box>
-              <Text fontSize={14} color="#757575">
-                Today 10:30
-              </Text>
-            </Box>
-            <Box
-              as="li"
-              display={"flex"}
-              justifyContent="space-between"
-              alignItems={"center"}
-              my={3}
-            >
-              <Box display={"flex"} alignItems="center" gap={3}>
-                <Image
-                  src={AppIcons.ContactCardIconSVG.src}
-                  alt={"whats"}
-                  height={50}
-                  width={50}
-                />
-                <Box>
-                  <Heading fontSize={18} mb={1}>
-                    Contact Card
-                  </Heading>
-                  <Text fontSize={14} color="#757575">
-                    Kennedy John
-                  </Text>
-                </Box>
-              </Box>
-              <Text fontSize={14} color="#757575">
-                Today 10:30
-              </Text>
-            </Box>
-          </Box>
+          <Image src={FingerprintIcon} alt="finger print icon" />
+          <Heading fontSize={"xl"}>Control And Manage Your Cards</Heading>
+          <Text>Discover our cards benefits, with one tap.</Text>
         </Card>
+        <Box>
+          <Card>
+            <Heading>
+              {Math.ceil(
+                (dashboard.inactiveCards /
+                  (dashboard.inactiveCards + dashboard.activeCards)) *
+                  100
+              )}
+              %
+            </Heading>
+            <Text>Inactive Cards</Text>
+          </Card>
+          <Card>
+            <Heading>
+              {Math.ceil(
+                (dashboard.activeCards /
+                  (dashboard.inactiveCards + dashboard.activeCards)) *
+                  100
+              )}
+              %
+            </Heading>
+            <Text>Inactive Cards</Text>
+          </Card>
+        </Box>
         <Card textAlign={"center"}>
           <Box display={"flex"} justifyContent="center" mb="4">
             <Avatar src="" w="118px" h="118px" />

@@ -63,7 +63,7 @@ export const buildMemberRow = (members: any, rowMenuOptions: any) => {
           }
         >
           {moment(member.membershipDueDate).format("DD MMM YYYY")}{" "}
-          {moment().isAfter(moment(member.membershipDueDate)) && "❗" }
+          {moment().isAfter(moment(member.membershipDueDate)) && "❗"}
         </Text>
       ),
       tag: (
@@ -73,18 +73,19 @@ export const buildMemberRow = (members: any, rowMenuOptions: any) => {
             label={`${member.tag} membership tag`}
             fontSize="md"
           >
-            <Box pr={[4]} py={[1]}>
+            <Box py={[1]}>
               {member.tag === "gold" && (
                 <Image src={GoldMembershipIcon.src} alt="Gold Membership" />
               )}
               {member.tag === "silver" && (
                 <Image src={SilverMembershipIcon.src} alt="Silver Membership" />
               )}
+              {!member.tag && <Text>-</Text>}
             </Box>
           </Tooltip>
-          <RowMenu menuOption={rowMenuOptions(member)} />
         </Flex>
       ),
+      actions: <RowMenu menuOption={rowMenuOptions(member)} />,
     };
   });
 };
@@ -110,6 +111,7 @@ const Members = () => {
     "Card Status",
     "Membership  Due Date",
     "Tag",
+    ""
   ];
 
   const rowMenuOptions = (member: any) => {

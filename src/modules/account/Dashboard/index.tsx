@@ -6,8 +6,6 @@ import Devices from "./Devices";
 import DeviceWithId from "./Devices/DeviceWithId";
 import Reports from "./Reports";
 import ReportWithId from "./Reports/ReportWithId";
-import ReportIssue from "./Support/ReportIssue";
-import FAQ from "./Support/FAQ";
 
 const Dashboard = ({ route }: { route: string[] }) => {
   switch (route[1]) {
@@ -28,15 +26,6 @@ const Dashboard = ({ route }: { route: string[] }) => {
         return <ReportWithId />;
       } else {
         return <Reports />;
-      }
-    case "support":
-      switch (route[2]) {
-        case "faq":
-          return <FAQ />;
-        case "report-issue":
-          return <ReportIssue />;
-        default:
-          return <ReportIssue />;
       }
     default:
       return <Home />;
