@@ -9,7 +9,7 @@ import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { getDashboardDataAction } from "../actions";
 import { getCookie } from "modules/shared/cookie";
 import { HARDSANDS_CORPERATE } from "modules/authentication/constants";
-import { monthClicks } from "modules/account/functions";
+import { monthClicks } from "../../functions";
 
 const Bar = (props: BoxProps) => {
   return <Box maxW="35px" borderRadius="8px" {...props} />;
@@ -24,7 +24,6 @@ const Home = () => {
   const { dashboard, loading } = useTypedSelector(
     (state) => state.dashboard
   ) as any;
-  const [spreadComponent, setSpreadComponent] = useState(false);
 
   useEffect(() => {
     dispatch(getDashboardDataAction());
@@ -61,8 +60,13 @@ const Home = () => {
         />
       </Box>
 
-      <Box mt="8" display={"flex"} justifyContent="stretch" gap={8}>
-        <Card bgColor="#fff" w="100%" maxW="720px" p="8">
+      <Box
+        mt="8"
+        display={"grid"}
+        gridTemplateColumns={["none", "65% 35%"]}
+        gap={6}
+      >
+        <Card bgColor="#fff" p="8">
           <Text fontSize={"14px"}>Total Clicks</Text>
           <Heading fontSize="2xl">{dashboard?.totalClicks}</Heading>
           <Box
@@ -81,11 +85,11 @@ const Home = () => {
             ))}
           </Box>
         </Card>
-        <Card w="100%" maxW="344px">
-          <Text>Top Performer</Text>
+        <Card w="100%">
+          <Text>Top Customer</Text>
           <HStack justifyContent="center">
             <Avatar src="" w="45" h="45" />
-            <Text>{dashboard?.topPerformer?.lastName}</Text>
+            <Text>{dashboard?.topPerformer?.fullName}</Text>
           </HStack>
           <Box
             display="flex"
@@ -121,33 +125,12 @@ const Home = () => {
 
       <Box
         display="grid"
-        gridTemplateColumns={"repeat(3, 1fr)"}
+        gridTemplateColumns={"repeat(2, 1fr)"}
         gap={6}
         mt={6}
         h="350px"
         pos={"relative"}
       >
-        {/* <Card w="100%" maxW="720px" maxH={"350px"} p="8">
-          <Text fontSize={"14px"}>Clicks this month</Text>
-          <Heading fontSize="2xl">300</Heading>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="baseline"
-            mt="10"
-          >
-            {compositeBarData.map(({ id, activity, clicks }) => (
-              <Box key={id}>
-                <CompositeBar
-                  activity={activity}
-                  clicks={clicks}
-                  w="16px"
-                  borderRadius={"16px"}
-                />
-              </Box>
-            ))}
-          </Box>
-        </Card> */}
         <Card p={8} maxH={"350px"} overflowY={"scroll"}>
           <Heading fontSize={"xl"}>Your Activity</Heading>
           <Box as="ul" mt={6}>

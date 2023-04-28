@@ -161,7 +161,7 @@ export const ACCESS_DASH_NAV_ITEMS: AccountNavItemsType[] = [
   },
   {
     id: 2,
-    title: "Members",
+    title: "Member",
     href: `${DASH_ROOT}/members`,
     icon: MemberIcon,
     isImg: true,
@@ -173,22 +173,9 @@ export const ACCESS_DASH_NAV_ITEMS: AccountNavItemsType[] = [
     icon: DevicesIcon,
     isImg: true,
   },
+
   {
     id: 4,
-    title: "Leads",
-    href: `${DASH_ROOT}/leads`,
-    icon: LeadsIcon,
-    isImg: true,
-  },
-  {
-    id: 5,
-    title: "Reports",
-    href: `${DASH_ROOT}/reports`,
-    icon: ReportIcon,
-    isImg: true,
-  },
-  {
-    id: 6,
     title: "Support",
     href: `${DASH_ROOT}/support/faq`,
     icon: SupportIcon,

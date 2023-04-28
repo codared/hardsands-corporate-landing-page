@@ -60,8 +60,8 @@ const Home = () => {
         />
       </Box>
 
-      <Box mt="8" display={"flex"} justifyContent="stretch" gap={8}>
-        <Card bgColor="#fff" w="100%" maxW="720px" p="8">
+      <Box mt="8" display={"grid"} gridTemplateColumns={["none","65% 35%"]} gap={6}>
+        <Card bgColor="#fff" p="8">
           <Text fontSize={"14px"}>Total Clicks</Text>
           <Heading fontSize="2xl">{dashboard?.totalClicks}</Heading>
           <Box
@@ -80,7 +80,7 @@ const Home = () => {
             ))}
           </Box>
         </Card>
-        <Card w="100%" maxW="344px">
+        <Card w="100%">
           <Text>Top Customer</Text>
           <HStack justifyContent="center">
             <Avatar src="" w="45" h="45" />
@@ -120,7 +120,7 @@ const Home = () => {
 
       <Box
         display="grid"
-        gridTemplateColumns={"repeat(3, 1fr)"}
+        gridTemplateColumns={"repeat(2, 1fr)"}
         gap={6}
         mt={6}
         h="350px"
