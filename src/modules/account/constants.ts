@@ -145,7 +145,7 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
   {
     id: 6,
     title: "Support",
-    href: `${DASH_ROOT}/support`,
+    href: `${DASH_ROOT}/support/faq`,
     icon: SupportIcon,
     isImg: true,
   },
