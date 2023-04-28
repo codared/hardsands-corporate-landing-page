@@ -70,7 +70,7 @@ const StatsCard = ({
               }}
             />
           )} */}
-          {curves && (
+          {/* {curves && (
             <Tag
               px={[4]}
               py={[1]}
@@ -88,7 +88,7 @@ const StatsCard = ({
                 {curves}
               </TagLabel>
             </Tag>
-          )}
+          )} */}
         </Flex>
       </Flex>
     </Box>

@@ -57,7 +57,7 @@ const StatsCard = ({
           </Box>
         )}
         <Flex direction={"column"} alignItems={"end"}>
-          {showMenu && (
+          {/* {showMenu && (
             <IconButton
               w={"fit-content"}
               colorScheme="ghost"
@@ -69,7 +69,7 @@ const StatsCard = ({
                 color: "brand.300",
               }}
             />
-          )}
+          )} */}
           {curves && (
             <Tag
               px={[4]}

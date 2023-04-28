@@ -54,7 +54,18 @@ export const buildMemberRow = (members: any, rowMenuOptions: any) => {
           </Tag>
         </Flex>
       ),
-      membershipDueDate: moment(member.membershipDueDate).format("DD MMM YYYY"),
+      membershipDueDate: (
+        <Text
+          color={
+            moment().isAfter(moment(member.membershipDueDate))
+              ? "red"
+              : "inherit"
+          }
+        >
+          {moment(member.membershipDueDate).format("DD MMM YYYY")}{" "}
+          {moment().isAfter(moment(member.membershipDueDate)) && "❗" }
+        </Text>
+      ),
       tag: (
         <Flex justifyContent={["none", "space-between"]}>
           <Tooltip
@@ -83,6 +94,9 @@ const Members = () => {
   const { members, loading } = useTypedSelector(
     (state) => state.dashboard
   ) as AccessDashboardReducerState;
+
+  const MEMBERS = members;
+  console.log(MEMBERS);
   const createDrawer = useDisclosure();
   const [drawerFormState, setDrawerFormState] = useState({
     name: "",

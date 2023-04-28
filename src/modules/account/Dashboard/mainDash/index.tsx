@@ -49,14 +49,14 @@ const Home = () => {
         gap="8"
         mt="8"
       >
-        <StatsCard name="Active Cards" number={dashboard?.activeCards} />
-        <StatsCard name="Inactive Cards" number={dashboard?.inactiveCards} />
+        <StatsCard name="Active Cards" number={dashboard?.activeCards || 0} />
+        <StatsCard name="Inactive Cards" number={dashboard?.inactiveCards || 0} />
         <StatsCard
           bgColor="#df9f71"
           color="#fff"
           showMenu={false}
           name="Members"
-          number={dashboard?.members}
+          number={dashboard?.members || 0}
         />
       </Box>
 
@@ -85,7 +85,7 @@ const Home = () => {
             ))}
           </Box>
         </Card>
-        <Card w="100%">
+        <Card>
           <Text>Top Customer</Text>
           <HStack justifyContent="center">
             <Avatar src="" w="45" h="45" />
