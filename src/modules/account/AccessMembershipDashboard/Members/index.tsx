@@ -96,8 +96,6 @@ const Members = () => {
     (state) => state.dashboard
   ) as AccessDashboardReducerState;
 
-  const MEMBERS = members;
-  console.log(MEMBERS);
   const createDrawer = useDisclosure();
   const [drawerFormState, setDrawerFormState] = useState({
     name: "",
