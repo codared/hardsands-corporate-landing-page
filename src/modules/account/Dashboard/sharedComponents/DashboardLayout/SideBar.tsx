@@ -45,7 +45,7 @@ const DashSidebarContent = (props: any) => {
     DASH_NAV_ITEMS,
     props.routes[1]
   );
-
+  
   const dashNavItems = getDashBoardModule(props.data);
 
   const handleSidebarLogout = () => {
@@ -113,12 +113,15 @@ const DashSidebarContent = (props: any) => {
           {dashNavItems.map((item: AccountNavItemsType) => {
             return (
               <HardsandLink
-                key={item.title}
+                key={item.id}
                 href={item.href.replace(routeId, props.routes[0])}
-                onClick={() => setActive(item.id)}
+                onClick={() => {
+                  setActive(item.title);
+                 
+                }}
               >
                 <NavItem
-                  color={active === item.id ? "brand.300" : "inherit"}
+                  color={active === item.title ? "brand.300" : "inherit"}
                   icon={item.icon}
                   isImg={item.isImg}
                 >

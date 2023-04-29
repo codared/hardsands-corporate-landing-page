@@ -4,7 +4,6 @@ import Members from "./Members";
 import Devices from "./Devices";
 import Leads from "../Dashboard/Leads";
 import Reports from "../Dashboard/Reports";
-import Support from "../Dashboard/Support/FAQ";
 import ReportIssue from "../Dashboard/Support/ReportIssue";
 import FAQ from "../Dashboard/Support/FAQ";
 
@@ -21,9 +20,9 @@ const AccessMembershipDashboard = ({ route }: { route: string[] }) => {
     case "support":
       switch (route[2]) {
         case "faq":
-          return <FAQ />
-          case "report-issue":
-            return <ReportIssue />
+          return <FAQ />;
+        case "report-issue":
+          return <ReportIssue />;
         default:
           return <ReportIssue />;
       }

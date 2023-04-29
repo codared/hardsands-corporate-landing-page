@@ -1,8 +1,17 @@
-import { useEffect, useState } from "react";
-import { Box, Text, BoxProps, Avatar, Heading, HStack } from "@chakra-ui/react";
-import Image from "next/image";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+import {
+  Box,
+  Text,
+  BoxProps,
+  Avatar,
+  Heading,
+  Button,
+  Image,
+  Flex,
+} from "@chakra-ui/react";
 import { Card } from "components";
-import { AppIcons } from "modules/account/constants";
 import CompositeBar from "./components/CompositeBar";
 import StatsCard from "../sharedComponents/StatsCard";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
@@ -10,10 +19,15 @@ import { getDashboardDataAction } from "../actions";
 import { getCookie } from "modules/shared/cookie";
 import { HARDSANDS_CORPERATE } from "modules/authentication/constants";
 import { monthClicks } from "../../functions";
-import { FingerprintIcon } from "assets/index";
+import { DASH_ROOT, routeId } from "modules/account/constants";
+import {
+  ActiveCardIcon,
+  FingerprintIcon,
+  InactiveCardIcon,
+} from "assets/index";
 
 const Bar = (props: BoxProps) => {
-  return <Box maxW="35px" borderRadius="8px" {...props} />;
+  return <Box w={["18px", "26px", "35px"]} borderRadius="8px" {...props} />;
 };
 
 const Home = () => {
@@ -26,7 +40,12 @@ const Home = () => {
     (state) => state.dashboard
   ) as any;
 
-  console.log(dashboard);
+
+  const { query } = useRouter();
+
+  const corpName = (query.corpName as string[]) || [];
+
+  const baseUrl = DASH_ROOT.replace(routeId, corpName[0]);
 
   useEffect(() => {
     dispatch(getDashboardDataAction());
@@ -69,7 +88,7 @@ const Home = () => {
       <Box
         mt="8"
         display={"grid"}
-        gridTemplateColumns={["none", "65% 35%"]}
+        gridTemplateColumns={["none", "65% 32.7%"]}
         gap={6}
       >
         <Card bgColor="#fff" p="8">
@@ -91,39 +110,41 @@ const Home = () => {
             ))}
           </Box>
         </Card>
-        <Card w="100%">
+        <Card
+          display="flex"
+          flexDir={"column"}
+          justifyContent={"space-between"}
+        >
           <Text>Top Member</Text>
-          <HStack justifyContent="center">
-            <Avatar src="" w="45" h="45" />
-            <Text>{dashboard?.topPerformer?.fullName}</Text>
-          </HStack>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="baseline"
-            px="6"
-            mt="4"
-          >
-            {compositeBarData.map(({ id, activity, clicks }) => (
-              <Box key={id}>
-                <CompositeBar activity={activity} clicks={clicks} />
-              </Box>
-            ))}
-          </Box>
-          <Box
-            color="#a0a0a0"
-            display={"flex"}
-            justifyContent="space-around"
-            mt="4"
-            fontSize={"10px"}
-          >
-            <Box display={"flex"} alignItems="center" gap={3}>
-              <Box borderRadius="50%" w="8px" h="8px" bgColor="#DF9F71" />{" "}
-              <Text>Clicks</Text>
+          <Box>
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="baseline"
+              px="6"
+              mt="4"
+            >
+              {compositeBarData.map(({ id, activity, clicks }) => (
+                <Box key={id}>
+                  <CompositeBar activity={activity} clicks={clicks} />
+                </Box>
+              ))}
             </Box>
-            <Box display={"flex"} alignItems="center" gap={3}>
-              <Box borderRadius="50%" w="8px" h="8px" bgColor="#d9d9d9" />{" "}
-              <Text>Activity</Text>
+            <Box
+              color="#a0a0a0"
+              display={"flex"}
+              justifyContent="space-around"
+              mt="4"
+              fontSize={"10px"}
+            >
+              <Box display={"flex"} alignItems="center" gap={3}>
+                <Box borderRadius="50%" w="8px" h="8px" bgColor="#DF9F71" />{" "}
+                <Text>Clicks</Text>
+              </Box>
+              <Box display={"flex"} alignItems="center" gap={3}>
+                <Box borderRadius="50%" w="8px" h="8px" bgColor="#d9d9d9" />{" "}
+                <Text>Activity</Text>
+              </Box>
             </Box>
           </Box>
         </Card>
@@ -137,61 +158,80 @@ const Home = () => {
         h="350px"
         pos={"relative"}
       >
-        <Card p={8} maxH={"350px"} overflowY={"scroll"}>
-          <Image src={FingerprintIcon} alt="finger print icon" />
-          <Heading fontSize={"xl"}>Control And Manage Your Cards</Heading>
-          <Text>Discover our cards benefits, with one tap.</Text>
+        <Card p={8} maxH={"350px"}>
+          <Image src={FingerprintIcon.src} alt="finger print icon" mb={3} />
+          <Heading fontSize={"xl"} lineHeight={"2rem"} mb={4}>
+            Control And Manage Your Cards
+          </Heading>
+          <Text mb={6}>Discover our cards benefits, with one tap.</Text>
+          <Link href={`${baseUrl}/devices`}>
+            <Button borderRadius={"none"} bg="brand.300" color="#fff" w="full">
+              Cards
+            </Button>
+          </Link>
         </Card>
-        <Box>
-          <Card>
-            <Heading>
-              {Math.ceil(
-                (dashboard.inactiveCards /
-                  (dashboard.inactiveCards + dashboard.activeCards)) *
-                  100
-              )}
-              %
-            </Heading>
-            <Text>Inactive Cards</Text>
+        <Box
+          display={"flex"}
+          flexDir={"column"}
+          gap={4}
+          justifyContent={"center"}
+        >
+          <Card py={8}>
+            <Flex gap={6}>
+              <Image src={InactiveCardIcon.src} alt="inactive cards" />
+              <Box>
+                <Heading>
+                  {Math.ceil(
+                    (dashboard.inactiveCards /
+                      (dashboard.inactiveCards + dashboard.activeCards)) *
+                      100
+                  ) || "--"}
+                  %
+                </Heading>{" "}
+                <Text fontSize={"14px"} color="#5c5c5c">
+                  Inactive Cards
+                </Text>
+              </Box>
+            </Flex>
           </Card>
-          <Card>
-            <Heading>
-              {Math.ceil(
-                (dashboard.activeCards /
-                  (dashboard.inactiveCards + dashboard.activeCards)) *
-                  100
-              )}
-              %
-            </Heading>
-            <Text>Inactive Cards</Text>
+          <Card py={8}>
+            <Flex gap={6}>
+              <Image src={ActiveCardIcon.src} alt="active cards" />
+              <Box>
+                <Heading>
+                  {Math.ceil(
+                    (dashboard.activeCards /
+                      (dashboard.inactiveCards + dashboard.activeCards)) *
+                      100
+                  ) || "--"}
+                  %
+                </Heading>{" "}
+                <Text fontSize={"14px"} color="#5c5c5c">
+                  Active Cards
+                </Text>
+              </Box>
+            </Flex>
           </Card>
         </Box>
         <Card textAlign={"center"}>
-          <Box display={"flex"} justifyContent="center" mb="4">
+          <Box display={"flex"} justifyContent="center" mb={8} mt={3}>
             <Avatar src="" w="118px" h="118px" />
           </Box>
-          <Text color="brand.300" fontSize={"2xl"}>
+          <Heading color="brand.300" fontSize={"2xl"}>
             {companyName}
-          </Text>
-          <Text fontSize="14px">Lagos, Nigeria</Text>
+          </Heading>
           <Box mt="10" display={"flex"} justifyContent="center" gap="6">
             <Box>
-              <Text fontSize="12px">Total Cards</Text>
-              <Text color="brand.300" fontSize={"2xl"}>
-                {dashboard?.totalCards}
-              </Text>
-            </Box>
-            <Box>
               <Text fontSize="12px">Members</Text>
-              <Text color="brand.300" fontSize={"2xl"}>
+              <Heading color="brand.300" fontSize={"2xl"}>
                 {dashboard?.members}
-              </Text>
+              </Heading>
             </Box>
             <Box>
               <Text fontSize="12px">Clicks</Text>
-              <Text color="brand.300" fontSize={"2xl"}>
+              <Heading color="brand.300" fontSize={"2xl"}>
                 {dashboard?.totalClicks}
-              </Text>
+              </Heading>
             </Box>
           </Box>
         </Card>

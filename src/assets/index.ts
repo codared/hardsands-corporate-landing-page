@@ -1,5 +1,6 @@
 export { default as AbegIcon } from "./icons/abeg.webp";
 export { default as ActionIcon } from "./icons/action.png";
+export { default as ActiveCardIcon } from "./icons/active-card-icon.svg";
 export { default as AddressIcon } from "./icons/address.png";
 export { default as AppLinkIcon } from "./icons/app-link.png";
 export { default as AppleMusicIcon } from "./icons/apple-music.png";
@@ -35,6 +36,7 @@ export { default as FingerprintIcon } from "./icons/fingerprint-icon.svg";
 export { default as GoogleReviewsIcon } from "./icons/google-reviews.png";
 export { default as GoldMembershipIcon } from "./icons/gold-membership.svg";
 export { default as GoogleIcon } from "./icons/google.png";
+export { default as InactiveCardIcon } from "./icons/inactive-card-icon.svg";
 export { default as InstagramIcon } from "./icons/instagram.png";
 export { default as LeadsFormIcon } from "./icons/leads-form.png";
 export { default as LeadsOutlineIcon } from "./icons/leads-outline-icon.svg";

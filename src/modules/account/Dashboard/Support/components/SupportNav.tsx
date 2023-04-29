@@ -5,13 +5,12 @@ import { DASH_ROOT } from "modules/account/constants";
 import { routeId } from "modules/account/constants";
 
 const SupportNav = () => {
-  const { query, pathname } = useRouter();
+  const { query } = useRouter();
 
   const corpName = (query.corpName as string[]) || [];
 
   const baseUrl = DASH_ROOT.replace(routeId, corpName[0]);
 
-  console.log(corpName)
 
   return (
     <Flex>
