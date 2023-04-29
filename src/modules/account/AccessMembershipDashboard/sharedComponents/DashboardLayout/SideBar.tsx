@@ -12,11 +12,11 @@ import HardsandsAppLogo from "components/Logo";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { IoLogOutOutline } from "react-icons/io5";
 import { AccountNavItemsType } from "utils/types";
-import { getCookie, removeCookie } from "modules/shared/cookie";
+import { getCookie } from "modules/shared/cookie";
 import {
   AUTH_ROUTES,
   HARDSANDS_CORPERATE,
-  HARDSANDS_LOGIN_COOKIE,
+  UserModuleTypes,
 } from "modules/authentication/constants";
 import Router from "next/router";
 import NavItem from "modules/account/components/Navitems";
@@ -29,12 +29,24 @@ import { useActiveSidebarItem } from "../../hooks";
 import { getCardImageFromSlug } from "modules/products/functions";
 import { handleLogout } from "utils/functions";
 
+const getDashBoardModule = (data: any) => {
+  if (data.module === UserModuleTypes.CORPORATE) {
+    return DASH_NAV_ITEMS;
+  } else if (data.module === UserModuleTypes.ACCESS) {
+    return ACCESS_DASH_NAV_ITEMS;
+  } else {
+    return [];
+  }
+};
+
 const DashSidebarContent = (props: any) => {
   const integrations = useDisclosure();
   const { active, setActive } = useActiveSidebarItem(
     DASH_NAV_ITEMS,
     props.routes[1]
   );
+
+  const dashNavItems = getDashBoardModule(props.data);
 
   const handleSidebarLogout = () => {
     handleLogout();
@@ -63,22 +75,21 @@ const DashSidebarContent = (props: any) => {
         bg: "gray.800",
       }}
       border
-      color="inherit"
       borderRightWidth="1px"
       w="80"
       {...props}
+      display={"flex"}
+      flexDir={"column"}
+      justifyContent={"space-between"}
+      fontSize="sm"
+      color="gray.600"
+      aria-label="Main Navigation"
     >
-      <Flex px="4" py="5" justifyContent={"center"} alignItems="center">
-        <HardsandsAppLogo />
-      </Flex>
-      <Flex
-        direction="column"
-        as="nav"
-        fontSize="sm"
-        color="gray.600"
-        aria-label="Main Navigation"
-        h="95%"
-      >
+      <Box>
+        <Flex px="4" py="5" justifyContent={"center"} alignItems="center">
+          <HardsandsAppLogo />
+        </Flex>
+
         <Flex
           direction={"column"}
           justifyContent={"center"}
@@ -99,7 +110,7 @@ const DashSidebarContent = (props: any) => {
           </Text>
         </Flex>
         <Box mt={[10]}>
-          {DASH_NAV_ITEMS.map((item: AccountNavItemsType) => {
+          {dashNavItems.map((item: AccountNavItemsType) => {
             return (
               <HardsandLink
                 key={item.title}
@@ -146,16 +157,16 @@ const DashSidebarContent = (props: any) => {
             );
           })}
         </Box>
-        <Box>
-          <NavItem
-            onClick={handleSidebarLogout}
-            color="red.300"
-            icon={IoLogOutOutline}
-          >
-            Logout
-          </NavItem>
-        </Box>
-      </Flex>
+      </Box>
+      <Box>
+        <NavItem
+          onClick={handleSidebarLogout}
+          color="red.300"
+          icon={IoLogOutOutline}
+        >
+          Logout
+        </NavItem>
+      </Box>
     </Box>
   );
 };
