@@ -24,43 +24,41 @@ const FAQs = [
     id: 2,
     title: "How do hardsands cards and Epoxy work?",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+      "Hardsands cards use NFC technology to transmit information to smartphones. Epoxy is a protective coating that adds durability to the card.",
   },
   {
     id: 3,
     title: "Where should I place my hardsand Epoxy?",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+      "You can place your Hardsand Epoxy on any smooth and flat surface, such as a phone case, laptop, or notebook.",
   },
   {
     id: 4,
     title: "Can I get a hardsands card with my own logo/branding?",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+      "Yes, you can customize your Hardsands card with your own logo or branding.",
   },
   {
     id: 5,
     title: "What surfaces may hardsand Epoxy stick to?",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+      "Hardsand Epoxy can stick to most surfaces, including plastic, glass, and metal.",
   },
   {
     id: 6,
     title:
       "Is there a monthly fee for using hardsands card or hardsands Epoxy?",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+      "There is no monthly fee for using Hardsands card or hardsands Epoxy.",
   },
   {
     id: 7,
     title:
       "Is it necessary for the receiver to use a hardsand product or an app to receive my info?",
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+      "No, the receiver does not need to use a Hardsand product or an app to receive your information. Any smartphone with NFC capabilities can read the information on the card.",
   },
 ];
-
-
 
 const FAQ = () => {
   return (
