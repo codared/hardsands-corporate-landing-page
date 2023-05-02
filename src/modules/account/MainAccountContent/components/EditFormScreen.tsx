@@ -6,14 +6,19 @@ import {
   FormControl,
   FormLabel,
   Input,
+  useToast,
 } from "@chakra-ui/react";
 import CustomDrawer from "components/CustomDrawer";
 import ActionFormBuilder from "modules/account/components/ActionFormBuilder";
 import SocialProfile from "modules/account/components/ActionsDisplay/ProfileCardDisplay";
 import { ACTION_FORM_STATUS, NumberFields } from "modules/account/constants";
-import { getCountryBanks, getUploadUrl } from "modules/account/services";
+import {
+  getCountryBanks,
+  getUploadUrl,
+  uploadImageData,
+} from "modules/account/services";
 import React, { useState, useMemo } from "react";
-import { useTypedSelector } from "redux/store";
+import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { ActionsFormType, ActionsType } from "utils/types";
 
 const retrieveFormKeyValue = (action: ActionsType) => {
@@ -29,21 +34,27 @@ const EditFormScreen = ({
   handleActionSubmit,
   isSubmitting,
   formStatus,
-  setImageUploadData,
   setSelectedAction,
+  makeRequestToSaveActionImage,
 }: {
   formStatus?: string;
   isSubmitting: boolean;
   selectedAction: ActionsType;
   setSelectedAction?: (action: ActionsType) => void;
-  setImageUploadData?: any;
   handleActionSubmit: (action: ActionsType) => void;
+  makeRequestToSaveActionImage: (action: ActionsType) => void;
 }) => {
+  const reduxDispatch = useTypedDispatch();
   const [selectedSocials, setSelectedSocials] = useState<{
     label: string;
     id: number;
     user: string;
   }>();
+  const [imageUploadData, setImageUploadData] = useState<{
+    name: string;
+    url: string;
+  }>();
+  const toast = useToast();
   const [selectedImageUrl, setSelectedImageUrl] = useState<any>();
   const [selectedImageData, setSelectedImageData] = useState<any>({});
   const [imageLoading, setImageLoading] = useState<any>(false);
@@ -69,13 +80,38 @@ const EditFormScreen = ({
     handleActionSubmit({ ...formState, ...selectedAction });
   };
 
+  const handleImageUpload = async (imageUploadData: any, data: string) => {
+    try {
+      if (!imageUploadData?.url) {
+        return;
+      }
+      formState.profileImage = imageUploadData.name;
+      makeRequestToSaveActionImage(formState);
+      await uploadImageData(imageUploadData.url, data);
+      return;
+    } catch (error) {
+      setImageLoading(false);
+      console.log(error);
+      return;
+    }
+  };
+
   const handleChange = async (e: any) => {
     e.preventDefault();
 
     if (e.target.name === "profileImage") {
       const files = e.target.files;
-      if (files.length && files[0].size > 2097152) {
-        // only allow images less that 2mb
+      // Calculate size in KibiBytes
+      if (files.length && files[0].size > 10097152) {
+        // only allow images less that 10mb
+        reduxDispatch({
+          type: "APP_ERROR",
+          payload: {
+            isError: true,
+            name: "Profile Image",
+            message: "Image file is too large, should be less than 10MB",
+          } as any,
+        });
         return;
       } else {
         setImageLoading(true);
@@ -89,11 +125,13 @@ const EditFormScreen = ({
             setSelectedImageUrl(reader.result);
 
             reader.readAsBinaryString(files[0]);
-            reader.onloadend = () => {
+            reader.onloadend = async () => {
+              await handleImageUpload(res.result, files[0]);
               setFormState({
                 ...formState,
-                [e.target.name]: files[0],
+                [e.target.name]: res.result.name || files[0],
               });
+              formState.profileImage = res.result.name;
             };
           };
         }
@@ -167,6 +205,7 @@ const EditFormScreen = ({
             <Flex w={"100%"} justifyContent={"center"}>
               <SocialProfile
                 editMode={true}
+                imageLoading={imageLoading}
                 selectedAction={selectedAction}
                 handleChange={handleChange}
                 fields={formState}

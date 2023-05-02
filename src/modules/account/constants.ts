@@ -662,18 +662,22 @@ export const ACTIONS: ActionsType[] = [
   },
   {
     fieldTitle: "Registration Form",
+    actionCategory: "LEAD_FORM",
     fields: [],
   },
   {
     fieldTitle: "Sales Form",
+    actionCategory: "LEAD_FORM",
     fields: [],
   },
   {
     fieldTitle: "Coming soon Form",
+    actionCategory: "LEAD_FORM",
     fields: [],
   },
   {
     fieldTitle: "Consultation Form",
+    actionCategory: "LEAD_FORM",
     fields: [],
   },
 ];
