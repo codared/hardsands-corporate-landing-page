@@ -60,6 +60,7 @@ export { default as PersonalCardIcon } from "./icons/personal-card.svg";
 export { default as PinterestSquareIcon } from "./icons/pinterest-square.svg";
 export { default as PortfolioAppIcon } from "./icons/portfolio-app.svg";
 export { default as ReportsIcon } from "./icons/reports-icon.svg";
+export { default as SearchIcon } from "./icons/search-icon.svg";
 export { default as SelectDropdownIcon } from "./icons/select-dropdown-icon.svg";
 export { default as SilverMembershipIcon } from "./icons/silver-membership.svg";
 export { default as SocialCardIcon } from "./icons/social-card-icon.svg";
