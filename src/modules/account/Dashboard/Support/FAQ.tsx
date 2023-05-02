@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {
   Box,
   Flex,
@@ -10,8 +9,10 @@ import {
   AccordionPanel,
   Input,
   AccordionIcon,
+  Image,
 } from "@chakra-ui/react";
 import SupportNav from "./components/SupportNav";
+import { SearchIcon } from "assets/index";
 
 const FAQs = [
   {
@@ -69,8 +70,33 @@ const FAQ = () => {
       </Text>
       <Box mt={6} bg="#fff" p={5}>
         <SupportNav />
-        <Accordion allowToggle mt={6} border="1px solid #d9d9d9" px={8} py={5}>
-          <Input />
+        <Accordion
+          allowToggle
+          mt={6}
+          border="1px solid #d9d9d9"
+          px={8}
+          py={5}
+          
+        >
+          <Flex
+            bg="#f9f9f9"
+            border="0.5px solid #D9D9D9"
+            maxW="280px"
+            ml="auto"
+            gap={2}
+            px={4}
+            mb={4}
+          >
+            <Image src={SearchIcon.src} alt="Search" />
+            <Input
+              placeholder="Search"
+              border="none"
+              bg="none"
+              fontSize="12px"
+              focusBorderColor="none"
+              p={0}
+            />
+          </Flex>
           {FAQs.map(({ id, title, content }) => (
             <AccordionItem key={id} py={4}>
               <Heading fontSize={"1.25rem"}>

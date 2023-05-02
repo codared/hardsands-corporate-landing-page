@@ -102,7 +102,7 @@ const HardsandsCorperateDash = ({
         </Flex> */}
 
         <Box as="main" p={4} bgColor="#f9f9f9">
-          <Container maxW={["full", "80%", "full"]} mx={["0", "10px", "auto"]}>
+          <Container maxW={["full", "full"]} mx={["0", "10px", "auto"]}>
             {children}
           </Container>
         </Box>
