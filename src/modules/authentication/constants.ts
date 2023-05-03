@@ -18,7 +18,7 @@ const { corpName: companyName } = cookies
 
 export const APP_ROUTE = {
   home: "/app",
-  dashboard: `/dashboard/${slugify(companyName)}`,
+  dashboard: `/dashboard/{slug}`,
 };
 
 export const SERVER_APP_ROUTE = {

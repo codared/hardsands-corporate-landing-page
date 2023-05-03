@@ -10,7 +10,11 @@ import {
 } from "../../actions";
 import { createMemberSchema } from "./schema";
 
-const CreateMemberForm = ({ editMode = false, defaultValues }: any) => {
+const CreateMemberForm = ({
+  editMode = false,
+  defaultValues,
+  createDrawer,
+}: any) => {
   const dispatch = useTypedDispatch();
   const toast = useToast();
   // @ts-ignore
@@ -39,10 +43,12 @@ const CreateMemberForm = ({ editMode = false, defaultValues }: any) => {
         res = await dispatch(addMembersAction(formData));
       }
 
-      if (res?.length) {
+      if (res?.message) {
         setSuccessMessage(
           editMode ? "Member update successfully" : "Member added successfully"
         );
+        //close modal here
+        createDrawer.onClose();
         dispatch(getMembersAction());
       }
     }

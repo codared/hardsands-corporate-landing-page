@@ -14,6 +14,8 @@ import {
   EditablePreview,
   useEditableControls,
   Input,
+  CircularProgress,
+  CircularProgressLabel,
 } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import {
@@ -32,6 +34,7 @@ import OurSiteMarketing from "../OurSiteMarketing";
 
 export default function SocialProfile({
   editMode = false,
+  imageLoading = false,
   handleSocialSelect,
   handleChange,
   selectedAction,
@@ -39,6 +42,7 @@ export default function SocialProfile({
   fields,
 }: {
   editMode?: boolean;
+  imageLoading?: boolean;
   handleChange?: (e: any) => Promise<void>;
   handleSocialSelect?: (selectedSocials: any) => void;
   selectedAction?: ActionsType;
@@ -82,23 +86,50 @@ export default function SocialProfile({
         <Box h={"180px"} w={"full"} bg={"brand.100"} />
         <Flex justify={"center"}>
           <Box w={"50%"} mt={-24} position={"relative"}>
-            <Image
-              w={196}
-              h={196}
-              m="0 auto"
-              objectFit={"cover"}
-              src={
-                selectedImageUrl ||
-                profileImage ||
-                "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
-              }
-              bgColor={"gray.300"}
-              alt={"profile image"}
-              css={{
-                border: "10px solid white",
-              }}
-              borderRadius={"25px"}
-            />
+            <>
+              {!imageLoading && (
+                <Image
+                  w={196}
+                  h={196}
+                  m="0 auto"
+                  objectFit={"cover"}
+                  src={
+                    selectedImageUrl ||
+                    profileImage ||
+                    "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"
+                  }
+                  bgColor={"gray.300"}
+                  alt={"profile image"}
+                  css={{
+                    border: "10px solid white",
+                  }}
+                  borderRadius={"25px"}
+                />
+              )}
+              {imageLoading && (
+                <Box
+                  bgColor={"gray.300"}
+                  w={196}
+                  h={196}
+                  css={{
+                    border: "10px solid white",
+                  }}
+                  borderRadius={"25px"}
+                >
+                  <CircularProgress
+                    position={"absolute"}
+                    top={"50%"}
+                    left={"50%"}
+                    isIndeterminate
+                    transform={"translate(-50%, -50%)"}
+                    // value={40}
+                    color="green.400"
+                  >
+                    {/* <CircularProgressLabel>40%</CircularProgressLabel> */}
+                  </CircularProgress>
+                </Box>
+              )}
+            </>
             {editMode && (
               <>
                 <IconButton
