@@ -54,7 +54,18 @@ export const buildMemberRow = (members: any, rowMenuOptions: any) => {
           </Tag>
         </Flex>
       ),
-      membershipDueDate: moment(member.membershipDueDate).format("DD MMM YYYY"),
+      membershipDueDate: (
+        <Text
+          color={
+            moment().isAfter(moment(member.membershipDueDate))
+              ? "red"
+              : "inherit"
+          }
+        >
+          {moment(member.membershipDueDate).format("DD MMM YYYY")}{" "}
+          {moment().isAfter(moment(member.membershipDueDate)) && "❗"}
+        </Text>
+      ),
       tag: (
         <Flex justifyContent={["none", "space-between"]}>
           <Tooltip
@@ -62,18 +73,19 @@ export const buildMemberRow = (members: any, rowMenuOptions: any) => {
             label={`${member.tag} membership tag`}
             fontSize="md"
           >
-            <Box pr={[4]} py={[1]}>
+            <Box py={[1]}>
               {member.tag === "gold" && (
                 <Image src={GoldMembershipIcon.src} alt="Gold Membership" />
               )}
               {member.tag === "silver" && (
                 <Image src={SilverMembershipIcon.src} alt="Silver Membership" />
               )}
+              {!member.tag && <Text>-</Text>}
             </Box>
           </Tooltip>
-          <RowMenu menuOption={rowMenuOptions(member)} />
         </Flex>
       ),
+      actions: <RowMenu menuOption={rowMenuOptions(member)} />,
     };
   });
 };
@@ -83,6 +95,7 @@ const Members = () => {
   const { members, loading } = useTypedSelector(
     (state) => state.dashboard
   ) as AccessDashboardReducerState;
+
   const createDrawer = useDisclosure();
   const [drawerFormState, setDrawerFormState] = useState({
     name: "",
@@ -96,6 +109,7 @@ const Members = () => {
     "Card Status",
     "Membership  Due Date",
     "Tag",
+    ""
   ];
 
   const rowMenuOptions = (member: any) => {
@@ -174,11 +188,11 @@ const Members = () => {
       <Flex mt="8" flexDirection={["column", "column", "row"]} gap="8">
         <AddMemberButton
           title={"Add Manually"}
-          subtitle={"Add using members credentials"}
+          subtitle={"Enter Member Details"}
           onClick={() => {
             setDrawerFormState({
               name: "Add Manually",
-              subTitle: "Add using members credentials",
+              subTitle: "Enter Member Details",
               form: (
                 <CreateMemberForm handleSubmitComplete={handleSubmitComplete} />
               ),
@@ -188,11 +202,11 @@ const Members = () => {
         />
         <AddMemberButton
           title={"Import CSV/Excel"}
-          subtitle={"Add by importing member’s file"}
+          subtitle={"Import your member sheet"}
           onClick={() => {
             setDrawerFormState({
               name: "Add Member via Import CSV/Excel",
-              subTitle: "Add by importing member’s file",
+              subTitle: "Import your member sheet",
               form: <ImportMemberForm />,
             });
             createDrawer.onOpen();

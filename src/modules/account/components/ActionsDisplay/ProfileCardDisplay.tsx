@@ -24,6 +24,7 @@ import {
   getSocialEditIcons,
   getSocialLink,
 } from "modules/account/functions";
+import VCFCard from "modules/account/MainAccountContent/components/VCFCard";
 import { useRef } from "react";
 import { FiEdit3 } from "react-icons/fi";
 import { ActionsType } from "utils/types";
@@ -162,7 +163,7 @@ export default function SocialProfile({
         </Flex>
 
         <Flex p={6} direction={"column"} position={"relative"}>
-          <Stack spacing={0} align={"center"} mb={5}>
+          <Stack spacing={0} align={"center"}>
             <Editable
               fontSize={24}
               fontWeight={"bolder"}
@@ -208,34 +209,46 @@ export default function SocialProfile({
         </Flex>
 
         <Flex direction={"column"}>
+          {!editMode && fields?.phone && <VCFCard data={fields} />}
           {!editMode && <OurSiteMarketing />}
 
+          <Box mt={2} />
           {/* social icons */}
           {!editMode && (
-            <SimpleGrid columns={3} spacing={10} px={8} mt={6}>
-              {getSocialIcons(rest).map((item: any, index: number) => {
-                if (!item) return null;
-                return (
-                  <HardsandLink
-                    key={index}
-                    target="_blank"
-                    href={getSocialLink(item)}
-                  >
-                    {/* @ts-ignore */}
-                    <Box height="80px" align={"center"}>
-                      <Image
-                        w={"50px"}
-                        src={item.image.src}
-                        alt={`${item.label} icons`}
-                      />
-                      <Text mt={2} textTransform={"capitalize"}>
-                        {item.label}
-                      </Text>
-                    </Box>
-                  </HardsandLink>
-                );
-              })}
-            </SimpleGrid>
+            <>
+              {Object.keys(SOCIAL_LINKS).map((socialLink, index) => (
+                <SimpleGrid key={index} columns={3} spacing={10} px={8} mt={4}>
+                  {getSocialIcons(socialLink, rest).map(
+                    (item: any, index: number) => {
+                      if (!item) return null;
+                      return (
+                        <HardsandLink
+                          key={index}
+                          target="_blank"
+                          href={getSocialLink(item)}
+                        >
+                          {/* @ts-ignore */}
+                          <Box height="80px" align={"center"}>
+                            <Image
+                              w={"50px"}
+                              src={item.image.src}
+                              alt={`${item.label} icons`}
+                            />
+                            <Text
+                              fontSize={"smaller"}
+                              mt={2}
+                              textTransform={"capitalize"}
+                            >
+                              {item.label}
+                            </Text>
+                          </Box>
+                        </HardsandLink>
+                      );
+                    }
+                  )}
+                </SimpleGrid>
+              ))}
+            </>
           )}
           {editMode && (
             <>
@@ -245,10 +258,13 @@ export default function SocialProfile({
                     {socialLink}
                   </Text>
                   <Text color="gray.500" mb={4}>
-                    Click an icon to add your username
+                    Click an icon to add your{" "}
+                    {socialLink === "Contact Info"
+                      ? "contact info"
+                      : "username"}
                   </Text>
                   <SimpleGrid columns={3} spacing={10}>
-                    {getSocialEditIcons(rest).map((item: any) => (
+                    {getSocialEditIcons(socialLink, rest).map((item: any) => (
                       <Box
                         key={item.label}
                         height="80px"

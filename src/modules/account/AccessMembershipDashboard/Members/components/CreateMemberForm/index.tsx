@@ -4,6 +4,7 @@ import CustomInput from "components/CustomInput";
 import { useForm } from "modules/account/Dashboard/hooks";
 import React, { useEffect } from "react";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
+import { chakraSelectStyles } from "utils/constants";
 import {
   addMembersAction,
   editMembersAction,
@@ -94,19 +95,6 @@ const CreateMemberForm = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [successMessage]);
 
-  const chakraStyles: ChakraStylesConfig = {
-    dropdownIndicator: (provided, state) => ({
-      ...provided,
-      background: "brand.100",
-      p: 0,
-      w: "40px",
-    }),
-    inputContainer: (provider) => ({
-      ...provider,
-      minW: "313px",
-    }),
-  };
-
   return (
     <Box>
       <form>
@@ -134,9 +122,23 @@ const CreateMemberForm = ({
           placeholder="Phone"
           name="phone"
           type="text"
-          value={values.phone}
+          maxLength={11}
+          value={values.phone.trim()}
           isRequired
           onChange={handleChange}
+          onKeyDown={(e: any) => {
+            if (
+              e.key === " " ||
+              (!Number(e.key) &&
+                e.key !== "0" &&
+                e.key !== "Backspace" &&
+                e.key !== "ArrowLeft" &&
+                e.key !== "ArrowRight")
+            ) {
+              // if the entered key is not an interger, not a zero, backspace or arrow key
+              e.preventDefault();
+            }
+          }}
         />
         <Box mb={4}>
           <FormLabel>Select Membership Tag</FormLabel>
@@ -163,7 +165,7 @@ const CreateMemberForm = ({
               { value: "silver", label: "Silver" },
               { value: "gold", label: "Gold" },
             ]}
-            chakraStyles={chakraStyles}
+            chakraStyles={chakraSelectStyles}
           />
         </Box>
         <CustomInput

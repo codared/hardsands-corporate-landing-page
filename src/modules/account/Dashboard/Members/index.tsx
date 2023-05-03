@@ -164,23 +164,23 @@ const Members = () => {
       <Flex mt="8" flexDirection={["column", "column", "row"]} gap="8">
         <AddMemberButton
           title={"Add Manually"}
-          subtitle={"Add using members credentials"}
+          subtitle={"Enter Member Details"}
           onClick={() => {
             setDrawerFormState({
               name: "Add Manually",
-              subTitle: "Add using members credentials",
-              form: <CreateMemberForm createDrawer={createDrawer} />,
+              subTitle: "Enter Member Details",
+              form: <CreateMemberForm />,
             });
             createDrawer.onOpen();
           }}
         />
         <AddMemberButton
           title={"Import CSV/Excel"}
-          subtitle={"Add by importing member’s file"}
+          subtitle={"Import your member sheet"}
           onClick={() => {
             setDrawerFormState({
               name: "Add Member via Import CSV/Excel",
-              subTitle: "Add by importing member’s file",
+              subTitle: "Import your member sheet",
               form: <ImportMemberForm />,
             });
             createDrawer.onOpen();

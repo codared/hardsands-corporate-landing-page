@@ -4,18 +4,18 @@ import { isEmptyObject, slugify } from "../functions";
 import queryString from "query-string";
 
 export const useActiveSidebarItem = (NAV_ITEMS: any[], route: unknown) => {
-  const [active, setActive] = useState(NAV_ITEMS[0].id);
+  const [active, setActive] = useState(NAV_ITEMS[0].title);
 
   useEffect(() => {
     if (!route) {
-      setActive(NAV_ITEMS[0].id);
+      setActive(NAV_ITEMS[0].title);
       return;
     }
     // Find the index of the active link based on the current URL path
     const activeItem = NAV_ITEMS.find(
       (item: { title: string }) => item.title.toLowerCase() === route
     );
-    setActive(activeItem?.id || NAV_ITEMS[0].id);
+    setActive(activeItem?.title || NAV_ITEMS[0].title);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [route]);
 

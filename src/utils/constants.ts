@@ -1,3 +1,5 @@
+import { ChakraStylesConfig } from "chakra-react-select";
+
 export const COOKIE_LANG_KEY = "language";
 export const COOKIE_DISCOUNT_CODE = "discount_code";
 export const COOKIE_DISCOUNT_URL_SOURCE = "discount_source";
@@ -28,3 +30,16 @@ export enum SOCIAL_LINKS {
 
 export const EMAIL_REGEX =
   /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+export const chakraSelectStyles: ChakraStylesConfig = {
+  dropdownIndicator: (provided, state) => ({
+    ...provided,
+    background: "brand.100",
+    p: 0,
+    w: "40px",
+  }),
+  inputContainer: (provider) => ({
+    ...provider,
+    minW: "313px",
+  }),
+};
