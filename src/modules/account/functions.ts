@@ -5,8 +5,8 @@ export const findSameSocials = (item: any, findingArray: any[]) => {
 };
 
 // Get social Icons for display
-export const getSocialIcons = (rest: any) => {
-  return (SOCIAL_LINKS.social as any[]).map((social) => {
+export const getSocialIcons = (socialLink: string, rest: any) => {
+  return (SOCIAL_LINKS[socialLink] as any[]).map((social) => {
     if (rest[social.label.toLowerCase()]) {
       return {
         ...social,
@@ -17,8 +17,8 @@ export const getSocialIcons = (rest: any) => {
   });
 };
 
-export const getSocialEditIcons = (rest: any) => {
-  return (SOCIAL_LINKS.social as any[]).map((social) => {
+export const getSocialEditIcons = (socialLink: string, rest: any) => {
+  return (SOCIAL_LINKS[socialLink] as any[]).map((social) => {
     return {
       ...social,
       user: rest[social.label.toLowerCase()],
@@ -30,7 +30,13 @@ export const getSocialLink = (item: any) => {
   if (item.user.includes("http") || item.user.includes("www")) {
     return item.user;
   }
-  return item.link.replace("${user}", item.user) || "#";
+  return (
+    item.link
+      .replace("${user}", item.user)
+      .replace("${phone}", item.user)
+      .replace("${text}", item.user)
+      .replace("${phoneCode}", item.user) || "#"
+  );
 };
 
 export const NotFoundErrorMessage = (errorMessage: string | any) => {
@@ -137,4 +143,3 @@ export const monthClicks = () => {
   ];
   return monthlyClicks;
 };
-

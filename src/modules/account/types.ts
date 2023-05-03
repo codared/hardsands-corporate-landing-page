@@ -60,6 +60,11 @@ export const enum APP_SCREEN {
 export type SocialCardActionType = {
   title: string;
   name: string;
+  phone?: string;
+  text?: string;
+  phoneCode?: string;
+  whatsappMessage?: string;
+  meetingLink?: string;
   profileImage?: string;
   instagram?: string;
   twitter?: string;

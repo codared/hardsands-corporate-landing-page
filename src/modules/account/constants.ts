@@ -20,6 +20,7 @@ import {
   EmailIcon,
   MessageIconOutline,
   FacebookIcon,
+  FacetimeIcon,
   InstagramIcon,
   LeadsFormIcon,
   LeadsOutlineIcon,
@@ -291,6 +292,31 @@ export const ACTIONS: ActionsType[] = [
         name: "Title",
         type: "text",
         formKey: "title",
+      },
+      {
+        name: "Meeting Link",
+        type: "text",
+        formKey: "meetingLink",
+      },
+      {
+        name: "Phone",
+        type: "text",
+        formKey: "phone",
+      },
+      {
+        name: "Text",
+        type: "text",
+        formKey: "text",
+      },
+      {
+        name: "Website",
+        type: "text",
+        formKey: "website",
+      },
+      {
+        name: "WhatsApp",
+        type: "text",
+        formKey: "whatsappMessage",
       },
       {
         name: "Facebook",
@@ -679,6 +705,49 @@ export const ACTIONS: ActionsType[] = [
 ];
 
 export const SOCIAL_LINKS: ActionsFormType = {
+  "Contact Info": [
+    {
+      id: 1,
+      label: "Text",
+      image: SmsIcon,
+      link: "sms:${phoneCode}${phone}?body=${text}",
+      // fields: ["Number", "Text"],
+    },
+    // {
+    //   id: 2,
+    //   label: "Email",
+    //   image: EmailIcon,
+    //   link: "mailto:${email}?subject=${subject}&body=${content}",
+    // },
+    {
+      id: 3,
+      label: "Phone",
+      image: CallIcon,
+      link: "tel:${phoneCode}${phone}",
+    },
+    {
+      id: 4,
+      label: "WhatsApp",
+      image: WhatsappIcon,
+      link: "https://wa.me/${phoneCode}${phone}?text=${text}",
+    },
+    {
+      id: 5,
+      label: "Meeting Link",
+      image: FacetimeIcon,
+    },
+    // {
+    //   id: 5,
+    //   label: "Contact Card",
+    //   image: ContactCardIcon,
+    // },
+    // {
+    //   id: 6,
+    //   label: "Leads Form",
+    //   image: LeadsFormIcon,
+    //   pro: true,
+    // },
+  ],
   social: [
     {
       id: 1,
@@ -747,64 +816,25 @@ export const SOCIAL_LINKS: ActionsFormType = {
     //   link: 'Vivian.vcf',
     // },
   ],
-  // "Contact Info": [
-  //   {
-  //     id: 1,
-  //     label: "Sms",
-  //     image: SmsIcon,
-  //     fields: ["Number", "Text"],
-  //   },
-  //   {
-  //     id: 2,
-  //     label: "Email",
-  //     image: EmailIcon,
-  //   },
-  //   {
-  //     id: 3,
-  //     label: "WhatsApp",
-  //     image: WhatsappIcon,
-  //   },
+  // "For Business": [
   // {
-  //   id: 4,
-  //   label: "Call",
-  //   image: CallIcon,
-  // },
-  // {
-  //   id: 5,
-  //   label: "Contact Card",
-  //   image: ContactCardIcon,
-  // },
-  // {
-  //   id: 6,
-  //   label: "Leads Form",
-  //   image: LeadsFormIcon,
+  //   id: 2,
+  //   label: "Calendly",
+  //   image: CalendlyIcon,
   //   pro: true,
   // },
-  // ],
-  // "For Business": [
-  //   {
-  //     id: 1,
-  //     label: "website",
-  //     image: WebsiteIcon,
-  //   },
-  //   {
-  //     id: 2,
-  //     label: "Calendly",
-  //     image: CalendlyIcon,
-  //     pro: true,
-  //   },
-  //   {
-  //     id: 3,
-  //     label: "Yelp",
-  //     image: YelpIcon,
-  //     pro: true,
-  //   },
-  //   {
-  //     id: 4,
-  //     label: "Trip Advisor",
-  //     image: TripAdvicerIcon,
-  //     pro: true,
-  //   },
+  // {
+  //   id: 3,
+  //   label: "Yelp",
+  //   image: YelpIcon,
+  //   pro: true,
+  // },
+  // {
+  //   id: 4,
+  //   label: "Trip Advisor",
+  //   image: TripAdvicerIcon,
+  //   pro: true,
+  // },
   // ],
   // Payment: [
   //   {

@@ -26,6 +26,7 @@ import { ChakraStylesConfig, Select, SingleValue } from "chakra-react-select";
 import { createSelectOptions } from "utils/functions";
 import { css } from "@emotion/react";
 import { CloseIcon } from "@chakra-ui/icons";
+import { chakraSelectStyles } from "utils/constants";
 
 const ActionFormBuilder = ({
   fields,
@@ -120,19 +121,6 @@ const ActionFormBuilder = ({
     }
   }, []);
 
-  const chakraStyles: ChakraStylesConfig = {
-    dropdownIndicator: (provided, state) => ({
-      ...provided,
-      background: "brand.100",
-      p: 0,
-      w: "40px",
-    }),
-    inputContainer: (provider) => ({
-      ...provider,
-      minW: "313px",
-    }),
-  };
-
   return (
     <Box
       css={css`
@@ -222,7 +210,7 @@ const ActionFormBuilder = ({
                         }
                         isRequired
                         value={selectedPhoneCodeOption}
-                        chakraStyles={chakraStyles}
+                        chakraStyles={chakraSelectStyles}
                       />
                     ) : (
                       <Input
@@ -322,7 +310,7 @@ const ActionFormBuilder = ({
                     value={selectedCountryOption}
                     selectedOptionStyle="check"
                     options={options as any[]}
-                    chakraStyles={chakraStyles}
+                    chakraStyles={chakraSelectStyles}
                   />
                 </Box>
               </FormControl>
@@ -343,7 +331,7 @@ const ActionFormBuilder = ({
                     value={selectedStateOption}
                     selectedOptionStyle="check"
                     options={createSelectOptions(stateOptions as any[])}
-                    chakraStyles={chakraStyles}
+                    chakraStyles={chakraSelectStyles}
                   />
                 </Box>
               </FormControl>
@@ -369,7 +357,7 @@ const ActionFormBuilder = ({
                     }}
                     selectedOptionStyle="check"
                     options={createSelectOptions(banks as any[])}
-                    chakraStyles={chakraStyles}
+                    chakraStyles={chakraSelectStyles}
                   />
                 </Box>
               </FormControl>
