@@ -2,6 +2,13 @@ import countries from "utils/countries.mini.json";
 import countriesList from "utils/countries_min.json";
 import statesList from "utils/provinces.json";
 
+export type PhoneType = {
+  key: string;
+  value: string;
+  title: string;
+  label: string;
+};
+
 export const getCountries = () => {
   return countriesList.map((country) => ({
     value: country.id,

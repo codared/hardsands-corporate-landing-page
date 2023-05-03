@@ -1,6 +1,9 @@
 import jwt_decode from "jwt-decode";
 import { ACTIONS } from "modules/account/constants";
-import { HARDSANDS_CORPERATE, HARDSANDS_LOGIN_COOKIE } from "modules/authentication/constants";
+import {
+  HARDSANDS_CORPERATE,
+  HARDSANDS_LOGIN_COOKIE,
+} from "modules/authentication/constants";
 import { Product, ProductOptions } from "modules/products/types";
 import { getCookie, removeCookie } from "modules/shared/cookie";
 import { SUPPORTED_CURRENCIES } from "./supportedCurrencies";
@@ -190,4 +193,54 @@ export const handleLogout = () => {
   removeCookie(HARDSANDS_LOGIN_COOKIE);
   removeCookie(HARDSANDS_CORPERATE);
   return;
+};
+
+export const assignVCFData = (vCard: any, data: any) => {
+  const [firstName, lastName, ...middleName] = data.name
+    .split(" ")
+    .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1));
+
+  // set properties
+  vCard.firstName = firstName;
+  vCard.middleName = !!middleName ? middleName : "";
+  vCard.lastName = lastName;
+  // vCard.organization = data.company;
+
+  vCard.photo.attachFromUrl(data.profileImage || "", "JPEG");
+
+  vCard.workPhone = data.phone;
+  vCard.title = data.title;
+  vCard.url = data.website;
+  vCard.workUrl = data.meetingLink;
+  vCard.note = data.text;
+
+  //set other phone numbers
+  vCard.homePhone = data.personalPhone;
+  vCard.cellPhone = data.altPhone;
+  vCard.pagerPhone = data.officeFax;
+
+  //set fax/facsimile numbers
+  vCard.homeFax = "";
+  vCard.workFax = data.officeFax;
+
+  //set email addresses
+  vCard.email = data.personalEmail;
+  vCard.workEmail = data.workEmail;
+
+  //set address information
+  // vCard.homeAddress.label = "Home Address";
+  // vCard.homeAddress.street = data.homeAddress;
+  // vCard.homeAddress.city = data.homeCity;
+  // vCard.homeAddress.stateProvince = data.homeState;
+  // vCard.homeAddress.postalCode = data.homePostalCode;
+  // vCard.homeAddress.countryRegion = data.homeCountry;
+
+  // vCard.workAddress.label = "Work Address";
+  // vCard.workAddress.street = data.officeAddress;
+  // vCard.workAddress.city = data.officeCity;
+  // vCard.workAddress.stateProvince = data.officeState;
+  // vCard.workAddress.postalCode = data.officePostalCode;
+  // vCard.workAddress.countryRegion = data.officeCountry;
+
+  return vCard;
 };

@@ -8,6 +8,7 @@ import {
   Input,
   useToast,
 } from "@chakra-ui/react";
+import { Select } from "chakra-react-select";
 import CustomDrawer from "components/CustomDrawer";
 import ActionFormBuilder from "modules/account/components/ActionFormBuilder";
 import SocialProfile from "modules/account/components/ActionsDisplay/ProfileCardDisplay";
@@ -20,6 +21,8 @@ import {
 import React, { useState, useMemo } from "react";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { ActionsFormType, ActionsType } from "utils/types";
+import { getCountryPhoneCode } from "utils/getCountries";
+import CustomInput from "components/CustomInput";
 
 const retrieveFormKeyValue = (action: ActionsType) => {
   const fieldsPlaceHolder = {};
@@ -59,11 +62,22 @@ const EditFormScreen = ({
   const [selectedImageData, setSelectedImageData] = useState<any>({});
   const [imageLoading, setImageLoading] = useState<any>(false);
   const [openTextModal, setOpenTextModal] = useState<any>(false);
+  const [modalTitle, setTitle] = useState<any>("");
   const [formState, setFormState] = useState<any>(
     formStatus === ACTION_FORM_STATUS.ADD
       ? {}
       : retrieveFormKeyValue(selectedAction)
   );
+  const [showPhoneCodeError, setShowPhoneCodeError] = useState<boolean>(false);
+  const [selectedPhoneCodeOption, setSelectedPhoneCodeOption] = useState<any>(
+    formState.phoneCode
+      ? {
+          value: formState.phoneCode,
+          label: formState.phoneCode,
+        }
+      : getCountryPhoneCode()[0]
+  );
+
   const isProfile = selectedAction.fieldTitle === "Social Card";
   const isBank = selectedAction.fieldTitle === "Bank Account";
   const user = useTypedSelector((state) => state.app?.user);
@@ -179,17 +193,24 @@ const EditFormScreen = ({
   };
 
   const handleSocialSelect = (selectedSocial: any) => {
-    const prefix =
+    const modalTitle =
       selectedSocial.label.includes("WhatsApp") ||
-      selectedSocial.label.includes("Telegram")
+      selectedSocial.label.includes("Text") ||
+      selectedSocial.label.includes("Phone")
         ? "Number"
         : "Username";
+    setTitle(modalTitle);
     setSelectedSocials(selectedSocial);
     setOpenTextModal(true);
   };
 
   const onDrawerClose = () => {
-    setOpenTextModal(false);
+    if (modalTitle === "Number" && formState.phone && !formState.phoneCode) {
+      setShowPhoneCodeError(true);
+    } else {
+      setOpenTextModal(false);
+      setShowPhoneCodeError(false);
+    }
   };
 
   const handleImagePreviewClose = (): void => {
@@ -214,7 +235,11 @@ const EditFormScreen = ({
               />
             </Flex>
             <CustomDrawer
-              title="Enter Social Media Handle"
+              title={
+                modalTitle === "Number"
+                  ? "Enter Contact Information"
+                  : "Enter Social Media Handle"
+              }
               onClose={onDrawerClose}
               isOpen={openTextModal}
               contentHeight={"50%"}
@@ -222,22 +247,104 @@ const EditFormScreen = ({
               <>
                 <FormControl>
                   <Box mb={4}>
-                    <FormLabel>
-                      {selectedSocials?.label} Username or Link to Social
-                      Profile
-                    </FormLabel>
-                    <Input
-                      type={"text"}
-                      name={selectedSocials?.label.toLowerCase()}
-                      borderRadius={0}
-                      borderColor={"black"}
-                      onChange={handleChange}
-                      // @ts-ignore
-                      value={formState[selectedSocials?.label.toLowerCase()]}
-                      placeholder={`Enter ${selectedSocials?.label} Username/Link`}
-                      _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
-                      size="lg"
-                    />
+                    {modalTitle === "Number" ? (
+                      <>
+                        <FormLabel>Select Phone Code*</FormLabel>
+                        <Select
+                          size="lg"
+                          placeholder="Phone Code"
+                          options={getCountryPhoneCode()}
+                          name={"phoneCode"}
+                          onChange={(newValue: any) => {
+                            const event = {
+                              preventDefault: () => {},
+                              target: {
+                                name: "phoneCode",
+                                value: newValue?.value,
+                              },
+                            };
+                            handleChange(event);
+                            setSelectedPhoneCodeOption(newValue);
+                          }}
+                          isRequired
+                          value={selectedPhoneCodeOption}
+                          chakraStyles={{
+                            dropdownIndicator: (provided, state) => ({
+                              ...provided,
+                              background: "brand.100",
+                              p: 0,
+                              w: "40px",
+                            }),
+                            inputContainer: (provider) => ({
+                              ...provider,
+                              minW: "313px",
+                              _placeholder: { color: "black" },
+                            }),
+                            container: (provider) => ({
+                              ...provider,
+                              borderRadius: "none",
+                              borderColor: "black !important",
+                            }),
+                          }}
+                        />
+                        {showPhoneCodeError ? (
+                          <Text color={"red.600"} mb={4}>
+                            Please select phone code
+                          </Text>
+                        ) : (
+                          <Box mb={4} />
+                        )}
+                        <CustomInput
+                          label="Phone Number"
+                          placeholder="Enter Phone Number"
+                          name="phone"
+                          type="text"
+                          mb={4}
+                          maxLength={11}
+                          defaultValue={formState.phone}
+                          isRequired
+                          borderRadius={0}
+                          borderColor={"black"}
+                          _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
+                          onChange={handleChange}
+                          onKeyDown={(e: any) => {
+                            if (
+                              e.key === " " ||
+                              (!Number(e.key) &&
+                                e.key !== "0" &&
+                                e.key !== "Backspace" &&
+                                e.key !== "ArrowLeft" &&
+                                e.key !== "ArrowRight")
+                            ) {
+                              // if the entered key is not an interger, not a zero, backspace or arrow key
+                              e.preventDefault();
+                            }
+                          }}
+                        />
+                      </>
+                    ) : null}
+                    {selectedSocials?.label.toLowerCase() !== "phone" && (
+                      <>
+                        <FormLabel>
+                          Add {selectedSocials?.label} to Social Profile*
+                        </FormLabel>
+                        <Input
+                          type={"text"}
+                          name={selectedSocials?.label.toLowerCase()}
+                          borderRadius={0}
+                          borderColor={"black"}
+                          onChange={handleChange}
+                          value={
+                            // @ts-ignore
+                            formState[selectedSocials?.label.toLowerCase()] ||
+                            ""
+                          }
+                          placeholder={`Enter ${selectedSocials?.label} Info`}
+                          _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
+                          size="lg"
+                        />
+                      </>
+                    )}
                   </Box>
                 </FormControl>
 

@@ -4,6 +4,7 @@ import CustomInput from "components/CustomInput";
 import { useForm } from "modules/account/Dashboard/hooks";
 import React, { useEffect } from "react";
 import { useTypedDispatch, useTypedSelector } from "redux/store";
+import { chakraSelectStyles } from "utils/constants";
 import {
   addMembersAction,
   editMembersAction,
@@ -94,19 +95,6 @@ const CreateMemberForm = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [successMessage]);
 
-  const chakraStyles: ChakraStylesConfig = {
-    dropdownIndicator: (provided, state) => ({
-      ...provided,
-      background: "brand.100",
-      p: 0,
-      w: "40px",
-    }),
-    inputContainer: (provider) => ({
-      ...provider,
-      minW: "313px",
-    }),
-  };
-
   return (
     <Box>
       <form>
@@ -177,7 +165,7 @@ const CreateMemberForm = ({
               { value: "silver", label: "Silver" },
               { value: "gold", label: "Gold" },
             ]}
-            chakraStyles={chakraStyles}
+            chakraStyles={chakraSelectStyles}
           />
         </Box>
         <CustomInput
