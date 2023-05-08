@@ -709,37 +709,31 @@ export const ACTIONS: ActionsType[] = [
 ];
 
 export const SOCIAL_LINKS: ActionsFormType = {
-  "Contact Info": [
-    {
-      id: 1,
-      label: "Text",
-      image: SmsIcon,
-      link: "sms:${phoneCode}${phone}?body=${text}",
-      // fields: ["Number", "Text"],
-    },
-    // {
-    //   id: 2,
-    //   label: "Email",
-    //   image: EmailIcon,
-    //   link: "mailto:${email}?subject=${subject}&body=${content}",
-    // },
-    {
-      id: 3,
-      label: "Phone",
-      image: CallIcon,
-      link: "tel:${phoneCode}${phone}",
-    },
-    {
-      id: 4,
-      label: "WhatsApp",
-      image: WhatsappIcon,
-      link: "https://wa.me/${phoneCode}${phone}?text=${text}",
-    },
-    {
-      id: 5,
-      label: "Meeting Link",
-      image: FacetimeIcon,
-    },
+  // "Contact Info": [
+  //   {
+  //     id: 1,
+  //     label: "Text",
+  //     image: SmsIcon,
+  //     link: "sms:${phoneCode}${phone}?body=${text}",
+  //     // fields: ["Number", "Text"],
+  //   },
+  //   {
+  //     id: 3,
+  //     label: "Phone",
+  //     image: CallIcon,
+  //     link: "tel:${phoneCode}${phone}",
+  //   },
+  //   {
+  //     id: 4,
+  //     label: "WhatsApp",
+  //     image: WhatsappIcon,
+  //     link: "https://wa.me/${phoneCode}${phone}?text=${text}",
+  //   },
+  //   {
+  //     id: 5,
+  //     label: "Meeting Link",
+  //     image: FacetimeIcon,
+  //   },
     // {
     //   id: 5,
     //   label: "Contact Card",
@@ -751,64 +745,88 @@ export const SOCIAL_LINKS: ActionsFormType = {
     //   image: LeadsFormIcon,
     //   pro: true,
     // },
-  ],
+  // ],
   social: [
     {
       id: 1,
+      label: "Text",
+      image: SmsIcon,
+      link: "sms:${phoneCode}${phone}?body=${text}",
+      // fields: ["Number", "Text"],
+    },
+    {
+      id: 2,
+      label: "Phone",
+      image: CallIcon,
+      link: "tel:${phoneCode}${phone}",
+    },
+    {
+      id: 4,
+      label: "Meeting Link",
+      image: FacetimeIcon,
+    },
+    {
+      id: 3,
+      label: "WhatsApp",
+      image: WhatsappIcon,
+      link: "https://wa.me/${phoneCode}${phone}?text=${text}",
+    },
+    {
+      id: 5,
       label: "Instagram",
       image: InstagramIcon,
       link: "https://instagram.com/${user}?igshid=YmMyMTA2M2Y=",
     },
     {
-      id: 2,
+      id: 6,
       label: "Facebook",
       image: FacebookIcon,
       link: "https://www.facebook.com/${user}/",
     },
     {
-      id: 3,
+      id: 7,
       label: "Twitter",
       image: TwitterIcon,
       link: "https://twitter.com/${user}?s=21&t=5NTWX9KJ3B_ZA_RMxzaJDw",
     },
     {
-      id: 4,
+      id: 8,
       label: "Tiktok",
       image: TiktokIcon,
       link: "https://www.tiktok.com/@${user}?_t=8Wy0PdOVQBB&_r=1",
     },
     {
-      id: 5,
+      id: 9,
       label: "Youtube",
       image: YoutubeIcon,
       link: "https://youtube.com/@${user}",
     },
     {
-      id: 6,
+      id: 10,
       label: "Pinterest",
       image: PinterestIcon,
       link: "https://www.pinterest.com/${user}/",
     },
     {
-      id: 7,
+      id: 11,
       label: "Linkedin",
       image: LinkedInIcon,
       link: "https://www.linkedin.com/in/${user}",
     },
     {
-      id: 8,
+      id: 12,
       label: "Snapchat",
       image: SnapchatIcon,
       link: "https://www.snapchat.com/add/${user}",
     },
     {
-      id: 8,
+      id: 13,
       label: "Vimeo",
       image: VimeoIcon,
       link: "https://vimeo.com/${user}",
     },
     {
-      id: 8,
+      id: 14,
       label: "Twitch",
       image: TwitchIcon,
       link: "https://www.twitch.tv/${user}",
