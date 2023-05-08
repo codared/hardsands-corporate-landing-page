@@ -15,7 +15,6 @@ import {
   useEditableControls,
   Input,
   CircularProgress,
-  CircularProgressLabel,
 } from "@chakra-ui/react";
 import HardsandLink from "components/HardsandsLink";
 import {
@@ -23,6 +22,7 @@ import {
   getSocialIcons,
   getSocialEditIcons,
   getSocialLink,
+  needsPhoneCode,
 } from "modules/account/functions";
 import VCFCard from "modules/account/MainAccountContent/components/VCFCard";
 import { useRef } from "react";
@@ -221,11 +221,14 @@ export default function SocialProfile({
                   {getSocialIcons(socialLink, rest).map(
                     (item: any, index: number) => {
                       if (!item) return null;
+                      let socialLink = needsPhoneCode(item.label.toLowerCase())
+                        ? getSocialLink(item, rest.phoneCode)
+                        : getSocialLink(item);
                       return (
                         <HardsandLink
                           key={index}
                           target="_blank"
-                          href={getSocialLink(item)}
+                          href={socialLink}
                         >
                           {/* @ts-ignore */}
                           <Box height="80px" align={"center"}>

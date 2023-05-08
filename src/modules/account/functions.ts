@@ -17,6 +17,10 @@ export const getSocialIcons = (socialLink: string, rest: any) => {
   });
 };
 
+export const needsPhoneCode = (item: string) => {
+  return ["phoneCode", "phone", "text", "whatsappMessage", "telegram"].includes(item);
+}
+
 export const getSocialEditIcons = (socialLink: string, rest: any) => {
   return (SOCIAL_LINKS[socialLink] as any[]).map((social) => {
     return {
@@ -26,16 +30,16 @@ export const getSocialEditIcons = (socialLink: string, rest: any) => {
   });
 };
 
-export const getSocialLink = (item: any) => {
+export const getSocialLink = (item: any, phoneCode?: string) => {
   if (item.user.includes("http") || item.user.includes("www")) {
     return item.user;
   }
   return (
     item.link
       .replace("${user}", item.user)
+      .replace("${phoneCode}", phoneCode)
       .replace("${phone}", item.user)
-      .replace("${text}", item.user)
-      .replace("${phoneCode}", item.user) || "#"
+      .replace("${text}", item.user) || "#"
   );
 };
 
