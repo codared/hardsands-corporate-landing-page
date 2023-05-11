@@ -157,9 +157,9 @@ const HandPickedForYou = () => {
           <Box my={[8, "auto"]} ml={[0, 10]} w={["100%", "30%"]}>
             <Heading>Why Us?</Heading>
             <Text my={[10]}>
-              While there are many popular digital business cards, Hardsands
-              offers you a truly customizable dashboard with features that let
-              you more effectively connect, communicate, and market yourself.
+              Hardsands offers you a truly customizable dashboard with features
+              that let you more effectively connect, communicate, and market
+              yourself.
             </Text>
             <HardsandsButton
               href={productRoutes.products()}
