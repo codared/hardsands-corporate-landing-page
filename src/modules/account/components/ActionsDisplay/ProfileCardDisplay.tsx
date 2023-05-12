@@ -151,7 +151,7 @@ export default function SocialProfile({
                   type={"file"}
                   display="none"
                   ref={hiddenFileInput}
-                  accept="image/png, image/jpeg"
+                  accept="image/png, image/gif, image/jpeg, image/jpg, image/webp"
                   name={"profileImage"}
                   onChange={handleChange}
                   placeholder={`Enter ${name}`}

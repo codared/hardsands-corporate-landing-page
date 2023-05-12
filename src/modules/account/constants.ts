@@ -294,6 +294,11 @@ export const ACTIONS: ActionsType[] = [
         formKey: "title",
       },
       {
+        name: "Email",
+        type: "text",
+        formKey: "email",
+      },
+      {
         name: "Meeting Link",
         type: "text",
         formKey: "meetingLink",
@@ -302,6 +307,11 @@ export const ACTIONS: ActionsType[] = [
         name: "Phone",
         type: "text",
         formKey: "phone",
+      },
+      {
+        name: "PhoneCode",
+        type: "text",
+        formKey: "phoneCode",
       },
       {
         name: "Text",
@@ -761,9 +771,16 @@ export const SOCIAL_LINKS: ActionsFormType = {
       link: "tel:${phoneCode}${phone}",
     },
     {
+      id: 15,
+      label: "Email",
+      image: EmailIcon,
+      link: "mailto:${email}",
+    },
+    {
       id: 4,
       label: "Meeting Link",
       image: FacetimeIcon,
+      link: "${link}",
     },
     {
       id: 3,

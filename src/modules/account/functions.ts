@@ -1,4 +1,5 @@
 import { DASH_ROOT, routeId, SOCIAL_LINKS } from "./constants";
+import { camelCase } from "lodash";
 
 export const findSameSocials = (item: any, findingArray: any[]) => {
   return findingArray.find((finding) => finding.name === item.label);
@@ -7,10 +8,10 @@ export const findSameSocials = (item: any, findingArray: any[]) => {
 // Get social Icons for display
 export const getSocialIcons = (socialLink: string, rest: any) => {
   return (SOCIAL_LINKS[socialLink] as any[]).map((social) => {
-    if (rest[social.label.toLowerCase()]) {
+    if (rest[camelCase(social.label)]) {
       return {
         ...social,
-        user: rest[social.label.toLowerCase()],
+        user: rest[camelCase(social.label)],
       };
     }
     return undefined;
@@ -25,7 +26,7 @@ export const getSocialEditIcons = (socialLink: string, rest: any) => {
   return (SOCIAL_LINKS[socialLink] as any[]).map((social) => {
     return {
       ...social,
-      user: rest[social.label.toLowerCase()],
+      user: rest[camelCase(social.label)],
     };
   });
 };
@@ -39,6 +40,8 @@ export const getSocialLink = (item: any, phoneCode?: string) => {
       .replace("${user}", item.user)
       .replace("${phoneCode}", phoneCode)
       .replace("${phone}", item.user)
+      .replace("${email}", item.user)
+      .replace("${link}", item.user)
       .replace("${text}", item.user) || "#"
   );
 };
