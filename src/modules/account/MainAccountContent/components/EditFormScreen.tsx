@@ -8,6 +8,7 @@ import {
   Input,
   useToast,
 } from "@chakra-ui/react";
+import { camelCase } from "lodash";
 import { Select } from "chakra-react-select";
 import CustomDrawer from "components/CustomDrawer";
 import ActionFormBuilder from "modules/account/components/ActionFormBuilder";
@@ -323,20 +324,20 @@ const EditFormScreen = ({
                         />
                       </>
                     ) : null}
-                    {selectedSocials?.label.toLowerCase() !== "phone" && (
+                    {camelCase(selectedSocials?.label) !== "phone" && (
                       <>
                         <FormLabel>
                           Add {selectedSocials?.label} to Social Profile*
                         </FormLabel>
                         <Input
                           type={"text"}
-                          name={selectedSocials?.label.toLowerCase()}
+                          name={camelCase(selectedSocials?.label)}
                           borderRadius={0}
                           borderColor={"black"}
                           onChange={handleChange}
                           value={
                             // @ts-ignore
-                            formState[selectedSocials?.label.toLowerCase()] ||
+                            formState[camelCase(selectedSocials?.label)] ||
                             ""
                           }
                           placeholder={`Enter ${selectedSocials?.label} Info`}
