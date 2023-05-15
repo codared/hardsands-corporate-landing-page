@@ -171,8 +171,6 @@ function MainIndex() {
 
     let rest = getFormData(formData);
 
-    console.log("rest >>>> ", rest);
-
     if (formStatus === ACTION_FORM_STATUS.ADD) {
       reduxDispatch(addUserCardsAction(rest)).then((res) => {
         setIsSubmitting(false);
