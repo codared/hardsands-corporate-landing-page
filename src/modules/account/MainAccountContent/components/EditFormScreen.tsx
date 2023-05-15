@@ -243,7 +243,7 @@ const EditFormScreen = ({
               title={
                 modalTitle === "Number"
                   ? "Enter Contact Information"
-                  : "Enter Social Media Handle"
+                  : "Provide Necessary Info"
               }
               onClose={onDrawerClose}
               isOpen={openTextModal}
