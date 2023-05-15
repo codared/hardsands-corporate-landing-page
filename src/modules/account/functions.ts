@@ -19,8 +19,10 @@ export const getSocialIcons = (socialLink: string, rest: any) => {
 };
 
 export const needsPhoneCode = (item: string) => {
-  return ["phoneCode", "phone", "text", "whatsappMessage", "telegram"].includes(item);
-}
+  return ["phoneCode", "phone", "text", "whatsappMessage", "telegram"].includes(
+    item
+  );
+};
 
 export const getSocialEditIcons = (socialLink: string, rest: any) => {
   return (SOCIAL_LINKS[socialLink] as any[]).map((social) => {
@@ -149,4 +151,28 @@ export const monthClicks = () => {
     },
   ];
   return monthlyClicks;
+};
+
+export const exceptionIconTitle = (title: string) => {
+  if (title === "Meeting Link") {
+    return "Calendar Link";
+  } else {
+    return title;
+  }
+};
+
+export const exceptionLabels = (label: string) => {
+  if (label === "Meeting Link") {
+    return "Add Your shareable Calendar Link";
+  } else {
+    return `Add ${label} to Social Profile*`;
+  }
+};
+
+export const exceptionPlaceholders = (label: string) => {
+  if (label === "Meeting Link") {
+    return "Enter Calendar link";
+  } else {
+    return `Enter ${label} Info`;
+  }
 };

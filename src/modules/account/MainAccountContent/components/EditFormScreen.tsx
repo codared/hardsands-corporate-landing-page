@@ -24,6 +24,10 @@ import { useTypedDispatch, useTypedSelector } from "redux/store";
 import { ActionsFormType, ActionsType } from "utils/types";
 import { getCountryPhoneCode } from "utils/getCountries";
 import CustomInput from "components/CustomInput";
+import {
+  exceptionLabels,
+  exceptionPlaceholders,
+} from "modules/account/functions";
 
 const retrieveFormKeyValue = (action: ActionsType) => {
   const fieldsPlaceHolder = {};
@@ -327,7 +331,7 @@ const EditFormScreen = ({
                     {camelCase(selectedSocials?.label) !== "phone" && (
                       <>
                         <FormLabel>
-                          Add {selectedSocials?.label} to Social Profile*
+                          {exceptionLabels(selectedSocials?.label as string)}
                         </FormLabel>
                         <Input
                           type={"text"}
@@ -337,10 +341,11 @@ const EditFormScreen = ({
                           onChange={handleChange}
                           value={
                             // @ts-ignore
-                            formState[camelCase(selectedSocials?.label)] ||
-                            ""
+                            formState[camelCase(selectedSocials?.label)] || ""
                           }
-                          placeholder={`Enter ${selectedSocials?.label} Info`}
+                          placeholder={exceptionPlaceholders(
+                            selectedSocials?.label as string
+                          )}
                           _placeholder={{ color: "RGBA(0, 0, 0, 0.80)" }}
                           size="lg"
                         />

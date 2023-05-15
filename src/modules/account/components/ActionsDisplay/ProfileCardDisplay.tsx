@@ -23,6 +23,7 @@ import {
   getSocialEditIcons,
   getSocialLink,
   needsPhoneCode,
+  exceptionIconTitle,
 } from "modules/account/functions";
 import VCFCard from "modules/account/MainAccountContent/components/VCFCard";
 import { useRef } from "react";
@@ -242,7 +243,7 @@ export default function SocialProfile({
                               mt={2}
                               textTransform={"capitalize"}
                             >
-                              {item.label}
+                              {exceptionIconTitle(item.label)}
                             </Text>
                           </Box>
                         </HardsandLink>
@@ -305,7 +306,7 @@ export default function SocialProfile({
                           alt={`${item.label} icons`}
                         />
                         <Text mt={2} textTransform={"capitalize"}>
-                          {item.label}
+                          {exceptionIconTitle(item.label)}
                         </Text>
                       </Box>
                     ))}
