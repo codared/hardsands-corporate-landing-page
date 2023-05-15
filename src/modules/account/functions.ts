@@ -164,6 +164,8 @@ export const exceptionIconTitle = (title: string) => {
 export const exceptionLabels = (label: string) => {
   if (label === "Meeting Link") {
     return "Add Your shareable Calendar Link";
+  } else if (label === "Email") {
+    return "Enter Email Address";
   } else {
     return `Add ${label} to Social Profile*`;
   }
