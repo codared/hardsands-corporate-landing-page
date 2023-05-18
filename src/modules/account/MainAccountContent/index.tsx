@@ -154,6 +154,11 @@ function MainIndex() {
       formData.time = `${formData.startDate}`;
     }
 
+    if (formData.whatsApp) {
+      formData.whatsappMessage = formData.whatsApp;
+      delete formData.whatsApp;
+    }
+
     const emailField =
       formData["workEmail"] ?? formData["personalEmail"] ?? formData["email"];
     if (emailField && !EMAIL_REGEX.test(emailField)) {

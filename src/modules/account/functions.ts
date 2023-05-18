@@ -1,8 +1,16 @@
 import { DASH_ROOT, routeId, SOCIAL_LINKS } from "./constants";
-import { camelCase } from "lodash";
+import { camelCase as loCamelCase } from "lodash";
 
 export const findSameSocials = (item: any, findingArray: any[]) => {
   return findingArray.find((finding) => finding.name === item.label);
+};
+
+export const camelCase = (str: string): string => {
+  // If the social label is whatsapp, then we need to get the whatsappMessage
+  if (loCamelCase(str) === "whatsApp") {
+    return "whatsappMessage";
+  }
+  return loCamelCase(str);
 };
 
 // Get social Icons for display
@@ -19,9 +27,14 @@ export const getSocialIcons = (socialLink: string, rest: any) => {
 };
 
 export const needsPhoneCode = (item: string) => {
-  return ["phoneCode", "phone", "text", "whatsappMessage", "telegram"].includes(
-    item
-  );
+  return [
+    "phoneCode",
+    "phone",
+    "text",
+    "whatsapp",
+    "whatsappmessage",
+    "telegram",
+  ].includes(item);
 };
 
 export const getSocialEditIcons = (socialLink: string, rest: any) => {
@@ -33,7 +46,11 @@ export const getSocialEditIcons = (socialLink: string, rest: any) => {
   });
 };
 
-export const getSocialLink = (item: any, phoneCode?: string) => {
+export const getSocialLink = (
+  item: any,
+  phoneCode?: string,
+  phone?: string
+) => {
   if (item.user.includes("http") || item.user.includes("www")) {
     return item.user;
   }
@@ -41,7 +58,7 @@ export const getSocialLink = (item: any, phoneCode?: string) => {
     item.link
       .replace("${user}", item.user)
       .replace("${phoneCode}", phoneCode)
-      .replace("${phone}", item.user)
+      .replace("${phone}", phone || item.user)
       .replace("${email}", item.user)
       .replace("${link}", item.user)
       .replace("${text}", item.user) || "#"
@@ -174,6 +191,8 @@ export const exceptionLabels = (label: string) => {
 export const exceptionPlaceholders = (label: string) => {
   if (label === "Meeting Link") {
     return "Enter Calendar link";
+  } else if (label === "Linkedin") {
+    return "Enter Linkedin Username";
   } else {
     return `Enter ${label} Info`;
   }

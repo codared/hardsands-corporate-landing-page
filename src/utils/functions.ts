@@ -124,7 +124,7 @@ export const mergeActionFields = (cardActions: ActionsType[], id: number) => {
     // which causes an undefined value
     let value;
     if (formKey === "whatsappMessage") {
-      value = fields["message"];
+      value = fields["whatsappMessage"] || fields["message"];
     } else if (formKey === "homeCountryId") {
       value = fields["homeCountry"];
     } else if (formKey === "homeStateId") {

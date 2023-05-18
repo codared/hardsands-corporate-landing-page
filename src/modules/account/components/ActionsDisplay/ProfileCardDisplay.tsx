@@ -223,7 +223,7 @@ export default function SocialProfile({
                     (item: any, index: number) => {
                       if (!item) return null;
                       let socialLink = needsPhoneCode(item.label.toLowerCase())
-                        ? getSocialLink(item, rest.phoneCode)
+                        ? getSocialLink(item, rest.phoneCode, rest.phone)
                         : getSocialLink(item);
                       return (
                         <HardsandLink

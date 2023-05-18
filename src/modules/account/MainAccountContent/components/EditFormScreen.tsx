@@ -8,7 +8,6 @@ import {
   Input,
   useToast,
 } from "@chakra-ui/react";
-import { camelCase } from "lodash";
 import { Select } from "chakra-react-select";
 import CustomDrawer from "components/CustomDrawer";
 import ActionFormBuilder from "modules/account/components/ActionFormBuilder";
@@ -25,6 +24,7 @@ import { ActionsFormType, ActionsType } from "utils/types";
 import { getCountryPhoneCode } from "utils/getCountries";
 import CustomInput from "components/CustomInput";
 import {
+  camelCase,
   exceptionLabels,
   exceptionPlaceholders,
 } from "modules/account/functions";
@@ -328,14 +328,14 @@ const EditFormScreen = ({
                         />
                       </>
                     ) : null}
-                    {camelCase(selectedSocials?.label) !== "phone" && (
+                    {camelCase(selectedSocials?.label as string) !== "phone" && (
                       <>
                         <FormLabel>
                           {exceptionLabels(selectedSocials?.label as string)}
                         </FormLabel>
                         <Input
                           type={"text"}
-                          name={camelCase(selectedSocials?.label)}
+                          name={camelCase(selectedSocials?.label as string)}
                           borderRadius={0}
                           borderColor={"black"}
                           onChange={handleChange}
