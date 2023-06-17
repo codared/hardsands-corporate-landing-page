@@ -11,7 +11,6 @@ const SupportNav = () => {
 
   const baseUrl = DASH_ROOT.replace(routeId, corpName[0]);
 
-
   return (
     <Flex>
       <Link href={`${baseUrl}/support/faq`}>
@@ -25,6 +24,7 @@ const SupportNav = () => {
           w="full"
           maxW="204px"
           textAlign="center"
+          cursor={"pointer"}
         >
           FAQ
         </Box>
@@ -40,6 +40,7 @@ const SupportNav = () => {
           w="full"
           maxW="204px"
           textAlign="center"
+          cursor={"pointer"}
         >
           Report an issue
         </Box>

@@ -13,13 +13,15 @@ import {
 } from "@chakra-ui/react";
 import SupportNav from "./components/SupportNav";
 import { SearchIcon } from "assets/index";
+import HardsandLink from "components/HardsandsLink";
 
 const FAQs = [
   {
     id: 1,
     title: "What is Hardsands Card?",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+    content: `The average person collects dozens, if not hundreds, of business cards throughout their career. With so many cards, it can be tough to keep track of them all – and even tougher to find the one you need when you need it.
+      This is where Hardsands comes in. We are a digital business card service that helps you share information instantly and on the go.
+      With an NFC-enabled device, such as a smartphone, you can simply tap or hover your Hardsands card or hardsands epoxy on the front or back camera of your device to automatically share your info with anyone. To learn more about how to use our service, read on!`,
   },
   {
     id: 2,
@@ -66,19 +68,15 @@ const FAQ = () => {
     <Box>
       <Heading>Support</Heading>{" "}
       <Text color="#737373" fontSize="14px">
-        Lorem ipsium is simply dummy text of the printing and type setting
+        Find answers to your questions here or contact us directly at{" "}
+        <HardsandLink href={"mailto:info@hardsands.com"}>
+          info@hardsands.com
+        </HardsandLink>
       </Text>
       <Box mt={6} bg="#fff" p={5}>
         <SupportNav />
-        <Accordion
-          allowToggle
-          mt={6}
-          border="1px solid #d9d9d9"
-          px={8}
-          py={5}
-          
-        >
-          <Flex
+        <Accordion allowToggle mt={6} border="1px solid #d9d9d9" px={8} py={5}>
+          {/* <Flex
             bg="#f9f9f9"
             border="0.5px solid #D9D9D9"
             maxW="280px"
@@ -96,7 +94,7 @@ const FAQ = () => {
               focusBorderColor="none"
               p={0}
             />
-          </Flex>
+          </Flex> */}
           {FAQs.map(({ id, title, content }) => (
             <AccordionItem key={id} py={4}>
               <Heading fontSize={"1.25rem"}>
