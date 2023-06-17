@@ -92,7 +92,13 @@ const Members = () => {
           setDrawerFormState({
             name: "Edit Member",
             subTitle: "Update Member details",
-            form: <MemberProfile showActions={false} member={member} />,
+            form: (
+              <MemberProfile
+                createDrawer={createDrawer}
+                showActions={false}
+                member={member}
+              />
+            ),
           });
           createDrawer.onOpen();
         },
