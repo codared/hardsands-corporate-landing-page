@@ -23,6 +23,8 @@ import {
 } from "../actions";
 import NameColumn from "./NameColumn";
 
+const excludeActions = ["Consultation Form", "Coming soon Form"];
+
 const ActionsPermissions = ({ member }: { member: Member }) => {
   const actionDrawer = useDisclosure();
 
@@ -36,6 +38,9 @@ const ActionsPermissions = ({ member }: { member: Member }) => {
   const filteredActions =
     !!actions && actions.length > 0
       ? actions.filter((action: ActionsType) => {
+          if (excludeActions.includes(action.fieldTitle)) {
+            return;
+          }
           return !actionsToUpdate?.some((act: any) => {
             return act.action === action.fieldTitle;
           });
