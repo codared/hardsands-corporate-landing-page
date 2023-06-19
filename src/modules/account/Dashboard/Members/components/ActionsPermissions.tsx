@@ -38,9 +38,11 @@ const ActionsPermissions = ({ member }: { member: Member }) => {
   const filteredActions =
     !!actions && actions.length > 0
       ? actions.filter((action: ActionsType) => {
+          // Take out coming soon and Consultation Form from add action
           if (excludeActions.includes(action.fieldTitle)) {
             return;
           }
+          // Select only the actions that are not in the member actions
           return !actionsToUpdate?.some((act: any) => {
             return act.action === action.fieldTitle;
           });
@@ -67,7 +69,7 @@ const ActionsPermissions = ({ member }: { member: Member }) => {
     }
   };
 
-  // on select action add it to state
+  // on select action push it to state
   const onSelect = (id: number) => {
     setSelectedActions([...selectedActions, id]);
   };
