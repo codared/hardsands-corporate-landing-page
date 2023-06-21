@@ -8,8 +8,8 @@ import { AiOutlineMinus } from "react-icons/ai";
 
 const LinkTreeForm = ({ handleChange, formState }: any) => {
   const initialFormState =
-    formState?.length > 0
-      ? formState
+    formState?.links?.length > 0
+      ? formState.links
       : [
           {
             linkName: "",
@@ -22,14 +22,16 @@ const LinkTreeForm = ({ handleChange, formState }: any) => {
 
   const onChange = (id: number, e: any) => {
     e.preventDefault();
-    const currentInputFields = [...inputFieldsState][id];
+    const currentInputFields = JSON.parse(
+      JSON.stringify([...inputFieldsState])
+    )[id];
     currentInputFields[e.target.name] =
       e.target.name === "linkId"
         ? parseInt(e.target.value, 10)
         : e.target.value;
-    inputFieldsState[id] = currentInputFields;
 
-    setInputFieldsState(inputFieldsState);
+    inputFieldsState[id] = currentInputFields;
+    setInputFieldsState([...inputFieldsState]);
 
     handleChange({
       preventDefault: e.preventDefault,

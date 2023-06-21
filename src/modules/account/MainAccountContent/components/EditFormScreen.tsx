@@ -73,7 +73,7 @@ const EditFormScreen = ({
     formStatus === ACTION_FORM_STATUS.ADD
       ? {}
       : selectedAction.fieldTitle === "Link tree"
-      ? selectedAction?.fields?.links
+      ? { links: [...selectedAction?.fields?.links] }
       : retrieveFormKeyValue(selectedAction)
   );
   const [showPhoneCodeError, setShowPhoneCodeError] = useState<boolean>(false);
