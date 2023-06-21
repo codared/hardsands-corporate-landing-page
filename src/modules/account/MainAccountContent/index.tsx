@@ -90,6 +90,7 @@ function MainIndex() {
       id,
       action,
       type,
+      actionCategory,
       requiresCountryCode,
       ...rest
     } = formData;
@@ -317,6 +318,7 @@ function MainIndex() {
                 )}
                 <AddAction
                   actions={actions as ActionsType[]}
+                  userActions={cardActions}
                   setSelectedAction={setSelectedAction}
                   handleSelectedTab={handleSelectedTab}
                   setFormStatus={setFormStatus}

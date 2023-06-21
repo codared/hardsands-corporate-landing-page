@@ -92,7 +92,13 @@ const Members = () => {
           setDrawerFormState({
             name: "Edit Member",
             subTitle: "Update Member details",
-            form: <MemberProfile showActions={false} member={member} />,
+            form: (
+              <MemberProfile
+                createDrawer={createDrawer}
+                showActions={false}
+                member={member}
+              />
+            ),
           });
           createDrawer.onOpen();
         },
@@ -181,7 +187,7 @@ const Members = () => {
             setDrawerFormState({
               name: "Add Member via Import CSV/Excel",
               subTitle: "Import your member sheet",
-              form: <ImportMemberForm />,
+              form: <ImportMemberForm createDrawer={createDrawer} />,
             });
             createDrawer.onOpen();
           }}

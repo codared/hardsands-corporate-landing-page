@@ -42,14 +42,13 @@ const CreateMemberForm = ({
       } else {
         res = await dispatch(addMembersAction(formData));
       }
-
-      if (res?.message) {
+      if (!!res) {
         setSuccessMessage(
           editMode ? "Member update successfully" : "Member added successfully"
         );
         //close modal here
         createDrawer.onClose();
-        dispatch(getMembersAction());
+        // dispatch(getMembersAction());
       }
     }
   );

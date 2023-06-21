@@ -9,12 +9,17 @@ const MemberProfile = ({
   showForm = true,
   showActions = true,
   showCard = false,
+  createDrawer,
 }: any) => {
   return (
     <Box>
       {showForm && (
         <>
-          <CreateMemberForm editMode defaultValues={member} />
+          <CreateMemberForm
+            createDrawer={createDrawer}
+            editMode
+            defaultValues={member}
+          />
         </>
       )}
       {showActions && <ActionsPermissions member={member} />}

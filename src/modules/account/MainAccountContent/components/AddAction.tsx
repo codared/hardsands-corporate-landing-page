@@ -14,12 +14,14 @@ const AddAction = ({
   handleSelectedTab,
   setSelectedAction,
   actions,
+  userActions,
   setFormStatus,
   currentScreenState,
   ...rest
 }: {
   currentScreenState?: string;
   actions: ActionsType[];
+  userActions: ActionsType[] | undefined;
   setFormStatus: (status: ACTION_FORM_STATUS) => void;
   setSelectedAction: (action: ActionsType) => void;
   handleSelectedTab: (tab: APP_SCREEN) => void;
@@ -59,6 +61,17 @@ const AddAction = ({
     onClose();
   };
 
+  // We dont want to show the actions in userActions
+  const filteredActions =
+    userActions && userActions.length > 0
+      ? actions.filter(
+          (action: ActionsType) =>
+            !userActions.some((userAction: ActionsType) => {
+              return userAction.title === action.fieldTitle;
+            })
+        )
+      : actions;
+
   return (
     <Box>
       <Button
@@ -78,7 +91,7 @@ const AddAction = ({
       {isOpen && (
         <CustomDrawer onClose={onClose} isOpen={isOpen} title={"Add Actions"}>
           <>
-            {actions.map((action: ActionsType) => {
+            {filteredActions.map((action: ActionsType) => {
               // We dont want to show the lead form in the list
               if (
                 action.actionCategory === "LEAD_FORM" ||

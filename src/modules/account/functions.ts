@@ -1,5 +1,6 @@
 import { DASH_ROOT, routeId, SOCIAL_LINKS } from "./constants";
 import { camelCase as loCamelCase } from "lodash";
+import { LinkTreeType } from "./types";
 
 export const findSameSocials = (item: any, findingArray: any[]) => {
   return findingArray.find((finding) => finding.name === item.label);

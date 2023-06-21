@@ -32,6 +32,8 @@ export type UserCardType = {
   url: string;
 };
 
+export type LinkTreeType = { link: string; linkName: string; linkId: string };
+
 export type BankObjectType = {
   value: string;
 };

@@ -57,7 +57,8 @@ export type ActionsType = {
   id?: number;
   title?: string;
   fieldTitle: string;
-  fields?: ActionsFormType[];
+  dynamicFields?: boolean;
+  fields?: ActionsFormType[] | any;
   isDefault?: boolean;
   requiresCountryCode?: string;
   type?: string;
