@@ -28,6 +28,7 @@ import {
   exceptionLabels,
   exceptionPlaceholders,
 } from "modules/account/functions";
+import LinkTreeForm from "modules/account/components/ActionsDisplay/LinkTree/LinkTreeForm";
 
 const retrieveFormKeyValue = (action: ActionsType) => {
   const fieldsPlaceHolder = {};
@@ -71,6 +72,8 @@ const EditFormScreen = ({
   const [formState, setFormState] = useState<any>(
     formStatus === ACTION_FORM_STATUS.ADD
       ? {}
+      : selectedAction.fieldTitle === "Link tree"
+      ? selectedAction?.fields?.links
       : retrieveFormKeyValue(selectedAction)
   );
   const [showPhoneCodeError, setShowPhoneCodeError] = useState<boolean>(false);
@@ -84,7 +87,9 @@ const EditFormScreen = ({
   );
 
   const isProfile = selectedAction.fieldTitle === "Social Card";
+  const isLinkTree = selectedAction.fieldTitle === "Link tree";
   const isBank = selectedAction.fieldTitle === "Bank Account";
+  const isNon = !isProfile && !isLinkTree && !isBank;
   const user = useTypedSelector((state) => state.app?.user);
   const [countryBanks, setCountryBanks] = useState([]);
 
@@ -328,7 +333,8 @@ const EditFormScreen = ({
                         />
                       </>
                     ) : null}
-                    {camelCase(selectedSocials?.label as string) !== "phone" && (
+                    {camelCase(selectedSocials?.label as string) !==
+                      "phone" && (
                       <>
                         <FormLabel>
                           {exceptionLabels(selectedSocials?.label as string)}
@@ -364,7 +370,14 @@ const EditFormScreen = ({
           </>
         )}
         <Box w={"full"}>
-          {!isProfile && (
+          {isLinkTree && (
+            <LinkTreeForm
+              handleChange={handleChange}
+              selectedAction={selectedAction}
+              formState={formState}
+            />
+          )}
+          {isNon && (
             <ActionFormBuilder
               onChange={handleChange}
               formState={formState}
@@ -383,7 +396,7 @@ const EditFormScreen = ({
   );
 };
 
-const SaveButton = ({
+export const SaveButton = ({
   handleAction,
   isSubmitting,
   text = "Save",

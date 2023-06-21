@@ -11,7 +11,7 @@ import { ChangeEvent } from "react";
 interface CustomSelectProps extends SelectProps {
   placeholder?: string;
   onChange?: (e: ChangeEvent<any>) => void;
-  value?: string;
+  value?: any;
   name: any;
   type?: string;
   helperText?: string;

@@ -54,7 +54,7 @@ export const fileRequestAuthHeaders = () => {
   return new Headers({
     accept: "application/json",
     Authorization: `Bearer ${getToken()}`,
-    "Content-Type": "multipart/form-data",
+    // "Content-Type": "multipart/form-data",
   });
 };
 
@@ -96,7 +96,8 @@ export const getToken = () => {
 export const mergeActions = (dbActions: any, localActions: ActionsType[]) => {
   return localActions.map((localAction: ActionsType) => {
     const neededActionsFromDB = dbActions.find(
-      ({ action }: any) => action === localAction.fieldTitle
+      ({ action }: any) =>
+        action.toLowerCase() === localAction.fieldTitle.toLowerCase()
     );
     return {
       ...localAction,
@@ -116,28 +117,31 @@ export const mergeActionFields = (cardActions: ActionsType[], id: number) => {
     (act) => act.fieldTitle === action.title
   ) as ActionsType;
 
-  localAction.fields = localAction?.fields?.map((_action) => {
-    const formKey = _action.formKey as string;
-    let fields = action?.fields as any;
+  localAction.fields =
+    localAction.fieldTitle === "Link tree"
+      ? action?.fields
+      : localAction?.fields?.map((_action: { formKey: string; }) => {
+          const formKey = _action.formKey as string;
+          let fields = action?.fields as any;
 
-    // Only do this for whatsApp as the whatsappMessage come on from the DB as message,
-    // which causes an undefined value
-    let value;
-    if (formKey === "whatsappMessage") {
-      value = fields["whatsappMessage"] || fields["message"];
-    } else if (formKey === "homeCountryId") {
-      value = fields["homeCountry"];
-    } else if (formKey === "homeStateId") {
-      value = fields["homeState"];
-    } else {
-      value = fields[formKey];
-    }
+          // Only do this for whatsApp as the whatsappMessage come on from the DB as message,
+          // which causes an undefined value
+          let value;
+          if (formKey === "whatsappMessage") {
+            value = fields["whatsappMessage"] || fields["message"];
+          } else if (formKey === "homeCountryId") {
+            value = fields["homeCountry"];
+          } else if (formKey === "homeStateId") {
+            value = fields["homeState"];
+          } else {
+            value = fields[formKey];
+          }
 
-    return {
-      ..._action,
-      value,
-    };
-  });
+          return {
+            ..._action,
+            value,
+          };
+        });
 
   return { ...localAction, id };
 };

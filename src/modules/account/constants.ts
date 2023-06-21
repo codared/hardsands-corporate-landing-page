@@ -64,17 +64,22 @@ import {
 } from "assets";
 import {
   AiFillBank,
+  AiOutlineFacebook,
   AiOutlineFileText,
   AiOutlineIdcard,
+  AiOutlineInstagram,
   AiOutlineLink,
+  AiOutlineLinkedin,
   AiOutlineMail,
+  AiOutlineWhatsApp,
 } from "react-icons/ai";
 import { FaSms, FaWhatsapp } from "react-icons/fa";
-import { FiPhoneCall } from "react-icons/fi";
+import { FiPhoneCall, FiTwitter } from "react-icons/fi";
 import { RiContactsLine } from "react-icons/ri";
 import { MdOutlineContactMail, MdOutlineEventNote } from "react-icons/md";
 import { AccountNavItemsType, ActionsFormType, ActionsType } from "utils/types";
 import getCountries from "utils/getCountries";
+import { TbBinaryTree2, TbWorld } from "react-icons/tb";
 
 export const routeId = "${corporateId}";
 export const ACCOUNT_ROOT = "/app";
@@ -241,6 +246,7 @@ export const AppIcons = {
   MessagesIcon,
   LeadsIcon,
   LinkOutlineIcon,
+  "Link tree": TbBinaryTree2,
   DashWhatsAppIcon,
   ContactCardIconSVG,
   BankIconSVG,
@@ -414,6 +420,10 @@ export const ACTIONS: ActionsType[] = [
         formKey: "url",
       },
     ],
+  },
+  {
+    fieldTitle: "Link tree",
+    fields: [],
   },
   {
     fieldTitle: "Event",
@@ -744,17 +754,17 @@ export const SOCIAL_LINKS: ActionsFormType = {
   //     label: "Meeting Link",
   //     image: FacetimeIcon,
   //   },
-    // {
-    //   id: 5,
-    //   label: "Contact Card",
-    //   image: ContactCardIcon,
-    // },
-    // {
-    //   id: 6,
-    //   label: "Leads Form",
-    //   image: LeadsFormIcon,
-    //   pro: true,
-    // },
+  // {
+  //   id: 5,
+  //   label: "Contact Card",
+  //   image: ContactCardIcon,
+  // },
+  // {
+  //   id: 6,
+  //   label: "Leads Form",
+  //   image: LeadsFormIcon,
+  //   pro: true,
+  // },
   // ],
   social: [
     {
@@ -951,6 +961,39 @@ export const SOCIAL_LINKS: ActionsFormType = {
   //   },
   // ],
 };
+
+export const linkTrees = [
+  {
+    id: 1,
+    title: "Instagram",
+    icon: AiOutlineInstagram,
+  },
+  {
+    id: 2,
+    title: "Facebook",
+    icon: AiOutlineFacebook,
+  },
+  {
+    id: 3,
+    title: "Twitter",
+    icon: FiTwitter,
+  },
+  {
+    id: 4,
+    title: "LinkedIn",
+    icon: AiOutlineLinkedin,
+  },
+  {
+    id: 5,
+    title: "Website",
+    icon: TbWorld,
+  },
+  {
+    id: 6,
+    title: "Whatsapp",
+    icon: AiOutlineWhatsApp,
+  },
+];
 
 export const themeColorOptions = [
   {

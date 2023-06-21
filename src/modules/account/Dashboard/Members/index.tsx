@@ -187,7 +187,7 @@ const Members = () => {
             setDrawerFormState({
               name: "Add Member via Import CSV/Excel",
               subTitle: "Import your member sheet",
-              form: <ImportMemberForm />,
+              form: <ImportMemberForm createDrawer={createDrawer} />,
             });
             createDrawer.onOpen();
           }}

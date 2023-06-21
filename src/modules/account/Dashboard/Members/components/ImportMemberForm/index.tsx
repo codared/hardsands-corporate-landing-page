@@ -20,7 +20,7 @@ import { colors } from "styles/theme";
 import { addMembersAction, getMembersAction } from "../../actions";
 import { importMemberSchema } from "./schema";
 
-const ImportMemberForm = () => {
+const ImportMemberForm = ({ createDrawer }: any) => {
   const dispatch = useTypedDispatch();
   const toast = useToast();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -47,32 +47,14 @@ const ImportMemberForm = () => {
     },
     importMemberSchema,
     async (formData: any) => {
-      // console.log("🚀 ~ file: index.tsx:50 ~ formData", formData);
-
-      // const form = new FormData();
-      // form.append(
-      //   "file",
-      //   new File([new Blob([formData.file])], formData.file.name)
-      // );
       const form = new FormData();
-      const reader = new FileReader();
-      let read;
-
-      if (formData.file) {
-        reader.readAsDataURL(formData.file);
-      }
-
-      reader.onload = (readerEvent) => {
-        // @ts-ignore
-        // console.log("🚀 ~ file: index.tsx:50 ~ result", readerEvent.target.result);
-        // @ts-ignore
-        form.append("file", readerEvent.target.result);
-      };
+      form.append("file", formData.file);
 
       const res = await dispatch(addMembersAction(form, "import"));
       if (res?.message) {
         setSuccessMessage(res?.message);
         dispatch(getMembersAction());
+        createDrawer.onClose();
       }
     }
   );

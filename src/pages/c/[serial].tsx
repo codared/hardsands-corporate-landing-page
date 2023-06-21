@@ -116,6 +116,9 @@ export async function getServerSideProps(ctx: NextPageContext) {
         case "Social Card":
           // Show user profile
           return { props: { result: _default } };
+        case "Link tree":
+          // Show Link tree Profile
+          return { props: { result: _default } };
 
         default:
           return { props: {} };
