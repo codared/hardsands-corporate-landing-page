@@ -86,7 +86,7 @@ const Home = () => {
           </Box>
         </Card>
         <Card>
-          <Text>Top Customer</Text>
+          <Text>Top Performer</Text>
           <HStack justifyContent="center">
             <Avatar src="" w="45" h="45" />
             <Text>{dashboard?.topPerformer?.fullName}</Text>
