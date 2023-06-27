@@ -56,7 +56,7 @@ const Settings = () => {
             Update your personal information
           </Text>
 
-          <Box mt={6} maxW={["100%", "100%", "50%"]}>
+          <Box mt={6} minW={["100%"]}>
             <Flex gap={4} alignItems={"center"}>
               <Flex
                 boxSize={150}
@@ -80,6 +80,7 @@ const Settings = () => {
                   bg={"brand.300"}
                   _hover={{ textColor: "black", bg: "brand.200" }}
                   borderRadius={"none"}
+                  minW={150}
                   py={[6]}
                   my={[6]}
                   onClick={() => fileInputRef.current?.click()}
@@ -113,7 +114,7 @@ const Settings = () => {
                 loadingText="Saving..."
                 isLoading={nameLoading}
               >
-                <Text>Save change</Text>
+                <Text>Save Changes</Text>
               </Button>
             </Box>
           </Box>
@@ -129,7 +130,7 @@ const Settings = () => {
         >
           <Heading fontSize={20}>Password</Heading>
           <Text color="gray.500" fontSize={14}>
-            Please enter your current password to change your password{" "}
+            Please enter your new password
           </Text>
 
           <Box mt={6} maxW={["100%", "100%", "50%"]}>
