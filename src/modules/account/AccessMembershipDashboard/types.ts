@@ -8,6 +8,7 @@ export type AccessDashboardReducerState = {
   corpCards: CorpCard[];
   reports: any;
   company: string;
+  companyLogo: string;
   dashboard: any;
 };
 

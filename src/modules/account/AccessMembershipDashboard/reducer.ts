@@ -7,6 +7,7 @@ const initialState: AccessDashboardReducerState = {
   error: {},
   loading: true,
   company: "",
+  companyLogo: "",
   members: [],
   corpCards: [],
   leads: [],
@@ -64,8 +65,9 @@ const dashboardReducer = (
     case "GET_DASHBOARD_DATA":
       return { ...state, loading: false, dashboard: action.payload };
     case "UPDATE_MEMBERS":
-      console.log("UPDATE_MEMBERS", action.payload);
       return { ...state, loading: false, members: action.payload };
+    case "UPDATE_CORPORATE_LOGO":
+      return { ...state, loading: false, companyLogo: action.payload };
     case "SET_COMPANY_NAME":
       return { ...state, loading: false, company: action.payload };
     default:
