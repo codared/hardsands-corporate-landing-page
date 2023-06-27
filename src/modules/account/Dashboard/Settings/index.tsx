@@ -12,7 +12,6 @@ import Loader from "modules/account/components/Loader";
 import { HARDSANDS_CORPERATE } from "modules/authentication/constants";
 import { getCookie } from "modules/shared/cookie";
 import React from "react";
-import { useTranslation } from "react-i18next";
 import useSettings from "./hook";
 
 const Settings = () => {
