@@ -105,6 +105,7 @@ const DashSidebarContent = (props: any) => {
             width={"150px"}
             h={"150px"}
             objectFit={"cover"}
+            boxShadow={"md"}
             src={img}
             alt={companyName as string}
           />
