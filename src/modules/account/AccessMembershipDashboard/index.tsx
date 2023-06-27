@@ -6,6 +6,7 @@ import Leads from "../Dashboard/Leads";
 import Reports from "../Dashboard/Reports";
 import ReportIssue from "../Dashboard/Support/ReportIssue";
 import FAQ from "../Dashboard/Support/FAQ";
+import Settings from "../Dashboard/Settings";
 
 const AccessMembershipDashboard = ({ route }: { route: string[] }) => {
   switch (route[1]) {
@@ -26,6 +27,8 @@ const AccessMembershipDashboard = ({ route }: { route: string[] }) => {
         default:
           return <ReportIssue />;
       }
+    case "settings":
+      return <Settings />;
 
     default:
       return <Home />;

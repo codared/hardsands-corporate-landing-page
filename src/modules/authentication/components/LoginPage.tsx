@@ -29,7 +29,10 @@ import { LoginUserType } from "../types";
 import { setCookie } from "modules/shared/cookie";
 import GoogleLogin from "./GoogleLogin";
 import { slugify } from "utils/string";
-import { setCompanyNameAction } from "modules/account/Dashboard/actions";
+import {
+  setCompanyLogoAction,
+  setCompanyNameAction,
+} from "modules/account/Dashboard/actions";
 import { useTypedDispatch } from "redux/store";
 
 function LoginPage() {
@@ -74,6 +77,7 @@ function LoginPage() {
           if (res.result.role === UserRoleTypes.CORP_ADMIN) {
             setCookie(HARDSANDS_CORPERATE, JSON.stringify(rest), 1);
             dispatch(setCompanyNameAction(res.result.corpName));
+            dispatch(setCompanyLogoAction(res.result.profileImage));
             router.push(
               SERVER_APP_ROUTE.dashboard.replace(
                 "{companyName}",

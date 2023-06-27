@@ -9,6 +9,14 @@ export const setCompanyNameAction: ThunkActionCreator<Promise<any>> =
     });
   };
 
+export const setCompanyLogoAction: ThunkActionCreator<Promise<any>> =
+  (companyName: string) => async (dispatch, getState) => {
+    dispatch({
+      type: "UPDATE_CORPORATE_LOGO",
+      payload: companyName,
+    });
+  };
+
 // get dashboard data
 export const getDashboardDataAction: ThunkActionCreator<Promise<any>> =
   () => async (dispatch, getState) => {
@@ -27,5 +35,4 @@ export const getDashboardDataAction: ThunkActionCreator<Promise<any>> =
     });
 
     return res.result;
-  }
-  
+  };

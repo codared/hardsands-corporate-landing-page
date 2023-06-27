@@ -10,9 +10,11 @@ import CustomDrawer from "components/CustomDrawer";
 import { AppIcons } from "modules/account/constants";
 import { getCardImageFromSlug } from "modules/products/functions";
 import React from "react";
+import { useTypedDispatch } from "redux/store";
 import { slugify } from "utils/string";
 import MemberProfile from "../../Members/components/MemberProfile";
 import { CorpCard } from "../../types";
+import { resetCardAction } from "../actions";
 
 type DeviceCardProps = {
   device: CorpCard;
@@ -20,9 +22,30 @@ type DeviceCardProps = {
 };
 
 const DeviceCard = ({ device, routes }: DeviceCardProps) => {
+  const dispatch = useTypedDispatch();
   const deviceDrawer = useDisclosure();
   const toast = useToast();
   const img = getCardImageFromSlug(slugify(device.cardVariant));
+  const [isResetting, setIsResetting] = React.useState<boolean>(false);
+
+  const handleResetCard = async () => {
+    setIsResetting(true);
+    // call action to reset card
+    const res = await dispatch(resetCardAction(device.cardSerial));
+    // @ts-ignore
+    if (!res?.isError) {
+      setIsResetting(false);
+      toast({
+        position: "top-right",
+        title: "Card reset successfully",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+      // close drawer
+      deviceDrawer.onClose();
+    }
+  };
 
   return (
     <>
@@ -88,10 +111,14 @@ const DeviceCard = ({ device, routes }: DeviceCardProps) => {
             ...device.user,
             img,
             fullName: `${device.user?.firstName} ${device.user?.lastName}`,
+            cardName: device.cardVariant,
           }}
           showActions={false}
           showForm={false}
           showCard
+          resetCard
+          loading={isResetting}
+          handleResetCard={handleResetCard}
         />
       </CustomDrawer>
     </>

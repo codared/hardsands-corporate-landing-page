@@ -72,6 +72,7 @@ import {
   AiOutlineLinkedin,
   AiOutlineMail,
   AiOutlineWhatsApp,
+  AiOutlineSetting,
 } from "react-icons/ai";
 import { FaSms, FaWhatsapp } from "react-icons/fa";
 import { FiPhoneCall, FiTwitter } from "react-icons/fi";
@@ -80,6 +81,7 @@ import { MdOutlineContactMail, MdOutlineEventNote } from "react-icons/md";
 import { AccountNavItemsType, ActionsFormType, ActionsType } from "utils/types";
 import getCountries from "utils/getCountries";
 import { TbBinaryTree2, TbWorld } from "react-icons/tb";
+import { IoSettingsOutline } from "react-icons/io5";
 
 export const routeId = "${corporateId}";
 export const ACCOUNT_ROOT = "/app";
@@ -155,6 +157,13 @@ export const DASH_NAV_ITEMS: AccountNavItemsType[] = [
     icon: SupportIcon,
     isImg: true,
   },
+  {
+    id: 7,
+    title: "Settings",
+    href: `${DASH_ROOT}/settings`,
+    icon: IoSettingsOutline,
+    isImg: false,
+  },
 ];
 
 export const ACCESS_DASH_NAV_ITEMS: AccountNavItemsType[] = [
@@ -186,6 +195,13 @@ export const ACCESS_DASH_NAV_ITEMS: AccountNavItemsType[] = [
     href: `${DASH_ROOT}/support/faq`,
     icon: SupportIcon,
     isImg: true,
+  },
+  {
+    id: 5,
+    title: "Settings",
+    href: `${DASH_ROOT}/settings`,
+    icon: IoSettingsOutline,
+    isImg: false,
   },
 ];
 

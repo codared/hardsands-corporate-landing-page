@@ -47,6 +47,11 @@ export interface SetCompanyName {
   payload: any;
 }
 
+export interface SetCompanyLogo {
+  type: "UPDATE_CORPORATE_LOGO";
+  payload: any;
+}
+
 export interface GetLeadsResponse {
   type: "GET_LEADS_RESPONSE";
   payload: any;
@@ -68,4 +73,5 @@ export type DashboardActionTypes =
   | AddActionMember
   | RemoveActionMember
   | SetCompanyName
+  | SetCompanyLogo
   | GetLeadsResponse;

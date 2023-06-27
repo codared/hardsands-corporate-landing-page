@@ -61,6 +61,11 @@ export interface AccessRemoveMember {
   payload: any;
 }
 
+export interface SetCompanyLogo {
+  type: "UPDATE_CORPORATE_LOGO";
+  payload: any;
+}
+
 export type AccessDashboardActionTypes =
   | GetDashboardData
   | GetMembers
@@ -73,4 +78,5 @@ export type AccessDashboardActionTypes =
   | RemoveActionMember
   | SetCompanyName
   | AccessRemoveMember
+  | SetCompanyLogo
   | GetLeadsResponse;

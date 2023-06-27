@@ -5,7 +5,8 @@ import { DashboardReducerState } from "./types";
 const initialState: DashboardReducerState = {
   error: {},
   loading: true,
-  company: '',
+  company: "",
+  companyLogo: "",
   members: [],
   corpCards: [],
   leads: [],
@@ -60,6 +61,8 @@ const dashboardReducer = (
       return { ...state, loading: false, dashboard: action.payload };
     case "UPDATE_MEMBERS":
       return { ...state, loading: false, members: action.payload };
+    case "UPDATE_CORPORATE_LOGO":
+      return { ...state, loading: false, companyLogo: action.payload };
     case "SET_COMPANY_NAME":
       return { ...state, loading: false, company: action.payload };
     default:
