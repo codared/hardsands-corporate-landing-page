@@ -50,7 +50,10 @@ const Home = () => {
         mt="8"
       >
         <StatsCard name="Active Cards" number={dashboard?.activeCards || 0} />
-        <StatsCard name="Inactive Cards" number={dashboard?.inactiveCards || 0} />
+        <StatsCard
+          name="Inactive Cards"
+          number={dashboard?.inactiveCards || 0}
+        />
         <StatsCard
           bgColor="#df9f71"
           color="#fff"

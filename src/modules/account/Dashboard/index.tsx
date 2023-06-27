@@ -8,6 +8,7 @@ import Reports from "./Reports";
 import ReportWithId from "./Reports/ReportWithId";
 import FAQ from "./Support/FAQ";
 import ReportIssue from "./Support/ReportIssue";
+import Settings from "./Settings";
 
 const Dashboard = ({ route }: { route: string[] }) => {
   switch (route[1]) {
@@ -37,6 +38,8 @@ const Dashboard = ({ route }: { route: string[] }) => {
         default:
           return <ReportIssue />;
       }
+    case "settings":
+      return <Settings />;
 
     default:
       return <Home />;

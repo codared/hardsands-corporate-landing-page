@@ -28,6 +28,7 @@ import {
 import { useActiveSidebarItem } from "../../hooks";
 import { getCardImageFromSlug } from "modules/products/functions";
 import { handleLogout } from "utils/functions";
+import { useTypedSelector } from "redux/store";
 
 const getDashBoardModule = (data: any) => {
   if (data.module === UserModuleTypes.CORPORATE) {
@@ -45,7 +46,10 @@ const DashSidebarContent = (props: any) => {
     DASH_NAV_ITEMS,
     props.routes[1]
   );
-  
+
+  // @ts-ignore
+  const { company, companyLogo } = useTypedSelector((state) => state.dashboard);
+
   const dashNavItems = getDashBoardModule(props.data);
 
   const handleSidebarLogout = () => {
@@ -53,10 +57,11 @@ const DashSidebarContent = (props: any) => {
     Router.push(AUTH_ROUTES.login);
   };
 
-  const img = getCardImageFromSlug("epoxy-tag-black");
-  const { corpName: companyName } = JSON.parse(
+  const { corpName: companyName, profileImage } = JSON.parse(
     getCookie(HARDSANDS_CORPERATE) || "{}"
   ) || { corpName: "" };
+  const img =
+    companyLogo || profileImage || getCardImageFromSlug("epoxy-tag-black");
 
   return (
     <Box
@@ -106,7 +111,7 @@ const DashSidebarContent = (props: any) => {
           <Box h={4} />
           <Text fontSize={14}>Welcome Back</Text>
           <Text fontSize={20} fontWeight={"bolder"} textAlign={"center"}>
-            {companyName}
+            {company || companyName}
           </Text>
         </Flex>
         <Box mt={[10]}>
@@ -117,7 +122,6 @@ const DashSidebarContent = (props: any) => {
                 href={item.href.replace(routeId, props.routes[0])}
                 onClick={() => {
                   setActive(item.title);
-                 
                 }}
               >
                 <NavItem

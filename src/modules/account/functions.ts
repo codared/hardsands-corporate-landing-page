@@ -1,6 +1,8 @@
 import { DASH_ROOT, routeId, SOCIAL_LINKS } from "./constants";
 import { camelCase as loCamelCase } from "lodash";
 import { LinkTreeType } from "./types";
+import { HARDSANDS_CORPERATE } from "modules/authentication/constants";
+import { getCookie, setCookie } from "modules/shared/cookie";
 
 export const findSameSocials = (item: any, findingArray: any[]) => {
   return findingArray.find((finding) => finding.name === item.label);
@@ -101,6 +103,13 @@ export const resolveRoute = (companyRoute: string, slug?: string) => {
 
 export const getOnlyActions = (actions: any) => {
   return actions.map((action: any) => action.action);
+};
+
+// Update the values of the local storage HARDSANDS_CORPERATE with the new values
+export const updateLocalStorage = (key: string, value: any) => {
+  const localData = JSON.parse(getCookie(HARDSANDS_CORPERATE)!);
+  localData[key] = value;
+  setCookie(HARDSANDS_CORPERATE, JSON.stringify(localData));
 };
 
 export const monthClicks = () => {
