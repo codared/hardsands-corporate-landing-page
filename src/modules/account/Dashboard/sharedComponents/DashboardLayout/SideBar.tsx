@@ -110,7 +110,6 @@ const DashSidebarContent = (props: any) => {
             alt={companyName as string}
           />
           <Box h={4} />
-          <Text fontSize={14}>Welcome Back</Text>
           <Text fontSize={20} fontWeight={"bolder"} textAlign={"center"}>
             {company || companyName}
           </Text>
