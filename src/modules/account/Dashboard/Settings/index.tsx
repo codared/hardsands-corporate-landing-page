@@ -56,7 +56,7 @@ const Settings = () => {
             Update your personal information
           </Text>
 
-          <Box mt={6} maxW={["100%", "100%", "80%"]}>
+          <Box mt={6} minW={["100%"]}>
             <Flex gap={4} alignItems={"center"}>
               <Flex
                 boxSize={150}
