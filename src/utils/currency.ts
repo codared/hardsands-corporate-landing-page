@@ -7,6 +7,7 @@ const zeroDecimalCurrencies = [
   "DJF",
   "PYG",
   "RWF",
+  'GHS',
   "GNF",
   "JPY",
   "KMF",
@@ -22,12 +23,8 @@ const zeroDecimalCurrencies = [
 export const TOP_CURRENCIES = {
   USD: "USD",
   EUR: "EUR",
-  ILS: "ILS",
-  AED: "AED",
-  SAR: "SAR",
-  QAR: "QAR",
-  SGD: "SGD",
   NGN: "NGN",
+  GHS: 'GHS',
 };
 
 
@@ -74,6 +71,7 @@ export const CURRENCY_CODES = {
   FKP: 'FKP',
   GBP: 'GBP',
   GEL: 'GEL',
+  GHS: 'GHS',
   GIP: 'GIP',
   GMD: 'GMD',
   GNF: 'GNF',

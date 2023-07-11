@@ -31,12 +31,12 @@ const CurrencySelector = ({
           {currency}
         </option>
       ))}
-      <option>-----------------</option>
+      {/* <option>-----------------</option>
       {Object.keys({ ...CURRENCY_CODES }).map((currency) => (
         <option key={currency} value={currency}>
           {currency}
         </option>
-      ))}
+      ))} */}
     </Select>
   );
 };
