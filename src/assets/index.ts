@@ -86,3 +86,4 @@ export { default as WhatsappOutline } from "./icons/whatsapp-outline-icon.svg";
 export { default as YelpIcon } from "./icons/yelp.png";
 export { default as YoutubeIcon } from "./icons/youtube.png";
 export { default as ZelleIcon } from "./icons/zelle.webp";
+export { default as HappyConfidentProfessionalTeam } from "./icons/happy-confident-professional-team.png";

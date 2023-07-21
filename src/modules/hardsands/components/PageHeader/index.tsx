@@ -31,11 +31,7 @@ function PageHeader({
   return (
     <>
       {showStory && (
-        <Box
-          w={["100%"]}
-          display={["block", "block", "none"]}
-          mr={[10]}
-        >
+        <Box w={["100%"]} display={["block", "block", "none"]} mr={[10]}>
           <Story />
         </Box>
       )}

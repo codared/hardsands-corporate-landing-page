@@ -200,6 +200,7 @@ export default function Footer() {
               Contact us
             </HardsandLink>
             <HardsandLink href={blogRoute.blogs()}>Blog</HardsandLink>
+            <HardsandLink href={staticRoutes.corporate()}>Corporate</HardsandLink>
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Support</ListHeader>

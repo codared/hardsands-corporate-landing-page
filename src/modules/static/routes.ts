@@ -28,6 +28,7 @@ const staticRoutes = buildRoutes("/", {
   giftCard: "/gift-card",
   accessibility: "/accessibility",
   customerSupport: "mailto:info@hardsands.com",
+  corporate: "/corporate"
 });
 
 export default staticRoutes;
