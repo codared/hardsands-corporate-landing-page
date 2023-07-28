@@ -45,9 +45,31 @@ import {
   IMG1,
   IMG2,
   IMG3,
+  ACL,
+  ACR,
+  TUTD1,
+  TUTD2,
+  TUTD3,
+  TUTD4,
+  Customer1,
+  Customer2,
+  Customer3,
+  StarFill,
+  Worldwide,
+  ProfileCircle,
+  ProfileUser2,
+  PersonalCard,
+  BoxBreak,
+  UpgradingYourTeamImage,
+  MaximizingYourTeamImage,
+  SearchIconW,
+  CircleClicked,
+  CircleUnclicked,
+  HorizontalDivider,
 } from "assets/index";
 import HardsandIconLogo from "design/svg/hardsands_icon_logo.svg";
 import { Span } from "@sentry/tracing";
+import { BsFillExclamationOctagonFill } from "react-icons/bs";
 
 const Corporate = () => {
   return (
@@ -291,8 +313,8 @@ const Corporate = () => {
         </Box>
       </Container>
 
-      <Grid
-        mb="10%" //Want to Maximize Your Team's  Potential
+      <Grid //Want to Maximize Your Team's  Potential
+        mb="10%"
       >
         <GridItem colSpan={5}>
           <Container as={Stack} mx="auto" maxW="70%" pt="10%" mr="0px">
@@ -1053,6 +1075,904 @@ const Corporate = () => {
           </Flex>
         </Box>
       </Box>
+
+      <Container //What Our Customers Are Saying
+        as={Stack}
+        maxW="full"
+        mb="5%"
+      >
+        <Heading
+          color="#DF9F71"
+          fontFamily="MADE Outer Sans Light"
+          fontSize="48px"
+          fontWeight="500"
+          textAlign="center"
+          mt="7%"
+        >
+          What Our Customers Are Saying
+        </Heading>
+        <Flex width="100%" justifyContent="center">
+          <Box width="3%" height="3%" mt="22%" mr="8%">
+            <Img src={ACL.src} />
+          </Box>
+          <Box width="18%" height="240px" mt="14%" mr="7%" bg="#FBECDE">
+            <Box w="26%" h="26%" mx="auto" mt="-15%">
+              <Img src={Customer1.src} />
+            </Box>
+            <Box width="90%" mx="auto" mt="2%">
+              <Text
+                color="#000"
+                fontFamily="Campton Light"
+                fontSize="10px"
+                fontWeight="400"
+                lineHeight="22px"
+                textAlign="center"
+              >
+                We had to print new cards every time one of our employees got a
+                promotion, and it was simply wasteful. With Hardsands, we just
+                update the info on the portal. Much easier and less expensive
+                than ordering a new batch. Plus, our customers enjoy the first
+                tap. There is a significant wow factor.
+              </Text>
+            </Box>
+            <Box mt="5%">
+              <Text
+                color="#DF9F71"
+                fontFamily="Campton Light"
+                fontSize="11px"
+                fontWeight="400"
+                textAlign="center"
+              >
+                DAVID BASSEY
+              </Text>
+            </Box>
+            <Box>
+              <Flex mt="2%" mb="4%" justifyContent="center">
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+              </Flex>
+            </Box>
+          </Box>
+          <Box width="20%" height="306px" mt="12%" mr="7%" bg="#FBECDE">
+            <Box w="26%" h="26%" mx="auto" mt="-15%">
+              <Img src={Customer2.src} />
+            </Box>
+            <Box width="90%" mx="auto" mt="2%">
+              <Text
+                color="#000"
+                fontFamily="Campton Light"
+                fontSize="13px"
+                fontWeight="400"
+                lineHeight="22px"
+                textAlign="center"
+              >
+                We had to print new cards every time one of our employees got a
+                promotion, and it was simply wasteful. With Hardsands, we just
+                update the info on the portal. Much easier and less expensive
+                than ordering a new batch. Plus, our customers enjoy the first
+                tap. There is a significant wow factor.
+              </Text>
+            </Box>
+            <Box mt="10%">
+              <Text
+                color="#DF9F71"
+                fontFamily="Campton Light"
+                fontSize="11px"
+                fontWeight="400"
+                textAlign="center"
+              >
+                DAVID BASSEY
+              </Text>
+            </Box>
+            <Box>
+              <Flex mt="3%" mb="6%" justifyContent="center">
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+              </Flex>
+            </Box>
+          </Box>
+          <Box width="18%" height="240px" mt="14%" bg="#FBECDE">
+            <Box w="26%" h="26%" mx="auto" mt="-15%">
+              <Img src={Customer3.src} />
+            </Box>
+            <Box width="90%" mx="auto" mt="2%">
+              <Text
+                color="#000"
+                fontFamily="Campton Light"
+                fontSize="10px"
+                fontWeight="400"
+                lineHeight="22px"
+                textAlign="center"
+              >
+                We had to print new cards every time one of our employees got a
+                promotion, and it was simply wasteful. With Hardsands, we just
+                update the info on the portal. Much easier and less expensive
+                than ordering a new batch. Plus, our customers enjoy the first
+                tap. There is a significant wow factor.
+              </Text>
+            </Box>
+            <Box mt="5%">
+              <Text
+                color="#DF9F71"
+                fontFamily="Campton Light"
+                fontSize="11px"
+                fontWeight="400"
+                textAlign="center"
+              >
+                DAVID BASSEY
+              </Text>
+            </Box>
+            <Box>
+              <Flex width="100%" mt="2%" mb="4%" justifyContent="center">
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+                <Img src={StarFill.src} />
+              </Flex>
+            </Box>
+          </Box>
+          <Box width="3%" height="3%" mt="22%" ml="8%">
+            <Img src={ACR.src} />
+          </Box>
+        </Flex>
+      </Container>
+
+      <Container //Landmarks
+        as={Stack}
+        maxW="96%"
+        height="316px"
+        bg="#FEF8f3"
+        mt="13%"
+        // justifyContent="center"
+      >
+        <Flex
+          // width="98%"
+          justifyContent="space-between"
+          // mx="auto"
+          mt="3%"
+        >
+          <Box height="209px" w="22%">
+            <Box>
+              <Img src={Worldwide.src} />
+            </Box>
+            <Box width="80%">
+              <Text
+                color="rgba(0, 0, 0, 0.60)"
+                fontFamily="Campton Light"
+                fontSize="12px"
+                fontWeight="400"
+                lineHeight="22px"
+                textTransform="capitalize"
+                mt="9%"
+              >
+                we have shipped our cards to 20+ Countries around the world
+              </Text>
+            </Box>
+            <Box>
+              <Text
+                color="#000"
+                fontFamily="MADE Outer Sans Outline Bold"
+                fontSize="80px"
+                fontWeight="500"
+                lineHeight="55px"
+                textTransform="capitalize"
+                mt="9%"
+              >
+                10+
+              </Text>
+            </Box>
+          </Box>
+          <Box width="1px" height="186px" bgColor="#D9D9D9" />
+          <Box
+            //@ts-ignore
+            align="left"
+            height="209px"
+            w="20%"
+          >
+            <Box>
+              <Img src={ProfileCircle.src} />
+            </Box>
+            <Box width="75%">
+              <Text
+                color="rgba(0, 0, 0, 0.60)"
+                fontFamily="Campton Light"
+                fontSize="12px"
+                fontWeight="400"
+                lineHeight="22px"
+                textTransform="capitalize"
+                mt="9%"
+              >
+                clients have received their cards and started sharing it
+              </Text>
+            </Box>
+            <Box>
+              <Text
+                color="#000"
+                fontFamily="MADE Outer Sans Outline Bold"
+                fontSize="80px"
+                fontWeight="500"
+                lineHeight="55px"
+                textTransform="capitalize"
+                mt="9%"
+              >
+                3K+
+              </Text>
+            </Box>
+          </Box>
+          <Box width="1px" height="186px" bgColor="#D9D9D9" />
+          <Box
+            //@ts-ignore
+            align="left"
+            height="209px"
+            w="22%"
+          >
+            <Box>
+              <Img src={PersonalCard.src} />
+            </Box>
+            <Box width="80%">
+              <Text
+                color="rgba(0, 0, 0, 0.60)"
+                fontFamily="Campton Light"
+                fontSize="12px"
+                fontWeight="400"
+                lineHeight="22px"
+                textTransform="capitalize"
+                mt="9%"
+              >
+                The number of times they have saved a new default action
+              </Text>
+            </Box>
+            <Box>
+              <Text
+                color="#000"
+                fontFamily="MADE Outer Sans Outline Bold"
+                fontSize="80px"
+                fontWeight="500"
+                lineHeight="55px"
+                textTransform="capitalize"
+                mt="9%"
+              >
+                30K+
+              </Text>
+            </Box>
+          </Box>
+          <Box width="1px" height="186px" bgColor="#D9D9D9" />
+          <Box
+            //@ts-ignore
+            width="19%"
+            height="209px"
+          >
+            <Box
+              //@ts-ignore
+              align="left"
+            >
+              <Img src={ProfileUser2.src} />
+            </Box>
+            <Box width="90%">
+              <Text
+                color="rgba(0, 0, 0, 0.60)"
+                fontFamily="Campton Light"
+                fontSize="12px"
+                fontWeight="400"
+                lineHeight="22px"
+                textTransform="capitalize"
+                mt="9%"
+                pl="0px"
+              >
+                The number of times our clients have shared with their
+                connections
+              </Text>
+            </Box>
+            <Box
+              //@ts-ignore
+              align="left"
+            >
+              <Text
+                color="#000"
+                fontFamily="MADE Outer Sans Outline Bold"
+                fontSize="80px"
+                fontWeight="500"
+                lineHeight="55px"
+                textTransform="capitalize"
+                mt="9%"
+              >
+                5k+
+              </Text>
+            </Box>
+          </Box>
+        </Flex>
+      </Container>
+
+      <Container //Trust Us To Deliver
+        as={Stack}
+        maxW="full"
+        height="750px"
+        mt="5%"
+        mb="6%"
+      >
+        <Text
+          fontFamily="MADE Outer Sans Light"
+          fontSize="48px"
+          fontWeight="500"
+          textAlign="center"
+          mt="9%"
+        >
+          <Text as="span" color="#DF9F71">
+            {"Trust Us To "}
+          </Text>
+          <Text as="span" color="#000">
+            Deliver
+          </Text>
+        </Text>
+        <Box width="63%" mx="auto">
+          <Text
+            fontFamily="Campton Light"
+            fontSize="15px"
+            fontWeight="300"
+            textAlign="center"
+            lineHeight="30px"
+            textTransform="capitalize"
+          >
+            See our work in action. Browse through our collection of beautifully
+            designed digital business cards for our satisfied clients.
+          </Text>
+        </Box>
+
+        <Box mt="10%">
+          <Flex width="99%">
+            <Box width="3%" height="3%" mt="7%" mr="2%">
+              <Img src={ACL.src} />
+            </Box>
+            <Box width="23%" height="235px" mr="2%">
+              <Img src={TUTD1.src} />
+            </Box>
+            <Box width="23%" height="235px" mr="2%">
+              <Img src={TUTD2.src} />
+            </Box>
+            <Box width="23%" height="235px" mr="2%">
+              <Img src={TUTD3.src} />
+            </Box>
+            <Box width="15.3%" height="235px" mr="2%">
+              <Img src={TUTD4.src} />
+            </Box>
+            <Box width="3%" height="3%" mt="7%">
+              <Img src={ACR.src} />
+            </Box>
+          </Flex>
+        </Box>
+
+        <Box w="258px" h="40%" mt="3%" mx="auto">
+          <HardsandsButton
+            // @ts-ignore
+            textTransform={"uppercase"}
+            href={productRoutes.products()}
+            text={"START NOW"}
+            w={"full"}
+            fontFamily={"MADE Outer sans Light"}
+            fontSize="16px"
+            fontWeight="300"
+          />
+        </Box>
+      </Container>
+
+      <Container //Upgrading Your Team...
+        as={Stack}
+        maxW="full"
+        height="708px"
+        mt="11%"
+        bg="#FEF8F3"
+      >
+        <Grid //Want to Maximize Your Team's  Potential
+          mb="10%"
+        >
+          <GridItem colSpan={5}>
+            <Container as={Stack} mx="auto" maxW="80%" mt="26%" mr="0px">
+              <Text
+                width="100%"
+                fontFamily="MADE Outer Sans Light"
+                fontSize="48px"
+                fontWeight="600"
+                lineHeight="55px"
+                textTransform="capitalize"
+                textAlign="center"
+                mr="0px"
+              >
+                <Text as="span" color="#DF9F71">
+                  {`Upgrading `}
+                </Text>
+                <Text as="span" color="#000">
+                  {`Your team `}
+                </Text>
+                <Text as="span" color="#DF9F71">
+                  Has never been this easy
+                </Text>
+              </Text>
+              <Text
+                fontFamily="Campton Light"
+                fontSize="15px"
+                fontWeight="300"
+                lineHeight="30px"
+                textTransform="capitalize"
+                textAlign="center"
+                mt="3%"
+                width="89%"
+                mx="auto"
+              >
+                Unlock the power of networking with our innovative digital
+                solution. Your team will love the seamless user experience and
+                cutting-edge features, while you'll appreciate the measurable
+                results and competitive edge it brings.
+              </Text>
+            </Container>
+            <Box mt="4%" w="40%" ml="48%">
+              <HardsandsButton
+                // @ts-ignore
+                w={"60%"}
+                href={productRoutes.products()}
+                text={"GET STARTED"}
+                fontFamily={"MADE Outer sans Light"}
+                fontSize="16px"
+                fontWeight="300"
+                bg="#000"
+                color="#FFF"
+              />
+            </Box>
+          </GridItem>
+          <GridItem colStart={6} colEnd={10} mt="12%">
+            <Box>
+              <Image
+                width="100%"
+                height="100%"
+                mt="14%"
+                src={UpgradingYourTeamImage.src}
+                alt={"upgrading-your-team-image"}
+              />
+            </Box>
+          </GridItem>
+        </Grid>
+      </Container>
+
+      <Container //FAQs
+        as={Stack}
+        maxW="full"
+        height="1280px"
+        bg="#000"
+        mt="4%"
+      >
+        <Text
+          color="#FFF"
+          fontFamily="MADE Outer Sans Light"
+          fontSize="16px"
+          fontWeight="300"
+          lineHeight="34px"
+          textTransform="capitalize"
+          textAlign="center"
+          mt="8%"
+        >
+          FAQs
+        </Text>
+        <Heading
+          color="#DF9F71"
+          fontFamily="MADE Outer Sans Light"
+          fontSize="35px"
+          fontWeight="300"
+          lineHeight="34px"
+          textTransform="capitalize"
+          textAlign="center"
+        >
+          Frequently Asked Questions
+        </Heading>
+        <Text
+          color="rgba(255, 255, 255, 0.72)"
+          fontFamily="Campton Light"
+          fontSize="20px"
+          fontWeight="400"
+          lineHeight="34px"
+          textTransform="capitalize"
+          textAlign="center"
+        >
+          have questions? We’re here to help
+        </Text>
+        <Flex
+          mx="auto"
+          width="17%"
+          alignItems={"center"}
+          borderColor="0.7px solid #FFF"
+          borderWidth={"1px"}
+          px="1%"
+        >
+          <Box>
+            <Img src={SearchIconW.src} w="20px" h="20px" />
+          </Box>
+          <Input
+            placeholder="Search"
+            color="rgba(255, 255, 255, 0.55)"
+            border="none"
+            focusBorderColor="transparent"
+            pl="5%"
+          />
+        </Flex>
+
+        <VStack>
+          <Box width="80%" mt="10%">
+            <Flex width="100%" justifyContent="center">
+              <Text>
+                <Heading
+                  color="#FFF"
+                  fontFamily="Campton Light"
+                  fontSize="20px"
+                  fontWeight="500"
+                  lineHeight="34px"
+                  textTransform="capitalize"
+                >
+                  What is Hardsands Card
+                </Heading>
+                <Text
+                  width="63%"
+                  color="rgba(255, 255, 255, 0.69)"
+                  fontFamily="Campton Light"
+                  fontSize="15px"
+                  fontWeight="400"
+                  lineHeight="23px"
+                  textTransform="capitalize"
+                >
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s,
+                </Text>
+              </Text>
+              <Box mt="3%" width="2%">
+                <Img src={CircleClicked.src} />
+              </Box>
+            </Flex>
+            <Img mt="2%" src={HorizontalDivider.src} />
+
+            <Flex width="100%" mt="2%" justifyContent="space-between">
+              <Text>
+                <Heading
+                  color="#FFF"
+                  fontFamily="Campton Light"
+                  fontSize="20px"
+                  fontWeight="500"
+                  lineHeight="34px"
+                  textTransform="capitalize"
+                >
+                  How do hardsands cards and Epoxy work?
+                </Heading>
+              </Text>
+              <Box width="2%">
+                <Img mt="25%" src={CircleUnclicked.src} />
+              </Box>
+            </Flex>
+            <Img mt="2%" src={HorizontalDivider.src} />
+
+            <Flex width="100%" mt="2%" justifyContent="space-between">
+              <Text>
+                <Heading
+                  color="#FFF"
+                  fontFamily="Campton Light"
+                  fontSize="20px"
+                  fontWeight="500"
+                  lineHeight="34px"
+                  textTransform="capitalize"
+                >
+                  Where should I place my hardsand Epoxy?
+                </Heading>
+              </Text>
+              <Box width="2%">
+                <Img mt="25%" src={CircleUnclicked.src} />
+              </Box>
+            </Flex>
+            <Img mt="2%" src={HorizontalDivider.src} />
+
+            <Flex width="100%" mt="2%" justifyContent="space-between">
+              <Text>
+                <Heading
+                  color="#FFF"
+                  fontFamily="Campton Light"
+                  fontSize="20px"
+                  fontWeight="500"
+                  lineHeight="34px"
+                  textTransform="capitalize"
+                >
+                  Can I get a hardsands card with my own logo/branding?
+                </Heading>
+              </Text>
+              <Box width="2%">
+                <Img mt="25%" src={CircleUnclicked.src} />
+              </Box>
+            </Flex>
+            <Img mt="2%" src={HorizontalDivider.src} />
+
+            <Flex width="100%" mt="2%" justifyContent="space-between">
+              <Text>
+                <Heading
+                  color="#FFF"
+                  fontFamily="Campton Light"
+                  fontSize="20px"
+                  fontWeight="500"
+                  lineHeight="34px"
+                  textTransform="capitalize"
+                >
+                  What surfaces may hardsand Epoxy stick to?
+                </Heading>
+              </Text>
+              <Box width="2%">
+                <Img mt="25%" src={CircleUnclicked.src} />
+              </Box>
+            </Flex>
+            <Img mt="2%" src={HorizontalDivider.src} />
+
+            <Flex width="100%" mt="2%" justifyContent="space-between">
+              <Text>
+                <Heading
+                  color="#FFF"
+                  fontFamily="Campton Light"
+                  fontSize="20px"
+                  fontWeight="500"
+                  lineHeight="34px"
+                  textTransform="capitalize"
+                >
+                  Is there a monthly fee for using hardsands card or hardsands
+                  Epoxy?
+                </Heading>
+              </Text>
+              <Box width="2%">
+                <Img mt="25%" src={CircleUnclicked.src} />
+              </Box>
+            </Flex>
+            <Img mt="2%" src={HorizontalDivider.src} />
+
+            <Flex width="100%" mt="2%" justifyContent="space-between">
+              <Text>
+                <Heading
+                  color="#FFF"
+                  fontFamily="Campton Light"
+                  fontSize="20px"
+                  fontWeight="500"
+                  lineHeight="34px"
+                  textTransform="capitalize"
+                >
+                  Is it necessary for the receiver to use a hardsand product or
+                  an app to receive my info?
+                </Heading>
+              </Text>
+              <Box width="2%">
+                <Img mt="25%" src={CircleUnclicked.src} />
+              </Box>
+            </Flex>
+            <Img mt="2%" src={HorizontalDivider.src} />
+          </Box>
+          <Box
+            mt="7%"
+            width="80%"
+            height="78%"
+            background="rgba(255, 255, 255, 0.07)"
+            py="1%"
+          >
+            <Flex width="100%" justifyContent="space-around">
+              <Text width="75%">
+                <Heading
+                  color="#DF9F71"
+                  fontFamily="Campton Light"
+                  fontSize="20px"
+                  fontWeight="500"
+                  lineHeight="34px"
+                  textTransform="capitalize"
+                >
+                  Still have questions?
+                </Heading>
+                <Text
+                  color="#FFF"
+                  fontFamily="Campton Light"
+                  fontSize="15px"
+                  fontWeight="400"
+                  lineHeight="34px"
+                  textTransform="capitalize"
+                >
+                  Can’t find the answers you’re looking for? Contact us via our
+                  Hardsands Technology Customer Support
+                </Text>
+              </Text>
+              <Box w="17%">
+                <HardsandsButton
+                  // @ts-ignore
+                  w={"100%"}
+                  // href={productRoutes.products()}
+                  text={"Get in touch"}
+                  fontFamily={"MADE Outer sans Light"}
+                  fontSize="14px"
+                  fontWeight="300"
+                  color="#FFF"
+                  bg="#DF9F71"
+                  mt="5%"
+                />
+              </Box>
+            </Flex>
+          </Box>
+        </VStack>
+      </Container>
+
+      <Grid //Interested in Maximizing Your Team's Potential?
+        mb="10%"
+      >
+        <GridItem colSpan={5}>
+          <Container as={Stack} ml="16%" maxW="85%" pt="16%" mr="0px">
+            <Text
+              width="100%"
+              fontFamily="MADE Outer Sans Light"
+              fontSize="48px"
+              fontWeight="600"
+              lineHeight="55px"
+              textTransform="capitalize"
+              textAlign="center"
+              alignItems="flex-end"
+              mr="0px"
+              bg="white"
+            >
+              <Text as="span" color="#DF9F71">
+                {`Interested in maximizing `}
+              </Text>
+              <Text as="span" color="#120801">
+                {`Your team's `}
+              </Text>
+              <Text as="span" color="#DF9F71">
+                Potential?
+              </Text>
+            </Text>
+            <Text
+              fontFamily="Campton Light"
+              fontSize="15px"
+              fontWeight="300"
+              lineHeight="30px"
+              textTransform="capitalize"
+              align="center"
+            >
+              Fill out the form below and we'll be in touch
+            </Text>
+          </Container>
+
+          <Box mx="auto" width="80%" mr="5">
+            <Flex mx="auto" justifyContent="space-between">
+              <Box height="21px" width="48%" mt="54px">
+                <Text
+                  fontFamily="Campton Light"
+                  fontSize="18px"
+                  fontWeight="300"
+                  color="#000"
+                >
+                  Name
+                </Text>
+                <Input
+                  height="54px"
+                  mt="11px"
+                  border="1px solid"
+                  borderColor="rgba(0, 0, 0, 0.40)"
+                  placeholder="Your name"
+                  focusBorderColor="rgba(0, 0, 0, 0.40)"
+                ></Input>
+              </Box>
+              <Box height="21px" mt="54px" width="48%">
+                <Text
+                  fontFamily="Campton Light"
+                  fontSize="18px"
+                  fontWeight="300"
+                  color="#000"
+                >
+                  Email
+                </Text>
+                <Input
+                  height="54px"
+                  mt="11px"
+                  border="1px solid"
+                  placeholder="test@gmail.org"
+                  borderColor="rgba(0, 0, 0, 0.40)"
+                  focusBorderColor="rgba(0, 0, 0, 0.40)"
+                ></Input>
+              </Box>
+            </Flex>
+            <Flex mx="auto" justifyContent="space-between">
+              <Box width="48%" height="21px" mt="102px">
+                <Text
+                  fontFamily="Campton Light"
+                  fontSize="18px"
+                  fontWeight="300"
+                  color="#000"
+                >
+                  Company
+                </Text>
+                <Input
+                  height="54px"
+                  mt="11px"
+                  border="1px solid"
+                  borderColor="rgba(0, 0, 0, 0.40)"
+                  placeholder="Your Name"
+                  focusBorderColor="rgba(0, 0, 0, 0.40)"
+                ></Input>
+              </Box>
+              <Box width="48%" height="21px" mt="102px">
+                <Text
+                  fontFamily="Campton Light"
+                  fontSize="18px"
+                  fontWeight="300"
+                  color="#000"
+                >
+                  Company Size
+                </Text>
+                <Input
+                  height="54px"
+                  mt="11px"
+                  border="1px solid"
+                  borderColor="rgba(0, 0, 0, 0.40)"
+                  focusBorderColor="rgba(0, 0, 0, 0.40)"
+                ></Input>
+              </Box>
+            </Flex>
+            <Flex mx="auto" justifyContent="space-between">
+              <Box width="48%" height="21px" mt="102px">
+                <Text
+                  fontFamily="Campton Light"
+                  fontSize="18px"
+                  fontWeight="300"
+                  color="#000"
+                >
+                  Job Title
+                </Text>
+                <Input
+                  height="54px"
+                  border="1px solid"
+                  borderColor="rgba(0, 0, 0, 0.40)"
+                  focusBorderColor="rgba(0, 0, 0, 0.40)"
+                ></Input>
+              </Box>
+              <Box width="48%" height="21px" mt="102px">
+                <Text
+                  fontFamily="Campton Light"
+                  fontSize="18px"
+                  fontWeight="300"
+                  color="#000"
+                >
+                  Phone Number
+                </Text>
+                <Input
+                  height="54px"
+                  border="1px solid"
+                  borderColor="rgba(0, 0, 0, 0.40)"
+                  focusBorderColor="rgba(0, 0, 0, 0.40)"
+                ></Input>
+              </Box>
+            </Flex>
+            <Box mt="104px" w="40%">
+              <HardsandsButton
+                // @ts-ignore
+                w={"80%"}
+                href={productRoutes.products()}
+                text={"Submit"}
+                fontFamily={"MADE Outer sans Light"}
+                fontSize="16px"
+                fontWeight="300"
+              />
+            </Box>
+          </Box>
+        </GridItem>
+        <GridItem colStart={6} colEnd={10} mt="24%">
+          <Box>
+            <Image
+              width="100%"
+              height="100%"
+              src={MaximizingYourTeamImage.src}
+              alt={"maximize-your-team-potential"}
+            />
+          </Box>
+        </GridItem>
+      </Grid>
     </Box>
   );
 };
