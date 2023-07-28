@@ -252,7 +252,7 @@ const Corporate = () => {
               fontFamily={"Campton Light"}
               color="#000"
             >
-              Transform your team's communication game with our innovative
+              Transform your team&apos;s communication game with our innovative
               platform. Amplify their outreach, foster stronger relationships,
               and realize newfound success.
             </Text>
@@ -303,11 +303,11 @@ const Corporate = () => {
             textTransform="capitalize"
           >
             Our digital business cards offer a modern solution to traditional
-            paper cards, with a sleek and minimalist design that's perfect for
-            the digital age. See why our clients love our innovative solution
-            and how it can help you stand out in a crowded marketplace. Watch
-            the video now to see how our solution can take your professional
-            image to the next level.
+            paper cards, with a sleek and minimalist design that&apos;s perfect
+            for the digital age. See why our clients love our innovative
+            solution and how it can help you stand out in a crowded marketplace.
+            Watch the video now to see how our solution can take your
+            professional image to the next level.
           </Text>
         </Box>
       </Container>
@@ -347,7 +347,7 @@ const Corporate = () => {
               textTransform="capitalize"
               align="center"
             >
-              Fill out the form below and we'll be in touch
+              Fill out the form below and we&apos;ll be in touch
             </Text>
           </Container>
 
@@ -751,7 +751,7 @@ const Corporate = () => {
               mb="12%"
             >
               Impress potential clients and partners with our sleek and modern
-              gear. This proves your company's commitment to innovation and
+              gear. This proves your company&apos;s commitment to innovation and
               technology.
             </Text>
             {/* </Box> */}
@@ -1506,8 +1506,8 @@ const Corporate = () => {
               >
                 Unlock the power of networking with our innovative digital
                 solution. Your team will love the seamless user experience and
-                cutting-edge features, while you'll appreciate the measurable
-                results and competitive edge it brings.
+                cutting-edge features, while you&apos;ll appreciate the
+                measurable results and competitive edge it brings.
               </Text>
             </Container>
             <Box mt="4%" w="40%" ml="48%">
@@ -1623,7 +1623,7 @@ const Corporate = () => {
                   textTransform="capitalize"
                 >
                   Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
+                  typesetting industry. Lorem Ipsum has been the industry&apos;s
                   standard dummy text ever since the 1500s,
                 </Text>
               </Text>
@@ -1834,7 +1834,7 @@ const Corporate = () => {
               textTransform="capitalize"
               align="center"
             >
-              Fill out the form below and we'll be in touch
+              Fill out the form below and we&apos;ll be in touch
             </Text>
           </Container>
 
