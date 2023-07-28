@@ -120,7 +120,6 @@ export { default as ProfileCircle } from "./icons/profilecircle.png";
 export { default as ProfileUser2 } from "./icons/profile2user.png";
 export { default as PersonalCard } from "./icons/personalcard.png";
 export { default as Worldwide } from "./icons/worldwide.png";
-export { default as BoxBreak } from "./icons/box-break.png";
 export { default as TUTD1 } from "./icons/TUTD1.png";
 export { default as TUTD2 } from "./icons/TUTD2.png";
 export { default as TUTD3 } from "./icons/TUTD3.png";

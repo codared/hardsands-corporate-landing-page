@@ -59,7 +59,6 @@ import {
   ProfileCircle,
   ProfileUser2,
   PersonalCard,
-  BoxBreak,
   UpgradingYourTeamImage,
   MaximizingYourTeamImage,
   SearchIconW,
