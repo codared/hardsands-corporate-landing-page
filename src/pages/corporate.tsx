@@ -76,7 +76,7 @@ const Corporate = () => {
       {/* width="1508px" height="887px" ml="20px"> */}
       <Flex //NAVBAr
         justifyContent="space-between"
-        p={12}
+        p={6}
         w="full" //NavBar
       >
         <Box>
@@ -188,7 +188,7 @@ const Corporate = () => {
         w="1055px"
         h="678px"
         bg="#FEF8F3"
-        mt="128px"
+        mt="70px"
         ml="19px"
         border="1px"
         borderColor="#FEF8F3"
@@ -201,10 +201,10 @@ const Corporate = () => {
         alignItems="center"
         w="100%"
         ml="125px"
-        mt="20px"
+        mt="5px"
         // zIndex={400}
       >
-        <Box w="530px" h="635px" pt="45px">
+        <Box w="530px" h="635px" pt="3px">
           <Image
             src={HappyConfidentProfessionalTeam.src}
             alt={"happyconfidentprofessionalimage"}
@@ -276,7 +276,7 @@ const Corporate = () => {
         as={Stack}
         maxW="full"
         h="828px"
-        mt="251px"
+        mt="220px"
       >
         <Box maxW="707px" h="34px" bg="white" mt="110px" mx="auto">
           <Text
@@ -314,6 +314,7 @@ const Corporate = () => {
 
       <Grid //Want to Maximize Your Team's  Potential
         mb="10%"
+        mt="85px"
       >
         <GridItem colSpan={5}>
           <Container as={Stack} mx="auto" maxW="70%" pt="10%" mr="0px">
@@ -652,8 +653,9 @@ const Corporate = () => {
             </Box>
           </Flex>
         </Box>
-        <Flex mr="2%">
-          <Box width="520px" height="542px" ml="auto" mt="99px">
+
+        <Flex width="100%" justifyContent="center">
+          <Box width="520px" height="542px" ml="8%" mt="99px">
             <Image
               src={EffortlesslyManageYourTeam.src}
               alt={"effortlessly-manage-your-team"}
@@ -695,13 +697,14 @@ const Corporate = () => {
       </Container>
 
       <Container //Features That Give Us An Edge
+        as={Stack}
         maxW="98%"
-        height="1338px"
+        // height="1338px"
         backgroundImage={FeaturesThatGiveUsAnEdgeBg.src}
         mb="10%"
       >
         <Box
-          pt="4%"
+          mt="4%"
           textAlign="center"
           textTransform="capitalize"
           fontWeight="400"
@@ -722,84 +725,84 @@ const Corporate = () => {
             Lorem Ipsum is simply dummy text of the printing
           </Text>
         </Box>
-        <Flex justify="center">
-          <Box width="36%" height="571px" bg="white" pt="5%" mt="22%" mx="1%">
-            <Img src={Paper.src} alt="paper" mx="auto" />
 
-            {/* <Box height="37px" mt="10%"> */}
-            <Heading
-              fontFamily="Campton"
-              fontSize="25px"
-              fontWeight="600"
-              lineHeight="34px"
-              textTransform="capitalize"
-              mt="7%"
-              ml="6%"
-            >
-              Enhanced Professionalism
-            </Heading>
-            <Text
-              width="88%"
-              mt="4%"
-              mx="auto"
-              fontFamily="Campton Light"
-              fontSize="18px"
-              fontWeight="400"
-              lineHeight="34px"
-              textTransform="capitalize"
-              textAlign="left"
-              mb="12%"
-            >
-              Impress potential clients and partners with our sleek and modern
-              gear. This proves your company&apos;s commitment to innovation and
-              technology.
-            </Text>
+        <Flex justify="center" mt="85px" alignItems="flex-end">
+          <Box width="36%" mx="1%">
+            <Box height="571px" bg="white" pt="55px">
+              <Img src={Paper.src} alt="paper" mx="auto" />
+
+              {/* <Box height="37px" mt="10%"> */}
+              <Heading
+                fontFamily="Campton"
+                fontSize="25px"
+                fontWeight="600"
+                lineHeight="34px"
+                textTransform="capitalize"
+                mt="7%"
+                ml="6%"
+              >
+                Enhanced Professionalism
+              </Heading>
+              <Text
+                width="88%"
+                mt="4%"
+                mx="auto"
+                fontFamily="Campton Light"
+                fontSize="18px"
+                fontWeight="400"
+                lineHeight="34px"
+                textTransform="capitalize"
+                textAlign="left"
+                mb="12%"
+              >
+                Impress potential clients and partners with our sleek and modern
+                gear. This proves your company&apos;s commitment to innovation
+                and technology.
+              </Text>
+            </Box>
             {/* </Box> */}
-            <Box height="290px" bg="#FEF8F3" mt="1px" mx="1%"></Box>
+            <Box height="290px" bg="#FEF8F3" mt="41px" />
           </Box>
 
-          <Box
-            width="36%"
-            height="428px"
-            mt="10%"
-            bg="white"
-            mx="1%"
-            overflow="none"
-          >
-            <Img
-              // @ts-ignore
-              align={"right"}
-              src={DataAndSafety.src}
-              alt="data-and-safety"
-            />
-            <Heading
-              fontFamily="Campton  "
-              fontSize="25px"
-              fontWeight="600"
-              lineHeight="34px"
-              textTransform="capitalize"
-              mt="56%"
-              ml="6%"
-            >
-              Data and Safety
-            </Heading>
-            <Text
-              width="88%"
-              mt="4%"
-              mx="auto"
-              fontFamily="Campton Light"
-              fontSize="18px"
-              fontWeight="400"
-              lineHeight="34px"
-              textTransform="capitalize"
-              textAlign="left"
-              mb="18%"
-            >
-              Our technology allows for secure and private transmission of
-              information, minimizing the risk of data breaches.
-            </Text>
+          <Box width="36%" mx="1%">
+            <Box height="428px" bg="white">
+              <Flex width="100%" justifyContent="flex-end">
+                <Img
+                  // @ts-ignore
+                  // align={"right"}
+                  src={DataAndSafety.src}
+                  alt="data-and-safety"
+                />
+              </Flex>
+              <Heading
+                fontFamily="Campton  "
+                fontSize="25px"
+                fontWeight="600"
+                lineHeight="34px"
+                textTransform="capitalize"
+                mt="15px"
+                ml="6%"
+              >
+                Data and Safety
+              </Heading>
+              <Text
+                width="88%"
+                mt="4%"
+                mx="auto"
+                fontFamily="Campton Light"
+                fontSize="18px"
+                fontWeight="400"
+                lineHeight="34px"
+                textTransform="capitalize"
+                textAlign="left"
+                mb="18%"
+              >
+                Our technology allows for secure and private transmission of
+                information, minimizing the risk of data breaches.
+              </Text>
+            </Box>
 
-            <Box height="587px" bg="#DF9F71" mx="1%">
+            <Box height="587px" bg="#DF9F71" mt="50px">
               <Box
                 // @ts-ignore
                 align="right"
@@ -829,6 +832,7 @@ const Corporate = () => {
                 textTransform="capitalize"
                 textAlign="left"
                 mb="18%"
+                color="#FFF"
               >
                 easily add or remove profile pictures, assign action templates,
                 and view performance metrics,
@@ -836,40 +840,44 @@ const Corporate = () => {
             </Box>
           </Box>
 
-          <Box width="36%" bg="#FEF8F3" height="571px" mt="6%" mx="1%">
-            <Box
-              // @ts-ignore
-              align="right"
-            >
-              <Img src={AnalyzingData.src} alt="analyzing-data" />
+          <Box width="36%" mx="1%" pb="56px">
+            <Box height="571px" bg="#FEF8F3">
+              <Box
+                // @ts-ignore
+                align="right"
+              >
+                <Img src={AnalyzingData.src} alt="analyzing-data" />
+              </Box>
+              <Heading
+                fontFamily="Campton"
+                fontSize="25px"
+                fontWeight="600"
+                lineHeight="34px"
+                textTransform="capitalize"
+                ml="6%"
+              >
+                Better tracking
+              </Heading>
+              <Text
+                width="88%"
+                mt="4%"
+                mx="auto"
+                fontFamily="Campton Light"
+                fontSize="18px"
+                fontWeight="400"
+                lineHeight="34px"
+                textTransform="capitalize"
+                textAlign="left"
+                // mb="13%"
+              >
+                you can easily track how many times your team members’ cards
+                have been scanned, allowing you to better gauge the
+                effectiveness of your networking efforts and make data-driven
+                decisions.
+              </Text>
             </Box>
-            <Heading
-              fontFamily="Campton"
-              fontSize="25px"
-              fontWeight="600"
-              lineHeight="34px"
-              textTransform="capitalize"
-              ml="6%"
-            >
-              Better tracking
-            </Heading>
-            <Text
-              width="88%"
-              mt="4%"
-              mx="auto"
-              fontFamily="Campton Light"
-              fontSize="18px"
-              fontWeight="400"
-              lineHeight="34px"
-              textTransform="capitalize"
-              textAlign="left"
-              mb="13%"
-            >
-              you can easily track how many times your team members’ cards have
-              been scanned, allowing you to better gauge the effectiveness of
-              your networking efforts and make data-driven decisions.
-            </Text>
-            <Box height="470px" bg="#202020" mt="2%" mx="1%">
+
+            <Box height="470px" bg="#202020" mt="50px">
               <Box
                 // @ts-ignore
                 align="right"
@@ -1601,7 +1609,7 @@ const Corporate = () => {
 
         <VStack>
           <Box width="80%" mt="10%">
-            <Flex width="100%" justifyContent="center">
+            <Flex width="100%" justifyContent="space-between">
               <Text>
                 <Heading
                   color="#FFF"
@@ -1614,7 +1622,7 @@ const Corporate = () => {
                   What is Hardsands Card
                 </Heading>
                 <Text
-                  width="63%"
+                  width="67%"
                   color="rgba(255, 255, 255, 0.69)"
                   fontFamily="Campton Light"
                   fontSize="15px"
