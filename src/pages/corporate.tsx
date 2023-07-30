@@ -275,8 +275,8 @@ const Corporate = () => {
       <Container // Why Choose Hardsands?
         as={Stack}
         maxW="full"
-        h="828px"
-        mt="220px"
+        // h="828px"
+        mt="110px"
       >
         <Box maxW="707px" h="34px" bg="white" mt="110px" mx="auto">
           <Text
@@ -313,8 +313,7 @@ const Corporate = () => {
       </Container>
 
       <Grid //Want to Maximize Your Team's  Potential
-        mb="10%"
-        mt="85px"
+        mt="38px"
       >
         <GridItem colSpan={5}>
           <Container as={Stack} mx="auto" maxW="70%" pt="10%" mr="0px">
@@ -494,7 +493,7 @@ const Corporate = () => {
                 ></Input>
               </Box>
             </Flex>
-            <Box mt="104px" w="40%">
+            <Box mt="104px" w="40%" mb="120px">
               <HardsandsButton
                 // @ts-ignore
                 w={"80%"}
@@ -527,7 +526,6 @@ const Corporate = () => {
       <Container //Tailored For You
         as={Stack}
         maxW="full"
-        height="2596px"
         mx="auto"
       >
         <Box width="504px" height="81px" mt="83px" mx="auto">
@@ -557,7 +555,7 @@ const Corporate = () => {
           </Text>
         </Box>
         <Box>
-          <Flex ml="11%" mt="3%" mb="10%">
+          <Flex ml="11%" mt="7px" mb="173px">
             <Box width="520px" height="543px" mt="113px">
               <Image src={TailoredForYou.src} alt={"tailoredforyouimage"} />
             </Box>
@@ -654,7 +652,7 @@ const Corporate = () => {
           </Flex>
         </Box>
 
-        <Flex width="100%" justifyContent="center">
+        <Flex width="100%" justifyContent="center" mb="184px">
           <Box width="520px" height="542px" ml="8%" mt="99px">
             <Image
               src={EffortlesslyManageYourTeam.src}
@@ -701,10 +699,10 @@ const Corporate = () => {
         maxW="98%"
         // height="1338px"
         backgroundImage={FeaturesThatGiveUsAnEdgeBg.src}
-        mb="10%"
+        mt="57px"
       >
         <Box
-          mt="4%"
+          mt="66px"
           textAlign="center"
           textTransform="capitalize"
           fontWeight="400"
@@ -919,8 +917,8 @@ const Corporate = () => {
 
       <Box //From Start To Finish
         w="full"
-        height="602px"
-        // ml="5%"
+        bg="orange"
+        mt="114px"
       >
         <Heading
           color="#DF9F71"
@@ -946,7 +944,7 @@ const Corporate = () => {
         </Heading>
 
         <Box>
-          <Flex mt="20%" justifyContent="center">
+          <Flex mt="202px" justifyContent="center">
             <Box width="30%" height="165px">
               <Flex>
                 <Box width="30%">
@@ -1086,7 +1084,6 @@ const Corporate = () => {
       <Container //What Our Customers Are Saying
         as={Stack}
         maxW="full"
-        mb="5%"
       >
         <Heading
           color="#DF9F71"
@@ -1094,15 +1091,15 @@ const Corporate = () => {
           fontSize="48px"
           fontWeight="500"
           textAlign="center"
-          mt="7%"
+          mt="41px"
         >
           What Our Customers Are Saying
         </Heading>
-        <Flex width="100%" justifyContent="center">
-          <Box width="3%" height="3%" mt="22%" mr="8%">
+        <Flex width="100%" justifyContent="center" pb="50px">
+          <Box width="39px" height="40px" mt="256px" mr="8%">
             <Img src={ACL.src} />
           </Box>
-          <Box width="18%" height="240px" mt="14%" mr="7%" bg="#FBECDE">
+          <Box width="18%" height="240px" mt="125px" mr="7%" bg="#FBECDE">
             <Box w="26%" h="26%" mx="auto" mt="-15%">
               <Img src={Customer1.src} />
             </Box>
@@ -1143,7 +1140,7 @@ const Corporate = () => {
               </Flex>
             </Box>
           </Box>
-          <Box width="20%" height="306px" mt="12%" mr="7%" bg="#FBECDE">
+          <Box width="20%" height="306px" mt="76px" mr="7%" bg="#FBECDE">
             <Box w="26%" h="26%" mx="auto" mt="-15%">
               <Img src={Customer2.src} />
             </Box>
@@ -1184,7 +1181,7 @@ const Corporate = () => {
               </Flex>
             </Box>
           </Box>
-          <Box width="18%" height="240px" mt="14%" bg="#FBECDE">
+          <Box width="18%" height="240px" mt="125px" bg="#FBECDE">
             <Box w="26%" h="26%" mx="auto" mt="-15%">
               <Img src={Customer3.src} />
             </Box>
@@ -1225,7 +1222,7 @@ const Corporate = () => {
               </Flex>
             </Box>
           </Box>
-          <Box width="3%" height="3%" mt="22%" ml="8%">
+          <Box width="39px" height="40px" mt="256px" ml="8%">
             <Img src={ACR.src} />
           </Box>
         </Flex>
@@ -1236,7 +1233,7 @@ const Corporate = () => {
         maxW="96%"
         height="316px"
         bg="#FEF8f3"
-        mt="13%"
+        mt="100px"
         // justifyContent="center"
       >
         <Flex
@@ -1400,16 +1397,14 @@ const Corporate = () => {
       <Container //Trust Us To Deliver
         as={Stack}
         maxW="full"
-        height="750px"
-        mt="5%"
-        mb="6%"
+        mt="119px"
       >
         <Text
           fontFamily="MADE Outer Sans Light"
           fontSize="48px"
           fontWeight="500"
           textAlign="center"
-          mt="9%"
+          mt="69px"
         >
           <Text as="span" color="#DF9F71">
             {"Trust Us To "}
@@ -1432,9 +1427,9 @@ const Corporate = () => {
           </Text>
         </Box>
 
-        <Box mt="10%">
+        <Box mt="110px">
           <Flex width="99%">
-            <Box width="3%" height="3%" mt="7%" mr="2%">
+            <Box width="39px" height="40px" mt="98px" mr="2%">
               <Img src={ACL.src} />
             </Box>
             <Box width="23%" height="235px" mr="2%">
@@ -1449,13 +1444,13 @@ const Corporate = () => {
             <Box width="15.3%" height="235px" mr="2%">
               <Img src={TUTD4.src} />
             </Box>
-            <Box width="3%" height="3%" mt="7%">
+            <Box width="39px" height="40px" mt="98px">
               <Img src={ACR.src} />
             </Box>
           </Flex>
         </Box>
 
-        <Box w="258px" h="40%" mt="3%" mx="auto">
+        <Box w="258px" h="40%" mt="77px" mb="56px" mx="auto">
           <HardsandsButton
             // @ts-ignore
             textTransform={"uppercase"}
@@ -1472,15 +1467,14 @@ const Corporate = () => {
       <Container //Upgrading Your Team...
         as={Stack}
         maxW="full"
-        height="708px"
-        mt="11%"
+        mt="81px"
         bg="#FEF8F3"
       >
         <Grid //Want to Maximize Your Team's  Potential
-          mb="10%"
+          mb="186px"
         >
           <GridItem colSpan={5}>
-            <Container as={Stack} mx="auto" maxW="80%" mt="26%" mr="0px">
+            <Container as={Stack} mx="auto" maxW="80%" mt="215px" mr="0px">
               <Text
                 width="100%"
                 fontFamily="MADE Outer Sans Light"
@@ -1518,7 +1512,7 @@ const Corporate = () => {
                 measurable results and competitive edge it brings.
               </Text>
             </Container>
-            <Box mt="4%" w="40%" ml="48%">
+            <Box mt="27px" w="40%" ml="48%">
               <HardsandsButton
                 // @ts-ignore
                 w={"60%"}
@@ -1532,12 +1526,12 @@ const Corporate = () => {
               />
             </Box>
           </GridItem>
-          <GridItem colStart={6} colEnd={10} mt="12%">
+          <GridItem colStart={6} colEnd={10} mt="30px">
             <Box>
               <Image
                 width="100%"
                 height="100%"
-                mt="14%"
+                mt="70px"
                 src={UpgradingYourTeamImage.src}
                 alt={"upgrading-your-team-image"}
               />
@@ -1549,9 +1543,9 @@ const Corporate = () => {
       <Container //FAQs
         as={Stack}
         maxW="full"
-        height="1280px"
+        // height="1280px"
         bg="#000"
-        mt="4%"
+        mt="81px"
       >
         <Text
           color="#FFF"
@@ -1561,7 +1555,7 @@ const Corporate = () => {
           lineHeight="34px"
           textTransform="capitalize"
           textAlign="center"
-          mt="8%"
+          mt="113px"
         >
           FAQs
         </Text>
@@ -1608,7 +1602,7 @@ const Corporate = () => {
         </Flex>
 
         <VStack>
-          <Box width="80%" mt="10%">
+          <Box width="80%" mt="133px">
             <Flex width="100%" justifyContent="space-between">
               <Text>
                 <Heading
@@ -1639,9 +1633,9 @@ const Corporate = () => {
                 <Img src={CircleClicked.src} />
               </Box>
             </Flex>
-            <Img mt="2%" src={HorizontalDivider.src} />
+            <Img mt="17px" src={HorizontalDivider.src} />
 
-            <Flex width="100%" mt="2%" justifyContent="space-between">
+            <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
                 <Heading
                   color="#FFF"
@@ -1658,9 +1652,9 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="2%" src={HorizontalDivider.src} />
+            <Img mt="17px" src={HorizontalDivider.src} />
 
-            <Flex width="100%" mt="2%" justifyContent="space-between">
+            <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
                 <Heading
                   color="#FFF"
@@ -1677,9 +1671,9 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="2%" src={HorizontalDivider.src} />
+            <Img mt="17px" src={HorizontalDivider.src} />
 
-            <Flex width="100%" mt="2%" justifyContent="space-between">
+            <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
                 <Heading
                   color="#FFF"
@@ -1696,9 +1690,9 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="2%" src={HorizontalDivider.src} />
+            <Img mt="17px" src={HorizontalDivider.src} />
 
-            <Flex width="100%" mt="2%" justifyContent="space-between">
+            <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
                 <Heading
                   color="#FFF"
@@ -1715,9 +1709,9 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="2%" src={HorizontalDivider.src} />
+            <Img mt="17px" src={HorizontalDivider.src} />
 
-            <Flex width="100%" mt="2%" justifyContent="space-between">
+            <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
                 <Heading
                   color="#FFF"
@@ -1735,9 +1729,9 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="2%" src={HorizontalDivider.src} />
+            <Img mt="17px" src={HorizontalDivider.src} />
 
-            <Flex width="100%" mt="2%" justifyContent="space-between">
+            <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
                 <Heading
                   color="#FFF"
@@ -1755,14 +1749,14 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="2%" src={HorizontalDivider.src} />
+            <Img mt="17px" src={HorizontalDivider.src} />
           </Box>
           <Box
-            mt="7%"
+            mt="99px"
+            mb="71px"
             width="80%"
-            height="78%"
             background="rgba(255, 255, 255, 0.07)"
-            py="1%"
+            py="20px"
           >
             <Flex width="100%" justifyContent="space-around">
               <Text width="75%">
@@ -1808,10 +1802,10 @@ const Corporate = () => {
       </Container>
 
       <Grid //Interested in Maximizing Your Team's Potential?
-        mb="10%"
+        mb="133px"
       >
         <GridItem colSpan={5}>
-          <Container as={Stack} ml="16%" maxW="85%" pt="16%" mr="0px">
+          <Container as={Stack} ml="16%" maxW="85%" mt="140px" mr="0px">
             <Text
               width="100%"
               fontFamily="MADE Outer Sans Light"
@@ -1969,7 +1963,7 @@ const Corporate = () => {
             </Box>
           </Box>
         </GridItem>
-        <GridItem colStart={6} colEnd={10} mt="24%">
+        <GridItem colStart={6} colEnd={10} mt="107px">
           <Box>
             <Image
               width="100%"
