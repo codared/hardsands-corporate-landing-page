@@ -600,16 +600,18 @@ const Corporate = () => {
 
         <Box
           width="full"
-          height="749px"
+          // height="749px"
           bg="#000"
+          alignItems="center"
           mx="auto"
+          pb="161px"
           //IntegrationMadeEasy
         >
           <Flex>
-            <Box width="1px" height="237px" bg="#FFF" ml="109px" mt="263px">
+            <Box width="1px" height="237px" bg="#FFF" ml="7%" mt="263px">
               <Image src={Divider.src} alt={"divider"} />
             </Box>
-            <Box width="55px" height="55px" ml="26px" mt="349px" bg="black">
+            <Box width="55px" height="55px" ml="4%" mt="349px" bg="black">
               <Image
                 src={IntegrationMadeEasyIcon.src}
                 alt={"integrationmadeeasyicon"}
@@ -624,11 +626,11 @@ const Corporate = () => {
                 lineHeight="34px"
                 textTransform="capitalize"
                 mt="349px"
-                ml="22px"
+                ml="5%"
               >
                 Integration made easy
               </Heading>
-              <Box width="439px" height="120px" mt="8px" ml="22px">
+              <Box width="439px" height="120px" mt="8px" ml="5%">
                 <Text
                   color="#FFF"
                   fontFamily="Campton Light"
@@ -643,7 +645,7 @@ const Corporate = () => {
                 </Text>
               </Box>
             </Box>
-            <Box width="521px" height="542px" mt="66px" ml="124px">
+            <Box width="521px" height="542px" mt="66px" ml="10%">
               <Image
                 src={IntegrationMadeEasyImage.src}
                 alt={"integrationmadeeasyimage"}
@@ -917,8 +919,8 @@ const Corporate = () => {
 
       <Box //From Start To Finish
         w="full"
-        bg="orange"
         mt="114px"
+        pb="112px"
       >
         <Heading
           color="#DF9F71"
@@ -945,7 +947,7 @@ const Corporate = () => {
 
         <Box>
           <Flex mt="202px" justifyContent="center">
-            <Box width="30%" height="165px">
+            <Box width="31%" mr="2%" height="165px">
               <Flex>
                 <Box width="30%">
                   <Img src={HC4.src} />
@@ -990,7 +992,7 @@ const Corporate = () => {
                 </Box>
               </Flex>
             </Box>
-            <Box width="30%" height="165px">
+            <Box width="30%" mr="2%" height="165px">
               <Flex>
                 <Box width="30%">
                   <Img src={HC1.src} />
@@ -1084,6 +1086,7 @@ const Corporate = () => {
       <Container //What Our Customers Are Saying
         as={Stack}
         maxW="full"
+        mt="72px"
       >
         <Heading
           color="#DF9F71"
