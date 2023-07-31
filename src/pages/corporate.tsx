@@ -600,55 +600,65 @@ const Corporate = () => {
 
         <Box
           width="full"
-          // height="749px"
           bg="#000"
-          alignItems="center"
-          mx="auto"
+          // mx="auto"
           pb="161px"
           //IntegrationMadeEasy
         >
-          <Flex>
-            <Box width="1px" height="237px" bg="#FFF" ml="7%" mt="263px">
-              <Image src={Divider.src} alt={"divider"} />
+          <Flex
+            width="100%"
+            px="6%"
+            // mx="auto"
+            justifyContent="space-between"
+          >
+            <Box mt="263px">
+              <Flex width="100%">
+                <Box width="1px" height="237px" bg="#FFF">
+                  <Image src={Divider.src} alt={"divider"} />
+                </Box>
+                <Box width="8%" height="55px" ml="3%" mt="86px" bg="black">
+                  <Image
+                    src={IntegrationMadeEasyIcon.src}
+                    alt={"integrationmadeeasyicon"}
+                  />
+                </Box>
+                <Box>
+                  <Heading
+                    color="#FFF"
+                    fontFamily="MADE Outer Sans Light"
+                    fontSize="32px"
+                    fontWeight="300"
+                    lineHeight="34px"
+                    textTransform="capitalize"
+                    ml="6%"
+                    mt="86px"
+                  >
+                    Integration made easy
+                  </Heading>
+                  <Box width="439px" height="120px" mt="8px" ml="6%">
+                    <Text
+                      color="#FFF"
+                      fontFamily="Campton Light"
+                      fontSize="17px"
+                      fontWeight="300"
+                      lineHeight="30px"
+                      textTransform="capitalize"
+                    >
+                      Connect any software to your dashboard without hassle..
+                      Automate repetitive tasks and eliminate manual errors..
+                      Simplify your workday and focus on what really matters.
+                    </Text>
+                  </Box>
+                </Box>
+              </Flex>
             </Box>
-            <Box width="55px" height="55px" ml="4%" mt="349px" bg="black">
-              <Image
-                src={IntegrationMadeEasyIcon.src}
-                alt={"integrationmadeeasyicon"}
-              />
-            </Box>
-            <Box>
-              <Heading
-                color="#FFF"
-                fontFamily="MADE Outer Sans Light"
-                fontSize="32px"
-                fontWeight="300"
-                lineHeight="34px"
-                textTransform="capitalize"
-                mt="349px"
-                ml="5%"
-              >
-                Integration made easy
-              </Heading>
-              <Box width="439px" height="120px" mt="8px" ml="5%">
-                <Text
-                  color="#FFF"
-                  fontFamily="Campton Light"
-                  fontSize="17px"
-                  fontWeight="300"
-                  lineHeight="30px"
-                  textTransform="capitalize"
-                >
-                  Connect any software to your dashboard without hassle..
-                  Automate repetitive tasks and eliminate manual errors..
-                  Simplify your workday and focus on what really matters.
-                </Text>
-              </Box>
-            </Box>
-            <Box width="521px" height="542px" mt="66px" ml="10%">
+
+            <Box mt="66px">
               <Image
                 src={IntegrationMadeEasyImage.src}
                 alt={"integrationmadeeasyimage"}
+                width="521px"
+                height="542px"
               />
             </Box>
           </Flex>
