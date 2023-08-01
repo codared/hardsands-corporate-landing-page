@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import {
   Container,
   Box,
@@ -13,6 +14,7 @@ import {
   Input,
   GridItem,
   Img,
+  Button,
 } from "@chakra-ui/react";
 import DesktopNav from "components/layout/Navigation/DesktopNav";
 import { hardsandsIconLogo, hardsandsTextLogo } from "design";
@@ -69,8 +71,16 @@ import {
 import HardsandIconLogo from "design/svg/hardsands_icon_logo.svg";
 import { Span } from "@sentry/tracing";
 import { BsFillExclamationOctagonFill } from "react-icons/bs";
+import { imgixLoader } from "@prismicio/next";
 
 const Corporate = () => {
+  const cardRef = useRef(null);
+
+  const scroll = (offset: number) => {
+    //@ts-ignore
+    cardRef.current.scrollLeft += offset;
+  };
+
   return (
     <Box overflow="hidden">
       {/* width="1508px" height="887px" ml="20px"> */}
@@ -185,22 +195,22 @@ const Corporate = () => {
         </Flex>
       </Flex>
       <Box
-        w="1055px"
+        w="71%"
         h="678px"
         bg="#FEF8F3"
         mt="70px"
-        ml="19px"
-        border="1px"
-        borderColor="#FEF8F3"
+        ml="2%"
+        // border="1px"
+        // borderColor="#FEF8F3"
         position="absolute"
         zIndex={-400}
       />
 
-      <Box // Empower Your Team
-        display="flex"
+      <Flex // Empower Your Team
         alignItems="center"
+        justifyContent="center"
         w="100%"
-        ml="125px"
+        ml="9%"
         mt="5px"
         // zIndex={400}
       >
@@ -210,10 +220,10 @@ const Corporate = () => {
             alt={"happyconfidentprofessionalimage"}
           />
         </Box>
-        <Box ml="90px">
-          <Box w="668px" h="184px" mt="172px">
+        <Box w="57%">
+          <Box w="71%" h="184px" mt="172px">
             <Text
-              w="668px"
+              w="100%"
               fontSize="45px"
               lineHeight="60px"
               textTransform="capitalize"
@@ -242,7 +252,7 @@ const Corporate = () => {
               </Text>
             </Text>
           </Box>
-          <Box w="697px" h="99px" mt="18px">
+          <Box w="80%" h="99px" mt="18px">
             <Text
               fontSize="20px"
               fontWeight="300"
@@ -257,7 +267,7 @@ const Corporate = () => {
               and realize newfound success.
             </Text>
           </Box>
-          <Box w="258px" h="40px" mt="33px">
+          <Box w="30%" h="40px" mt="33px">
             <HardsandsButton
               // @ts-ignore
               textTransform={"uppercase"}
@@ -270,7 +280,7 @@ const Corporate = () => {
             />
           </Box>
         </Box>
-      </Box>
+      </Flex>
 
       <Container // Why Choose Hardsands?
         as={Stack}
@@ -506,20 +516,20 @@ const Corporate = () => {
             </Box>
           </Box>
         </GridItem>
-        <GridItem colStart={6} colEnd={10} mt="12%">
-          <Box
-          // width=""
-          // height="639px"
-          // ml="906px"
-          // mt="65px"
+        <GridItem colStart={6} colEnd={10}>
+          <Flex
+            height="100%"
+            alignItems="center"
+            justifyContent="space-between"
           >
             <Image
-              width="600px"
-              height="570px"
+              // mt="42px"
+              width="601px"
+              height="527px"
               src={WantToMaximizeYourTeamsPotential.src}
               alt={"want-to-maximize-your-team's-potential"}
             />
-          </Box>
+          </Flex>
         </GridItem>
       </Grid>
 
@@ -527,6 +537,7 @@ const Corporate = () => {
         as={Stack}
         maxW="full"
         mx="auto"
+        // alignContent="center"
       >
         <Box width="504px" height="81px" mt="83px" mx="auto">
           <Heading
@@ -555,7 +566,7 @@ const Corporate = () => {
           </Text>
         </Box>
         <Box>
-          <Flex ml="11%" mt="7px" mb="173px">
+          <Flex justifyContent="center" mt="7px" mb="173px">
             <Box width="520px" height="543px" mt="113px">
               <Image src={TailoredForYou.src} alt={"tailoredforyouimage"} />
             </Box>
@@ -606,17 +617,18 @@ const Corporate = () => {
           //IntegrationMadeEasy
         >
           <Flex
-            width="100%"
-            px="6%"
-            // mx="auto"
-            justifyContent="space-between"
+            // width="100%"
+            // px="auto"
+            mx="10%"
+            alignContent="center"
+            justifyContent="center"
           >
             <Box mt="263px">
               <Flex width="100%">
                 <Box width="1px" height="237px" bg="#FFF">
                   <Image src={Divider.src} alt={"divider"} />
                 </Box>
-                <Box width="8%" height="55px" ml="3%" mt="86px" bg="black">
+                <Box width="55px" height="55px" ml="26px" mt="86px" bg="black">
                   <Image
                     src={IntegrationMadeEasyIcon.src}
                     alt={"integrationmadeeasyicon"}
@@ -635,7 +647,7 @@ const Corporate = () => {
                   >
                     Integration made easy
                   </Heading>
-                  <Box width="439px" height="120px" mt="8px" ml="6%">
+                  <Box width="439px" height="120px" mt="8px" ml="22px">
                     <Text
                       color="#FFF"
                       fontFamily="Campton Light"
@@ -653,13 +665,18 @@ const Corporate = () => {
               </Flex>
             </Box>
 
-            <Box mt="66px">
-              <Image
-                src={IntegrationMadeEasyImage.src}
-                alt={"integrationmadeeasyimage"}
-                width="521px"
-                height="542px"
-              />
+            <Box width="520px" height="543px" ml="167px" mt="66px">
+              <Flex
+                width="100%"
+                height="100%"
+                justifyItems="center"
+                alignItems="flex-end"
+              >
+                <Image
+                  src={IntegrationMadeEasyImage.src}
+                  alt={"integrationmadeeasyimage"}
+                />
+              </Flex>
             </Box>
           </Flex>
         </Box>
@@ -711,6 +728,7 @@ const Corporate = () => {
         maxW="98%"
         // height="1338px"
         backgroundImage={FeaturesThatGiveUsAnEdgeBg.src}
+        // bgRepeat="repeat-y"
         mt="57px"
       >
         <Box
@@ -826,7 +844,7 @@ const Corporate = () => {
                 fontWeight="600"
                 lineHeight="34px"
                 textTransform="capitalize"
-                mt="17%"
+                mt="47px"
                 ml="6%"
               >
                 Admin Dashboard
@@ -956,19 +974,17 @@ const Corporate = () => {
         </Heading>
 
         <Box>
-          <Flex mt="202px" justifyContent="center">
+          <Flex mt="212px" justifyContent="center">
             <Box width="31%" mr="2%" height="165px">
               <Flex>
-                <Box width="30%">
-                  <Img src={HC4.src} />
-                </Box>
+                <Img src={HC4.src} />
                 <Box width="70%">
                   {/* <Img src={IMG1.src} /> */}
                   <Box
                     width="163px"
                     height="104px"
                     backgroundImage={IMG1.src}
-                    mt="-30px"
+                    mt="-14px"
                     position="absolute"
                     zIndex={-1}
                   >
@@ -981,7 +997,7 @@ const Corporate = () => {
                       fontWeight="300"
                       // lineHeight="100px"
                       textTransform="capitalize"
-                      mt="8%"
+                      mt="28px"
                     >
                       Activate your card
                     </Heading>
@@ -991,7 +1007,7 @@ const Corporate = () => {
                       fontWeight="400"
                       lineHeight="23px"
                       textTransform="capitalize"
-                      mt="3%"
+                      mt="8px"
                     >
                       To activate the card on an Android device, turn on NFC in
                       settings and place it near the back camera. For an iPhone,
@@ -1002,9 +1018,9 @@ const Corporate = () => {
                 </Box>
               </Flex>
             </Box>
-            <Box width="30%" mr="2%" height="165px">
+            <Box width="31%" mr="2%" height="165px">
               <Flex>
-                <Box width="30%">
+                <Box width="142px" height="140px">
                   <Img src={HC1.src} />
                 </Box>
                 <Box width="70%">
@@ -1026,7 +1042,7 @@ const Corporate = () => {
                       fontWeight="300"
                       // lineHeight="100px"
                       textTransform="capitalize"
-                      mt="8%"
+                      mt="28px"
                     >
                       Create Your Profile
                     </Heading>
@@ -1036,7 +1052,7 @@ const Corporate = () => {
                       fontWeight="400"
                       lineHeight="23px"
                       textTransform="capitalize"
-                      mt="3%"
+                      mt="8px"
                     >
                       Once you are logged in, Click on your card. You will see
                       three options available. Click on “Card actions” select
@@ -1048,8 +1064,8 @@ const Corporate = () => {
             </Box>
             <Box width="30%" height="165px">
               <Flex>
-                <Box width="30%">
-                  <Img src={HC3.src} />
+                <Box>
+                  <Img width="100%" src={HC3.src} />
                 </Box>
                 <Box width="70%">
                   <Box
@@ -1070,7 +1086,7 @@ const Corporate = () => {
                       fontWeight="300"
                       // lineHeight="100px"
                       textTransform="capitalize"
-                      mt="8%"
+                      mt="12px"
                     >
                       Share your card
                     </Heading>
@@ -1080,7 +1096,7 @@ const Corporate = () => {
                       fontWeight="400"
                       lineHeight="23px"
                       textTransform="capitalize"
-                      mt="3%"
+                      mt="8px"
                     >
                       With a single swipe on any smartphone, you can begin
                       sharing your identity and what you do.
@@ -1108,15 +1124,15 @@ const Corporate = () => {
         >
           What Our Customers Are Saying
         </Heading>
-        <Flex width="100%" justifyContent="center" pb="50px">
-          <Box width="39px" height="40px" mt="256px" mr="8%">
-            <Img src={ACL.src} />
-          </Box>
-          <Box width="18%" height="240px" mt="125px" mr="7%" bg="#FBECDE">
-            <Box w="26%" h="26%" mx="auto" mt="-15%">
+        <Flex justifyContent="center" pb="50px">
+          <Button bg="white" mt="256px" mr="1%">
+            <Img width="39px" height="40px" src={ACL.src} />
+          </Button>
+          <Box width="18%" height="245px" mt="164px" mr="7%" bg="#FBECDE">
+            <Box w="66px" h="66px" mx="auto" mt="-39px">
               <Img src={Customer1.src} />
             </Box>
-            <Box width="90%" mx="auto" mt="2%">
+            <Box width="90%" mx="auto" mt="6px">
               <Text
                 color="#000"
                 fontFamily="Campton Light"
@@ -1132,19 +1148,20 @@ const Corporate = () => {
                 tap. There is a significant wow factor.
               </Text>
             </Box>
-            <Box mt="5%">
-              <Text
-                color="#DF9F71"
-                fontFamily="Campton Light"
-                fontSize="11px"
-                fontWeight="400"
-                textAlign="center"
-              >
-                DAVID BASSEY
-              </Text>
-            </Box>
+            {/* <Box bg="white" > */}
+            <Text
+              color="#DF9F71"
+              fontFamily="Campton Light"
+              fontSize="11px"
+              fontWeight="400"
+              textAlign="center"
+              mt="12px"
+            >
+              DAVID BASSEY
+            </Text>
+            {/* </Box> */}
             <Box>
-              <Flex mt="2%" mb="4%" justifyContent="center">
+              <Flex mt="8px" justifyContent="center">
                 <Img src={StarFill.src} />
                 <Img src={StarFill.src} />
                 <Img src={StarFill.src} />
@@ -1153,11 +1170,11 @@ const Corporate = () => {
               </Flex>
             </Box>
           </Box>
-          <Box width="20%" height="306px" mt="76px" mr="7%" bg="#FBECDE">
-            <Box w="26%" h="26%" mx="auto" mt="-15%">
+          <Box width="20%" height="308px" mt="135px" mr="7%" bg="#FBECDE">
+            <Box w="100px" h="100px" mx="auto" mt="-59px">
               <Img src={Customer2.src} />
             </Box>
-            <Box width="90%" mx="auto" mt="2%">
+            <Box width="90%" mx="auto" mt="12px">
               <Text
                 color="#000"
                 fontFamily="Campton Light"
@@ -1173,7 +1190,7 @@ const Corporate = () => {
                 tap. There is a significant wow factor.
               </Text>
             </Box>
-            <Box mt="10%">
+            <Box mt="31px">
               <Text
                 color="#DF9F71"
                 fontFamily="Campton Light"
@@ -1185,7 +1202,7 @@ const Corporate = () => {
               </Text>
             </Box>
             <Box>
-              <Flex mt="3%" mb="6%" justifyContent="center">
+              <Flex my="8px" justifyContent="center">
                 <Img src={StarFill.src} />
                 <Img src={StarFill.src} />
                 <Img src={StarFill.src} />
@@ -1194,11 +1211,11 @@ const Corporate = () => {
               </Flex>
             </Box>
           </Box>
-          <Box width="18%" height="240px" mt="125px" bg="#FBECDE">
-            <Box w="26%" h="26%" mx="auto" mt="-15%">
+          <Box width="18%" height="245px" mt="164px" bg="#FBECDE">
+            <Box w="66px" h="66px" mx="auto" mt="-39px">
               <Img src={Customer3.src} />
             </Box>
-            <Box width="90%" mx="auto" mt="2%">
+            <Box width="90%" mx="auto" mt="6px">
               <Text
                 color="#000"
                 fontFamily="Campton Light"
@@ -1214,7 +1231,7 @@ const Corporate = () => {
                 tap. There is a significant wow factor.
               </Text>
             </Box>
-            <Box mt="5%">
+            <Box mt="12px">
               <Text
                 color="#DF9F71"
                 fontFamily="Campton Light"
@@ -1226,7 +1243,7 @@ const Corporate = () => {
               </Text>
             </Box>
             <Box>
-              <Flex width="100%" mt="2%" mb="4%" justifyContent="center">
+              <Flex width="100%" mt="8px" justifyContent="center">
                 <Img src={StarFill.src} />
                 <Img src={StarFill.src} />
                 <Img src={StarFill.src} />
@@ -1235,25 +1252,26 @@ const Corporate = () => {
               </Flex>
             </Box>
           </Box>
-          <Box width="39px" height="40px" mt="256px" ml="8%">
-            <Img src={ACR.src} />
-          </Box>
+          <Button bg="white" mt="256px" ml="1%">
+            <Img width="39px" height="40px" src={ACR.src} />
+          </Button>
         </Flex>
       </Container>
 
       <Container //Landmarks
         as={Stack}
         maxW="96%"
-        height="316px"
-        bg="#FEF8f3"
         mt="100px"
+        bg="#FEF8F3"
+        py="47px"
         // justifyContent="center"
       >
         <Flex
           // width="98%"
           justifyContent="space-between"
           // mx="auto"
-          mt="3%"
+          px="5%"
+          height="220px"
         >
           <Box height="209px" w="22%">
             <Box>
@@ -1267,7 +1285,7 @@ const Corporate = () => {
                 fontWeight="400"
                 lineHeight="22px"
                 textTransform="capitalize"
-                mt="9%"
+                mt="19px"
               >
                 we have shipped our cards to 20+ Countries around the world
               </Text>
@@ -1280,7 +1298,7 @@ const Corporate = () => {
                 fontWeight="500"
                 lineHeight="55px"
                 textTransform="capitalize"
-                mt="9%"
+                mt="17px"
               >
                 10+
               </Text>
@@ -1304,7 +1322,7 @@ const Corporate = () => {
                 fontWeight="400"
                 lineHeight="22px"
                 textTransform="capitalize"
-                mt="9%"
+                mt="17px"
               >
                 clients have received their cards and started sharing it
               </Text>
@@ -1317,7 +1335,7 @@ const Corporate = () => {
                 fontWeight="500"
                 lineHeight="55px"
                 textTransform="capitalize"
-                mt="9%"
+                mt="17px"
               >
                 3K+
               </Text>
@@ -1341,7 +1359,7 @@ const Corporate = () => {
                 fontWeight="400"
                 lineHeight="22px"
                 textTransform="capitalize"
-                mt="9%"
+                mt="17px"
               >
                 The number of times they have saved a new default action
               </Text>
@@ -1354,7 +1372,7 @@ const Corporate = () => {
                 fontWeight="500"
                 lineHeight="55px"
                 textTransform="capitalize"
-                mt="9%"
+                mt="17px"
               >
                 30K+
               </Text>
@@ -1372,7 +1390,7 @@ const Corporate = () => {
             >
               <Img src={ProfileUser2.src} />
             </Box>
-            <Box width="90%">
+            <Box width="100%">
               <Text
                 color="rgba(0, 0, 0, 0.60)"
                 fontFamily="Campton Light"
@@ -1380,7 +1398,7 @@ const Corporate = () => {
                 fontWeight="400"
                 lineHeight="22px"
                 textTransform="capitalize"
-                mt="9%"
+                mt="17px"
                 pl="0px"
               >
                 The number of times our clients have shared with their
@@ -1398,7 +1416,7 @@ const Corporate = () => {
                 fontWeight="500"
                 lineHeight="55px"
                 textTransform="capitalize"
-                mt="9%"
+                mt="17px"
               >
                 5k+
               </Text>
@@ -1440,30 +1458,85 @@ const Corporate = () => {
           </Text>
         </Box>
 
-        <Box mt="110px">
-          <Flex width="99%">
-            <Box width="39px" height="40px" mt="98px" mr="2%">
-              <Img src={ACL.src} />
-            </Box>
-            <Box width="23%" height="235px" mr="2%">
-              <Img src={TUTD1.src} />
-            </Box>
-            <Box width="23%" height="235px" mr="2%">
+        {/* <Flex mt="110px" width="full" justifyContent="center">
+          <Box mt="98px" mr="0.5%">
+            <Button bg="white">
+              <Img width="39px" height="40px" src={ACL.src} />
+            </Button>
+          </Box>
+
+          <Box width="356px" height="235px" mr="2%">
+            <Img src={TUTD1.src} />
+          </Box>
+          <Box width="356px" height="235px" mr="2%">
+            <Img src={TUTD2.src} />
+          </Box>
+          <Box width="356px" height="235px" mr="2%">
+            <Img src={TUTD3.src} />
+          </Box>
+          <Box width="235px" height="235px" mr="0.5%">
+            <Img src={TUTD4.src} />
+          </Box>
+          <Box mt="98px">
+            <Button bg="white">
+              <Img width="39px" height="40px" src={ACR.src} />
+            </Button>
+          </Box>
+        </Flex> */}
+
+        <Flex mt="110px" width="full" justifyContent="center">
+          <Box mt="98px">
+            <Button onClick={() => scroll(-356)} bg="white">
+              <Img width="39px" height="40px" src={ACL.src} />
+            </Button>
+          </Box>
+          <Flex
+            width="90%"
+            // mx="auto"
+            justifyContent="space-between"
+            overflow="auto"
+            ref={cardRef}
+            scrollBehavior="smooth"
+          >
+            {[
+              {
+                img: TUTD1.src,
+              },
+              {
+                img: TUTD2.src,
+              },
+              {
+                img: TUTD3.src,
+              },
+              {
+                img: TUTD4.src,
+              },
+            ].map((item) => {
+              return (
+                <Img width="356px" height="235px" mr="2%" src={item.img} />
+              );
+            })}
+            {/* <Box > */}
+            {/* <Img width="356px" height="235px" src={TUTD1.src} /> */}
+            {/* </Box> */}
+            {/* <Box width="356px" height="235px">
               <Img src={TUTD2.src} />
             </Box>
-            <Box width="23%" height="235px" mr="2%">
+            <Box width="356px" height="235px">
               <Img src={TUTD3.src} />
             </Box>
-            <Box width="15.3%" height="235px" mr="2%">
+            <Box width="235px" height="235px">
               <Img src={TUTD4.src} />
-            </Box>
-            <Box width="39px" height="40px" mt="98px">
-              <Img src={ACR.src} />
-            </Box>
+            </Box> */}
           </Flex>
-        </Box>
+          <Box mt="98px">
+            <Button onClick={() => scroll(356)} bg="white">
+              <Img width="39px" height="40px" src={ACR.src} />
+            </Button>
+          </Box>
+        </Flex>
 
-        <Box w="258px" h="40%" mt="77px" mb="56px" mx="auto">
+        <Box w="258px" h="63px" mt="77px" mb="56px" mx="auto">
           <HardsandsButton
             // @ts-ignore
             textTransform={"uppercase"}
@@ -1539,16 +1612,21 @@ const Corporate = () => {
               />
             </Box>
           </GridItem>
-          <GridItem colStart={6} colEnd={10} mt="30px">
-            <Box>
+          <GridItem colStart={6} colEnd={10}>
+            <Flex
+              height="100%"
+              alignItems="center"
+              justifyContent="space-between"
+            >
               <Image
-                width="100%"
-                height="100%"
-                mt="70px"
+                // my="auto"
+                width="635px"
+                height="450px"
+                // mt="70px"
                 src={UpgradingYourTeamImage.src}
                 alt={"upgrading-your-team-image"}
               />
-            </Box>
+            </Flex>
           </GridItem>
         </Grid>
       </Container>
@@ -1642,11 +1720,11 @@ const Corporate = () => {
                   standard dummy text ever since the 1500s,
                 </Text>
               </Text>
-              <Box mt="3%" width="2%">
+              <Box mt="52px" width="2%">
                 <Img src={CircleClicked.src} />
               </Box>
             </Flex>
-            <Img mt="17px" src={HorizontalDivider.src} />
+            <Img mt="9px" src={HorizontalDivider.src} />
 
             <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
@@ -1665,7 +1743,7 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="17px" src={HorizontalDivider.src} />
+            <Img mt="9px" src={HorizontalDivider.src} />
 
             <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
@@ -1684,7 +1762,7 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="17px" src={HorizontalDivider.src} />
+            <Img mt="9px" src={HorizontalDivider.src} />
 
             <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
@@ -1703,7 +1781,7 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="17px" src={HorizontalDivider.src} />
+            <Img mt="9px" src={HorizontalDivider.src} />
 
             <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
@@ -1722,7 +1800,7 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="17px" src={HorizontalDivider.src} />
+            <Img mt="9px" src={HorizontalDivider.src} />
 
             <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
@@ -1742,7 +1820,7 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="17px" src={HorizontalDivider.src} />
+            <Img mt="9px" src={HorizontalDivider.src} />
 
             <Flex width="100%" mt="23.5px" justifyContent="space-between">
               <Text>
@@ -1762,7 +1840,7 @@ const Corporate = () => {
                 <Img mt="25%" src={CircleUnclicked.src} />
               </Box>
             </Flex>
-            <Img mt="17px" src={HorizontalDivider.src} />
+            <Img mt="9px" src={HorizontalDivider.src} />
           </Box>
           <Box
             mt="99px"
@@ -1814,11 +1892,12 @@ const Corporate = () => {
         </VStack>
       </Container>
 
-      <Grid //Interested in Maximizing Your Team's Potential?
+      <Grid
+        //Interested in Maximizing Your Team's Potential?
         mb="133px"
       >
         <GridItem colSpan={5}>
-          <Container as={Stack} ml="16%" maxW="85%" mt="140px" mr="0px">
+          <Container as={Stack} maxW="85%" mt="140px" mr="0px">
             <Text
               width="100%"
               fontFamily="MADE Outer Sans Light"
@@ -1852,7 +1931,6 @@ const Corporate = () => {
               Fill out the form below and we&apos;ll be in touch
             </Text>
           </Container>
-
           <Box mx="auto" width="80%" mr="5">
             <Flex mx="auto" justifyContent="space-between">
               <Box height="21px" width="48%" mt="54px">
@@ -1976,15 +2054,22 @@ const Corporate = () => {
             </Box>
           </Box>
         </GridItem>
-        <GridItem colStart={6} colEnd={10} mt="107px">
-          <Box>
+
+        <GridItem colStart={6} colEnd={10}>
+          <Flex
+            height="100%"
+            alignItems="center"
+            justifyContent="space-between"
+          >
             <Image
-              width="100%"
-              height="100%"
+              // my="auto"
+              width="613px"
+              height="515px"
+              // mt="155px"
               src={MaximizingYourTeamImage.src}
               alt={"maximize-your-team-potential"}
             />
-          </Box>
+          </Flex>
         </GridItem>
       </Grid>
     </Box>
