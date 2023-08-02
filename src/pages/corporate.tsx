@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   Container,
   Box,
@@ -70,15 +70,46 @@ import {
 } from "assets/index";
 import HardsandIconLogo from "design/svg/hardsands_icon_logo.svg";
 import { Span } from "@sentry/tracing";
-import { BsFillExclamationOctagonFill } from "react-icons/bs";
+import { BsBoxArrowDown, BsFillExclamationOctagonFill } from "react-icons/bs";
 import { imgixLoader } from "@prismicio/next";
 
 const Corporate = () => {
-  const cardRef = useRef(null);
+  const [boxIndex, setBoxIndex] = useState(1);
 
-  const scroll = (offset: number) => {
+  const boxWidth = "309px";
+  const boxHeight = "303px";
+  const boxMt = "135px";
+  const imgWidth = "100px";
+  const imgHeight = "100px";
+  const imgMt = "-59px";
+  const textMt = "12px";
+  const dTextMt = "31px";
+  const textFontSize = "13px";
+
+  const cardRef = useRef(null);
+  const boxRef = useRef(null);
+
+  const cardScroll = (offset: number) => {
     //@ts-ignore
     cardRef.current.scrollLeft += offset;
+  };
+
+  const boxScrollLeft = (offset: number) => {
+    //@ts-ignore
+    boxRef.current.scrollLeft -= offset;
+    if (boxIndex > 1) {
+      const value = boxIndex - 1;
+      setBoxIndex(value);
+    }
+  };
+
+  const boxScrollRight = (offset: number) => {
+    //@ts-ignore
+    boxRef.current.scrollLeft += offset;
+    if (6 - boxIndex > 2) {
+      const value = boxIndex + 1;
+      setBoxIndex(value);
+    }
   };
 
   return (
@@ -210,21 +241,20 @@ const Corporate = () => {
         alignItems="center"
         justifyContent="center"
         w="100%"
-        ml="9%"
-        mt="5px"
+        ml="125px"
         // zIndex={400}
       >
-        <Box w="530px" h="635px" pt="3px">
+        <Box w="530px" h="635px" pt="7px">
           <Image
             src={HappyConfidentProfessionalTeam.src}
             alt={"happyconfidentprofessionalimage"}
           />
         </Box>
-        <Box w="57%">
-          <Box w="71%" h="184px" mt="172px">
+        <Box w="57%" ml="7%">
+          <Box w="75%" h="184px" mt="172px">
             <Text
               w="100%"
-              fontSize="45px"
+              fontSize="47px"
               lineHeight="60px"
               textTransform="capitalize"
             >
@@ -252,9 +282,9 @@ const Corporate = () => {
               </Text>
             </Text>
           </Box>
-          <Box w="80%" h="99px" mt="18px">
+          <Box w="86%" h="99px" mt="18px">
             <Text
-              fontSize="20px"
+              fontSize="23px"
               fontWeight="300"
               lineHeight="34px"
               textTransform="capitalize"
@@ -1124,137 +1154,261 @@ const Corporate = () => {
         >
           What Our Customers Are Saying
         </Heading>
-        <Flex justifyContent="center" pb="50px">
-          <Button bg="white" mt="256px" mr="1%">
-            <Img width="39px" height="40px" src={ACL.src} />
-          </Button>
-          <Box width="18%" height="245px" mt="164px" mr="7%" bg="#FBECDE">
-            <Box w="66px" h="66px" mx="auto" mt="-39px">
-              <Img src={Customer1.src} />
-            </Box>
-            <Box width="90%" mx="auto" mt="6px">
-              <Text
-                color="#000"
-                fontFamily="Campton Light"
-                fontSize="10px"
-                fontWeight="400"
-                lineHeight="22px"
-                textAlign="center"
-              >
-                We had to print new cards every time one of our employees got a
-                promotion, and it was simply wasteful. With Hardsands, we just
-                update the info on the portal. Much easier and less expensive
-                than ordering a new batch. Plus, our customers enjoy the first
-                tap. There is a significant wow factor.
-              </Text>
-            </Box>
-            {/* <Box bg="white" > */}
-            <Text
-              color="#DF9F71"
-              fontFamily="Campton Light"
-              fontSize="11px"
-              fontWeight="400"
-              textAlign="center"
-              mt="12px"
+        <Flex width="full" justifyContent="center">
+          <Box mr="77px" mt="256px">
+            <Button onClick={() => boxScrollLeft(346)} bg="white">
+              <Img width="39px" height="40px" src={ACL.src} />
+            </Button>
+          </Box>
+          <Flex
+            width="70%"
+            maxWidth="1040px"
+            justifyContent="space-between"
+            // overflow="auto"
+            overflow="scroll"
+            sx={{
+              "::-webkit-scrollbar": {
+                display: "none",
+              },
+            }}
+            // overflowX="auto"
+            ref={boxRef}
+            scrollBehavior="smooth"
+          >
+            {[
+              {
+                img: Customer1.src,
+              },
+              {
+                img: Customer2.src,
+              },
+              {
+                img: Customer3.src,
+              },
+              {
+                img: Customer1.src,
+              },
+              {
+                img: Customer2.src,
+              },
+              {
+                img: Customer3.src,
+              },
+            ].map((element, index) => {
+              return (
+                <Box
+                  minWidth={index === boxIndex ? boxWidth : "249px"}
+                  height={index === boxIndex ? boxHeight : "245px"}
+                  mt={index === boxIndex ? boxMt : "164px"}
+                  mr="77px"
+                  // ml={index === 0 ? "20px" : "0px"}
+                  bg="#FBECDE"
+                >
+                  <Img
+                    mt={index === boxIndex ? imgMt : "-39px"}
+                    mx="auto"
+                    w={index === boxIndex ? imgWidth : "66px"}
+                    h={index === boxIndex ? imgHeight : "66px"}
+                    src={element.img}
+                  />
+                  <Box
+                    width="90%"
+                    mx="auto"
+                    mt={index === boxIndex ? textMt : "6px"}
+                  >
+                    <Text
+                      color="#000"
+                      fontFamily="Campton Light"
+                      fontSize={index === boxIndex ? textFontSize : "10px"}
+                      fontWeight="400"
+                      lineHeight="22px"
+                      textAlign="center"
+                    >
+                      We had to print new cards every time one of our employees
+                      got a promotion, and it was simply wasteful. With
+                      Hardsands, we just update the info on the portal. Much
+                      easier and less expensive than ordering a new batch. Plus,
+                      our customers enjoy the first tap. There is a significant
+                      wow factor.
+                    </Text>
+                  </Box>
+                  <Text
+                    color="#DF9F71"
+                    fontFamily="Campton Light"
+                    fontSize={index === boxIndex ? textFontSize : "11px"}
+                    fontWeight="400"
+                    textAlign="center"
+                    mt={index === boxIndex ? dTextMt : "12px"}
+                  >
+                    DAVID BASSEY
+                  </Text>
+                  <Box>
+                    <Flex justifyContent="center" mt="8px">
+                      <Img src={StarFill.src} />
+                      <Img src={StarFill.src} />
+                      <Img src={StarFill.src} />
+                      <Img src={StarFill.src} />
+                      <Img src={StarFill.src} />
+                    </Flex>
+                  </Box>
+                </Box>
+              );
+            })}
+            {/* <Box
+              id="outer-box"
+              width="19%"
+              height="245px"
+              mt="164px"
+              mr="7%"
+              bg="#FBECDE"
             >
-              DAVID BASSEY
-            </Text>
-            {/* </Box> */}
-            <Box>
-              <Flex mt="8px" justifyContent="center">
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-              </Flex>
-            </Box>
-          </Box>
-          <Box width="20%" height="308px" mt="135px" mr="7%" bg="#FBECDE">
-            <Box w="100px" h="100px" mx="auto" mt="-59px">
-              <Img src={Customer2.src} />
-            </Box>
-            <Box width="90%" mx="auto" mt="12px">
+              <Box id="image-box" w="66px" h="66px" mx="auto" mt="-39px">
+                <Img src={Customer1.src} />
+              </Box>
+              <Box id="text-box" width="90%" mx="auto" mt="6px">
+                <Text
+                  color="#000"
+                  fontFamily="Campton Light"
+                  fontSize="10px"
+                  fontWeight="400"
+                  lineHeight="22px"
+                  textAlign="center"
+                >
+                  We had to print new cards every time one of our employees got
+                  a promotion, and it was simply wasteful. With Hardsands, we
+                  just update the info on the portal. Much easier and less
+                  expensive than ordering a new batch. Plus, our customers enjoy
+                  the first tap. There is a significant wow factor.
+                </Text>
+              </Box>
               <Text
-                color="#000"
-                fontFamily="Campton Light"
-                fontSize="13px"
-                fontWeight="400"
-                lineHeight="22px"
-                textAlign="center"
-              >
-                We had to print new cards every time one of our employees got a
-                promotion, and it was simply wasteful. With Hardsands, we just
-                update the info on the portal. Much easier and less expensive
-                than ordering a new batch. Plus, our customers enjoy the first
-                tap. There is a significant wow factor.
-              </Text>
-            </Box>
-            <Box mt="31px">
-              <Text
+                id="text"
                 color="#DF9F71"
                 fontFamily="Campton Light"
                 fontSize="11px"
                 fontWeight="400"
                 textAlign="center"
+                mt="12px"
               >
                 DAVID BASSEY
               </Text>
-            </Box>
-            <Box>
-              <Flex my="8px" justifyContent="center">
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-              </Flex>
-            </Box>
-          </Box>
-          <Box width="18%" height="245px" mt="164px" bg="#FBECDE">
-            <Box w="66px" h="66px" mx="auto" mt="-39px">
-              <Img src={Customer3.src} />
-            </Box>
-            <Box width="90%" mx="auto" mt="6px">
+
+              <Box>
+                <Flex id="star-bucks" justifyContent="center" mt="8px">
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                </Flex>
+              </Box>
+            </Box> */}
+            {/* <Box
+              id="outer-box"
+              width="19%"
+              height="245px"
+              mt="164px"
+              mr="7%"
+              bg="#FBECDE"
+            >
+              <Box id="image-box" w="66px" h="66px" mx="auto" mt="-39px">
+                <Img src={Customer2.src} />
+              </Box>
+              <Box id="text-box" width="90%" mx="auto" mt="6px">
+                <Text
+                  color="#000"
+                  fontFamily="Campton Light"
+                  fontSize="10px"
+                  fontWeight="400"
+                  lineHeight="22px"
+                  textAlign="center"
+                >
+                  We had to print new cards every time one of our employees got
+                  a promotion, and it was simply wasteful. With Hardsands, we
+                  just update the info on the portal. Much easier and less
+                  expensive than ordering a new batch. Plus, our customers enjoy
+                  the first tap. There is a significant wow factor.
+                </Text>
+              </Box>
               <Text
-                color="#000"
-                fontFamily="Campton Light"
-                fontSize="10px"
-                fontWeight="400"
-                lineHeight="22px"
-                textAlign="center"
-              >
-                We had to print new cards every time one of our employees got a
-                promotion, and it was simply wasteful. With Hardsands, we just
-                update the info on the portal. Much easier and less expensive
-                than ordering a new batch. Plus, our customers enjoy the first
-                tap. There is a significant wow factor.
-              </Text>
-            </Box>
-            <Box mt="12px">
-              <Text
+                id="text"
                 color="#DF9F71"
                 fontFamily="Campton Light"
                 fontSize="11px"
                 fontWeight="400"
                 textAlign="center"
+                mt="12px"
               >
                 DAVID BASSEY
               </Text>
-            </Box>
-            <Box>
-              <Flex width="100%" mt="8px" justifyContent="center">
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-                <Img src={StarFill.src} />
-              </Flex>
-            </Box>
+              <Box>
+                <Flex id="star-bucks" mt="8px" justifyContent="center">
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                </Flex>
+              </Box>
+            </Box> */}
+            {/* <Box
+              id="outer-box"
+              width="19%"
+              height="245px"
+              mt="164px"
+              bg="#FBECDE"
+            >
+              <Box id="image-box" w="66px" h="66px" mx="auto" mt="-39px">
+                <Img src={Customer3.src} />
+              </Box>
+              <Box id="text-box" width="90%" mx="auto" mt="6px">
+                <Text
+                  color="#000"
+                  fontFamily="Campton Light"
+                  fontSize="10px"
+                  fontWeight="400"
+                  lineHeight="22px"
+                  textAlign="center"
+                >
+                  We had to print new cards every time one of our employees got
+                  a promotion, and it was simply wasteful. With Hardsands, we
+                  just update the info on the portal. Much easier and less
+                  expensive than ordering a new batch. Plus, our customers enjoy
+                  the first tap. There is a significant wow factor.
+                </Text>
+              </Box>
+              <Box id="text" mt="12px">
+                <Text
+                  color="#DF9F71"
+                  fontFamily="Campton Light"
+                  fontSize="11px"
+                  fontWeight="400"
+                  textAlign="center"
+                >
+                  DAVID BASSEY
+                </Text>
+              </Box>
+              <Box>
+                <Flex
+                  id="star-bucks"
+                  width="100%"
+                  mt="8px"
+                  justifyContent="center"
+                >
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                  <Img src={StarFill.src} />
+                </Flex>
+              </Box>
+            </Box> */}
+          </Flex>
+          <Box mt="256px" ml="77px">
+            <Button onClick={() => boxScrollRight(346)} bg="white">
+              <Img width="39px" height="40px" src={ACR.src} />
+            </Button>
           </Box>
-          <Button bg="white" mt="256px" ml="1%">
-            <Img width="39px" height="40px" src={ACR.src} />
-          </Button>
         </Flex>
       </Container>
 
@@ -1486,15 +1640,21 @@ const Corporate = () => {
 
         <Flex mt="110px" width="full" justifyContent="center">
           <Box mt="98px">
-            <Button onClick={() => scroll(-356)} bg="white">
+            <Button onClick={() => cardScroll(-356)} bg="white">
               <Img width="39px" height="40px" src={ACL.src} />
             </Button>
           </Box>
           <Flex
             width="90%"
             // mx="auto"
-            justifyContent="space-between"
-            overflow="auto"
+            justifyContent="center"
+            // overflow="auto"
+            overflow="scroll"
+            sx={{
+              "::-webkit-scrollbar": {
+                display: "none",
+              },
+            }}
             ref={cardRef}
             scrollBehavior="smooth"
           >
@@ -1530,7 +1690,7 @@ const Corporate = () => {
             </Box> */}
           </Flex>
           <Box mt="98px">
-            <Button onClick={() => scroll(356)} bg="white">
+            <Button onClick={() => cardScroll(356)} bg="white">
               <Img width="39px" height="40px" src={ACR.src} />
             </Button>
           </Box>
