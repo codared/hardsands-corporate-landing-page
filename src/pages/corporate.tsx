@@ -1197,6 +1197,7 @@ const Corporate = () => {
             ].map((element, index) => {
               return (
                 <Box
+                  key={index}
                   minWidth={index === boxIndex ? boxWidth : "249px"}
                   height={index === boxIndex ? boxHeight : "245px"}
                   mt={index === boxIndex ? boxMt : "164px"}
@@ -1671,9 +1672,15 @@ const Corporate = () => {
               {
                 img: TUTD4.src,
               },
-            ].map((item) => {
+            ].map((item, index) => {
               return (
-                <Img width="356px" height="235px" mr="2%" src={item.img} />
+                <Img
+                  key={index}
+                  width="356px"
+                  height="235px"
+                  mr="2%"
+                  src={item.img}
+                />
               );
             })}
             {/* <Box > */}
