@@ -227,6 +227,7 @@ const Corporate = () => {
       </Flex>
       <Box
         w="71%"
+        maxWidth="2150px"
         h="678px"
         bg="#FEF8F3"
         mt="70px"
@@ -250,8 +251,8 @@ const Corporate = () => {
             alt={"happyconfidentprofessionalimage"}
           />
         </Box>
-        <Box w="57%" ml="7%">
-          <Box w="75%" h="184px" mt="172px">
+        <Box w="57%" maxWidth="2250px" ml="90px">
+          <Box w="75%" mt="172px">
             <Text
               w="100%"
               fontSize="47px"
@@ -282,7 +283,7 @@ const Corporate = () => {
               </Text>
             </Text>
           </Box>
-          <Box w="86%" h="99px" mt="18px">
+          <Box w="75%" maxWidth="2250px" mt="18px">
             <Text
               fontSize="23px"
               fontWeight="300"
@@ -1004,11 +1005,18 @@ const Corporate = () => {
         </Heading>
 
         <Box>
-          <Flex mt="212px" justifyContent="center">
+          <Flex
+            width="100%"
+            maxWidth="2250px"
+            px="auto"
+            mx="auto"
+            mt="212px"
+            justifyContent="space-between"
+          >
             <Box width="31%" mr="2%" height="165px">
               <Flex>
-                <Img src={HC4.src} />
-                <Box width="70%">
+                <Img width="142px" height="121px" src={HC4.src} />
+                <Box width="75%">
                   {/* <Img src={IMG1.src} /> */}
                   <Box
                     width="163px"
@@ -1095,7 +1103,7 @@ const Corporate = () => {
             <Box width="30%" height="165px">
               <Flex>
                 <Box>
-                  <Img width="100%" src={HC3.src} />
+                  <Img width="142px" height="140px" src={HC3.src} />
                 </Box>
                 <Box width="70%">
                   <Box
