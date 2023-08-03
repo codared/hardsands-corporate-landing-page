@@ -72,6 +72,7 @@ import HardsandIconLogo from "design/svg/hardsands_icon_logo.svg";
 import { Span } from "@sentry/tracing";
 import { BsBoxArrowDown, BsFillExclamationOctagonFill } from "react-icons/bs";
 import { imgixLoader } from "@prismicio/next";
+import { withTheme } from "emotion-theming";
 
 const Corporate = () => {
   const [boxIndex, setBoxIndex] = useState(1);
@@ -114,7 +115,6 @@ const Corporate = () => {
 
   return (
     <Box overflow="hidden">
-      {/* width="1508px" height="887px" ml="20px"> */}
       <Flex //NAVBAr
         justifyContent="space-between"
         p={6}
@@ -232,8 +232,6 @@ const Corporate = () => {
         bg="#FEF8F3"
         mt="70px"
         ml="2%"
-        // border="1px"
-        // borderColor="#FEF8F3"
         position="absolute"
         zIndex={-400}
       />
@@ -243,7 +241,6 @@ const Corporate = () => {
         justifyContent="center"
         w="100%"
         ml="125px"
-        // zIndex={400}
       >
         <Box w="530px" h="635px" pt="7px">
           <Image
@@ -289,7 +286,6 @@ const Corporate = () => {
               fontWeight="300"
               lineHeight="34px"
               textTransform="capitalize"
-              // fontStyle="normal"
               fontFamily={"Campton Light"}
               color="#000"
             >
@@ -316,7 +312,6 @@ const Corporate = () => {
       <Container // Why Choose Hardsands?
         as={Stack}
         maxW="full"
-        // h="828px"
         mt="110px"
       >
         <Box maxW="707px" h="34px" bg="white" mt="110px" mx="auto">
@@ -359,7 +354,6 @@ const Corporate = () => {
         <GridItem colSpan={5}>
           <Container as={Stack} mx="auto" maxW="70%" pt="10%" mr="0px">
             <Text
-              // maxW="725px"
               fontFamily="MADE Outer Sans Light"
               fontSize="48px"
               fontWeight="600"
@@ -568,7 +562,6 @@ const Corporate = () => {
         as={Stack}
         maxW="full"
         mx="auto"
-        // alignContent="center"
       >
         <Box width="504px" height="81px" mt="83px" mx="auto">
           <Heading
@@ -643,7 +636,6 @@ const Corporate = () => {
         <Box
           width="full"
           bg="#000"
-          // mx="auto"
           pb="161px"
           //IntegrationMadeEasy
         >
@@ -757,9 +749,7 @@ const Corporate = () => {
       <Container //Features That Give Us An Edge
         as={Stack}
         maxW="98%"
-        // height="1338px"
         backgroundImage={FeaturesThatGiveUsAnEdgeBg.src}
-        // bgRepeat="repeat-y"
         mt="57px"
       >
         <Box
@@ -790,7 +780,6 @@ const Corporate = () => {
             <Box height="571px" bg="white" pt="55px">
               <Img src={Paper.src} alt="paper" mx="auto" />
 
-              {/* <Box height="37px" mt="10%"> */}
               <Heading
                 fontFamily="Campton"
                 fontSize="25px"
@@ -819,7 +808,6 @@ const Corporate = () => {
                 and technology.
               </Text>
             </Box>
-            {/* </Box> */}
             <Box height="290px" bg="#FEF8F3" mt="41px" />
           </Box>
 
@@ -1017,7 +1005,6 @@ const Corporate = () => {
               <Flex>
                 <Img width="142px" height="121px" src={HC4.src} />
                 <Box width="75%">
-                  {/* <Img src={IMG1.src} /> */}
                   <Box
                     width="163px"
                     height="104px"
@@ -1025,15 +1012,12 @@ const Corporate = () => {
                     mt="-14px"
                     position="absolute"
                     zIndex={-1}
-                  >
-                    {/* <Image src={IMG1.src} /> */}
-                  </Box>
+                  ></Box>
                   <Text>
                     <Heading
                       fontFamily="MADE Outer Sans Light"
                       fontSize="20px"
                       fontWeight="300"
-                      // lineHeight="100px"
                       textTransform="capitalize"
                       mt="28px"
                     >
@@ -1069,16 +1053,12 @@ const Corporate = () => {
                     mt="-30px"
                     position="absolute"
                     zIndex={-1}
-                  >
-                    {/* <Image src={IMG1.src} /> */}
-                  </Box>
-                  {/* <Img src={IMG1.src} /> */}
+                  ></Box>
                   <Text>
                     <Heading
                       fontFamily="MADE Outer Sans Light"
                       fontSize="20px"
                       fontWeight="300"
-                      // lineHeight="100px"
                       textTransform="capitalize"
                       mt="28px"
                     >
@@ -1113,16 +1093,12 @@ const Corporate = () => {
                     mt="-30px"
                     position="absolute"
                     zIndex={-1}
-                  >
-                    {/* <Image src={IMG1.src} /> */}
-                  </Box>
-                  {/* <Img src={IMG1.src} /> */}
+                  ></Box>
                   <Text>
                     <Heading
                       fontFamily="MADE Outer Sans Light"
                       fontSize="20px"
                       fontWeight="300"
-                      // lineHeight="100px"
                       textTransform="capitalize"
                       mt="12px"
                     >
@@ -1164,7 +1140,11 @@ const Corporate = () => {
         </Heading>
         <Flex width="full" justifyContent="center">
           <Box mr="77px" mt="256px">
-            <Button onClick={() => boxScrollLeft(346)} bg="white">
+            <Button
+              _hover={{ bg: "none" }}
+              onClick={() => boxScrollLeft(346)}
+              bg="white"
+            >
               <Img width="39px" height="40px" src={ACL.src} />
             </Button>
           </Box>
@@ -1172,14 +1152,12 @@ const Corporate = () => {
             width="70%"
             maxWidth="1040px"
             justifyContent="space-between"
-            // overflow="auto"
             overflow="scroll"
             sx={{
               "::-webkit-scrollbar": {
                 display: "none",
               },
             }}
-            // overflowX="auto"
             ref={boxRef}
             scrollBehavior="smooth"
           >
@@ -1210,7 +1188,6 @@ const Corporate = () => {
                   height={index === boxIndex ? boxHeight : "245px"}
                   mt={index === boxIndex ? boxMt : "164px"}
                   mr="77px"
-                  // ml={index === 0 ? "20px" : "0px"}
                   bg="#FBECDE"
                 >
                   <Img
@@ -1263,158 +1240,13 @@ const Corporate = () => {
                 </Box>
               );
             })}
-            {/* <Box
-              id="outer-box"
-              width="19%"
-              height="245px"
-              mt="164px"
-              mr="7%"
-              bg="#FBECDE"
-            >
-              <Box id="image-box" w="66px" h="66px" mx="auto" mt="-39px">
-                <Img src={Customer1.src} />
-              </Box>
-              <Box id="text-box" width="90%" mx="auto" mt="6px">
-                <Text
-                  color="#000"
-                  fontFamily="Campton Light"
-                  fontSize="10px"
-                  fontWeight="400"
-                  lineHeight="22px"
-                  textAlign="center"
-                >
-                  We had to print new cards every time one of our employees got
-                  a promotion, and it was simply wasteful. With Hardsands, we
-                  just update the info on the portal. Much easier and less
-                  expensive than ordering a new batch. Plus, our customers enjoy
-                  the first tap. There is a significant wow factor.
-                </Text>
-              </Box>
-              <Text
-                id="text"
-                color="#DF9F71"
-                fontFamily="Campton Light"
-                fontSize="11px"
-                fontWeight="400"
-                textAlign="center"
-                mt="12px"
-              >
-                DAVID BASSEY
-              </Text>
-
-              <Box>
-                <Flex id="star-bucks" justifyContent="center" mt="8px">
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                </Flex>
-              </Box>
-            </Box> */}
-            {/* <Box
-              id="outer-box"
-              width="19%"
-              height="245px"
-              mt="164px"
-              mr="7%"
-              bg="#FBECDE"
-            >
-              <Box id="image-box" w="66px" h="66px" mx="auto" mt="-39px">
-                <Img src={Customer2.src} />
-              </Box>
-              <Box id="text-box" width="90%" mx="auto" mt="6px">
-                <Text
-                  color="#000"
-                  fontFamily="Campton Light"
-                  fontSize="10px"
-                  fontWeight="400"
-                  lineHeight="22px"
-                  textAlign="center"
-                >
-                  We had to print new cards every time one of our employees got
-                  a promotion, and it was simply wasteful. With Hardsands, we
-                  just update the info on the portal. Much easier and less
-                  expensive than ordering a new batch. Plus, our customers enjoy
-                  the first tap. There is a significant wow factor.
-                </Text>
-              </Box>
-              <Text
-                id="text"
-                color="#DF9F71"
-                fontFamily="Campton Light"
-                fontSize="11px"
-                fontWeight="400"
-                textAlign="center"
-                mt="12px"
-              >
-                DAVID BASSEY
-              </Text>
-              <Box>
-                <Flex id="star-bucks" mt="8px" justifyContent="center">
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                </Flex>
-              </Box>
-            </Box> */}
-            {/* <Box
-              id="outer-box"
-              width="19%"
-              height="245px"
-              mt="164px"
-              bg="#FBECDE"
-            >
-              <Box id="image-box" w="66px" h="66px" mx="auto" mt="-39px">
-                <Img src={Customer3.src} />
-              </Box>
-              <Box id="text-box" width="90%" mx="auto" mt="6px">
-                <Text
-                  color="#000"
-                  fontFamily="Campton Light"
-                  fontSize="10px"
-                  fontWeight="400"
-                  lineHeight="22px"
-                  textAlign="center"
-                >
-                  We had to print new cards every time one of our employees got
-                  a promotion, and it was simply wasteful. With Hardsands, we
-                  just update the info on the portal. Much easier and less
-                  expensive than ordering a new batch. Plus, our customers enjoy
-                  the first tap. There is a significant wow factor.
-                </Text>
-              </Box>
-              <Box id="text" mt="12px">
-                <Text
-                  color="#DF9F71"
-                  fontFamily="Campton Light"
-                  fontSize="11px"
-                  fontWeight="400"
-                  textAlign="center"
-                >
-                  DAVID BASSEY
-                </Text>
-              </Box>
-              <Box>
-                <Flex
-                  id="star-bucks"
-                  width="100%"
-                  mt="8px"
-                  justifyContent="center"
-                >
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                  <Img src={StarFill.src} />
-                </Flex>
-              </Box>
-            </Box> */}
           </Flex>
           <Box mt="256px" ml="77px">
-            <Button onClick={() => boxScrollRight(346)} bg="white">
+            <Button
+              _hover={{ bg: "none" }}
+              onClick={() => boxScrollRight(346)}
+              bg="white"
+            >
               <Img width="39px" height="40px" src={ACR.src} />
             </Button>
           </Box>
@@ -1427,15 +1259,8 @@ const Corporate = () => {
         mt="100px"
         bg="#FEF8F3"
         py="47px"
-        // justifyContent="center"
       >
-        <Flex
-          // width="98%"
-          justifyContent="space-between"
-          // mx="auto"
-          px="5%"
-          height="220px"
-        >
+        <Flex justifyContent="space-between" px="5%" height="220px">
           <Box height="209px" w="22%">
             <Box>
               <Img src={Worldwide.src} />
@@ -1621,43 +1446,20 @@ const Corporate = () => {
           </Text>
         </Box>
 
-        {/* <Flex mt="110px" width="full" justifyContent="center">
-          <Box mt="98px" mr="0.5%">
-            <Button bg="white">
-              <Img width="39px" height="40px" src={ACL.src} />
-            </Button>
-          </Box>
-
-          <Box width="356px" height="235px" mr="2%">
-            <Img src={TUTD1.src} />
-          </Box>
-          <Box width="356px" height="235px" mr="2%">
-            <Img src={TUTD2.src} />
-          </Box>
-          <Box width="356px" height="235px" mr="2%">
-            <Img src={TUTD3.src} />
-          </Box>
-          <Box width="235px" height="235px" mr="0.5%">
-            <Img src={TUTD4.src} />
-          </Box>
-          <Box mt="98px">
-            <Button bg="white">
-              <Img width="39px" height="40px" src={ACR.src} />
-            </Button>
-          </Box>
-        </Flex> */}
-
         <Flex mt="110px" width="full" justifyContent="center">
           <Box mt="98px">
-            <Button onClick={() => cardScroll(-356)} bg="white">
+            <Button
+              _hover={{ bg: "none" }}
+              onClick={() => cardScroll(-386)}
+              bg="white"
+            >
               <Img width="39px" height="40px" src={ACL.src} />
             </Button>
           </Box>
           <Flex
-            width="90%"
-            // mx="auto"
-            justifyContent="center"
-            // overflow="auto"
+            width="81%"
+            pl="2%"
+            justifyContent="space-between"
             overflow="scroll"
             sx={{
               "::-webkit-scrollbar": {
@@ -1678,7 +1480,13 @@ const Corporate = () => {
                 img: TUTD3.src,
               },
               {
-                img: TUTD4.src,
+                img: TUTD1.src,
+              },
+              {
+                img: TUTD2.src,
+              },
+              {
+                img: TUTD3.src,
               },
             ].map((item, index) => {
               return (
@@ -1691,21 +1499,13 @@ const Corporate = () => {
                 />
               );
             })}
-            {/* <Box > */}
-            {/* <Img width="356px" height="235px" src={TUTD1.src} /> */}
-            {/* </Box> */}
-            {/* <Box width="356px" height="235px">
-              <Img src={TUTD2.src} />
-            </Box>
-            <Box width="356px" height="235px">
-              <Img src={TUTD3.src} />
-            </Box>
-            <Box width="235px" height="235px">
-              <Img src={TUTD4.src} />
-            </Box> */}
           </Flex>
           <Box mt="98px">
-            <Button onClick={() => cardScroll(356)} bg="white">
+            <Button
+              _hover={{ bg: "none" }}
+              onClick={() => cardScroll(386)}
+              bg="white"
+            >
               <Img width="39px" height="40px" src={ACR.src} />
             </Button>
           </Box>
@@ -1809,7 +1609,6 @@ const Corporate = () => {
       <Container //FAQs
         as={Stack}
         maxW="full"
-        // height="1280px"
         bg="#000"
         mt="81px"
       >
@@ -2237,10 +2036,8 @@ const Corporate = () => {
             justifyContent="space-between"
           >
             <Image
-              // my="auto"
               width="613px"
               height="515px"
-              // mt="155px"
               src={MaximizingYourTeamImage.src}
               alt={"maximize-your-team-potential"}
             />
