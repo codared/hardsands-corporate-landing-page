@@ -24,6 +24,16 @@ export const NAV_ITEMS: Array<NavItem> = [
     label: "Blog",
     href: blogRoute.blogs(),
   },
-  { label: "Account", href: "/login" },
-  { label: "Corporate", href: "/corporate" },
+  {
+    label: "Account",
+    href: "/login",
+  },
+  {
+    label: "Corporate",
+    href: "/corporate",
+  },
+  {
+    label: "Pricing",
+    href: "/pricing",
+  },
 ];

@@ -10,13 +10,16 @@ import HardsandLink from "components/HardsandsLink";
 import { NAV_ITEMS, NavItem } from "./constants";
 import DesktopSubNav from "./DesktopSubNav";
 
-const DesktopNav = () => {
+const DesktopNav = ({ corporateNavs }: { corporateNavs?: boolean }) => {
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   return (
     <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem: NavItem) => {
         if (navItem.href === "/login") return;
+        if (corporateNavs && navItem.label === "Home") return;
+        if (corporateNavs && navItem.label === "Corporate") return;
+        if (!corporateNavs && navItem.label === "Pricing") return;
         return (
           <Box key={navItem.label}>
             <Popover trigger={"hover"} placement={"bottom-start"}>
