@@ -37,7 +37,7 @@ const minifyNotificationCount = (count: string | number) => {
   return count.toString().length > 1 ? "9+" : count;
 };
 
-export default function Navigation() {
+export default function Navigation({ pageTitle }: { pageTitle?: string }) {
   const { state, dispatch } = useContext(CheckoutContext);
   const { isOpen, onToggle } = useDisclosure();
   const reduxDispatch = useTypedDispatch();
@@ -49,6 +49,7 @@ export default function Navigation() {
   const cartId = state.cart.cart?.id;
   const ignoreCountryDiscount = false; // featureFlag('IGNORE_COUNTRY_DISCOUNT', true)
   const router = useRouter();
+  const isCorporatePage = pageTitle?.includes("Corporate");
 
   usePreloadProducts(3000);
 
@@ -89,7 +90,14 @@ export default function Navigation() {
   };
 
   return (
-    <Box as="nav" w="100%" position="sticky" zIndex="sticky" bg="black" top={0}>
+    <Box
+      as="nav"
+      w="100%"
+      position="sticky"
+      zIndex="sticky"
+      bg={isCorporatePage ? "white" : "black"}
+      top={0}
+    >
       <Cart
         isOpen={isCartOpen}
         onClose={() => setCartOpen(!isCartOpen)}
@@ -104,8 +112,11 @@ export default function Navigation() {
       >
         <HardsandsAppLogo />
 
-        <Flex display={["none", "flex"]} color="white">
-          <DesktopNav />
+        <Flex
+          display={["none", "flex"]}
+          color={isCorporatePage ? "black" : "white"}
+        >
+          <DesktopNav corporateNavs={isCorporatePage} />
         </Flex>
 
         <Stack
@@ -118,7 +129,7 @@ export default function Navigation() {
           <CurrencySelector
             selectedCurrency={currency}
             mr={10}
-            color="white"
+            color={isCorporatePage ? "black" : "white"}
             onChange={onCurrencyChange}
           />
           <Button
@@ -137,13 +148,16 @@ export default function Navigation() {
             // @ts-ignore
             ref={cartBtnRef}
           >
-            <AiOutlineShoppingCart color="white" size={24} />
+            <AiOutlineShoppingCart
+              color={isCorporatePage ? "black" : "white"}
+              size={24}
+            />
             {cartItemCount !== 0 && (
               <Box
                 display="flex"
                 borderRadius="100%"
-                bg="black"
-                color="white"
+                bg={isCorporatePage ? "black" : "white"}
+                color={isCorporatePage ? "black" : "white"}
                 w="23px"
                 h="23px"
                 alignSelf="flex-start"
@@ -157,7 +171,7 @@ export default function Navigation() {
 
           <Button
             bg="transparent"
-            color="white"
+            color={isCorporatePage ? "black" : "white"}
             display={["none", "flex"]}
             _focus={{ bg: "transparent" }}
             _hover={{ bg: "transparent" }}
@@ -179,9 +193,15 @@ export default function Navigation() {
               href={"#"}
             >
               {!isOpen ? (
-                <HiMenuAlt3 color="white" size={30} />
+                <HiMenuAlt3
+                  color={isCorporatePage ? "black" : "white"}
+                  size={30}
+                />
               ) : (
-                <MdClose color="white" size={30} />
+                <MdClose
+                  color={isCorporatePage ? "black" : "white"}
+                  size={30}
+                />
               )}
             </HardsandLink>
           </Flex>
@@ -189,7 +209,7 @@ export default function Navigation() {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
+        <MobileNav corporateNavs={isCorporatePage} />
       </Collapse>
     </Box>
   );

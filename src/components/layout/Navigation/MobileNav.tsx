@@ -12,7 +12,7 @@ import HardsandLink from "components/HardsandsLink";
 import { useCallback, useEffect, useState } from "react";
 import { NAV_ITEMS, NavItem } from "./constants";
 
-const MobileNav = () => {
+const MobileNav = ({ corporateNavs }: { corporateNavs?: boolean }) => {
   // const [Nav, setNav] = useState<NavItem[]>(NAV_ITEMS);
   // useEffect(() => {
   //   NAV_ITEMS.push({ label: "Account", href: "/login" });
@@ -25,9 +25,13 @@ const MobileNav = () => {
       p={4}
       display={{ md: "none" }}
     >
-      {NAV_ITEMS.map((navItem: NavItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
+      {NAV_ITEMS.map((navItem: NavItem) => {
+        if (corporateNavs && navItem.label === "Home") return;
+        if (corporateNavs && navItem.label === "Corporate") return;
+        if (!corporateNavs && navItem.label === "Pricing") return;
+
+        return <MobileNavItem key={navItem.label} {...navItem} />;
+      })}
     </Stack>
   );
 };
