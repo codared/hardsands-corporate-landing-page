@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import React from "react";
 import {
   Container,
   Box,
@@ -65,8 +66,19 @@ import {
   HorizontalDivider,
 } from "assets/index";
 import WithLayout from "components/WithLayout";
-
+import WhatCustomersAreSaying from "modules/hardsands/components/WhatCustomersAreSaying";
 const Corporate = () => {
+  // const [width, setWidth] = React.useState(window.innerWidth);
+  // const breakpoint = 992;
+
+  // React.useEffect(() => {
+  //   const [width, setWidth] = React.useState(window.innerWidth);
+  //   const handleWindowResize = () => setWidth(window.innerWidth);
+  //   window.addEventListener("resize", handleWindowResize);
+
+  //   return () => window.removeEventListener("resize", handleWindowResize);
+  // }, []);
+
   const [boxIndex, setBoxIndex] = useState(1);
 
   const boxWidth = "309px";
@@ -105,127 +117,25 @@ const Corporate = () => {
     }
   };
 
+  const [faq1, setFaq1] = useState(false);
+  const [faq2, setFaq2] = useState(false);
+  const [faq3, setFaq3] = useState(false);
+  const [faq4, setFaq4] = useState(false);
+  const [faq5, setFaq5] = useState(false);
+  const [faq6, setFaq6] = useState(false);
+  const [faq7, setFaq7] = useState(false);
+
   return (
     <WithLayout pageTitle="Hardsands - Corporate">
       <Box overflow="hidden">
-        {/* <Flex //NavBAr
-          justifyContent="space-between"
-          p={6}
-          w="full"
-        >
-          <Box>
-            <HardsandLink href="/">
-              <Flex align="center">
-                <Image
-                  w="46px"
-                  h="46px"
-                  src={hardsandsIconLogo.src}
-                  alt="hardsands Icon logo"
-                  display={["none", "none", "flex"]}
-                />
-                <Image
-                  w="168px"
-                  h="15px"
-                  ml="11px"
-                  src={HardsandLogo.src}
-                  alt="hardsands Icon logo"
-                  display={["none", "none", "flex"]}
-                />
-              </Flex>
-            </HardsandLink>
-          </Box>
-          <Flex my="auto">
-          
-            <Box mr={12}>
-              <HardsandLink href={"/collections"}>
-                <Text
-                  fontFamily="Campton Light"
-                  fontSize="18px"
-                  fontWeight="400"
-                  lineHeight="34px"
-                  textTransform="capitalize"
-                  color="rgba(0, 0, 0, 0.81)"
-                >
-                  Products
-                </Text>
-              </HardsandLink>
-            </Box>
-            <Box mr={12}>
-              <HardsandLink href={"/articles/how-to-use"}>
-                <Text
-                  fontFamily="Campton Light"
-                  fontSize="18px"
-                  fontWeight="400"
-                  lineHeight="34px"
-                  textTransform="capitalize"
-                  color="rgba(0, 0, 0, 0.81)"
-                >
-                  How To Use
-                </Text>
-              </HardsandLink>
-            </Box>
-            <Box mr={12}>
-              <HardsandLink href={"/articles"}>
-                <Text
-                  fontFamily="Campton Light"
-                  fontSize="18px"
-                  fontWeight="400"
-                  lineHeight="34px"
-                  textTransform="capitalize"
-                  color="rgba(0, 0, 0, 0.81)"
-                >
-                  Blog
-                </Text>
-              </HardsandLink>
-            </Box>
-            <Box mr={12}>
-              <Text
-                fontFamily="Campton Light"
-                fontSize="18px"
-                fontWeight="400"
-                lineHeight="34px"
-                textTransform="capitalize"
-                color="rgba(0, 0, 0, 0.81)"
-              >
-                Pricing
-              </Text>
-            </Box>
-          </Flex>
-          <Flex my="auto">
-            <Box mx={8}>
-              <Text
-                fontFamily="Campton"
-                fontSize="18px"
-                fontWeight="500"
-                lineHeight="34px"
-                textTransform="capitalize"
-                color="#000"
-              >
-                USD
-              </Text>
-            </Box>
-            <Box mx={8}>
-              <Text
-                fontFamily="Campton"
-                fontSize="20px"
-                fontWeight="400"
-                lineHeight="34px"
-                textTransform="capitalize"
-                color="#000"
-              >
-                Amount
-              </Text>
-            </Box>
-          </Flex>
-        </Flex> */}
-
         <Box
-          w="71%"
+          // w="71%"
+          width={["100%", "100%", "71%"]}
           maxWidth="2150px"
           h="678px"
           bg="#FEF8F3"
-          mt="70px"
-          ml="2%"
+          mt={["20px", "20px", "70px"]}
+          ml={["0%", "0%", "2%"]}
           position="absolute"
           zIndex={-400}
         />
@@ -234,20 +144,30 @@ const Corporate = () => {
           alignItems="center"
           justifyContent="center"
           w="100%"
-          ml="125px"
+          ml={["0px", "0px", "125px"]}
+          direction={["column-reverse", "column-reverse", "row"]}
         >
-          <Box w="530px" h="635px" pt="7px">
-            <Image
-              src={HappyConfidentProfessionalTeam.src}
-              alt={"happyconfidentprofessionalimage"}
-            />
-          </Box>
-          <Box w="57%" maxWidth="2250px" ml="90px">
-            <Box w="75%" mt="172px">
+          <Image
+            w={["100%", "65%", "530px"]}
+            h={["100%", "65%", "635px"]}
+            pt={["0px", "0px", "7px"]}
+            mx="auto"
+            src={HappyConfidentProfessionalTeam.src}
+            alt={"happyconfidentprofessionalimage"}
+          />
+          <Box
+            w={["100%", "", "57%"]}
+            maxWidth="2250px"
+            ml={["0px", "", "90px"]}
+            pl={["5%", "", "0%"]}
+          >
+            <Box w={["100%", "", "75%"]} mt={["80px", "", "172px"]}>
               <Text
                 w="100%"
-                fontSize="47px"
-                lineHeight="60px"
+                fontSize={["35px", "", "47px"]}
+                // size={"2xl"}
+                lineHeight={["34px", "", "60px"]}
+                fontWeight={["1000", "", "600"]}
                 textTransform="capitalize"
               >
                 <Text
@@ -255,8 +175,8 @@ const Corporate = () => {
                   color="#DF9F71"
                   fontFamily={"MADE Outer Sans Light"}
                   fontStyle="normal"
-                  fontWeight="600"
-                  lineHeight="60px"
+                  fontWeight={["1000", "", "600"]}
+                  // lineHeight="60px"
                 >
                   {" "}
                   Empower your team to connect with
@@ -266,7 +186,7 @@ const Corporate = () => {
                   color="#160A01"
                   fontFamily={"MADE Outer Sans Light"}
                   fontWeight="600"
-                  lineHeight="60px"
+                  // lineHeight="60px"
                 >
                   {" "}
                   Our
@@ -274,9 +194,9 @@ const Corporate = () => {
                 </Text>
               </Text>
             </Box>
-            <Box w="75%" maxWidth="2250px" mt="18px">
+            <Box w={["100%", "75%"]} maxWidth="2250px" mt="18px">
               <Text
-                fontSize="23px"
+                fontSize={["17px", "", "23px"]}
                 fontWeight="300"
                 lineHeight="34px"
                 textTransform="capitalize"
@@ -288,7 +208,12 @@ const Corporate = () => {
                 relationships, and realize newfound success.
               </Text>
             </Box>
-            <Box w="30%" h="40px" mt="33px">
+            <Box
+              w={["90%", "257px"]}
+              h={["50px", "40px"]}
+              mx={["auto", "0px"]}
+              mt={["12px", "24px"]}
+            >
               <HardsandsButton
                 // @ts-ignore
                 textTransform={"uppercase"}
@@ -308,29 +233,48 @@ const Corporate = () => {
           maxW="full"
           mt="110px"
         >
-          <Box maxW="707px" h="34px" bg="white" mt="110px" mx="auto">
+          <Box
+            maxW={["100%", "100%", "707px"]}
+            h="34px"
+            bg="#FFF"
+            mt={["0px", "0px", "110px"]}
+            mx="auto"
+          >
             <Text
               fontFamily="MADE Outer Sans Light"
-              fontSize="48px"
+              fontSize={["25px", "48px", "48px"]}
               fontWeight="600"
               lineHeight="34px"
               textTransform="capitalize"
+              textAlign={["center", "center", "center"]}
               color="#DF9F71"
             >
               Why Choose Hardsands?
             </Text>
           </Box>
-          <Container as={Stack} maxW="986px" height="392px" mt="69px" mx="auto">
-            <Image src={WhyChooseHardsands.src} alt={"whychoosehardsands"} />
-          </Container>
-          <Box width="1108px" height="136px" mt="49px" mx="auto">
+          <Image
+            mx="auto"
+            width={["100%", "75%", "986px"]}
+            maxW="986px"
+            mt={["27px", "22px", "69px"]}
+            height={["220px", "300px", "392px"]}
+            src={WhyChooseHardsands.src}
+            alt={"whychoosehardsands"}
+          />
+          <Box
+            width={["100%", "100%", "1108px"]}
+            height={["100%", "100%", "136px"]}
+            mt={["24px", "24px", "49px"]}
+            mx="auto"
+          >
             <Text
               color="#000"
               fontFamily="Campton Light"
-              fontSize="19.5px"
-              fontWeight="300"
+              fontSize={["14px", "19.5px"]}
+              fontWeight={["100", "300"]}
               lineHeight="34px"
               textTransform="capitalize"
+              textAlign={["center", "center", "inherit"]}
             >
               Our digital business cards offer a modern solution to traditional
               paper cards, with a sleek and minimalist design that&apos;s
@@ -345,18 +289,24 @@ const Corporate = () => {
         <Grid //Want to Maximize Your Team's  Potential
           mt="38px"
         >
-          <GridItem colSpan={5}>
-            <Container as={Stack} mx="auto" maxW="70%" pt="10%" mr="0px">
+          <GridItem colStart={[0, 0, 1]} colEnd={[0, 0, 5]}>
+            <Container
+              as={Stack}
+              mx="auto"
+              maxW={["100%", "100%", "70%"]}
+              pt={["10%", "10%", "10%"]}
+              mr="0px"
+            >
               <Text
                 fontFamily="MADE Outer Sans Light"
-                fontSize="48px"
+                fontSize={["26px", "48px", "48px"]}
                 fontWeight="600"
-                lineHeight="55px"
+                lineHeight={["34px", "55px", "55px"]}
                 textTransform="capitalize"
                 textAlign="center"
                 alignItems="flex-end"
                 mr="0px"
-                bg="white"
+                bg="#FFF"
               >
                 <Text as="span" color="#DF9F71">
                   {`Want to maximize `}
@@ -380,9 +330,21 @@ const Corporate = () => {
               </Text>
             </Container>
 
-            <Box mx="auto" width="80%" mr="5">
-              <Flex mx="auto" justifyContent="space-between">
-                <Box height="21px" width="48%" mt="54px">
+            <Box
+              mx={["5%", "5%", "auto"]}
+              width={["90%", "90%", "80%"]}
+              mr={["0px", "0px", "5"]}
+            >
+              <Flex
+                direction={["column", "row", "row"]}
+                mx={["auto", "auto", "auto"]}
+                justifyContent="space-between"
+              >
+                <Box
+                  height="21px"
+                  width={["100%", "48%", "48%"]}
+                  mt={["90px", "90px", "54px"]}
+                >
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -398,20 +360,13 @@ const Corporate = () => {
                     borderColor="rgba(0, 0, 0, 0.40)"
                     placeholder="Your name"
                     focusBorderColor="rgba(0, 0, 0, 0.40)"
-                  >
-                    {/* <Box height="21px" pl="23px" mt="17px" mb="16px"> */}
-                    {/* <Text
-                  fontFamily="Campton Light"
-                  fontWeight="300"
-                  color="rgba(0, 0, 0, 0.33)"
-                >
-                  Your name
-                </Text> */}
-                    {/* </Box> */}
-                  </Input>
+                  ></Input>
                 </Box>
-                {/* <Input placeholder="Your name" /> */}
-                <Box height="21px" mt="54px" width="48%">
+                <Box
+                  width={["100%", "48%", "48%"]}
+                  height="21px"
+                  mt={["90px", "90px", "54px"]}
+                >
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -427,21 +382,15 @@ const Corporate = () => {
                     placeholder="test@gmail.org"
                     borderColor="rgba(0, 0, 0, 0.40)"
                     focusBorderColor="rgba(0, 0, 0, 0.40)"
-                  >
-                    {/* <Box height="21px" pl="23px" mt="17px" mb="16px">
-                  <Text
-                    fontFamily="Campton Light"
-                    fontWeight="300"
-                    color="rgba(0, 0, 0, 0.33)"
-                  >
-                    test@gmail.org
-                  </Text>
-                </Box> */}
-                  </Input>
+                  ></Input>
                 </Box>
               </Flex>
-              <Flex mx="auto" justifyContent="space-between">
-                <Box width="48%" height="21px" mt="102px">
+              <Flex
+                direction={["column", "row", "row"]}
+                mx="auto"
+                justifyContent="space-between"
+              >
+                <Box width={["100%", "48%", "48%"]} height="21px" mt="102px">
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -457,20 +406,9 @@ const Corporate = () => {
                     borderColor="rgba(0, 0, 0, 0.40)"
                     placeholder="Your Name"
                     focusBorderColor="rgba(0, 0, 0, 0.40)"
-                  >
-                    {/* <Box width="91px" height="21px" ml="23px" mt="17px" mb="16px">
-                  <Text
-                    fontFamily="Campton Light"
-                    fontWeight="300"
-                    align="center"
-                    color="rgba(0, 0, 0, 0.33)"
-                  >
-                    Your Name
-                  </Text>
-                </Box> */}
-                  </Input>
+                  ></Input>
                 </Box>
-                <Box width="48%" height="21px" mt="102px">
+                <Box width={["100%", "48%", "48%"]} height="21px" mt="102px">
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -488,8 +426,12 @@ const Corporate = () => {
                   ></Input>
                 </Box>
               </Flex>
-              <Flex mx="auto" justifyContent="space-between">
-                <Box width="48%" height="21px" mt="102px">
+              <Flex
+                direction={["column", "row", "row"]}
+                mx="auto"
+                justifyContent="space-between"
+              >
+                <Box width={["100%", "48%", "48%"]} height="21px" mt="102px">
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -505,7 +447,7 @@ const Corporate = () => {
                     focusBorderColor="rgba(0, 0, 0, 0.40)"
                   ></Input>
                 </Box>
-                <Box width="48%" height="21px" mt="102px">
+                <Box width={["100%", "48%", "48%"]} height="21px" mt="102px">
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -522,7 +464,7 @@ const Corporate = () => {
                   ></Input>
                 </Box>
               </Flex>
-              <Box mt="104px" w="40%" mb="120px">
+              <Box mt="104px" w="40%" mb={["0px", "0px", "120px"]}>
                 <HardsandsButton
                   // @ts-ignore
                   w={"80%"}
@@ -535,16 +477,17 @@ const Corporate = () => {
               </Box>
             </Box>
           </GridItem>
-          <GridItem colStart={6} colEnd={10}>
+          <GridItem colStart={[0, 0, 6]} colEnd={[0, 0, 10]}>
             <Flex
-              height="100%"
+              direction={["column", "column", "row"]}
+              height={["100%"]}
               alignItems="center"
               justifyContent="space-between"
             >
               <Image
                 // mt="42px"
-                width="601px"
-                height="527px"
+                width={["100%", "65%", "601px"]}
+                height={["100%", "65%", "527px"]}
                 src={WantToMaximizeYourTeamsPotential.src}
                 alt={"want-to-maximize-your-team's-potential"}
               />
@@ -556,12 +499,18 @@ const Corporate = () => {
           as={Stack}
           maxW="full"
           mx="auto"
+          // direction={["column", "row"]}
         >
-          <Box width="504px" height="81px" mt="83px" mx="auto">
+          <Box
+            width={["100%", "100%", "504px"]}
+            height={["100%", "100%", "81px"]}
+            mt={["40px", "5px", "83px"]}
+            mx="auto"
+          >
             <Heading
               fontFamily="MADE Outer Sans Light"
-              fontSize="55px"
-              fontWeight="400"
+              fontSize={["26px", "55px", "55px"]}
+              fontWeight={["900", "", "400"]}
               lineHeight="60px"
               textTransform="capitalize"
               color="#DF9F71"
@@ -571,12 +520,17 @@ const Corporate = () => {
               tailored for you
             </Heading>
           </Box>
-          <Box width="498px" height="28px" mx="auto">
+          <Box
+            width={["100%", "100%", "498px"]}
+            height={["100%", "100%", "28px"]}
+            mt={["0px", "5px", "0px"]}
+            mx="auto"
+          >
             <Text
               fontFamily="Campton Light"
-              fontSize="20px"
+              fontSize={["17px", "", "20px"]}
               fontWeight="300"
-              lineHeight="28px"
+              lineHeight={["21px", "", "28px"]}
               textTransform="capitalize"
               textAlign="center"
             >
@@ -584,36 +538,61 @@ const Corporate = () => {
             </Text>
           </Box>
           <Box>
-            <Flex justifyContent="center" mt="7px" mb="173px">
-              <Box width="520px" height="543px" mt="113px">
-                <Image src={TailoredForYou.src} alt={"tailoredforyouimage"} />
-              </Box>
-              <Box width="9px" height="260px" mt="251px">
+            <Flex
+              width="100%"
+              direction={["column", "column", "row"]}
+              justifyContent="center"
+              mt={["20px", "", "7px"]}
+              mb={["15px", "173px"]}
+            >
+              <Flex justifyContent="center">
                 <Image
+                  width={["265px", "520px", "520px"]}
+                  height={["276px", "543px", "543px"]}
+                  mt={["0px", "0px", "113px"]}
+                  ml={["0px", "0px", "6%"]}
+                  src={TailoredForYou.src}
+                  alt={"tailoredforyouimage"}
+                />
+                <Image
+                  width={["6px", "9px", "9px"]}
+                  height={["130px", "260px", "260px"]}
+                  mt={["80px", "200px", "251px"]}
+                  ml={["20px", "20px", "33px"]}
                   src={TailoredForYouDivider.src}
                   alt={"tailoredforyoudividerimage"}
                 />
-              </Box>
-              <Box width="55px" height="55px" mt="319px" ml="44px">
                 <Image
+                  width={["27px", "55px", "55px"]}
+                  height={["27px", "55px", "55px"]}
+                  mt={["80px", "200px", "319px"]}
+                  ml={["30px", "30px", "44px"]}
                   src={TailoredForYouIcon.src}
                   alt={"tailoredforyouiconimage"}
                 />
-              </Box>
-              <Box width="570px" height="136px" mt="319px" ml="21px">
+              </Flex>
+              <Box
+                width={["100%", "100%", "570px"]}
+                height={["100%", "100%", "136px"]}
+                mt={["20px", "20px", "319px"]}
+                ml={["0px", "0px", "60px"]}
+              >
                 <Heading
                   fontFamily="MADE Outer Sans Light"
-                  fontSize="32px"
+                  fontSize={["22px", "32px", "32px"]}
                   fontWeight="300"
                   lineHeight="34px"
                   textTransform="capitalize"
                 >
                   Access leads from a single dashboard
                 </Heading>
-                <Box width="445px" height="120px">
+                <Box
+                  width={["100%", "100%", "445px"]}
+                  height={["100%", "100%", "120px"]}
+                >
                   <Text
                     fontFamily="Campton Light"
-                    fontSize="17px"
+                    fontSize={["14px", "14px", "17px"]}
                     fontWeight="300"
                     lineHeight="30px"
                     textTransform="capitalize"
@@ -627,112 +606,145 @@ const Corporate = () => {
             </Flex>
           </Box>
 
-          <Box
+          <Flex
             width="full"
             bg="#000"
-            pb="161px"
+            pb={["15px", "161px"]}
+            direction={["column", "column", "row"]}
+            justifyContent="space-around"
             //IntegrationMadeEasy
           >
             <Flex
-              // width="100%"
-              // px="auto"
-              mx="10%"
               alignContent="center"
               justifyContent="center"
+              width="100%"
+              mx={["0%", "10%"]}
             >
-              <Box mt="263px">
-                <Flex width="100%">
-                  <Box width="1px" height="237px" bg="#FFF">
-                    <Image src={Divider.src} alt={"divider"} />
-                  </Box>
-                  <Box
-                    width="55px"
-                    height="55px"
-                    ml="26px"
-                    mt="86px"
-                    bg="black"
-                  >
-                    <Image
-                      src={IntegrationMadeEasyIcon.src}
-                      alt={"integrationmadeeasyicon"}
-                    />
-                  </Box>
-                  <Box>
-                    <Heading
-                      color="#FFF"
-                      fontFamily="MADE Outer Sans Light"
-                      fontSize="32px"
-                      fontWeight="300"
-                      lineHeight="34px"
-                      textTransform="capitalize"
-                      ml="6%"
-                      mt="86px"
-                    >
-                      Integration made easy
-                    </Heading>
-                    <Box width="439px" height="120px" mt="8px" ml="22px">
-                      <Text
-                        color="#FFF"
-                        fontFamily="Campton Light"
-                        fontSize="17px"
-                        fontWeight="300"
-                        lineHeight="30px"
-                        textTransform="capitalize"
-                      >
-                        Connect any software to your dashboard without hassle..
-                        Automate repetitive tasks and eliminate manual errors..
-                        Simplify your workday and focus on what really matters.
-                      </Text>
-                    </Box>
-                  </Box>
-                </Flex>
-              </Box>
-
-              <Box width="520px" height="543px" ml="167px" mt="66px">
-                <Flex
-                  width="100%"
-                  height="100%"
-                  justifyItems="center"
-                  alignItems="flex-end"
+              <Image
+                width="1px"
+                height={["163px", "237px", "237px"]}
+                // bg="#FFF"
+                src={Divider.src}
+                alt={"divider"}
+                pt={["15px", "0px"]}
+                mt={["42px", "263px"]}
+                ml={["15px", "0px"]}
+              />
+              <Image
+                width={["27px", "55px", "55px"]}
+                height={["27px", "55px", "55px"]}
+                ml={["10px", "", "26px"]}
+                mt={["84px", "349px"]}
+                bg="black"
+                src={IntegrationMadeEasyIcon.src}
+                alt={"integrationmadeeasyicon"}
+              />
+              <Box>
+                <Heading
+                  color="#FFF"
+                  fontFamily="MADE Outer Sans Light"
+                  fontSize={["22px", "32px", "32px"]}
+                  fontWeight="300"
+                  lineHeight="34px"
+                  textTransform="capitalize"
+                  ml="6%"
+                  mt={["84px", "349px"]}
                 >
-                  <Image
-                    src={IntegrationMadeEasyImage.src}
-                    alt={"integrationmadeeasyimage"}
-                  />
-                </Flex>
+                  Integration made easy
+                </Heading>
+                <Box
+                  width={["100%", "80%", "439px"]}
+                  height={["100%", "80%", "120px"]}
+                  mt="8px"
+                  ml={["0px", "22px"]}
+                >
+                  <Text
+                    color="#FFF"
+                    fontFamily="Campton Light"
+                    fontSize={["14px", "17px", "17px"]}
+                    fontWeight="300"
+                    lineHeight="30px"
+                    textTransform="capitalize"
+                    textAlign={["center", "center", "inherit"]}
+                  >
+                    Connect any software to your dashboard without hassle..
+                    Automate repetitive tasks and eliminate manual errors..
+                    Simplify your workday and focus on what really matters.
+                  </Text>
+                </Box>
               </Box>
             </Flex>
-          </Box>
 
-          <Flex width="100%" justifyContent="center" mb="184px">
-            <Box width="520px" height="542px" ml="8%" mt="99px">
+            <Image
+              mr={["0px", "", "90px"]}
+              alignSelf={["center", "", "initial"]}
+              width={["260px", "520px", "520px"]}
+              height={["276", "543px", "543px"]}
+              mt="66px"
+              src={IntegrationMadeEasyImage.src}
+              alt={"integrationmadeeasyimage"}
+            />
+          </Flex>
+
+          <Flex
+            direction={["column", "column", "row"]}
+            width={["100%", "100%", "100%"]}
+            justifyContent="center"
+            mb={["15px", "15px", "184px"]}
+            mt={["45px", "15px", "0px"]}
+          >
+            <Flex justifyContent="center">
               <Image
+                width={["265px", "520px", "520px"]}
+                height={["276px", "542px", "542px"]}
+                ml={["0px", "0px", "6%"]}
+                mt={["0px", "0px", "99px"]}
                 src={EffortlesslyManageYourTeam.src}
                 alt={"effortlessly-manage-your-team"}
               />
-            </Box>
-            <Box width="9px" height="261px" mt="245px" ml="61px">
-              <Image src={DividerDownwards.src} alt={"divider"} />
-            </Box>
-            <Box width="55px" height="55px" mt="377px" ml="30px">
-              <Image src={User.src} alt={"user"} />
-            </Box>
-            <Box width="544px" height="68px" mt="377px" ml="22px">
+              <Image
+                width={["6px", "9px", "9px"]}
+                height={["130px", "260px", "260px"]}
+                mt={["80px", "200px", "251px"]}
+                ml={["0px", "0px", "61px"]}
+                src={DividerDownwards.src}
+                alt={"divider"}
+              />
+              <Image
+                width={["27px", "55px", "55px"]}
+                height={["27px", "55px", "55px"]}
+                mt={["80px", "200px", "377px"]}
+                ml={["15px", "30px", "30px"]}
+                src={User.src}
+                alt={"user"}
+              />
+            </Flex>
+
+            <Box
+              width={["100%", "100%", "544px"]}
+              height={["100%", "100%", "68px"]}
+              mt={["20px", "20px", "377px"]}
+              ml={["0px", "0px", "60px"]}
+            >
               <Heading
                 color="#000"
                 fontFamily="MADE Outer Sans Light"
-                fontSize="32px"
+                fontSize={["22px", "32px", "32px"]}
                 fontWeight="300"
                 lineHeight="34px"
                 textTransform="capitalize"
               >
                 Effortlessly Manage Your Team
               </Heading>
-              <Box width="439px" height="90px" mt="18px">
+              <Box
+                width={["100%", "100%", "439px"]}
+                height={["100%", "100%", "190x"]}
+                mt="18px"
+              >
                 <Text
                   color="#000"
                   fontFamily="Campton Light"
-                  fontSize="17px"
+                  fontSize={["14px", "", "17px"]}
                   fontWeight="300"
                   lineHeight="30px"
                   textTransform="capitalize"
@@ -748,7 +760,7 @@ const Corporate = () => {
 
         <Container //Features That Give Us An Edge
           as={Stack}
-          maxW="98%"
+          maxW={["100%", "100%", "98%"]}
           backgroundImage={FeaturesThatGiveUsAnEdgeBg.src}
           mt="57px"
         >
@@ -760,14 +772,14 @@ const Corporate = () => {
           >
             <Heading
               fontFamily="Made Outer Sans Light"
-              fontSize="55px"
+              fontSize={["25px", "25px", "55px"]}
               lineHeight="34px"
             >
               Features that give us an edge
             </Heading>
             <Text
               fontFamily="Campton"
-              fontSize="17px"
+              fontSize={["14px", "14px", "17px"]}
               lineHeight="30px"
               mt="20px"
             >
@@ -775,8 +787,13 @@ const Corporate = () => {
             </Text>
           </Box>
 
-          <Flex justify="center" mt="85px" alignItems="flex-end">
-            <Box width="36%" mx="1%">
+          <Flex
+            direction={["column", "column", "row"]}
+            justify="center"
+            mt="85px"
+            alignItems="flex-end"
+          >
+            <Box width={["100%", "100", "36%"]} mx={["0%", "0%", "1%"]}>
               <Box height="571px" bg="white" pt="55px">
                 <Img src={Paper.src} alt="paper" mx="auto" />
 
@@ -811,7 +828,11 @@ const Corporate = () => {
               <Box height="290px" bg="#FEF8F3" mt="41px" />
             </Box>
 
-            <Box width="36%" mx="1%">
+            <Box
+              width={["100%", "100%", "36%"]}
+              mx={["0%", "0%", "1%"]}
+              mt={["30px", "30px", "0px"]}
+            >
               <Box height="428px" bg="white">
                 <Flex width="100%" justifyContent="flex-end">
                   <Img
@@ -887,8 +908,13 @@ const Corporate = () => {
               </Box>
             </Box>
 
-            <Box width="36%" mx="1%" pb="56px">
-              <Box height="571px" bg="#FEF8F3">
+            <Box
+              width={["100%", "100%", "36%"]}
+              mx={["0%", "0%", "1%"]}
+              mt={["30px", "30px", "0px"]}
+              pb="56px"
+            >
+              <Box height={["", "", "571px"]} bg="#FEF8F3">
                 <Box
                   // @ts-ignore
                   align="right"
@@ -967,15 +993,15 @@ const Corporate = () => {
         <Box //From Start To Finish
           w="full"
           mt="114px"
-          pb="112px"
+          pb={["0px", "", "112px"]}
         >
           <Heading
             color="#DF9F71"
             textAlign="center"
             fontFamily="MADE Outer Sans Light"
-            fontSize="48px"
+            fontSize={["25px", "25px", "48px"]}
             fontWeight="500"
-            lineHeight="60px"
+            lineHeight={["25px", "", "60px"]}
             textTransform="capitalize"
           >
             From Start to finish: our easy process
@@ -983,10 +1009,11 @@ const Corporate = () => {
               color="#000"
               textAlign="center"
               fontFamily="Campton Light"
-              fontSize="20px"
-              fontWeight="300"
+              fontSize={["14px", "14px", "17px"]}
+              fontWeight={["900", "", "300"]}
               lineHeight="28px"
               textTransform="capitalize"
+              mt={["10px", "", "0px"]}
             >
               Designed to make it easy for you to get started
             </Text>
@@ -998,50 +1025,58 @@ const Corporate = () => {
               maxWidth="2250px"
               px="auto"
               mx="auto"
-              mt="212px"
+              mt={["40px", "", "212px"]}
               justifyContent="space-between"
+              direction={["column", "column", "row"]}
             >
-              <Box width="31%" mr="2%" height="165px">
-                <Flex>
-                  <Img width="142px" height="121px" src={HC4.src} />
-                  <Box width="75%">
-                    <Box
-                      width="163px"
-                      height="104px"
-                      backgroundImage={IMG1.src}
-                      mt="-14px"
-                      position="absolute"
-                      zIndex={-1}
-                    ></Box>
-                    <Text>
-                      <Heading
-                        fontFamily="MADE Outer Sans Light"
-                        fontSize="20px"
-                        fontWeight="300"
-                        textTransform="capitalize"
-                        mt="28px"
-                      >
-                        Activate your card
-                      </Heading>
-                      <Text
-                        fontFamily="Campton Light"
-                        fontSize="10px"
-                        fontWeight="400"
-                        lineHeight="23px"
-                        textTransform="capitalize"
-                        mt="8px"
-                      >
-                        To activate the card on an Android device, turn on NFC
-                        in settings and place it near the back camera. For an
-                        iPhone, place the card on the front camera and click on
-                        the instant notification to fill in activation code and
-                        email.
-                      </Text>
+              <Flex
+                width={["100%", "100%", "31%"]}
+                mr={["0%", "0%", "2%"]}
+                height={["", "", "165px"]}
+              >
+                <Img width="142px" height="121px" src={HC4.src} />
+                <Box width="75%">
+                  <Box
+                    width="163px"
+                    height="104px"
+                    backgroundImage={IMG1.src}
+                    mt={["0px", "", "-30px"]}
+                    position="absolute"
+                    zIndex={-1}
+                  ></Box>
+                  <Text>
+                    <Heading
+                      fontFamily="MADE Outer Sans Light"
+                      fontSize="20px"
+                      fontWeight="300"
+                      textTransform="capitalize"
+                      mt="28px"
+                    >
+                      Activate your card
+                    </Heading>
+                    <Text
+                      fontFamily="Campton Light"
+                      fontSize="10px"
+                      fontWeight="400"
+                      lineHeight="23px"
+                      textTransform="capitalize"
+                      mt="8px"
+                    >
+                      To activate the card on an Android device, turn on NFC in
+                      settings and place it near the back camera. For an iPhone,
+                      place the card on the front camera and click on the
+                      instant notification to fill in activation code and email.
                     </Text>
-                  </Box>
-                </Flex>
-              </Box>
-              <Box width="31%" mr="2%" height="165px">
+                  </Text>
+                </Box>
+              </Flex>
+
+              <Box
+                width={["100%", "100%", "31%"]}
+                mr={["0%", "05", "2%"]}
+                height={["", "", "165px"]}
+                mt={["25px", "25px", "0px"]}
+              >
                 <Flex>
                   <Box width="142px" height="140px">
                     <Img src={HC1.src} />
@@ -1051,7 +1086,7 @@ const Corporate = () => {
                       width="203px"
                       height="104px"
                       backgroundImage={IMG2.src}
-                      mt="-30px"
+                      mt={["0px", "", "-30px"]}
                       position="absolute"
                       zIndex={-1}
                     ></Box>
@@ -1081,7 +1116,12 @@ const Corporate = () => {
                   </Box>
                 </Flex>
               </Box>
-              <Box width="30%" height="165px">
+              <Box
+                width={["100%", "100%", "31%"]}
+                mr={["0%", "0%", "2%"]}
+                height={["", "", "165px"]}
+                mt={["25px", "25px", "0px"]}
+              >
                 <Flex>
                   <Box>
                     <Img width="142px" height="140px" src={HC3.src} />
@@ -1091,7 +1131,7 @@ const Corporate = () => {
                       width="209px"
                       height="104px"
                       backgroundImage={IMG3.src}
-                      mt="-30px"
+                      mt={["0px", "", "-30px"]}
                       position="absolute"
                       zIndex={-1}
                     ></Box>
@@ -1124,7 +1164,10 @@ const Corporate = () => {
           </Box>
         </Box>
 
-        <Container //What Our Customers Are Saying
+        {/* {width < breakpoint ? (
+          <WhatCustomersAreSaying />
+        ) : ( */}
+        <Container //
           as={Stack}
           maxW="full"
           mt="72px"
@@ -1132,25 +1175,29 @@ const Corporate = () => {
           <Heading
             color="#DF9F71"
             fontFamily="MADE Outer Sans Light"
-            fontSize="48px"
-            fontWeight="500"
+            fontSize={["30px", "", "48px"]}
+            fontWeight={["1000", "", "500"]}
             textAlign="center"
-            mt="41px"
+            mt={["0px", "", "41px"]}
           >
             What Our Customers Are Saying
           </Heading>
           <Flex width="full" justifyContent="center">
-            <Box mr="77px" mt="256px">
+            <Box mr={["0px", "", "77px"]} mt="256px">
               <Button
                 _hover={{ bg: "none" }}
                 onClick={() => boxScrollLeft(346)}
                 bg="white"
               >
-                <Img width="39px" height="40px" src={ACL.src} />
+                <Img
+                  width={["35px", "", "39px"]}
+                  height={["35px", "", "40px"]}
+                  src={ACL.src}
+                />
               </Button>
             </Box>
             <Flex
-              width="70%"
+              width={["90%", "", "70%"]}
               maxWidth="1040px"
               justifyContent="space-between"
               overflow="scroll"
@@ -1242,31 +1289,44 @@ const Corporate = () => {
                 );
               })}
             </Flex>
-            <Box mt="256px" ml="77px">
+            <Box mt="256px" ml={["0px", "", "77px"]}>
               <Button
                 _hover={{ bg: "none" }}
                 onClick={() => boxScrollRight(346)}
                 bg="white"
               >
-                <Img width="39px" height="40px" src={ACR.src} />
+                <Img
+                  width={["35px", "", "39px"]}
+                  height={["35px", "", "40px"]}
+                  src={ACR.src}
+                />
               </Button>
             </Box>
           </Flex>
         </Container>
+        {/* )} */}
+
+        {/* <WhatCustomersAreSaying /> */}
 
         <Container //Landmarks
           as={Stack}
           maxW="96%"
-          mt="100px"
+          mt={["50px", "", "100px"]}
           bg="#FEF8F3"
           py="47px"
         >
-          <Flex justifyContent="space-between" px="5%" height="220px">
-            <Box height="209px" w="22%">
-              <Box>
-                <Img src={Worldwide.src} />
-              </Box>
-              <Box width="80%">
+          <Flex
+            direction={["column", "column", "row"]}
+            justifyContent="space-between"
+            px={["1%", "", "5%"]}
+            height={["", "", "220px"]}
+          >
+            <Box height={["", "", "209px"]} w={["100%", "", "22%"]}>
+              <Image
+                src={Worldwide.src}
+                alignSelf={["center", "", "inherit"]}
+              />
+              <Box width={["100%", "", "80%"]}>
                 <Text
                   color="rgba(0, 0, 0, 0.60)"
                   fontFamily="Campton Light"
@@ -1288,22 +1348,27 @@ const Corporate = () => {
                   lineHeight="55px"
                   textTransform="capitalize"
                   mt="17px"
+                  // textAlign={["inherit", "center", "inherit"]}
                 >
                   10+
                 </Text>
               </Box>
             </Box>
-            <Box width="1px" height="186px" bgColor="#D9D9D9" />
+            <Box
+              width={["96%", "", "1px"]}
+              height={["1px", "", "168px"]}
+              mt={["25px", "", "0px"]}
+              bgColor="#D9D9D9"
+            />
             <Box
               //@ts-ignore
               align="left"
-              height="209px"
-              w="20%"
+              height={["", "", "209px"]}
+              w={["100%", "", "22%"]}
+              mt={["25px", "", "0px"]}
             >
-              <Box>
-                <Img src={ProfileCircle.src} />
-              </Box>
-              <Box width="75%">
+              <Img src={ProfileCircle.src} />
+              <Box width={["100%", "", "75%"]}>
                 <Text
                   color="rgba(0, 0, 0, 0.60)"
                   fontFamily="Campton Light"
@@ -1325,22 +1390,29 @@ const Corporate = () => {
                   lineHeight="55px"
                   textTransform="capitalize"
                   mt="17px"
+                  // textAlign={["center", "center", "inherit"]}
                 >
                   3K+
                 </Text>
               </Box>
             </Box>
-            <Box width="1px" height="186px" bgColor="#D9D9D9" />
+            <Box
+              width={["96%", "", "1px"]}
+              height={["1px", "", "168px"]}
+              mt={["25px", "", "0px"]}
+              bgColor="#D9D9D9"
+            />
             <Box
               //@ts-ignore
               align="left"
-              height="209px"
-              w="22%"
+              height={["", "", "209px"]}
+              w={["100%", "", "22%"]}
+              mt={["25px", "", "0px"]}
             >
               <Box>
                 <Img src={PersonalCard.src} />
               </Box>
-              <Box width="80%">
+              <Box width={["100%", "", "80%"]}>
                 <Text
                   color="rgba(0, 0, 0, 0.60)"
                   fontFamily="Campton Light"
@@ -1362,16 +1434,23 @@ const Corporate = () => {
                   lineHeight="55px"
                   textTransform="capitalize"
                   mt="17px"
+                  // textAlign={["center", "center", "inherit"]}
                 >
                   30K+
                 </Text>
               </Box>
             </Box>
-            <Box width="1px" height="186px" bgColor="#D9D9D9" />
+            <Box
+              width={["96%", "", "1px"]}
+              height={["1px", "", "168px"]}
+              mt={["25px", "", "0px"]}
+              bgColor="#D9D9D9"
+            />
             <Box
               //@ts-ignore
-              width="19%"
-              height="209px"
+              height={["", "", "209px"]}
+              w={["100%", "", "22%"]}
+              mt={["25px", "", "0px"]}
             >
               <Box
                 //@ts-ignore
@@ -1417,14 +1496,14 @@ const Corporate = () => {
         <Container //Trust Us To Deliver
           as={Stack}
           maxW="full"
-          mt="119px"
+          mt={["50px", "", "119px"]}
         >
           <Text
             fontFamily="MADE Outer Sans Light"
-            fontSize="48px"
-            fontWeight="500"
+            fontSize={["34px", "", "48px"]}
+            fontWeight={["1000", "", "500"]}
             textAlign="center"
-            mt="69px"
+            mt={["0px", "", "69px"]}
           >
             <Text as="span" color="#DF9F71">
               {"Trust Us To "}
@@ -1433,10 +1512,10 @@ const Corporate = () => {
               Deliver
             </Text>
           </Text>
-          <Box width="63%" mx="auto">
+          <Box width={["100%", "", "63%"]} mx="auto">
             <Text
               fontFamily="Campton Light"
-              fontSize="15px"
+              fontSize={["14px", "", "15px"]}
               fontWeight="300"
               textAlign="center"
               lineHeight="30px"
@@ -1448,7 +1527,7 @@ const Corporate = () => {
             </Text>
           </Box>
 
-          <Flex mt="110px" width="full" justifyContent="center">
+          <Flex mt={["50px", "", "110px"]} width="full" justifyContent="center">
             <Box mt="98px">
               <Button
                 _hover={{ bg: "none" }}
@@ -1513,7 +1592,13 @@ const Corporate = () => {
             </Box>
           </Flex>
 
-          <Box w="258px" h="63px" mt="77px" mb="56px" mx="auto">
+          <Box
+            w={["96%", "", "258px"]}
+            h="63px"
+            mt="77px"
+            mb={["30px", "", "56px"]}
+            mx="auto"
+          >
             <HardsandsButton
               // @ts-ignore
               textTransform={"uppercase"}
@@ -1530,19 +1615,26 @@ const Corporate = () => {
         <Container //Upgrading Your Team...
           as={Stack}
           maxW="full"
-          mt="81px"
+          mt={["50px", "", "81px"]}
           bg="#FEF8F3"
         >
-          <Grid //Want to Maximize Your Team's  Potential
-            mb="186px"
+          <Grid //
+            mb={["50px", "", "186px"]}
           >
-            <GridItem colSpan={5}>
-              <Container as={Stack} mx="auto" maxW="80%" mt="215px" mr="0px">
+            <GridItem colStart={[0, 0, 1]} colEnd={[0, 0, 5]}>
+              <Container
+                alignItems={["center", "", "inherit"]}
+                as={Stack}
+                mx="auto"
+                maxW={["100%", "", "80%"]}
+                mt={["30px", "", "215px"]}
+                mr="0px"
+              >
                 <Text
                   width="100%"
                   fontFamily="MADE Outer Sans Light"
-                  fontSize="48px"
-                  fontWeight="600"
+                  fontSize={["34px", "", "48px"]}
+                  fontWeight={["900", "", "600"]}
                   lineHeight="55px"
                   textTransform="capitalize"
                   textAlign="center"
@@ -1575,10 +1667,10 @@ const Corporate = () => {
                   measurable results and competitive edge it brings.
                 </Text>
               </Container>
-              <Box mt="27px" w="40%" ml="48%">
+              <Box mt="27px" w={["100%", "", "40%"]} ml={["4%", "", "48%"]}>
                 <HardsandsButton
                   // @ts-ignore
-                  w={"60%"}
+                  w={["90%", "", "70%"]}
                   href={productRoutes.products()}
                   text={"GET STARTED"}
                   fontFamily={"MADE Outer sans Light"}
@@ -1589,21 +1681,21 @@ const Corporate = () => {
                 />
               </Box>
             </GridItem>
-            <GridItem colStart={6} colEnd={10}>
-              <Flex
-                height="100%"
+            <GridItem colStart={[0, 0, 6]} colEnd={[0, 0, 10]}>
+              {/* <Flex
+                height={["90%", "", "100%"]}
                 alignItems="center"
                 justifyContent="space-between"
-              >
-                <Image
-                  // my="auto"
-                  width="635px"
-                  height="450px"
-                  // mt="70px"
-                  src={UpgradingYourTeamImage.src}
-                  alt={"upgrading-your-team-image"}
-                />
-              </Flex>
+              > */}
+              <Image
+                // my="auto"
+                width={["360px", "", "635px"]}
+                height={["353px", "", "450px"]}
+                mt={["0px", "", "70px"]}
+                src={UpgradingYourTeamImage.src}
+                alt={"upgrading-your-team-image"}
+              />
+              {/* </Flex> */}
             </GridItem>
           </Grid>
         </Container>
@@ -1612,7 +1704,7 @@ const Corporate = () => {
           as={Stack}
           maxW="full"
           bg="#000"
-          mt="81px"
+          mt={["50px", "", "81px"]}
         >
           <Text
             color="#FFF"
@@ -1622,15 +1714,15 @@ const Corporate = () => {
             lineHeight="34px"
             textTransform="capitalize"
             textAlign="center"
-            mt="113px"
+            mt={["50px", "", "113px"]}
           >
             FAQs
           </Text>
           <Heading
             color="#DF9F71"
             fontFamily="MADE Outer Sans Light"
-            fontSize="35px"
-            fontWeight="300"
+            fontSize={["30px", "", "35px"]}
+            fontWeight={["1000", "", "300"]}
             lineHeight="34px"
             textTransform="capitalize"
             textAlign="center"
@@ -1640,7 +1732,7 @@ const Corporate = () => {
           <Text
             color="rgba(255, 255, 255, 0.72)"
             fontFamily="Campton Light"
-            fontSize="20px"
+            fontSize={["16px", "", "20px"]}
             fontWeight="400"
             lineHeight="34px"
             textTransform="capitalize"
@@ -1650,7 +1742,7 @@ const Corporate = () => {
           </Text>
           <Flex
             mx="auto"
-            width="17%"
+            width={["70%", "17%", "17%"]}
             alignItems={"center"}
             borderColor="0.7px solid #FFF"
             borderWidth={"1px"}
@@ -1669,36 +1761,60 @@ const Corporate = () => {
           </Flex>
 
           <VStack>
-            <Box width="80%" mt="133px">
+            <Box width={["100%", "", "80%"]} mt={["50px", "", "133px"]}>
               <Flex width="100%" justifyContent="space-between">
                 <Text>
                   <Heading
                     color="#FFF"
                     fontFamily="Campton Light"
-                    fontSize="20px"
+                    fontSize={["18px", "", "20px"]}
                     fontWeight="500"
                     lineHeight="34px"
                     textTransform="capitalize"
                   >
                     What is Hardsands Card
                   </Heading>
-                  <Text
-                    width="67%"
-                    color="rgba(255, 255, 255, 0.69)"
-                    fontFamily="Campton Light"
-                    fontSize="15px"
-                    fontWeight="400"
-                    lineHeight="23px"
-                    textTransform="capitalize"
-                  >
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the
-                    industry&apos;s standard dummy text ever since the 1500s,
-                  </Text>
+                  {faq1 === false ? (
+                    ""
+                  ) : (
+                    <Text
+                      width={["98%", "", "69%"]}
+                      color="rgba(255, 255, 255, 0.69)"
+                      fontFamily="Campton Light"
+                      fontSize={["13px", "", "15px"]}
+                      fontWeight="400"
+                      lineHeight="23px"
+                      textTransform="capitalize"
+                    >
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the
+                      industry&apos;s standard dummy text ever since the 1500s,
+                    </Text>
+                  )}
                 </Text>
-                <Box mt="52px" width="2%">
-                  <Img src={CircleClicked.src} />
-                </Box>
+
+                <Button
+                  _hover={{ bg: "none" }}
+                  onClick={
+                    faq1 === false ? () => setFaq1(true) : () => setFaq1(false)
+                  }
+                  bg=""
+                >
+                  <Img
+                    width="25px"
+                    height="25px"
+                    src={
+                      faq1 === false ? CircleUnclicked.src : CircleClicked.src
+                    }
+                  />
+                </Button>
+
+                {/* <Img
+                  width="25px"
+                  height="25px"
+                  mt={["10px", "", "40px"]}
+                  src={CircleUnclicked.src}
+                /> */}
               </Flex>
               <Img mt="9px" src={HorizontalDivider.src} />
 
@@ -1707,17 +1823,47 @@ const Corporate = () => {
                   <Heading
                     color="#FFF"
                     fontFamily="Campton Light"
-                    fontSize="20px"
+                    fontSize={["18px", "", "20px"]}
                     fontWeight="500"
                     lineHeight="34px"
                     textTransform="capitalize"
                   >
                     How do hardsands cards and Epoxy work?
                   </Heading>
+                  {faq2 === false ? (
+                    ""
+                  ) : (
+                    <Text
+                      width={["80%", "", "69%"]}
+                      color="rgba(255, 255, 255, 0.69)"
+                      fontFamily="Campton Light"
+                      fontSize={["13px", "", "15px"]}
+                      fontWeight="400"
+                      lineHeight="23px"
+                      textTransform="capitalize"
+                    >
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the
+                      industry&apos;s standard dummy text ever since the 1500s,
+                    </Text>
+                  )}
                 </Text>
-                <Box width="2%">
-                  <Img mt="25%" src={CircleUnclicked.src} />
-                </Box>
+
+                <Button
+                  _hover={{ bg: "none" }}
+                  onClick={
+                    faq2 === false ? () => setFaq2(true) : () => setFaq2(false)
+                  }
+                  bg=""
+                >
+                  <Img
+                    width="25px"
+                    height="25px"
+                    src={
+                      faq2 === false ? CircleUnclicked.src : CircleClicked.src
+                    }
+                  />
+                </Button>
               </Flex>
               <Img mt="9px" src={HorizontalDivider.src} />
 
@@ -1726,17 +1872,47 @@ const Corporate = () => {
                   <Heading
                     color="#FFF"
                     fontFamily="Campton Light"
-                    fontSize="20px"
+                    fontSize={["18px", "", "20px"]}
                     fontWeight="500"
                     lineHeight="34px"
                     textTransform="capitalize"
                   >
                     Where should I place my hardsand Epoxy?
                   </Heading>
+                  {faq3 === false ? (
+                    ""
+                  ) : (
+                    <Text
+                      width={["98%", "", "69%"]}
+                      color="rgba(255, 255, 255, 0.69)"
+                      fontFamily="Campton Light"
+                      fontSize={["13px", "", "15px"]}
+                      fontWeight="400"
+                      lineHeight="23px"
+                      textTransform="capitalize"
+                    >
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the
+                      industry&apos;s standard dummy text ever since the 1500s,
+                    </Text>
+                  )}
                 </Text>
-                <Box width="2%">
-                  <Img mt="25%" src={CircleUnclicked.src} />
-                </Box>
+
+                <Button
+                  _hover={{ bg: "none" }}
+                  onClick={
+                    faq3 === false ? () => setFaq3(true) : () => setFaq3(false)
+                  }
+                  bg=""
+                >
+                  <Img
+                    width="25px"
+                    height="25px"
+                    src={
+                      faq3 === false ? CircleUnclicked.src : CircleClicked.src
+                    }
+                  />
+                </Button>
               </Flex>
               <Img mt="9px" src={HorizontalDivider.src} />
 
@@ -1745,17 +1921,46 @@ const Corporate = () => {
                   <Heading
                     color="#FFF"
                     fontFamily="Campton Light"
-                    fontSize="20px"
+                    fontSize={["18px", "", "20px"]}
                     fontWeight="500"
                     lineHeight="34px"
                     textTransform="capitalize"
                   >
                     Can I get a hardsands card with my own logo/branding?
                   </Heading>
+                  {faq4 === false ? (
+                    ""
+                  ) : (
+                    <Text
+                      width={["98%", "", "69%"]}
+                      color="rgba(255, 255, 255, 0.69)"
+                      fontFamily="Campton Light"
+                      fontSize={["13px", "", "15px"]}
+                      fontWeight="400"
+                      lineHeight="23px"
+                      textTransform="capitalize"
+                    >
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the
+                      industry&apos;s standard dummy text ever since the 1500s,
+                    </Text>
+                  )}
                 </Text>
-                <Box width="2%">
-                  <Img mt="25%" src={CircleUnclicked.src} />
-                </Box>
+                <Button
+                  _hover={{ bg: "none" }}
+                  onClick={
+                    faq4 === false ? () => setFaq4(true) : () => setFaq4(false)
+                  }
+                  bg=""
+                >
+                  <Img
+                    width="25px"
+                    height="25px"
+                    src={
+                      faq4 === false ? CircleUnclicked.src : CircleClicked.src
+                    }
+                  />
+                </Button>
               </Flex>
               <Img mt="9px" src={HorizontalDivider.src} />
 
@@ -1764,17 +1969,46 @@ const Corporate = () => {
                   <Heading
                     color="#FFF"
                     fontFamily="Campton Light"
-                    fontSize="20px"
+                    fontSize={["18px", "", "20px"]}
                     fontWeight="500"
                     lineHeight="34px"
                     textTransform="capitalize"
                   >
                     What surfaces may hardsand Epoxy stick to?
                   </Heading>
+                  {faq5 === false ? (
+                    ""
+                  ) : (
+                    <Text
+                      width={["98%", "", "69%"]}
+                      color="rgba(255, 255, 255, 0.69)"
+                      fontFamily="Campton Light"
+                      fontSize={["13px", "", "15px"]}
+                      fontWeight="400"
+                      lineHeight="23px"
+                      textTransform="capitalize"
+                    >
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the
+                      industry&apos;s standard dummy text ever since the 1500s,
+                    </Text>
+                  )}
                 </Text>
-                <Box width="2%">
-                  <Img mt="25%" src={CircleUnclicked.src} />
-                </Box>
+                <Button
+                  _hover={{ bg: "none" }}
+                  onClick={
+                    faq5 === false ? () => setFaq5(true) : () => setFaq5(false)
+                  }
+                  bg=""
+                >
+                  <Img
+                    width="25px"
+                    height="25px"
+                    src={
+                      faq5 === false ? CircleUnclicked.src : CircleClicked.src
+                    }
+                  />
+                </Button>
               </Flex>
               <Img mt="9px" src={HorizontalDivider.src} />
 
@@ -1783,7 +2017,7 @@ const Corporate = () => {
                   <Heading
                     color="#FFF"
                     fontFamily="Campton Light"
-                    fontSize="20px"
+                    fontSize={["18px", "", "20px"]}
                     fontWeight="500"
                     lineHeight="34px"
                     textTransform="capitalize"
@@ -1791,10 +2025,40 @@ const Corporate = () => {
                     Is there a monthly fee for using hardsands card or hardsands
                     Epoxy?
                   </Heading>
+                  {faq6 === false ? (
+                    ""
+                  ) : (
+                    <Text
+                      width={["98%", "", "69%"]}
+                      color="rgba(255, 255, 255, 0.69)"
+                      fontFamily="Campton Light"
+                      fontSize={["13px", "", "15px"]}
+                      fontWeight="400"
+                      lineHeight="23px"
+                      textTransform="capitalize"
+                    >
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the
+                      industry&apos;s standard dummy text ever since the 1500s,
+                    </Text>
+                  )}
                 </Text>
-                <Box width="2%">
-                  <Img mt="25%" src={CircleUnclicked.src} />
-                </Box>
+
+                <Button
+                  _hover={{ bg: "none" }}
+                  onClick={
+                    faq6 === false ? () => setFaq6(true) : () => setFaq6(false)
+                  }
+                  bg=""
+                >
+                  <Img
+                    width="25px"
+                    height="25px"
+                    src={
+                      faq6 === false ? CircleUnclicked.src : CircleClicked.src
+                    }
+                  />
+                </Button>
               </Flex>
               <Img mt="9px" src={HorizontalDivider.src} />
 
@@ -1803,7 +2067,7 @@ const Corporate = () => {
                   <Heading
                     color="#FFF"
                     fontFamily="Campton Light"
-                    fontSize="20px"
+                    fontSize={["18px", "", "20px"]}
                     fontWeight="500"
                     lineHeight="34px"
                     textTransform="capitalize"
@@ -1811,28 +2075,63 @@ const Corporate = () => {
                     Is it necessary for the receiver to use a hardsand product
                     or an app to receive my info?
                   </Heading>
+                  {faq7 === false ? (
+                    ""
+                  ) : (
+                    <Text
+                      width={["98%", "", "69%"]}
+                      color="rgba(255, 255, 255, 0.69)"
+                      fontFamily="Campton Light"
+                      fontSize={["13px", "", "15px"]}
+                      fontWeight="400"
+                      lineHeight="23px"
+                      textTransform="capitalize"
+                    >
+                      Lorem Ipsum is simply dummy text of the printing and
+                      typesetting industry. Lorem Ipsum has been the
+                      industry&apos;s standard dummy text ever since the 1500s,
+                    </Text>
+                  )}
                 </Text>
-                <Box width="2%">
-                  <Img mt="25%" src={CircleUnclicked.src} />
-                </Box>
+                <Button
+                  _hover={{ bg: "none" }}
+                  onClick={
+                    faq7 === false ? () => setFaq7(true) : () => setFaq7(false)
+                  }
+                  bg=""
+                >
+                  <Img
+                    width="25px"
+                    height="25px"
+                    mt={["10px", "", "0px"]}
+                    src={
+                      faq7 === false ? CircleUnclicked.src : CircleClicked.src
+                    }
+                  />
+                </Button>
               </Flex>
               <Img mt="9px" src={HorizontalDivider.src} />
             </Box>
             <Box
-              mt="99px"
+              mt={["50px", "", "99px"]}
               mb="71px"
-              width="80%"
+              width={["100%", "", "80%"]}
               background="rgba(255, 255, 255, 0.07)"
               py="20px"
             >
-              <Flex width="100%" justifyContent="space-around">
-                <Text width="75%">
+              <Flex
+                direction={["column", "column", "row"]}
+                width="100%"
+                justifyContent="space-around"
+              >
+                <Text width={["100%", "", "75%"]}>
                   <Heading
                     color="#DF9F71"
                     fontFamily="Campton Light"
-                    fontSize="20px"
+                    fontSize={["18px", "", "20px"]}
                     fontWeight="500"
                     lineHeight="34px"
+                    textAlign={["center", "center", "inherit"]}
                     textTransform="capitalize"
                   >
                     Still have questions?
@@ -1840,16 +2139,17 @@ const Corporate = () => {
                   <Text
                     color="#FFF"
                     fontFamily="Campton Light"
-                    fontSize="15px"
+                    fontSize={["13px", "", "20px"]}
                     fontWeight="400"
                     lineHeight="34px"
                     textTransform="capitalize"
+                    textAlign={["center", "center", "inherit"]}
                   >
                     Can’t find the answers you’re looking for? Contact us via
                     our Hardsands Technology Customer Support
                   </Text>
                 </Text>
-                <Box w="17%">
+                <Box w={["100%", "", "17%"]}>
                   <HardsandsButton
                     // @ts-ignore
                     w={"100%"}
@@ -1868,23 +2168,27 @@ const Corporate = () => {
           </VStack>
         </Container>
 
-        <Grid
-          //Interested in Maximizing Your Team's Potential?
+        <Grid //Interested in Maximizing Your Team's Potential?
           mb="133px"
         >
-          <GridItem colSpan={5}>
-            <Container as={Stack} maxW="85%" mt="140px" mr="0px">
+          <GridItem colStart={[0, 0, 1]} colEnd={[0, 0, 5]}>
+            <Container
+              as={Stack}
+              maxW={["100%", "100%", "85%"]}
+              pt={["20%", "", "140px"]}
+              mr="0px"
+            >
               <Text
                 width="100%"
                 fontFamily="MADE Outer Sans Light"
-                fontSize="48px"
+                fontSize={["26px", "48px", "48px"]}
                 fontWeight="600"
-                lineHeight="55px"
+                lineHeight={["34px", "55px", "55px"]}
                 textTransform="capitalize"
                 textAlign="center"
-                alignItems="flex-end"
+                alignItems={["center", "", "flex-end"]}
                 mr="0px"
-                bg="white"
+                bg="#FFF"
               >
                 <Text as="span" color="#DF9F71">
                   {`Interested in maximizing `}
@@ -1907,9 +2211,21 @@ const Corporate = () => {
                 Fill out the form below and we&apos;ll be in touch
               </Text>
             </Container>
-            <Box mx="auto" width="80%" mr="5">
-              <Flex mx="auto" justifyContent="space-between">
-                <Box height="21px" width="48%" mt="54px">
+            <Box
+              mx={["5%", "5%", "auto"]}
+              width={["90%", "90%", "80%"]}
+              mr={["0px", "0px", "5"]}
+            >
+              <Flex
+                direction={["column", "row", "row"]}
+                mx={["auto", "auto", "auto"]}
+                justifyContent="space-between"
+              >
+                <Box
+                  height="21px"
+                  width={["100%", "48%", "48%"]}
+                  mt={["90px", "90px", "54px"]}
+                >
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -1927,7 +2243,11 @@ const Corporate = () => {
                     focusBorderColor="rgba(0, 0, 0, 0.40)"
                   ></Input>
                 </Box>
-                <Box height="21px" mt="54px" width="48%">
+                <Box
+                  width={["100%", "48%", "48%"]}
+                  height="21px"
+                  mt={["90px", "90px", "54px"]}
+                >
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -1946,8 +2266,12 @@ const Corporate = () => {
                   ></Input>
                 </Box>
               </Flex>
-              <Flex mx="auto" justifyContent="space-between">
-                <Box width="48%" height="21px" mt="102px">
+              <Flex
+                direction={["column", "row", "row"]}
+                mx="auto"
+                justifyContent="space-between"
+              >
+                <Box width={["100%", "48%", "48%"]} height="21px" mt="102px">
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -1965,7 +2289,7 @@ const Corporate = () => {
                     focusBorderColor="rgba(0, 0, 0, 0.40)"
                   ></Input>
                 </Box>
-                <Box width="48%" height="21px" mt="102px">
+                <Box width={["100%", "48%", "48%"]} height="21px" mt="102px">
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -1983,8 +2307,12 @@ const Corporate = () => {
                   ></Input>
                 </Box>
               </Flex>
-              <Flex mx="auto" justifyContent="space-between">
-                <Box width="48%" height="21px" mt="102px">
+              <Flex
+                direction={["column", "row", "row"]}
+                mx="auto"
+                justifyContent="space-between"
+              >
+                <Box width={["100%", "48%", "48%"]} height="21px" mt="102px">
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -2000,7 +2328,7 @@ const Corporate = () => {
                     focusBorderColor="rgba(0, 0, 0, 0.40)"
                   ></Input>
                 </Box>
-                <Box width="48%" height="21px" mt="102px">
+                <Box width={["100%", "48%", "48%"]} height="21px" mt="102px">
                   <Text
                     fontFamily="Campton Light"
                     fontSize="18px"
@@ -2017,7 +2345,7 @@ const Corporate = () => {
                   ></Input>
                 </Box>
               </Flex>
-              <Box mt="104px" w="40%">
+              <Box mt="104px" w="40%" mb={["0px", "0px", "120px"]}>
                 <HardsandsButton
                   // @ts-ignore
                   w={"80%"}
@@ -2031,15 +2359,16 @@ const Corporate = () => {
             </Box>
           </GridItem>
 
-          <GridItem colStart={6} colEnd={10}>
+          <GridItem colStart={[0, 0, 6]} colEnd={[0, 0, 10]}>
             <Flex
+              direction={["column", "column", "row"]}
               height="100%"
               alignItems="center"
               justifyContent="space-between"
             >
               <Image
-                width="613px"
-                height="515px"
+                width={["100%", "65%", "613px"]}
+                height={["100%", "65%", "515px"]}
                 src={MaximizingYourTeamImage.src}
                 alt={"maximize-your-team-potential"}
               />
@@ -2050,5 +2379,4 @@ const Corporate = () => {
     </WithLayout>
   );
 };
-
 export default Corporate;
