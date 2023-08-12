@@ -1871,7 +1871,7 @@ const Corporate = () => {
                     textTransform="capitalize"
                     textAlign={["center", "center", "inherit"]}
                   >
-                    Can&apos;'t find the answers you&apos;’re looking for?
+                    Can&apos;'t find the answers you&apos;'re looking for?
                     Contact us via our Hardsands Technology Customer Support
                   </Text>
                 </Text>
