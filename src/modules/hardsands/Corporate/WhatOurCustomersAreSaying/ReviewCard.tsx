@@ -1,4 +1,4 @@
-import { VStack, Heading, Text } from "@chakra-ui/react";
+import { VStack, Heading, Text, Img } from "@chakra-ui/react";
 import React from "react";
 
 function ReviewCard({ review }: { review: any }) {
@@ -13,6 +13,7 @@ function ReviewCard({ review }: { review: any }) {
       <Text textAlign={"center"}>{review.text}</Text>
 
       <VStack mt={[10]}>
+        <Img alignSelf={"center"} src={review.img} />
         <Heading
           textTransform={"uppercase"}
           textAlign={"center"}

@@ -3,25 +3,37 @@ import React from "react";
 import ReviewCarouselSlide from "./ReviewCarousel";
 import { Customer1, Customer2, Customer3 } from "assets/index";
 
-function WhatCustomersAreSaying() {
+function WhatOurCustomersAreSaying() {
   const reviews = [
     {
       img: Customer1.src,
+      text: "We had to print new cards every time one of our employees got a promotion, and it was simply wasteful. With Hardsands, we just update the info on the portal. Much easier and less expensive than ordering a new batch. Plus, our customers enjoy the first tap. There is a significant wow factor.",
+      author: "DAVID BASSEY",
     },
     {
       img: Customer2.src,
+      text: "We had to print new cards every time one of our employees got a promotion, and it was simply wasteful. With Hardsands, we just update the info on the portal. Much easier and less expensive than ordering a new batch. Plus, our customers enjoy the first tap. There is a significant wow factor.",
+      author: "DAVID BASSEY",
     },
     {
       img: Customer3.src,
+      text: "We had to print new cards every time one of our employees got a promotion, and it was simply wasteful. With Hardsands, we just update the info on the portal. Much easier and less expensive than ordering a new batch. Plus, our customers enjoy the first tap. There is a significant wow factor.",
+      author: "DAVID BASSEY",
     },
     {
       img: Customer1.src,
+      text: "We had to print new cards every time one of our employees got a promotion, and it was simply wasteful. With Hardsands, we just update the info on the portal. Much easier and less expensive than ordering a new batch. Plus, our customers enjoy the first tap. There is a significant wow factor.",
+      author: "DAVID BASSEY",
     },
     {
       img: Customer2.src,
+      text: "We had to print new cards every time one of our employees got a promotion, and it was simply wasteful. With Hardsands, we just update the info on the portal. Much easier and less expensive than ordering a new batch. Plus, our customers enjoy the first tap. There is a significant wow factor.",
+      author: "DAVID BASSEY",
     },
     {
       img: Customer3.src,
+      text: "We had to print new cards every time one of our employees got a promotion, and it was simply wasteful. With Hardsands, we just update the info on the portal. Much easier and less expensive than ordering a new batch. Plus, our customers enjoy the first tap. There is a significant wow factor.",
+      author: "DAVID BASSEY",
     },
   ];
 
@@ -40,4 +52,4 @@ function WhatCustomersAreSaying() {
   );
 }
 
-export default WhatCustomersAreSaying;
+export default WhatOurCustomersAreSaying;

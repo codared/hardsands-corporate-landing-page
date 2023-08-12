@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import React from "react";
 import {
   Container,
   Box,
@@ -66,20 +65,10 @@ import {
   HorizontalDivider,
 } from "assets/index";
 import WithLayout from "components/WithLayout";
-import WhatCustomersAreSaying from "modules/hardsands/components/WhatCustomersAreSaying";
+import WhatOurCustomersAreSaying from "modules/hardsands/Corporate/WhatOurCustomersAreSaying";
 const Corporate = () => {
-  // const [width, setWidth] = React.useState(window.innerWidth);
-  // const breakpoint = 992;
-
-  // React.useEffect(() => {
-  //   const [width, setWidth] = React.useState(window.innerWidth);
-  //   const handleWindowResize = () => setWidth(window.innerWidth);
-  //   window.addEventListener("resize", handleWindowResize);
-
-  //   return () => window.removeEventListener("resize", handleWindowResize);
-  // }, []);
-
   const [boxIndex, setBoxIndex] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(-1);
 
   const boxWidth = "309px";
   const boxHeight = "303px";
@@ -107,6 +96,7 @@ const Corporate = () => {
       setBoxIndex(value);
     }
   };
+  console.log("index:: ", activeIndex);
 
   const boxScrollRight = (offset: number) => {
     //@ts-ignore
@@ -116,20 +106,10 @@ const Corporate = () => {
       setBoxIndex(value);
     }
   };
-
-  const [faq1, setFaq1] = useState(false);
-  const [faq2, setFaq2] = useState(false);
-  const [faq3, setFaq3] = useState(false);
-  const [faq4, setFaq4] = useState(false);
-  const [faq5, setFaq5] = useState(false);
-  const [faq6, setFaq6] = useState(false);
-  const [faq7, setFaq7] = useState(false);
-
   return (
     <WithLayout pageTitle="Hardsands - Corporate">
       <Box overflow="hidden">
-        <Box
-          // w="71%"
+        <Box //bg
           width={["100%", "100%", "71%"]}
           maxWidth="2150px"
           h="678px"
@@ -138,7 +118,7 @@ const Corporate = () => {
           ml={["0%", "0%", "2%"]}
           position="absolute"
           zIndex={-400}
-        />
+        ></Box>
 
         <Flex // Empower Your Team
           alignItems="center"
@@ -150,8 +130,9 @@ const Corporate = () => {
           <Image
             w={["100%", "65%", "530px"]}
             h={["100%", "65%", "635px"]}
-            pt={["0px", "0px", "7px"]}
+            pt={["0px", "12px", "9px"]}
             mx="auto"
+            color="#FEF8F3"
             src={HappyConfidentProfessionalTeam.src}
             alt={"happyconfidentprofessionalimage"}
           />
@@ -165,7 +146,6 @@ const Corporate = () => {
               <Text
                 w="100%"
                 fontSize={["35px", "", "47px"]}
-                // size={"2xl"}
                 lineHeight={["34px", "", "60px"]}
                 fontWeight={["1000", "", "600"]}
                 textTransform="capitalize"
@@ -176,7 +156,6 @@ const Corporate = () => {
                   fontFamily={"MADE Outer Sans Light"}
                   fontStyle="normal"
                   fontWeight={["1000", "", "600"]}
-                  // lineHeight="60px"
                 >
                   {" "}
                   Empower your team to connect with
@@ -186,7 +165,6 @@ const Corporate = () => {
                   color="#160A01"
                   fontFamily={"MADE Outer Sans Light"}
                   fontWeight="600"
-                  // lineHeight="60px"
                 >
                   {" "}
                   Our
@@ -253,9 +231,9 @@ const Corporate = () => {
             </Text>
           </Box>
           <Image
+            maxW="986px"
             mx="auto"
             width={["100%", "75%", "986px"]}
-            maxW="986px"
             mt={["27px", "22px", "69px"]}
             height={["220px", "300px", "392px"]}
             src={WhyChooseHardsands.src}
@@ -486,8 +464,10 @@ const Corporate = () => {
             >
               <Image
                 // mt="42px"
-                width={["100%", "65%", "601px"]}
-                height={["100%", "65%", "527px"]}
+                width={["360px", "550px", "635px"]}
+                height={["353px", "450px", "450px"]}
+                mt={["0px", "", "70px"]}
+                mx="auto"
                 src={WantToMaximizeYourTeamsPotential.src}
                 alt={"want-to-maximize-your-team's-potential"}
               />
@@ -499,12 +479,11 @@ const Corporate = () => {
           as={Stack}
           maxW="full"
           mx="auto"
-          // direction={["column", "row"]}
         >
           <Box
             width={["100%", "100%", "504px"]}
             height={["100%", "100%", "81px"]}
-            mt={["40px", "5px", "83px"]}
+            mt={["40px", "70px", "83px"]}
             mx="auto"
           >
             <Heading
@@ -606,13 +585,12 @@ const Corporate = () => {
             </Flex>
           </Box>
 
-          <Flex
+          <Flex //IntegrationMadeEasy
             width="full"
             bg="#000"
             pb={["15px", "161px"]}
             direction={["column", "column", "row"]}
             justifyContent="space-around"
-            //IntegrationMadeEasy
           >
             <Flex
               alignContent="center"
@@ -623,7 +601,6 @@ const Corporate = () => {
               <Image
                 width="1px"
                 height={["163px", "237px", "237px"]}
-                // bg="#FFF"
                 src={Divider.src}
                 alt={"divider"}
                 pt={["15px", "0px"]}
@@ -686,7 +663,7 @@ const Corporate = () => {
             />
           </Flex>
 
-          <Flex
+          <Flex //EffortlesslyManageYourTeam
             direction={["column", "column", "row"]}
             width={["100%", "100%", "100%"]}
             justifyContent="center"
@@ -843,7 +820,7 @@ const Corporate = () => {
                   />
                 </Flex>
                 <Heading
-                  fontFamily="Campton  "
+                  fontFamily="Campton"
                   fontSize="25px"
                   fontWeight="600"
                   lineHeight="34px"
@@ -941,7 +918,6 @@ const Corporate = () => {
                   lineHeight="34px"
                   textTransform="capitalize"
                   textAlign="left"
-                  // mb="13%"
                 >
                   you can easily track how many times your team members’ cards
                   have been scanned, allowing you to better gauge the
@@ -1164,13 +1140,11 @@ const Corporate = () => {
           </Box>
         </Box>
 
-        {/* {width < breakpoint ? (
-          <WhatCustomersAreSaying />
-        ) : ( */}
-        <Container //
+        <Container // WhatOurCustomersAreSaying
           as={Stack}
           maxW="full"
           mt="72px"
+          display={["none", "", "contents"]}
         >
           <Heading
             color="#DF9F71"
@@ -1304,9 +1278,14 @@ const Corporate = () => {
             </Box>
           </Flex>
         </Container>
-        {/* )} */}
 
-        {/* <WhatCustomersAreSaying /> */}
+        <Container
+          width="50%"
+          alignContent="center"
+          display={["contents", "", "none"]}
+        >
+          <WhatOurCustomersAreSaying />
+        </Container>
 
         <Container //Landmarks
           as={Stack}
@@ -1318,6 +1297,7 @@ const Corporate = () => {
           <Flex
             direction={["column", "column", "row"]}
             justifyContent="space-between"
+            mx="auto"
             px={["1%", "", "5%"]}
             height={["", "", "220px"]}
           >
@@ -1343,12 +1323,11 @@ const Corporate = () => {
                 <Text
                   color="#000"
                   fontFamily="MADE Outer Sans Outline Bold"
-                  fontSize="80px"
+                  fontSize={["80px", "70px", "80px"]}
                   fontWeight="500"
                   lineHeight="55px"
                   textTransform="capitalize"
                   mt="17px"
-                  // textAlign={["inherit", "center", "inherit"]}
                 >
                   10+
                 </Text>
@@ -1385,12 +1364,11 @@ const Corporate = () => {
                 <Text
                   color="#000"
                   fontFamily="MADE Outer Sans Outline Bold"
-                  fontSize="80px"
+                  fontSize={["80px", "70px", "80px"]}
                   fontWeight="500"
                   lineHeight="55px"
                   textTransform="capitalize"
                   mt="17px"
-                  // textAlign={["center", "center", "inherit"]}
                 >
                   3K+
                 </Text>
@@ -1429,12 +1407,11 @@ const Corporate = () => {
                 <Text
                   color="#000"
                   fontFamily="MADE Outer Sans Outline Bold"
-                  fontSize="80px"
+                  fontSize={["80px", "", "73px"]}
                   fontWeight="500"
                   lineHeight="55px"
                   textTransform="capitalize"
                   mt="17px"
-                  // textAlign={["center", "center", "inherit"]}
                 >
                   30K+
                 </Text>
@@ -1480,7 +1457,7 @@ const Corporate = () => {
                 <Text
                   color="#000"
                   fontFamily="MADE Outer Sans Outline Bold"
-                  fontSize="80px"
+                  fontSize={["80px", "70px", "80px"]}
                   fontWeight="500"
                   lineHeight="55px"
                   textTransform="capitalize"
@@ -1533,12 +1510,13 @@ const Corporate = () => {
                 _hover={{ bg: "none" }}
                 onClick={() => cardScroll(-386)}
                 bg="white"
+                cursor="default"
               >
                 <Img width="39px" height="40px" src={ACL.src} />
               </Button>
             </Box>
             <Flex
-              width="81%"
+              width={["70%", "", "81%"]}
               pl="2%"
               justifyContent="space-between"
               overflow="scroll"
@@ -1585,7 +1563,8 @@ const Corporate = () => {
               <Button
                 _hover={{ bg: "none" }}
                 onClick={() => cardScroll(386)}
-                bg="white"
+                bg="none"
+                cursor="default"
               >
                 <Img width="39px" height="40px" src={ACR.src} />
               </Button>
@@ -1682,20 +1661,15 @@ const Corporate = () => {
               </Box>
             </GridItem>
             <GridItem colStart={[0, 0, 6]} colEnd={[0, 0, 10]}>
-              {/* <Flex
-                height={["90%", "", "100%"]}
-                alignItems="center"
-                justifyContent="space-between"
-              > */}
               <Image
                 // my="auto"
-                width={["360px", "", "635px"]}
-                height={["353px", "", "450px"]}
+                width={["360px", "450px", "635px"]}
+                height={["353px", "370px", "450px"]}
                 mt={["0px", "", "70px"]}
+                mx="auto"
                 src={UpgradingYourTeamImage.src}
                 alt={"upgrading-your-team-image"}
               />
-              {/* </Flex> */}
             </GridItem>
           </Grid>
         </Container>
@@ -1738,7 +1712,7 @@ const Corporate = () => {
             textTransform="capitalize"
             textAlign="center"
           >
-            have questions? We’re here to help
+            have questions? We&apos;’re here to help
           </Text>
           <Flex
             mx="auto"
@@ -1761,356 +1735,107 @@ const Corporate = () => {
           </Flex>
 
           <VStack>
-            <Box width={["100%", "", "80%"]} mt={["50px", "", "133px"]}>
-              <Flex width="100%" justifyContent="space-between">
-                <Text>
-                  <Heading
-                    color="#FFF"
-                    fontFamily="Campton Light"
-                    fontSize={["18px", "", "20px"]}
-                    fontWeight="500"
-                    lineHeight="34px"
-                    textTransform="capitalize"
-                  >
-                    What is Hardsands Card
-                  </Heading>
-                  {faq1 === false ? (
-                    ""
-                  ) : (
-                    <Text
-                      width={["98%", "", "69%"]}
-                      color="rgba(255, 255, 255, 0.69)"
-                      fontFamily="Campton Light"
-                      fontSize={["13px", "", "15px"]}
-                      fontWeight="400"
-                      lineHeight="23px"
-                      textTransform="capitalize"
+            <Box
+              width={["100%", "", "80%"]}
+              mt={["50px", "", "133px"]}
+              alignContent="space-between"
+            >
+              {[
+                {
+                  text: "What is Hardsands Card",
+                  resp: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,",
+                  img: HorizontalDivider.src,
+                },
+                {
+                  text: "How do hardsands cards and Epoxy work?",
+                  resp: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,",
+                  img: HorizontalDivider.src,
+                },
+                {
+                  text: "Where should I place my hardsand Epoxy?",
+                  resp: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,",
+                  img: HorizontalDivider.src,
+                },
+                {
+                  text: "Can I get a hardsands card with my own logo/branding?",
+                  resp: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,",
+                  img: HorizontalDivider.src,
+                },
+                {
+                  text: "What surfaces may hardsand Epoxy stick to?",
+                  resp: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,",
+                  img: HorizontalDivider.src,
+                },
+                {
+                  text: "Is there a monthly fee for using hardsands card or hardsands Epoxy?",
+                  resp: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,",
+                  img: HorizontalDivider.src,
+                },
+                {
+                  text: "Is it necessary for the receiver to use a hardsand product or an app to receive my info?",
+                  resp: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s,",
+                  img: HorizontalDivider.src,
+                },
+              ].map((element, index) => {
+                return (
+                  <VStack key={index}>
+                    <Flex
+                      width="100%"
+                      mt="23.5px"
+                      justifyContent="space-between"
                     >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the
-                      industry&apos;s standard dummy text ever since the 1500s,
-                    </Text>
-                  )}
-                </Text>
+                      <Text width={["90%", "", ""]}>
+                        <Heading
+                          color="#FFF"
+                          fontFamily="Campton Light"
+                          fontSize={["18px", "", "20px"]}
+                          fontWeight="500"
+                          lineHeight="34px"
+                          textTransform="capitalize"
+                        >
+                          {element.text}
+                        </Heading>
+                        {activeIndex !== index ? (
+                          ""
+                        ) : (
+                          <Text
+                            width={["80%", "", "69%"]}
+                            color="rgba(255, 255, 255, 0.69)"
+                            fontFamily="Campton Light"
+                            fontSize={["13px", "", "15px"]}
+                            fontWeight="400"
+                            lineHeight="23px"
+                            textTransform="capitalize"
+                          >
+                            {element.resp}
+                          </Text>
+                        )}
+                      </Text>
 
-                <Button
-                  _hover={{ bg: "none" }}
-                  onClick={
-                    faq1 === false ? () => setFaq1(true) : () => setFaq1(false)
-                  }
-                  bg=""
-                >
-                  <Img
-                    width="25px"
-                    height="25px"
-                    src={
-                      faq1 === false ? CircleUnclicked.src : CircleClicked.src
-                    }
-                  />
-                </Button>
-
-                {/* <Img
-                  width="25px"
-                  height="25px"
-                  mt={["10px", "", "40px"]}
-                  src={CircleUnclicked.src}
-                /> */}
-              </Flex>
-              <Img mt="9px" src={HorizontalDivider.src} />
-
-              <Flex width="100%" mt="23.5px" justifyContent="space-between">
-                <Text>
-                  <Heading
-                    color="#FFF"
-                    fontFamily="Campton Light"
-                    fontSize={["18px", "", "20px"]}
-                    fontWeight="500"
-                    lineHeight="34px"
-                    textTransform="capitalize"
-                  >
-                    How do hardsands cards and Epoxy work?
-                  </Heading>
-                  {faq2 === false ? (
-                    ""
-                  ) : (
-                    <Text
-                      width={["80%", "", "69%"]}
-                      color="rgba(255, 255, 255, 0.69)"
-                      fontFamily="Campton Light"
-                      fontSize={["13px", "", "15px"]}
-                      fontWeight="400"
-                      lineHeight="23px"
-                      textTransform="capitalize"
-                    >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the
-                      industry&apos;s standard dummy text ever since the 1500s,
-                    </Text>
-                  )}
-                </Text>
-
-                <Button
-                  _hover={{ bg: "none" }}
-                  onClick={
-                    faq2 === false ? () => setFaq2(true) : () => setFaq2(false)
-                  }
-                  bg=""
-                >
-                  <Img
-                    width="25px"
-                    height="25px"
-                    src={
-                      faq2 === false ? CircleUnclicked.src : CircleClicked.src
-                    }
-                  />
-                </Button>
-              </Flex>
-              <Img mt="9px" src={HorizontalDivider.src} />
-
-              <Flex width="100%" mt="23.5px" justifyContent="space-between">
-                <Text>
-                  <Heading
-                    color="#FFF"
-                    fontFamily="Campton Light"
-                    fontSize={["18px", "", "20px"]}
-                    fontWeight="500"
-                    lineHeight="34px"
-                    textTransform="capitalize"
-                  >
-                    Where should I place my hardsand Epoxy?
-                  </Heading>
-                  {faq3 === false ? (
-                    ""
-                  ) : (
-                    <Text
-                      width={["98%", "", "69%"]}
-                      color="rgba(255, 255, 255, 0.69)"
-                      fontFamily="Campton Light"
-                      fontSize={["13px", "", "15px"]}
-                      fontWeight="400"
-                      lineHeight="23px"
-                      textTransform="capitalize"
-                    >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the
-                      industry&apos;s standard dummy text ever since the 1500s,
-                    </Text>
-                  )}
-                </Text>
-
-                <Button
-                  _hover={{ bg: "none" }}
-                  onClick={
-                    faq3 === false ? () => setFaq3(true) : () => setFaq3(false)
-                  }
-                  bg=""
-                >
-                  <Img
-                    width="25px"
-                    height="25px"
-                    src={
-                      faq3 === false ? CircleUnclicked.src : CircleClicked.src
-                    }
-                  />
-                </Button>
-              </Flex>
-              <Img mt="9px" src={HorizontalDivider.src} />
-
-              <Flex width="100%" mt="23.5px" justifyContent="space-between">
-                <Text>
-                  <Heading
-                    color="#FFF"
-                    fontFamily="Campton Light"
-                    fontSize={["18px", "", "20px"]}
-                    fontWeight="500"
-                    lineHeight="34px"
-                    textTransform="capitalize"
-                  >
-                    Can I get a hardsands card with my own logo/branding?
-                  </Heading>
-                  {faq4 === false ? (
-                    ""
-                  ) : (
-                    <Text
-                      width={["98%", "", "69%"]}
-                      color="rgba(255, 255, 255, 0.69)"
-                      fontFamily="Campton Light"
-                      fontSize={["13px", "", "15px"]}
-                      fontWeight="400"
-                      lineHeight="23px"
-                      textTransform="capitalize"
-                    >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the
-                      industry&apos;s standard dummy text ever since the 1500s,
-                    </Text>
-                  )}
-                </Text>
-                <Button
-                  _hover={{ bg: "none" }}
-                  onClick={
-                    faq4 === false ? () => setFaq4(true) : () => setFaq4(false)
-                  }
-                  bg=""
-                >
-                  <Img
-                    width="25px"
-                    height="25px"
-                    src={
-                      faq4 === false ? CircleUnclicked.src : CircleClicked.src
-                    }
-                  />
-                </Button>
-              </Flex>
-              <Img mt="9px" src={HorizontalDivider.src} />
-
-              <Flex width="100%" mt="23.5px" justifyContent="space-between">
-                <Text>
-                  <Heading
-                    color="#FFF"
-                    fontFamily="Campton Light"
-                    fontSize={["18px", "", "20px"]}
-                    fontWeight="500"
-                    lineHeight="34px"
-                    textTransform="capitalize"
-                  >
-                    What surfaces may hardsand Epoxy stick to?
-                  </Heading>
-                  {faq5 === false ? (
-                    ""
-                  ) : (
-                    <Text
-                      width={["98%", "", "69%"]}
-                      color="rgba(255, 255, 255, 0.69)"
-                      fontFamily="Campton Light"
-                      fontSize={["13px", "", "15px"]}
-                      fontWeight="400"
-                      lineHeight="23px"
-                      textTransform="capitalize"
-                    >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the
-                      industry&apos;s standard dummy text ever since the 1500s,
-                    </Text>
-                  )}
-                </Text>
-                <Button
-                  _hover={{ bg: "none" }}
-                  onClick={
-                    faq5 === false ? () => setFaq5(true) : () => setFaq5(false)
-                  }
-                  bg=""
-                >
-                  <Img
-                    width="25px"
-                    height="25px"
-                    src={
-                      faq5 === false ? CircleUnclicked.src : CircleClicked.src
-                    }
-                  />
-                </Button>
-              </Flex>
-              <Img mt="9px" src={HorizontalDivider.src} />
-
-              <Flex width="100%" mt="23.5px" justifyContent="space-between">
-                <Text>
-                  <Heading
-                    color="#FFF"
-                    fontFamily="Campton Light"
-                    fontSize={["18px", "", "20px"]}
-                    fontWeight="500"
-                    lineHeight="34px"
-                    textTransform="capitalize"
-                  >
-                    Is there a monthly fee for using hardsands card or hardsands
-                    Epoxy?
-                  </Heading>
-                  {faq6 === false ? (
-                    ""
-                  ) : (
-                    <Text
-                      width={["98%", "", "69%"]}
-                      color="rgba(255, 255, 255, 0.69)"
-                      fontFamily="Campton Light"
-                      fontSize={["13px", "", "15px"]}
-                      fontWeight="400"
-                      lineHeight="23px"
-                      textTransform="capitalize"
-                    >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the
-                      industry&apos;s standard dummy text ever since the 1500s,
-                    </Text>
-                  )}
-                </Text>
-
-                <Button
-                  _hover={{ bg: "none" }}
-                  onClick={
-                    faq6 === false ? () => setFaq6(true) : () => setFaq6(false)
-                  }
-                  bg=""
-                >
-                  <Img
-                    width="25px"
-                    height="25px"
-                    src={
-                      faq6 === false ? CircleUnclicked.src : CircleClicked.src
-                    }
-                  />
-                </Button>
-              </Flex>
-              <Img mt="9px" src={HorizontalDivider.src} />
-
-              <Flex width="100%" mt="23.5px" justifyContent="space-between">
-                <Text>
-                  <Heading
-                    color="#FFF"
-                    fontFamily="Campton Light"
-                    fontSize={["18px", "", "20px"]}
-                    fontWeight="500"
-                    lineHeight="34px"
-                    textTransform="capitalize"
-                  >
-                    Is it necessary for the receiver to use a hardsand product
-                    or an app to receive my info?
-                  </Heading>
-                  {faq7 === false ? (
-                    ""
-                  ) : (
-                    <Text
-                      width={["98%", "", "69%"]}
-                      color="rgba(255, 255, 255, 0.69)"
-                      fontFamily="Campton Light"
-                      fontSize={["13px", "", "15px"]}
-                      fontWeight="400"
-                      lineHeight="23px"
-                      textTransform="capitalize"
-                    >
-                      Lorem Ipsum is simply dummy text of the printing and
-                      typesetting industry. Lorem Ipsum has been the
-                      industry&apos;s standard dummy text ever since the 1500s,
-                    </Text>
-                  )}
-                </Text>
-                <Button
-                  _hover={{ bg: "none" }}
-                  onClick={
-                    faq7 === false ? () => setFaq7(true) : () => setFaq7(false)
-                  }
-                  bg=""
-                >
-                  <Img
-                    width="25px"
-                    height="25px"
-                    mt={["10px", "", "0px"]}
-                    src={
-                      faq7 === false ? CircleUnclicked.src : CircleClicked.src
-                    }
-                  />
-                </Button>
-              </Flex>
-              <Img mt="9px" src={HorizontalDivider.src} />
+                      <Button
+                        _hover={{ bg: "none" }}
+                        onClick={
+                          activeIndex !== index
+                            ? () => setActiveIndex(index)
+                            : () => setActiveIndex(-1)
+                        }
+                        bg=""
+                      >
+                        <Img
+                          width="25px"
+                          height="25px"
+                          src={
+                            activeIndex !== index
+                              ? CircleUnclicked.src
+                              : CircleClicked.src
+                          }
+                        />
+                      </Button>
+                    </Flex>
+                    <Img mt="9px" src={element.img} />
+                  </VStack>
+                );
+              })}
             </Box>
             <Box
               mt={["50px", "", "99px"]}
@@ -2145,8 +1870,8 @@ const Corporate = () => {
                     textTransform="capitalize"
                     textAlign={["center", "center", "inherit"]}
                   >
-                    Can’t find the answers you’re looking for? Contact us via
-                    our Hardsands Technology Customer Support
+                    Can&apos;'t find the answers you’re looking for? Contact us
+                    via our Hardsands Technology Customer Support
                   </Text>
                 </Text>
                 <Box w={["100%", "", "17%"]}>
@@ -2367,8 +2092,10 @@ const Corporate = () => {
               justifyContent="space-between"
             >
               <Image
-                width={["100%", "65%", "613px"]}
-                height={["100%", "65%", "515px"]}
+                width={["360px", "450px", "635px"]}
+                height={["353px", "370px", "450px"]}
+                mt={["0px", "", "70px"]}
+                mx="auto"
                 src={MaximizingYourTeamImage.src}
                 alt={"maximize-your-team-potential"}
               />
