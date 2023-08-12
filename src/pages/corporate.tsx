@@ -1305,6 +1305,7 @@ const Corporate = () => {
               <Image
                 src={Worldwide.src}
                 alignSelf={["center", "", "inherit"]}
+                alt="worldwide"
               />
               <Box width={["100%", "", "80%"]}>
                 <Text
@@ -1870,8 +1871,8 @@ const Corporate = () => {
                     textTransform="capitalize"
                     textAlign={["center", "center", "inherit"]}
                   >
-                    Can&apos;'t find the answers you’re looking for? Contact us
-                    via our Hardsands Technology Customer Support
+                    Can&apos;'t find the answers you&apos;’re looking for?
+                    Contact us via our Hardsands Technology Customer Support
                   </Text>
                 </Text>
                 <Box w={["100%", "", "17%"]}>
